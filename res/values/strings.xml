@@ -1,10 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">FF Gamebook Buddy</string>
+    <string name="app_name">FF Companion</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
     <string name="action_settings">Settings</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_activity_main">FF Companion</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="saved_games">Saved games: </string>
+    <string name="create_new_adventure">Start New Adventure</string>
+    <string name="title_activity_gamebook_list">Gamebook List</string>
+
+    <string-array name="gamebook_list_names">
+        <item>The Warlock of Firetop Mountain</item>
+        <item>The Citadel of Chaos</item>
+        <item>The Forest of Doom</item>
+        <item>Starship Traveller</item>
+        <item>City of Thieves</item>
+        <item>Deathtrap Dungeon</item>
+        <item>Island of the Lizard King</item>
+        <item>Scorpion Swamp</item>
+        <item>Caverns of the Snow Witch</item>
+        <item>House of Hell</item>
+        <item>Talisman of Death</item>
+        <item>Space Assassin</item>
+        <item>Freeway Fighter</item>
+        <item>Temple of Terror</item>
+        <item>The Rings of Kether</item>
+        <item>Seas of Blood</item>
+        <item>Appointment with F.E.A.R.</item>
+        <item>Rebel Planet</item>
+        <item>Demons of the Deep</item>
+        <item>Sword of the Samurai</item>
+        <item>Trial of Champions</item>
+        <item>Robot Commando</item>
+        <item>Masks of Mayhem</item>
+        <item>Creature of Havoc</item>
+        <item>Beneath Nightmare Castle</item>
+        <item>Crypt of the Sorcerer</item>
+        <item>Star Strider</item>
+        <item>Phantoms of Fear</item>
+        <item>Midnight Rogue</item>
+        <item>Chasms of Malice</item>
+        <item>Battleblade Warrior</item>
+        <item>Slaves of the Abyss</item>
+        <item>Sky Lord</item>
+        <item>Stealer of Souls</item>
+        <item>Daggers of Darkness</item>
+        <item>Armies of Death</item>
+        <item>Portal of Evil</item>
+        <item>Vault of the Vampire</item>
+        <item>Fangs of Fury</item>
+        <item>Dead of Night</item>
+        <item>Master of Chaos</item>
+        <item>Black Vein Prophecy</item>
+        <item>The Keep of the Lich Lord</item>
+        <item>Legend of the Shadow Warriors</item>
+        <item>Spectral Stalkers</item>
+        <item>Tower of Destruction</item>
+        <item>The Crimson Tide</item>
+        <item>Moonrunner</item>
+        <item>Siege of Sardath</item>
+        <item>Return to Firetop Mountain</item>
+        <item>Island of the Undead</item>
+        <item>Night Dragon</item>
+        <item>Spellbreaker</item>
+        <item>Legend of Zagor</item>
+        <item>Deathmoor</item>
+        <item>Knights of Doom</item>
+        <item>Magehunter</item>
+        <item>Revenge of the Vampire</item>
+        <item>Curse of the Mummy</item>
+    </string-array>
 
 </resources>
