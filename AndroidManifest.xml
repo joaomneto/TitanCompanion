@@ -26,6 +26,20 @@
             android:name="pt.joaomneto.ffgbutil.GamebookListActivity"
             android:label="@string/title_activity_gamebook_list" >
         </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.GamebookSelectionActivity"
+            android:label="@string/title_activity_gamebook_selection" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.GamebookWikiaActivity"
+            android:label="@string/title_activity_gamebook_wikia" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.GamebookFullImageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_gamebook_full_image"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
     </application>
 
 </manifest>
