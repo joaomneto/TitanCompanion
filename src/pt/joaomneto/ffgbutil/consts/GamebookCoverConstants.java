@@ -1,4 +1,4 @@
-package consts;
+package pt.joaomneto.ffgbutil.consts;
 
 import pt.joaomneto.ffgbutil.R;
 

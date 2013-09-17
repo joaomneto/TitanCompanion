@@ -10,15 +10,16 @@
     
     <ImageView
         android:id="@+id/gamebookCoverImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_above="@+id/buttonSite"
+        android:layout_alignLeft="@+id/buttonSite"
         android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/buttonSite"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:adjustViewBounds="true"
         android:contentDescription="@string/selectedGamebookCover"
-        android:onClick="showFullImage" />
+        android:onClick="showFullImage"
+        android:scaleType="fitCenter" />
 
     <Button
         android:id="@+id/buttonCreate"

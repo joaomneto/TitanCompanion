@@ -5,15 +5,11 @@
     android:background="@color/black_overlay"
     tools:context=".GamebookFullImageActivity" >
 
-
     <ImageView
         android:id="@+id/fullGamebookCoverImg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:contentDescription="@string/selectedGamebookCover"
-        android:adjustViewBounds="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
-
+        android:scaleType="fitCenter" />
 
 </FrameLayout>

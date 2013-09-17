@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import consts.GamebookCoverConstants;
+import pt.joaomneto.ffgbutil.consts.GamebookCoverConstants;
+
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,7 +22,8 @@ public class GamebookListActivity extends Activity {
 	
 
 	protected static final String GAMEBOOK_COVER = "GAMEBOOK_COVER";
-	protected static final String GAMEBOOK_URL = "GAMEBOOK_URL";	
+	protected static final String GAMEBOOK_URL = "GAMEBOOK_URL";
+	protected static final String GAMEBOOK_POSITION = "GAMEBOOK_POSITION";	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class GamebookListActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
 			    intent.putExtra(GAMEBOOK_COVER, GamebookCoverConstants.getGameBookCoverAddress(position+1));
 			    intent.putExtra(GAMEBOOK_URL, urls[position]);
+			    intent.putExtra(GAMEBOOK_POSITION, position);
 				startActivity(intent);
 			}
 
