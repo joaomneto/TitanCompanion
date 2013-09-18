@@ -20,6 +20,7 @@ public class GamebookSelectionActivity extends FragmentActivity {
 
 	protected static final String GAMEBOOK_URL = "GAMEBOOK_URL";
 	protected static final String GAMEBOOK_COVER = "GAMEBOOK_COVER";
+	protected static final String GAMEBOOK_ID = "GAMEBOOK_ID";
 
 	private static String[] urls;
 	private static String[] values;
@@ -53,9 +54,8 @@ public class GamebookSelectionActivity extends FragmentActivity {
 		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
 		// Set up the ViewPager with the sections adapter.
-		mViewPager = (ViewPager) findViewById(R.id.pager_title_strip);
+		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
-		
 
 		intent = getIntent();
 
@@ -93,8 +93,7 @@ public class GamebookSelectionActivity extends FragmentActivity {
 		public CharSequence getPageTitle(int position) {
 			return values[position];
 		}
-		
-		
+
 	}
 
 	public static class GamebookSelectionFragment extends Fragment {
@@ -118,38 +117,49 @@ public class GamebookSelectionActivity extends FragmentActivity {
 
 			ImageView img = (ImageView) rootView.findViewById(R.id.gamebookCoverImg);
 			Button detailsButton = (Button) rootView.findViewById(R.id.buttonSite);
-//			Button createButton = (Button) rootView.findViewById(R.id.buttonCreate);
+			Button createButton = (Button) rootView.findViewById(R.id.buttonCreate);
 
 			position = getArguments().getInt(ARG_SECTION_NUMBER);
-			
+
 			imageLink = GamebookCoverConstants.getGameBookCoverAddress(position);
 			img.setImageResource(imageLink);
-			
+
 			img.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View view) {
 					Intent intent = new Intent(getActivity().getBaseContext(), GamebookFullImageActivity.class);
 					intent.putExtra(GAMEBOOK_COVER, GamebookCoverConstants.getGameBookCoverAddress(position));
 					startActivity(intent);
-					
+
 				}
 			});
-			
+
 			detailsButton.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View view) {
 					Intent intent = new Intent(getActivity().getBaseContext(), GamebookWikiaActivity.class);
 					intent.putExtra(GAMEBOOK_URL, urls[position]);
 					startActivity(intent);
-					
+
 				}
 			});
-			
+
+			createButton.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View view) {
+//					Intent intent = new Intent(getActivity().getBaseContext(), AdventureCreationPhaseListActivity.class);
+//					intent.putExtra(GAMEBOOK_ID, position);
+//					startActivity(intent);
+
+				}
+			});
+
 			return rootView;
 		}
-		
+
 	}
-	
+
 }

@@ -44,12 +44,16 @@
             android:theme="@style/FullscreenTheme" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.SwipeActivity"
-            android:label="@string/title_activity_swipe" >
+            android:name="pt.joaomneto.ffgbutil.AdventureCreationPhaseListActivity"
+            android:label="@string/title_adventurecreationphase_list" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.XPTOActivity"
-            android:label="@string/title_activity_xpto" >
+            android:name="pt.joaomneto.ffgbutil.AdventureCreationPhaseDetailActivity"
+            android:label="@string/title_adventurecreationphase_detail"
+            android:parentActivityName=".AdventureCreationPhaseListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdventureCreationPhaseListActivity" />
         </activity>
     </application>
 

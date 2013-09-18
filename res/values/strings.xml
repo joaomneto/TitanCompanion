@@ -146,5 +146,8 @@
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="title_activity_xpto">XPTOActivity</string>
+    <string name="title_activity_gamebook_selection_swipe">GamebookSelectionSwipeActivity</string>
+    <string name="title_adventurecreationphase_list">AdventureCreationPhases</string>
+    <string name="title_adventurecreationphase_detail">AdventureCreationPhase Detail</string>
 
 </resources>
