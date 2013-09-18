@@ -1,74 +1,155 @@
 package pt.joaomneto.ffgbutil;
 
-import android.app.Activity;
+import pt.joaomneto.ffgbutil.consts.GamebookCoverConstants;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
-public class GamebookSelectionActivity extends Activity {
-
-	private String url = "";
-	private int imageLink = 0;
-	private int position = 0;
+public class GamebookSelectionActivity extends FragmentActivity {
 
 	protected static final String GAMEBOOK_URL = "GAMEBOOK_URL";
 	protected static final String GAMEBOOK_COVER = "GAMEBOOK_COVER";
 
-	private String[] urls;
+	private static String[] urls;
+	private static String[] values;
+	private static Intent intent;
 
-	public void onCreate(Bundle savedInstanceState) {
+	/**
+	 * The {@link android.support.v4.view.PagerAdapter} that will provide
+	 * fragments for each of the sections. We use a
+	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
+	 * will keep every loaded fragment in memory. If this becomes too memory
+	 * intensive, it may be best to switch to a
+	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+	 */
+	SectionsPagerAdapter mSectionsPagerAdapter;
+
+	/**
+	 * The {@link ViewPager} that will host the section contents.
+	 */
+	ViewPager mViewPager;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gamebook_selection);
 
+		values = getResources().getStringArray(R.array.gamebook_list_names);
 		urls = getResources().getStringArray(R.array.gamebook_list_urls);
 
-		ImageView img = (ImageView) findViewById(R.id.gamebookCoverImg);
+		// Create the adapter that will return a fragment for each of the three
+		// primary sections of the app.
+		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-		Intent intent = getIntent();
-		imageLink = intent.getIntExtra(GamebookListActivity.GAMEBOOK_COVER, 0);
-		url = intent.getStringExtra(GamebookListActivity.GAMEBOOK_URL);
-		position = intent.getIntExtra(GamebookListActivity.GAMEBOOK_POSITION, 0);
-		img.setImageResource(imageLink);
+		// Set up the ViewPager with the sections adapter.
+		mViewPager = (ViewPager) findViewById(R.id.pager_title_strip);
+		mViewPager.setAdapter(mSectionsPagerAdapter);
+		
+
+		intent = getIntent();
+
+		mViewPager.setCurrentItem(intent.getIntExtra(GamebookListActivity.GAMEBOOK_POSITION, 0));
+
 	}
 
-	public void createNewAdventure(View view) {
-
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.swipe, menu);
+		return true;
 	}
 
-	public void viewSite(View view) {
-		Intent intent = new Intent(this, GamebookWikiaActivity.class);
-		intent.putExtra(GAMEBOOK_URL, url);
-		startActivity(intent);
+	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+		public SectionsPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			GamebookSelectionFragment fragment = new GamebookSelectionFragment();
+			Bundle args = new Bundle();
+			args.putInt(GamebookSelectionFragment.ARG_SECTION_NUMBER, position);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		@Override
+		public int getCount() {
+			return values.length;
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			return values[position];
+		}
+		
+		
 	}
 
-	public void showFullImage(View view) {
-		Intent intent = new Intent(this, GamebookFullImageActivity.class);
-		intent.putExtra(GAMEBOOK_COVER, imageLink);
-		startActivity(intent);
+	public static class GamebookSelectionFragment extends Fragment {
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		public static final String ARG_SECTION_NUMBER = "section_number";
+
+		private int imageLink = 0;
+		private int position = 0;
+
+		public GamebookSelectionFragment() {
+
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			View rootView = inflater.inflate(R.layout.fragment_gamebook_selection_gamebook_selection, container, false);
+
+			ImageView img = (ImageView) rootView.findViewById(R.id.gamebookCoverImg);
+			Button detailsButton = (Button) rootView.findViewById(R.id.buttonSite);
+//			Button createButton = (Button) rootView.findViewById(R.id.buttonCreate);
+
+			position = getArguments().getInt(ARG_SECTION_NUMBER);
+			
+			imageLink = GamebookCoverConstants.getGameBookCoverAddress(position);
+			img.setImageResource(imageLink);
+			
+			img.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent(getActivity().getBaseContext(), GamebookFullImageActivity.class);
+					intent.putExtra(GAMEBOOK_COVER, GamebookCoverConstants.getGameBookCoverAddress(position));
+					startActivity(intent);
+					
+				}
+			});
+			
+			detailsButton.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent(getActivity().getBaseContext(), GamebookWikiaActivity.class);
+					intent.putExtra(GAMEBOOK_URL, urls[position]);
+					startActivity(intent);
+					
+				}
+			});
+			
+			return rootView;
+		}
+		
 	}
-
-
-
-//	@Override
-//	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-//
-//		Intent intent = new Intent(this, GamebookSelectionActivity.class);
-//
-//		if (e1.getRawY() < e2.getRawY()) {
-//			if (position > 0) {
-//				intent.putExtra(GAMEBOOK_COVER, GamebookCoverConstants.getGameBookCoverAddress(position));
-//				intent.putExtra(GAMEBOOK_URL, urls[position]);
-//				startActivity(intent);
-//			}
-//		} else {
-//			if (position < 59) {
-//				intent.putExtra(GAMEBOOK_COVER, GamebookCoverConstants.getGameBookCoverAddress(position + 2));
-//				intent.putExtra(GAMEBOOK_URL, urls[position]);
-//				startActivity(intent);
-//			}
-//		}
-//		return true;
-//	}
-
+	
 }

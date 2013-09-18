@@ -43,6 +43,14 @@
             android:label="@string/title_activity_gamebook_full_image"
             android:theme="@style/FullscreenTheme" >
         </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.SwipeActivity"
+            android:label="@string/title_activity_swipe" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.XPTOActivity"
+            android:label="@string/title_activity_xpto" >
+        </activity>
     </application>
 
 </manifest>

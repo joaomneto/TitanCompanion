@@ -4,7 +4,7 @@ import pt.joaomneto.ffgbutil.R;
 
 public abstract class GamebookCoverConstants {
 	
-	private static int[] gameBookCovers = new int[] {0, 
+	private static int[] gameBookCovers = new int[] { 
 			R.drawable.ff1, 
 			R.drawable.ff2, 
 			R.drawable.ff3, 

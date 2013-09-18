@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,34 +8,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".GamebookSelectionActivity" >
     
-    <ImageView
-        android:id="@+id/gamebookCoverImg"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/buttonSite"
-        android:layout_alignLeft="@+id/buttonSite"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/buttonSite"
-        android:layout_centerVertical="true"
-        android:contentDescription="@string/selectedGamebookCover"
-        android:onClick="showFullImage"
-        android:scaleType="fitCenter" />
-
-    <Button
-        android:id="@+id/buttonCreate"
+    <PagerTitleStrip
+        android:id="@+id/pager_title_strip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="createNewAdventure"
-        android:text="@string/create_new_adventure"
-        android:layout_alignParentBottom="true" />
+        android:layout_gravity="top"
+        android:background="#33b5e5"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="#fff" />
+    
+<!--     <ImageView -->
+<!--         android:id="@+id/gamebookCoverImg" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="fill_parent" -->
+<!--         android:layout_above="@+id/buttonSite" -->
+<!--         android:layout_alignLeft="@+id/buttonSite" -->
+<!--         android:layout_alignParentTop="true" -->
+<!--         android:layout_alignRight="@+id/buttonSite" -->
+<!--         android:layout_centerVertical="true" -->
+<!--         android:contentDescription="@string/selectedGamebookCover" -->
+<!--         android:onClick="showFullImage" -->
+<!--         android:scaleType="fitCenter" /> -->
 
-    <Button
-        android:id="@+id/buttonSite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonCreate"
-        android:layout_alignLeft="@+id/buttonCreate"
-        android:onClick="viewSite"
-        android:text="@string/viewSite" />
+<!--     <Button -->
+<!--         android:id="@+id/buttonCreate" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:onClick="createNewAdventure" -->
+<!--         android:text="@string/create_new_adventure" -->
+<!--         android:layout_alignParentBottom="true" /> -->
 
-</RelativeLayout>
+<!--     <Button -->
+<!--         android:id="@+id/buttonSite" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_above="@+id/buttonCreate" -->
+<!--         android:layout_alignLeft="@+id/buttonCreate" -->
+<!--         android:onClick="viewSite" -->
+<!--         android:text="@string/viewSite" /> -->
+
+</ViewPager>
