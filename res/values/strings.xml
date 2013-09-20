@@ -142,12 +142,25 @@
     <string name="title_activity_gamebook_wikia">GamebookWikiaActivity</string>
     <string name="title_activity_gamebook_full_image">GamebookFullImageActivity</string>
     <string name="title_activity_swipe">SwipeActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
     <string name="title_activity_xpto">XPTOActivity</string>
     <string name="title_activity_gamebook_selection_swipe">GamebookSelectionSwipeActivity</string>
     <string name="title_adventurecreationphase_list">AdventureCreationPhases</string>
     <string name="title_adventurecreationphase_detail">AdventureCreationPhase Detail</string>
+    <string name="title_activity_adventure_creation">AdventureCreation</string>
+    <string name="title_adventure_creation_vitalstats">Vital Statistics</string>
+    <string name="title_adventure_creation_potions">Potions</string>
+
+    <string-array name="standard_potion_list">
+        <item>Skill</item>
+        <item>Strength</item>
+        <item>Fortune</item>
+    </string-array>
+    
+    
+    <string name="skill">Skill: </string>
+    <string name="stamina">Stamina: </string>
+    <string name="luck">Luck: </string>
+    <string name="saveAdventure">Save Adventure</string>
+    <string name="rollStats">Reroll Statistics</string>
 
 </resources>

@@ -1,6 +1,6 @@
 package pt.joaomneto.ffgbutil;
 
-import pt.joaomneto.ffgbutil.consts.GamebookCoverConstants;
+import pt.joaomneto.ffgbutil.consts.Constants;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -121,7 +121,7 @@ public class GamebookSelectionActivity extends FragmentActivity {
 
 			position = getArguments().getInt(ARG_SECTION_NUMBER);
 
-			imageLink = GamebookCoverConstants.getGameBookCoverAddress(position);
+			imageLink = Constants.getGameBookCoverAddress(position);
 			img.setImageResource(imageLink);
 
 			img.setOnClickListener(new OnClickListener() {
@@ -129,7 +129,7 @@ public class GamebookSelectionActivity extends FragmentActivity {
 				@Override
 				public void onClick(View view) {
 					Intent intent = new Intent(getActivity().getBaseContext(), GamebookFullImageActivity.class);
-					intent.putExtra(GAMEBOOK_COVER, GamebookCoverConstants.getGameBookCoverAddress(position));
+					intent.putExtra(GAMEBOOK_COVER, Constants.getGameBookCoverAddress(position));
 					startActivity(intent);
 
 				}
@@ -150,9 +150,8 @@ public class GamebookSelectionActivity extends FragmentActivity {
 
 				@Override
 				public void onClick(View view) {
-//					Intent intent = new Intent(getActivity().getBaseContext(), AdventureCreationPhaseListActivity.class);
-//					intent.putExtra(GAMEBOOK_ID, position);
-//					startActivity(intent);
+					Intent intent = new Intent(getActivity().getBaseContext(), Constants.getCreationActivity(position));
+					startActivity(intent);
 
 				}
 			});

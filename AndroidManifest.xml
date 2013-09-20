@@ -55,6 +55,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".AdventureCreationPhaseListActivity" />
         </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation"
+            android:label="@string/title_activity_adventure_creation" >
+        </activity>
     </application>
 
 </manifest>

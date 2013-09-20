@@ -1,8 +1,13 @@
 package pt.joaomneto.ffgbutil.consts;
 
+import android.app.Activity;
+import android.support.v4.app.Fragment;
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
+import pt.joaomneto.ffgbutil.adventurecreation.fragments.PotionsFragment;
+import pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment;
 
-public abstract class GamebookCoverConstants {
+public abstract class Constants {
 	
 	private static int[] gameBookCovers = new int[] { 
 			R.drawable.ff1, 
@@ -68,6 +73,19 @@ public abstract class GamebookCoverConstants {
 
 	public static int getGameBookCoverAddress(int i){
 		return gameBookCovers[i];
+	}
+
+	public static Class<?> getCreationActivity(int position) {
+		Class<? extends Activity> intentClass;
+		switch (position) {
+		case 0:
+			intentClass = AdventureCreation.class;
+		default:
+			intentClass = AdventureCreation.class;
+		}
+		
+		return intentClass;
+		
 	}
 	
 }
