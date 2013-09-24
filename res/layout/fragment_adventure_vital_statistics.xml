@@ -70,6 +70,16 @@
         android:layout_marginLeft="10dp"
         android:layout_toLeftOf="@+id/staminaValue"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/adventureName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/luckCount"
+        android:layout_marginTop="10dp"
+        android:text="@string/name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/buttonRollStats"
@@ -88,6 +98,18 @@
         android:layout_alignLeft="@+id/buttonRollStats"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/saveAdventure" />
+        android:text="@string/saveAdventure" 
+        android:onClick="saveAdventure"/>
+
+    <EditText
+        android:id="@+id/adventureNameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/adventureName"
+        android:layout_toRightOf="@+id/skillValue"
+        android:ems="10" 
+        android:inputType="text">
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

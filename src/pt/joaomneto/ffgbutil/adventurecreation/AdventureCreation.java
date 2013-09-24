@@ -1,5 +1,8 @@
 package pt.joaomneto.ffgbutil.adventurecreation;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Locale;
 import java.util.Random;
 
@@ -14,6 +17,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class AdventureCreation extends FragmentActivity {
@@ -35,6 +39,10 @@ public class AdventureCreation extends FragmentActivity {
 	
 
 	private static Random random = new Random(System.currentTimeMillis()); 
+	private int skill = -1;
+	private int luck = -1;
+	private int stamina = -1;
+	private int potion = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -107,9 +115,9 @@ public class AdventureCreation extends FragmentActivity {
 
 	
 	public void rollStats(View view){
-		int skill = random.nextInt(5)+7;
-		int luck = random.nextInt(5)+7;
-		int stamina = random.nextInt(11)+13;
+		skill = random.nextInt(5)+7;
+		luck = random.nextInt(5)+7;
+		stamina = random.nextInt(11)+13;
 				
 		TextView skillValue = (TextView) findViewById(R.id.skillValue);
 		TextView staminaValue = (TextView) findViewById(R.id.staminaValue);
@@ -119,5 +127,40 @@ public class AdventureCreation extends FragmentActivity {
 		staminaValue.setText(""+stamina);
 		luckValue.setText(""+luck);
 	}
+	
+	
+	
+	public void saveAdventure(View view){
+		try {
+			EditText et = (EditText) findViewById(R.id.adventureNameInput);
+			
+			File file = new File(this.getFilesDir(), "save_"+et.getText().toString().replace(' ', '-')+".xml");
+			
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			
+			bw.write("name="+et.getText().toString());
+			bw.write("initial_skill="+skill);
+			bw.write("initial_luck="+luck);
+			bw.write("initial_stamina="+stamina);
+			bw.write("current_skill="+skill);
+			bw.write("current_luck="+luck);
+			bw.write("current_stamina="+stamina);
+			bw.write("standard_potion="+potion);
+			
+			bw.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public synchronized int getPotion() {
+		return potion;
+	}
+
+	public synchronized void setPotion(int potion) {
+		this.potion = potion;
+	}
+	
 
 }

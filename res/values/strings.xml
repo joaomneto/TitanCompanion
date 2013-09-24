@@ -160,6 +160,7 @@
     <string name="skill">Skill: </string>
     <string name="stamina">Stamina: </string>
     <string name="luck">Luck: </string>
+    <string name="name">Name:</string>
     <string name="saveAdventure">Save Adventure</string>
     <string name="rollStats">Reroll Statistics</string>
 
