@@ -18,9 +18,9 @@ import android.widget.ImageView;
 
 public class GamebookSelectionActivity extends FragmentActivity {
 
-	protected static final String GAMEBOOK_URL = "GAMEBOOK_URL";
-	protected static final String GAMEBOOK_COVER = "GAMEBOOK_COVER";
-	protected static final String GAMEBOOK_ID = "GAMEBOOK_ID";
+	public static final String GAMEBOOK_URL = "GAMEBOOK_URL";
+	public static final String GAMEBOOK_COVER = "GAMEBOOK_COVER";
+	public static final String GAMEBOOK_ID = "GAMEBOOK_ID";
 
 	private static String[] urls;
 	private static String[] values;
@@ -151,6 +151,7 @@ public class GamebookSelectionActivity extends FragmentActivity {
 				@Override
 				public void onClick(View view) {
 					Intent intent = new Intent(getActivity().getBaseContext(), Constants.getCreationActivity(position));
+					intent.putExtra(GAMEBOOK_ID, position);
 					startActivity(intent);
 
 				}

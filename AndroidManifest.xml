@@ -8,8 +8,8 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
-    <uses-permission android:name="android.permission.INTERNET" >
-    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -56,8 +56,12 @@
                 android:value=".AdventureCreationPhaseListActivity" />
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation"
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TWOFMAdventureCreation"
             android:label="@string/title_activity_adventure_creation" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.TWOFMAdventure"
+            android:label="@string/title_activity_twofmadventure" >
         </activity>
     </application>
 

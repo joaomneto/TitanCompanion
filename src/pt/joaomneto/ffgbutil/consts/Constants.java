@@ -1,11 +1,9 @@
 package pt.joaomneto.ffgbutil.consts;
 
-import android.app.Activity;
-import android.support.v4.app.Fragment;
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
-import pt.joaomneto.ffgbutil.adventurecreation.fragments.PotionsFragment;
-import pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment;
+import pt.joaomneto.ffgbutil.adventurecreation.impl.TWOFMAdventureCreation;
+import android.app.Activity;
 
 public abstract class Constants {
 	
@@ -79,7 +77,8 @@ public abstract class Constants {
 		Class<? extends Activity> intentClass;
 		switch (position) {
 		case 0:
-			intentClass = AdventureCreation.class;
+			intentClass = TWOFMAdventureCreation.class;
+			break;
 		default:
 			intentClass = AdventureCreation.class;
 		}

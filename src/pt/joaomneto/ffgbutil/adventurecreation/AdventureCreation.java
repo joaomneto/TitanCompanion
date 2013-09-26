@@ -6,10 +6,12 @@ import java.io.FileWriter;
 import java.util.Locale;
 import java.util.Random;
 
+import pt.joaomneto.ffgbutil.GamebookSelectionActivity;
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventurecreation.fragments.PotionsFragment;
 import pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -20,7 +22,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class AdventureCreation extends FragmentActivity {
+public abstract class AdventureCreation extends FragmentActivity {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -30,34 +32,20 @@ public class AdventureCreation extends FragmentActivity {
 	 * intensive, it may be best to switch to a
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
-	SectionsPagerAdapter mSectionsPagerAdapter;
+	protected SectionsPagerAdapter mSectionsPagerAdapter;
 
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
-	ViewPager mViewPager;
+	protected ViewPager mViewPager;
 	
 
-	private static Random random = new Random(System.currentTimeMillis()); 
-	private int skill = -1;
-	private int luck = -1;
-	private int stamina = -1;
-	private int potion = -1;
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_adventure_creation);
-
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the app.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-		// Set up the ViewPager with the sections adapter.
-		mViewPager = (ViewPager) findViewById(R.id.pager);
-		mViewPager.setAdapter(mSectionsPagerAdapter);
-
-	}
+	protected static Random random = new Random(System.currentTimeMillis()); 
+	protected int skill = -1;
+	protected int luck = -1;
+	protected int stamina = -1;
+	protected int potion = -1;
+	protected int gamebook = -1;
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -134,18 +122,24 @@ public class AdventureCreation extends FragmentActivity {
 		try {
 			EditText et = (EditText) findViewById(R.id.adventureNameInput);
 			
-			File file = new File(this.getFilesDir(), "save_"+et.getText().toString().replace(' ', '-')+".xml");
+			File dir = new File(Environment.getExternalStorageDirectory().getPath()+"/ffgbutil/");
+			if(!dir.exists()){
+				dir.mkdirs();
+			}
+			
+			File file = new File(dir, "save_"+et.getText().toString().replace(' ', '-')+".xml");
 			
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-			
-			bw.write("name="+et.getText().toString());
-			bw.write("initial_skill="+skill);
-			bw.write("initial_luck="+luck);
-			bw.write("initial_stamina="+stamina);
-			bw.write("current_skill="+skill);
-			bw.write("current_luck="+luck);
-			bw.write("current_stamina="+stamina);
-			bw.write("standard_potion="+potion);
+
+			bw.write("gamebook="+gamebook+"\n");
+			bw.write("name="+et.getText().toString()+"\n");
+			bw.write("initial_skill="+skill+"\n");
+			bw.write("initial_luck="+luck+"\n");
+			bw.write("initial_stamina="+stamina+"\n");
+			bw.write("current_skill="+skill+"\n");
+			bw.write("current_luck="+luck+"\n");
+			bw.write("current_stamina="+stamina+"\n");
+			bw.write("standard_potion="+potion+"\n");
 			
 			bw.close();
 			
