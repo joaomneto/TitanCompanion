@@ -9,6 +9,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="saved_games">Saved games: </string>
     <string name="create_new_adventure">Start New Adventure</string>
+    <string name="load_adventure">Load Adventure</string>
     <string name="title_activity_gamebook_list">Gamebook List</string>
     <string name="viewSite">View Description</string>
 
@@ -166,5 +167,6 @@
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
+    <string name="title_activity_load_adventure">LoadAdventureActivity</string>
 
 </resources>

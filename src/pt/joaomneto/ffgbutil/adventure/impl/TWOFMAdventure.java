@@ -23,7 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class TWOFMAdventure extends FragmentActivity {
+public class TWOFMAdventure extends Adventure {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide

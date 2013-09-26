@@ -1,7 +1,8 @@
 package pt.joaomneto.ffgbutil.consts;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
+import pt.joaomneto.ffgbutil.adventure.impl.Adventure;
+import pt.joaomneto.ffgbutil.adventure.impl.TWOFMAdventure;
 import pt.joaomneto.ffgbutil.adventurecreation.impl.TWOFMAdventureCreation;
 import android.app.Activity;
 
@@ -80,11 +81,24 @@ public abstract class Constants {
 			intentClass = TWOFMAdventureCreation.class;
 			break;
 		default:
-			intentClass = AdventureCreation.class;
+			intentClass = null;
 		}
 		
 		return intentClass;
 		
 	}
 	
+	public static Class<? extends Adventure> getRunActivity(int position) {
+		Class<? extends Adventure> intentClass;
+		switch (position) {
+		case 0:
+			intentClass = TWOFMAdventure.class;
+			break;
+		default:
+			intentClass = null;
+		}
+		
+		return intentClass;
+		
+	}
 }

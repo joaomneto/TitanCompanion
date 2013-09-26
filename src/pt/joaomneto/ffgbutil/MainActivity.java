@@ -25,5 +25,10 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, GamebookListActivity.class);
 		startActivity(intent);
 	}
+	
+	public void loadAdventure(View view){
+		Intent intent = new Intent(this, LoadAdventureActivity.class);
+		startActivity(intent);
+	}
 
 }
