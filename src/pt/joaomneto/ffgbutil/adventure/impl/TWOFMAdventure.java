@@ -1,27 +1,21 @@
 package pt.joaomneto.ffgbutil.adventure.impl;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.Properties;
 
+import pt.joaomneto.ffgbutil.LoadAdventureActivity;
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.R.id;
-import pt.joaomneto.ffgbutil.R.layout;
-import pt.joaomneto.ffgbutil.R.menu;
-import pt.joaomneto.ffgbutil.R.string;
-
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class TWOFMAdventure extends Adventure {
 
@@ -40,18 +34,54 @@ public class TWOFMAdventure extends Adventure {
 	 */
 	ViewPager mViewPager;
 
+	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_twofm_adventure);
+		try {
+			super.onCreate(savedInstanceState);
+			setContentView(R.layout.activity_twofm_adventure);
 
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the app.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+			// Create the adapter that will return a fragment for each of the three
+			// primary sections of the app.
+			mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-		// Set up the ViewPager with the sections adapter.
-		mViewPager = (ViewPager) findViewById(R.id.pager);
-		mViewPager.setAdapter(mSectionsPagerAdapter);
+			// Set up the ViewPager with the sections adapter.
+			mViewPager = (ViewPager) findViewById(R.id.pager);
+			mViewPager.setAdapter(mSectionsPagerAdapter);
+			
+			String fileName = getIntent().getStringExtra(LoadAdventureActivity.ADVENTURE_FILE);
+			
+			File dir = new File(Environment.getExternalStorageDirectory().getPath()+"/ffgbutil/");
+			
+			Properties savedGame = new Properties();
+			savedGame.load(new FileInputStream(new File(dir, fileName)));
+			
+			initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"));
+			initialLuck = Integer.valueOf(savedGame.getProperty("initialLuck"));
+			initialStamina = Integer.valueOf(savedGame.getProperty("initialStamina"));
+			currentSkill = Integer.valueOf(savedGame.getProperty("currentSkill"));
+			currentLuck = Integer.valueOf(savedGame.getProperty("currentLuck"));
+			currentStamina = Integer.valueOf(savedGame.getProperty("currentStamina"));
+			standardPotion = Integer.valueOf(savedGame.getProperty("standardPotion"));
+			gold = Integer.valueOf(savedGame.getProperty("gold"));
+			provisions = Integer.valueOf(savedGame.getProperty("provisions"));
+			String equipmentS = savedGame.getProperty("equipment");
+			String notesS = savedGame.getProperty("notes");
+			currentReference = Integer.valueOf(savedGame.getProperty("currentReference"));
+			
+			if(equipmentS!=null){
+				equipment = Arrays.asList(equipmentS.split("#"));
+			}
+
+			if(notesS!=null){
+				notes = Arrays.asList(notesS.split("#"));
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -62,70 +92,7 @@ public class TWOFMAdventure extends Adventure {
 		return true;
 	}
 
-	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 */
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-		public SectionsPagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a DummySectionFragment (defined as a static inner class
-			// below) with the page number as its lone argument.
-			Fragment fragment = new DummySectionFragment();
-			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-			fragment.setArguments(args);
-			return fragment;
-		}
-
-		@Override
-		public int getCount() {
-			// Show 3 total pages.
-			return 3;
-		}
-
-		@Override
-		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
-			switch (position) {
-			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
-			case 1:
-				return getString(R.string.title_section2).toUpperCase(l);
-			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
-			}
-			return null;
-		}
-	}
-
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	public static class DummySectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
-
-		public DummySectionFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_twofmadventure_dummy, container, false);
-			TextView dummyTextView = (TextView) rootView.findViewById(R.id.section_label);
-			dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-			return rootView;
-		}
-	}
+	
+	
 
 }

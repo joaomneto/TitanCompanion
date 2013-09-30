@@ -6,11 +6,10 @@ import java.io.FileWriter;
 import java.util.Locale;
 import java.util.Random;
 
-import pt.joaomneto.ffgbutil.GamebookSelectionActivity;
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventurecreation.fragments.PotionsFragment;
 import pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment;
-import android.os.Bundle;
+import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -40,7 +39,6 @@ public abstract class AdventureCreation extends FragmentActivity {
 	protected ViewPager mViewPager;
 	
 
-	protected static Random random = new Random(System.currentTimeMillis()); 
 	protected int skill = -1;
 	protected int luck = -1;
 	protected int stamina = -1;
@@ -103,9 +101,9 @@ public abstract class AdventureCreation extends FragmentActivity {
 
 	
 	public void rollStats(View view){
-		skill = random.nextInt(5)+7;
-		luck = random.nextInt(5)+7;
-		stamina = random.nextInt(11)+13;
+		skill = DiceRoller.rollD6()+6;
+		luck = DiceRoller.rollD6()+6;
+		stamina = DiceRoller.roll2D6()+12;
 				
 		TextView skillValue = (TextView) findViewById(R.id.skillValue);
 		TextView staminaValue = (TextView) findViewById(R.id.staminaValue);
@@ -133,13 +131,17 @@ public abstract class AdventureCreation extends FragmentActivity {
 
 			bw.write("gamebook="+gamebook+"\n");
 			bw.write("name="+et.getText().toString()+"\n");
-			bw.write("initial_skill="+skill+"\n");
-			bw.write("initial_luck="+luck+"\n");
-			bw.write("initial_stamina="+stamina+"\n");
-			bw.write("current_skill="+skill+"\n");
-			bw.write("current_luck="+luck+"\n");
-			bw.write("current_stamina="+stamina+"\n");
-			bw.write("standard_potion="+potion+"\n");
+			bw.write("initialSkill="+skill+"\n");
+			bw.write("initialLuck="+luck+"\n");
+			bw.write("initialStamina="+stamina+"\n");
+			bw.write("currentSkill="+skill+"\n");
+			bw.write("currentLuck="+luck+"\n");
+			bw.write("currentStamina="+stamina+"\n");
+			bw.write("standardPotion="+potion+"\n");
+			bw.write("provisions=10\n");
+			bw.write("gold=0\n");
+			bw.write("currentReference=1\n");
+			bw.write("equipment=Sword#Leather Armour#Backpack#Lantern\n");
 			
 			bw.close();
 			

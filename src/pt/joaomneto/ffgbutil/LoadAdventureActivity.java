@@ -2,9 +2,7 @@ package pt.joaomneto.ffgbutil;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +22,7 @@ import android.widget.ListView;
 public class LoadAdventureActivity extends Activity {
 	
 	
-	protected static final String ADVENTURE_FILE = "ADVENTURE_FILE";	
+	public static final String ADVENTURE_FILE = "ADVENTURE_FILE";	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

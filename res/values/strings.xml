@@ -168,5 +168,14 @@
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="title_activity_load_adventure">LoadAdventureActivity</string>
+    <string name="potionsProvisions">Potions &amp; Provisions</string>
+    <string name="goldEquipment">Gold &amp; Equipment</string>
+    <string name="fights">Fights</string>
+    <string name="notes">Notes</string>
+    <string name="vitalStats">Vital Statistics</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="testLuck">Test Your Luck</string>
+    <string name="testSkill">Test Your Skill</string>
 
 </resources>

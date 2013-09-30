@@ -1,14 +1,11 @@
 package pt.joaomneto.ffgbutil.adventurecreation.fragments;
 
-import java.util.Random;
-
 import pt.joaomneto.ffgbutil.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class VitalStatisticsFragment extends Fragment {
 	

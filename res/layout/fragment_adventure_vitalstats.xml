@@ -1,0 +1,82 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/adventureVitalStats"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:columnCount="3"
+    android:columnOrderPreserved="false"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:rowCount="6"
+    android:rowOrderPreserved="false"
+    android:useDefaultMargins="true"
+    tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:text="@string/skill"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_column="1"
+        android:layout_row="0"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_column="2"
+        android:layout_row="0"
+        android:text="@string/luck"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    <NumberPicker
+        android:id="@+id/skillPicker"
+        android:layout_column="0"
+        android:layout_row="1" />
+
+    <NumberPicker
+        android:id="@+id/staminaPicker"
+        android:layout_column="1"
+        android:layout_row="1" />
+
+    <NumberPicker
+        android:id="@+id/luckPicker"
+        android:layout_column="2"
+        android:layout_row="1" />
+    
+    <Button
+        android:id="@+id/buttonTestSkill"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="3"
+        android:layout_row="3"
+        android:text="@string/testSkill"
+        android:onClick="testSkill"/>
+    
+    <Button
+        android:id="@+id/buttonTestLuck"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="3"
+        android:layout_row="4"
+        android:text="@string/testLuck" 
+        android:onClick="testLuck"/>
+    
+    <Button
+        android:id="@+id/buttonSaveAdventure"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="3"
+        android:layout_row="5"
+        android:text="@string/saveAdventure" 
+        android:onClick="saveAdventure"/>
+
+</GridLayout>
