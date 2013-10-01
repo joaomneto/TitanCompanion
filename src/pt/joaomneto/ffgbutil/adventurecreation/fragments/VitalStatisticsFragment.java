@@ -19,7 +19,7 @@ public class VitalStatisticsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		rootView = inflater.inflate(R.layout.fragment_adventure_vital_statistics, container, false);
+		rootView = inflater.inflate(R.layout.fragment_adventurecreation_vital_statistics, container, false);
 
 		return rootView;
 	}

@@ -3,17 +3,12 @@ package pt.joaomneto.ffgbutil.adventure.impl;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Properties;
 
 import pt.joaomneto.ffgbutil.LoadAdventureActivity;
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 
@@ -64,6 +59,7 @@ public class TWOFMAdventure extends Adventure {
 			currentLuck = Integer.valueOf(savedGame.getProperty("currentLuck"));
 			currentStamina = Integer.valueOf(savedGame.getProperty("currentStamina"));
 			standardPotion = Integer.valueOf(savedGame.getProperty("standardPotion"));
+			standardPotionValue = Integer.valueOf(savedGame.getProperty("standardPotionValue"));
 			gold = Integer.valueOf(savedGame.getProperty("gold"));
 			provisions = Integer.valueOf(savedGame.getProperty("provisions"));
 			String equipmentS = savedGame.getProperty("equipment");

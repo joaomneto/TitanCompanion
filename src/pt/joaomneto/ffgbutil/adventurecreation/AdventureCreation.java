@@ -138,6 +138,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 			bw.write("currentLuck="+luck+"\n");
 			bw.write("currentStamina="+stamina+"\n");
 			bw.write("standardPotion="+potion+"\n");
+			bw.write("standardPotionValue=2\n");
 			bw.write("provisions=10\n");
 			bw.write("gold=0\n");
 			bw.write("currentReference=1\n");

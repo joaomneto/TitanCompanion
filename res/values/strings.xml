@@ -177,5 +177,10 @@
     <string name="minus">-</string>
     <string name="testLuck">Test Your Luck</string>
     <string name="testSkill">Test Your Skill</string>
+    <string name="selectedPotion">Potion: </string>
+    <string name="provisions">Provisions: </string>
+    <string name="consumePotion">Consume Potion</string>
+    <string name="consumeProvision">Consume Provisions</string>
+    <string name="addNote">Add Note</string>
 
 </resources>

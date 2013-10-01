@@ -19,8 +19,8 @@ import android.widget.SimpleAdapter;
 public class PotionsFragment extends Fragment {
 
 	public static final int SKILL_POTION = 0;
-	public static final int STRENGTH_POTION = 0;
-	public static final int FORTUNE_POTION = 0;
+	public static final int STRENGTH_POTION = 1;
+	public static final int FORTUNE_POTION = 2;
 	
 	public PotionsFragment() {
 
@@ -29,7 +29,7 @@ public class PotionsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(R.layout.fragment_adventure_potions, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_adventurecreation_potions, container, false);
 		
 		List<Map<String, String>> potionList = new ArrayList<Map<String,String>>();
 

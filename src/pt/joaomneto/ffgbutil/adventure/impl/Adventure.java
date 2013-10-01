@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Locale;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment;
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.app.AlertDialog;
@@ -14,7 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
-
+import android.widget.EditText;
 
 public abstract class Adventure extends FragmentActivity {
 
@@ -27,6 +29,7 @@ public abstract class Adventure extends FragmentActivity {
 	Integer standardPotion = -1;
 	Integer gold = -1;
 	Integer provisions = -1;
+	Integer standardPotionValue = -1;
 	List<String> equipment = new ArrayList<String>();
 	List<String> notes = new ArrayList<String>();
 	Integer currentReference = -1;
@@ -79,6 +82,12 @@ public abstract class Adventure extends FragmentActivity {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = (AdventureVitalStatsFragment) getSupportFragmentManager()
 				.getFragments().get(0);
 		return adventureVitalStatsFragment;
+	}
+
+	private AdventureProvisionsFragment getProvisionsFragment() {
+		AdventureProvisionsFragment adventureProvisionsFragment = (AdventureProvisionsFragment) getSupportFragmentManager()
+				.getFragments().get(1);
+		return adventureProvisionsFragment;
 	}
 
 	public Integer getCurrentStamina() {
@@ -139,33 +148,36 @@ public abstract class Adventure extends FragmentActivity {
 		this.currentReference = currentReference;
 	}
 
+	public Integer getStandardPotionValue() {
+		return standardPotionValue;
+	}
+
+	public void setStandardPotionValue(Integer standardPotionValue) {
+		this.standardPotionValue = standardPotionValue;
+	}
+
 	public void testSkill(View v) {
 
 		boolean result = DiceRoller.roll2D6() < currentSkill;
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Result")
-				.setMessage(result ? "Success!" : "Failed...")
-				.setCancelable(false)
-				.setNegativeButton("Close",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
-								dialog.cancel();
-							}
-						});
-		AlertDialog alert = builder.create();
-		alert.show();
+		String message = result ? "Success!" : "Failed...";
+		showAlert(message);
 	}
 
 	public void testLuck(View v) {
 
 		boolean result = DiceRoller.roll2D6() < currentLuck;
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		setCurrentLuck(currentLuck--);
+		setCurrentLuck(--currentLuck);
 
+		String message = result ? "Success!" : "Failed...";
+		showAlert(message);
+	}
+
+	private void showAlert(String message) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Result")
-				.setMessage(result ? "Success!" : "Failed...")
+				.setMessage(message)
 				.setCancelable(false)
 				.setNegativeButton("Close",
 						new DialogInterface.OnClickListener() {
@@ -176,6 +188,48 @@ public abstract class Adventure extends FragmentActivity {
 		AlertDialog alert = builder.create();
 		alert.show();
 	}
+
+	public void consumePotion(View view) {
+		if (standardPotionValue == 0) {
+			showAlert("You have no potion left...");
+		} else {
+			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
+			adventureProvisionsFragment.setPotionValue(--standardPotionValue);
+			String message = "";
+			switch (standardPotion) {
+			case 0:
+				message = "You have replenished your Skill level!";
+				setCurrentSkill(initialSkill);
+				break;
+			case 1:
+				message = "You have replenished your Stamina level!";
+				setCurrentStamina(initialStamina);
+				break;
+			case 2:
+				message = "You have replenished your Luck level (+1)!";
+				setCurrentLuck(initialLuck + 1);
+				break;
+			}
+			showAlert(message);
+		}
+	}
+
+	public void consumeProvision(View view) {
+		if (provisions == 0) {
+			showAlert("You have no provisions left...");
+		} else if (currentStamina == initialStamina) {
+			showAlert("You are already at maximum Stamina!");
+		} else {
+			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
+			adventureProvisionsFragment.setProvisionsValue(--provisions);
+			setCurrentStamina(currentStamina + 4);
+			if (currentStamina > initialStamina)
+				setCurrentStamina(initialStamina);
+			showAlert("You have gained 4 Stamina points!");
+		}
+	}
+
+	
 
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -196,7 +250,7 @@ public abstract class Adventure extends FragmentActivity {
 				fragment = new AdventureVitalStatsFragment();
 				break;
 			case 1:
-				fragment = new AdventureVitalStatsFragment();
+				fragment = new AdventureProvisionsFragment();
 				break;
 			case 2:
 				fragment = new AdventureVitalStatsFragment();
@@ -205,7 +259,7 @@ public abstract class Adventure extends FragmentActivity {
 				fragment = new AdventureVitalStatsFragment();
 				break;
 			case 4:
-				fragment = new AdventureVitalStatsFragment();
+				fragment = new AdventureNotesFragment();
 				break;
 			}
 
