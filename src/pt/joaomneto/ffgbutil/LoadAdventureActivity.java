@@ -9,7 +9,9 @@ import java.util.List;
 
 import pt.joaomneto.ffgbutil.consts.Constants;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,11 +20,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class LoadAdventureActivity extends Activity {
-	
-	
-	public static final String ADVENTURE_FILE = "ADVENTURE_FILE";	
+
+	public static final String ADVENTURE_FILE = "ADVENTURE_FILE";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,56 +32,97 @@ public class LoadAdventureActivity extends Activity {
 		setContentView(R.layout.activity_load_adventure);
 		final ListView listview = (ListView) findViewById(R.id.adventureListView);
 
-		
-		final File dir = new File(Environment.getExternalStorageDirectory().getPath()+"/ffgbutil/");
-		
+		final File dir = new File(Environment.getExternalStorageDirectory()
+				.getPath() + "/ffgbutil/");
+
 		String[] fileList = dir.list();
-		
+
 		final ArrayList<String> files = new ArrayList<String>();
-		
+
 		for (String string : fileList) {
-			if(string.endsWith(".xml")){
+			if (string.endsWith(".xml")) {
 				files.add(string);
 			}
 		}
-		
-		
-		final StableArrayAdapter adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, files);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, android.R.id.text1, files);
 		listview.setAdapter(adapter);
 
 		final Context _this = this;
-		
+
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-				
-				
+			public void onItemClick(AdapterView<?> parent, final View view,
+					int position, long id) {
+
 				try {
 					String file = files.get(position);
 					int gamebook = -1;
-					
-					BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(dir, file)));
-					
-					while(bufferedReader.ready()){
+
+					BufferedReader bufferedReader = new BufferedReader(
+							new FileReader(new File(dir, file)));
+
+					while (bufferedReader.ready()) {
 						String line = bufferedReader.readLine();
-						if(line.startsWith("gamebook=")){
+						if (line.startsWith("gamebook=")) {
 							gamebook = Integer.parseInt(line.split("=")[1]);
 						}
 					}
-					
+
 					bufferedReader.close();
 
-					Intent intent = new Intent(_this, Constants.getRunActivity(gamebook));
-					
+					Intent intent = new Intent(_this, Constants
+							.getRunActivity(gamebook));
+
 					intent.putExtra(ADVENTURE_FILE, file);
 					startActivity(intent);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} 
+				}
 			}
 
+		});
+
+		listview.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				final int position = arg2;
+				AlertDialog.Builder builder = new AlertDialog.Builder(_this);
+				builder.setTitle("Delete file?")
+						.setCancelable(false)
+						.setNegativeButton("Close",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int id) {
+										dialog.cancel();
+									}
+								});
+				builder.setPositiveButton("Ok",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								String file = files.get(position);
+								File f = new File(dir, file);
+								if (f.delete()) {
+									files.remove(position);
+									((ArrayAdapter<String>) listview
+											.getAdapter())
+											.notifyDataSetChanged();
+								}
+								
+							}
+						});
+
+				AlertDialog alert = builder.create();
+				alert.show();
+				return true;
+
+			}
 		});
 	}
 
@@ -94,7 +137,8 @@ public class LoadAdventureActivity extends Activity {
 
 		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
 
-		public StableArrayAdapter(Context context, int textViewResourceId, List<String> objects) {
+		public StableArrayAdapter(Context context, int textViewResourceId,
+				List<String> objects) {
 			super(context, textViewResourceId, objects);
 			for (int i = 0; i < objects.size(); ++i) {
 				mIdMap.put(objects.get(i), i);

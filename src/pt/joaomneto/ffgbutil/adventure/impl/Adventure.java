@@ -173,8 +173,8 @@ public abstract class Adventure extends FragmentActivity {
 		String message = result ? "Success!" : "Failed...";
 		showAlert(message);
 	}
-
-	private void showAlert(String message) {
+	
+	public void showAlert(String message){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Result")
 				.setMessage(message)

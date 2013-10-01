@@ -2,8 +2,8 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.impl.Adventure;
-import pt.joaomneto.ffgbutil.util.StableArrayAdapter;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
@@ -49,6 +50,9 @@ public class AdventureNotesFragment extends DialogFragment {
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
+				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+				input.requestFocus();
 				alert.setView(input);
 
 				alert.setPositiveButton("Ok",
@@ -83,8 +87,25 @@ public class AdventureNotesFragment extends DialogFragment {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
-				adv.getNotes().remove(arg2);
-				((ArrayAdapter<String>)noteList.getAdapter()).notifyDataSetChanged();
+				final int position = arg2;
+				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
+				builder.setTitle("Delete note?")
+						.setCancelable(false)
+						.setNegativeButton("Close",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog, int id) {
+										dialog.cancel();
+									}
+								});
+						builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int which) {
+								adv.getNotes().remove(position);
+								((ArrayAdapter<String>)noteList.getAdapter()).notifyDataSetChanged();
+							}
+						});
+						
+				AlertDialog alert = builder.create();
+				alert.show();
 				return true;
 				
 			}
@@ -92,8 +113,4 @@ public class AdventureNotesFragment extends DialogFragment {
 
 		return rootView;
 	}
-
-	// public void setPotionValue(Integer value) {
-	// this.potionValue.setText("("+value+")");
-	// }
 }
