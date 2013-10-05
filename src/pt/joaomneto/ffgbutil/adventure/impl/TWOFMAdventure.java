@@ -142,16 +142,21 @@ public class TWOFMAdventure extends Adventure {
 							String equipmentS = "";
 							String notesS = "";
 							
-							for (String note : notes) {
-								notesS+=note+"#";
+							if (!notes.isEmpty()) {
+								for (String note : notes) {
+									notesS += note + "#";
+								}
+								notesS = notesS.substring(0,
+										notesS.length() - 1);
 							}
-							notesS = notesS.substring(0, notesS.length()-1);
-
-							for (String eq : equipment) {
-								equipmentS+=eq+"#";
-							}
-							equipmentS = equipmentS.substring(0, equipmentS.length()-1);
 							
+							if (!equipment.isEmpty()) {
+								for (String eq : equipment) {
+									equipmentS += eq + "#";
+								}
+								equipmentS = equipmentS.substring(0,
+										equipmentS.length() - 1);
+							}
 							bw.write("gamebook=" + gamebook + "\n");
 							bw.write("name=" + name + "\n");
 							bw.write("initialSkill=" + initialSkill + "\n");
