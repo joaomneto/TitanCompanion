@@ -1,5 +1,6 @@
 package pt.joaomneto.ffgbutil;
 
+import pt.joaomneto.ffgbutil.util.UnCaughtException;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(MainActivity.this));
 	}
 
 	@Override

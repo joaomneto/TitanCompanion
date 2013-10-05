@@ -116,40 +116,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 	
 	
 	
-	public void saveAdventure(View view){
-		try {
-			EditText et = (EditText) findViewById(R.id.adventureNameInput);
-			
-			File dir = new File(Environment.getExternalStorageDirectory().getPath()+"/ffgbutil/");
-			if(!dir.exists()){
-				dir.mkdirs();
-			}
-			
-			File file = new File(dir, "save_"+et.getText().toString().replace(' ', '-')+".xml");
-			
-			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-
-			bw.write("gamebook="+gamebook+"\n");
-			bw.write("name="+et.getText().toString()+"\n");
-			bw.write("initialSkill="+skill+"\n");
-			bw.write("initialLuck="+luck+"\n");
-			bw.write("initialStamina="+stamina+"\n");
-			bw.write("currentSkill="+skill+"\n");
-			bw.write("currentLuck="+luck+"\n");
-			bw.write("currentStamina="+stamina+"\n");
-			bw.write("standardPotion="+potion+"\n");
-			bw.write("standardPotionValue=2\n");
-			bw.write("provisions=10\n");
-			bw.write("gold=0\n");
-			bw.write("currentReference=1\n");
-			bw.write("equipment=Sword#Leather Armour#Backpack#Lantern\n");
-			
-			bw.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 
 	public synchronized int getPotion() {
 		return potion;

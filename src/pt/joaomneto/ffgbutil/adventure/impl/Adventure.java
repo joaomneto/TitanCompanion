@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Locale;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment;
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
@@ -16,7 +18,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
-import android.widget.EditText;
 
 public abstract class Adventure extends FragmentActivity {
 
@@ -33,6 +34,13 @@ public abstract class Adventure extends FragmentActivity {
 	List<String> equipment = new ArrayList<String>();
 	List<String> notes = new ArrayList<String>();
 	Integer currentReference = -1;
+	
+	private final int FRAGMENT_VITAL_STATS = 0;
+	private final int FRAGMENT_COMBAT = 1;
+	private final int FRAGMENT_PROVISIONS = 2;
+	private final int FRAGMENT_EQUIPMENT = 3;
+	private final int FRAGMENT_NOTES = 4;
+	
 
 	public Integer getInitialSkill() {
 		return initialSkill;
@@ -80,13 +88,13 @@ public abstract class Adventure extends FragmentActivity {
 
 	private AdventureVitalStatsFragment getVitalStatsFragment() {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = (AdventureVitalStatsFragment) getSupportFragmentManager()
-				.getFragments().get(0);
+				.getFragments().get(FRAGMENT_VITAL_STATS);
 		return adventureVitalStatsFragment;
 	}
 
 	private AdventureProvisionsFragment getProvisionsFragment() {
 		AdventureProvisionsFragment adventureProvisionsFragment = (AdventureProvisionsFragment) getSupportFragmentManager()
-				.getFragments().get(1);
+				.getFragments().get(FRAGMENT_PROVISIONS);
 		return adventureProvisionsFragment;
 	}
 
@@ -166,12 +174,17 @@ public abstract class Adventure extends FragmentActivity {
 
 	public void testLuck(View v) {
 
-		boolean result = DiceRoller.roll2D6() < currentLuck;
-
-		setCurrentLuck(--currentLuck);
+		boolean result = testLuckInternal();
 
 		String message = result ? "Success!" : "Failed...";
 		showAlert(message);
+	}
+
+	public boolean testLuckInternal() {
+		boolean result = DiceRoller.roll2D6() < currentLuck;
+
+		setCurrentLuck(--currentLuck);
+		return result;
 	}
 	
 	public void showAlert(String message){
@@ -246,19 +259,19 @@ public abstract class Adventure extends FragmentActivity {
 
 			Fragment fragment = null;
 			switch (position) {
-			case 0:
+			case FRAGMENT_VITAL_STATS:
 				fragment = new AdventureVitalStatsFragment();
 				break;
-			case 1:
+			case FRAGMENT_COMBAT:
+				fragment = new AdventureCombatFragment();
+				break;
+			case FRAGMENT_PROVISIONS:
 				fragment = new AdventureProvisionsFragment();
 				break;
-			case 2:
-				fragment = new AdventureVitalStatsFragment();
+			case FRAGMENT_EQUIPMENT:
+				fragment = new AdventureEquipmentFragment();
 				break;
-			case 3:
-				fragment = new AdventureVitalStatsFragment();
-				break;
-			case 4:
+			case FRAGMENT_NOTES:
 				fragment = new AdventureNotesFragment();
 				break;
 			}
@@ -278,11 +291,11 @@ public abstract class Adventure extends FragmentActivity {
 			case 0:
 				return getString(R.string.vitalStats).toUpperCase(l);
 			case 1:
-				return getString(R.string.potionsProvisions).toUpperCase(l);
-			case 2:
-				return getString(R.string.goldEquipment).toUpperCase(l);
-			case 3:
 				return getString(R.string.fights).toUpperCase(l);
+			case 2:
+				return getString(R.string.potionsProvisions).toUpperCase(l);
+			case 3:
+				return getString(R.string.goldEquipment).toUpperCase(l);
 			case 4:
 				return getString(R.string.notes).toUpperCase(l);
 			}

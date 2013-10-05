@@ -12,19 +12,21 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemLongClickListener;
 
 public class LoadAdventureActivity extends Activity {
 
 	public static final String ADVENTURE_FILE = "ADVENTURE_FILE";
+	public static final String ADVENTURE_DIR = "ADVENTURE_DIR";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +34,15 @@ public class LoadAdventureActivity extends Activity {
 		setContentView(R.layout.activity_load_adventure);
 		final ListView listview = (ListView) findViewById(R.id.adventureListView);
 
-		final File dir = new File(Environment.getExternalStorageDirectory()
+		final File baseDir = new File(Environment.getExternalStorageDirectory()
 				.getPath() + "/ffgbutil/");
 
-		String[] fileList = dir.list();
+		String[] fileList = baseDir.list();
 
 		final ArrayList<String> files = new ArrayList<String>();
 
 		for (String string : fileList) {
-			if (string.endsWith(".xml")) {
+			if (string.startsWith("save")) {
 				files.add(string);
 			}
 		}
@@ -57,31 +59,53 @@ public class LoadAdventureActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 
-				try {
-					String file = files.get(position);
-					int gamebook = -1;
+				final String dir_ = files.get(position);
 
-					BufferedReader bufferedReader = new BufferedReader(
-							new FileReader(new File(dir, file)));
+				final File dir = new File(baseDir, dir_);
+				final String[] savepointFiles = dir.list();
+				final String[] names = new String[savepointFiles.length];
+				for (int i = 0; i < savepointFiles.length; i++) {
+					names[i] = savepointFiles[i].substring(0,
+							savepointFiles[i].length() - 4);
+				}
 
-					while (bufferedReader.ready()) {
-						String line = bufferedReader.readLine();
-						if (line.startsWith("gamebook=")) {
-							gamebook = Integer.parseInt(line.split("=")[1]);
+				AlertDialog.Builder builder = new AlertDialog.Builder(_this);
+				builder.setTitle("Choose savepoint:");
+				builder.setItems(names, new OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						int gamebook = -1;
+
+						try {
+							BufferedReader bufferedReader = new BufferedReader(
+									new FileReader(new File(dir,
+											savepointFiles[which])));
+
+							while (bufferedReader.ready()) {
+								String line = bufferedReader.readLine();
+								if (line.startsWith("gamebook=")) {
+									gamebook = Integer.parseInt(line.split("=")[1]);
+								}
+							}
+
+							bufferedReader.close();
+
+							Intent intent = new Intent(_this, Constants
+									.getRunActivity(gamebook));
+
+							intent.putExtra(ADVENTURE_FILE,
+									savepointFiles[which]);
+							intent.putExtra(ADVENTURE_DIR, dir_);
+							startActivity(intent);
+						} catch (Exception e) {
+							e.printStackTrace();
 						}
 					}
+				});
+				AlertDialog alert = builder.create();
+				alert.show();
 
-					bufferedReader.close();
-
-					Intent intent = new Intent(_this, Constants
-							.getRunActivity(gamebook));
-
-					intent.putExtra(ADVENTURE_FILE, file);
-					startActivity(intent);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 			}
 
 		});
@@ -107,14 +131,14 @@ public class LoadAdventureActivity extends Activity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								String file = files.get(position);
-								File f = new File(dir, file);
+								File f = new File(baseDir, file);
 								if (f.delete()) {
 									files.remove(position);
 									((ArrayAdapter<String>) listview
 											.getAdapter())
 											.notifyDataSetChanged();
 								}
-								
+
 							}
 						});
 

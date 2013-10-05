@@ -7,6 +7,7 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 
@@ -15,6 +16,8 @@ public class AdventureVitalStatsFragment extends DialogFragment {
 	NumberPicker skillValue = null;
 	NumberPicker staminaValue = null;
 	NumberPicker luckValue = null;
+	
+	Button saveButton = null;
 
 	public AdventureVitalStatsFragment() {
 
@@ -30,6 +33,7 @@ public class AdventureVitalStatsFragment extends DialogFragment {
 		skillValue = (NumberPicker) rootView.findViewById(R.id.skillPicker);
 		staminaValue = (NumberPicker) rootView.findViewById(R.id.staminaPicker);
 		luckValue = (NumberPicker) rootView.findViewById(R.id.luckPicker);
+		saveButton = (Button) rootView.findViewById(R.id.buttonSaveAdventure);
 
 		final Adventure adv = (Adventure) getActivity();
 
