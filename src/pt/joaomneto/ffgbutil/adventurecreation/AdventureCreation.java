@@ -1,16 +1,11 @@
 package pt.joaomneto.ffgbutil.adventurecreation;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.Locale;
-import java.util.Random;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventurecreation.fragments.PotionsFragment;
 import pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -18,7 +13,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public abstract class AdventureCreation extends FragmentActivity {

@@ -21,7 +21,6 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 public class TWOFMAdventure extends Adventure {
