@@ -188,5 +188,8 @@
     <string name="addEquipment">Add Equipment</string>
     <string name="escape">Escape</string>
     <string name="attackOpponent">Attack Opponent</string>
+    <string name="handicap">Handicap:</string>
+    <string name="rolld6">Roll D6</string>
+    <string name="roll2d6">Roll 2D6</string>
 
 </resources>

@@ -17,7 +17,6 @@ public class AdventureVitalStatsFragment extends DialogFragment {
 	NumberPicker staminaValue = null;
 	NumberPicker luckValue = null;
 	
-	Button saveButton = null;
 
 	public AdventureVitalStatsFragment() {
 
@@ -33,7 +32,6 @@ public class AdventureVitalStatsFragment extends DialogFragment {
 		skillValue = (NumberPicker) rootView.findViewById(R.id.skillPicker);
 		staminaValue = (NumberPicker) rootView.findViewById(R.id.staminaPicker);
 		luckValue = (NumberPicker) rootView.findViewById(R.id.luckPicker);
-		saveButton = (Button) rootView.findViewById(R.id.buttonSaveAdventure);
 
 		final Adventure adv = (Adventure) getActivity();
 

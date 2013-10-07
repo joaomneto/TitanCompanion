@@ -17,6 +17,7 @@ public class AdventureCombatFragment extends DialogFragment {
 
 	NumberPicker enemySkillValue = null;
 	NumberPicker enemyStaminaValue = null;
+	NumberPicker handicap = null;
 
 	Button attackButton = null;
 	Button testCombatLuckButton = null;
@@ -45,6 +46,7 @@ public class AdventureCombatFragment extends DialogFragment {
 				.findViewById(R.id.enemyskillPicker);
 		enemyStaminaValue = (NumberPicker) rootView
 				.findViewById(R.id.enemyStaminaPicker);
+		handicap = (NumberPicker) rootView.findViewById(R.id.handicap);
 
 		combatResult = (TextView) rootView.findViewById(R.id.combatResult);
 
@@ -56,6 +58,19 @@ public class AdventureCombatFragment extends DialogFragment {
 		enemyStaminaValue.setMaxValue(50);
 		enemyStaminaValue.setValue(0);
 		enemyStaminaValue.setWrapSelectorWheel(false);
+
+		final int minValue = -5;
+		final int maxValue = 5;
+		handicap.setMinValue(0);
+		handicap.setMaxValue(maxValue - minValue);
+		handicap.setValue(0 - minValue);
+		handicap.setFormatter(new NumberPicker.Formatter() {
+			@Override
+			public String format(int index) {
+				return Integer.toString(index +minValue);
+			}
+		});
+
 
 		attackButton = (Button) rootView.findViewById(R.id.buttonAttack);
 		testCombatLuckButton = (Button) rootView
@@ -71,7 +86,11 @@ public class AdventureCombatFragment extends DialogFragment {
 					return;
 				round = true;
 				combatResult.setText("");
-				int me = DiceRoller.roll2D6() + adv.getCurrentSkill();
+				
+				int handicapValue = handicap.getValue() + minValue;
+				
+				int me = DiceRoller.roll2D6() + adv.getCurrentSkill()
+						+ handicapValue;
 				int enemy = DiceRoller.roll2D6() + enemySkillValue.getValue();
 
 				if (me > enemy) {
@@ -112,7 +131,7 @@ public class AdventureCombatFragment extends DialogFragment {
 			public void onClick(View v) {
 				if (draw || !round)
 					return;
-				round=false;
+				round = false;
 				boolean result = adv.testLuckInternal();
 				if (result) {
 					combatResult.setText("You're lucky!");
@@ -164,5 +183,4 @@ public class AdventureCombatFragment extends DialogFragment {
 
 		return rootView;
 	}
-
 }
