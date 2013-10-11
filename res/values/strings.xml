@@ -170,6 +170,7 @@
     <string name="title_activity_load_adventure">LoadAdventureActivity</string>
     <string name="potionsProvisions">Potions &amp; Provisions</string>
     <string name="goldEquipment">Gold &amp; Equipment</string>
+    <string name="spells">Spells</string>
     <string name="fights">Fights</string>
     <string name="notes">Notes</string>
     <string name="vitalStats">Vital Statistics</string>
@@ -191,5 +192,21 @@
     <string name="handicap">Handicap:</string>
     <string name="rolld6">Roll D6</string>
     <string name="roll2d6">Roll 2D6</string>
+    <string name="addEnemy">Add Enemy</string>
+
+    <string-array name="tcoc_spells">
+        <item>Creature Copy</item>
+        <item>ESP</item>
+        <item>Fire</item>
+        <item>Fool\'s Gold</item>
+        <item>Illusion</item>
+        <item>Levitation</item>
+        <item>Luck</item>
+        <item>Shielding</item>
+        <item>Skill</item>
+        <item>Stamina</item>
+        <item>Strength</item>
+        <item>Weakness</item>
+    </string-array>
 
 </resources>

@@ -4,6 +4,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import pt.joaomneto.ffgbutil.R;
 import android.app.AlertDialog;
@@ -16,25 +19,48 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-public class TWOFMAdventure extends Adventure {
+public class TCOCAdventure extends Adventure {
 
-	private File dir = null;
-	private int gamebook = -1;
-	private String name = null;
+	List<String> spells;
+	Integer spellValue;
+
+	protected static final int FRAGMENT_SPELLS = 2;
+
+	public TCOCAdventure() {
+		super();
+		fragmentConfiguration.put(FRAGMENT_VITAL_STATS,
+				new AdventureFragmentRunner(R.string.vitalStats,
+						"AdventureVitalStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(
+				R.string.fights, "AdventureCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(
+				R.string.spells, "TCOCAdventureSpellsFragment"));
+		fragmentConfiguration.put(FRAGMENT_EQUIPMENT,
+				new AdventureFragmentRunner(R.string.goldEquipment,
+						"AdventureEquipmentFragment"));
+		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(
+				R.string.notes, "AdventureNotesFragment"));
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
 			super.onCreate(savedInstanceState);
-			setContentView(R.layout.activity_twofm_adventure);
+			setContentView(R.layout.activity_tcoc_adventure);
 
-			standardPotion = Integer.valueOf(savedGame
-					.getProperty("standardPotion"));
-			standardPotionValue = Integer.valueOf(savedGame
-					.getProperty("standardPotionValue"));
 			gold = Integer.valueOf(savedGame.getProperty("gold"));
-			provisions = Integer.valueOf(savedGame.getProperty("provisions"));
+			spellValue = Integer.valueOf(savedGame.getProperty("spellValue"));
+			String spellsS = new String(savedGame.getProperty("spells").getBytes(
+					java.nio.charset.Charset.forName("ISO-8859-1")));
 			
+			if (spellsS != null) {
+				spells = new ArrayList<String>();
+				List<String> list = Arrays.asList(spellsS.split("#"));
+				for (String string : list) {
+					if (!string.isEmpty())
+						spells.add(string);
+				}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -124,5 +150,23 @@ public class TWOFMAdventure extends Adventure {
 
 		alert.show();
 	}
+
+	public List<String> getSpells() {
+		return spells;
+	}
+
+	public void setSpells(List<String> spells) {
+		this.spells = spells;
+	}
+
+	public Integer getSpellValue() {
+		return spellValue;
+	}
+
+	public void setSpellValue(Integer spellValue) {
+		this.spellValue = spellValue;
+	}
+	
+	
 
 }
