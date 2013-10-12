@@ -150,7 +150,7 @@ public class GamebookSelectionActivity extends FragmentActivity {
 
 				@Override
 				public void onClick(View view) {
-					Intent intent = new Intent(getActivity().getBaseContext(), Constants.getCreationActivity(position));
+					Intent intent = new Intent(getActivity().getBaseContext(), Constants.getCreationActivity(getActivity(), position));
 					intent.putExtra(GAMEBOOK_ID, position);
 					startActivity(intent);
 

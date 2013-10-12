@@ -1,7 +1,7 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.impl.Adventure;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -66,7 +66,7 @@ public class AdventureEquipmentFragment extends DialogFragment {
 							public void onClick(DialogInterface dialog,
 									int whichButton) {
 								String value = input.getText().toString();
-								adv.setGold(new Integer(value));
+								adv.setGold(Integer.valueOf(value));
 								goldValue.setText(value);
 							}
 						});
@@ -102,6 +102,7 @@ public class AdventureEquipmentFragment extends DialogFragment {
 
 				alert.setPositiveButton("Ok",
 						new DialogInterface.OnClickListener() {
+							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
 									int whichButton) {
 								String value = input.getText().toString();
@@ -147,6 +148,7 @@ public class AdventureEquipmentFragment extends DialogFragment {
 								});
 				builder.setPositiveButton("Ok",
 						new DialogInterface.OnClickListener() {
+							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
 									int which) {
 								adv.getEquipment().remove(position);
@@ -164,4 +166,7 @@ public class AdventureEquipmentFragment extends DialogFragment {
 
 		return rootView;
 	}
+	
+	
+
 }

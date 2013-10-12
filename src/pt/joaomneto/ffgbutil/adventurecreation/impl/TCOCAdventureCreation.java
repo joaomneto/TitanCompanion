@@ -9,8 +9,10 @@ import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
-public class TWOFMAdventureCreation extends AdventureCreation {
+public class TCOCAdventureCreation extends AdventureCreation {
 
+	private int spellValue = -1;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,13 +31,12 @@ public class TWOFMAdventureCreation extends AdventureCreation {
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
 	}
-	
+
 	@Override
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw)
 			throws IOException {
-		bw.write("standardPotion=" + potion + "\n");
-		bw.write("standardPotionValue=2\n");
-		bw.write("provisions=10\n");
+		bw.write("spellValue="+spellValue+"\n");
+		bw.write("spells=\n");
 		bw.write("gold=0\n");
 	}
 

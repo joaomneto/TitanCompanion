@@ -56,6 +56,7 @@ public class TCOCAdventureSpellsFragment extends DialogFragment {
 								});
 				builder.setPositiveButton("Ok",
 						new DialogInterface.OnClickListener() {
+							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
 									int which) {
 								String spell = adv.getSpells().get(which);

@@ -1,10 +1,11 @@
 package pt.joaomneto.ffgbutil.consts;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.impl.Adventure;
-import pt.joaomneto.ffgbutil.adventure.impl.TWOFMAdventure;
-import pt.joaomneto.ffgbutil.adventurecreation.impl.TWOFMAdventureCreation;
-import android.app.Activity;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
+import android.annotation.SuppressLint;
+import android.content.Context;
+
 
 public abstract class Constants {
 	
@@ -74,28 +75,43 @@ public abstract class Constants {
 		return gameBookCovers[i];
 	}
 
-	public static Class<?> getCreationActivity(int position) {
-		Class<? extends Activity> intentClass;
-		switch (position) {
-		case 0:
-			intentClass = TWOFMAdventureCreation.class;
-			break;
-		default:
-			intentClass = null;
+	@SuppressWarnings("unchecked")
+	public static Class<? extends AdventureCreation> getCreationActivity(Context context, int position) {
+		Class<? extends AdventureCreation> intentClass = null;
+		try {
+			intentClass = (Class<? extends AdventureCreation>) Class.forName("pt.joaomneto.ffgbutil.adventurecreation.impl"+getActivityPrefix(context, position)+"AdventureCreation");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 		
 		return intentClass;
 		
 	}
+
+	@SuppressLint("DefaultLocale")
+	private static String getActivityPrefix(Context context, int position) {
+		String name = context.getResources().getStringArray(R.array.gamebook_list_names)[position];
+		
+		String[] tokens = name.split("\\ ");
+		
+		String prefix = "";
+		
+		for (String string : tokens) {
+			prefix+=string.charAt(0);
+		}
+		prefix = prefix.toUpperCase();
+		
+		return prefix;
+	}
 	
-	public static Class<? extends Adventure> getRunActivity(int position) {
-		Class<? extends Adventure> intentClass;
-		switch (position) {
-		case 0:
-			intentClass = TWOFMAdventure.class;
-			break;
-		default:
-			intentClass = null;
+	
+	@SuppressWarnings("unchecked")
+	public static Class<? extends Adventure> getRunActivity(Context context,int position) {
+		Class<? extends Adventure> intentClass = null;
+		try {
+			intentClass = (Class<? extends Adventure>) Class.forName("pt.joaomneto.ffgbutil.adventure.impl"+getActivityPrefix(context, position)+"Adventure");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 		
 		return intentClass;

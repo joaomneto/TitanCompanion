@@ -1,5 +1,4 @@
 package pt.joaomneto.ffgbutil.util;
-import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -13,9 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Environment;
 import android.os.Looper;
-import android.os.StatFs;
 import android.util.Log;
 
 public class UnCaughtException implements UncaughtExceptionHandler
@@ -27,26 +24,6 @@ public class UnCaughtException implements UncaughtExceptionHandler
     {
         context = ctx;
         context1 = ctx;
-    }
-
-    private StatFs getStatFs()
-    {
-        File path = Environment.getDataDirectory();
-        return new StatFs(path.getPath());
-    }
-
-    private long getAvailableInternalMemorySize(StatFs stat)
-    {
-        long blockSize = stat.getBlockSize();
-        long availableBlocks = stat.getAvailableBlocks();
-        return availableBlocks * blockSize;
-    }
-
-    private long getTotalInternalMemorySize(StatFs stat)
-    {
-        long blockSize = stat.getBlockSize();
-        long totalBlocks = stat.getBlockCount();
-        return totalBlocks * blockSize;
     }
 
     private void addInformation(StringBuilder message)
@@ -75,9 +52,6 @@ public class UnCaughtException implements UncaughtExceptionHandler
         message.append("Model: ").append(android.os.Build.MODEL).append('\n');
         message.append("Product: ").append(android.os.Build.PRODUCT).append('\n');
         message.append("Type: ").append(android.os.Build.TYPE).append('\n');
-        StatFs stat = getStatFs();
-        message.append("Total Internal memory: ").append(getTotalInternalMemorySize(stat)).append('\n');
-        message.append("Available Internal memory: ").append(getAvailableInternalMemorySize(stat)).append('\n');
     }
 
     @Override

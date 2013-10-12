@@ -1,7 +1,7 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.impl.Adventure;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;

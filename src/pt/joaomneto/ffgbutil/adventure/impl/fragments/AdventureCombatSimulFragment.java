@@ -3,7 +3,7 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments;
 import java.util.ArrayList;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.impl.Adventure;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.util.StableArrayAdapter;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -102,6 +102,7 @@ public class AdventureCombatSimulFragment extends DialogFragment {
 
 		addEnemyButton.setOnClickListener(new OnClickListener() {
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public void onClick(View arg0) {
 				enemyList.add(""+(++i));

@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import pt.joaomneto.ffgbutil.consts.Constants;
 import android.app.Activity;
@@ -92,7 +90,7 @@ public class LoadAdventureActivity extends Activity {
 							bufferedReader.close();
 
 							Intent intent = new Intent(_this, Constants
-									.getRunActivity(gamebook));
+									.getRunActivity(_this, gamebook));
 
 							intent.putExtra(ADVENTURE_FILE,
 									savepointFiles[which]);
@@ -128,6 +126,7 @@ public class LoadAdventureActivity extends Activity {
 								});
 				builder.setPositiveButton("Ok",
 						new DialogInterface.OnClickListener() {
+							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
 									int which) {
 								String file = files.get(position);
@@ -156,30 +155,4 @@ public class LoadAdventureActivity extends Activity {
 		getMenuInflater().inflate(R.menu.gamebook_list, menu);
 		return true;
 	}
-
-	private class StableArrayAdapter extends ArrayAdapter<String> {
-
-		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-		public StableArrayAdapter(Context context, int textViewResourceId,
-				List<String> objects) {
-			super(context, textViewResourceId, objects);
-			for (int i = 0; i < objects.size(); ++i) {
-				mIdMap.put(objects.get(i), i);
-			}
-		}
-
-		@Override
-		public long getItemId(int position) {
-			String item = getItem(position);
-			return mIdMap.get(item);
-		}
-
-		@Override
-		public boolean hasStableIds() {
-			return true;
-		}
-
-	}
-
 }

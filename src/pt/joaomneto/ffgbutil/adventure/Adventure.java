@@ -1,13 +1,14 @@
-package pt.joaomneto.ffgbutil.adventure.impl;
+package pt.joaomneto.ffgbutil.adventure;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Properties;
 
 import pt.joaomneto.ffgbutil.LoadAdventureActivity;
@@ -16,6 +17,7 @@ import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragmen
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Environment;
@@ -24,9 +26,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.InputType;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 public abstract class Adventure extends FragmentActivity {
 
@@ -51,13 +57,15 @@ public abstract class Adventure extends FragmentActivity {
 	Integer currentSkill = -1;
 	Integer currentLuck = -1;
 	Integer currentStamina = -1;
+	List<String> equipment = new ArrayList<String>();
+	List<String> notes = new ArrayList<String>();
+	Integer currentReference = -1;
+
+	// Common values
 	Integer standardPotion = -1;
 	Integer gold = -1;
 	Integer provisions = -1;
 	Integer standardPotionValue = -1;
-	List<String> equipment = new ArrayList<String>();
-	List<String> notes = new ArrayList<String>();
-	Integer currentReference = -1;
 
 	File dir = null;
 	int gamebook = -1;
@@ -70,7 +78,7 @@ public abstract class Adventure extends FragmentActivity {
 	protected static final int FRAGMENT_EQUIPMENT = 3;
 	protected static final int FRAGMENT_NOTES = 4;
 
-	protected static Map<Integer, AdventureFragmentRunner> fragmentConfiguration = new HashMap<Integer, Adventure.AdventureFragmentRunner>();
+	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
 
 	public Adventure() {
 		super();
@@ -132,19 +140,21 @@ public abstract class Adventure extends FragmentActivity {
 			dir = new File(Environment.getExternalStorageDirectory().getPath()
 					+ "/ffgbutil/" + relDir);
 
-			 savedGame = new Properties();
+			savedGame = new Properties();
 			savedGame.load(new FileInputStream(new File(dir, fileName)));
 
 			gamebook = Integer.valueOf(savedGame.getProperty("gamebook"));
-			initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"));
+			initialSkill = Integer.valueOf(savedGame
+					.getProperty("initialSkill"));
 			initialLuck = Integer.valueOf(savedGame.getProperty("initialLuck"));
 			initialStamina = Integer.valueOf(savedGame
 					.getProperty("initialStamina"));
-			currentSkill = Integer.valueOf(savedGame.getProperty("currentSkill"));
+			currentSkill = Integer.valueOf(savedGame
+					.getProperty("currentSkill"));
 			currentLuck = Integer.valueOf(savedGame.getProperty("currentLuck"));
 			currentStamina = Integer.valueOf(savedGame
 					.getProperty("currentStamina"));
-			
+
 			String equipmentS = new String(savedGame.getProperty("equipment")
 					.getBytes(java.nio.charset.Charset.forName("ISO-8859-1")));
 			String notesS = new String(savedGame.getProperty("notes").getBytes(
@@ -175,42 +185,12 @@ public abstract class Adventure extends FragmentActivity {
 		}
 	}
 
-	public Integer getInitialSkill() {
-		return initialSkill;
-	}
 
-	public void setInitialSkill(Integer initialSkill) {
-		this.initialSkill = initialSkill;
-	}
-
-	public Integer getInitialLuck() {
-		return initialLuck;
-	}
-
-	public void setInitialLuck(Integer initialLuck) {
-		this.initialLuck = initialLuck;
-	}
-
-	public Integer getInitialStamina() {
-		return initialStamina;
-	}
-
-	public void setInitialStamina(Integer initialStamina) {
-		this.initialStamina = initialStamina;
-	}
-
-	public Integer getCurrentSkill() {
-		return currentSkill;
-	}
 
 	public void setCurrentSkill(Integer currentSkill) {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
 		adventureVitalStatsFragment.setSkillValue(currentSkill);
 		this.currentSkill = currentSkill;
-	}
-
-	public Integer getCurrentLuck() {
-		return currentLuck;
 	}
 
 	public void setCurrentLuck(Integer currentLuck) {
@@ -231,70 +211,14 @@ public abstract class Adventure extends FragmentActivity {
 		return adventureProvisionsFragment;
 	}
 
-	public Integer getCurrentStamina() {
-		return currentStamina;
-	}
-
 	public void setCurrentStamina(Integer currentStamina) {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
 		adventureVitalStatsFragment.setStaminaValue(currentStamina);
 		this.currentStamina = currentStamina;
 	}
 
-	public Integer getStandardPotion() {
-		return standardPotion;
-	}
-
-	public void setStandardPotion(Integer standardPotion) {
-		this.standardPotion = standardPotion;
-	}
-
-	public Integer getGold() {
-		return gold;
-	}
-
-	public void setGold(Integer gold) {
-		this.gold = gold;
-	}
-
-	public Integer getProvisions() {
-		return provisions;
-	}
-
-	public void setProvisions(Integer provisions) {
-		this.provisions = provisions;
-	}
-
-	public List<String> getEquipment() {
-		return equipment;
-	}
-
-	public void setEquipment(List<String> equipment) {
-		this.equipment = equipment;
-	}
-
-	public List<String> getNotes() {
-		return notes;
-	}
-
-	public void setNotes(List<String> notes) {
-		this.notes = notes;
-	}
-
-	public Integer getCurrentReference() {
-		return currentReference;
-	}
-
 	public void setCurrentReference(Integer currentReference) {
 		this.currentReference = currentReference;
-	}
-
-	public Integer getStandardPotionValue() {
-		return standardPotionValue;
-	}
-
-	public void setStandardPotionValue(Integer standardPotionValue) {
-		this.standardPotionValue = standardPotionValue;
 	}
 
 	public void testSkill(View v) {
@@ -333,46 +257,6 @@ public abstract class Adventure extends FragmentActivity {
 						});
 		AlertDialog alert = builder.create();
 		alert.show();
-	}
-
-	public void consumePotion(View view) {
-		if (standardPotionValue == 0) {
-			showAlert("You have no potion left...");
-		} else {
-			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
-			adventureProvisionsFragment.setPotionValue(--standardPotionValue);
-			String message = "";
-			switch (standardPotion) {
-			case 0:
-				message = "You have replenished your Skill level!";
-				setCurrentSkill(initialSkill);
-				break;
-			case 1:
-				message = "You have replenished your Stamina level!";
-				setCurrentStamina(initialStamina);
-				break;
-			case 2:
-				message = "You have replenished your Luck level (+1)!";
-				setCurrentLuck(initialLuck + 1);
-				break;
-			}
-			showAlert(message);
-		}
-	}
-
-	public void consumeProvision(View view) {
-		if (provisions == 0) {
-			showAlert("You have no provisions left...");
-		} else if (currentStamina == initialStamina) {
-			showAlert("You are already at maximum Stamina!");
-		} else {
-			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
-			adventureProvisionsFragment.setProvisionsValue(--provisions);
-			setCurrentStamina(currentStamina + 4);
-			if (currentStamina > initialStamina)
-				setCurrentStamina(initialStamina);
-			showAlert("You have gained 4 Stamina points!");
-		}
 	}
 
 	/**
@@ -433,4 +317,329 @@ public abstract class Adventure extends FragmentActivity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
+
+	public void savepoint(View v) {
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+		alert.setTitle("Current Reference?");
+
+		// Set an EditText view to get user input
+		final EditText input = new EditText(this);
+		InputMethodManager imm = (InputMethodManager) this
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
+				InputMethodManager.HIDE_IMPLICIT_ONLY);
+		input.setInputType(InputType.TYPE_CLASS_NUMBER);
+		input.requestFocus();
+		alert.setView(input);
+
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+
+				try {
+					String ref = input.getText().toString();
+					File file = new File(dir, ref + ".xml");
+
+					BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+
+					storeValuesInFile(ref, bw);
+
+					bw.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+		alert.setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						// Canceled.
+					}
+				});
+
+		alert.show();
+	}
+
+	public void storeValuesInFile(String ref, BufferedWriter bw)
+			throws IOException {
+		String equipmentS = "";
+		String notesS = "";
+
+		if (!notes.isEmpty()) {
+			for (String note : notes) {
+				notesS += note + "#";
+			}
+			notesS = notesS.substring(0, notesS.length() - 1);
+		}
+
+		if (!equipment.isEmpty()) {
+			for (String eq : equipment) {
+				equipmentS += eq + "#";
+			}
+			equipmentS = equipmentS.substring(0, equipmentS.length() - 1);
+		}
+		bw.write("gamebook=" + gamebook + "\n");
+		bw.write("name=" + name + "\n");
+		bw.write("initialSkill=" + initialSkill + "\n");
+		bw.write("initialLuck=" + initialSkill + "\n");
+		bw.write("initialStamina=" + initialStamina + "\n");
+		bw.write("currentSkill=" + currentSkill + "\n");
+		bw.write("currentLuck=" + currentLuck + "\n");
+		bw.write("currentStamina=" + currentStamina + "\n");
+		bw.write("currentReference=" + ref + "\n");
+		bw.write("equipment=" + equipmentS + "\n");
+		bw.write("notes=" + notesS + "\n");
+		storeAdventureSpecificValuesInFile(bw);
+	}
+
+	public abstract void storeAdventureSpecificValuesInFile(BufferedWriter bw)
+			throws IOException;
+
+	public void consumePotion(View view) {
+		if (standardPotionValue == 0) {
+			showAlert("You have no potion left...");
+		} else {
+			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
+			adventureProvisionsFragment.setPotionValue(--standardPotionValue);
+			String message = "";
+			switch (standardPotion) {
+			case 0:
+				message = "You have replenished your Skill level!";
+				setCurrentSkill(getInitialSkill());
+				break;
+			case 1:
+				message = "You have replenished your Stamina level!";
+				setCurrentStamina(getInitialStamina());
+				break;
+			case 2:
+				message = "You have replenished your Luck level (+1)!";
+				setCurrentLuck(getInitialLuck() + 1);
+				break;
+			}
+			showAlert(message);
+		}
+	}
+
+	public void consumeProvision(View view) {
+		if (provisions == 0) {
+			showAlert("You have no provisions left...");
+		} else if (getCurrentStamina() == getInitialStamina()) {
+			showAlert("You are already at maximum Stamina!");
+		} else {
+			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
+			adventureProvisionsFragment.setProvisionsValue(--provisions);
+			setCurrentStamina(getCurrentStamina() + 4);
+			if (getCurrentStamina() > getInitialStamina())
+				setCurrentStamina(getInitialStamina());
+			showAlert("You have gained 4 Stamina points!");
+		}
+	}
+
+
+
+	public StandardSectionsPagerAdapter getmSectionsPagerAdapter() {
+		return mSectionsPagerAdapter;
+	}
+
+
+
+	public void setmSectionsPagerAdapter(
+			StandardSectionsPagerAdapter mSectionsPagerAdapter) {
+		this.mSectionsPagerAdapter = mSectionsPagerAdapter;
+	}
+
+
+
+	public ViewPager getmViewPager() {
+		return mViewPager;
+	}
+
+
+
+	public void setmViewPager(ViewPager mViewPager) {
+		this.mViewPager = mViewPager;
+	}
+
+
+
+	public Integer getInitialSkill() {
+		return initialSkill;
+	}
+
+
+
+	public void setInitialSkill(Integer initialSkill) {
+		this.initialSkill = initialSkill;
+	}
+
+
+
+	public Integer getInitialLuck() {
+		return initialLuck;
+	}
+
+
+
+	public void setInitialLuck(Integer initialLuck) {
+		this.initialLuck = initialLuck;
+	}
+
+
+
+	public Integer getInitialStamina() {
+		return initialStamina;
+	}
+
+
+
+	public void setInitialStamina(Integer initialStamina) {
+		this.initialStamina = initialStamina;
+	}
+
+
+
+	public List<String> getEquipment() {
+		return equipment;
+	}
+
+
+
+	public void setEquipment(List<String> equipment) {
+		this.equipment = equipment;
+	}
+
+
+
+	public List<String> getNotes() {
+		return notes;
+	}
+
+
+
+	public void setNotes(List<String> notes) {
+		this.notes = notes;
+	}
+
+
+
+	public Integer getStandardPotion() {
+		return standardPotion;
+	}
+
+
+
+	public void setStandardPotion(Integer standardPotion) {
+		this.standardPotion = standardPotion;
+	}
+
+
+
+	public Integer getGold() {
+		return gold;
+	}
+
+
+
+	public void setGold(Integer gold) {
+		this.gold = gold;
+	}
+
+
+
+	public Integer getProvisions() {
+		return provisions;
+	}
+
+
+
+	public void setProvisions(Integer provisions) {
+		this.provisions = provisions;
+	}
+
+
+
+	public Integer getStandardPotionValue() {
+		return standardPotionValue;
+	}
+
+
+
+	public void setStandardPotionValue(Integer standardPotionValue) {
+		this.standardPotionValue = standardPotionValue;
+	}
+
+
+
+	public File getDir() {
+		return dir;
+	}
+
+
+
+	public void setDir(File dir) {
+		this.dir = dir;
+	}
+
+
+
+	public int getGamebook() {
+		return gamebook;
+	}
+
+
+
+	public void setGamebook(int gamebook) {
+		this.gamebook = gamebook;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public Properties getSavedGame() {
+		return savedGame;
+	}
+
+
+
+	public void setSavedGame(Properties savedGame) {
+		this.savedGame = savedGame;
+	}
+
+
+
+	public Integer getCurrentSkill() {
+		return currentSkill;
+	}
+
+
+
+	public Integer getCurrentLuck() {
+		return currentLuck;
+	}
+
+
+
+	public Integer getCurrentStamina() {
+		return currentStamina;
+	}
+
+
+
+	public Integer getCurrentReference() {
+		return currentReference;
+	}
+
 }
