@@ -20,6 +20,7 @@ public class TCOCAdventure extends Adventure {
 
 	public TCOCAdventure() {
 		super();
+		fragmentConfiguration.clear();
 		fragmentConfiguration.put(FRAGMENT_VITAL_STATS,
 				new AdventureFragmentRunner(R.string.vitalStats,
 						"AdventureVitalStatsFragment"));

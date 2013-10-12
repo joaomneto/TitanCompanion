@@ -1,4 +1,4 @@
-package pt.joaomneto.ffgbutil.adventurecreation.fragments;
+package pt.joaomneto.ffgbutil.adventurecreation.impl.fragments;
 
 import pt.joaomneto.ffgbutil.R;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 public class VitalStatisticsFragment extends Fragment {
 	
-	
+
 	public VitalStatisticsFragment(){
 		
 	}

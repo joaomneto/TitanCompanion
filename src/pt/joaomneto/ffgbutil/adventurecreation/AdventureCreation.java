@@ -6,16 +6,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
 
+import pt.joaomneto.ffgbutil.GamebookSelectionActivity;
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventurecreation.fragments.PotionsFragment;
-import pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -37,13 +40,44 @@ public abstract class AdventureCreation extends FragmentActivity {
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	protected ViewPager mViewPager;
-	
 
 	protected int skill = -1;
 	protected int luck = -1;
 	protected int stamina = -1;
 	protected int potion = -1;
 	protected int gamebook = -1;
+
+	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
+
+	public AdventureCreation() {
+		super();
+		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+				R.string.title_adventure_creation_vitalstats,
+				"pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment"));
+		fragmentConfiguration.put(1, new AdventureFragmentRunner(
+				R.string.title_adventure_creation_potions,
+				"pt.joaomneto.ffgbutil.adventurecreation.fragments.PotionsFragment"));
+
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_twofm_adventure_creation);
+
+		// Create the adapter that will return a fragment for each of the three
+		// primary sections of the app.
+		mSectionsPagerAdapter = new SectionsPagerAdapter(
+				getSupportFragmentManager());
+
+		gamebook = getIntent().getIntExtra(
+				GamebookSelectionActivity.GAMEBOOK_ID, -1);
+
+		// Set up the ViewPager with the sections adapter.
+		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager.setAdapter(mSectionsPagerAdapter);
+
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,61 +96,45 @@ public abstract class AdventureCreation extends FragmentActivity {
 			super(fm);
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
 		public Fragment getItem(int position) {
-			Fragment fragment;
-			switch (position) {
-			case 0:
-				fragment = new VitalStatisticsFragment();
-				break;
-			case 1:
-				fragment = new PotionsFragment();
-				break;
-			default:
-				fragment = null;
-				break;
-			}
-			
-			return fragment;
+			try {
+				Class<Fragment> fragmentClass;
+				fragmentClass = (Class<Fragment>) Class.forName(fragmentConfiguration.get(position).getClassName());
+
+				return fragmentClass.newInstance();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+			return null;
 		}
 
 		@Override
 		public int getCount() {
-			return 2;
+			return fragmentConfiguration.size();
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
-			switch (position) {
-			case 0:
-				return getString(R.string.title_adventure_creation_vitalstats).toUpperCase(l);
-			case 1:
-				return getString(R.string.title_adventure_creation_potions).toUpperCase(l);
-			}
-			return null;
+			return getString(fragmentConfiguration.get(position).getTitleId()).toUpperCase(l);
 		}
 	}
-	
 
-	
-	public void rollStats(View view){
-		skill = DiceRoller.rollD6()+6;
-		luck = DiceRoller.rollD6()+6;
-		stamina = DiceRoller.roll2D6()+12;
-				
+	public void rollStats(View view) {
+		skill = DiceRoller.rollD6() + 6;
+		luck = DiceRoller.rollD6() + 6;
+		stamina = DiceRoller.roll2D6() + 12;
+
 		TextView skillValue = (TextView) findViewById(R.id.skillValue);
 		TextView staminaValue = (TextView) findViewById(R.id.staminaValue);
 		TextView luckValue = (TextView) findViewById(R.id.luckValue);
-		
-		skillValue.setText(""+skill);
-		staminaValue.setText(""+stamina);
-		luckValue.setText(""+luck);
+
+		skillValue.setText("" + skill);
+		staminaValue.setText("" + stamina);
+		luckValue.setText("" + luck);
 	}
-	
-	
-	
-	
 
 	public synchronized int getPotion() {
 		return potion;
@@ -125,13 +143,14 @@ public abstract class AdventureCreation extends FragmentActivity {
 	public synchronized void setPotion(int potion) {
 		this.potion = potion;
 	}
-	
+
 	public void saveAdventure(View view) {
 		try {
 			EditText et = (EditText) findViewById(R.id.adventureNameInput);
 
 			File dir = new File(Environment.getExternalStorageDirectory()
-					.getPath() + "/ffgbutil/save_twofm_"
+					.getPath()
+					+ "/ffgbutil/save_twofm_"
 					+ et.getText().toString().replace(' ', '-'));
 			if (!dir.exists()) {
 				dir.mkdirs();
@@ -161,7 +180,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 			e.printStackTrace();
 		}
 	}
-	
+
 	protected abstract void storeAdventureSpecificValuesInFile(BufferedWriter bw)
 			throws IOException;
 

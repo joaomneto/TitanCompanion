@@ -84,17 +84,17 @@ public abstract class Adventure extends FragmentActivity {
 		super();
 		fragmentConfiguration.put(FRAGMENT_VITAL_STATS,
 				new AdventureFragmentRunner(R.string.vitalStats,
-						"AdventureVitalStatsFragment"));
+						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(
-				R.string.fights, "AdventureCombatFragment"));
+				R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_PROVISIONS,
 				new AdventureFragmentRunner(R.string.potionsProvisions,
-						"AdventureProvisionsFragment"));
+						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT,
 				new AdventureFragmentRunner(R.string.goldEquipment,
-						"AdventureEquipmentFragment"));
+						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(
-				R.string.notes, "AdventureNotesFragment"));
+				R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	public static class AdventureFragmentRunner {

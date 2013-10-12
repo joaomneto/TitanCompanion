@@ -2,41 +2,45 @@ package pt.joaomneto.ffgbutil.adventurecreation.impl;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import pt.joaomneto.ffgbutil.GamebookSelectionActivity;
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
-import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 
 public class TCOCAdventureCreation extends AdventureCreation {
 
 	private int spellValue = -1;
+	List<String> spells = new ArrayList<String>();
 	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_twofm_adventure_creation);
-
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the app.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(
-				getSupportFragmentManager());
-
-		gamebook = getIntent().getIntExtra(
-				GamebookSelectionActivity.GAMEBOOK_ID, -1);
-
-		// Set up the ViewPager with the sections adapter.
-		mViewPager = (ViewPager) findViewById(R.id.twofm_creation_pager);
-		mViewPager.setAdapter(mSectionsPagerAdapter);
+	public TCOCAdventureCreation() {
+		super();
+		fragmentConfiguration.clear();
+		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+				R.string.title_adventure_creation_vitalstats,
+				"pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment"));
+		fragmentConfiguration.put(1, new AdventureFragmentRunner(
+				R.string.spells,
+				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc.TCOCSpellsFragment"));
 
 	}
 
 	@Override
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw)
 			throws IOException {
+		
+		String spellsS = "";
+
+		if (!spells.isEmpty()) {
+			for (String spell : spells) {
+				spellsS += spell + "#";
+			}
+			spellsS = spellsS.substring(0, spellsS.length() - 1);
+		}
+
 		bw.write("spellValue="+spellValue+"\n");
-		bw.write("spells=\n");
+		bw.write("spells="+spellsS+"\n");
 		bw.write("gold=0\n");
 	}
 
