@@ -8,9 +8,14 @@ import java.util.List;
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
+import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc.TCOCSpellsFragment;
+import pt.joaomneto.ffgbutil.util.DiceRoller;
+import android.view.View;
 
 public class TCOCAdventureCreation extends AdventureCreation {
 
+	private final static int FRAGMENT_TCOC_SPELLS = 1;
+	
 	private int spellValue = -1;
 	List<String> spells = new ArrayList<String>();
 	
@@ -42,6 +47,19 @@ public class TCOCAdventureCreation extends AdventureCreation {
 		bw.write("spellValue="+spellValue+"\n");
 		bw.write("spells="+spellsS+"\n");
 		bw.write("gold=0\n");
+	}
+	
+	private TCOCSpellsFragment getTCOCSpellsFragment() {
+		TCOCSpellsFragment tcocSpellsFragment = (TCOCSpellsFragment) getSupportFragmentManager()
+				.getFragments().get(FRAGMENT_TCOC_SPELLS);
+		return tcocSpellsFragment;
+	}
+
+	@Override
+	protected void rollGamebookSpecificStats(View view) {
+		spellValue = DiceRoller.roll2D6()+6;
+		getTCOCSpellsFragment().getSpellScoreValue().setText(""+spellValue);
+		
 	}
 
 }

@@ -137,7 +137,11 @@ public abstract class AdventureCreation extends FragmentActivity {
 		skillValue.setText("" + skill);
 		staminaValue.setText("" + stamina);
 		luckValue.setText("" + luck);
+		
+		rollGamebookSpecificStats(view);
 	}
+
+	protected abstract void rollGamebookSpecificStats(View view);
 
 	public synchronized int getPotion() {
 		return potion;

@@ -1,7 +1,6 @@
 package pt.joaomneto.ffgbutil;
 
 import pt.joaomneto.ffgbutil.util.DiceRoller;
-import pt.joaomneto.ffgbutil.util.UnCaughtException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
