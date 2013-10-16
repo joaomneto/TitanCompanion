@@ -13,8 +13,8 @@ public class TWOFMAdventure extends Adventure {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
-			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_twofm_adventure);
+			super.onCreate(savedInstanceState);
 
 			setStandardPotion(Integer.valueOf(getSavedGame()
 					.getProperty("standardPotion")));

@@ -209,4 +209,10 @@
         <item>Weakness</item>
     </string-array>
 
+    <string name="title_activity_error">ErrorActivity</string>
+    <string name="spellList">Spell List</string>
+    <string name="selectedSpellList">Selected Spells</string>
+    <string name="rollSpellValue">Roll Spell Score</string>
+    <string name="spellScore">Spell Score: </string>
+
 </resources>

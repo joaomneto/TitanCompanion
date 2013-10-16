@@ -17,8 +17,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(
-				MainActivity.this));
+//		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(
+//				MainActivity.this));
 	}
 
 	@Override

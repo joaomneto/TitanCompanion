@@ -57,6 +57,14 @@
                 android:value=".AdventureCreationPhaseListActivity" />
         </activity>
         <activity
+            android:name="pt.joaomneto.ffgbutil.LoadAdventureActivity"
+            android:label="@string/title_activity_load_adventure" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.ErrorActivity"
+            android:label="@string/title_activity_error" >
+        </activity>
+        <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TWOFMAdventureCreation"
             android:label="@string/title_activity_adventure_creation" >
         </activity>
@@ -65,8 +73,12 @@
             android:label="@string/title_activity_twofmadventure" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.LoadAdventureActivity"
-            android:label="@string/title_activity_load_adventure" >
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TCOCAdventureCreation"
+            android:label="@string/title_activity_adventure_creation" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.TCOCMAdventure"
+            android:label="@string/title_activity_twofmadventure" >
         </activity>
     </application>
 

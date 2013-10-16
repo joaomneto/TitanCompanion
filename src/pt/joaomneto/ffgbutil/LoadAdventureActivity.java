@@ -115,7 +115,7 @@ public class LoadAdventureActivity extends Activity {
 					int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(_this);
-				builder.setTitle("Delete file?")
+				builder.setTitle("Delete save?")
 						.setCancelable(false)
 						.setNegativeButton("Close",
 								new DialogInterface.OnClickListener() {
@@ -131,7 +131,7 @@ public class LoadAdventureActivity extends Activity {
 									int which) {
 								String file = files.get(position);
 								File f = new File(baseDir, file);
-								if (f.delete()) {
+								if (deleteDirectory(f)) {
 									files.remove(position);
 									((ArrayAdapter<String>) listview
 											.getAdapter())
@@ -148,6 +148,21 @@ public class LoadAdventureActivity extends Activity {
 			}
 		});
 	}
+	
+	static public boolean deleteDirectory(File path) {
+	    if( path.exists() ) {
+	      File[] files = path.listFiles();
+	      for(int i=0; i<files.length; i++) {
+	         if(files[i].isDirectory()) {
+	           deleteDirectory(files[i]);
+	         }
+	         else {
+	           files[i].delete();
+	         }
+	      }
+	    }
+	    return( path.delete() );
+	  }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -7,10 +7,13 @@ import java.io.IOException;
 import java.util.Locale;
 
 import pt.joaomneto.ffgbutil.GamebookSelectionActivity;
+import pt.joaomneto.ffgbutil.LoadAdventureActivity;
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
+import pt.joaomneto.ffgbutil.consts.Constants;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -53,10 +56,10 @@ public abstract class AdventureCreation extends FragmentActivity {
 		super();
 		fragmentConfiguration.put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
-				"pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment"));
+				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.VitalStatisticsFragment"));
 		fragmentConfiguration.put(1, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_potions,
-				"pt.joaomneto.ffgbutil.adventurecreation.fragments.PotionsFragment"));
+				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.PotionsFragment"));
 
 	}
 
@@ -148,10 +151,11 @@ public abstract class AdventureCreation extends FragmentActivity {
 		try {
 			EditText et = (EditText) findViewById(R.id.adventureNameInput);
 
-			File dir = new File(Environment.getExternalStorageDirectory()
-					.getPath()
-					+ "/ffgbutil/save_twofm_"
-					+ et.getText().toString().replace(' ', '-'));
+			String relDir = "save_twofm_"
+								+ et.getText().toString().replace(' ', '-');
+			String dirName = Environment.getExternalStorageDirectory()
+					.getPath() + "/ffgbutil/" + relDir;
+			File dir = new File(dirName);
 			if (!dir.exists()) {
 				dir.mkdirs();
 			}
@@ -175,6 +179,14 @@ public abstract class AdventureCreation extends FragmentActivity {
 			storeAdventureSpecificValuesInFile(bw);
 
 			bw.close();
+			
+			Intent intent = new Intent(this, Constants
+					.getRunActivity(this, gamebook));
+
+			intent.putExtra(LoadAdventureActivity.ADVENTURE_FILE,
+					"initial.xml");
+			intent.putExtra(LoadAdventureActivity.ADVENTURE_DIR, relDir);
+			startActivity(intent);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -19,7 +19,7 @@ public class TCOCAdventureCreation extends AdventureCreation {
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
-				"pt.joaomneto.ffgbutil.adventurecreation.fragments.VitalStatisticsFragment"));
+				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.VitalStatisticsFragment"));
 		fragmentConfiguration.put(1, new AdventureFragmentRunner(
 				R.string.spells,
 				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc.TCOCSpellsFragment"));

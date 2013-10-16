@@ -1,20 +1,15 @@
 package pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
+import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class TCOCSpellsFragment extends Fragment {
 
@@ -29,32 +24,19 @@ public class TCOCSpellsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(R.layout.fragment_adventurecreation_potions, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_tcoc_adventurecreation_spells, container, false);
 		
-		List<Map<String, String>> potionList = new ArrayList<Map<String,String>>();
 
+		final TextView spellScoreValue = (TextView) rootView.findViewById(R.id.spellScoreValue);
 		
-		String[] stringArray = getResources().getStringArray(R.array.standard_potion_list);
-		
-		for (String string : stringArray) {
-			Map<String, String> potion = new HashMap<String, String>();
-			potion.put("potion", string);
-			potionList.add(potion);
-		}
-		
-		SimpleAdapter mAdapter = new SimpleAdapter(getActivity(), potionList, R.layout.potions_item, new String[] {"potion"}, new int[] {R.id.potion_name} );
-		
-		ListView lView = (ListView) rootView.findViewById(R.id.potionList);
-		lView.setAdapter(mAdapter);
-		lView.setSelector(R.drawable.row_selector);
-		
-		lView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+		Button rollSpellScoreButton = (Button) rootView.findViewById(R.id.rollSpellScoreButton);
+		rollSpellScoreButton.setOnClickListener(new OnClickListener() {
+			
 			@Override
-			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-				((AdventureCreation)getActivity()).setPotion(position);
+			public void onClick(View v) {
+				spellScoreValue.setText(""+(DiceRoller.roll2D6()+6));
+				
 			}
-
 		});
 
 		return rootView;

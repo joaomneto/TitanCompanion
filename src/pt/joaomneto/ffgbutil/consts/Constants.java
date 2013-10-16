@@ -36,7 +36,7 @@ public abstract class Constants {
 		Class<? extends AdventureCreation> intentClass = null;
 		try {
 			intentClass = (Class<? extends AdventureCreation>) Class
-					.forName("pt.joaomneto.ffgbutil.adventurecreation.impl"
+					.forName("pt.joaomneto.ffgbutil.adventurecreation.impl."
 							+ getActivityPrefix(context, position)
 							+ "AdventureCreation");
 		} catch (ClassNotFoundException e) {
@@ -70,7 +70,7 @@ public abstract class Constants {
 		Class<? extends Adventure> intentClass = null;
 		try {
 			intentClass = (Class<? extends Adventure>) Class
-					.forName("pt.joaomneto.ffgbutil.adventure.impl"
+					.forName("pt.joaomneto.ffgbutil.adventure.impl."
 							+ getActivityPrefix(context, position)
 							+ "Adventure");
 		} catch (ClassNotFoundException e) {
