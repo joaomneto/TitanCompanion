@@ -432,7 +432,7 @@ public abstract class Adventure extends FragmentActivity {
 		} else {
 			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
 			adventureProvisionsFragment.setProvisionsValue(--provisions);
-			setCurrentStamina(getCurrentStamina() + 4);
+			setCurrentStamina(getCurrentStamina() + provisionsValue);
 			if (getCurrentStamina() > getInitialStamina())
 				setCurrentStamina(getInitialStamina());
 			showAlert("You have gained 4 Stamina points!");
