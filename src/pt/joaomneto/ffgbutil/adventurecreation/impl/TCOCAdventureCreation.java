@@ -8,7 +8,7 @@ import java.util.List;
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
-import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc.TCOCSpellsFragment;
+import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc.TCOCAdventureCreationSpellsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.view.View;
 
@@ -27,7 +27,7 @@ public class TCOCAdventureCreation extends AdventureCreation {
 				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.VitalStatisticsFragment"));
 		fragmentConfiguration.put(1, new AdventureFragmentRunner(
 				R.string.spells,
-				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc.TCOCSpellsFragment"));
+				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc.TCOCAdventureCreationSpellsFragment"));
 
 	}
 
@@ -49,8 +49,8 @@ public class TCOCAdventureCreation extends AdventureCreation {
 		bw.write("gold=0\n");
 	}
 	
-	private TCOCSpellsFragment getTCOCSpellsFragment() {
-		TCOCSpellsFragment tcocSpellsFragment = (TCOCSpellsFragment) getSupportFragmentManager()
+	private TCOCAdventureCreationSpellsFragment getTCOCSpellsFragment() {
+		TCOCAdventureCreationSpellsFragment tcocSpellsFragment = (TCOCAdventureCreationSpellsFragment) getSupportFragmentManager()
 				.getFragments().get(FRAGMENT_TCOC_SPELLS);
 		return tcocSpellsFragment;
 	}
@@ -61,5 +61,15 @@ public class TCOCAdventureCreation extends AdventureCreation {
 		getTCOCSpellsFragment().getSpellScoreValue().setText(""+spellValue);
 		
 	}
+
+	public synchronized int getSpellValue() {
+		return spellValue;
+	}
+
+	public synchronized List<String> getSpells() {
+		return spells;
+	}
+	
+	
 
 }

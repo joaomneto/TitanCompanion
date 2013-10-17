@@ -47,7 +47,7 @@ public abstract class Constants {
 
 	}
 
-	private static String getActivityPrefix(Context context, int position) {
+	public static String getActivityPrefix(Context context, int position) {
 		Locale l = Locale.getDefault();
 		String name = context.getResources().getStringArray(
 				R.array.gamebook_list_names)[position];

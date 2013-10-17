@@ -77,7 +77,7 @@
             android:label="@string/title_activity_adventure_creation" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.TCOCMAdventure"
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.TCOCAdventure"
             android:label="@string/title_activity_twofmadventure" >
         </activity>
     </application>

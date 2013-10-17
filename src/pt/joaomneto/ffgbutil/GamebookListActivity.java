@@ -2,13 +2,13 @@ package pt.joaomneto.ffgbutil;
 
 import java.util.ArrayList;
 
-import pt.joaomneto.ffgbutil.util.StableArrayAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class GamebookListActivity extends Activity {
@@ -30,7 +30,9 @@ public class GamebookListActivity extends Activity {
 		for (int i = 0; i < values.length; ++i) {
 			list.add(values[i]);
 		}
-		final StableArrayAdapter adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
+		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+	            android.R.layout.simple_list_item_1, android.R.id.text1, list);
+		
 		listview.setAdapter(adapter);
 
 		final Intent intent = new Intent(this, GamebookSelectionActivity.class);

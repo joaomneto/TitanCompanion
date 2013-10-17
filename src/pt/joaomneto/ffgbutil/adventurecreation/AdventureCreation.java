@@ -155,7 +155,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 		try {
 			EditText et = (EditText) findViewById(R.id.adventureNameInput);
 
-			String relDir = "save_twofm_"
+			String relDir = "save_"+Constants.getActivityPrefix(this, gamebook)+"_"
 								+ et.getText().toString().replace(' ', '-');
 			String dirName = Environment.getExternalStorageDirectory()
 					.getPath() + "/ffgbutil/" + relDir;
@@ -176,7 +176,6 @@ public abstract class AdventureCreation extends FragmentActivity {
 			bw.write("currentSkill=" + skill + "\n");
 			bw.write("currentLuck=" + luck + "\n");
 			bw.write("currentStamina=" + stamina + "\n");
-			bw.write("standardPotion=" + potion + "\n");
 			bw.write("currentReference=1\n");
 			bw.write("equipment=\n");
 			bw.write("notes=\n");

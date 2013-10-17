@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.util.StableArrayAdapter;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -57,9 +56,10 @@ public class AdventureCombatSimulFragment extends DialogFragment {
 
 		enemyGrid = (GridView) rootView.findViewById(R.id.enemyGrid);
 
-		final StableArrayAdapter adapter = new StableArrayAdapter(adv,
-				android.R.layout.simple_list_item_1, enemyList);
-
+		
+		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv,
+	            android.R.layout.simple_list_item_1, android.R.id.text1, enemyList);
+		
 		enemyGrid.setAdapter(adapter);
 
 		attackButton.setOnClickListener(new OnClickListener() {

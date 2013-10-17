@@ -23,23 +23,23 @@ public class TCOCAdventure extends Adventure {
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(FRAGMENT_VITAL_STATS,
 				new AdventureFragmentRunner(R.string.vitalStats,
-						"AdventureVitalStatsFragment"));
+						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(
-				R.string.fights, "AdventureCombatFragment"));
+				R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(
-				R.string.spells, "TCOCAdventureSpellsFragment"));
+				R.string.spells, "pt.joaomneto.ffgbutil.adventure.impl.fragments.tcoc.TCOCAdventureSpellsFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT,
 				new AdventureFragmentRunner(R.string.goldEquipment,
-						"AdventureEquipmentFragment"));
+						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(
-				R.string.notes, "AdventureNotesFragment"));
+				R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
-			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_tcoc_adventure);
+			super.onCreate(savedInstanceState);
 
 			setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
 			spellValue = Integer.valueOf(getSavedGame().getProperty("spellValue"));
