@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -38,10 +38,10 @@ public class TCOCAdventureSpellsFragment extends DialogFragment {
 				adv.getSpells());
 		spellList.setAdapter(adapter);
 
-		spellList.setOnItemLongClickListener(new OnItemLongClickListener() {
+		spellList.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
@@ -59,13 +59,13 @@ public class TCOCAdventureSpellsFragment extends DialogFragment {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
 									int which) {
-								String spell = adv.getSpells().get(which);
+								String spell = adv.getSpells().get(position);
 								if (spell.equals("Skill")) {
 									adv.setCurrentSkill(adv.getCurrentSkill()+(adv.getInitialSkill()/2));
 									if(adv.getCurrentSkill()>adv.getInitialSkill())
 										adv.setCurrentSkill(adv.getInitialSkill());
 								} else if (spell.equals("Stamina")) {
-									adv.setCurrentSkill(adv.getCurrentStamina()+(adv.getInitialStamina()/2));
+									adv.setCurrentStamina(adv.getCurrentStamina()+(adv.getInitialStamina()/2));
 									if(adv.getCurrentStamina()>adv.getInitialStamina())
 										adv.setCurrentStamina(adv.getInitialStamina());
 								} else if (spell.equals("Luck")) {
@@ -81,7 +81,6 @@ public class TCOCAdventureSpellsFragment extends DialogFragment {
 
 				AlertDialog alert = builder.create();
 				alert.show();
-				return true;
 
 			}
 		});

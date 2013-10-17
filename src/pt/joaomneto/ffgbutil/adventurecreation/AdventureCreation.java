@@ -66,7 +66,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_twofm_adventure_creation);
+		setContentView(R.layout.activity_adventure_creation);
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.

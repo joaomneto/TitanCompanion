@@ -12,67 +12,126 @@
     <string name="load_adventure">Load Adventure</string>
     <string name="title_activity_gamebook_list">Gamebook List</string>
     <string name="viewSite">View Description</string>
+    <string name="twofm">The Warlock of Firetop Mountain</string>
+    <string name="tcoc">The Citadel of Chaos</string>
+    <string name="tfod">The Forest of Doom</string>
+    <string name="st">Starship Traveller</string>
+    <string name="cot">City of Thieves</string>
+    <string name="dd">Deathtrap Dungeon</string>
+    <string name="iotlk">Island of the Lizard King</string>
+    <string name="ss">Scorpion Swamp</string>
+    <string name="cotsw">Caverns of the Snow Witch</string>
+    <string name="hoh">House of Hell</string>
+    <string name="tod">Talisman of Death</string>
+    <string name="sa">Space Assassin</string>
+    <string name="ff">Freeway Fighter</string>
+    <string name="tot">Temple of Terror</string>
+    <string name="trok">The Rings of Kether</string>
+    <string name="sob">Seas of Blood</string>
+    <string name="awf">Appointment with F.E.A.R.</string>
+    <string name="rp">Rebel Planet</string>
+    <string name="dotd">Demons of the Deep</string>
+    <string name="sots">Sword of the Samurai</string>
+    <string name="toc">Trial of Champions</string>
+    <string name="rc">Robot Commando</string>
+    <string name="mom">Masks of Mayhem</string>
+    <string name="coh">Creature of Havoc</string>
+    <string name="bnc">Beneath Nightmare Castle</string>
+    <string name="cots">Crypt of the Sorcerer</string>
+    <string name="star">Star Strider</string>
+    <string name="pof">Phantoms of Fear</string>
+    <string name="mr">Midnight Rogue</string>
+    <string name="com">Chasms of Malice</string>
+    <string name="bw">Battleblade Warrior</string>
+    <string name="sota">Slaves of the Abyss</string>
+    <string name="sl">Sky Lord</string>
+    <string name="sos">Stealer of Souls</string>
+    <string name="dod">Daggers of Darkness</string>
+    <string name="aod">Armies of Death</string>
+    <string name="poe">Portal of Evil</string>
+    <string name="votv">Vault of the Vampire</string>
+    <string name="fof">Fangs of Fury</string>
+    <string name="don">Dead of Night</string>
+    <string name="moc">Master of Chaos</string>
+    <string name="bvp">Black Vein Prophecy</string>
+    <string name="tkotll">The Keep of the Lich Lord</string>
+    <string name="lotsw">Legend of the Shadow Warriors</string>
+    <string name="spectral">Spectral Stalkers</string>
+    <string name="tower">Tower of Destruction</string>
+    <string name="tct">The Crimson Tide</string>
+    <string name="moon">Moonrunner</string>
+    <string name="siege">Siege of Sardath</string>
+    <string name="rtfm">Return to Firetop Mountain</string>
+    <string name="iotu">Island of the Undead</string>
+    <string name="nd">Night Dragon</string>
+    <string name="s">Spellbreaker</string>
+    <string name="loz">Legend of Zagor</string>
+    <string name="d">Deathmoor</string>
+    <string name="kod">Knights of Doom</string>
+    <string name="m">Magehunter</string>
+    <string name="rotv">Revenge of the Vampire</string>
+    <string name="cotm">Curse of the Mummy</string>
 
     <string-array name="gamebook_list_names">
-        <item>The Warlock of Firetop Mountain</item>
-        <item>The Citadel of Chaos</item>
-        <item>The Forest of Doom</item>
-        <item>Starship Traveller</item>
-        <item>City of Thieves</item>
-        <item>Deathtrap Dungeon</item>
-        <item>Island of the Lizard King</item>
-        <item>Scorpion Swamp</item>
-        <item>Caverns of the Snow Witch</item>
-        <item>House of Hell</item>
-        <item>Talisman of Death</item>
-        <item>Space Assassin</item>
-        <item>Freeway Fighter</item>
-        <item>Temple of Terror</item>
-        <item>The Rings of Kether</item>
-        <item>Seas of Blood</item>
-        <item>Appointment with F.E.A.R.</item>
-        <item>Rebel Planet</item>
-        <item>Demons of the Deep</item>
-        <item>Sword of the Samurai</item>
-        <item>Trial of Champions</item>
-        <item>Robot Commando</item>
-        <item>Masks of Mayhem</item>
-        <item>Creature of Havoc</item>
-        <item>Beneath Nightmare Castle</item>
-        <item>Crypt of the Sorcerer</item>
-        <item>Star Strider</item>
-        <item>Phantoms of Fear</item>
-        <item>Midnight Rogue</item>
-        <item>Chasms of Malice</item>
-        <item>Battleblade Warrior</item>
-        <item>Slaves of the Abyss</item>
-        <item>Sky Lord</item>
-        <item>Stealer of Souls</item>
-        <item>Daggers of Darkness</item>
-        <item>Armies of Death</item>
-        <item>Portal of Evil</item>
-        <item>Vault of the Vampire</item>
-        <item>Fangs of Fury</item>
-        <item>Dead of Night</item>
-        <item>Master of Chaos</item>
-        <item>Black Vein Prophecy</item>
-        <item>The Keep of the Lich Lord</item>
-        <item>Legend of the Shadow Warriors</item>
-        <item>Spectral Stalkers</item>
-        <item>Tower of Destruction</item>
-        <item>The Crimson Tide</item>
-        <item>Moonrunner</item>
-        <item>Siege of Sardath</item>
-        <item>Return to Firetop Mountain</item>
-        <item>Island of the Undead</item>
-        <item>Night Dragon</item>
-        <item>Spellbreaker</item>
-        <item>Legend of Zagor</item>
-        <item>Deathmoor</item>
-        <item>Knights of Doom</item>
-        <item>Magehunter</item>
-        <item>Revenge of the Vampire</item>
-        <item>Curse of the Mummy</item>
+        <item>@string/twofm</item>
+        <item>@string/tcoc</item>
+        <item>@string/tfod</item>
+        <item>@string/st</item>
+        <item>@string/cot</item>
+        <item>@string/dd</item>
+        <item>@string/iotlk</item>
+        <item>@string/ss</item>
+        <item>@string/cotsw</item>
+        <item>@string/hoh</item>
+        <item>@string/tod</item>
+        <item>@string/sa</item>
+        <item>@string/ff</item>
+        <item>@string/tot</item>
+        <item>@string/trok</item>
+        <item>@string/sob</item>
+        <item>@string/awf</item>
+        <item>@string/rp</item>
+        <item>@string/dotd</item>
+        <item>@string/sots</item>
+        <item>@string/toc</item>
+        <item>@string/rc</item>
+        <item>@string/mom</item>
+        <item>@string/coh</item>
+        <item>@string/bnc</item>
+        <item>@string/cots</item>
+        <item>@string/star</item>
+        <item>@string/pof</item>
+        <item>@string/mr</item>
+        <item>@string/com</item>
+        <item>@string/bw</item>
+        <item>@string/sota</item>
+        <item>@string/sl</item>
+        <item>@string/sos</item>
+        <item>@string/dod</item>
+        <item>@string/aod</item>
+        <item>@string/poe</item>
+        <item>@string/votv</item>
+        <item>@string/fof</item>
+        <item>@string/don</item>
+        <item>@string/moc</item>
+        <item>@string/bvp</item>
+        <item>@string/tkotll</item>
+        <item>@string/lotsw</item>
+        <item>@string/spectral</item>
+        <item>@string/tower</item>
+        <item>@string/tct</item>
+        <item>@string/moon</item>
+        <item>@string/siege</item>
+        <item>@string/rtfm</item>
+        <item>@string/iotu</item>
+        <item>@string/nd</item>
+        <item>@string/s</item>
+        <item>@string/loz</item>
+        <item>@string/d</item>
+        <item>@string/kod</item>
+        <item>@string/m</item>
+        <item>@string/rotv</item>
+        <item>@string/cotm</item>
     </string-array>
     <string-array name="gamebook_list_urls">
         <item>http://fightingfantasy.wikia.com/wiki/The_Warlock_of_Firetop_Mountain_(book)</item>

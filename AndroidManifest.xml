@@ -66,19 +66,27 @@
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TWOFMAdventureCreation"
-            android:label="@string/title_activity_adventure_creation" >
+            android:label="@string/twofm" >
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventure.impl.TWOFMAdventure"
-            android:label="@string/title_activity_twofmadventure" >
+            android:label="@string/twofm" >
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TCOCAdventureCreation"
-            android:label="@string/title_activity_adventure_creation" >
+            android:label="@string/tcoc" >
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventure.impl.TCOCAdventure"
-            android:label="@string/title_activity_twofmadventure" >
+            android:label="@string/tcoc" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TFODAdventureCreation"
+            android:label="@string/tfod" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.TFODAdventure"
+            android:label="@string/tfod" >
         </activity>
     </application>
 

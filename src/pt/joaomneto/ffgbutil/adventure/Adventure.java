@@ -65,6 +65,7 @@ public abstract class Adventure extends FragmentActivity {
 	Integer standardPotion = -1;
 	Integer gold = -1;
 	Integer provisions = -1;
+	Integer provisionsValue = -1;
 	Integer standardPotionValue = -1;
 
 	File dir = null;
@@ -125,6 +126,7 @@ public abstract class Adventure extends FragmentActivity {
 			// Create the adapter that will return a fragment for each of the
 			// three
 			// primary sections of the app.
+			setContentView(R.layout.activity_adventure);
 			mSectionsPagerAdapter = new StandardSectionsPagerAdapter(
 					getSupportFragmentManager());
 
@@ -640,6 +642,18 @@ public abstract class Adventure extends FragmentActivity {
 
 	public Integer getCurrentReference() {
 		return currentReference;
+	}
+
+
+
+	public synchronized Integer getProvisionsValue() {
+		return provisionsValue;
+	}
+
+
+
+	public synchronized void setProvisionsValue(Integer provisionsValue) {
+		this.provisionsValue = provisionsValue;
 	}
 
 }

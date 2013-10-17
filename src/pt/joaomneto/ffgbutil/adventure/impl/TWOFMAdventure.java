@@ -13,7 +13,6 @@ public class TWOFMAdventure extends Adventure {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
-			setContentView(R.layout.activity_twofm_adventure);
 			super.onCreate(savedInstanceState);
 
 			setStandardPotion(Integer.valueOf(getSavedGame()
@@ -22,6 +21,7 @@ public class TWOFMAdventure extends Adventure {
 					.getProperty("standardPotionValue")));
 			setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
 			setProvisions(Integer.valueOf(getSavedGame().getProperty("provisions")));
+			setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
 			
 
 		} catch (Exception e) {
@@ -44,6 +44,7 @@ public class TWOFMAdventure extends Adventure {
 		bw.write("standardPotionValue=" + getStandardPotionValue()
 				+ "\n");
 		bw.write("provisions=" + getProvisions() + "\n");
+		bw.write("provisionsvalue=" + getProvisionsValue() + "\n");
 		bw.write("gold=" + getGold() + "\n");
 	}
 	

@@ -38,7 +38,6 @@ public class TCOCAdventure extends Adventure {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
-			setContentView(R.layout.activity_tcoc_adventure);
 			super.onCreate(savedInstanceState);
 
 			setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
