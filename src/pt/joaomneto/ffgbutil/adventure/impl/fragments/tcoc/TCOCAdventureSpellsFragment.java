@@ -27,7 +27,7 @@ public class TCOCAdventureSpellsFragment extends DialogFragment {
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		View rootView = inflater.inflate(
-				R.layout.fragment_tcoc_adventure_spells, container, false);
+				R.layout.fragment_02tcoc_adventure_spells, container, false);
 
 		spellList = (ListView) rootView.findViewById(R.id.spellList);
 

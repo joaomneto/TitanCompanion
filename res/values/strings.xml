@@ -273,5 +273,16 @@
     <string name="selectedSpellList">Selected Spells</string>
     <string name="rollSpellValue">Roll Spell Score</string>
     <string name="spellScore">Remaining Spells: </string>
+    
+    
+    <string name="scienceOfficer">Science Officer</string>
+    <string name="medicalOfficer">Medical Officer</string>
+    <string name="engineeringOfficer">Engineering Officer</string>
+    <string name="securityOfficer">Security Officer</string>
+    <string name="securityGuard1">Security Guard 1</string>
+    <string name="securityGuard2">Security Guard 2</string>
+    <string name="ship">Ship</string>
+    <string name="weapons">Weapons: </string>
+    <string name="shields">Shields: </string>
 
 </resources>

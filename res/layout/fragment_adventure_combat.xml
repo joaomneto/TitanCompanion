@@ -11,7 +11,7 @@
     tools:context=".adventure.impl.fragments.AdventureCombatFragment" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/scienceOfficer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/skill"
@@ -22,13 +22,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/combatResult"
-        android:layout_below="@+id/textView1" />
+        android:layout_below="@+id/scienceOfficer" />
 
     <TextView
         android:id="@+id/combatResult"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/scienceOfficer"
         android:layout_below="@+id/enemyskillPicker"
         android:layout_marginTop="20dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -62,8 +62,8 @@
         android:id="@+id/TextView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignBaseline="@+id/scienceOfficerSkill"
+        android:layout_alignBottom="@+id/scienceOfficerSkill"
         android:layout_alignLeft="@+id/handicap"
         android:text="@string/handicap"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -76,7 +76,7 @@
         android:layout_toRightOf="@+id/enemyskillPicker" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/scienceOfficerSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/enemyskillPicker"
@@ -90,6 +90,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/combatResult"
         android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/textView2" />
+        android:layout_toRightOf="@+id/scienceOfficerSkill" />
 
 </RelativeLayout>

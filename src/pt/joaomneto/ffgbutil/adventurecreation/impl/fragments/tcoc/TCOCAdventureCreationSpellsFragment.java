@@ -31,7 +31,7 @@ public class TCOCAdventureCreationSpellsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(R.layout.fragment_tcoc_adventurecreation_spells, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_02tcoc_adventurecreation_spells, container, false);
 
 		spellScoreValue = (TextView) rootView.findViewById(R.id.spellScoreValue);
 		spellList = getResources().getStringArray(R.array.tcoc_spells);
