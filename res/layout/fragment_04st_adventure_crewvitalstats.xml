@@ -1,0 +1,659 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/landingParty"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/scienceOfficer"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/scienceOfficer"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/scienceOfficerSkill"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/scienceOfficer"
+        android:gravity="center"
+        android:text="@string/skill"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/scienceOfficerMinusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scienceOfficerSkill"
+        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_toRightOf="@+id/scienceOfficerSkill"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/scienceOfficerSkillValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scienceOfficerSkill"
+        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_toRightOf="@+id/scienceOfficerMinusSkillValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/scienceOfficerPlusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scienceOfficerSkill"
+        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_toRightOf="@+id/scienceOfficerSkillValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/scienceOfficerStamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scienceOfficerSkill"
+        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/scienceOfficerPlusSkillValue"
+        android:gravity="center"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/scienceOfficerMinusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scienceOfficerSkill"
+        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_toRightOf="@+id/scienceOfficerStamina"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/scienceOfficerStaminaValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scienceOfficerSkill"
+        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_toRightOf="@+id/scienceOfficerMinusStaminaValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/scienceOfficerPlusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scienceOfficerSkill"
+        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_toRightOf="@+id/scienceOfficerStaminaValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/medicalOfficer"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/scienceOfficerSkill"
+        android:gravity="center"
+        android:text="@string/medicalOfficer"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/medicalOfficerSkill"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/medicalOfficer"
+        android:gravity="center"
+        android:text="@string/skill"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/medicalOfficerMinusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicalOfficerSkill"
+        android:layout_alignTop="@id/medicalOfficerSkill"
+        android:layout_toRightOf="@+id/medicalOfficerSkill"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/medicalOfficerSkillValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicalOfficerSkill"
+        android:layout_alignTop="@id/medicalOfficerSkill"
+        android:layout_toRightOf="@+id/medicalOfficerMinusSkillValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/medicalOfficerPlusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicalOfficerSkill"
+        android:layout_alignTop="@id/medicalOfficerSkill"
+        android:layout_toRightOf="@+id/medicalOfficerSkillValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/medicalOfficerStamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicalOfficerSkill"
+        android:layout_alignTop="@id/medicalOfficerSkill"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/medicalOfficerPlusSkillValue"
+        android:gravity="center"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/medicalOfficerMinusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicalOfficerSkill"
+        android:layout_alignTop="@id/medicalOfficerSkill"
+        android:layout_toRightOf="@+id/medicalOfficerStamina"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/medicalOfficerStaminaValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicalOfficerSkill"
+        android:layout_alignTop="@id/medicalOfficerSkill"
+        android:layout_toRightOf="@+id/medicalOfficerMinusStaminaValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/medicalOfficerPlusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicalOfficerSkill"
+        android:layout_alignTop="@id/medicalOfficerSkill"
+        android:layout_toRightOf="@+id/medicalOfficerStaminaValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/engineeringOfficer"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/medicalOfficerSkill"
+        android:gravity="center"
+        android:text="@string/engineeringOfficer"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/engineeringOfficerSkill"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/engineeringOfficer"
+        android:gravity="center"
+        android:text="@string/skill"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/engineeringOfficerMinusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/engineeringOfficerSkill"
+        android:layout_alignTop="@id/engineeringOfficerSkill"
+        android:layout_toRightOf="@+id/engineeringOfficerSkill"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/engineeringOfficerSkillValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/engineeringOfficerSkill"
+        android:layout_alignTop="@id/engineeringOfficerSkill"
+        android:layout_toRightOf="@+id/engineeringOfficerMinusSkillValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/engineeringOfficerPlusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/engineeringOfficerSkill"
+        android:layout_alignTop="@id/engineeringOfficerSkill"
+        android:layout_toRightOf="@+id/engineeringOfficerSkillValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/engineeringOfficerStamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/engineeringOfficerSkill"
+        android:layout_alignTop="@id/engineeringOfficerSkill"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/engineeringOfficerPlusSkillValue"
+        android:gravity="center"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/engineeringOfficerMinusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/engineeringOfficerSkill"
+        android:layout_alignTop="@id/engineeringOfficerSkill"
+        android:layout_toRightOf="@+id/engineeringOfficerStamina"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/engineeringOfficerStaminaValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/engineeringOfficerSkill"
+        android:layout_alignTop="@id/engineeringOfficerSkill"
+        android:layout_toRightOf="@+id/engineeringOfficerMinusStaminaValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/engineeringOfficerPlusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/engineeringOfficerSkill"
+        android:layout_alignTop="@id/engineeringOfficerSkill"
+        android:layout_toRightOf="@+id/engineeringOfficerStaminaValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/securityOfficer"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/engineeringOfficerSkill"
+        android:gravity="center"
+        android:text="@string/securityOfficer"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/securityOfficerSkill"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/securityOfficer"
+        android:gravity="center"
+        android:text="@string/skill"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityOfficerMinusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityOfficerSkill"
+        android:layout_alignTop="@id/securityOfficerSkill"
+        android:layout_toRightOf="@+id/securityOfficerSkill"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/securityOfficerSkillValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityOfficerSkill"
+        android:layout_alignTop="@id/securityOfficerSkill"
+        android:layout_toRightOf="@+id/securityOfficerMinusSkillValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityOfficerPlusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityOfficerSkill"
+        android:layout_alignTop="@id/securityOfficerSkill"
+        android:layout_toRightOf="@+id/securityOfficerSkillValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/securityOfficerStamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityOfficerSkill"
+        android:layout_alignTop="@id/securityOfficerSkill"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/securityOfficerPlusSkillValue"
+        android:gravity="center"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityOfficerMinusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityOfficerSkill"
+        android:layout_alignTop="@id/securityOfficerSkill"
+        android:layout_toRightOf="@+id/securityOfficerStamina"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/securityOfficerStaminaValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityOfficerSkill"
+        android:layout_alignTop="@id/securityOfficerSkill"
+        android:layout_toRightOf="@+id/securityOfficerMinusStaminaValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityOfficerPlusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityOfficerSkill"
+        android:layout_alignTop="@id/securityOfficerSkill"
+        android:layout_toRightOf="@+id/securityOfficerStaminaValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/securityGuard1"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/securityOfficerSkill"
+        android:gravity="center"
+        android:text="@string/securityGuard1"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/securityGuard1Skill"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/securityGuard1"
+        android:gravity="center"
+        android:text="@string/skill"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityGuard1MinusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard1Skill"
+        android:layout_alignTop="@id/securityGuard1Skill"
+        android:layout_toRightOf="@+id/securityGuard1Skill"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/securityGuard1SkillValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard1Skill"
+        android:layout_alignTop="@id/securityGuard1Skill"
+        android:layout_toRightOf="@+id/securityGuard1MinusSkillValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityGuard1PlusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard1Skill"
+        android:layout_alignTop="@id/securityGuard1Skill"
+        android:layout_toRightOf="@+id/securityGuard1SkillValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/securityGuard1Stamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard1Skill"
+        android:layout_alignTop="@id/securityGuard1Skill"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/securityGuard1PlusSkillValue"
+        android:gravity="center"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityGuard1MinusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard1Skill"
+        android:layout_alignTop="@id/securityGuard1Skill"
+        android:layout_toRightOf="@+id/securityGuard1Stamina"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/securityGuard1StaminaValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard1Skill"
+        android:layout_alignTop="@id/securityGuard1Skill"
+        android:layout_toRightOf="@+id/securityGuard1MinusStaminaValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityGuard1PlusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard1Skill"
+        android:layout_alignTop="@id/securityGuard1Skill"
+        android:layout_toRightOf="@+id/securityGuard1StaminaValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/securityGuard2"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/securityGuard1Skill"
+        android:gravity="center"
+        android:text="@string/securityGuard2"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/securityGuard2Skill"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/securityGuard2"
+        android:gravity="center"
+        android:text="@string/skill"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityGuard2MinusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard2Skill"
+        android:layout_alignTop="@id/securityGuard2Skill"
+        android:layout_toRightOf="@+id/securityGuard2Skill"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/securityGuard2SkillValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard2Skill"
+        android:layout_alignTop="@id/securityGuard2Skill"
+        android:layout_toRightOf="@+id/securityGuard2MinusSkillValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityGuard2PlusSkillValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard2Skill"
+        android:layout_alignTop="@id/securityGuard2Skill"
+        android:layout_toRightOf="@+id/securityGuard2SkillValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/securityGuard2Stamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard2Skill"
+        android:layout_alignTop="@id/securityGuard2Skill"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/securityGuard2PlusSkillValue"
+        android:gravity="center"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityGuard2MinusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard2Skill"
+        android:layout_alignTop="@id/securityGuard2Skill"
+        android:layout_toRightOf="@+id/securityGuard2Stamina"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/securityGuard2StaminaValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard2Skill"
+        android:layout_alignTop="@id/securityGuard2Skill"
+        android:layout_toRightOf="@+id/securityGuard2MinusStaminaValue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/securityGuard2PlusStaminaValue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard2Skill"
+        android:layout_alignTop="@id/securityGuard2Skill"
+        android:layout_toRightOf="@+id/securityGuard2StaminaValue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="@string/plus" />
+
+    <CheckBox
+        android:id="@+id/scienceOfficerLandingParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scienceOfficerSkill"
+        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_margin="0dp"
+        android:layout_alignParentRight="true" />
+
+    <CheckBox
+        android:id="@+id/medicalOfficerLandingParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/medicalOfficerSkill"
+        android:layout_alignTop="@id/medicalOfficerSkill"
+        android:layout_margin="0dp"
+        android:layout_alignParentRight="true"/>
+
+    <CheckBox
+        android:id="@+id/engineeringOfficerLandingParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/engineeringOfficerSkill"
+        android:layout_alignTop="@id/engineeringOfficerSkill"
+        android:layout_margin="0dp"
+        android:layout_alignParentRight="true"/>
+
+    <CheckBox
+        android:id="@+id/securityOfficerLandingParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityOfficerSkill"
+        android:layout_alignTop="@id/securityOfficerSkill"
+        android:layout_margin="0dp"
+        android:layout_alignParentRight="true" />
+
+    <CheckBox
+        android:id="@+id/securityGuard1LandingParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard1Skill"
+        android:layout_alignTop="@id/securityGuard1Skill"
+        android:layout_margin="0dp"
+        android:layout_alignParentRight="true" />
+
+    <CheckBox
+        android:id="@+id/securityGuard2LandingParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/securityGuard2Skill"
+        android:layout_alignTop="@id/securityGuard2Skill"
+        android:layout_alignParentRight="true"
+        android:layout_margin="0dp"/>
+
+    <Button
+        android:id="@+id/restoreStaminaLandingParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/securityGuard2LandingParty"
+        android:text="@string/restoreStaminaLandingParty" />
+
+</RelativeLayout>

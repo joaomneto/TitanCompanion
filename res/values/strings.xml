@@ -285,5 +285,7 @@
     <string name="ship">Ship</string>
     <string name="weapons">Weapons: </string>
     <string name="shields">Shields: </string>
+    <string name="landingParty">Landing</string>
+    <string name="restoreStaminaLandingParty">Restore Landing Party Stamina</string>
 
 </resources>

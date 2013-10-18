@@ -1,4 +1,4 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/adventureVitalStats"
     android:layout_width="fill_parent"
@@ -16,67 +16,141 @@
 
     <TextView
         android:id="@+id/scienceOfficer"
-        android:layout_column="0"
-        android:layout_row="0"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
         android:text="@string/skill"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    
+    <Button
+        android:id="@+id/minusSkillButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusSkillButton"
+        android:layout_alignTop="@+id/plusSkillButton"
+        android:layout_toLeftOf="@+id/statsSkillValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/statsSkillValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusSkillButton"
+        android:layout_alignTop="@+id/plusSkillButton"
+        android:layout_toLeftOf="@+id/plusSkillButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/plusSkillButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignTop="@+id/scienceOfficer"
+        android:text="@string/plus" />
+
     <TextView
         android:id="@+id/scienceOfficerSkill"
-        android:layout_column="1"
-        android:layout_row="0"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/scienceOfficer"
+        android:layout_below="@+id/scienceOfficer"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:text="@string/stamina"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+
+    <Button
+        android:id="@+id/minusStaminaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusStaminaButton"
+        android:layout_alignTop="@+id/plusStaminaButton"
+        android:layout_toLeftOf="@+id/statsStaminaValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/statsStaminaValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusStaminaButton"
+        android:layout_alignTop="@+id/plusStaminaButton"
+        android:layout_toLeftOf="@+id/plusStaminaButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/plusStaminaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignTop="@+id/scienceOfficerSkill"
+        android:text="@string/plus" />
+
     <TextView
         android:id="@+id/textView3"
-        android:layout_column="2"
-        android:layout_row="0"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/scienceOfficerSkill"
+        android:layout_below="@+id/scienceOfficerSkill"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:text="@string/luck"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-
-    <NumberPicker
-        android:id="@+id/skillPicker"
-        android:layout_column="0"
-        android:layout_row="1" />
-
-    <NumberPicker
-        android:id="@+id/staminaPicker"
-        android:layout_column="1"
-        android:layout_row="1" />
-
-    <NumberPicker
-        android:id="@+id/luckPicker"
-        android:layout_column="2"
-        android:layout_row="1" />
-    
     <Button
-        android:id="@+id/buttonTestSkill"
-        android:layout_width="fill_parent"
+        android:id="@+id/minusLuckButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_columnSpan="3"
-        android:layout_row="3"
-        android:text="@string/testSkill"
-        android:onClick="testSkill"/>
-    
+        android:layout_alignBottom="@+id/plusLuckButton"
+        android:layout_alignTop="@+id/plusLuckButton"
+        android:layout_toLeftOf="@+id/statsLuckValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/statsLuckValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusLuckButton"
+        android:layout_alignTop="@+id/plusLuckButton"
+        android:layout_toLeftOf="@+id/plusLuckButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <Button
-        android:id="@+id/buttonTestLuck"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_columnSpan="3"
-        android:layout_row="4"
-        android:text="@string/testLuck" 
-        android:onClick="testLuck"/>
-    
+        android:id="@+id/plusLuckButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignTop="@+id/textView3"
+        android:text="@string/plus" />
+
     <Button
         android:id="@+id/buttonSavePoint"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_columnSpan="3"
-        android:layout_row="5"
-        android:text="@string/saveAdventure" 
-        android:onClick="savepoint"/>
+        android:layout_alignLeft="@+id/buttonTestLuck"
+        android:layout_alignParentBottom="true"
+        android:onClick="savepoint"
+        android:text="@string/saveAdventure" />
 
-</GridLayout>
+    <Button
+        android:id="@+id/buttonTestLuck"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonSavePoint"
+        android:layout_alignLeft="@+id/buttonTestSkill"
+        android:onClick="testLuck"
+        android:text="@string/testLuck" />
+
+    <Button
+        android:id="@+id/buttonTestSkill"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonTestLuck"
+        android:onClick="testSkill"
+        android:text="@string/testSkill" />
+
+</RelativeLayout>

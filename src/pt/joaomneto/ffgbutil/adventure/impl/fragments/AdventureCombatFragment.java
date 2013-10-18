@@ -10,18 +10,29 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
 public class AdventureCombatFragment extends DialogFragment {
 
-	NumberPicker enemySkillValue = null;
-	NumberPicker enemyStaminaValue = null;
-	NumberPicker handicap = null;
+	TextView enemySkillValue = null;
+	TextView enemyStaminaValue = null;
+	TextView handicapValue = null;
 
 	Button attackButton = null;
 	Button testCombatLuckButton = null;
 	Button escapeButton = null;
+
+	Button increaseStaminaButton = null;
+	Button increaseSkillButton = null;
+	Button increaseHandicapButton = null;
+
+	Button decreaseStaminaButton = null;
+	Button decreaseSkillButton = null;
+	Button decreaseHandicapButton = null;
+
+	int enemySkil = 0;
+	int enemyStamina = 0;
+	int handicap = 0;
 
 	TextView combatResult = null;
 
@@ -34,71 +45,109 @@ public class AdventureCombatFragment extends DialogFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(R.layout.fragment_adventure_combat,
-				container, false);
+		View rootView = inflater.inflate(R.layout.fragment_adventure_combat, container, false);
 
 		final Adventure adv = (Adventure) getActivity();
 
-		enemySkillValue = (NumberPicker) rootView
-				.findViewById(R.id.enemyskillPicker);
-		enemyStaminaValue = (NumberPicker) rootView
-				.findViewById(R.id.enemyStaminaPicker);
-		handicap = (NumberPicker) rootView.findViewById(R.id.handicap);
+		enemySkillValue = (TextView) rootView.findViewById(R.id.enemySkill);
+		enemyStaminaValue = (TextView) rootView.findViewById(R.id.enemyStamina);
+		handicapValue = (TextView) rootView.findViewById(R.id.handicap);
 
 		combatResult = (TextView) rootView.findViewById(R.id.combatResult);
 
-		enemySkillValue.setMinValue(0);
-		enemySkillValue.setMaxValue(50);
-		enemySkillValue.setValue(0);
-		enemySkillValue.setWrapSelectorWheel(false);
-		enemyStaminaValue.setMinValue(0);
-		enemyStaminaValue.setMaxValue(50);
-		enemyStaminaValue.setValue(0);
-		enemyStaminaValue.setWrapSelectorWheel(false);
+		increaseStaminaButton = (Button) rootView.findViewById(R.id.plusStaminaButton);
+		increaseSkillButton = (Button) rootView.findViewById(R.id.plusSkillButton);
+		increaseHandicapButton = (Button) rootView.findViewById(R.id.plusHandicapButton);
 
-		final int minValue = -5;
-		final int maxValue = 5;
-		handicap.setMinValue(0);
-		handicap.setMaxValue(maxValue - minValue);
-		handicap.setValue(0 - minValue);
-		handicap.setFormatter(new NumberPicker.Formatter() {
+		decreaseStaminaButton = (Button) rootView.findViewById(R.id.minusStaminaButton);
+		decreaseSkillButton = (Button) rootView.findViewById(R.id.minusSkillButton);
+		decreaseHandicapButton = (Button) rootView.findViewById(R.id.minusHandicapButton);
+
+		attackButton = (Button) rootView.findViewById(R.id.buttonAttack);
+		testCombatLuckButton = (Button) rootView.findViewById(R.id.buttonTestCombatLuck);
+		escapeButton = (Button) rootView.findViewById(R.id.buttonEscape);
+
+		increaseStaminaButton.setOnClickListener(new OnClickListener() {
+
 			@Override
-			public String format(int index) {
-				return Integer.toString(index +minValue);
+			public void onClick(View v) {
+				enemyStamina++;
+				updateValues();
+
 			}
 		});
 
+		increaseSkillButton.setOnClickListener(new OnClickListener() {
 
-		attackButton = (Button) rootView.findViewById(R.id.buttonAttack);
-		testCombatLuckButton = (Button) rootView
-				.findViewById(R.id.buttonTestCombatLuck);
-		escapeButton = (Button) rootView.findViewById(R.id.buttonEscape);
+			@Override
+			public void onClick(View v) {
+				enemySkil++;
+				updateValues();
+
+			}
+		});
+
+		increaseHandicapButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				handicap++;
+				updateValues();
+
+			}
+		});
+
+		decreaseStaminaButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				enemyStamina--;
+				updateValues();
+
+			}
+		});
+
+		decreaseSkillButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				enemySkil--;
+				updateValues();
+
+			}
+		});
+
+		decreaseHandicapButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				handicap--;
+				updateValues();
+
+			}
+		});
 
 		attackButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				if (enemyStaminaValue.getValue() == 0
-						|| adv.getCurrentStamina() == 0)
+				if (enemyStamina == 0 || adv.getCurrentStamina() == 0)
 					return;
 				round = true;
 				combatResult.setText("");
-				
-				int handicapValue = handicap.getValue() + minValue;
-				
-				int me = DiceRoller.roll2D6() + adv.getCurrentSkill()
-						+ handicapValue;
-				int enemy = DiceRoller.roll2D6() + enemySkillValue.getValue();
+
+				int me = DiceRoller.roll2D6() + adv.getCurrentSkill() + handicap;
+				Integer enemySkill = Integer.valueOf(enemySkillValue.getText().toString());
+				int enemy = DiceRoller.roll2D6() + enemySkill;
 
 				if (me > enemy) {
 					draw = false;
 					hit = true;
-					enemyStaminaValue.setValue(enemyStaminaValue.getValue() - 2);
-					if (enemyStaminaValue.getValue() <= 0) {
-						enemyStaminaValue.setValue(0);
+					enemyStamina-= 2;
+					if (enemyStamina <= 0) {
+						enemyStamina = 0;
 						adv.showAlert("You've defeated your opponent!");
 					} else {
 						combatResult.setText("You hit your opponent!");
@@ -114,14 +163,14 @@ public class AdventureCombatFragment extends DialogFragment {
 						adv.setCurrentStamina(0);
 						adv.showAlert("You've been dealt a fatal blow (try your luck!)");
 					} else {
-						combatResult
-								.setText("You've been hit! You lose 2 stamina points");
+						combatResult.setText("You've been hit! You lose 2 stamina points");
 					}
 
 				} else {
 					draw = true;
-					adv.showAlert("You've been dealt a fatal blow (try your luck!)");
+					combatResult.setText("Draw...");
 				}
+				updateValues();
 			}
 		});
 
@@ -136,9 +185,9 @@ public class AdventureCombatFragment extends DialogFragment {
 				if (result) {
 					combatResult.setText("You're lucky!");
 					if (hit) {
-						enemyStaminaValue.setValue(enemyStaminaValue.getValue() - 1);
-						if (enemyStaminaValue.getValue() <= 0) {
-							enemyStaminaValue.setValue(0);
+						enemyStamina--;
+						if (enemyStamina <= 0) {
+							enemyStamina = 0;
 							adv.showAlert("You've defeated your opponent!");
 						}
 					} else {
@@ -147,7 +196,7 @@ public class AdventureCombatFragment extends DialogFragment {
 				} else {
 					combatResult.setText("You're unlucky...");
 					if (hit) {
-						enemyStaminaValue.setValue(enemyStaminaValue.getValue() + 1);
+						enemyStamina++;
 
 					} else {
 						adv.setCurrentStamina(adv.getCurrentStamina() - 1);
@@ -156,6 +205,7 @@ public class AdventureCombatFragment extends DialogFragment {
 						adv.showAlert("You're dead...");
 					}
 				}
+				updateValues();
 			}
 		});
 
@@ -174,13 +224,21 @@ public class AdventureCombatFragment extends DialogFragment {
 					adv.setCurrentStamina(0);
 					adv.showAlert("You've been dealt a fatal blow (try your luck!)");
 				} else {
-					combatResult
-							.setText("You've escaped! You lose 2 stamina points");
+					combatResult.setText("You've escaped! You lose 2 stamina points");
 				}
 
 			}
 		});
 
+
+		updateValues();
+		
 		return rootView;
+	}
+
+	public void updateValues() {
+		enemySkillValue.setText("" + enemySkil);
+		enemyStaminaValue.setText("" + enemyStamina);
+		handicapValue.setText("" + handicap);
 	}
 }

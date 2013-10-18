@@ -6,7 +6,7 @@
     android:orientation="horizontal" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/plusSkillButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="createNewAdventure"
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button1"
+        android:layout_below="@+id/plusSkillButton"
         android:onClick="loadAdventure"
         android:text="@string/load_adventure" />
 

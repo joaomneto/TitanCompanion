@@ -39,7 +39,7 @@ public class STCrewAndShipVitalStatisticsFragment extends Fragment {
 		scienceOfficerSkill = (TextView) rootView
 				.findViewById(R.id.scienceOfficerSkillValue);
 		medicalOfficerSkill = (TextView) rootView
-				.findViewById(R.id.medicalOfficerStaminaValue);
+				.findViewById(R.id.medicalOfficerSkillValue);
 		engineeringOfficerSkill = (TextView) rootView
 				.findViewById(R.id.engineeringOfficerSkillValue);
 		securityOfficerSkill = (TextView) rootView
@@ -78,7 +78,7 @@ public class STCrewAndShipVitalStatisticsFragment extends Fragment {
 		securityGuard2Skill.setText(""+act.getSecurityGuard2Skill());
 		shipWeapons.setText(""+act.getShipWeapons());
 
-		scienceOfficerStamina.setText(""+act.getScienceOfficerSkill());
+		scienceOfficerStamina.setText(""+act.getScienceOfficerStamina());
 		medicalOfficerStamina.setText(""+act.getMedicalOfficerStamina());
 		engineeringOfficerStamina.setText(""+act.getEngineeringOfficerStamina());
 		securityOfficerStamina.setText(""+act.getSecurityOfficerStamina());

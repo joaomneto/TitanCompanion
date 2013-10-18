@@ -191,14 +191,14 @@ public abstract class Adventure extends FragmentActivity {
 
 	public void setCurrentSkill(Integer currentSkill) {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
-		adventureVitalStatsFragment.setSkillValue(currentSkill);
 		this.currentSkill = currentSkill;
+		adventureVitalStatsFragment.updateValues();
 	}
 
 	public void setCurrentLuck(Integer currentLuck) {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
-		adventureVitalStatsFragment.setLuckValue(currentLuck);
 		this.currentLuck = currentLuck;
+		adventureVitalStatsFragment.updateValues();
 	}
 
 	private AdventureVitalStatsFragment getVitalStatsFragment() {
@@ -215,8 +215,8 @@ public abstract class Adventure extends FragmentActivity {
 
 	public void setCurrentStamina(Integer currentStamina) {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
-		adventureVitalStatsFragment.setStaminaValue(currentStamina);
 		this.currentStamina = currentStamina;
+		adventureVitalStatsFragment.updateValues();
 	}
 
 	public void setCurrentReference(Integer currentReference) {
@@ -655,5 +655,7 @@ public abstract class Adventure extends FragmentActivity {
 	public synchronized void setProvisionsValue(Integer provisionsValue) {
 		this.provisionsValue = provisionsValue;
 	}
+
+
 
 }
