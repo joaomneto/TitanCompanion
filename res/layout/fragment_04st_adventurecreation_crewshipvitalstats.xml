@@ -9,18 +9,11 @@
     tools:context=".adventurecreation.fragments.VitalStatisticsFragment" >
 
     <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
         android:id="@+id/scienceOfficer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/section_label"
-        android:layout_below="@+id/section_label"
         android:text="@string/scienceOfficer"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/scienceOfficerSkill"
@@ -37,8 +30,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/scienceOfficerSkill"
         android:layout_below="@+id/scienceOfficerSkill"
+        android:layout_marginTop="5dp"
         android:text="@string/medicalOfficer"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/medicalOfficerSkill"
@@ -55,16 +49,18 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/medicalOfficerSkill"
         android:layout_below="@+id/medicalOfficerSkill"
+        android:layout_marginTop="5dp"
         android:text="@string/engineeringOfficer"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/securityOfficer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView8"
+        android:layout_below="@+id/engineeringOfficerSkill"
+        android:layout_marginTop="5dp"
         android:text="@string/securityOfficer"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/shipWeapons"
@@ -102,7 +98,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/engineeringOfficerSkill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/engineeringOfficer"
@@ -115,8 +111,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/securityOfficer"
         android:layout_below="@+id/securityOfficerSkill"
+        android:layout_marginTop="5dp"
         android:text="@string/securityGuard1"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/securityGuard2"
@@ -124,8 +121,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/securityGuard1Skill"
         android:layout_below="@+id/securityGuard1Skill"
+        android:layout_marginTop="5dp"
         android:text="@string/securityGuard2"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/ship"
@@ -133,7 +131,188 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/securityGuard2Skill"
         android:layout_below="@+id/securityGuard2Skill"
+        android:layout_marginTop="10dp"
         android:text="@string/ship"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/scienceOfficerSkillValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/scienceOfficerSkill"
+        android:layout_below="@+id/scienceOfficer"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/medicalOfficerSkillValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/medicalOfficerSkill"
+        android:layout_below="@+id/medicalOfficer"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/engineeringOfficerSkillValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/engineeringOfficerSkill"
+        android:layout_below="@+id/engineeringOfficer"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/securityOfficerSkillValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/securityOfficerSkill"
+        android:layout_below="@+id/securityOfficer"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/securityGuard1SkillValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/securityGuard1Skill"
+        android:layout_below="@+id/securityGuard1"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/securityGuard2SkillValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/securityGuard2Skill"
+        android:layout_below="@+id/securityGuard2"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/shipWeaponsValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ship"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/shipWeapons"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/medicalOfficerStamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/medicalOfficer"
+        android:layout_marginLeft="5dp"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/engineeringOfficerStamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/engineeringOfficer"
+        android:layout_marginLeft="5dp"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/securityOfficerStamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/securityOfficer"
+        android:layout_marginLeft="5dp"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/securityGuard1Stamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/securityGuard1"
+        android:layout_marginLeft="5dp"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/securityGuard2Stamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/securityGuard2"
+        android:layout_marginLeft="5dp"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/shipShields"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ship"
+        android:layout_marginLeft="5dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/shields"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/scienceOfficerStamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scienceOfficer"
+        android:layout_centerHorizontal="true"
+        android:text="@string/stamina"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+     <TextView
+        android:id="@+id/scienceOfficerStaminaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/scienceOfficerStamina"
+        android:layout_below="@+id/scienceOfficer"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/medicalOfficerStaminaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/medicalOfficerStamina"
+        android:layout_below="@+id/medicalOfficer"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/engineeringOfficerStaminaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/engineeringOfficerStamina"
+        android:layout_below="@+id/engineeringOfficer"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/securityOfficerStaminaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/securityOfficerStamina"
+        android:layout_below="@+id/securityOfficer"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/securityGuard1StaminaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/securityGuard1Stamina"
+        android:layout_below="@+id/securityGuard1"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/securityGuard2StaminaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/securityGuard2Stamina"
+        android:layout_below="@+id/securityGuard2"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/shipShieldsValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ship"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/shipShields"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

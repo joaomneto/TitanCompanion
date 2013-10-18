@@ -88,6 +88,14 @@
             android:name="pt.joaomneto.ffgbutil.adventure.impl.TFODAdventure"
             android:label="@string/tfod" >
         </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.STAdventureCreation"
+            android:label="@string/st" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.STAdventure"
+            android:label="@string/st" >
+        </activity>
     </application>
 
 </manifest>

@@ -275,6 +275,7 @@
     <string name="spellScore">Remaining Spells: </string>
     
     
+    <string name="shipCrewStats">Ship and Crew</string>
     <string name="scienceOfficer">Science Officer</string>
     <string name="medicalOfficer">Medical Officer</string>
     <string name="engineeringOfficer">Engineering Officer</string>
