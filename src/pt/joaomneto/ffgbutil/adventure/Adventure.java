@@ -3,10 +3,13 @@ package pt.joaomneto.ffgbutil.adventure;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
@@ -83,19 +86,26 @@ public abstract class Adventure extends FragmentActivity {
 
 	public Adventure() {
 		super();
-		fragmentConfiguration.put(FRAGMENT_VITAL_STATS,
-				new AdventureFragmentRunner(R.string.vitalStats,
-						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
-		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(
-				R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_PROVISIONS,
-				new AdventureFragmentRunner(R.string.potionsProvisions,
-						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment"));
-		fragmentConfiguration.put(FRAGMENT_EQUIPMENT,
-				new AdventureFragmentRunner(R.string.goldEquipment,
-						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(
-				R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_VITAL_STATS,
+						new AdventureFragmentRunner(R.string.vitalStats,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_COMBAT,
+						new AdventureFragmentRunner(R.string.fights,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_PROVISIONS,
+						new AdventureFragmentRunner(R.string.potionsProvisions,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_EQUIPMENT,
+						new AdventureFragmentRunner(R.string.goldEquipment,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_NOTES,
+						new AdventureFragmentRunner(R.string.notes,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	public static class AdventureFragmentRunner {
@@ -142,52 +152,57 @@ public abstract class Adventure extends FragmentActivity {
 			dir = new File(Environment.getExternalStorageDirectory().getPath()
 					+ "/ffgbutil/" + relDir);
 
-			savedGame = new Properties();
-			savedGame.load(new FileInputStream(new File(dir, fileName)));
-
-			gamebook = Integer.valueOf(savedGame.getProperty("gamebook"));
-			initialSkill = Integer.valueOf(savedGame
-					.getProperty("initialSkill"));
-			initialLuck = Integer.valueOf(savedGame.getProperty("initialLuck"));
-			initialStamina = Integer.valueOf(savedGame
-					.getProperty("initialStamina"));
-			currentSkill = Integer.valueOf(savedGame
-					.getProperty("currentSkill"));
-			currentLuck = Integer.valueOf(savedGame.getProperty("currentLuck"));
-			currentStamina = Integer.valueOf(savedGame
-					.getProperty("currentStamina"));
-
-			String equipmentS = new String(savedGame.getProperty("equipment")
-					.getBytes(java.nio.charset.Charset.forName("ISO-8859-1")));
-			String notesS = new String(savedGame.getProperty("notes").getBytes(
-					java.nio.charset.Charset.forName("ISO-8859-1")));
-			currentReference = Integer.valueOf(savedGame
-					.getProperty("currentReference"));
-
-			if (equipmentS != null) {
-				equipment = new ArrayList<String>();
-				List<String> list = Arrays.asList(equipmentS.split("#"));
-				for (String string : list) {
-					if (!string.isEmpty())
-						equipment.add(string);
-				}
-			}
-
-			if (notesS != null) {
-				notes = new ArrayList<String>();
-				List<String> list = Arrays.asList(notesS.split("#"));
-				for (String string : list) {
-					if (!string.isEmpty())
-						notes.add(string);
-				}
-			}
+			loadGameFromFile(dir, fileName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	private void loadGameFromFile(File dir, String fileName)
+			throws IOException, FileNotFoundException {
+		savedGame = new Properties();
+		savedGame.load(new FileInputStream(new File(dir, fileName)));
 
+		gamebook = Integer.valueOf(savedGame.getProperty("gamebook"));
+		initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"));
+		initialLuck = Integer.valueOf(savedGame.getProperty("initialLuck"));
+		initialStamina = Integer.valueOf(savedGame
+				.getProperty("initialStamina"));
+		currentSkill = Integer.valueOf(savedGame.getProperty("currentSkill"));
+		currentLuck = Integer.valueOf(savedGame.getProperty("currentLuck"));
+		currentStamina = Integer.valueOf(savedGame
+				.getProperty("currentStamina"));
+
+		String equipmentS = new String(savedGame.getProperty("equipment")
+				.getBytes(java.nio.charset.Charset.forName("ISO-8859-1")));
+		String notesS = new String(savedGame.getProperty("notes").getBytes(
+				java.nio.charset.Charset.forName("ISO-8859-1")));
+		currentReference = Integer.valueOf(savedGame
+				.getProperty("currentReference"));
+
+		if (equipmentS != null) {
+			equipment = new ArrayList<String>();
+			List<String> list = Arrays.asList(equipmentS.split("#"));
+			for (String string : list) {
+				if (!string.isEmpty())
+					equipment.add(string);
+			}
+		}
+
+		if (notesS != null) {
+			notes = new ArrayList<String>();
+			List<String> list = Arrays.asList(notesS.split("#"));
+			for (String string : list) {
+				if (!string.isEmpty())
+					notes.add(string);
+			}
+		}
+
+		loadAdventureSpecificValuesFromFile();
+	}
+
+	protected abstract void loadAdventureSpecificValuesFromFile();
 
 	public void setCurrentSkill(Integer currentSkill) {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
@@ -439,223 +454,210 @@ public abstract class Adventure extends FragmentActivity {
 		}
 	}
 
-
-
 	public StandardSectionsPagerAdapter getmSectionsPagerAdapter() {
 		return mSectionsPagerAdapter;
 	}
-
-
 
 	public void setmSectionsPagerAdapter(
 			StandardSectionsPagerAdapter mSectionsPagerAdapter) {
 		this.mSectionsPagerAdapter = mSectionsPagerAdapter;
 	}
 
-
-
 	public ViewPager getmViewPager() {
 		return mViewPager;
 	}
-
-
 
 	public void setmViewPager(ViewPager mViewPager) {
 		this.mViewPager = mViewPager;
 	}
 
-
-
 	public Integer getInitialSkill() {
 		return initialSkill;
 	}
-
-
 
 	public void setInitialSkill(Integer initialSkill) {
 		this.initialSkill = initialSkill;
 	}
 
-
-
 	public Integer getInitialLuck() {
 		return initialLuck;
 	}
-
-
 
 	public void setInitialLuck(Integer initialLuck) {
 		this.initialLuck = initialLuck;
 	}
 
-
-
 	public Integer getInitialStamina() {
 		return initialStamina;
 	}
-
-
 
 	public void setInitialStamina(Integer initialStamina) {
 		this.initialStamina = initialStamina;
 	}
 
-
-
 	public List<String> getEquipment() {
 		return equipment;
 	}
-
-
 
 	public void setEquipment(List<String> equipment) {
 		this.equipment = equipment;
 	}
 
-
-
 	public List<String> getNotes() {
 		return notes;
 	}
-
-
 
 	public void setNotes(List<String> notes) {
 		this.notes = notes;
 	}
 
-
-
 	public Integer getStandardPotion() {
 		return standardPotion;
 	}
-
-
 
 	public void setStandardPotion(Integer standardPotion) {
 		this.standardPotion = standardPotion;
 	}
 
-
-
 	public Integer getGold() {
 		return gold;
 	}
-
-
 
 	public void setGold(Integer gold) {
 		this.gold = gold;
 	}
 
-
-
 	public Integer getProvisions() {
 		return provisions;
 	}
-
-
 
 	public void setProvisions(Integer provisions) {
 		this.provisions = provisions;
 	}
 
-
-
 	public Integer getStandardPotionValue() {
 		return standardPotionValue;
 	}
-
-
 
 	public void setStandardPotionValue(Integer standardPotionValue) {
 		this.standardPotionValue = standardPotionValue;
 	}
 
-
-
 	public File getDir() {
 		return dir;
 	}
-
-
 
 	public void setDir(File dir) {
 		this.dir = dir;
 	}
 
-
-
 	public int getGamebook() {
 		return gamebook;
 	}
-
-
 
 	public void setGamebook(int gamebook) {
 		this.gamebook = gamebook;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
-
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-
 	public Properties getSavedGame() {
 		return savedGame;
 	}
-
-
 
 	public void setSavedGame(Properties savedGame) {
 		this.savedGame = savedGame;
 	}
 
-
-
 	public Integer getCurrentSkill() {
 		return currentSkill;
 	}
-
-
 
 	public Integer getCurrentLuck() {
 		return currentLuck;
 	}
 
-
-
 	public Integer getCurrentStamina() {
 		return currentStamina;
 	}
-
-
 
 	public Integer getCurrentReference() {
 		return currentReference;
 	}
 
-
-
 	public synchronized Integer getProvisionsValue() {
 		return provisionsValue;
 	}
-
-
 
 	public synchronized void setProvisionsValue(Integer provisionsValue) {
 		this.provisionsValue = provisionsValue;
 	}
 
+	@Override
+	protected void onPause() {
+		super.onPause();
 
+		pause();
+	}
+
+	private void pause() {
+		try {
+			File file = new File(dir, "temp" + ".xml");
+
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+
+			storeValuesInFile("-1", bw);
+
+			bw.close();
+		} catch (IOException e) {
+			try {
+				FileWriter fw = new FileWriter(new File(dir, "exception_"
+						+ new Date() + ".txt"), true);
+				PrintWriter pw = new PrintWriter(fw);
+				e.printStackTrace(pw);
+				pw.close();
+				fw.close();
+			} catch (IOException e1) {
+			}
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		resume();
+	}
+
+	private void resume() {
+		try {
+			loadGameFromFile(dir, "temp.xml");
+			
+		} catch (Exception e) {
+			try {
+				FileWriter fw = new FileWriter(new File(dir, "exception_"
+						+ new Date() + ".txt"), true);
+				PrintWriter pw = new PrintWriter(fw);
+				e.printStackTrace(pw);
+				pw.close();
+				fw.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	public void testResume(View v){
+		resume();
+	}
+	
+	public void testPause(View v){
+		pause();
+	}
 
 }

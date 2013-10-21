@@ -2,6 +2,7 @@ package pt.joaomneto.ffgbutil.adventure.impl;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.Properties;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
@@ -80,49 +81,7 @@ public class STAdventure extends Adventure {
 		try {
 			super.onCreate(savedInstanceState);
 			
-			currentScienceOfficerSkill = Integer.valueOf(getSavedGame().getProperty("scienceOfficerSkill"));
-			currentScienceOfficerStamina = Integer.valueOf(getSavedGame().getProperty("scienceOfficerStamina"));
-			currentMedicalOfficerSkill = Integer.valueOf(getSavedGame().getProperty("medicalOfficerSkill"));
-			currentMedicalOfficerStamina = Integer.valueOf(getSavedGame().getProperty("medicalOfficerStamina"));
-			currentEngineeringOfficerSkill = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerSkill"));
-			currentEngineeringOfficerStamina = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerStamina"));
-			currentSecurityOfficerSkill = Integer.valueOf(getSavedGame().getProperty("securityOfficerSkill"));
-			currentSecurityOfficerStamina = Integer.valueOf(getSavedGame().getProperty("securityOfficerStamina"));
-			currentSecurityGuard1Skill = Integer.valueOf(getSavedGame().getProperty("securityGuard1Skill"));
-			currentSecurityGuard1Stamina = Integer.valueOf(getSavedGame().getProperty("securityGuard1Stamina"));
-			currentSecurityGuard2Skill = Integer.valueOf(getSavedGame().getProperty("securityGuard2Skill"));
-			currentSecurityGuard2Stamina = Integer.valueOf(getSavedGame().getProperty("securityGuard2Stamina"));
-			currentShipWeapons = Integer.valueOf(getSavedGame().getProperty("shipWeapons"));
-			currentShipShields = Integer.valueOf(getSavedGame().getProperty("shipShields"));
-
-			initialScienceOfficerSkill = Integer.valueOf(getSavedGame().getProperty("scienceOfficerInitialSkill"));
-			initialScienceOfficerStamina = Integer.valueOf(getSavedGame().getProperty("scienceOfficerInitialStamina"));
-			initialMedicalOfficerSkill = Integer.valueOf(getSavedGame().getProperty("medicalOfficerInitialSkill"));
-			initialMedicalOfficerStamina = Integer.valueOf(getSavedGame().getProperty("medicalOfficerInitialStamina"));
-			initialEngineeringOfficerSkill = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerInitialSkill"));
-			initialEngineeringOfficerStamina = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerInitialStamina"));
-			initialSecurityOfficerSkill = Integer.valueOf(getSavedGame().getProperty("securityOfficerInitialSkill"));
-			initialSecurityOfficerStamina = Integer.valueOf(getSavedGame().getProperty("securityOfficerInitialStamina"));
-			initialSecurityGuard1Skill = Integer.valueOf(getSavedGame().getProperty("securityGuard1InitialSkill"));
-			initialSecurityGuard1Stamina = Integer.valueOf(getSavedGame().getProperty("securityGuard1InitialStamina"));
-			initialSecurityGuard2Skill = Integer.valueOf(getSavedGame().getProperty("securityGuard2InitialSkill"));
-			initialSecurityGuard2Stamina = Integer.valueOf(getSavedGame().getProperty("securityGuard2InitialStamina"));
-			initialShipWeapons = Integer.valueOf(getSavedGame().getProperty("shipInitialWeapons"));
-			initialShipShields = Integer.valueOf(getSavedGame().getProperty("shipInitialShields"));
-
-			landingPartyScienceOfficer = Boolean.valueOf(getSavedGame().getProperty("landingPartyScienceOfficer"));
-			landingPartyMedicalOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("landingPartyMedicalOfficerSkill"));
-			landingPartyEngineeringOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("landingPartyEngineeringOfficerSkill"));
-			landingPartySecurityOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityOfficerSkill"));
-			landingPartySecurityGuard1Skill = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityGuard1Skill"));
-			landingPartySecurityGuard2Skill = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityGuard2Skill"));
-
-			deadPartyScienceOfficer = Boolean.valueOf(getSavedGame().getProperty("deadPartyScienceOfficer"));
-			deadPartyMedicalOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("deadPartyMedicalOfficerSkill"));
-			deadPartyEngineeringOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("deadPartyEngineeringOfficerSkill"));
-			deadPartySecurityOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("deadPartySecurityOfficerSkill"));
-			deadPartySecurityGuard1Skill = Boolean.valueOf(getSavedGame().getProperty("deadPartySecurityGuard1Skill"));
-			deadPartySecurityGuard2Skill = Boolean.valueOf(getSavedGame().getProperty("deadPartySecurityGuard2Skill"));
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -407,6 +366,54 @@ public class STAdventure extends Adventure {
 
 	public void setCurrentShipShields(int currentShipShields) {
 		this.currentShipShields = currentShipShields;
+	}
+
+	@Override
+	protected void loadAdventureSpecificValuesFromFile() {
+		currentScienceOfficerSkill = Integer.valueOf(getSavedGame().getProperty("scienceOfficerSkill"));
+		currentScienceOfficerStamina = Integer.valueOf(getSavedGame().getProperty("scienceOfficerStamina"));
+		currentMedicalOfficerSkill = Integer.valueOf(getSavedGame().getProperty("medicalOfficerSkill"));
+		currentMedicalOfficerStamina = Integer.valueOf(getSavedGame().getProperty("medicalOfficerStamina"));
+		currentEngineeringOfficerSkill = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerSkill"));
+		currentEngineeringOfficerStamina = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerStamina"));
+		currentSecurityOfficerSkill = Integer.valueOf(getSavedGame().getProperty("securityOfficerSkill"));
+		currentSecurityOfficerStamina = Integer.valueOf(getSavedGame().getProperty("securityOfficerStamina"));
+		currentSecurityGuard1Skill = Integer.valueOf(getSavedGame().getProperty("securityGuard1Skill"));
+		currentSecurityGuard1Stamina = Integer.valueOf(getSavedGame().getProperty("securityGuard1Stamina"));
+		currentSecurityGuard2Skill = Integer.valueOf(getSavedGame().getProperty("securityGuard2Skill"));
+		currentSecurityGuard2Stamina = Integer.valueOf(getSavedGame().getProperty("securityGuard2Stamina"));
+		currentShipWeapons = Integer.valueOf(getSavedGame().getProperty("shipWeapons"));
+		currentShipShields = Integer.valueOf(getSavedGame().getProperty("shipShields"));
+
+		initialScienceOfficerSkill = Integer.valueOf(getSavedGame().getProperty("scienceOfficerInitialSkill"));
+		initialScienceOfficerStamina = Integer.valueOf(getSavedGame().getProperty("scienceOfficerInitialStamina"));
+		initialMedicalOfficerSkill = Integer.valueOf(getSavedGame().getProperty("medicalOfficerInitialSkill"));
+		initialMedicalOfficerStamina = Integer.valueOf(getSavedGame().getProperty("medicalOfficerInitialStamina"));
+		initialEngineeringOfficerSkill = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerInitialSkill"));
+		initialEngineeringOfficerStamina = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerInitialStamina"));
+		initialSecurityOfficerSkill = Integer.valueOf(getSavedGame().getProperty("securityOfficerInitialSkill"));
+		initialSecurityOfficerStamina = Integer.valueOf(getSavedGame().getProperty("securityOfficerInitialStamina"));
+		initialSecurityGuard1Skill = Integer.valueOf(getSavedGame().getProperty("securityGuard1InitialSkill"));
+		initialSecurityGuard1Stamina = Integer.valueOf(getSavedGame().getProperty("securityGuard1InitialStamina"));
+		initialSecurityGuard2Skill = Integer.valueOf(getSavedGame().getProperty("securityGuard2InitialSkill"));
+		initialSecurityGuard2Stamina = Integer.valueOf(getSavedGame().getProperty("securityGuard2InitialStamina"));
+		initialShipWeapons = Integer.valueOf(getSavedGame().getProperty("shipInitialWeapons"));
+		initialShipShields = Integer.valueOf(getSavedGame().getProperty("shipInitialShields"));
+
+		landingPartyScienceOfficer = Boolean.valueOf(getSavedGame().getProperty("landingPartyScienceOfficer"));
+		landingPartyMedicalOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("landingPartyMedicalOfficerSkill"));
+		landingPartyEngineeringOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("landingPartyEngineeringOfficerSkill"));
+		landingPartySecurityOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityOfficerSkill"));
+		landingPartySecurityGuard1Skill = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityGuard1Skill"));
+		landingPartySecurityGuard2Skill = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityGuard2Skill"));
+
+		deadPartyScienceOfficer = Boolean.valueOf(getSavedGame().getProperty("deadPartyScienceOfficer"));
+		deadPartyMedicalOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("deadPartyMedicalOfficerSkill"));
+		deadPartyEngineeringOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("deadPartyEngineeringOfficerSkill"));
+		deadPartySecurityOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("deadPartySecurityOfficerSkill"));
+		deadPartySecurityGuard1Skill = Boolean.valueOf(getSavedGame().getProperty("deadPartySecurityGuard1Skill"));
+		deadPartySecurityGuard2Skill = Boolean.valueOf(getSavedGame().getProperty("deadPartySecurityGuard2Skill"));
+		
 	}
 	
 	

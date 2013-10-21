@@ -15,13 +15,7 @@ public class TWOFMAdventure extends Adventure {
 		try {
 			super.onCreate(savedInstanceState);
 
-			setStandardPotion(Integer.valueOf(getSavedGame()
-					.getProperty("standardPotion")));
-			setStandardPotionValue(Integer.valueOf(getSavedGame()
-					.getProperty("standardPotionValue")));
-			setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
-			setProvisions(Integer.valueOf(getSavedGame().getProperty("provisions")));
-			setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
+			
 			
 
 		} catch (Exception e) {
@@ -46,6 +40,18 @@ public class TWOFMAdventure extends Adventure {
 		bw.write("provisions=" + getProvisions() + "\n");
 		bw.write("provisionsvalue=" + getProvisionsValue() + "\n");
 		bw.write("gold=" + getGold() + "\n");
+	}
+
+	@Override
+	protected void loadAdventureSpecificValuesFromFile() {
+		setStandardPotion(Integer.valueOf(getSavedGame()
+				.getProperty("standardPotion")));
+		setStandardPotionValue(Integer.valueOf(getSavedGame()
+				.getProperty("standardPotionValue")));
+		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
+		setProvisions(Integer.valueOf(getSavedGame().getProperty("provisions")));
+		setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
+		
 	}
 	
 

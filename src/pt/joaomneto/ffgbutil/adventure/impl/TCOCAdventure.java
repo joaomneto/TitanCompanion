@@ -21,38 +21,33 @@ public class TCOCAdventure extends Adventure {
 	public TCOCAdventure() {
 		super();
 		fragmentConfiguration.clear();
-		fragmentConfiguration.put(FRAGMENT_VITAL_STATS,
-				new AdventureFragmentRunner(R.string.vitalStats,
-						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
-		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(
-				R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(
-				R.string.spells, "pt.joaomneto.ffgbutil.adventure.impl.fragments.tcoc.TCOCAdventureSpellsFragment"));
-		fragmentConfiguration.put(FRAGMENT_EQUIPMENT,
-				new AdventureFragmentRunner(R.string.goldEquipment,
-						"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(
-				R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_VITAL_STATS,
+						new AdventureFragmentRunner(R.string.vitalStats,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_COMBAT,
+						new AdventureFragmentRunner(R.string.fights,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_SPELLS,
+						new AdventureFragmentRunner(
+								R.string.spells,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.tcoc.TCOCAdventureSpellsFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_EQUIPMENT,
+						new AdventureFragmentRunner(R.string.goldEquipment,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_NOTES,
+						new AdventureFragmentRunner(R.string.notes,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
 			super.onCreate(savedInstanceState);
-
-			setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
-			spellValue = Integer.valueOf(getSavedGame().getProperty("spellValue"));
-			String spellsS = new String(getSavedGame().getProperty("spells")
-					.getBytes(java.nio.charset.Charset.forName("ISO-8859-1")));
-
-			if (spellsS != null) {
-				spells = new ArrayList<String>();
-				List<String> list = Arrays.asList(spellsS.split("#"));
-				for (String string : list) {
-					if (!string.isEmpty())
-						spells.add(string);
-				}
-			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,7 +64,7 @@ public class TCOCAdventure extends Adventure {
 	@Override
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw)
 			throws IOException {
-		
+
 		String spellsS = "";
 
 		if (!spells.isEmpty()) {
@@ -78,7 +73,7 @@ public class TCOCAdventure extends Adventure {
 			}
 			spellsS = spellsS.substring(0, spellsS.length() - 1);
 		}
-		
+
 		bw.write("spells=" + spellsS + "\n");
 		bw.write("spellValue=" + spellValue + "\n");
 		bw.write("gold=" + getGold() + "\n");
@@ -98,6 +93,24 @@ public class TCOCAdventure extends Adventure {
 
 	public void setSpellValue(Integer spellValue) {
 		this.spellValue = spellValue;
+	}
+
+	@Override
+	protected void loadAdventureSpecificValuesFromFile() {
+		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
+		spellValue = Integer.valueOf(getSavedGame().getProperty("spellValue"));
+		String spellsS = new String(getSavedGame().getProperty("spells")
+				.getBytes(java.nio.charset.Charset.forName("ISO-8859-1")));
+
+		if (spellsS != null) {
+			spells = new ArrayList<String>();
+			List<String> list = Arrays.asList(spellsS.split("#"));
+			for (String string : list) {
+				if (!string.isEmpty())
+					spells.add(string);
+			}
+		}
+
 	}
 
 }

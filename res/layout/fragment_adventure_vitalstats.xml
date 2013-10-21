@@ -153,4 +153,23 @@
         android:onClick="testSkill"
         android:text="@string/testSkill" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonTestSkill"
+        android:layout_alignLeft="@+id/buttonTestSkill"
+        android:text="Test Pause"
+        android:onClick="testPause" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_toRightOf="@+id/button1"
+        android:text="Test Resume" 
+        android:onClick="testResume"/>
+
 </RelativeLayout>
