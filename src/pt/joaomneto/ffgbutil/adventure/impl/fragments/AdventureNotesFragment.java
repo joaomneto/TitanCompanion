@@ -2,6 +2,7 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,7 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-public class AdventureNotesFragment extends DialogFragment {
+public class AdventureNotesFragment extends DialogFragment implements AdventureFragment {
 
 	ListView noteList = null;
 
@@ -114,5 +115,13 @@ public class AdventureNotesFragment extends DialogFragment {
 		});
 
 		return rootView;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void refreshScreensFromResume() {
+
+		((ArrayAdapter<String>) noteList.getAdapter()).notifyDataSetChanged();
+		
 	}
 }

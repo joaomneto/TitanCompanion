@@ -1,4 +1,4 @@
-package pt.joaomneto.ffgbutil.adventure.impl.fragments;
+package pt.joaomneto.ffgbutil.adventure.impl.fragments.st;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class AdventureCombatFragment extends DialogFragment implements AdventureFragment {
+public class STPhaserCombatFragment extends DialogFragment implements AdventureFragment {
 
 	TextView enemySkillValue = null;
 	TextView enemyStaminaValue = null;
@@ -41,14 +41,14 @@ public class AdventureCombatFragment extends DialogFragment implements Adventure
 	boolean draw = false;
 	boolean round = false;
 
-	public AdventureCombatFragment() {
+	public STPhaserCombatFragment() {
 
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(R.layout.fragment_adventure_combat, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_04st_adventure_phasercombat, container, false);
 
 		final Adventure adv = (Adventure) getActivity();
 

@@ -9,18 +9,17 @@
     tools:context=".adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment" >
 
     <TextView
-        android:id="@+id/scienceOfficer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/scienceOfficer"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/scienceOfficerSkill"
+        android:id="@+id/textField2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/scienceOfficer"
-        android:layout_below="@+id/scienceOfficer"
+        android:layout_alignLeft="@+id/textField1"
+        android:layout_below="@+id/textField1"
         android:text="@string/skill"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -28,8 +27,8 @@
         android:id="@+id/medicalOfficer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/scienceOfficerSkill"
-        android:layout_below="@+id/scienceOfficerSkill"
+        android:layout_alignLeft="@+id/textField2"
+        android:layout_below="@+id/textField2"
         android:layout_marginTop="5dp"
         android:text="@string/medicalOfficer"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -139,8 +138,8 @@
         android:id="@+id/scienceOfficerSkillValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/scienceOfficerSkill"
-        android:layout_below="@+id/scienceOfficer"
+        android:layout_toRightOf="@+id/textField2"
+        android:layout_below="@+id/textField1"
         android:layout_marginLeft="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     <TextView
@@ -252,7 +251,7 @@
         android:id="@+id/scienceOfficerStamina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scienceOfficer"
+        android:layout_below="@+id/textField1"
         android:layout_centerHorizontal="true"
         android:text="@string/stamina"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -262,7 +261,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/scienceOfficerStamina"
-        android:layout_below="@+id/scienceOfficer"
+        android:layout_below="@+id/textField1"
         android:layout_marginLeft="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     <TextView

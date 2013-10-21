@@ -60,6 +60,12 @@ public class LoadAdventureActivity extends Activity {
 				final String dir_ = files.get(position);
 
 				final File dir = new File(baseDir, dir_);
+				
+
+				File f = new File(dir, "temp.xml");
+				if(f.exists())
+					f.delete();
+				
 				final String[] savepointFiles = dir.list();
 				final String[] names = new String[savepointFiles.length];
 				for (int i = 0; i < savepointFiles.length; i++) {

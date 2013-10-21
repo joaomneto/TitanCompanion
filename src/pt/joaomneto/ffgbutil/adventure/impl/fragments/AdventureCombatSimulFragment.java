@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -15,7 +16,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
-public class AdventureCombatSimulFragment extends DialogFragment {
+public class AdventureCombatSimulFragment extends DialogFragment implements AdventureFragment {
 
 	Button addEnemyButton = null;
 	Button attackButton = null;
@@ -111,5 +112,11 @@ public class AdventureCombatSimulFragment extends DialogFragment {
 		});
 
 		return rootView;
+	}
+
+	@Override
+	public void refreshScreensFromResume() {
+		// TODO Auto-generated method stub
+		
 	}
 }

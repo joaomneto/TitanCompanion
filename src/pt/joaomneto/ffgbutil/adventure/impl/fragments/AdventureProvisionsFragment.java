@@ -2,6 +2,7 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -9,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class AdventureProvisionsFragment extends DialogFragment {
+public class AdventureProvisionsFragment extends DialogFragment implements AdventureFragment {
 
 	TextView potionName = null;
 	TextView potionValue = null;
@@ -30,13 +31,9 @@ public class AdventureProvisionsFragment extends DialogFragment {
 		potionValue = (TextView) rootView.findViewById(R.id.potionValue);
 		provisionsValue = (TextView) rootView.findViewById(R.id.provisionsValue);
 
-		final Adventure adv = (Adventure) getActivity();
 		
-		String[] stringArray = getResources().getStringArray(R.array.standard_potion_list);
-
-		potionName.setText(stringArray[adv.getStandardPotion()]);
-		potionValue.setText("("+adv.getStandardPotionValue()+")");
-		provisionsValue.setText(adv.getProvisions().toString());
+		
+		
 		
 		
 		return rootView;
@@ -49,6 +46,18 @@ public class AdventureProvisionsFragment extends DialogFragment {
 	
 	public void setProvisionsValue(Integer value) {
 		this.provisionsValue.setText(value.toString());
+	}
+
+	@Override
+	public void refreshScreensFromResume() {
+		
+		final Adventure adv = (Adventure) getActivity();
+		String[] stringArray = getResources().getStringArray(R.array.standard_potion_list);
+
+		potionName.setText(stringArray[adv.getStandardPotion()]);
+		potionValue.setText("("+adv.getStandardPotionValue()+")");
+		provisionsValue.setText(adv.getProvisions().toString());
+		
 	}
 	
 

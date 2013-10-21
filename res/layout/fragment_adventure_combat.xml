@@ -11,7 +11,7 @@
     tools:context=".adventure.impl.fragments.AdventureCombatFragment" >
 
     <TextView
-        android:id="@+id/scienceOfficer"
+        android:id="@+id/textField1"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
@@ -44,15 +44,15 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignRight="@+id/buttonAttack"
-        android:layout_alignTop="@+id/scienceOfficer"
+        android:layout_alignTop="@+id/textField1"
         android:text="@string/plus" />
 
     <TextView
-        android:id="@+id/scienceOfficerSkill"
+        android:id="@+id/textField2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignLeft="@+id/scienceOfficer"
-        android:layout_below="@+id/scienceOfficer"
+        android:layout_alignLeft="@+id/textField1"
+        android:layout_below="@+id/textField1"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="@string/stamina"
@@ -82,15 +82,15 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignRight="@+id/buttonAttack"
-        android:layout_alignTop="@+id/scienceOfficerSkill"
+        android:layout_alignTop="@+id/textField2"
         android:text="@string/plus" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignLeft="@+id/scienceOfficerSkill"
-        android:layout_below="@+id/scienceOfficerSkill"
+        android:layout_alignLeft="@+id/textField2"
+        android:layout_below="@+id/textField2"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="@string/handicap"

@@ -133,6 +133,7 @@ public abstract class Adventure extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 
 		try {
+			
 			// Create the adapter that will return a fragment for each of the
 			// three
 			// primary sections of the app.
@@ -636,7 +637,15 @@ public abstract class Adventure extends FragmentActivity {
 
 	private void resume() {
 		try {
+			
+			File f = new File(dir, "temp.xml");
+			
+			if(!f.exists())
+				return;
+			
 			loadGameFromFile(dir, "temp.xml");
+			
+			refreshScreens();
 			
 		} catch (Exception e) {
 			try {
@@ -658,6 +667,16 @@ public abstract class Adventure extends FragmentActivity {
 	
 	public void testPause(View v){
 		pause();
+	}
+	
+	public void refreshScreens(){
+		
+		List<Fragment> afList = getSupportFragmentManager().getFragments();
+		
+		for (Fragment fragment : afList) {
+			AdventureFragment af = (AdventureFragment) fragment;
+			af.refreshScreensFromResume();
+		}
 	}
 
 }

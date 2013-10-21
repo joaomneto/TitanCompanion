@@ -287,5 +287,10 @@
     <string name="shields">Shields: </string>
     <string name="landingParty">Landing</string>
     <string name="restoreStaminaLandingParty">Restore Landing Party Stamina</string>
+    <string name="traveller">Traveller: </string>
+    <string name="enemyShip">Enemy Ship: </string>
+    <string name="shipCombat">Starship Combat</string>
+    <string name="handToHandCombat">Hand to Hand Combat</string>
+    <string name="phaserCombat">PhaserCombat</string>
 
 </resources>

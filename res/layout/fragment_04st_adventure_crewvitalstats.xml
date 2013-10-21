@@ -9,7 +9,7 @@
     tools:context=".adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textField1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -18,7 +18,6 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/scienceOfficer"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_alignParentLeft="true"
@@ -28,11 +27,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/scienceOfficerSkill"
+        android:id="@+id/textField2"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/scienceOfficer"
+        android:layout_below="@+id/textField1"
         android:gravity="center"
         android:text="@string/skill"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -41,9 +40,9 @@
         android:id="@+id/scienceOfficerMinusSkillButton"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/scienceOfficerSkill"
-        android:layout_alignTop="@id/scienceOfficerSkill"
-        android:layout_toRightOf="@+id/scienceOfficerSkill"
+        android:layout_alignBottom="@id/textField2"
+        android:layout_alignTop="@id/textField2"
+        android:layout_toRightOf="@+id/textField2"
         android:gravity="center"
         android:padding="0dp"
         android:text="@string/minus" />
@@ -52,8 +51,8 @@
         android:id="@+id/scienceOfficerSkillValue"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/scienceOfficerSkill"
-        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_alignBottom="@id/textField2"
+        android:layout_alignTop="@id/textField2"
         android:layout_toRightOf="@+id/scienceOfficerMinusSkillButton"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -62,8 +61,8 @@
         android:id="@+id/scienceOfficerPlusSkillButton"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/scienceOfficerSkill"
-        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_alignBottom="@id/textField2"
+        android:layout_alignTop="@id/textField2"
         android:layout_toRightOf="@+id/scienceOfficerSkillValue"
         android:gravity="center"
         android:padding="0dp"
@@ -73,8 +72,8 @@
         android:id="@+id/scienceOfficerStamina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/scienceOfficerSkill"
-        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_alignBottom="@id/textField2"
+        android:layout_alignTop="@id/textField2"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/scienceOfficerPlusSkillButton"
         android:gravity="center"
@@ -85,8 +84,8 @@
         android:id="@+id/scienceOfficerMinusStaminaButton"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/scienceOfficerSkill"
-        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_alignBottom="@id/textField2"
+        android:layout_alignTop="@id/textField2"
         android:layout_toRightOf="@+id/scienceOfficerStamina"
         android:gravity="center"
         android:padding="0dp"
@@ -96,8 +95,8 @@
         android:id="@+id/scienceOfficerStaminaValue"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/scienceOfficerSkill"
-        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_alignBottom="@id/textField2"
+        android:layout_alignTop="@id/textField2"
         android:layout_toRightOf="@+id/scienceOfficerMinusStaminaButton"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -106,8 +105,8 @@
         android:id="@+id/scienceOfficerPlusStaminaButton"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/scienceOfficerSkill"
-        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_alignBottom="@id/textField2"
+        android:layout_alignTop="@id/textField2"
         android:layout_toRightOf="@+id/scienceOfficerStaminaValue"
         android:gravity="center"
         android:padding="0dp"
@@ -118,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/scienceOfficerSkill"
+        android:layout_below="@id/textField2"
         android:gravity="center"
         android:text="@string/medicalOfficer"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -597,8 +596,8 @@
         android:id="@+id/scienceOfficerLandingParty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/scienceOfficerSkill"
-        android:layout_alignTop="@id/scienceOfficerSkill"
+        android:layout_alignBottom="@id/textField2"
+        android:layout_alignTop="@id/textField2"
         android:layout_margin="0dp"
         android:layout_alignParentRight="true" />
 
@@ -648,7 +647,7 @@
         android:layout_margin="0dp"/>
 
     <Button
-        android:id="@+id/restoreStaminaLandingParty"
+        android:id="@+id/restoreStaminaLandingPartyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

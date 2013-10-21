@@ -2,7 +2,6 @@ package pt.joaomneto.ffgbutil.adventure.impl;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Properties;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
@@ -11,12 +10,14 @@ import android.view.Menu;
 
 public class STAdventure extends Adventure {
 
-
 	protected static final int FRAGMENT_VITAL_STATS = 0;
 	protected static final int FRAGMENT_CREW_STATS = 1;
-	protected static final int FRAGMENT_COMBAT = 2;
-	protected static final int FRAGMENT_NOTES = 3;
-	
+	protected static final int FRAGMENT_HANDTOHAND_COMBAT = 2;
+	protected static final int FRAGMENT_PHASER_COMBAT = 3;
+	protected static final int FRAGMENT_SHIP_COMBAT = 4;
+	protected static final int FRAGMENT_COMBAT = 5;
+	protected static final int FRAGMENT_NOTES = 6;
+
 	private int initialScienceOfficerSkill = -1;
 	private int initialMedicalOfficerSkill = -1;
 	private int initialEngineeringOfficerSkill = -1;
@@ -32,7 +33,7 @@ public class STAdventure extends Adventure {
 	private int initialSecurityGuard1Stamina = -1;
 	private int initialSecurityGuard2Stamina = -1;
 	private int initialShipShields = -1;
-	
+
 	private int currentScienceOfficerSkill = -1;
 	private int currentMedicalOfficerSkill = -1;
 	private int currentEngineeringOfficerSkill = -1;
@@ -48,20 +49,20 @@ public class STAdventure extends Adventure {
 	private int currentSecurityGuard1Stamina = -1;
 	private int currentSecurityGuard2Stamina = -1;
 	private int currentShipShields = -1;
-	
+
 	private boolean landingPartyScienceOfficer = false;
-	private boolean landingPartyMedicalOfficerSkill = false;
-	private boolean landingPartyEngineeringOfficerSkill = false;
-	private boolean landingPartySecurityOfficerSkill = false;
-	private boolean landingPartySecurityGuard1Skill = false;
-	private boolean landingPartySecurityGuard2Skill = false;
-	
-	private boolean deadPartyScienceOfficer = false;
-	private boolean deadPartyMedicalOfficerSkill = false;
-	private boolean deadPartyEngineeringOfficerSkill = false;
-	private boolean deadPartySecurityOfficerSkill = false;
-	private boolean deadPartySecurityGuard1Skill = false;
-	private boolean deadPartySecurityGuard2Skill = false;
+	private boolean landingPartyMedicalOfficer = false;
+	private boolean landingPartyEngineeringOfficer = false;
+	private boolean landingPartySecurityOfficer = false;
+	private boolean landingPartySecurityGuard1 = false;
+	private boolean landingPartySecurityGuard2 = false;
+
+	private boolean deadScienceOfficer = false;
+	private boolean deadMedicalOfficer = false;
+	private boolean deadEngineeringOfficer = false;
+	private boolean deadSecurityOfficer = false;
+	private boolean deadSecurityGuard1 = false;
+	private boolean deadSecurityGuard2 = false;
 
 	public STAdventure() {
 		super();
@@ -70,6 +71,12 @@ public class STAdventure extends Adventure {
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_CREW_STATS, new AdventureFragmentRunner(R.string.shipCrewStats,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STCrewStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_HANDTOHAND_COMBAT, new AdventureFragmentRunner(R.string.shipCrewStats,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatSimulFragment"));
+		fragmentConfiguration.put(FRAGMENT_PHASER_COMBAT, new AdventureFragmentRunner(R.string.shipCrewStats,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STPhaserCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_SHIP_COMBAT, new AdventureFragmentRunner(R.string.shipCombat,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STStarshipCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
@@ -80,8 +87,6 @@ public class STAdventure extends Adventure {
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
 			super.onCreate(savedInstanceState);
-			
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -98,50 +103,50 @@ public class STAdventure extends Adventure {
 	@Override
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
-		bw.write("scienceOfficerSkill="+currentScienceOfficerSkill+"\n");
-		bw.write("scienceOfficerStamina="+currentScienceOfficerStamina+"\n");
-		bw.write("medicalOfficerSkill="+currentMedicalOfficerSkill+"\n");
-		bw.write("medicalOfficerStamina="+currentMedicalOfficerStamina+"\n");
-		bw.write("engineeringOfficerSkill="+currentEngineeringOfficerSkill+"\n");
-		bw.write("engineeringOfficerStamina="+currentEngineeringOfficerStamina+"\n");
-		bw.write("securityOfficerSkill="+currentSecurityOfficerSkill+"\n");
-		bw.write("securityOfficerStamina="+currentSecurityOfficerStamina+"\n");
-		bw.write("securityGuard1Skill="+currentSecurityGuard1Skill+"\n");
-		bw.write("securityGuard1Stamina="+currentSecurityGuard1Stamina+"\n");
-		bw.write("securityGuard2Skill="+currentSecurityGuard2Skill+"\n");
-		bw.write("securityGuard2Stamina="+currentSecurityGuard2Stamina+"\n");
-		bw.write("shipWeapons="+currentShipWeapons+"\n");
-		bw.write("shipShields="+currentShipShields+"\n");
-		
-		bw.write("scienceOfficerInitialSkill="+initialScienceOfficerSkill+"\n");
-		bw.write("scienceOfficerInitialStamina="+initialScienceOfficerStamina+"\n");
-		bw.write("medicalOfficerInitialSkill="+initialMedicalOfficerSkill+"\n");
-		bw.write("medicalOfficerInitialStamina="+initialMedicalOfficerStamina+"\n");
-		bw.write("engineeringOfficerInitialSkill="+initialEngineeringOfficerSkill+"\n");
-		bw.write("engineeringOfficerInitialStamina="+initialEngineeringOfficerStamina+"\n");
-		bw.write("securityOfficerInitialSkill="+initialSecurityOfficerSkill+"\n");
-		bw.write("securityOfficerInitialStamina="+initialSecurityOfficerStamina+"\n");
-		bw.write("securityGuard1InitialSkill="+initialSecurityGuard1Skill+"\n");
-		bw.write("securityGuard1InitialStamina="+initialSecurityGuard1Stamina+"\n");
-		bw.write("securityGuard2InitialSkill="+initialSecurityGuard2Skill+"\n");
-		bw.write("securityGuard2InitialStamina="+initialSecurityGuard2Stamina+"\n");
-		bw.write("shipInitialWeapons="+initialShipWeapons+"\n");
-		bw.write("shipInitialShields="+initialShipShields+"\n");
-		
-		bw.write("landingPartyScienceOfficer="+landingPartyScienceOfficer+"\n");
-		bw.write("landingPartyMedicalOfficerSkill="+landingPartyMedicalOfficerSkill+"\n");
-		bw.write("landingPartyEngineeringOfficerSkill="+landingPartyEngineeringOfficerSkill+"\n");
-		bw.write("landingPartySecurityOfficerSkill="+landingPartySecurityOfficerSkill+"\n");
-		bw.write("landingPartySecurityGuard1Skill="+landingPartySecurityGuard1Skill+"\n");
-		bw.write("landingPartySecurityGuard2Skill="+landingPartySecurityGuard2Skill+"\n");
+		bw.write("scienceOfficerSkill=" + currentScienceOfficerSkill + "\n");
+		bw.write("scienceOfficerStamina=" + currentScienceOfficerStamina + "\n");
+		bw.write("medicalOfficerSkill=" + currentMedicalOfficerSkill + "\n");
+		bw.write("medicalOfficerStamina=" + currentMedicalOfficerStamina + "\n");
+		bw.write("engineeringOfficerSkill=" + currentEngineeringOfficerSkill + "\n");
+		bw.write("engineeringOfficerStamina=" + currentEngineeringOfficerStamina + "\n");
+		bw.write("securityOfficerSkill=" + currentSecurityOfficerSkill + "\n");
+		bw.write("securityOfficerStamina=" + currentSecurityOfficerStamina + "\n");
+		bw.write("securityGuard1Skill=" + currentSecurityGuard1Skill + "\n");
+		bw.write("securityGuard1Stamina=" + currentSecurityGuard1Stamina + "\n");
+		bw.write("securityGuard2Skill=" + currentSecurityGuard2Skill + "\n");
+		bw.write("securityGuard2Stamina=" + currentSecurityGuard2Stamina + "\n");
+		bw.write("shipWeapons=" + currentShipWeapons + "\n");
+		bw.write("shipShields=" + currentShipShields + "\n");
 
-		bw.write("deadPartyScienceOfficer="+deadPartyScienceOfficer+"\n");
-		bw.write("deadPartyMedicalOfficerSkill="+deadPartyMedicalOfficerSkill+"\n");
-		bw.write("deadPartyEngineeringOfficerSkill="+deadPartyEngineeringOfficerSkill+"\n");
-		bw.write("deadPartySecurityOfficerSkill="+deadPartySecurityOfficerSkill+"\n");
-		bw.write("deadPartySecurityGuard1Skill="+deadPartySecurityGuard1Skill+"\n");
-		bw.write("deadPartySecurityGuard2Skill="+deadPartySecurityGuard2Skill+"\n");
-		
+		bw.write("scienceOfficerInitialSkill=" + initialScienceOfficerSkill + "\n");
+		bw.write("scienceOfficerInitialStamina=" + initialScienceOfficerStamina + "\n");
+		bw.write("medicalOfficerInitialSkill=" + initialMedicalOfficerSkill + "\n");
+		bw.write("medicalOfficerInitialStamina=" + initialMedicalOfficerStamina + "\n");
+		bw.write("engineeringOfficerInitialSkill=" + initialEngineeringOfficerSkill + "\n");
+		bw.write("engineeringOfficerInitialStamina=" + initialEngineeringOfficerStamina + "\n");
+		bw.write("securityOfficerInitialSkill=" + initialSecurityOfficerSkill + "\n");
+		bw.write("securityOfficerInitialStamina=" + initialSecurityOfficerStamina + "\n");
+		bw.write("securityGuard1InitialSkill=" + initialSecurityGuard1Skill + "\n");
+		bw.write("securityGuard1InitialStamina=" + initialSecurityGuard1Stamina + "\n");
+		bw.write("securityGuard2InitialSkill=" + initialSecurityGuard2Skill + "\n");
+		bw.write("securityGuard2InitialStamina=" + initialSecurityGuard2Stamina + "\n");
+		bw.write("shipInitialWeapons=" + initialShipWeapons + "\n");
+		bw.write("shipInitialShields=" + initialShipShields + "\n");
+
+		bw.write("landingPartyScienceOfficer=" + landingPartyScienceOfficer + "\n");
+		bw.write("landingPartyMedicalOfficer=" + landingPartyMedicalOfficer + "\n");
+		bw.write("landingPartyEngineeringOfficer=" + landingPartyEngineeringOfficer + "\n");
+		bw.write("landingPartySecurityOfficer=" + landingPartySecurityOfficer + "\n");
+		bw.write("landingPartySecurityGuard1=" + landingPartySecurityGuard1 + "\n");
+		bw.write("landingPartySecurityGuard2=" + landingPartySecurityGuard2 + "\n");
+
+		bw.write("deadPartyScienceOfficer=" + deadScienceOfficer + "\n");
+		bw.write("deadMedicalOfficer=" + deadMedicalOfficer + "\n");
+		bw.write("deadEngineeringOfficer=" + deadEngineeringOfficer + "\n");
+		bw.write("deadSecurityOfficer=" + deadSecurityOfficer + "\n");
+		bw.write("deadSecurityGuard1=" + deadSecurityGuard1 + "\n");
+		bw.write("deadSecurityGuard2=" + deadSecurityGuard2 + "\n");
+
 	}
 
 	public int getInitialScienceOfficerSkill() {
@@ -390,7 +395,8 @@ public class STAdventure extends Adventure {
 		initialMedicalOfficerSkill = Integer.valueOf(getSavedGame().getProperty("medicalOfficerInitialSkill"));
 		initialMedicalOfficerStamina = Integer.valueOf(getSavedGame().getProperty("medicalOfficerInitialStamina"));
 		initialEngineeringOfficerSkill = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerInitialSkill"));
-		initialEngineeringOfficerStamina = Integer.valueOf(getSavedGame().getProperty("engineeringOfficerInitialStamina"));
+		initialEngineeringOfficerStamina = Integer.valueOf(getSavedGame().getProperty(
+				"engineeringOfficerInitialStamina"));
 		initialSecurityOfficerSkill = Integer.valueOf(getSavedGame().getProperty("securityOfficerInitialSkill"));
 		initialSecurityOfficerStamina = Integer.valueOf(getSavedGame().getProperty("securityOfficerInitialStamina"));
 		initialSecurityGuard1Skill = Integer.valueOf(getSavedGame().getProperty("securityGuard1InitialSkill"));
@@ -401,22 +407,115 @@ public class STAdventure extends Adventure {
 		initialShipShields = Integer.valueOf(getSavedGame().getProperty("shipInitialShields"));
 
 		landingPartyScienceOfficer = Boolean.valueOf(getSavedGame().getProperty("landingPartyScienceOfficer"));
-		landingPartyMedicalOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("landingPartyMedicalOfficerSkill"));
-		landingPartyEngineeringOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("landingPartyEngineeringOfficerSkill"));
-		landingPartySecurityOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityOfficerSkill"));
-		landingPartySecurityGuard1Skill = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityGuard1Skill"));
-		landingPartySecurityGuard2Skill = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityGuard2Skill"));
+		landingPartyMedicalOfficer = Boolean.valueOf(getSavedGame().getProperty("landingPartyMedicalOfficer"));
+		landingPartyEngineeringOfficer = Boolean.valueOf(getSavedGame().getProperty("landingPartyEngineeringOfficer"));
+		landingPartySecurityOfficer = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityOfficer"));
+		landingPartySecurityGuard1 = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityGuard1"));
+		landingPartySecurityGuard2 = Boolean.valueOf(getSavedGame().getProperty("landingPartySecurityGuard2"));
 
-		deadPartyScienceOfficer = Boolean.valueOf(getSavedGame().getProperty("deadPartyScienceOfficer"));
-		deadPartyMedicalOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("deadPartyMedicalOfficerSkill"));
-		deadPartyEngineeringOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("deadPartyEngineeringOfficerSkill"));
-		deadPartySecurityOfficerSkill = Boolean.valueOf(getSavedGame().getProperty("deadPartySecurityOfficerSkill"));
-		deadPartySecurityGuard1Skill = Boolean.valueOf(getSavedGame().getProperty("deadPartySecurityGuard1Skill"));
-		deadPartySecurityGuard2Skill = Boolean.valueOf(getSavedGame().getProperty("deadPartySecurityGuard2Skill"));
-		
+		deadScienceOfficer = Boolean.valueOf(getSavedGame().getProperty("deadScienceOfficer"));
+		deadMedicalOfficer = Boolean.valueOf(getSavedGame().getProperty("deadMedicalOfficer"));
+		deadEngineeringOfficer = Boolean.valueOf(getSavedGame().getProperty("deadEngineeringOfficer"));
+		deadSecurityOfficer = Boolean.valueOf(getSavedGame().getProperty("deadSecurityOfficer"));
+		deadSecurityGuard1 = Boolean.valueOf(getSavedGame().getProperty("deadSecurityGuard1"));
+		deadSecurityGuard2 = Boolean.valueOf(getSavedGame().getProperty("deadSecurityGuard2"));
+
 	}
-	
-	
 
-	
+	public synchronized boolean isLandingPartyScienceOfficer() {
+		return landingPartyScienceOfficer;
+	}
+
+	public synchronized boolean isLandingPartyMedicalOfficer() {
+		return landingPartyMedicalOfficer;
+	}
+
+	public synchronized boolean isLandingPartyEngineeringOfficer() {
+		return landingPartyEngineeringOfficer;
+	}
+
+	public synchronized boolean isLandingPartySecurityOfficer() {
+		return landingPartySecurityOfficer;
+	}
+
+	public synchronized boolean isLandingPartySecurityGuard1() {
+		return landingPartySecurityGuard1;
+	}
+
+	public synchronized boolean isLandingPartySecurityGuard2() {
+		return landingPartySecurityGuard2;
+	}
+
+	public synchronized boolean isDeadScienceOfficer() {
+		return deadScienceOfficer;
+	}
+
+	public synchronized boolean isDeadMedicalOfficer() {
+		return deadMedicalOfficer;
+	}
+
+	public synchronized boolean isDeadEngineeringOfficer() {
+		return deadEngineeringOfficer;
+	}
+
+	public synchronized boolean isDeadSecurityOfficer() {
+		return deadSecurityOfficer;
+	}
+
+	public synchronized boolean isDeadSecurityGuard1() {
+		return deadSecurityGuard1;
+	}
+
+	public synchronized boolean isDeadSecurityGuard2() {
+		return deadSecurityGuard2;
+	}
+
+	public synchronized void setLandingPartyScienceOfficer(boolean landingPartyScienceOfficer) {
+		this.landingPartyScienceOfficer = landingPartyScienceOfficer;
+	}
+
+	public synchronized void setLandingPartyMedicalOfficer(boolean landingPartyMedicalOfficer) {
+		this.landingPartyMedicalOfficer = landingPartyMedicalOfficer;
+	}
+
+	public synchronized void setLandingPartyEngineeringOfficer(boolean landingPartyEngineeringOfficer) {
+		this.landingPartyEngineeringOfficer = landingPartyEngineeringOfficer;
+	}
+
+	public synchronized void setLandingPartySecurityOfficer(boolean landingPartySecurityOfficer) {
+		this.landingPartySecurityOfficer = landingPartySecurityOfficer;
+	}
+
+	public synchronized void setLandingPartySecurityGuard1(boolean landingPartySecurityGuard1) {
+		this.landingPartySecurityGuard1 = landingPartySecurityGuard1;
+	}
+
+	public synchronized void setLandingPartySecurityGuard2(boolean landingPartySecurityGuard2) {
+		this.landingPartySecurityGuard2 = landingPartySecurityGuard2;
+	}
+
+	public synchronized void setDeadScienceOfficer(boolean deadScienceOfficer) {
+		this.deadScienceOfficer = deadScienceOfficer;
+	}
+
+	public synchronized void setDeadMedicalOfficer(boolean deadMedicalOfficer) {
+		this.deadMedicalOfficer = deadMedicalOfficer;
+	}
+
+	public synchronized void setDeadEngineeringOfficer(boolean deadEngineeringOfficer) {
+		this.deadEngineeringOfficer = deadEngineeringOfficer;
+	}
+
+	public synchronized void setDeadSecurityOfficer(boolean deadSecurityOfficer) {
+		this.deadSecurityOfficer = deadSecurityOfficer;
+	}
+
+	public synchronized void setDeadSecurityGuard1(boolean deadSecurityGuard1) {
+		this.deadSecurityGuard1 = deadSecurityGuard1;
+	}
+
+	public synchronized void setDeadSecurityGuard2(boolean deadSecurityGuard2) {
+		this.deadSecurityGuard2 = deadSecurityGuard2;
+	}
+
 }

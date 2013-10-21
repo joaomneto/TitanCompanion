@@ -2,6 +2,7 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,7 +22,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class AdventureEquipmentFragment extends DialogFragment {
+public class AdventureEquipmentFragment extends DialogFragment implements AdventureFragment {
 
 	ListView equipmentList = null;
 
@@ -30,17 +31,14 @@ public class AdventureEquipmentFragment extends DialogFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(R.layout.fragment_adventure_equipment,
-				container, false);
+		View rootView = inflater.inflate(R.layout.fragment_adventure_equipment, container, false);
 
 		final Adventure adv = (Adventure) getActivity();
 
 		equipmentList = (ListView) rootView.findViewById(R.id.equipmentList);
-		Button buttonAddNote = (Button) rootView
-				.findViewById(R.id.buttonAddEquipment);
+		Button buttonAddNote = (Button) rootView.findViewById(R.id.buttonAddEquipment);
 
 		final TextView goldValue = (TextView) rootView.findViewById(R.id.goldValue);
 		goldValue.setText(adv.getGold().toString());
@@ -55,29 +53,24 @@ public class AdventureEquipmentFragment extends DialogFragment {
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
 				input.setInputType(InputType.TYPE_CLASS_NUMBER);
-				InputMethodManager imm = (InputMethodManager) adv
-						.getSystemService(Context.INPUT_METHOD_SERVICE);
+				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
 				input.requestFocus();
 				alert.setView(input);
 
-				alert.setPositiveButton("Ok",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								String value = input.getText().toString();
-								adv.setGold(Integer.valueOf(value));
-								goldValue.setText(value);
-							}
-						});
+				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						String value = input.getText().toString();
+						adv.setGold(Integer.valueOf(value));
+						goldValue.setText(value);
+					}
+				});
 
-				alert.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								// Canceled.
-							}
-						});
+				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						// Canceled.
+					}
+				});
 
 				alert.show();
 
@@ -94,68 +87,54 @@ public class AdventureEquipmentFragment extends DialogFragment {
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
-				InputMethodManager imm = (InputMethodManager) adv
-						.getSystemService(Context.INPUT_METHOD_SERVICE);
+				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
 				input.requestFocus();
 				alert.setView(input);
 
-				alert.setPositiveButton("Ok",
-						new DialogInterface.OnClickListener() {
-							@SuppressWarnings("unchecked")
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								String value = input.getText().toString();
-								adv.getEquipment().add(value);
-								((ArrayAdapter<String>) equipmentList
-										.getAdapter()).notifyDataSetChanged();
-							}
-						});
+				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+					@SuppressWarnings("unchecked")
+					public void onClick(DialogInterface dialog, int whichButton) {
+						String value = input.getText().toString();
+						adv.getEquipment().add(value);
+						((ArrayAdapter<String>) equipmentList.getAdapter()).notifyDataSetChanged();
+					}
+				});
 
-				alert.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								// Canceled.
-							}
-						});
+				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						// Canceled.
+					}
+				});
 
 				alert.show();
 			}
 
 		});
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv,
-				android.R.layout.simple_list_item_1, android.R.id.text1,
-				adv.getEquipment());
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv, android.R.layout.simple_list_item_1,
+				android.R.id.text1, adv.getEquipment());
 		equipmentList.setAdapter(adapter);
 
 		equipmentList.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Delete equipment?")
-						.setCancelable(false)
-						.setNegativeButton("Close",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int id) {
-										dialog.cancel();
-									}
-								});
-				builder.setPositiveButton("Ok",
-						new DialogInterface.OnClickListener() {
-							@SuppressWarnings("unchecked")
-							public void onClick(DialogInterface dialog,
-									int which) {
-								adv.getEquipment().remove(position);
-								((ArrayAdapter<String>) equipmentList
-										.getAdapter()).notifyDataSetChanged();
+				builder.setTitle("Delete equipment?").setCancelable(false)
+						.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
 							}
 						});
+				builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+					@SuppressWarnings("unchecked")
+					public void onClick(DialogInterface dialog, int which) {
+						adv.getEquipment().remove(position);
+						((ArrayAdapter<String>) equipmentList.getAdapter()).notifyDataSetChanged();
+					}
+				});
 
 				AlertDialog alert = builder.create();
 				alert.show();
@@ -166,7 +145,11 @@ public class AdventureEquipmentFragment extends DialogFragment {
 
 		return rootView;
 	}
-	
-	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void refreshScreensFromResume() {
+		((ArrayAdapter<String>) equipmentList.getAdapter()).notifyDataSetChanged();
+	}
 
 }
