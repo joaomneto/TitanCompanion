@@ -19,6 +19,7 @@ import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -133,7 +134,7 @@ public abstract class Adventure extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 
 		try {
-			
+						
 			// Create the adapter that will return a fragment for each of the
 			// three
 			// primary sections of the app.
@@ -343,7 +344,7 @@ public abstract class Adventure extends FragmentActivity {
 
 		// Set an EditText view to get user input
 		final EditText input = new EditText(this);
-		InputMethodManager imm = (InputMethodManager) this
+		final InputMethodManager imm = (InputMethodManager) this
 				.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
 				InputMethodManager.HIDE_IMPLICIT_ONLY);
@@ -355,6 +356,7 @@ public abstract class Adventure extends FragmentActivity {
 			public void onClick(DialogInterface dialog, int whichButton) {
 
 				try {
+					imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
 					String ref = input.getText().toString();
 					File file = new File(dir, ref + ".xml");
 
@@ -363,6 +365,7 @@ public abstract class Adventure extends FragmentActivity {
 					storeValuesInFile(ref, bw);
 
 					bw.close();
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -373,7 +376,7 @@ public abstract class Adventure extends FragmentActivity {
 		alert.setNegativeButton("Cancel",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
-						// Canceled.
+						imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
 					}
 				});
 

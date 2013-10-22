@@ -12,11 +12,9 @@ public class STAdventure extends Adventure {
 
 	protected static final int FRAGMENT_VITAL_STATS = 0;
 	protected static final int FRAGMENT_CREW_STATS = 1;
-	protected static final int FRAGMENT_HANDTOHAND_COMBAT = 2;
-	protected static final int FRAGMENT_PHASER_COMBAT = 3;
-	protected static final int FRAGMENT_SHIP_COMBAT = 4;
-	protected static final int FRAGMENT_COMBAT = 5;
-	protected static final int FRAGMENT_NOTES = 6;
+	protected static final int FRAGMENT_PHASER_COMBAT = 2;
+	protected static final int FRAGMENT_SHIP_COMBAT = 3;
+	protected static final int FRAGMENT_NOTES = 4;
 
 	private int initialScienceOfficerSkill = -1;
 	private int initialMedicalOfficerSkill = -1;
@@ -71,14 +69,10 @@ public class STAdventure extends Adventure {
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_CREW_STATS, new AdventureFragmentRunner(R.string.shipCrewStats,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STCrewStatsFragment"));
-		fragmentConfiguration.put(FRAGMENT_HANDTOHAND_COMBAT, new AdventureFragmentRunner(R.string.shipCrewStats,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatSimulFragment"));
-		fragmentConfiguration.put(FRAGMENT_PHASER_COMBAT, new AdventureFragmentRunner(R.string.shipCrewStats,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STPhaserCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_PHASER_COMBAT, new AdventureFragmentRunner(R.string.combat,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_SHIP_COMBAT, new AdventureFragmentRunner(R.string.shipCombat,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STStarshipCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
