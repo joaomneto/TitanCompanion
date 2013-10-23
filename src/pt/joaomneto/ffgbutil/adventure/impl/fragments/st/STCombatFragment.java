@@ -9,6 +9,7 @@ import pt.joaomneto.ffgbutil.adventure.impl.STAdventure;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -43,11 +44,66 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 		combatResult = (TextView) rootView.findViewById(R.id.combatResult);
 		attackButton = (Button) rootView.findViewById(R.id.attackButton);
 		addCombatButton = (Button) rootView.findViewById(R.id.addCombatButton);
-		
-		final InputMethodManager mgr = (InputMethodManager) adv
-				.getSystemService(Context.INPUT_METHOD_SERVICE);
-		
-		final GridLayout grid = (GridLayout) rootView.findViewById(R.id.combatantGrid);;
+
+		final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+		final GridLayout grid = (GridLayout) rootView.findViewById(R.id.combatantGrid);
+
+		// TEST CODE
+		View combatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_combatant, null);
+
+		TextView crewCombatant = (TextView) combatantView.getRootView().findViewById(R.id.crewCombatant);
+		TextView enemyCombatant = (TextView) combatantView.getRootView().findViewById(R.id.enemyCombatant);
+
+		crewCombatant.setText("Engineering Officer");
+		enemyCombatant.setText("Sk:18 St:22");
+
+		combatantView.setBackgroundColor(Color.GREEN);
+		grid.addView(combatantView);
+
+		combatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_combatant, null);
+
+		crewCombatant = (TextView) combatantView.getRootView().findViewById(R.id.crewCombatant);
+		enemyCombatant = (TextView) combatantView.getRootView().findViewById(R.id.enemyCombatant);
+
+		crewCombatant.setText("Medical Officer");
+		enemyCombatant.setText("Sk:14 St:23");
+
+		combatantView.setBackgroundColor(Color.GREEN);
+		grid.addView(combatantView);
+
+		combatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_combatant, null);
+
+		crewCombatant = (TextView) combatantView.getRootView().findViewById(R.id.crewCombatant);
+		enemyCombatant = (TextView) combatantView.getRootView().findViewById(R.id.enemyCombatant);
+
+		crewCombatant.setText("Security Officer");
+		enemyCombatant.setText("Sk:15 St:25");
+
+		combatantView.setBackgroundColor(Color.GREEN);
+		grid.addView(combatantView);
+
+		combatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_combatant, null);
+
+		crewCombatant = (TextView) combatantView.getRootView().findViewById(R.id.crewCombatant);
+		enemyCombatant = (TextView) combatantView.getRootView().findViewById(R.id.enemyCombatant);
+
+		crewCombatant.setText("Engineering Officer");
+		enemyCombatant.setText("Sk:16 St:26");
+
+		combatantView.setBackgroundColor(Color.GREEN);
+		grid.addView(combatantView);
+
+		combatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_combatant, null);
+
+		crewCombatant = (TextView) combatantView.getRootView().findViewById(R.id.crewCombatant);
+		enemyCombatant = (TextView) combatantView.getRootView().findViewById(R.id.enemyCombatant);
+
+		crewCombatant.setText("Security Guard 1");
+		enemyCombatant.setText("Sk:17 St:27");
+
+		combatantView.setBackgroundColor(Color.GREEN);
+		grid.addView(combatantView);
 
 		addCombatButton.setOnClickListener(new OnClickListener() {
 
@@ -55,7 +111,8 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 			public void onClick(View v) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
-				final View addCombatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_add_combatant, null);
+				final View addCombatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_add_combatant,
+						null);
 
 				builder.setTitle("Add Combatants").setCancelable(false)
 						.setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -64,25 +121,29 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 								dialog.cancel();
 							}
 						});
-				
+
 				builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
-						
-						final View combatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_combatant, null);
-						
-						TextView crewCombatant = (TextView) combatantView.getRootView().findViewById(R.id.crewCombatant);
-						TextView enemyCombatant = (TextView) combatantView.getRootView().findViewById(R.id.enemyCombatant);
-						
+
+						final View combatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_combatant,
+								null);
+
+						TextView crewCombatant = (TextView) combatantView.getRootView()
+								.findViewById(R.id.crewCombatant);
+						TextView enemyCombatant = (TextView) combatantView.getRootView().findViewById(
+								R.id.enemyCombatant);
+
 						EditText enemySkillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
 						EditText enemyStaminaValue = (EditText) addCombatantView.findViewById(R.id.enemyStaminaValue);
 						Spinner crewmanSpinner = (Spinner) addCombatantView.findViewById(R.id.crewmanSpinner);
-						
+
 						crewCombatant.setText(crewmanSpinner.getSelectedItem().toString());
-						enemyCombatant.setText("Sk:"+enemySkillValue.getText().toString()+" St:"+enemyStaminaValue.getText().toString());
-						
+						enemyCombatant.setText("Sk:" + enemySkillValue.getText().toString() + " St:"
+								+ enemyStaminaValue.getText().toString());
+
 						grid.addView(combatantView);
-						
+
 					}
 				});
 
