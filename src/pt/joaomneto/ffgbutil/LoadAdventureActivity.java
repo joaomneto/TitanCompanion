@@ -3,6 +3,7 @@ package pt.joaomneto.ffgbutil;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 
 import pt.joaomneto.ffgbutil.consts.Constants;
@@ -66,7 +67,15 @@ public class LoadAdventureActivity extends Activity {
 				if(f.exists())
 					f.delete();
 				
-				final String[] savepointFiles = dir.list();
+				final String[] savepointFiles = dir.list(new FilenameFilter() {
+					
+					@Override
+					public boolean accept(File dir, String filename) {
+						if(filename.startsWith("exception"))
+							return false;
+						return true;
+					}
+				});
 				final String[] names = new String[savepointFiles.length];
 				for (int i = 0; i < savepointFiles.length; i++) {
 					names[i] = savepointFiles[i].substring(0,

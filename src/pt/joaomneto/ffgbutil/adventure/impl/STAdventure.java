@@ -10,6 +10,10 @@ import android.view.Menu;
 
 public class STAdventure extends Adventure {
 
+	public enum STCrewman {
+		CAPTAIN, SCIENCE_OFFICER, MEDICAL_OFFICER, ENGINEERING_OFFICER, SECURITY_OFFICER, SECURITY_GUARD1, SECURITY_GUARD2
+	}
+
 	protected static final int FRAGMENT_VITAL_STATS = 0;
 	protected static final int FRAGMENT_CREW_STATS = 1;
 	protected static final int FRAGMENT_PHASER_COMBAT = 2;
@@ -510,6 +514,63 @@ public class STAdventure extends Adventure {
 
 	public synchronized void setDeadSecurityGuard2(boolean deadSecurityGuard2) {
 		this.deadSecurityGuard2 = deadSecurityGuard2;
+	}
+
+	public void setCrewmanStamina(STCrewman crewman, int value) {
+
+		switch (crewman) {
+		case CAPTAIN:
+			setCurrentStamina(value);
+			break;
+		case SCIENCE_OFFICER:
+			setCurrentScienceOfficerStamina(value);
+			break;
+		case MEDICAL_OFFICER:
+			setCurrentMedicalOfficerStamina(value);
+			break;
+		case ENGINEERING_OFFICER:
+			setCurrentEngineeringOfficerStamina(value);
+			break;
+		case SECURITY_OFFICER:
+			setCurrentSecurityOfficerStamina(value);
+			break;
+		case SECURITY_GUARD1:
+			setCurrentSecurityGuard1Stamina(value);
+			break;
+		case SECURITY_GUARD2:
+			setCurrentSecurityGuard2Stamina(value);
+			break;
+		default:
+			break;
+		}
+
+	}
+	
+	public void setCrewmanDead(STCrewman crewman) {
+
+		switch (crewman) {
+		case SCIENCE_OFFICER:
+			setDeadScienceOfficer(true);
+			break;
+		case MEDICAL_OFFICER:
+			setDeadMedicalOfficer(true);
+			break;
+		case ENGINEERING_OFFICER:
+			setDeadEngineeringOfficer(true);
+			break;
+		case SECURITY_OFFICER:
+			setDeadSecurityOfficer(true);
+			break;
+		case SECURITY_GUARD1:
+			setDeadSecurityGuard1(true);
+			break;
+		case SECURITY_GUARD2:
+			setDeadSecurityGuard2(true);
+			break;
+		default:
+			break;
+		}
+
 	}
 
 }

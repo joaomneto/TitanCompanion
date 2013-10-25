@@ -16,7 +16,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
 public class STCrewStatsFragment extends Fragment implements AdventureFragment {
-
+	
 	private TextView scienceOfficerSkillValue = null;
 	private TextView scienceOfficerStaminaValue = null;
 	private Button scienceOfficerMinusSkillButton = null;

@@ -20,23 +20,12 @@
         android:maxLines="5"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <GridLayout
-        android:id="@+id/combatantGrid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/combatResult"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:rowCount="3"
-        android:columnCount="2"/>
-
     <Button
         android:id="@+id/attackButton"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/addCombatButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/combatantGrid"
         android:text="@string/combatTurn" />
 
     <Button
@@ -44,8 +33,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/attackButton"
-        android:layout_alignLeft="@+id/combatantGrid"
         android:text="@string/addCombat" />
+
+    <LinearLayout
+        android:id="@+id/combat1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:padding="0dp"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/combat2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/combat1"
+        android:padding="0dp"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/combat3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/combat2"
+        android:padding="0dp"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/combat4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/combat3"
+        android:padding="0dp"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/combat5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/combat4"
+        android:padding="0dp"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/combat6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/combat5"
+        android:padding="0dp"
+        android:orientation="vertical" />
 
     <Switch
         android:id="@+id/switch1"
@@ -53,8 +90,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/addCombatButton"
         android:layout_alignBottom="@+id/addCombatButton"
-        android:layout_alignRight="@+id/attackButton"
-        android:textOn="Phaser"
-        android:textOff="Normal"  />
+        android:layout_toRightOf="@+id/addCombatButton"
+        android:textOff="Normal"
+        android:textOn="Phaser" />
 
 </RelativeLayout>

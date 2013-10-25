@@ -301,5 +301,6 @@
     <string name="enemySkill">Enemy Skill: </string>
     <string name="enemyStamina">Enemy Stamina: </string>
     <string name="versus">vs.</string>
+    <string name="captain">Captain</string>
 
 </resources>

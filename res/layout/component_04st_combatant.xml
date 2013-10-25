@@ -1,33 +1,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/adventureVitalStats"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
-    android:padding="10dp">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="3dp" >
 
-    <TextView
-        android:id="@+id/crewCombatant"
+    <RadioButton 
+        android:id="@+id/combatSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
+        android:clickable="false"/>
+    
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/combatText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/crewCombatant"
-        android:text="@string/versus"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_toRightOf="@id/combatSelected"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/enemyCombatant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView2"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+    <View
+        android:id="@+id/separator"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/combatSelected"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/darker_gray" />
 
 </RelativeLayout>
