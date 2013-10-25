@@ -19,7 +19,6 @@ import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
