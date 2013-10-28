@@ -99,6 +99,11 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 
 			@Override
 			public void onClick(View v) {
+				
+				if(combatPositions.size()==0)
+					return;
+					
+				
 				if (combatStarted == false) {
 					combatStarted = true;
 					combatTypeSwitch.setClickable(false);
@@ -120,9 +125,19 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 
 	private void handToHandCombatTurn() {
 
+
+		CombatPosition position = combatPositions.get(currentCombat);
+		
+		while(position == null){
+			currentCombat++;
+			if (currentCombat == maxRows) {
+				currentCombat = 0;
+			}
+			position = combatPositions.get(currentCombat);
+		}
+		
 		if (!finishedCombats.contains(currentCombat)) {
 			STAdventure adv = (STAdventure) getActivity();
-			CombatPosition position = combatPositions.get(currentCombat);
 			int crewmanDiceRoll = DiceRoller.roll2D6();
 			int crewmanSkill = adv.getCrewmanSkill(position.getCrewman());
 			int crewmanAttackStrength = crewmanDiceRoll + crewmanSkill;
@@ -132,7 +147,7 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 			String crewmanString = adv.getStringForCrewman(position.getCrewman());
 			if (crewmanAttackStrength > enemyAttackStrength) {
 				if (!position.isDefenseOnly()) {
-					position.setCurrentStamina(Math.min(0, position.getCurrentSkill() - 2));
+					position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - 2));
 					combatResult.setText("The " + crewmanString + " has hit his enemy! (" + crewmanDiceRoll + " + "
 							+ crewmanSkill + ") vs (" + enemyDiceRoll + " + " + position.getCurrentSkill() + ")");
 				} else {
@@ -142,7 +157,7 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 				}
 			} else if (crewmanAttackStrength < enemyAttackStrength) {
 				adv.setCrewmanStamina(position.getCrewman(),
-						(Math.min(0, adv.getCrewmanStamina(position.getCrewman()) - 2)));
+						(Math.max(0, adv.getCrewmanStamina(position.getCrewman()) - 2)));
 				combatResult.setText("The " + crewmanString + " has been hit... (" + crewmanDiceRoll + " + "
 						+ crewmanSkill + ") vs (" + enemyDiceRoll + " + " + position.getCurrentSkill() + ")");
 			} else {
@@ -352,14 +367,16 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 
 	@Override
 	public void refreshScreensFromResume() {
-		for (int i = 0; i <= maxRows; i++) {
+		for (int i = 0; i < maxRows; i++) {
 			LinearLayout ll = (LinearLayout) rootView.findViewById(gridRows[i]);
 			RadioButton combatSelected = (RadioButton) ll.findViewById(R.id.combatSelected);
 			TextView combatText = (TextView) ll.findViewById(R.id.combatText);
 
-			combatSelected.setChecked(i == currentCombat);
+			if(combatSelected!=null)
+				combatSelected.setChecked(i == currentCombat);
 
-			combatText.setText(combatPositions.get(i).toGridString());
+			if(combatText!=null)
+				combatText.setText(combatPositions.get(i).toGridString());
 		}
 	}
 

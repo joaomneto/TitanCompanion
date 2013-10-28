@@ -86,30 +86,31 @@ public class STAdventure extends Adventure {
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STStarshipCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
-
-		stringToCrewmanMap = new HashMap<String, STAdventure.STCrewman>();
-		stringToCrewmanMap.put(getResources().getString(R.string.captain), STCrewman.CAPTAIN);
-		stringToCrewmanMap.put(getResources().getString(R.string.medicalOfficer), STCrewman.MEDICAL_OFFICER);
-		stringToCrewmanMap.put(getResources().getString(R.string.scienceOfficer), STCrewman.SCIENCE_OFFICER);
-		stringToCrewmanMap.put(getResources().getString(R.string.engineeringOfficer), STCrewman.ENGINEERING_OFFICER);
-		stringToCrewmanMap.put(getResources().getString(R.string.securityOfficer), STCrewman.SECURITY_OFFICER);
-		stringToCrewmanMap.put(getResources().getString(R.string.securityGuard1), STCrewman.SECURITY_GUARD1);
-		stringToCrewmanMap.put(getResources().getString(R.string.securityGuard2), STCrewman.SECURITY_GUARD2);
-
-		crewmanToStringMap = new HashMap<STAdventure.STCrewman, String>();
-		crewmanToStringMap.put(STCrewman.CAPTAIN, getResources().getString(R.string.captain));
-		crewmanToStringMap.put(STCrewman.MEDICAL_OFFICER, getResources().getString(R.string.medicalOfficer));
-		crewmanToStringMap.put(STCrewman.SCIENCE_OFFICER, getResources().getString(R.string.scienceOfficer));
-		crewmanToStringMap.put(STCrewman.ENGINEERING_OFFICER, getResources().getString(R.string.engineeringOfficer));
-		crewmanToStringMap.put(STCrewman.SECURITY_OFFICER, getResources().getString(R.string.securityOfficer));
-		crewmanToStringMap.put(STCrewman.SECURITY_GUARD1, getResources().getString(R.string.securityGuard1));
-		crewmanToStringMap.put(STCrewman.SECURITY_GUARD2, getResources().getString(R.string.securityGuard2));
+		
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
 			super.onCreate(savedInstanceState);
+			
+			stringToCrewmanMap = new HashMap<String, STAdventure.STCrewman>();
+			stringToCrewmanMap.put(getResources().getString(R.string.captain), STCrewman.CAPTAIN);
+			stringToCrewmanMap.put(getResources().getString(R.string.medicalOfficer), STCrewman.MEDICAL_OFFICER);
+			stringToCrewmanMap.put(getResources().getString(R.string.scienceOfficer), STCrewman.SCIENCE_OFFICER);
+			stringToCrewmanMap.put(getResources().getString(R.string.engineeringOfficer), STCrewman.ENGINEERING_OFFICER);
+			stringToCrewmanMap.put(getResources().getString(R.string.securityOfficer), STCrewman.SECURITY_OFFICER);
+			stringToCrewmanMap.put(getResources().getString(R.string.securityGuard1), STCrewman.SECURITY_GUARD1);
+			stringToCrewmanMap.put(getResources().getString(R.string.securityGuard2), STCrewman.SECURITY_GUARD2);
+
+			crewmanToStringMap = new HashMap<STAdventure.STCrewman, String>();
+			crewmanToStringMap.put(STCrewman.CAPTAIN, getResources().getString(R.string.captain));
+			crewmanToStringMap.put(STCrewman.MEDICAL_OFFICER, getResources().getString(R.string.medicalOfficer));
+			crewmanToStringMap.put(STCrewman.SCIENCE_OFFICER, getResources().getString(R.string.scienceOfficer));
+			crewmanToStringMap.put(STCrewman.ENGINEERING_OFFICER, getResources().getString(R.string.engineeringOfficer));
+			crewmanToStringMap.put(STCrewman.SECURITY_OFFICER, getResources().getString(R.string.securityOfficer));
+			crewmanToStringMap.put(STCrewman.SECURITY_GUARD1, getResources().getString(R.string.securityGuard1));
+			crewmanToStringMap.put(STCrewman.SECURITY_GUARD2, getResources().getString(R.string.securityGuard2));
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -227,7 +227,7 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 				if (adv.getCurrentScienceOfficerStamina() > 0)
 					adv.setCurrentScienceOfficerStamina(adv.getCurrentScienceOfficerStamina() - 1);
 				if (adv.getCurrentScienceOfficerStamina() == 0)
-					adv.setDeadScienceOfficer(true);
+					adv.setCrewmanDead(STCrewman.SCIENCE_OFFICER);
 				refreshScreensFromResume();
 			}
 		});
@@ -245,7 +245,7 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 				if (adv.getCurrentMedicalOfficerStamina() > 0)
 					adv.setCurrentMedicalOfficerStamina(adv.getCurrentMedicalOfficerStamina() - 1);
 				if (adv.getCurrentMedicalOfficerStamina() == 0)
-					adv.setDeadMedicalOfficer(true);
+					adv.setCrewmanDead(STCrewman.MEDICAL_OFFICER);
 				refreshScreensFromResume();
 			}
 		});
@@ -263,7 +263,7 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 				if (adv.getCurrentEngineeringOfficerStamina() > 0)
 					adv.setCurrentEngineeringOfficerStamina(adv.getCurrentEngineeringOfficerStamina() - 1);
 				if (adv.getCurrentEngineeringOfficerStamina() == 0)
-					adv.setDeadEngineeringOfficer(true);
+					adv.setCrewmanDead(STCrewman.ENGINEERING_OFFICER);
 				refreshScreensFromResume();
 			}
 		});
@@ -281,7 +281,7 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 				if (adv.getCurrentSecurityOfficerStamina() > 0)
 					adv.setCurrentSecurityOfficerStamina(adv.getCurrentSecurityOfficerStamina() - 1);
 				if (adv.getCurrentSecurityOfficerStamina() == 0)
-					adv.setDeadSecurityOfficer(true);
+					adv.setCrewmanDead(STCrewman.SECURITY_OFFICER);
 				refreshScreensFromResume();
 			}
 		});
@@ -299,7 +299,7 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 				if (adv.getCurrentSecurityGuard1Stamina() > 0)
 					adv.setCurrentSecurityGuard1Stamina(adv.getCurrentSecurityGuard1Stamina() - 1);
 				if (adv.getCurrentSecurityGuard1Stamina() == 0)
-					adv.setDeadSecurityGuard1(true);
+					adv.setCrewmanDead(STCrewman.SECURITY_GUARD1);
 				refreshScreensFromResume();
 			}
 		});
@@ -317,7 +317,7 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 				if (adv.getCurrentSecurityGuard2Stamina() > 0)
 					adv.setCurrentSecurityGuard2Stamina(adv.getCurrentSecurityGuard2Stamina() - 1);
 				if (adv.getCurrentSecurityGuard2Stamina() == 0)
-					adv.setDeadSecurityGuard2(true);
+					adv.setCrewmanDead(STCrewman.SECURITY_GUARD2);
 				refreshScreensFromResume();
 			}
 		});
