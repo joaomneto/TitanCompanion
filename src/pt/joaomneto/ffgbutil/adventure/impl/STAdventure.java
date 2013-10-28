@@ -2,9 +2,13 @@ package pt.joaomneto.ffgbutil.adventure.impl;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STCrewStatsFragment;
+import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -66,6 +70,9 @@ public class STAdventure extends Adventure {
 	private boolean deadSecurityGuard1 = false;
 	private boolean deadSecurityGuard2 = false;
 
+	private Map<String, STCrewman> stringToCrewmanMap;
+	private Map<STCrewman, String> crewmanToStringMap;
+
 	public STAdventure() {
 		super();
 		fragmentConfiguration.clear();
@@ -79,6 +86,24 @@ public class STAdventure extends Adventure {
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STStarshipCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+
+		stringToCrewmanMap = new HashMap<String, STAdventure.STCrewman>();
+		stringToCrewmanMap.put(getResources().getString(R.string.captain), STCrewman.CAPTAIN);
+		stringToCrewmanMap.put(getResources().getString(R.string.medicalOfficer), STCrewman.MEDICAL_OFFICER);
+		stringToCrewmanMap.put(getResources().getString(R.string.scienceOfficer), STCrewman.SCIENCE_OFFICER);
+		stringToCrewmanMap.put(getResources().getString(R.string.engineeringOfficer), STCrewman.ENGINEERING_OFFICER);
+		stringToCrewmanMap.put(getResources().getString(R.string.securityOfficer), STCrewman.SECURITY_OFFICER);
+		stringToCrewmanMap.put(getResources().getString(R.string.securityGuard1), STCrewman.SECURITY_GUARD1);
+		stringToCrewmanMap.put(getResources().getString(R.string.securityGuard2), STCrewman.SECURITY_GUARD2);
+
+		crewmanToStringMap = new HashMap<STAdventure.STCrewman, String>();
+		crewmanToStringMap.put(STCrewman.CAPTAIN, getResources().getString(R.string.captain));
+		crewmanToStringMap.put(STCrewman.MEDICAL_OFFICER, getResources().getString(R.string.medicalOfficer));
+		crewmanToStringMap.put(STCrewman.SCIENCE_OFFICER, getResources().getString(R.string.scienceOfficer));
+		crewmanToStringMap.put(STCrewman.ENGINEERING_OFFICER, getResources().getString(R.string.engineeringOfficer));
+		crewmanToStringMap.put(STCrewman.SECURITY_OFFICER, getResources().getString(R.string.securityOfficer));
+		crewmanToStringMap.put(STCrewman.SECURITY_GUARD1, getResources().getString(R.string.securityGuard1));
+		crewmanToStringMap.put(STCrewman.SECURITY_GUARD2, getResources().getString(R.string.securityGuard2));
 	}
 
 	@Override
@@ -516,6 +541,66 @@ public class STAdventure extends Adventure {
 		this.deadSecurityGuard2 = deadSecurityGuard2;
 	}
 
+	public int getCrewmanStamina(STCrewman crewman) {
+
+		switch (crewman) {
+		case CAPTAIN:
+			return getCurrentStamina();
+
+		case SCIENCE_OFFICER:
+			return getCurrentScienceOfficerStamina();
+
+		case MEDICAL_OFFICER:
+			return getCurrentMedicalOfficerStamina();
+
+		case ENGINEERING_OFFICER:
+			return getCurrentEngineeringOfficerStamina();
+
+		case SECURITY_OFFICER:
+			return getCurrentSecurityOfficerStamina();
+
+		case SECURITY_GUARD1:
+			return getCurrentSecurityGuard1Stamina();
+
+		case SECURITY_GUARD2:
+			return getCurrentSecurityGuard2Stamina();
+
+		default:
+			return 0;
+		}
+
+	}
+
+	public int getCrewmanSkill(STCrewman crewman) {
+
+		switch (crewman) {
+		case CAPTAIN:
+			return getCurrentSkill();
+
+		case SCIENCE_OFFICER:
+			return getCurrentScienceOfficerSkill();
+
+		case MEDICAL_OFFICER:
+			return getCurrentMedicalOfficerSkill();
+
+		case ENGINEERING_OFFICER:
+			return getCurrentEngineeringOfficerSkill();
+
+		case SECURITY_OFFICER:
+			return getCurrentSecurityOfficerSkill();
+
+		case SECURITY_GUARD1:
+			return getCurrentSecurityGuard1Skill();
+
+		case SECURITY_GUARD2:
+			return getCurrentSecurityGuard2Skill();
+
+		default:
+			return 0;
+		}
+
+	}
+
 	public void setCrewmanStamina(STCrewman crewman, int value) {
 
 		switch (crewman) {
@@ -545,32 +630,64 @@ public class STAdventure extends Adventure {
 		}
 
 	}
-	
+
 	public void setCrewmanDead(STCrewman crewman) {
 
 		switch (crewman) {
 		case SCIENCE_OFFICER:
 			setDeadScienceOfficer(true);
+			setCurrentScienceOfficerSkill(currentScienceOfficerSkill-2);
+			setCurrentScienceOfficerStamina(DiceRoller.roll2D6()+12);
+			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.SCIENCE_OFFICER);
 			break;
 		case MEDICAL_OFFICER:
 			setDeadMedicalOfficer(true);
+			setCurrentMedicalOfficerSkill(currentMedicalOfficerSkill-2);
+			setCurrentMedicalOfficerStamina(DiceRoller.roll2D6()+12);
+			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.MEDICAL_OFFICER);
 			break;
 		case ENGINEERING_OFFICER:
 			setDeadEngineeringOfficer(true);
+			setCurrentEngineeringOfficerSkill(currentEngineeringOfficerSkill-2);
+			setCurrentEngineeringOfficerStamina(DiceRoller.roll2D6()+12);
+			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.ENGINEERING_OFFICER);
 			break;
 		case SECURITY_OFFICER:
 			setDeadSecurityOfficer(true);
+			setCurrentSecurityOfficerSkill(currentSecurityOfficerSkill-2);
+			setCurrentSecurityOfficerStamina(DiceRoller.roll2D6()+12);
+			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.SECURITY_OFFICER);
 			break;
 		case SECURITY_GUARD1:
 			setDeadSecurityGuard1(true);
+			setCurrentSecurityGuard1Skill(currentSecurityGuard1Skill-2);
+			setCurrentSecurityGuard1Stamina(DiceRoller.roll2D6()+12);
+			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD1);
 			break;
 		case SECURITY_GUARD2:
 			setDeadSecurityGuard2(true);
+			setCurrentSecurityGuard2Skill(currentSecurityGuard2Skill-2);
+			setCurrentSecurityGuard2Stamina(DiceRoller.roll2D6()+12);
+			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD2);
 			break;
 		default:
 			break;
 		}
 
+	}
+
+	public STCrewman getCrewmanForString(String value) {
+		return stringToCrewmanMap.get(value);
+	}
+
+	public String getStringForCrewman(STCrewman value) {
+		return crewmanToStringMap.get(value);
+	}
+
+	private STCrewStatsFragment getSTCrewStatsFragment() {
+		STCrewStatsFragment stcrewStatsFragment = (STCrewStatsFragment) getSupportFragmentManager().getFragments().get(
+				FRAGMENT_CREW_STATS);
+		return stcrewStatsFragment;
 	}
 
 }

@@ -3,6 +3,7 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments.st;
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure;
+import pt.joaomneto.ffgbutil.adventure.impl.STAdventure.STCrewman;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +17,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
 public class STCrewStatsFragment extends Fragment implements AdventureFragment {
-	
+
 	private TextView scienceOfficerSkillValue = null;
 	private TextView scienceOfficerStaminaValue = null;
 	private Button scienceOfficerMinusSkillButton = null;
@@ -225,6 +226,8 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 			public void onClick(View v) {
 				if (adv.getCurrentScienceOfficerStamina() > 0)
 					adv.setCurrentScienceOfficerStamina(adv.getCurrentScienceOfficerStamina() - 1);
+				if (adv.getCurrentScienceOfficerStamina() == 0)
+					adv.setDeadScienceOfficer(true);
 				refreshScreensFromResume();
 			}
 		});
@@ -241,6 +244,8 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 			public void onClick(View v) {
 				if (adv.getCurrentMedicalOfficerStamina() > 0)
 					adv.setCurrentMedicalOfficerStamina(adv.getCurrentMedicalOfficerStamina() - 1);
+				if (adv.getCurrentMedicalOfficerStamina() == 0)
+					adv.setDeadMedicalOfficer(true);
 				refreshScreensFromResume();
 			}
 		});
@@ -257,6 +262,8 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 			public void onClick(View v) {
 				if (adv.getCurrentEngineeringOfficerStamina() > 0)
 					adv.setCurrentEngineeringOfficerStamina(adv.getCurrentEngineeringOfficerStamina() - 1);
+				if (adv.getCurrentEngineeringOfficerStamina() == 0)
+					adv.setDeadEngineeringOfficer(true);
 				refreshScreensFromResume();
 			}
 		});
@@ -273,6 +280,8 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 			public void onClick(View v) {
 				if (adv.getCurrentSecurityOfficerStamina() > 0)
 					adv.setCurrentSecurityOfficerStamina(adv.getCurrentSecurityOfficerStamina() - 1);
+				if (adv.getCurrentSecurityOfficerStamina() == 0)
+					adv.setDeadSecurityOfficer(true);
 				refreshScreensFromResume();
 			}
 		});
@@ -289,6 +298,8 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 			public void onClick(View v) {
 				if (adv.getCurrentSecurityGuard1Stamina() > 0)
 					adv.setCurrentSecurityGuard1Stamina(adv.getCurrentSecurityGuard1Stamina() - 1);
+				if (adv.getCurrentSecurityGuard1Stamina() == 0)
+					adv.setDeadSecurityGuard1(true);
 				refreshScreensFromResume();
 			}
 		});
@@ -305,6 +316,8 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 			public void onClick(View v) {
 				if (adv.getCurrentSecurityGuard2Stamina() > 0)
 					adv.setCurrentSecurityGuard2Stamina(adv.getCurrentSecurityGuard2Stamina() - 1);
+				if (adv.getCurrentSecurityGuard2Stamina() == 0)
+					adv.setDeadSecurityGuard2(true);
 				refreshScreensFromResume();
 			}
 		});
@@ -399,6 +412,13 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 
 				adv.setCurrentStamina(Math.min(adv.getInitialStamina(), adv.getCurrentStamina() + 2));
 
+				scienceOfficerLandingParty.setChecked(false);
+				medicalOfficerLandingParty.setChecked(false);
+				engineeringOfficerLandingParty.setChecked(false);
+				securityOfficerLandingParty.setChecked(false);
+				securityGuard1LandingParty.setChecked(false);
+				securityGuard2LandingParty.setChecked(false);
+
 				refreshScreensFromResume();
 
 			}
@@ -433,6 +453,23 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 		securityOfficerLandingParty.setChecked(adv.isLandingPartySecurityOfficer());
 		securityGuard1LandingParty.setChecked(adv.isLandingPartySecurityGuard1());
 		securityGuard2LandingParty.setChecked(adv.isLandingPartySecurityGuard2());
+
+	}
+
+	public void disableCrewmanLandingPartyOption(STCrewman scienceOfficer) {
+		scienceOfficerLandingParty.setChecked(false);
+		medicalOfficerLandingParty.setChecked(false);
+		engineeringOfficerLandingParty.setChecked(false);
+		securityOfficerLandingParty.setChecked(false);
+		securityGuard1LandingParty.setChecked(false);
+		securityGuard2LandingParty.setChecked(false);
+
+		scienceOfficerLandingParty.setClickable(false);
+		medicalOfficerLandingParty.setClickable(false);
+		engineeringOfficerLandingParty.setClickable(false);
+		securityOfficerLandingParty.setClickable(false);
+		securityGuard1LandingParty.setClickable(false);
+		securityGuard2LandingParty.setClickable(false);
 
 	}
 
