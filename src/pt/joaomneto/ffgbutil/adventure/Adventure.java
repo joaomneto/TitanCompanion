@@ -1,9 +1,11 @@
 package pt.joaomneto.ffgbutil.adventure;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -133,7 +135,7 @@ public abstract class Adventure extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 
 		try {
-						
+
 			// Create the adapter that will return a fragment for each of the
 			// three
 			// primary sections of the app.
@@ -362,14 +364,16 @@ public abstract class Adventure extends FragmentActivity {
 					BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
 					storeValuesInFile(ref, bw);
+					storeNotesForRestart(dir);
 
 					bw.close();
-					
+
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
+
 		});
 
 		alert.setNegativeButton("Cancel",
@@ -380,6 +384,43 @@ public abstract class Adventure extends FragmentActivity {
 				});
 
 		alert.show();
+	}
+
+	private String readFile(File file) throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String line = null;
+		StringBuilder stringBuilder = new StringBuilder();
+		String ls = System.getProperty("line.separator");
+
+		while ((line = reader.readLine()) != null) {
+			stringBuilder.append(line);
+			stringBuilder.append(ls);
+		}
+
+		return stringBuilder.toString();
+	}
+
+	private void storeNotesForRestart(File dir) throws IOException {
+
+		String notesS = "";
+
+		if (!notes.isEmpty()) {
+			for (String note : notes) {
+				notesS += note + "#";
+			}
+			notesS = notesS.substring(0, notesS.length() - 1);
+		}
+		
+		String initialContent = readFile(new File(dir, "initial.xml"));
+		initialContent = initialContent.replace("notes=", "notes="+notesS);
+		
+		FileWriter fileWriter = new FileWriter(new File(dir, "initial_full_notes.xml"));
+		BufferedWriter bw = new BufferedWriter(fileWriter);
+		bw.write(initialContent);
+		
+		bw.close();
+		fileWriter.close();
+
 	}
 
 	public void storeValuesInFile(String ref, BufferedWriter bw)
@@ -639,16 +680,16 @@ public abstract class Adventure extends FragmentActivity {
 
 	private void resume() {
 		try {
-			
+
 			File f = new File(dir, "temp.xml");
-			
-			if(!f.exists())
+
+			if (!f.exists())
 				return;
-			
+
 			loadGameFromFile(dir, "temp.xml");
-			
+
 			refreshScreens();
-			
+
 		} catch (Exception e) {
 			try {
 				FileWriter fw = new FileWriter(new File(dir, "exception_"
@@ -662,19 +703,19 @@ public abstract class Adventure extends FragmentActivity {
 			}
 		}
 	}
-	
-	public void testResume(View v){
+
+	public void testResume(View v) {
 		resume();
 	}
-	
-	public void testPause(View v){
+
+	public void testPause(View v) {
 		pause();
 	}
-	
-	public void refreshScreens(){
-		
+
+	public void refreshScreens() {
+
 		List<Fragment> afList = getSupportFragmentManager().getFragments();
-		
+
 		for (Fragment fragment : afList) {
 			AdventureFragment af = (AdventureFragment) fragment;
 			af.refreshScreensFromResume();

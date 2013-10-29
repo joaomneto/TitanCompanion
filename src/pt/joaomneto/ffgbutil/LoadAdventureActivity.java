@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 import pt.joaomneto.ffgbutil.consts.Constants;
 import android.app.Activity;
@@ -61,25 +63,32 @@ public class LoadAdventureActivity extends Activity {
 				final String dir_ = files.get(position);
 
 				final File dir = new File(baseDir, dir_);
-				
 
 				File f = new File(dir, "temp.xml");
-				if(f.exists())
+				if (f.exists())
 					f.delete();
-				
-				final String[] savepointFiles = dir.list(new FilenameFilter() {
-					
+
+				final File[] savepointFiles = dir.listFiles(new FilenameFilter() {
+
 					@Override
 					public boolean accept(File dir, String filename) {
-						if(filename.startsWith("exception"))
+						if (filename.startsWith("exception"))
 							return false;
 						return true;
 					}
 				});
+
+				Arrays.sort(savepointFiles, new Comparator<File>() {
+					public int compare(File f1, File f2) {
+						return Long.valueOf(f1.lastModified()).compareTo(
+								f2.lastModified());
+					}
+				});
+
 				final String[] names = new String[savepointFiles.length];
 				for (int i = 0; i < savepointFiles.length; i++) {
-					names[i] = savepointFiles[i].substring(0,
-							savepointFiles[i].length() - 4);
+					names[i] = savepointFiles[i].getName().substring(0,
+							savepointFiles[i].getName().length() - 4);
 				}
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(_this);
@@ -92,8 +101,7 @@ public class LoadAdventureActivity extends Activity {
 
 						try {
 							BufferedReader bufferedReader = new BufferedReader(
-									new FileReader(new File(dir,
-											savepointFiles[which])));
+									new FileReader(savepointFiles[which]));
 
 							while (bufferedReader.ready()) {
 								String line = bufferedReader.readLine();
@@ -108,7 +116,7 @@ public class LoadAdventureActivity extends Activity {
 									.getRunActivity(_this, gamebook));
 
 							intent.putExtra(ADVENTURE_FILE,
-									savepointFiles[which]);
+									savepointFiles[which].getName());
 							intent.putExtra(ADVENTURE_DIR, dir_);
 							startActivity(intent);
 						} catch (Exception e) {
@@ -163,21 +171,20 @@ public class LoadAdventureActivity extends Activity {
 			}
 		});
 	}
-	
+
 	static public boolean deleteDirectory(File path) {
-	    if( path.exists() ) {
-	      File[] files = path.listFiles();
-	      for(int i=0; i<files.length; i++) {
-	         if(files[i].isDirectory()) {
-	           deleteDirectory(files[i]);
-	         }
-	         else {
-	           files[i].delete();
-	         }
-	      }
-	    }
-	    return( path.delete() );
-	  }
+		if (path.exists()) {
+			File[] files = path.listFiles();
+			for (int i = 0; i < files.length; i++) {
+				if (files[i].isDirectory()) {
+					deleteDirectory(files[i]);
+				} else {
+					files[i].delete();
+				}
+			}
+		}
+		return (path.delete());
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
