@@ -643,41 +643,49 @@ public class STAdventure extends Adventure {
 			setDeadScienceOfficer(true);
 			setCurrentScienceOfficerSkill(currentScienceOfficerSkill-2);
 			setCurrentScienceOfficerStamina(DiceRoller.roll2D6()+12);
+			setLandingPartyScienceOfficer(false);
 			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.SCIENCE_OFFICER);
 			break;
 		case MEDICAL_OFFICER:
 			setDeadMedicalOfficer(true);
 			setCurrentMedicalOfficerSkill(currentMedicalOfficerSkill-2);
 			setCurrentMedicalOfficerStamina(DiceRoller.roll2D6()+12);
+			setLandingPartyMedicalOfficer(false);
 			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.MEDICAL_OFFICER);
 			break;
 		case ENGINEERING_OFFICER:
 			setDeadEngineeringOfficer(true);
 			setCurrentEngineeringOfficerSkill(currentEngineeringOfficerSkill-2);
 			setCurrentEngineeringOfficerStamina(DiceRoller.roll2D6()+12);
+			setLandingPartyEngineeringOfficer(false);
 			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.ENGINEERING_OFFICER);
 			break;
 		case SECURITY_OFFICER:
 			setDeadSecurityOfficer(true);
 			setCurrentSecurityOfficerSkill(currentSecurityOfficerSkill-2);
 			setCurrentSecurityOfficerStamina(DiceRoller.roll2D6()+12);
+			setLandingPartySecurityOfficer(false);
 			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.SECURITY_OFFICER);
 			break;
 		case SECURITY_GUARD1:
 			setDeadSecurityGuard1(true);
 			setCurrentSecurityGuard1Skill(currentSecurityGuard1Skill-2);
 			setCurrentSecurityGuard1Stamina(DiceRoller.roll2D6()+12);
+			setLandingPartySecurityGuard1(false);
 			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD1);
 			break;
 		case SECURITY_GUARD2:
 			setDeadSecurityGuard2(true);
 			setCurrentSecurityGuard2Skill(currentSecurityGuard2Skill-2);
 			setCurrentSecurityGuard2Stamina(DiceRoller.roll2D6()+12);
+			setLandingPartySecurityGuard2(false);
 			getSTCrewStatsFragment().disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD2);
 			break;
 		default:
 			break;
 		}
+		
+		getSTCrewStatsFragment().refreshScreensFromResume();
 
 	}
 

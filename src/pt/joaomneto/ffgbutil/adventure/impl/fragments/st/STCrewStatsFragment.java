@@ -385,39 +385,40 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 
 			@Override
 			public void onClick(View v) {
+				int staminaBoost = adv.isDeadMedicalOfficer() ? 1 : 2;
 				if (adv.isLandingPartyEngineeringOfficer()) {
 					adv.setCurrentEngineeringOfficerStamina(Math.min(adv.getInitialEngineeringOfficerStamina(),
-							adv.getCurrentEngineeringOfficerStamina() + 2));
+							adv.getCurrentEngineeringOfficerStamina() + staminaBoost));
 				}
 				if (adv.isLandingPartyScienceOfficer()) {
 					adv.setCurrentScienceOfficerStamina(Math.min(adv.getInitialScienceOfficerStamina(),
-							adv.getCurrentScienceOfficerStamina() + 2));
+							adv.getCurrentScienceOfficerStamina() + staminaBoost));
 				}
 				if (adv.isLandingPartyMedicalOfficer()) {
 					adv.setCurrentMedicalOfficerStamina(Math.min(adv.getInitialMedicalOfficerStamina(),
-							adv.getCurrentMedicalOfficerStamina() + 2));
+							adv.getCurrentMedicalOfficerStamina() + staminaBoost));
 				}
 				if (adv.isLandingPartySecurityOfficer()) {
 					adv.setCurrentSecurityOfficerStamina(Math.min(adv.getInitialSecurityOfficerStamina(),
-							adv.getCurrentSecurityOfficerStamina() + 2));
+							adv.getCurrentSecurityOfficerStamina() + staminaBoost));
 				}
 				if (adv.isLandingPartySecurityGuard1()) {
 					adv.setCurrentSecurityGuard1Stamina(Math.min(adv.getInitialSecurityGuard1Stamina(),
-							adv.getCurrentSecurityGuard1Stamina() + 2));
+							adv.getCurrentSecurityGuard1Stamina() + staminaBoost));
 				}
 				if (adv.isLandingPartySecurityGuard2()) {
 					adv.setCurrentSecurityGuard2Stamina(Math.min(adv.getInitialSecurityGuard2Stamina(),
-							adv.getCurrentSecurityGuard2Stamina() + 2));
+							adv.getCurrentSecurityGuard2Stamina() + staminaBoost));
 				}
 
-				adv.setCurrentStamina(Math.min(adv.getInitialStamina(), adv.getCurrentStamina() + 2));
+				adv.setCurrentStamina(Math.min(adv.getInitialStamina(), adv.getCurrentStamina() + staminaBoost));
 
-				scienceOfficerLandingParty.setChecked(false);
-				medicalOfficerLandingParty.setChecked(false);
-				engineeringOfficerLandingParty.setChecked(false);
-				securityOfficerLandingParty.setChecked(false);
-				securityGuard1LandingParty.setChecked(false);
-				securityGuard2LandingParty.setChecked(false);
+				adv.setLandingPartyEngineeringOfficer(false);
+				adv.setLandingPartyScienceOfficer(false);
+				adv.setLandingPartyMedicalOfficer(false);
+				adv.setLandingPartySecurityOfficer(false);
+				adv.setLandingPartySecurityGuard1(false);
+				adv.setLandingPartySecurityGuard2(false);
 
 				refreshScreensFromResume();
 
@@ -456,20 +457,20 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 
 	}
 
-	public void disableCrewmanLandingPartyOption(STCrewman scienceOfficer) {
-		scienceOfficerLandingParty.setChecked(false);
-		medicalOfficerLandingParty.setChecked(false);
-		engineeringOfficerLandingParty.setChecked(false);
-		securityOfficerLandingParty.setChecked(false);
-		securityGuard1LandingParty.setChecked(false);
-		securityGuard2LandingParty.setChecked(false);
+	public void disableCrewmanLandingPartyOption(STCrewman crewman) {
 
-		scienceOfficerLandingParty.setClickable(false);
-		medicalOfficerLandingParty.setClickable(false);
-		engineeringOfficerLandingParty.setClickable(false);
-		securityOfficerLandingParty.setClickable(false);
-		securityGuard1LandingParty.setClickable(false);
-		securityGuard2LandingParty.setClickable(false);
+		if (crewman.equals(STCrewman.SCIENCE_OFFICER))
+			scienceOfficerLandingParty.setClickable(false);
+		if (crewman.equals(STCrewman.MEDICAL_OFFICER))
+			medicalOfficerLandingParty.setClickable(false);
+		if (crewman.equals(STCrewman.ENGINEERING_OFFICER))
+			engineeringOfficerLandingParty.setClickable(false);
+		if (crewman.equals(STCrewman.SECURITY_OFFICER))
+			securityOfficerLandingParty.setClickable(false);
+		if (crewman.equals(STCrewman.SECURITY_GUARD1))
+			securityGuard1LandingParty.setClickable(false);
+		if (crewman.equals(STCrewman.SECURITY_GUARD2))
+			securityGuard2LandingParty.setClickable(false);
 
 	}
 
