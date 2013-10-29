@@ -3,7 +3,9 @@ package pt.joaomneto.ffgbutil.adventure.impl;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
@@ -446,99 +448,99 @@ public class STAdventure extends Adventure {
 
 	}
 
-	public synchronized boolean isLandingPartyScienceOfficer() {
+	public  boolean isLandingPartyScienceOfficer() {
 		return landingPartyScienceOfficer;
 	}
 
-	public synchronized boolean isLandingPartyMedicalOfficer() {
+	public  boolean isLandingPartyMedicalOfficer() {
 		return landingPartyMedicalOfficer;
 	}
 
-	public synchronized boolean isLandingPartyEngineeringOfficer() {
+	public  boolean isLandingPartyEngineeringOfficer() {
 		return landingPartyEngineeringOfficer;
 	}
 
-	public synchronized boolean isLandingPartySecurityOfficer() {
+	public  boolean isLandingPartySecurityOfficer() {
 		return landingPartySecurityOfficer;
 	}
 
-	public synchronized boolean isLandingPartySecurityGuard1() {
+	public  boolean isLandingPartySecurityGuard1() {
 		return landingPartySecurityGuard1;
 	}
 
-	public synchronized boolean isLandingPartySecurityGuard2() {
+	public  boolean isLandingPartySecurityGuard2() {
 		return landingPartySecurityGuard2;
 	}
 
-	public synchronized boolean isDeadScienceOfficer() {
+	public  boolean isDeadScienceOfficer() {
 		return deadScienceOfficer;
 	}
 
-	public synchronized boolean isDeadMedicalOfficer() {
+	public  boolean isDeadMedicalOfficer() {
 		return deadMedicalOfficer;
 	}
 
-	public synchronized boolean isDeadEngineeringOfficer() {
+	public  boolean isDeadEngineeringOfficer() {
 		return deadEngineeringOfficer;
 	}
 
-	public synchronized boolean isDeadSecurityOfficer() {
+	public  boolean isDeadSecurityOfficer() {
 		return deadSecurityOfficer;
 	}
 
-	public synchronized boolean isDeadSecurityGuard1() {
+	public  boolean isDeadSecurityGuard1() {
 		return deadSecurityGuard1;
 	}
 
-	public synchronized boolean isDeadSecurityGuard2() {
+	public  boolean isDeadSecurityGuard2() {
 		return deadSecurityGuard2;
 	}
 
-	public synchronized void setLandingPartyScienceOfficer(boolean landingPartyScienceOfficer) {
+	public  void setLandingPartyScienceOfficer(boolean landingPartyScienceOfficer) {
 		this.landingPartyScienceOfficer = landingPartyScienceOfficer;
 	}
 
-	public synchronized void setLandingPartyMedicalOfficer(boolean landingPartyMedicalOfficer) {
+	public  void setLandingPartyMedicalOfficer(boolean landingPartyMedicalOfficer) {
 		this.landingPartyMedicalOfficer = landingPartyMedicalOfficer;
 	}
 
-	public synchronized void setLandingPartyEngineeringOfficer(boolean landingPartyEngineeringOfficer) {
+	public  void setLandingPartyEngineeringOfficer(boolean landingPartyEngineeringOfficer) {
 		this.landingPartyEngineeringOfficer = landingPartyEngineeringOfficer;
 	}
 
-	public synchronized void setLandingPartySecurityOfficer(boolean landingPartySecurityOfficer) {
+	public  void setLandingPartySecurityOfficer(boolean landingPartySecurityOfficer) {
 		this.landingPartySecurityOfficer = landingPartySecurityOfficer;
 	}
 
-	public synchronized void setLandingPartySecurityGuard1(boolean landingPartySecurityGuard1) {
+	public  void setLandingPartySecurityGuard1(boolean landingPartySecurityGuard1) {
 		this.landingPartySecurityGuard1 = landingPartySecurityGuard1;
 	}
 
-	public synchronized void setLandingPartySecurityGuard2(boolean landingPartySecurityGuard2) {
+	public  void setLandingPartySecurityGuard2(boolean landingPartySecurityGuard2) {
 		this.landingPartySecurityGuard2 = landingPartySecurityGuard2;
 	}
 
-	public synchronized void setDeadScienceOfficer(boolean deadScienceOfficer) {
+	public  void setDeadScienceOfficer(boolean deadScienceOfficer) {
 		this.deadScienceOfficer = deadScienceOfficer;
 	}
 
-	public synchronized void setDeadMedicalOfficer(boolean deadMedicalOfficer) {
+	public  void setDeadMedicalOfficer(boolean deadMedicalOfficer) {
 		this.deadMedicalOfficer = deadMedicalOfficer;
 	}
 
-	public synchronized void setDeadEngineeringOfficer(boolean deadEngineeringOfficer) {
+	public  void setDeadEngineeringOfficer(boolean deadEngineeringOfficer) {
 		this.deadEngineeringOfficer = deadEngineeringOfficer;
 	}
 
-	public synchronized void setDeadSecurityOfficer(boolean deadSecurityOfficer) {
+	public  void setDeadSecurityOfficer(boolean deadSecurityOfficer) {
 		this.deadSecurityOfficer = deadSecurityOfficer;
 	}
 
-	public synchronized void setDeadSecurityGuard1(boolean deadSecurityGuard1) {
+	public  void setDeadSecurityGuard1(boolean deadSecurityGuard1) {
 		this.deadSecurityGuard1 = deadSecurityGuard1;
 	}
 
-	public synchronized void setDeadSecurityGuard2(boolean deadSecurityGuard2) {
+	public  void setDeadSecurityGuard2(boolean deadSecurityGuard2) {
 		this.deadSecurityGuard2 = deadSecurityGuard2;
 	}
 
@@ -629,6 +631,8 @@ public class STAdventure extends Adventure {
 		default:
 			break;
 		}
+		
+		getSTCrewStatsFragment().refreshScreensFromResume();
 
 	}
 
@@ -689,6 +693,24 @@ public class STAdventure extends Adventure {
 		STCrewStatsFragment stcrewStatsFragment = (STCrewStatsFragment) getSupportFragmentManager().getFragments().get(
 				FRAGMENT_CREW_STATS);
 		return stcrewStatsFragment;
+	}
+	
+	public Set<STCrewman> getLandingParty(){
+		Set<STCrewman> landingParty = new HashSet<STAdventure.STCrewman>();
+		if(landingPartyEngineeringOfficer)
+			landingParty.add(STCrewman.ENGINEERING_OFFICER);
+		if(landingPartyScienceOfficer)
+			landingParty.add(STCrewman.SCIENCE_OFFICER);
+		if(landingPartyMedicalOfficer)
+			landingParty.add(STCrewman.MEDICAL_OFFICER);
+		if(landingPartySecurityGuard1)
+			landingParty.add(STCrewman.SECURITY_GUARD1);
+		if(landingPartySecurityGuard2)
+			landingParty.add(STCrewman.SECURITY_GUARD2);
+		if(landingPartySecurityOfficer)
+			landingParty.add(STCrewman.SECURITY_OFFICER);
+		landingParty.add(STCrewman.CAPTAIN);
+		return landingParty;
 	}
 
 }

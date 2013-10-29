@@ -70,7 +70,8 @@
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventure.impl.TWOFMAdventure"
-            android:label="@string/twofm" >
+            android:label="@string/twofm"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TCOCAdventureCreation"
@@ -78,7 +79,8 @@
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventure.impl.TCOCAdventure"
-            android:label="@string/tcoc" >
+            android:label="@string/tcoc"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TFODAdventureCreation"
@@ -86,7 +88,8 @@
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventure.impl.TFODAdventure"
-            android:label="@string/tfod" >
+            android:label="@string/tfod"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.STAdventureCreation"
@@ -94,7 +97,8 @@
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventure.impl.STAdventure"
-            android:label="@string/st" >
+            android:label="@string/st"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
