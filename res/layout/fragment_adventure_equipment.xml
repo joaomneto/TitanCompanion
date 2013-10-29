@@ -42,25 +42,35 @@
         android:layout_alignParentLeft="true"
         android:text="@string/equipment"
         android:layout_below="@+id/goldLabel" 
+        android:layout_marginTop="5dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
     
+     <Button
+        android:id="@+id/minusGoldButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusGoldButton"
+        android:layout_alignTop="@+id/plusGoldButton"
+        android:layout_toLeftOf="@+id/goldValue"
+        android:text="@string/minus" />
+
     <TextView
         android:id="@+id/goldValue"
-        android:layout_width="100dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/goldLabel"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/goldLabel"
+        android:layout_alignBottom="@+id/plusGoldButton"
+        android:layout_alignTop="@+id/plusGoldButton"
+        android:layout_toLeftOf="@+id/plusGoldButton"
+        android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-     <!-- Button
-         android:id="@+id/editGoldButton"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignBottom="@+id/goldValue"
-         android:layout_alignParentTop="true"
-         android:layout_marginLeft="10dp"
-         android:layout_toRightOf="@+id/goldValue"
-         android:text="@string/editGold" /-->
+
+    <Button
+        android:id="@+id/plusGoldButton"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/plus" />
 
 </RelativeLayout>
