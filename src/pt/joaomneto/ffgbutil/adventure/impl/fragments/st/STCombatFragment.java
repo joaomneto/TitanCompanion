@@ -71,8 +71,6 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 		super.onCreate(savedInstanceState);
 		rootView = inflater.inflate(R.layout.fragment_04st_adventure_combat, container, false);
 
-		STAdventure adv = (STAdventure) getActivity();
-
 		combatResult = (TextView) rootView.findViewById(R.id.combatResult);
 		combatTurnButton = (Button) rootView.findViewById(R.id.attackButton);
 		addCombatButton = (Button) rootView.findViewById(R.id.addCombatButton);
@@ -194,7 +192,7 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 		refreshScreensFromResume();
 
 	}
-	
+
 	private void removeCombatant(LinearLayout row, int position) {
 		row.removeAllViews();
 		finishedCombats.add(position);
@@ -228,7 +226,8 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 
 			int crewmanHandicap = 0;
 
-			if (!adv.getStringForCrewman(position.getCrewman()).startsWith("Security") && !position.getCrewman().equals(STCrewman.CAPTAIN)) {
+			if (!adv.getStringForCrewman(position.getCrewman()).startsWith("Security")
+					&& !position.getCrewman().equals(STCrewman.CAPTAIN)) {
 				crewmanHandicap = -3;
 			}
 
@@ -262,11 +261,12 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 						STCrewman killedCrewmanObj = combatPositions.get(killedCrewman).getCrewman();
 						adv.setCrewmanDead(killedCrewmanObj);
 						combatResult.setText(combatResult.getText() + "\nThe "
-								+ adv.getStringForCrewman(killedCrewmanObj) + " was killed by (Sk:"+position.getCurrentSkill()+" St:"+position.getCurrentStamina()+")... (" + enemyDiceRoll
-								+ ") > (" + position.getCurrentSkill() + ")");
+								+ adv.getStringForCrewman(killedCrewmanObj) + " was killed by (Sk:"
+								+ position.getCurrentSkill() + " St:" + position.getCurrentStamina() + ")... ("
+								+ enemyDiceRoll + ") > (" + position.getCurrentSkill() + ")");
 						for (int i = 0; i < maxRows; i++) {
 							CombatPosition combat = combatPositions.get(i);
-							if(combat!=null && combat.getCrewman().equals(killedCrewmanObj)){
+							if (combat != null && combat.getCrewman().equals(killedCrewmanObj)) {
 								LinearLayout toClear = (LinearLayout) rootView.findViewById(gridRows[i]);
 								removeCombatant(toClear, i);
 							}
@@ -436,16 +436,12 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 	private class CombatPosition {
 
 		STAdventure.STCrewman crewman;
-		Integer initialStamina;
-		Integer initialSkill;
 		Integer currentStamina;
 		Integer currentSkill;
 		boolean defenseOnly;
 
 		public CombatPosition(STCrewman crewman, Integer stamina, Integer skill, boolean defenseOnly) {
 			this.crewman = crewman;
-			this.initialStamina = stamina;
-			this.initialSkill = skill;
 			this.currentStamina = stamina;
 			this.currentSkill = skill;
 			this.defenseOnly = defenseOnly;
@@ -460,14 +456,6 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 			return crewman;
 		}
 
-		public Integer getInitialStamina() {
-			return initialStamina;
-		}
-
-		public Integer getInitialSkill() {
-			return initialSkill;
-		}
-
 		public Integer getCurrentStamina() {
 			return currentStamina;
 		}
@@ -480,24 +468,8 @@ public class STCombatFragment extends DialogFragment implements AdventureFragmen
 			return defenseOnly;
 		}
 
-		public void setCrewman(STAdventure.STCrewman crewman) {
-			this.crewman = crewman;
-		}
-
-		public void setInitialStamina(Integer initialStamina) {
-			this.initialStamina = initialStamina;
-		}
-
-		public void setInitialSkill(Integer initialSkill) {
-			this.initialSkill = initialSkill;
-		}
-
 		public void setCurrentStamina(Integer currentStamina) {
 			this.currentStamina = currentStamina;
-		}
-
-		public void setCurrentSkill(Integer currentSkill) {
-			this.currentSkill = currentSkill;
 		}
 
 		public void setDefenseOnly(boolean defenseOnly) {

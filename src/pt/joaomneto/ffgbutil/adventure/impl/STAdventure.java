@@ -166,7 +166,7 @@ public class STAdventure extends Adventure {
 		bw.write("landingPartySecurityGuard1=" + landingPartySecurityGuard1 + "\n");
 		bw.write("landingPartySecurityGuard2=" + landingPartySecurityGuard2 + "\n");
 
-		bw.write("deadPartyScienceOfficer=" + deadScienceOfficer + "\n");
+		bw.write("deadScienceOfficer=" + deadScienceOfficer + "\n");
 		bw.write("deadMedicalOfficer=" + deadMedicalOfficer + "\n");
 		bw.write("deadEngineeringOfficer=" + deadEngineeringOfficer + "\n");
 		bw.write("deadSecurityOfficer=" + deadSecurityOfficer + "\n");
