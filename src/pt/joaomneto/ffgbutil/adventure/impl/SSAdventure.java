@@ -3,8 +3,9 @@ package pt.joaomneto.ffgbutil.adventure.impl;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
@@ -13,7 +14,8 @@ import android.view.Menu;
 
 public class SSAdventure extends Adventure {
 
-	List<String> spells;
+	List<String> spells = new ArrayList<String>();;
+	Set<String> visitedClearings = new HashSet<String>();;
 	Integer spellValue;
 
 	protected static final int FRAGMENT_SPELLS = 2;
@@ -29,10 +31,10 @@ public class SSAdventure extends Adventure {
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(R.string.spells,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.ss.SSAdventureSpellsFragment"));
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(R.string.map,
+		fragmentConfiguration.put(FRAGMENT_MAP, new AdventureFragmentRunner(R.string.map,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.ss.SSAdventureMapFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
@@ -58,16 +60,8 @@ public class SSAdventure extends Adventure {
 	@Override
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
-		String spellsS = "";
-
-		if (!spells.isEmpty()) {
-			for (String spell : spells) {
-				spellsS += spell + "#";
-			}
-			spellsS = spellsS.substring(0, spellsS.length() - 1);
-		}
-
-		bw.write("spells=" + spellsS + "\n");
+		bw.write("spells=" + arrayToString(spells) + "\n");
+		bw.write("clearings=" + arrayToString(visitedClearings) + "\n");
 		bw.write("spellValue=" + spellValue + "\n");
 		bw.write("gold=" + getGold() + "\n");
 	}
@@ -91,19 +85,26 @@ public class SSAdventure extends Adventure {
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
 		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
-		spellValue = Integer.valueOf(getSavedGame().getProperty("spellValue"));
-		String spellsS = new String(getSavedGame().getProperty("spells").getBytes(
-				java.nio.charset.Charset.forName("ISO-8859-1")));
+		setSpellValue(Integer.valueOf(getSavedGame().getProperty("spellValue")));
 
-		if (spellsS != null) {
-			spells = new ArrayList<String>();
-			List<String> list = Arrays.asList(spellsS.split("#"));
-			for (String string : list) {
-				if (!string.isEmpty())
-					spells.add(string);
-			}
-		}
+		setSpells(stringToArray(new String(getSavedGame().getProperty("spells").getBytes(
+				java.nio.charset.Charset.forName("ISO-8859-1")))));
 
+		setVisitedClearings(stringToSet(new String(getSavedGame().getProperty("clearings").getBytes(
+				java.nio.charset.Charset.forName("ISO-8859-1")))));
+
+	}
+
+	public void addVisitedClearings(String clearing) {
+		visitedClearings.add(clearing);
+	}
+
+	public Set<String> getVisitedClearings() {
+		return visitedClearings;
+	}
+
+	public synchronized void setVisitedClearings(Set<String> visitedClearings) {
+		this.visitedClearings = visitedClearings;
 	}
 
 }

@@ -129,11 +129,11 @@
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.SSAdventureCreation"
-            android:label="@string/iotlk" >
+            android:label="@string/ss" >
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventure.impl.SSAdventure"
-            android:label="@string/iotlk"
+            android:label="@string/ss"
             android:screenOrientation="portrait" >
         </activity>
     </application>
