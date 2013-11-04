@@ -63,16 +63,17 @@ public class LoadAdventureActivity extends Activity {
 				final String dir_ = files.get(position);
 
 				final File dir = new File(baseDir, dir_);
+				
 
 				File f = new File(dir, "temp.xml");
-				if (f.exists())
+				if(f.exists())
 					f.delete();
-
+				
 				final File[] savepointFiles = dir.listFiles(new FilenameFilter() {
-
+					
 					@Override
 					public boolean accept(File dir, String filename) {
-						if (filename.startsWith("exception"))
+						if(filename.startsWith("exception"))
 							return false;
 						return true;
 					}
@@ -171,20 +172,20 @@ public class LoadAdventureActivity extends Activity {
 			}
 		});
 	}
-
+	
 	static public boolean deleteDirectory(File path) {
-		if (path.exists()) {
-			File[] files = path.listFiles();
-			for (int i = 0; i < files.length; i++) {
-				if (files[i].isDirectory()) {
-					deleteDirectory(files[i]);
+	    if( path.exists() ) {
+	      File[] files = path.listFiles();
+	      for(int i=0; i<files.length; i++) {
+	         if(files[i].isDirectory()) {
+	           deleteDirectory(files[i]);
 				} else {
-					files[i].delete();
-				}
-			}
-		}
-		return (path.delete());
-	}
+	           files[i].delete();
+	         }
+	      }
+	    }
+	    return( path.delete() );
+	  }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

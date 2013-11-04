@@ -3,13 +3,11 @@ package pt.joaomneto.ffgbutil.adventurecreation.impl;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
 import android.view.View;
 
-public class TFODAdventureCreation extends AdventureCreation {
+public class TFODAdventureCreation extends TWOFMAdventureCreation {
 
-	
-	
+		
 	@Override
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw)
 			throws IOException {

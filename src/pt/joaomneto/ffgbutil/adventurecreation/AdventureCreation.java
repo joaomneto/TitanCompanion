@@ -47,7 +47,6 @@ public abstract class AdventureCreation extends FragmentActivity {
 	protected int skill = -1;
 	protected int luck = -1;
 	protected int stamina = -1;
-	protected int potion = -1;
 	protected int gamebook = -1;
 
 	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
@@ -57,9 +56,6 @@ public abstract class AdventureCreation extends FragmentActivity {
 		fragmentConfiguration.put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(
-				R.string.title_adventure_creation_potions,
-				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.PotionsFragment"));
 
 	}
 
@@ -143,13 +139,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 
 	protected abstract void rollGamebookSpecificStats(View view);
 
-	public synchronized int getPotion() {
-		return potion;
-	}
-
-	public synchronized void setPotion(int potion) {
-		this.potion = potion;
-	}
+	
 
 	public void saveAdventure(View view) {
 		try {

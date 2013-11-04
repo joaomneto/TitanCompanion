@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
+import pt.joaomneto.ffgbutil.adventurecreation.impl.TWOFMAdventureCreation;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -52,7 +52,7 @@ public class PotionsFragment extends Fragment {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-				((AdventureCreation)getActivity()).setPotion(position);
+				((TWOFMAdventureCreation)getActivity()).setPotion(position);
 			}
 
 		});

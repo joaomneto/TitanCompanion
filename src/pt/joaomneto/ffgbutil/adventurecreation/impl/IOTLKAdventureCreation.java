@@ -1,5 +1,5 @@
 package pt.joaomneto.ffgbutil.adventurecreation.impl;
 
-public class IOTLKAdventureCreation extends COTAdventureCreation {
+public class IOTLKAdventureCreation extends TFODAdventureCreation {
 
 }

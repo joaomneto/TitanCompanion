@@ -135,7 +135,7 @@ public abstract class Adventure extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 
 		try {
-
+						
 			// Create the adapter that will return a fragment for each of the
 			// three
 			// primary sections of the app.
@@ -367,13 +367,12 @@ public abstract class Adventure extends FragmentActivity {
 					storeNotesForRestart(dir);
 
 					bw.close();
-
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-
 		});
 
 		alert.setNegativeButton("Cancel",
@@ -680,16 +679,16 @@ public abstract class Adventure extends FragmentActivity {
 
 	private void resume() {
 		try {
-
+			
 			File f = new File(dir, "temp.xml");
-
-			if (!f.exists())
+			
+			if(!f.exists())
 				return;
-
+			
 			loadGameFromFile(dir, "temp.xml");
-
+			
 			refreshScreens();
-
+			
 		} catch (Exception e) {
 			try {
 				FileWriter fw = new FileWriter(new File(dir, "exception_"
@@ -703,19 +702,19 @@ public abstract class Adventure extends FragmentActivity {
 			}
 		}
 	}
-
-	public void testResume(View v) {
+	
+	public void testResume(View v){
 		resume();
 	}
-
-	public void testPause(View v) {
+	
+	public void testPause(View v){
 		pause();
 	}
-
-	public void refreshScreens() {
-
+	
+	public void refreshScreens(){
+		
 		List<Fragment> afList = getSupportFragmentManager().getFragments();
-
+		
 		for (Fragment fragment : afList) {
 			AdventureFragment af = (AdventureFragment) fragment;
 			af.refreshScreensFromResume();
