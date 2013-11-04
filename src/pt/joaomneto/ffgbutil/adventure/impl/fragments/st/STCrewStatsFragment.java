@@ -455,12 +455,14 @@ public class STCrewStatsFragment extends Fragment implements AdventureFragment {
 		securityGuard1LandingParty.setChecked(adv.isLandingPartySecurityGuard1());
 		securityGuard2LandingParty.setChecked(adv.isLandingPartySecurityGuard2());
 		
-		scienceOfficerLandingParty.setClickable(adv.isDeadScienceOfficer());
-		medicalOfficerLandingParty.setClickable(adv.isDeadMedicalOfficer());
-		engineeringOfficerLandingParty.setClickable(adv.isDeadEngineeringOfficer());
-		securityOfficerLandingParty.setClickable(adv.isDeadSecurityOfficer());
-		securityGuard1LandingParty.setClickable(adv.isDeadSecurityGuard1());
-		securityGuard2LandingParty.setClickable(adv.isDeadSecurityGuard2());
+		scienceOfficerLandingParty.setClickable(!adv.isDeadScienceOfficer());
+		medicalOfficerLandingParty.setClickable(!adv.isDeadMedicalOfficer());
+		engineeringOfficerLandingParty.setClickable(!adv.isDeadEngineeringOfficer());
+		securityOfficerLandingParty.setClickable(!adv.isDeadSecurityOfficer());
+		securityGuard1LandingParty.setClickable(!adv.isDeadSecurityGuard1());
+		securityGuard2LandingParty.setClickable(!adv.isDeadSecurityGuard2());
+		
+		
 
 	}
 
