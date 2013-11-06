@@ -29,10 +29,11 @@
     <TextView
         android:id="@+id/goldLabel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="@string/gold"
+        android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <TextView
@@ -70,7 +71,7 @@
     <Button
         android:id="@+id/plusGoldButton"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:padding="0dp"

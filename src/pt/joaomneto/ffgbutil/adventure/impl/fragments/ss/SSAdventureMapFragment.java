@@ -46,7 +46,7 @@ public class SSAdventureMapFragment extends Fragment implements AdventureFragmen
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		final View rootView = inflater.inflate(R.layout.fragment_08st_adventure_map, container, false);
+		rootView = inflater.inflate(R.layout.fragment_08st_adventure_map, container, false);
 
 		final SSAdventure adv = (SSAdventure) getActivity();
 
@@ -75,6 +75,7 @@ public class SSAdventureMapFragment extends Fragment implements AdventureFragmen
 						imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
 						String number = input.getText().toString();
 						adv.addVisitedClearings(number);
+						refreshScreensFromResume();
 
 					}
 				});

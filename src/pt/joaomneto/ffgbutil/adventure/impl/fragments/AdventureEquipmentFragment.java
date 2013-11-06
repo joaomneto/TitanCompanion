@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,6 +24,9 @@ import android.widget.TextView;
 public class AdventureEquipmentFragment extends DialogFragment implements AdventureFragment {
 
 	ListView equipmentList = null;
+	Button minusGoldButton = null;
+	Button plusGoldButton = null;
+	TextView goldValue = null;
 
 	public AdventureEquipmentFragment() {
 
@@ -38,44 +40,13 @@ public class AdventureEquipmentFragment extends DialogFragment implements Advent
 		final Adventure adv = (Adventure) getActivity();
 
 		equipmentList = (ListView) rootView.findViewById(R.id.equipmentList);
+		minusGoldButton = (Button) rootView.findViewById(R.id.minusGoldButton);
+		plusGoldButton = (Button) rootView.findViewById(R.id.plusGoldButton);
+
 		Button buttonAddNote = (Button) rootView.findViewById(R.id.buttonAddEquipment);
 
-		final TextView goldValue = (TextView) rootView.findViewById(R.id.goldValue);
+		goldValue = (TextView) rootView.findViewById(R.id.goldValue);
 		goldValue.setText(adv.getGold().toString());
-		goldValue.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
-
-				alert.setTitle("Edit Gold value");
-
-				// Set an EditText view to get user input
-				final EditText input = new EditText(adv);
-				input.setInputType(InputType.TYPE_CLASS_NUMBER);
-				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
-				input.requestFocus();
-				alert.setView(input);
-
-				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						String value = input.getText().toString();
-						adv.setGold(Integer.valueOf(value));
-						goldValue.setText(value);
-					}
-				});
-
-				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						// Canceled.
-					}
-				});
-
-				alert.show();
-
-			}
-		});
 
 		buttonAddNote.setOnClickListener(new OnClickListener() {
 
@@ -143,13 +114,33 @@ public class AdventureEquipmentFragment extends DialogFragment implements Advent
 			}
 		});
 
+		minusGoldButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				adv.setGold(Math.max(adv.getGold() - 1, 0));
+				refreshScreensFromResume();
+			}
+		});
+
+		plusGoldButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				adv.setGold(adv.getGold() + 1);
+				refreshScreensFromResume();
+			}
+		});
+
 		return rootView;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void refreshScreensFromResume() {
+		Adventure adv = (Adventure) getActivity();
 		((ArrayAdapter<String>) equipmentList.getAdapter()).notifyDataSetChanged();
+		goldValue.setText("" + adv.getGold());
 	}
 
 }
