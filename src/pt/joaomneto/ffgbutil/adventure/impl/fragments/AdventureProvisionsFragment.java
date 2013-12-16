@@ -34,7 +34,7 @@ public class AdventureProvisionsFragment extends DialogFragment implements Adven
 		
 		
 		
-		
+		refreshScreensFromResume();
 		
 		return rootView;
 	}

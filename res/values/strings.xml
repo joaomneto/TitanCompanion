@@ -292,6 +292,7 @@
     <string name="phaserCombat">PhaserCombat</string>
     <string name="combatTurn">Combat Turn</string>
     <string name="addCombat">Add Combatants</string>
+    <string name="addCombatant">Add Combatant</string>
     <string name="combat">Combat</string>
 
     <string-array name="array_name">
@@ -712,5 +713,10 @@
     <string name="hifen">&#8212;</string>
     <string name="pipe">|</string>
     <string name="addClearing">Add Clearing</string>
+    
+    <string name="startCombat">Start Combat</string>
+    
+    <string name="add">Add</string>
+    <string name="fear">Fear: </string>
 
 </resources>

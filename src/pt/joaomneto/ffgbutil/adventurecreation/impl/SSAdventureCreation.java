@@ -17,15 +17,14 @@ public class SSAdventureCreation extends AdventureCreation{
 		fragmentConfiguration.put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(
-				R.string.shipCrewStats,
-				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment"));
 
 	}
 	
 	@Override
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw)
 			throws IOException {
+
+		bw.write("spells=\n");
 	}
 
 	@Override

@@ -100,6 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/combatType"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/addCombatButton"
         android:text="@string/reset" />
 

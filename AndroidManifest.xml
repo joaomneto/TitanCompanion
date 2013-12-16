@@ -136,6 +136,43 @@
             android:label="@string/ss"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.COTSWAdventureCreation"
+            android:label="@string/cotsw" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.COTSWAdventure"
+            android:label="@string/cotsw"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.HOHAdventureCreation"
+            android:label="@string/hoh" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.HOHAdventure"
+            android:label="@string/hoh"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TTODAdventureCreation"
+            android:label="@string/tod" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.TTODAdventure"
+            android:label="@string/tod"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.SAAdventureCreation"
+            android:label="@string/tod" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.SAAdventure"
+            android:label="@string/tod"
+            android:screenOrientation="portrait" >
+        </activity>
+        
     </application>
 
 </manifest>

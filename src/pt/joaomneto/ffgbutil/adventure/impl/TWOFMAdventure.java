@@ -38,7 +38,7 @@ public class TWOFMAdventure extends Adventure {
 		bw.write("standardPotionValue=" + getStandardPotionValue()
 				+ "\n");
 		bw.write("provisions=" + getProvisions() + "\n");
-		bw.write("provisionsvalue=" + getProvisionsValue() + "\n");
+		bw.write("provisionsValue=" + getProvisionsValue() + "\n");
 		bw.write("gold=" + getGold() + "\n");
 	}
 
