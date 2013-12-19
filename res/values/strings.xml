@@ -246,6 +246,7 @@
     <string name="editGold">Edit</string>
     <string name="equipment">Equipment:</string>
     <string name="addEquipment">Add Equipment</string>
+    <string name="addWeapon">Add Weapon</string>
     <string name="escape">Escape</string>
     <string name="attackOpponent">Attack Opponent</string>
     <string name="handicap">Handicap:</string>
@@ -718,5 +719,9 @@
     
     <string name="add">Add</string>
     <string name="fear">Fear: </string>
+    <string name="armor">Armour: </string>
+    <string name="weaponsvalue">Weapons Value: </string>
+    
+    <string name="title_adventure_creation_weapons">Weapons</string>
 
 </resources>

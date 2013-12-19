@@ -692,7 +692,7 @@ public abstract class Adventure extends FragmentActivity {
 		}
 	}
 
-	protected String arrayToString(Collection<String> elements) {
+	public static String arrayToString(Collection<String> elements) {
 		String _string = "";
 
 		if (!elements.isEmpty()) {

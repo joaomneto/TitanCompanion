@@ -13,6 +13,8 @@ import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.ffgbutil.consts.Constants;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -188,5 +190,17 @@ public abstract class AdventureCreation extends FragmentActivity {
 
 	protected abstract void storeAdventureSpecificValuesInFile(BufferedWriter bw)
 			throws IOException;
+	
+	public void showAlert(String message) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Result").setMessage(message).setCancelable(false)
+				.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
 
 }

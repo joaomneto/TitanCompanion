@@ -7,7 +7,6 @@ import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
 import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.hoh.HOHVitalStatisticsFragment;
-import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc.TCOCAdventureCreationSpellsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.view.View;
 
