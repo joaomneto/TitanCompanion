@@ -14,9 +14,9 @@
         android:id="@+id/testLuckButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/addCombatButton"
         android:layout_above="@+id/attackButton"
-        android:layout_toLeftOf="@+id/resetCombat"
+        android:layout_alignLeft="@+id/addCombatButton"
+        android:layout_alignRight="@+id/combat0"
         android:text="@string/testLuck"
         android:visibility="invisible" />
 
@@ -93,7 +93,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/resetCombat"
+        android:layout_toLeftOf="@+id/grenadeButton"
         android:text="@string/startCombat" />
 
     <Button
@@ -118,6 +118,17 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/addCombatButton"
         android:layout_alignBottom="@+id/addCombatButton"
-        android:layout_alignRight="@+id/combatResult"/>
+        android:layout_alignRight="@+id/combatResult"
+        android:textOff="Normal"
+        android:textOn="Gunfire" />
+
+    <Button
+        android:id="@+id/grenadeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/resetCombat"
+        android:layout_alignBottom="@+id/resetCombat"
+        android:layout_toLeftOf="@+id/resetCombat"
+        android:text="@string/grenade" />
 
 </RelativeLayout>

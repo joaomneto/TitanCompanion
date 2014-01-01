@@ -9,7 +9,6 @@ import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
-import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.hoh.HOHVitalStatisticsFragment;
 import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.sa.SAVitalStatisticsFragment;
 import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.sa.SAWeaponsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;

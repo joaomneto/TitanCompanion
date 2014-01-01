@@ -145,8 +145,7 @@
         android:layout_alignBottom="@+id/plusarmorButton"
         android:layout_alignTop="@+id/plusarmorButton"
         android:layout_toLeftOf="@+id/statsarmorValue"
-        android:text="@string/minus"
-        android:visibility="invisible" />
+        android:text="@string/minus"/>
 
     <TextView
         android:id="@+id/statsarmorValue"
@@ -164,8 +163,7 @@
         android:layout_height="40dp"
         android:layout_alignRight="@+id/buttonTestLuck"
         android:layout_alignTop="@+id/textView4"
-        android:text="@string/plus"
-        android:visibility="invisible" />
+        android:text="@string/plus"/>
 
     <Button
         android:id="@+id/buttonSavePoint"

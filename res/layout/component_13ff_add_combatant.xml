@@ -1,0 +1,91 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/adventureVitalStats"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/enemySkillText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/crewmanSpinner"
+        android:layout_marginTop="10dp"
+        android:text="@string/enemySkill"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/enemySkillValue"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/enemySkillText"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/enemyStaminaText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/enemySkillValue"
+        android:layout_marginTop="10dp"
+        android:text="@string/enemyStamina"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/enemyStaminaValue"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/enemySkillValue"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/enemySkillValue"
+        android:layout_alignTop="@+id/enemyStaminaText"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/handicapText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/enemyStaminaValue"
+        android:layout_marginTop="10dp"
+        android:text="@string/handicap"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/handicapValue"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/enemyStaminaValue"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/enemyStaminaValue"
+        android:layout_alignTop="@+id/handicapText"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/enemyDamageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/handicapText"
+        android:layout_marginTop="10dp"
+        android:text="@string/damage"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/enemyDamage"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/handicapValue"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/handicapValue"
+        android:ems="10"
+        android:inputType="text"
+        android:text="1" />
+
+</RelativeLayout>

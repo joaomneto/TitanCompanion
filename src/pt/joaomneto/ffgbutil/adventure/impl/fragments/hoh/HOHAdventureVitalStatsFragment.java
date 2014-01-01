@@ -1,7 +1,6 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.hoh;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.impl.HOHAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import android.os.Bundle;

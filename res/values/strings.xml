@@ -720,8 +720,16 @@
     <string name="add">Add</string>
     <string name="fear">Fear: </string>
     <string name="armor">Armour: </string>
+    <string name="firepower">Firepower: </string>
+    <string name="car_armor">Car Armour: </string>
+    <string name="car_firepower">Car Firepower: </string>
     <string name="weaponsvalue">Weapons Value: </string>
+    <string name="weapon">Weapon: </string>
+    <string name="grenade">Grenade</string>
     
+    <string name="dodge">Dodge Interceptor: </string>
+    <string name="enemyVehicle">Enemy Vehicle: </string>
     <string name="title_adventure_creation_weapons">Weapons</string>
-
+    <string name="vehicleCombat">Vehicle Combat</string>
+    <string name="damage">Damage: </string>
 </resources>

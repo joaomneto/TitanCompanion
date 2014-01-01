@@ -1,8 +1,6 @@
 package pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.sa;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import pt.joaomneto.ffgbutil.R;
@@ -38,14 +36,14 @@ public class SAWeaponsFragment extends Fragment {
 	String[] allWeapons = {"Electric Lash", "Assault Blaster", "Grenade", "Gravity Bomb", "Armour"};
 
 	
-	static Map<String, Float> weaponvalues = new HashMap<String, Float>();
+	static Map<String, Integer> weaponvalues = new HashMap<String, Integer>();
 	
 	static{
-		weaponvalues.put("Electric Lash", 1f);
-		weaponvalues.put("Assault Blaster", 3f);
-		weaponvalues.put("Grenade", 1f);
-		weaponvalues.put("Gravity Bomb", 3f);
-		weaponvalues.put("Armour", 0.5f);
+		weaponvalues.put("Electric Lash", 1);
+		weaponvalues.put("Assault Blaster", 3);
+		weaponvalues.put("Grenade", 1);
+		weaponvalues.put("Gravity Bomb", 3);
+		weaponvalues.put("2x Armour", 1);
 	}
 	
 	@Override
@@ -121,7 +119,7 @@ public class SAWeaponsFragment extends Fragment {
 							public void onClick(DialogInterface dialog,
 									int whichButton) {
 								String value = input.getSelectedItem().toString();
-								if(getCurrentWeaponsCount(adv) + weaponvalues.get(value) > new Float(weaponsValue.getText().toString())){
+								if(getCurrentWeaponsCount(adv) + weaponvalues.get(value) > Integer.valueOf(weaponsValue.getText().toString())){
 									adv.showAlert("You don't have enough weapon points to add the "+value);
 									return;
 								}

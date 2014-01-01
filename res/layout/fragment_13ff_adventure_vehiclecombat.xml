@@ -1,0 +1,204 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/adventureVitalStats"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:useDefaultMargins="true"
+    tools:context=".adventure.impl.fragments.ff.FFVehicleCombatFragment" >
+
+    <TextView
+        android:id="@+id/textField3"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/dodge"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/textField1"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/textField3"
+        android:gravity="center"
+        android:text="@string/firepower"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/minusfirepowerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusfirepowerButton"
+        android:layout_alignTop="@+id/plusfirepowerButton"
+        android:layout_toLeftOf="@+id/vehiclefirepowerValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/vehiclefirepowerValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusfirepowerButton"
+        android:layout_alignTop="@+id/plusfirepowerButton"
+        android:layout_toLeftOf="@+id/plusfirepowerButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/plusfirepowerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonAttack"
+        android:layout_alignTop="@+id/textField1"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/textField2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/textField1"
+        android:layout_below="@+id/textField1"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/armor"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/minusarmorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusarmorButton"
+        android:layout_alignTop="@+id/plusarmorButton"
+        android:layout_toLeftOf="@+id/vehiclearmorValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/vehiclearmorValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusarmorButton"
+        android:layout_alignTop="@+id/plusarmorButton"
+        android:layout_toLeftOf="@+id/plusarmorButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/plusarmorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonAttack"
+        android:layout_alignTop="@+id/textField2"
+        android:text="@string/plus" />
+    
+    <TextView
+        android:id="@+id/textField4"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/textField2"
+        android:gravity="center"
+        android:text="@string/enemyVehicle"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/textField5"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/textField4"
+        android:gravity="center"
+        android:text="@string/firepower"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/minusEnemyfirepowerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusEnemyfirepowerButton"
+        android:layout_alignTop="@+id/plusEnemyfirepowerButton"
+        android:layout_toLeftOf="@+id/enemyfirepowerValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/enemyfirepowerValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusEnemyfirepowerButton"
+        android:layout_alignTop="@+id/plusEnemyfirepowerButton"
+        android:layout_toLeftOf="@+id/plusEnemyfirepowerButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/plusEnemyfirepowerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonAttack"
+        android:layout_alignTop="@+id/textField5"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/textField6"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/textField5"
+        android:layout_below="@+id/textField5"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/armor"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/minusEnemyarmorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusEnemyarmorButton"
+        android:layout_alignTop="@+id/plusEnemyarmorButton"
+        android:layout_toLeftOf="@+id/enemyarmorValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/enemyarmorValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusEnemyarmorButton"
+        android:layout_alignTop="@+id/plusEnemyarmorButton"
+        android:layout_toLeftOf="@+id/plusEnemyarmorButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/plusEnemyarmorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonAttack"
+        android:layout_alignTop="@+id/textField6"
+        android:text="@string/plus" />
+
+  
+
+    <TextView
+        android:id="@+id/combatResult"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonAttack"
+        android:layout_alignLeft="@+id/buttonAttack"
+        android:lines="4"
+        android:maxLines="4"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    
+
+    <Button
+        android:id="@+id/buttonAttack"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/attackOpponent" />
+
+</RelativeLayout>

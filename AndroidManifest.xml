@@ -165,11 +165,20 @@
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.SAAdventureCreation"
-            android:label="@string/tod" >
+            android:label="@string/sa" >
         </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventure.impl.SAAdventure"
-            android:label="@string/tod"
+            android:label="@string/sa"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.FFAdventureCreation"
+            android:label="@string/ff" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.FFAdventure"
+            android:label="@string/ff"
             android:screenOrientation="portrait" >
         </activity>
         

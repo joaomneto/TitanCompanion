@@ -91,16 +91,26 @@ public abstract class Adventure extends FragmentActivity {
 
 	public Adventure() {
 		super();
-		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
-		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_PROVISIONS, new AdventureFragmentRunner(R.string.potionsProvisions,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment"));
-		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_VITAL_STATS,
+						new AdventureFragmentRunner(R.string.vitalStats,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_COMBAT,
+						new AdventureFragmentRunner(R.string.fights,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_PROVISIONS,
+						new AdventureFragmentRunner(R.string.potionsProvisions,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_EQUIPMENT,
+						new AdventureFragmentRunner(R.string.goldEquipment,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
+		fragmentConfiguration
+				.put(FRAGMENT_NOTES,
+						new AdventureFragmentRunner(R.string.notes,
+								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	public static class AdventureFragmentRunner {
@@ -133,16 +143,20 @@ public abstract class Adventure extends FragmentActivity {
 			// three
 			// primary sections of the app.
 			setContentView(R.layout.activity_adventure);
-			mSectionsPagerAdapter = new StandardSectionsPagerAdapter(getSupportFragmentManager());
+			mSectionsPagerAdapter = new StandardSectionsPagerAdapter(
+					getSupportFragmentManager());
 
 			// Set up the ViewPager with the sections adapter.
 			mViewPager = (ViewPager) findViewById(R.id.pager);
 			mViewPager.setAdapter(mSectionsPagerAdapter);
 
-			String fileName = getIntent().getStringExtra(LoadAdventureActivity.ADVENTURE_FILE);
-			String relDir = getIntent().getStringExtra(LoadAdventureActivity.ADVENTURE_DIR);
+			String fileName = getIntent().getStringExtra(
+					LoadAdventureActivity.ADVENTURE_FILE);
+			String relDir = getIntent().getStringExtra(
+					LoadAdventureActivity.ADVENTURE_DIR);
 			name = relDir;
-			dir = new File(Environment.getExternalStorageDirectory().getPath() + "/ffgbutil/" + relDir);
+			dir = new File(Environment.getExternalStorageDirectory().getPath()
+					+ "/ffgbutil/" + relDir);
 
 			loadGameFromFile(dir, fileName);
 		} catch (Exception e) {
@@ -151,23 +165,27 @@ public abstract class Adventure extends FragmentActivity {
 		}
 	}
 
-	private void loadGameFromFile(File dir, String fileName) throws IOException, FileNotFoundException {
+	private void loadGameFromFile(File dir, String fileName)
+			throws IOException, FileNotFoundException {
 		savedGame = new Properties();
 		savedGame.load(new FileInputStream(new File(dir, fileName)));
 
 		gamebook = Integer.valueOf(savedGame.getProperty("gamebook"));
 		initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"));
 		initialLuck = Integer.valueOf(savedGame.getProperty("initialLuck"));
-		initialStamina = Integer.valueOf(savedGame.getProperty("initialStamina"));
+		initialStamina = Integer.valueOf(savedGame
+				.getProperty("initialStamina"));
 		currentSkill = Integer.valueOf(savedGame.getProperty("currentSkill"));
 		currentLuck = Integer.valueOf(savedGame.getProperty("currentLuck"));
-		currentStamina = Integer.valueOf(savedGame.getProperty("currentStamina"));
+		currentStamina = Integer.valueOf(savedGame
+				.getProperty("currentStamina"));
 
-		String equipmentS = new String(savedGame.getProperty("equipment").getBytes(
-				java.nio.charset.Charset.forName("ISO-8859-1")));
+		String equipmentS = new String(savedGame.getProperty("equipment")
+				.getBytes(java.nio.charset.Charset.forName("ISO-8859-1")));
 		String notesS = new String(savedGame.getProperty("notes").getBytes(
 				java.nio.charset.Charset.forName("ISO-8859-1")));
-		currentReference = Integer.valueOf(savedGame.getProperty("currentReference"));
+		currentReference = Integer.valueOf(savedGame
+				.getProperty("currentReference"));
 
 		if (equipmentS != null) {
 			equipment = new ArrayList<String>();
@@ -251,12 +269,15 @@ public abstract class Adventure extends FragmentActivity {
 
 	public void showAlert(String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Result").setMessage(message).setCancelable(false)
-				.setNegativeButton("Close", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
-					}
-				});
+		builder.setTitle("Result")
+				.setMessage(message)
+				.setCancelable(false)
+				.setNegativeButton("Close",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
+							}
+						});
 		AlertDialog alert = builder.create();
 		alert.show();
 	}
@@ -275,7 +296,9 @@ public abstract class Adventure extends FragmentActivity {
 		public Fragment getItem(int position) {
 
 			try {
-				return (Fragment) Class.forName(fragmentConfiguration.get(position).getClassName()).newInstance();
+				return (Fragment) Class.forName(
+						fragmentConfiguration.get(position).getClassName())
+						.newInstance();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -291,7 +314,8 @@ public abstract class Adventure extends FragmentActivity {
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
 
-			return getString(fragmentConfiguration.get(position).getTitleId()).toUpperCase(l);
+			return getString(fragmentConfiguration.get(position).getTitleId())
+					.toUpperCase(l);
 		}
 
 	}
@@ -324,8 +348,10 @@ public abstract class Adventure extends FragmentActivity {
 
 		// Set an EditText view to get user input
 		final EditText input = new EditText(this);
-		final InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+		final InputMethodManager imm = (InputMethodManager) this
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
+				InputMethodManager.HIDE_IMPLICIT_ONLY);
 		input.setInputType(InputType.TYPE_CLASS_NUMBER);
 		input.requestFocus();
 		alert.setView(input);
@@ -352,11 +378,12 @@ public abstract class Adventure extends FragmentActivity {
 			}
 		});
 
-		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int whichButton) {
-				imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
-			}
-		});
+		alert.setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
+					}
+				});
 
 		alert.show();
 	}
@@ -371,7 +398,7 @@ public abstract class Adventure extends FragmentActivity {
 			stringBuilder.append(line);
 			stringBuilder.append(ls);
 		}
-
+		reader.close();
 		return stringBuilder.toString();
 	}
 
@@ -389,7 +416,8 @@ public abstract class Adventure extends FragmentActivity {
 		String initialContent = readFile(new File(dir, "initial.xml"));
 		initialContent = initialContent.replace("notes=", "notes=" + notesS);
 
-		FileWriter fileWriter = new FileWriter(new File(dir, "initial_full_notes.xml"));
+		FileWriter fileWriter = new FileWriter(new File(dir,
+				"initial_full_notes.xml"));
 		BufferedWriter bw = new BufferedWriter(fileWriter);
 		bw.write(initialContent);
 
@@ -398,7 +426,8 @@ public abstract class Adventure extends FragmentActivity {
 
 	}
 
-	public void storeValuesInFile(String ref, BufferedWriter bw) throws IOException {
+	public void storeValuesInFile(String ref, BufferedWriter bw)
+			throws IOException {
 		String equipmentS = "";
 		String notesS = "";
 
@@ -429,7 +458,8 @@ public abstract class Adventure extends FragmentActivity {
 		storeAdventureSpecificValuesInFile(bw);
 	}
 
-	public abstract void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException;
+	public abstract void storeAdventureSpecificValuesInFile(BufferedWriter bw)
+			throws IOException;
 
 	public void consumePotion(View view) {
 		if (standardPotionValue == 0) {
@@ -475,7 +505,8 @@ public abstract class Adventure extends FragmentActivity {
 		return mSectionsPagerAdapter;
 	}
 
-	public void setmSectionsPagerAdapter(StandardSectionsPagerAdapter mSectionsPagerAdapter) {
+	public void setmSectionsPagerAdapter(
+			StandardSectionsPagerAdapter mSectionsPagerAdapter) {
 		this.mSectionsPagerAdapter = mSectionsPagerAdapter;
 	}
 
@@ -633,7 +664,8 @@ public abstract class Adventure extends FragmentActivity {
 			bw.close();
 		} catch (IOException e) {
 			try {
-				FileWriter fw = new FileWriter(new File(dir, "exception_" + new Date() + ".txt"), true);
+				FileWriter fw = new FileWriter(new File(dir, "exception_"
+						+ new Date() + ".txt"), true);
 				PrintWriter pw = new PrintWriter(fw);
 				e.printStackTrace(pw);
 				pw.close();
@@ -663,7 +695,8 @@ public abstract class Adventure extends FragmentActivity {
 
 		} catch (Exception e) {
 			try {
-				FileWriter fw = new FileWriter(new File(dir, "exception_" + new Date() + ".txt"), true);
+				FileWriter fw = new FileWriter(new File(dir, "exception_"
+						+ new Date() + ".txt"), true);
 				PrintWriter pw = new PrintWriter(fw);
 				e.printStackTrace(pw);
 				pw.close();
@@ -715,10 +748,10 @@ public abstract class Adventure extends FragmentActivity {
 					elements.add(string);
 			}
 		}
-		
+
 		return elements;
 	}
-	
+
 	protected Set<String> stringToSet(String _string) {
 
 		Set<String> elements = new HashSet<String>();
@@ -730,7 +763,7 @@ public abstract class Adventure extends FragmentActivity {
 					elements.add(string);
 			}
 		}
-		
+
 		return elements;
 	}
 

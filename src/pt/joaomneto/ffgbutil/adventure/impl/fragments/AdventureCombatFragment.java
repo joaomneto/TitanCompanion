@@ -32,38 +32,46 @@ import android.widget.TextView;
 public class AdventureCombatFragment extends DialogFragment implements
 		AdventureFragment {
 
-	TextView combatResult = null;
-	Button combatTurnButton = null;
-	Button startCombatButton = null;
-	Button addCombatButton = null;
-	Button testLuckButton = null;
-	Button resetButton = null;
-	Switch combatTypeSwitch = null;
-	View rootView = null;
+	protected TextView combatResult = null;
+	protected Button combatTurnButton = null;
+	protected Button startCombatButton = null;
+	protected Button addCombatButton = null;
+	protected Button testLuckButton = null;
+	protected Button resetButton = null;
+	protected Switch combatTypeSwitch = null;
+	protected View rootView = null;
 
-	SparseArray<Combatant> combatPositions = new SparseArray<AdventureCombatFragment.Combatant>();
+	protected SparseArray<Combatant> combatPositions = new SparseArray<AdventureCombatFragment.Combatant>();
 
-	boolean sequenceCombat = false;
-	Set<Integer> finishedCombats = new HashSet<Integer>();
-	int currentCombat = 0;
-	int previousCombat = 0;
-	int handicap = 0;
+	public static final String NORMAL = "NORMAL";
+	public static final String SEQUENCE = "SEQUENCE";
 
-	boolean draw = false;
-	boolean luckTest = false;
-	boolean hit = false;
+	public String offText = "Normal";
+	public String onText = "Sequence";
 
-	boolean combatStarted = false;
+	protected String combatMode = NORMAL;
+	protected Set<Integer> finishedCombats = new HashSet<Integer>();
+	protected int currentCombat = 0;
+	protected int previousCombat = 0;
+	protected int handicap = 0;
 
-	private static Integer[] gridRows;
+	protected boolean draw = false;
+	protected boolean luckTest = false;
+	protected boolean hit = false;
+
+	protected boolean combatStarted = false;
+
+	int staminaLoss = 0;
+
+	protected static Integer[] gridRows;
 
 	static {
 		gridRows = new Integer[] { R.id.combat0, R.id.combat1, R.id.combat2,
 				R.id.combat3, R.id.combat4, R.id.combat5 };
 	}
 
-	int row = 0;
-	int maxRows = 6;
+	protected int row = 0;
+	protected int maxRows = 6;
 
 	public AdventureCombatFragment() {
 
@@ -76,6 +84,62 @@ public class AdventureCombatFragment extends DialogFragment implements
 		rootView = inflater.inflate(R.layout.fragment_adventure_combat,
 				container, false);
 
+		init();
+
+		return rootView;
+	}
+
+	protected void combatTurn() {
+		if (combatPositions.size() == 0)
+			return;
+
+		if (combatStarted == false) {
+			combatStarted = true;
+			combatTypeSwitch.setClickable(false);
+		}
+
+		if (combatMode.equals(SEQUENCE)) {
+			sequenceCombatTurn();
+		} else {
+			standardCombatTurn();
+		}
+	}
+
+	protected void switchLayoutCombatStarted() {
+		addCombatButton.setVisibility(View.GONE);
+		combatTypeSwitch.setVisibility(View.GONE);
+		startCombatButton.setVisibility(View.GONE);
+		testLuckButton.setVisibility(View.VISIBLE);
+		combatTurnButton.setVisibility(View.VISIBLE);
+
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(
+				ViewGroup.LayoutParams.MATCH_PARENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
+
+		p.addRule(RelativeLayout.ABOVE, R.id.attackButton);
+		p.addRule(RelativeLayout.LEFT_OF, R.id.resetCombat);
+
+		testLuckButton.setLayoutParams(p);
+
+		p = new RelativeLayout.LayoutParams(
+				ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
+
+		p.addRule(RelativeLayout.ABOVE, R.id.attackButton);
+		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+		//
+		resetButton.setLayoutParams(p);
+	}
+
+	public String getOfftext() {
+		return "Normal";
+	}
+
+	public String getOntext() {
+		return "Sequence";
+	}
+
+	protected void init() {
 		combatResult = (TextView) rootView.findViewById(R.id.combatResult);
 		combatTurnButton = (Button) rootView.findViewById(R.id.attackButton);
 		startCombatButton = (Button) rootView.findViewById(R.id.startCombat);
@@ -84,16 +148,10 @@ public class AdventureCombatFragment extends DialogFragment implements
 		resetButton = (Button) rootView.findViewById(R.id.resetCombat);
 		testLuckButton = (Button) rootView.findViewById(R.id.testLuckButton);
 
+		combatTypeSwitch.setTextOff(getOfftext());
+		combatTypeSwitch.setTextOn(getOntext());
 		combatTypeSwitch
-				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView,
-							boolean isChecked) {
-						sequenceCombat = isChecked;
-
-					}
-				});
+				.setOnCheckedChangeListener(new CombatTypeSwitchChangeListener());
 
 		addCombatButton.setOnClickListener(new OnClickListener() {
 
@@ -119,69 +177,20 @@ public class AdventureCombatFragment extends DialogFragment implements
 			@Override
 			public void onClick(View v) {
 
-				if (combatPositions.size() == 0)
-					return;
-
-				if (combatStarted == false) {
-					combatStarted = true;
-					combatTypeSwitch.setClickable(false);
-				}
-
-				if (sequenceCombat) {
-					sequenceCombatTurn();
-				} else {
-					standardCombatTurn();
-				}
+				combatTurn();
 			}
 
 		});
-
-		// final Button addCombatButtonF = addCombatButton;
 
 		startCombatButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-
-				if (combatPositions.size() == 0)
-					return;
-
-				if (combatStarted == false) {
-					combatStarted = true;
-					combatTypeSwitch.setClickable(false);
-				}
-
-				if (sequenceCombat) {
-					sequenceCombatTurn();
-				} else {
-					standardCombatTurn();
-				}
-
-				addCombatButton.setVisibility(View.GONE);
-				combatTypeSwitch.setVisibility(View.GONE);
-				startCombatButton.setVisibility(View.GONE);
-				testLuckButton.setVisibility(View.VISIBLE);
-				combatTurnButton.setVisibility(View.VISIBLE);
-
-				RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(
-						ViewGroup.LayoutParams.MATCH_PARENT,
-						ViewGroup.LayoutParams.WRAP_CONTENT);
-
-				p.addRule(RelativeLayout.ABOVE, R.id.attackButton);
-				p.addRule(RelativeLayout.LEFT_OF, R.id.resetCombat);
-
-				testLuckButton.setLayoutParams(p);
-
-				p = new RelativeLayout.LayoutParams(
-						ViewGroup.LayoutParams.WRAP_CONTENT,
-						ViewGroup.LayoutParams.WRAP_CONTENT);
-
-				p.addRule(RelativeLayout.ABOVE, R.id.attackButton);
-				p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-				//
-				resetButton.setLayoutParams(p);
+				startCombat();
 
 			}
+
+			
 
 		});
 
@@ -202,8 +211,10 @@ public class AdventureCombatFragment extends DialogFragment implements
 								.get(previousCombat);
 						combatant.setCurrentStamina(combatant
 								.getCurrentStamina() - 1);
+						combatant.setStaminaLoss(combatant.getStaminaLoss() + 1);
 						int enemyStamina = combatant.getCurrentStamina();
-						if (enemyStamina <= 0) {
+						if (enemyStamina <= 0
+								|| (getKnockoutStamina() != null && staminaLoss >= getKnockoutStamina())) {
 							enemyStamina = 0;
 							adv.showAlert("You've defeated your opponent!");
 							LinearLayout row = (LinearLayout) rootView
@@ -213,6 +224,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 						}
 					} else {
 						adv.setCurrentStamina(adv.getCurrentStamina() + 1);
+						staminaLoss--;
 					}
 				} else {
 					combatResult.setText("You're unlucky...");
@@ -221,10 +233,18 @@ public class AdventureCombatFragment extends DialogFragment implements
 								.get(previousCombat);
 						combatant.setCurrentStamina(combatant
 								.getCurrentStamina() + 1);
+						combatant.setStaminaLoss(combatant.getStaminaLoss() - 1);
 
 					} else {
 						adv.setCurrentStamina(adv.getCurrentStamina() - 1);
+						staminaLoss++;
 					}
+
+					if (getKnockoutStamina() != null
+							&& adv.getCurrentStamina() <= getKnockoutStamina()) {
+						adv.showAlert("You've been knocked out...");
+					}
+
 					if (adv.getCurrentStamina() == 0) {
 						adv.showAlert("You're dead...");
 					}
@@ -234,11 +254,13 @@ public class AdventureCombatFragment extends DialogFragment implements
 		});
 
 		refreshScreensFromResume();
-
-		return rootView;
 	}
 
-	private void sequenceCombatTurn() {
+	protected Integer getKnockoutStamina() {
+		return null;
+	}
+
+	protected void sequenceCombatTurn() {
 
 		Combatant position = combatPositions.get(currentCombat);
 
@@ -258,7 +280,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 			if (attackStrength > enemyAttackStrength) {
 				if (!position.isDefenseOnly()) {
 					position.setCurrentStamina(Math.max(0,
-							position.getCurrentStamina() - 2));
+							position.getCurrentStamina() - getDamage()));
 					hit = true;
 					combatResult.setText("You have hit the enemy! ("
 							+ diceRoll
@@ -280,7 +302,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 							+ position.getCurrentSkill() + ")");
 				}
 			} else if (attackStrength < enemyAttackStrength) {
-				adv.setCurrentStamina((Math.max(0, adv.getCurrentStamina() - 2)));
+				adv.setCurrentStamina((Math.max(0, adv.getCurrentStamina() - convertDamageStringToInteger(position.getDamage()))));
 				combatResult.setText("Youve have been hit... ("
 						+ diceRoll
 						+ " + "
@@ -315,7 +337,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 
 	}
 
-	private void advanceCombat() {
+	protected void advanceCombat() {
 		previousCombat = currentCombat;
 		currentCombat++;
 		Combatant nextposition = combatPositions.get(currentCombat);
@@ -329,7 +351,20 @@ public class AdventureCombatFragment extends DialogFragment implements
 		}
 	}
 
-	private void removeCombatant(LinearLayout row, int position) {
+	protected void setFirstCombat() {
+		currentCombat = 0;
+		Combatant nextposition = combatPositions.get(currentCombat);
+
+		while (nextposition == null && combatPositions.size() != 0) {
+			currentCombat++;
+			if (currentCombat == maxRows) {
+				currentCombat = 0;
+			}
+			nextposition = combatPositions.get(currentCombat);
+		}
+	}
+
+	protected void removeCombatant(LinearLayout row, int position) {
 		row.removeAllViews();
 		finishedCombats.add(position);
 		combatPositions.remove(position);
@@ -346,11 +381,11 @@ public class AdventureCombatFragment extends DialogFragment implements
 		}
 	}
 
-	private void removeCombatant(LinearLayout row) {
+	protected void removeCombatant(LinearLayout row) {
 		removeCombatant(row, currentCombat);
 	}
 
-	private void standardCombatTurn() {
+	protected void standardCombatTurn() {
 		Combatant position = combatPositions.get(currentCombat);
 
 		if (!finishedCombats.contains(currentCombat)) {
@@ -368,8 +403,11 @@ public class AdventureCombatFragment extends DialogFragment implements
 					.findViewById(gridRows[currentCombat]);
 			if (attackStrength > enemyAttackStrength) {
 
+				int damage = getDamage();
+
 				position.setCurrentStamina(Math.max(0,
-						position.getCurrentStamina() - 2));
+						position.getCurrentStamina() - getDamage()));
+				position.setStaminaLoss(position.getStaminaLoss() - damage);
 				hit = true;
 				combatResult.setText("You have hit the enemy! ("
 						+ diceRoll
@@ -381,7 +419,10 @@ public class AdventureCombatFragment extends DialogFragment implements
 						+ ")");
 
 			} else if (attackStrength < enemyAttackStrength) {
-				adv.setCurrentStamina((Math.max(0, adv.getCurrentStamina() - 2)));
+				int damage = convertDamageStringToInteger(position.getDamage());
+				staminaLoss += damage;
+				adv.setCurrentStamina((Math.max(0, adv.getCurrentStamina()
+						- damage)));
 				combatResult.setText("Youve have been hit... ("
 						+ diceRoll
 						+ " + "
@@ -396,15 +437,21 @@ public class AdventureCombatFragment extends DialogFragment implements
 				draw = true;
 			}
 
-			if (position.getCurrentStamina() == 0) {
+			if (position.getCurrentStamina() == 0
+					|| (getKnockoutStamina() != null && staminaLoss >= getKnockoutStamina())) {
 				removeCombatant(row);
 				combatResult.setText("You have defeated an enemy!");
 				advanceCombat();
 
 			}
 
+			if (getKnockoutStamina() != null
+					&& staminaLoss >= getKnockoutStamina()) {
+				adv.showAlert("You've been knocked out...");
+			}
+
 			if (adv.getCurrentStamina() == 0) {
-				combatResult.setText("You have died...");
+				adv.showAlert("You're dead...");
 			}
 		}
 		if (combatPositions.size() == 0) {
@@ -415,7 +462,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 
 	}
 
-	private void addCombatButtonOnClick() {
+	protected void addCombatButtonOnClick() {
 
 		Adventure adv = (Adventure) getActivity();
 
@@ -467,7 +514,8 @@ public class AdventureCombatFragment extends DialogFragment implements
 				Integer handicap = Integer.valueOf(handicapValue.getText()
 						.toString());
 
-				addCombatant(rootView, currentRow, skill, stamina, handicap);
+				addCombatant(rootView, currentRow, skill, stamina, handicap,
+						"2");
 
 			}
 
@@ -487,8 +535,8 @@ public class AdventureCombatFragment extends DialogFragment implements
 		alert.show();
 	}
 
-	private void addCombatant(final View rootView, int currentRow,
-			Integer skill, Integer stamina, Integer handicap) {
+	protected void addCombatant(final View rootView, int currentRow,
+			Integer skill, Integer stamina, Integer handicap, String damage) {
 		Adventure adv = (Adventure) getActivity();
 
 		final View combatantView = adv.getLayoutInflater().inflate(
@@ -508,7 +556,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 				.findViewById(gridRows[currentRow]);
 
 		Combatant combatPosition = new Combatant(stamina, skill, handicap,
-				combatPositions.size() > 0);
+				combatPositions.size() > 0, damage);
 
 		combatPositions.put(currentRow, combatPosition);
 
@@ -533,23 +581,35 @@ public class AdventureCombatFragment extends DialogFragment implements
 		}
 	}
 
-	private int getNextRow() {
+	protected int getNextRow() {
 		return row++;
 	}
 
-	private class Combatant {
+	protected int getDamage() {
+		return 2;
+	}
+
+	protected class Combatant {
 
 		Integer currentStamina;
 		Integer currentSkill;
 		Integer handicap;
+		String damage;
 		boolean defenseOnly;
+		Integer staminaLoss = 0;
 
 		public Combatant(Integer stamina, Integer skill, Integer handicap,
-				boolean defenseOnly) {
+				boolean defenseOnly, String damage) {
 			this.currentStamina = stamina;
 			this.currentSkill = skill;
 			this.handicap = handicap;
 			this.defenseOnly = defenseOnly;
+			this.damage = damage;
+		}
+
+		public Combatant(Integer stamina, Integer skill, Integer handicap,
+				boolean defenseOnly) {
+			this(stamina, skill, handicap, defenseOnly, "2");
 		}
 
 		public CharSequence toGridString() {
@@ -580,29 +640,48 @@ public class AdventureCombatFragment extends DialogFragment implements
 			return handicap;
 		}
 
-		public void setHandicap(Integer handicap) {
-			this.handicap = handicap;
+		public String getDamage() {
+			return damage;
 		}
 
+		public Integer getStaminaLoss() {
+			return staminaLoss;
+		}
+
+		public void setStaminaLoss(Integer staminaLoss) {
+			this.staminaLoss = staminaLoss;
+		}
+
+		public void setDamage(String damage) {
+			this.damage = damage;
+		}
 	}
 
-	private void resetCombat() {
+	protected void resetCombat() {
+
+		staminaLoss = 0;
 
 		combatPositions.clear();
 		finishedCombats.clear();
-		sequenceCombat = false;
+		combatMode = NORMAL;
 		combatStarted = false;
 		row = 0;
 		currentCombat = 0;
 
 		combatTypeSwitch.setClickable(true);
-		sequenceCombat = combatTypeSwitch.isChecked();
+		combatMode = combatTypeSwitch.isChecked() ? SEQUENCE : NORMAL;
 
 		for (Integer rowId : gridRows) {
 			LinearLayout gridRow = (LinearLayout) rootView.findViewById(rowId);
 			gridRow.removeAllViews();
 		}
 
+		switchLayoutReset();
+
+		refreshScreensFromResume();
+	}
+
+	protected void switchLayoutReset() {
 		addCombatButton.setVisibility(View.VISIBLE);
 		combatTypeSwitch.setVisibility(View.VISIBLE);
 		startCombatButton.setVisibility(View.VISIBLE);
@@ -617,7 +696,35 @@ public class AdventureCombatFragment extends DialogFragment implements
 		p.addRule(RelativeLayout.ALIGN_RIGHT, R.id.combatType);
 		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		resetButton.setLayoutParams(p);
+	}
 
-		refreshScreensFromResume();
+	protected String combatTypeSwitchBehaviour(boolean isChecked) {
+		return combatMode = isChecked ? SEQUENCE : NORMAL;
+	}
+
+	private class CombatTypeSwitchChangeListener implements
+			OnCheckedChangeListener {
+
+		// @Override
+		public void onCheckedChanged(CompoundButton buttonView,
+				boolean isChecked) {
+			combatTypeSwitchBehaviour(isChecked);
+
+		}
+
+	}
+
+	protected static int convertDamageStringToInteger(String damage) {
+		if (damage.equals("1D6")) {
+			return DiceRoller.rollD6();
+		} else {
+			return Integer.parseInt(damage);
+		}
+	}
+	
+	protected void startCombat() {
+		combatTurn();
+
+		switchLayoutCombatStarted();
 	}
 }
