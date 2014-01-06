@@ -732,4 +732,12 @@
     <string name="title_adventure_creation_weapons">Weapons</string>
     <string name="vehicleCombat">Vehicle Combat</string>
     <string name="damage">Damage: </string>
+    <string name="hthDamage">Melee Damage: </string>
+    <string name="rockets">Rockets: </string>
+    <string name="ironSpikes">Iron Spikes: </string>
+    <string name="oil">Oil: </string>
+    <string name="spareWheels">Spare Wheels: </string>
+    <string name="vehicleSpecs">Car Specs</string>
+    <string name="addEnhancement">Add Enhancement</string>
+    
 </resources>

@@ -100,7 +100,7 @@ public class FFVehicleCombatFragment extends DialogFragment implements Adventure
 
 			@Override
 			public void onClick(View v) {
-				adv.setCurrentFirepower(Math.min(adv.getCurrentArmour() + 1, adv.getInitialArmour()));
+				adv.setCurrentArmour(Math.min(adv.getCurrentArmour() + 1, adv.getInitialArmour()));
 				refreshScreensFromResume();
 
 			}
@@ -158,7 +158,7 @@ public class FFVehicleCombatFragment extends DialogFragment implements Adventure
 				int myAttack = DiceRoller.roll2D6()+adv.getCurrentFirepower();
 				int enemyAttack = DiceRoller.roll2D6()+enemyFirepower;
 
-				if (myAttack < enemyAttack) {
+				if (myAttack > enemyAttack) {
 					int damage = DiceRoller.rollD6();
 					enemyArmour -= damage;
 					if (enemyArmour <= 0) {
@@ -167,7 +167,7 @@ public class FFVehicleCombatFragment extends DialogFragment implements Adventure
 					} else {
 						combatResult.setText("Direct hit! (-"+damage+" Armour)");
 					}
-				}else if (enemyAttack < enemyFirepower) {
+				}else if (enemyAttack > enemyFirepower) {
 					int damage = DiceRoller.rollD6();
 					adv.setCurrentArmour(adv.getCurrentArmour()-damage);
 					if (adv.getCurrentArmour() <= 0) {

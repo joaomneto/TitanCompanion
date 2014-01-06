@@ -233,7 +233,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 								.get(previousCombat);
 						combatant.setCurrentStamina(combatant
 								.getCurrentStamina() + 1);
-						combatant.setStaminaLoss(combatant.getStaminaLoss() - 1);
+						combatant.setStaminaLoss(combatant.getStaminaLoss() + 1);
 
 					} else {
 						adv.setCurrentStamina(adv.getCurrentStamina() - 1);
@@ -279,8 +279,9 @@ public class AdventureCombatFragment extends DialogFragment implements
 					.findViewById(gridRows[currentCombat]);
 			if (attackStrength > enemyAttackStrength) {
 				if (!position.isDefenseOnly()) {
+					int damage = getDamage();
 					position.setCurrentStamina(Math.max(0,
-							position.getCurrentStamina() - getDamage()));
+							position.getCurrentStamina() - damage));
 					hit = true;
 					combatResult.setText("You have hit the enemy! ("
 							+ diceRoll
@@ -289,7 +290,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 							+ (position.getHandicap() >= 0 ? (" + " + position
 									.getHandicap()) : "") + ") vs ("
 							+ enemyDiceRoll + " + "
-							+ position.getCurrentSkill() + ")");
+							+ position.getCurrentSkill() + "). (-"+damage+"ST)");
 				} else {
 					draw = true;
 					combatResult.setText("You have blocked the enemy attack! ("
@@ -302,15 +303,16 @@ public class AdventureCombatFragment extends DialogFragment implements
 							+ position.getCurrentSkill() + ")");
 				}
 			} else if (attackStrength < enemyAttackStrength) {
-				adv.setCurrentStamina((Math.max(0, adv.getCurrentStamina() - convertDamageStringToInteger(position.getDamage()))));
-				combatResult.setText("Youve have been hit... ("
+				int damage = convertDamageStringToInteger(position.getDamage());
+				adv.setCurrentStamina((Math.max(0, adv.getCurrentStamina() - damage)));
+				combatResult.setText("You've been hit... ("
 						+ diceRoll
 						+ " + "
 						+ skill
 						+ (position.getHandicap() >= 0 ? (" + " + position
 								.getHandicap()) : "") + ") vs ("
 						+ enemyDiceRoll + " + " + position.getCurrentSkill()
-						+ ")");
+						+ "). (-"+damage+"ST)");
 			} else {
 
 				combatResult.setText("Both you and the enemy have missed");
@@ -407,7 +409,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 
 				position.setCurrentStamina(Math.max(0,
 						position.getCurrentStamina() - getDamage()));
-				position.setStaminaLoss(position.getStaminaLoss() - damage);
+				position.setStaminaLoss(position.getStaminaLoss() + damage);
 				hit = true;
 				combatResult.setText("You have hit the enemy! ("
 						+ diceRoll
@@ -438,7 +440,7 @@ public class AdventureCombatFragment extends DialogFragment implements
 			}
 
 			if (position.getCurrentStamina() == 0
-					|| (getKnockoutStamina() != null && staminaLoss >= getKnockoutStamina())) {
+					|| (getKnockoutStamina() != null && position.getStaminaLoss() >= getKnockoutStamina())) {
 				removeCombatant(row);
 				combatResult.setText("You have defeated an enemy!");
 				advanceCombat();

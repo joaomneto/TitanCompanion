@@ -1,5 +1,10 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
@@ -8,6 +13,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,6 +53,45 @@ public class AdventureEquipmentFragment extends DialogFragment implements Advent
 
 		goldValue = (TextView) rootView.findViewById(R.id.goldValue);
 		goldValue.setText(adv.getGold().toString());
+		
+		goldValue.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
+
+				alert.setTitle("Set Value");
+
+				// Set an EditText view to get user input
+				final EditText input = new EditText(adv);
+				final InputMethodManager imm = (InputMethodManager) adv
+						.getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
+						InputMethodManager.HIDE_IMPLICIT_ONLY);
+				input.setInputType(InputType.TYPE_CLASS_NUMBER);
+				input.requestFocus();
+				alert.setView(input);
+
+				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+
+							int value = Integer.parseInt(input.getText().toString());
+							adv.setGold(value);
+							goldValue.setText(""+value);
+					}
+				});
+
+				alert.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
+							}
+						});
+
+				alert.show();
+				
+			}
+		});
 
 		buttonAddNote.setOnClickListener(new OnClickListener() {
 

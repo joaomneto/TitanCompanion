@@ -18,14 +18,18 @@ public class AdventureVitalStatsFragment extends DialogFragment implements
 	TextView skillValue = null;
 	TextView staminaValue = null;
 	TextView luckValue = null;
+	TextView provisionsValue = null;
 
 	Button increaseStaminaButton = null;
 	Button increaseSkillButton = null;
 	Button increaseLuckButton = null;
+	Button increaseProvisionsButton = null;
 
 	Button decreaseStaminaButton = null;
 	Button decreaseSkillButton = null;
 	Button decreaseLuckButton = null;
+	Button decreaseProvisionsButton = null;
+	
 
 	public AdventureVitalStatsFragment() {
 
@@ -49,6 +53,12 @@ public class AdventureVitalStatsFragment extends DialogFragment implements
 		skillValue = (TextView) rootView.findViewById(R.id.statsSkillValue);
 		staminaValue = (TextView) rootView.findViewById(R.id.statsStaminaValue);
 		luckValue = (TextView) rootView.findViewById(R.id.statsLuckValue);
+		provisionsValue = (TextView) rootView.findViewById(R.id.provisionsValue);
+		
+		
+		TextView provText = (TextView) rootView.findViewById(R.id.textView4);
+		Button provButton = (Button) rootView.findViewById(R.id.buttonConsumeProvisions);
+		
 
 		increaseStaminaButton = (Button) rootView
 				.findViewById(R.id.plusStaminaButton);
@@ -56,6 +66,8 @@ public class AdventureVitalStatsFragment extends DialogFragment implements
 				.findViewById(R.id.plusSkillButton);
 		increaseLuckButton = (Button) rootView
 				.findViewById(R.id.plusLuckButton);
+		increaseProvisionsButton = (Button) rootView
+				.findViewById(R.id.plusProvisionsButton);
 
 		decreaseStaminaButton = (Button) rootView
 				.findViewById(R.id.minusStaminaButton);
@@ -63,6 +75,8 @@ public class AdventureVitalStatsFragment extends DialogFragment implements
 				.findViewById(R.id.minusSkillButton);
 		decreaseLuckButton = (Button) rootView
 				.findViewById(R.id.minusLuckButton);
+		decreaseProvisionsButton = (Button) rootView
+				.findViewById(R.id.minusProvisionsButton);
 		final Adventure adv = (Adventure) getActivity();
 
 
@@ -94,6 +108,16 @@ public class AdventureVitalStatsFragment extends DialogFragment implements
 			public void onClick(View v) {
 				if (adv.getCurrentLuck() < adv.getInitialLuck())
 					adv.setCurrentLuck(adv.getCurrentLuck() + 1);
+				refreshScreensFromResume();
+
+			}
+		});
+		
+		increaseProvisionsButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+					adv.setProvisions(adv.getProvisions() + 1);
 				refreshScreensFromResume();
 
 			}
@@ -131,6 +155,29 @@ public class AdventureVitalStatsFragment extends DialogFragment implements
 
 			}
 		});
+		
+		decreaseProvisionsButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (adv.getProvisions() > 0)
+					adv.setProvisions(adv.getProvisions() - 1);
+				refreshScreensFromResume();
+
+			}
+		});
+		
+		if(adv.getProvisionsValue() == null || adv.getProvisionsValue() < 0){
+			increaseProvisionsButton.setVisibility(View.INVISIBLE);
+			decreaseProvisionsButton.setVisibility(View.INVISIBLE);
+			provisionsValue.setVisibility(View.INVISIBLE);
+			provText.setVisibility(View.INVISIBLE);
+			provButton.setVisibility(View.INVISIBLE);
+		}
+	}
+	
+	public void setProvisionsValue(Integer value) {
+		this.provisionsValue.setText(value.toString());
 	}
 
 
@@ -141,6 +188,7 @@ public class AdventureVitalStatsFragment extends DialogFragment implements
 		skillValue.setText("" + adv.getCurrentSkill());
 		staminaValue.setText("" + adv.getCurrentStamina());
 		luckValue.setText("" + adv.getCurrentLuck());
+		provisionsValue.setText("" + adv.getProvisions());
 
 	}
 

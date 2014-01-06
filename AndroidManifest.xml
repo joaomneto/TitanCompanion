@@ -181,6 +181,15 @@
             android:label="@string/ff"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TOTAdventureCreation"
+            android:label="@string/tot" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.TOTAdventure"
+            android:label="@string/tot"
+            android:screenOrientation="portrait" >
+        </activity>
         
     </application>
 

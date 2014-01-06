@@ -3,9 +3,7 @@ package pt.joaomneto.ffgbutil.adventure.impl;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
@@ -22,8 +20,14 @@ public class FFAdventure extends Adventure {
 	private Integer rockets = -1;
 	private Integer ironSpikes = -1;
 	private Integer oilCannisters = -1;
+	private Integer spareWheels = -1;
+	
+	List<String> carEnhancements = new ArrayList<String>();
 
 	protected static final int FRAGMENT_VEHICLE_COMBAT = 2;
+	protected static final int FRAGMENT_VEHICLE_EQUIPMENT = 3;
+	protected static final int FRAGMENT_EQUIPMENT = 4;
+	protected static final int FRAGMENT_NOTES = 5;
 
 	public FFAdventure() {
 		super();
@@ -34,6 +38,8 @@ public class FFAdventure extends Adventure {
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.ff.FFAdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_VEHICLE_COMBAT, new AdventureFragmentRunner(R.string.vehicleCombat,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.ff.FFVehicleCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_VEHICLE_EQUIPMENT, new AdventureFragmentRunner(R.string.vehicleCombat,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.ff.FFVehicleStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
@@ -68,7 +74,12 @@ public class FFAdventure extends Adventure {
 		bw.write("rockets="+rockets+"\n");
 		bw.write("ironSpikes="+ironSpikes+"\n");
 		bw.write("oilCannisters="+oilCannisters+"\n");
+		bw.write("spareWheels="+spareWheels+"\n");
+		
 		bw.write("gold=" + getGold() + "\n");
+		bw.write("provisions=" + getProvisions() + "\n");
+		bw.write("provisionsValue=" + getProvisionsValue() + "\n");
+		bw.write("carEnhancements="+arrayToString(carEnhancements));
 	}
 
 	
@@ -141,7 +152,31 @@ public class FFAdventure extends Adventure {
 		setIronSpikes(Integer.valueOf(getSavedGame().getProperty("ironSpikes")));
 		setOilCannisters(Integer.valueOf(getSavedGame().getProperty("oilCannisters")));
 		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
+		setProvisions(Integer.valueOf(getSavedGame().getProperty("provisions")));
+		setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
+		setSpareWheels(Integer.valueOf(getSavedGame().getProperty("spareWheels")));
+		setCarEnhancements(stringToArray(getSavedGame().getProperty("provisionsValue")));
 	}
+
+	public Integer getSpareWheels() {
+		return spareWheels;
+	}
+
+	public void setSpareWheels(Integer spareWheels) {
+		this.spareWheels = spareWheels;
+	}
+
+	public List<String> getCarEnhancements() {
+		return carEnhancements;
+	}
+
+	public void setCarEnhancements(List<String> carEnhancements) {
+		this.carEnhancements = carEnhancements;
+	}
+	
+	
+	
+	
 
 	
 }

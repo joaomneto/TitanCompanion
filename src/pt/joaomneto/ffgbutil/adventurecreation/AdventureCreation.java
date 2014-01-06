@@ -128,6 +128,10 @@ public abstract class AdventureCreation extends FragmentActivity {
 		luck = DiceRoller.rollD6() + 6;
 		stamina = DiceRoller.roll2D6() + 12;
 
+		
+		
+		rollGamebookSpecificStats(view);
+		
 		TextView skillValue = (TextView) findViewById(R.id.skillValue);
 		TextView staminaValue = (TextView) findViewById(R.id.staminaValue);
 		TextView luckValue = (TextView) findViewById(R.id.luckValue);
@@ -135,8 +139,6 @@ public abstract class AdventureCreation extends FragmentActivity {
 		skillValue.setText("" + skill);
 		staminaValue.setText("" + stamina);
 		luckValue.setText("" + luck);
-		
-		rollGamebookSpecificStats(view);
 	}
 
 	protected abstract void rollGamebookSpecificStats(View view);

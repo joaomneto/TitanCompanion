@@ -37,7 +37,11 @@ public class FFAdventureCreation extends AdventureCreation {
 		bw.write("rockets=4\n");
 		bw.write("ironSpikes=3\n");
 		bw.write("oilCannisters=2\n");
+		bw.write("provisions=10\n");
+		bw.write("provisionsValue=4\n");
+		bw.write("spareWheels=2\n");
 		bw.write("gold=200\n");
+		bw.write("carEnhancements=\n");
 	}
 	
 	private FFVitalStatisticsFragment getFFVitalStatsFragment() {
@@ -51,6 +55,7 @@ public class FFAdventureCreation extends AdventureCreation {
 	protected void rollGamebookSpecificStats(View view) {
 		currentFirepower = DiceRoller.rollD6()+6;
 		currentArmour = DiceRoller.roll2D6()+24;
+		stamina = DiceRoller.roll2D6()+24;
 		getFFVitalStatsFragment().getFirepowerValue().setText(""+currentFirepower);
 		getFFVitalStatsFragment().getArmorValue().setText(""+currentArmour);
 		

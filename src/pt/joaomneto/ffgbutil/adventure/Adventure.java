@@ -492,12 +492,12 @@ public abstract class Adventure extends FragmentActivity {
 		} else if (getCurrentStamina() == getInitialStamina()) {
 			showAlert("You are already at maximum Stamina!");
 		} else {
-			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
-			adventureProvisionsFragment.setProvisionsValue(--provisions);
+			AdventureVitalStatsFragment vitalstats = getVitalStatsFragment();
+			vitalstats.setProvisionsValue(--provisions);
 			setCurrentStamina(getCurrentStamina() + provisionsValue);
 			if (getCurrentStamina() > getInitialStamina())
 				setCurrentStamina(getInitialStamina());
-			showAlert("You have gained 4 Stamina points!");
+			showAlert("You have gained "+provisionsValue+" Stamina points!");
 		}
 	}
 
@@ -766,5 +766,12 @@ public abstract class Adventure extends FragmentActivity {
 
 		return elements;
 	}
+	
+	public void changeStamina(int i) {
+		setCurrentStamina(i > 0 ? Math.min(getInitialStamina(),
+				getCurrentStamina() + i) : Math.max(0, getCurrentStamina() + i));
+	}
+
+	
 
 }
