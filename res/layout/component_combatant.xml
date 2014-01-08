@@ -12,13 +12,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:clickable="false"/>
-    
-    <TextView
-        android:id="@+id/combatText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/combatSelected"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <View
         android:id="@+id/separator"
@@ -27,5 +20,47 @@
         android:layout_below="@+id/combatSelected"
         android:layout_marginTop="1dp"
         android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/combatTextSkill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/combatSelected"
+        android:layout_alignBottom="@+id/combatSelected"
+        android:layout_toRightOf="@+id/combatSelected"
+        android:gravity="center"
+        android:text="@string/skill"
+        android:layout_marginRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/combatTextSkillValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/combatTextSkill"
+        android:layout_alignBottom="@+id/combatTextSkill"
+        android:layout_toRightOf="@+id/combatTextSkill"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/combatTextStamina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/combatTextSkillValue"
+        android:layout_alignBottom="@+id/combatTextSkillValue"
+        android:layout_toRightOf="@+id/combatTextSkillValue"
+        android:text="@string/stamina"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/combatTextStaminaValue"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/combatTextStamina"
+        android:layout_alignBottom="@+id/combatTextStamina"
+        android:layout_toRightOf="@+id/combatTextStamina"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

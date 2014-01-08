@@ -544,8 +544,11 @@ public class AdventureCombatFragment extends DialogFragment implements
 		final View combatantView = adv.getLayoutInflater().inflate(
 				R.layout.component_combatant, null);
 
-		TextView tv = (TextView) combatantView.getRootView().findViewById(
-				R.id.combatText);
+		TextView combatTextStamina = (TextView) combatantView.getRootView().findViewById(
+				R.id.combatTextStamina);
+		
+		TextView combatTextSkill = (TextView) combatantView.getRootView().findViewById(
+				R.id.combatTextSkill);
 
 		if (combatPositions.size() == 0) {
 
@@ -562,7 +565,8 @@ public class AdventureCombatFragment extends DialogFragment implements
 
 		combatPositions.put(currentRow, combatPosition);
 
-		tv.setText(combatPosition.toGridString());
+		combatTextSkill.setText(""+combatPosition.getCurrentSkill());
+		combatTextStamina.setText(""+combatPosition.getCurrentStamina());
 
 		grid.addView(combatantView);
 	}
