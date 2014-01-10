@@ -544,11 +544,11 @@ public class AdventureCombatFragment extends DialogFragment implements
 		final View combatantView = adv.getLayoutInflater().inflate(
 				R.layout.component_combatant, null);
 
-		TextView combatTextStamina = (TextView) combatantView.getRootView().findViewById(
-				R.id.combatTextStamina);
+		final TextView combatTextStamina = (TextView) combatantView.getRootView().findViewById(
+				R.id.combatTextStaminaValue);
 		
-		TextView combatTextSkill = (TextView) combatantView.getRootView().findViewById(
-				R.id.combatTextSkill);
+		final TextView combatTextSkill = (TextView) combatantView.getRootView().findViewById(
+				R.id.combatTextSkillValue);
 
 		if (combatPositions.size() == 0) {
 
@@ -560,13 +560,52 @@ public class AdventureCombatFragment extends DialogFragment implements
 		LinearLayout grid = (LinearLayout) rootView
 				.findViewById(gridRows[currentRow]);
 
-		Combatant combatPosition = new Combatant(stamina, skill, handicap,
+		final Combatant combatPosition = new Combatant(stamina, skill, handicap,
 				combatPositions.size() > 0, damage);
 
 		combatPositions.put(currentRow, combatPosition);
 
 		combatTextSkill.setText(""+combatPosition.getCurrentSkill());
 		combatTextStamina.setText(""+combatPosition.getCurrentStamina());
+		
+		
+		Button minusCombatStamina = (Button) combatantView.findViewById(R.id.minusCombatantStaminaButton);
+		Button plusCombatStamina = (Button) combatantView.findViewById(R.id.plusCombatantStaminaButton);
+		Button minusCombatSkill = (Button) combatantView.findViewById(R.id.minusCombatantSkillButton);
+		Button plusCombatSkill = (Button) combatantView.findViewById(R.id.plusCombatantSkillButton);
+
+		minusCombatStamina.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				combatPosition.setCurrentStamina(Math.max(0, combatPosition.getCurrentStamina()-1));
+				combatTextStamina.setText(""+combatPosition.getCurrentStamina());				
+			}
+		});
+		plusCombatStamina.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				combatPosition.setCurrentStamina(combatPosition.getCurrentStamina()+1);
+				combatTextStamina.setText(""+combatPosition.getCurrentStamina());				
+			}
+		});
+		minusCombatSkill.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				combatPosition.setCurrentSkill(combatPosition.getCurrentSkill()+1);
+				combatTextSkill.setText(""+combatPosition.getCurrentSkill());				
+			}
+		});
+		plusCombatSkill.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				combatPosition.setCurrentSkill(Math.max(0, combatPosition.getCurrentSkill()-1));
+				combatTextSkill.setText(""+combatPosition.getCurrentSkill());				
+			}
+		});
 
 		grid.addView(combatantView);
 	}
@@ -661,6 +700,11 @@ public class AdventureCombatFragment extends DialogFragment implements
 		public void setDamage(String damage) {
 			this.damage = damage;
 		}
+
+		public void setCurrentSkill(Integer currentSkill) {
+			this.currentSkill = currentSkill;
+		}
+		
 	}
 
 	protected void resetCombat() {
