@@ -190,6 +190,15 @@
             android:label="@string/tot"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TROKAdventureCreation"
+            android:label="@string/trok" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.TROKAdventure"
+            android:label="@string/trok"
+            android:screenOrientation="portrait" >
+        </activity>
         
     </application>
 
