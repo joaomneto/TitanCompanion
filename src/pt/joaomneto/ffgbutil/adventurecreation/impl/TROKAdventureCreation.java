@@ -40,10 +40,10 @@ public class TROKAdventureCreation extends AdventureCreation {
 		bw.write("gold=5000\n");
 	}
 	
-	private TROKVitalStatisticsFragment getTKOKVitalStatisticsFragment() {
-		TROKVitalStatisticsFragment tkokVitalStatsFragment = (TROKVitalStatisticsFragment) getSupportFragmentManager()
+	private TROKVitalStatisticsFragment getTROKVitalStatisticsFragment() {
+		TROKVitalStatisticsFragment trokVitalStatsFragment = (TROKVitalStatisticsFragment) getSupportFragmentManager()
 				.getFragments().get(0);
-		return tkokVitalStatsFragment;
+		return trokVitalStatsFragment;
 	}
 	
 
@@ -51,8 +51,8 @@ public class TROKAdventureCreation extends AdventureCreation {
 	protected void rollGamebookSpecificStats(View view) {
 		currentWeapons = DiceRoller.rollD6()+6;
 		currentShields = DiceRoller.rollD6();
-		getTKOKVitalStatisticsFragment().getWeaponsValue().setText(""+currentWeapons);
-		getTKOKVitalStatisticsFragment().getShieldsValue().setText(""+currentShields);
+		getTROKVitalStatisticsFragment().getWeaponsValue().setText(""+currentWeapons);
+		getTROKVitalStatisticsFragment().getShieldsValue().setText(""+currentShields);
 		
 	}
 
