@@ -10,7 +10,6 @@ import pt.joaomneto.ffgbutil.adventure.SpellAdventure;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,8 +21,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-public abstract class AdventureSpellsFragment extends DialogFragment implements
-		AdventureFragment {
+public abstract class AdventureSpellsFragment extends AdventureFragment {
 
 	ListView spellList = null;
 	Spinner chooseSpellSpinner = null;

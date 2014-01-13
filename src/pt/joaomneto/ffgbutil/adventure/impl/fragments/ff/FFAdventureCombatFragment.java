@@ -5,7 +5,6 @@ import java.util.List;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.app.AlertDialog;
@@ -25,8 +24,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class FFAdventureCombatFragment extends AdventureCombatFragment
-		implements AdventureFragment {
+public class FFAdventureCombatFragment extends AdventureCombatFragment{
 
 	public static final String FF13_GUNFIGHT = "FF13_GUNFIGHT";
 

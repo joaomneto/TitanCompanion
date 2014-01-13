@@ -728,7 +728,7 @@
     <string name="grenade">Grenade</string>
     
     <string name="dodge">Dodge Interceptor: </string>
-    <string name="enemyVehicle">Enemy Vehicle: </string>
+    <string name="enemyVehicles">Enemy Vehicles: </string>
     <string name="title_adventure_creation_weapons">Weapons</string>
     <string name="vehicleCombat">Vehicle Combat</string>
     <string name="damage">Damage: </string>

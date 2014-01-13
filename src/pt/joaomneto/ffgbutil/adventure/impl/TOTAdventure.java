@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.ffgbutil.adventure.SpellAdventure;
 import android.os.Bundle;
 import android.view.Menu;

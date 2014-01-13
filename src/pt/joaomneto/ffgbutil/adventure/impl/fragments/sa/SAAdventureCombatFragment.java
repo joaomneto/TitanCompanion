@@ -2,7 +2,6 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments.sa;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.SAAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
@@ -19,12 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.RelativeLayout.LayoutParams;
 
-public class SAAdventureCombatFragment extends AdventureCombatFragment
-		implements AdventureFragment {
+public class SAAdventureCombatFragment extends AdventureCombatFragment{
 
 	public static final String SA12_GUNFIGHT = "SA12_GUNFIGHT";
 

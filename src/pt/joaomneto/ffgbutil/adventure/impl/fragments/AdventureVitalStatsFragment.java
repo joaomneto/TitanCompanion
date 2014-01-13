@@ -4,7 +4,6 @@ import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,8 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class AdventureVitalStatsFragment extends DialogFragment implements
-		AdventureFragment {
+public class AdventureVitalStatsFragment extends AdventureFragment {
 
 	TextView skillValue = null;
 	TextView staminaValue = null;

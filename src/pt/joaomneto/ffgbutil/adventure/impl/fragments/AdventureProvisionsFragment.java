@@ -4,13 +4,12 @@ import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class AdventureProvisionsFragment extends DialogFragment implements AdventureFragment {
+public class AdventureProvisionsFragment extends AdventureFragment {
 
 	TextView potionName = null;
 	TextView potionValue = null;

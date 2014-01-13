@@ -1,14 +1,12 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.sa;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.SAAdventure;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,7 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-public class SAAdventureWeaponsFragment extends DialogFragment implements AdventureFragment {
+public class SAAdventureWeaponsFragment extends AdventureFragment {
 
 	ListView weaponsList = null;
 
@@ -112,7 +110,6 @@ public class SAAdventureWeaponsFragment extends DialogFragment implements Advent
 	@SuppressWarnings("unchecked")
 	@Override
 	public void refreshScreensFromResume() {
-		Adventure adv = (Adventure) getActivity();
 		((ArrayAdapter<String>) weaponsList.getAdapter()).notifyDataSetChanged();
 	}
 

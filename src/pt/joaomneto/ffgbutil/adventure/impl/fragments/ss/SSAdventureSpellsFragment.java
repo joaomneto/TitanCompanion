@@ -1,7 +1,6 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.ss;
 
 import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.SSAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureSpellsFragment;
 import android.os.Bundle;
@@ -9,8 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class SSAdventureSpellsFragment extends AdventureSpellsFragment implements
-		AdventureFragment {
+public class SSAdventureSpellsFragment extends AdventureSpellsFragment {
 
 	
 	

@@ -1,10 +1,5 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
@@ -12,7 +7,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +21,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class AdventureEquipmentFragment extends DialogFragment implements AdventureFragment {
+public class AdventureEquipmentFragment extends AdventureFragment {
 
 	ListView equipmentList = null;
 	Button minusGoldButton = null;

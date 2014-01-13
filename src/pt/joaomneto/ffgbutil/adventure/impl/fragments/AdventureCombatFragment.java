@@ -11,7 +11,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,8 +28,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class AdventureCombatFragment extends DialogFragment implements
-		AdventureFragment {
+public class AdventureCombatFragment extends AdventureFragment {
 
 	protected TextView combatResult = null;
 	protected Button combatTurnButton = null;

@@ -5,7 +5,6 @@ import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure.STCrewman;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
-public class STCrewStatsFragment extends Fragment implements AdventureFragment {
+public class STCrewStatsFragment extends AdventureFragment {
 
 	private TextView scienceOfficerSkillValue = null;
 	private TextView scienceOfficerStaminaValue = null;

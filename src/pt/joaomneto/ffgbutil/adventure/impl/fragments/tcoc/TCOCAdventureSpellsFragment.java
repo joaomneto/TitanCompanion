@@ -6,7 +6,6 @@ import pt.joaomneto.ffgbutil.adventure.impl.TCOCAdventure;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class TCOCAdventureSpellsFragment extends DialogFragment implements AdventureFragment {
+public class TCOCAdventureSpellsFragment extends AdventureFragment {
 
 	ListView spellList = null;
 

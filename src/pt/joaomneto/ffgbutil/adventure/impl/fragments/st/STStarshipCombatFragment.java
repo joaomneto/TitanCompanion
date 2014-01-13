@@ -5,7 +5,6 @@ import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class STStarshipCombatFragment extends DialogFragment implements AdventureFragment {
+public class STStarshipCombatFragment extends AdventureFragment {
 
 	TextView shipWeaponsValue = null;
 	TextView shipShieldsValue = null;

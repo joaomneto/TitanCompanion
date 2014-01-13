@@ -6,7 +6,6 @@ import java.util.List;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.sa.SAAdventureWeaponsFragment;
 import android.os.Bundle;
 import android.view.Menu;

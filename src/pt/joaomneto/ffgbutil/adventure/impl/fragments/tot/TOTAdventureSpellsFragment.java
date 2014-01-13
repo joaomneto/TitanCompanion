@@ -1,7 +1,6 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.tot;
 
 import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.TOTAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureSpellsFragment;
 import android.app.AlertDialog;
@@ -11,8 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TOTAdventureSpellsFragment extends AdventureSpellsFragment
-		implements AdventureFragment {
+public class TOTAdventureSpellsFragment extends AdventureSpellsFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,7 +52,6 @@ public class TOTAdventureSpellsFragment extends AdventureSpellsFragment
 							});
 			builder.setPositiveButton("1",
 					new DialogInterface.OnClickListener() {
-						@SuppressWarnings("unchecked")
 						public void onClick(DialogInterface dialog, int which) {
 							adv.changeStamina(-1);
 							dialog.cancel();

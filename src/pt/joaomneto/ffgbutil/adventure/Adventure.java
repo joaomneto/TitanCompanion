@@ -771,7 +771,6 @@ public abstract class Adventure extends FragmentActivity {
 		setCurrentStamina(i > 0 ? Math.min(getInitialStamina(),
 				getCurrentStamina() + i) : Math.max(0, getCurrentStamina() + i));
 	}
-
 	
 
 }
