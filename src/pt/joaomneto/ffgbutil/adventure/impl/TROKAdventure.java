@@ -2,8 +2,6 @@ package pt.joaomneto.ffgbutil.adventure.impl;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
@@ -13,16 +11,11 @@ import android.view.Menu;
 public class TROKAdventure extends Adventure {
 	
 	
-	private Integer currentFirepower = -1;
-	private Integer currentArmour = -1;
-	private Integer initialFirepower = -1;
-	private Integer initialArmour = -1;
-	private Integer rockets = -1;
-	private Integer ironSpikes = -1;
-	private Integer oilCannisters = -1;
-	private Integer spareWheels = -1;
-	
-	List<String> carEnhancements = new ArrayList<String>();
+	private Integer currentWeapons = -1;
+	private Integer currentShields = -1;
+	private Integer initialWeapons = -1;
+	private Integer initialShields = -1;
+	private Integer missiles = -1;
 
 	protected static final int FRAGMENT_VEHICLE_COMBAT = 2;
 
@@ -62,112 +55,71 @@ public class TROKAdventure extends Adventure {
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
 
-		bw.write("currentFirepower="+currentFirepower+"\n");
-		bw.write("currentArmour="+currentArmour+"\n");
-		bw.write("initialFirepower="+initialFirepower+"\n");
-		bw.write("initialArmour="+initialArmour+"\n");
-		bw.write("rockets="+rockets+"\n");
-		bw.write("ironSpikes="+ironSpikes+"\n");
-		bw.write("oilCannisters="+oilCannisters+"\n");
-		bw.write("spareWheels="+spareWheels+"\n");
-		
+		bw.write("currentWeapons="+currentWeapons+"\n");
+		bw.write("currentShields="+currentShields+"\n");
+		bw.write("initialWeapons="+initialWeapons+"\n");
+		bw.write("initialShields="+initialShields+"\n");
+		bw.write("missiles="+missiles+"\n");
 		bw.write("gold=" + getGold() + "\n");
 		bw.write("provisions=" + getProvisions() + "\n");
 		bw.write("provisionsValue=" + getProvisionsValue() + "\n");
-		bw.write("carEnhancements="+arrayToString(carEnhancements));
 	}
 
 	
 
 
-	public Integer getCurrentFirepower() {
-		return currentFirepower;
+	public Integer getCurrentWeapons() {
+		return currentWeapons;
 	}
 
-	public void setCurrentFirepower(Integer currentFirepower) {
-		this.currentFirepower = currentFirepower;
+	public void setCurrentWeapons(Integer currentWeapons) {
+		this.currentWeapons = currentWeapons;
 	}
 
-	public Integer getCurrentArmour() {
-		return currentArmour;
+	public Integer getCurrentShields() {
+		return currentShields;
 	}
 
-	public void setCurrentArmour(Integer currentArmour) {
-		this.currentArmour = currentArmour;
+	public void setCurrentShields(Integer currentShields) {
+		this.currentShields = currentShields;
 	}
 
-	public Integer getInitialFirepower() {
-		return initialFirepower;
+	public Integer getInitialWeapons() {
+		return initialWeapons;
 	}
 
-	public void setInitialFirepower(Integer initialFirepower) {
-		this.initialFirepower = initialFirepower;
+	public void setInitialWeapons(Integer initialWeapons) {
+		this.initialWeapons = initialWeapons;
 	}
 
-	public Integer getInitialArmour() {
-		return initialArmour;
+	public Integer getInitialShields() {
+		return initialShields;
 	}
 
-	public void setInitialArmour(Integer initialArmour) {
-		this.initialArmour = initialArmour;
-	}
-
-	public Integer getRockets() {
-		return rockets;
-	}
-
-	public void setRockets(Integer rockets) {
-		this.rockets = rockets;
-	}
-
-	public Integer getIronSpikes() {
-		return ironSpikes;
-	}
-
-	public void setIronSpikes(Integer ironSpikes) {
-		this.ironSpikes = ironSpikes;
-	}
-
-	public Integer getOilCannisters() {
-		return oilCannisters;
-	}
-
-	public void setOilCannisters(Integer oilCannisters) {
-		this.oilCannisters = oilCannisters;
+	public void setInitialShields(Integer initialShields) {
+		this.initialShields = initialShields;
 	}
 
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
 
-		setCurrentFirepower(Integer.valueOf(getSavedGame().getProperty("currentFirepower")));
-		setCurrentArmour(Integer.valueOf(getSavedGame().getProperty("currentArmour")));
-		setInitialFirepower(Integer.valueOf(getSavedGame().getProperty("initialFirepower")));
-		setInitialArmour(Integer.valueOf(getSavedGame().getProperty("initialArmour")));
-		setRockets(Integer.valueOf(getSavedGame().getProperty("rockets")));
-		setIronSpikes(Integer.valueOf(getSavedGame().getProperty("ironSpikes")));
-		setOilCannisters(Integer.valueOf(getSavedGame().getProperty("oilCannisters")));
-		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
+		setCurrentWeapons(Integer.valueOf(getSavedGame().getProperty("currentWeapons")));
+		setCurrentShields(Integer.valueOf(getSavedGame().getProperty("currentShields")));
+		setInitialWeapons(Integer.valueOf(getSavedGame().getProperty("initialWeapons")));
+		setInitialShields(Integer.valueOf(getSavedGame().getProperty("initialShields")));
+		setMissiles(Integer.valueOf(getSavedGame().getProperty("missiles")));
 		setProvisions(Integer.valueOf(getSavedGame().getProperty("provisions")));
 		setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
-		setSpareWheels(Integer.valueOf(getSavedGame().getProperty("spareWheels")));
-		setCarEnhancements(stringToArray(getSavedGame().getProperty("provisionsValue")));
 	}
 
-	public Integer getSpareWheels() {
-		return spareWheels;
+	public Integer getMissiles() {
+		return missiles;
 	}
 
-	public void setSpareWheels(Integer spareWheels) {
-		this.spareWheels = spareWheels;
+	public void setMissiles(Integer missiles) {
+		this.missiles = missiles;
 	}
 
-	public List<String> getCarEnhancements() {
-		return carEnhancements;
-	}
-
-	public void setCarEnhancements(List<String> carEnhancements) {
-		this.carEnhancements = carEnhancements;
-	}
 	
 	
 	

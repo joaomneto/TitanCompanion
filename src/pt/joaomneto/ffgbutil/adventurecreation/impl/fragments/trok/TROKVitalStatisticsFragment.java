@@ -1,4 +1,4 @@
-package pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tkok;
+package pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.trok;
 
 import pt.joaomneto.ffgbutil.R;
 import android.os.Bundle;

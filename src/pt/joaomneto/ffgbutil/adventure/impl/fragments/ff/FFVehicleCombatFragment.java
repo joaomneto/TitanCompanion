@@ -90,7 +90,7 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 
 			@Override
 			public void onClick(View v) {
-				if (enemyArmour == 0 || adv.getCurrentArmour() == 0)
+				if ((enemyArmour == 0 && enemy2Armour == 0 )|| adv.getCurrentArmour() == 0)
 					return;
 
 				combatResult.setText("");

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name"></string>
+    <string name="app_name">Fighting Fantasy</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="action_settings">Settings</string>
@@ -729,6 +729,7 @@
     
     <string name="dodge">Dodge Interceptor: </string>
     <string name="enemyVehicles">Enemy Vehicles: </string>
+    <string name="enemyVehicle">Enemy Vehicle: </string>
     <string name="title_adventure_creation_weapons">Weapons</string>
     <string name="vehicleCombat">Vehicle Combat</string>
     <string name="damage">Damage: </string>
@@ -740,4 +741,6 @@
     <string name="vehicleSpecs">Car Specs</string>
     <string name="addEnhancement">Add Enhancement</string>
     
+    
+    <string name="starship">Starship: </string>
 </resources>

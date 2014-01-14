@@ -6,7 +6,7 @@ import java.io.IOException;
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
-import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tkok.TROKVitalStatisticsFragment;
+import pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.trok.TROKVitalStatisticsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.view.View;
 
@@ -31,9 +31,9 @@ public class TROKAdventureCreation extends AdventureCreation {
 			throws IOException {
 
 		bw.write("currentWeapons="+currentWeapons+"\n");
-		bw.write("currentArmour="+currentShields+"\n");
+		bw.write("currentShields="+currentShields+"\n");
 		bw.write("initialWeapons="+currentWeapons+"\n");
-		bw.write("initialArmour="+currentShields+"\n");
+		bw.write("initialShields="+currentShields+"\n");
 		bw.write("missiles=2\n");
 		bw.write("provisions=4\n");
 		bw.write("provisionsValue=6\n");
