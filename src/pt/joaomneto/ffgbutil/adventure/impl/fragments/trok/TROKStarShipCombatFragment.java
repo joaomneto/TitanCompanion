@@ -2,7 +2,6 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments.trok;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
-import pt.joaomneto.ffgbutil.adventure.impl.FFAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.TROKAdventure;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.os.Bundle;
@@ -15,15 +14,19 @@ import android.widget.TextView;
 
 public class TROKStarShipCombatFragment extends AdventureFragment {
 
-	TextView vehicleWeaponsValue = null;
-	TextView vehicleShieldsValue = null;
+	TextView starshipWeaponsValue = null;
+	TextView starshipShieldsValue = null;
 	TextView enemyWeaponsValue = null;
 	TextView enemyShieldsValue = null;
+	TextView enemy2WeaponsValue = null;
+	TextView enemy2ShieldsValue = null;
 
 	Button attackButton = null;
 
 	int enemyWeapons = 0;
 	int enemyShields = 0;
+	int enemy2Weapons = 0;
+	int enemy2Shields = 0;
 
 	TextView combatResult = null;
 
@@ -38,21 +41,25 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 
 		final TROKAdventure adv = (TROKAdventure) getActivity();
 
-		vehicleWeaponsValue = (TextView) rootView.findViewById(R.id.vehicleWeaponsValue);
-		vehicleShieldsValue = (TextView) rootView.findViewById(R.id.vehicleShieldsValue);
+		starshipWeaponsValue = (TextView) rootView.findViewById(R.id.starshipWeaponsValue);
+		starshipShieldsValue = (TextView) rootView.findViewById(R.id.starshipShieldsValue);
 		enemyWeaponsValue = (TextView) rootView.findViewById(R.id.enemyWeaponsValue);
 		enemyShieldsValue = (TextView) rootView.findViewById(R.id.enemyShieldsValue);
 
-		vehicleWeaponsValue.setText("" + adv.getCurrentWeapons());
-		vehicleShieldsValue.setText("" + adv.getCurrentShields());
+		starshipWeaponsValue.setText("" + adv.getCurrentWeapons());
+		starshipShieldsValue.setText("" + adv.getCurrentShields());
 
 		combatResult = (TextView) rootView.findViewById(R.id.combatResult);
 
-		setupIncDecButton(rootView, R.id.plusWeaponsButton, R.id.minusWeaponsButton, adv, FFAdventure.class, "getCurrentWeapons", "setCurrentWeapons", adv.getInitialWeapons());
-		setupIncDecButton(rootView, R.id.plusShieldsButton, R.id.minusShieldsButton, adv, FFAdventure.class, "getCurrentShields", "setCurrentShields", adv.getInitialShields());
+		setupIncDecButton(rootView, R.id.plusWeaponsButton, R.id.minusWeaponsButton, adv, TROKAdventure.class, "getCurrentWeapons", "setCurrentWeapons", adv.getInitialWeapons());
+		setupIncDecButton(rootView, R.id.plusShieldsButton, R.id.minusShieldsButton, adv, TROKAdventure.class, "getCurrentShields", "setCurrentShields", adv.getInitialShields());
+		setupIncDecButton(rootView, R.id.plusMissilesButton, R.id.minusMissilesButton, adv, TROKAdventure.class, "getMissiles", "setMissiles", 99);
 
-		setupIncDecButton(rootView, R.id.plusEnemyWeaponsButton, R.id.minusEnemyWeaponsButton, "getEnemyWeapons", "setEnemyWeapons", 100);
-		setupIncDecButton(rootView, R.id.plusEnemyShieldsButton, R.id.minusEnemyShieldsButton, "getEnemyShields", "setEnemyShields", 100);
+		setupIncDecButton(rootView, R.id.plusEnemyWeaponsButton, R.id.minusEnemyWeaponsButton, "getEnemyWeapons", "setEnemyWeapons", 99);
+		setupIncDecButton(rootView, R.id.plusEnemyShieldsButton, R.id.minusEnemyShieldsButton, "getEnemyShields", "setEnemyShields", 99);
+
+		setupIncDecButton(rootView, R.id.plusEnemy2WeaponsButton, R.id.minusEnemy2WeaponsButton, "getEnemy2Weapons", "setEnemy2Weapons", 99);
+		setupIncDecButton(rootView, R.id.plusEnemy2ShieldsButton, R.id.minusEnemy2ShieldsButton, "getEnemy2Shields", "setEnemy2Shields", 99);
 
 		attackButton = (Button) rootView.findViewById(R.id.buttonAttack);
 
@@ -65,29 +72,64 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 
 				combatResult.setText("");
 
-				int myAttack = DiceRoller.roll2D6() + adv.getCurrentWeapons();
-				int enemyAttack = DiceRoller.roll2D6() + enemyWeapons;
-
-				if (myAttack > enemyAttack) {
-					int damage = DiceRoller.rollD6();
-					enemyShields -= damage;
-					if (enemyShields <= 0) {
-						enemyShields = 0;
-						adv.showAlert("Direct hit!. You've defeated your opponent!");
+				if (enemyShields > 0) {
+					if (DiceRoller.roll2D6() <= adv.getCurrentWeapons()) {
+						int damage = 1;
+						enemyShields -= damage;
+						if (enemyShields <= 0) {
+							enemyShields = 0;
+							adv.showAlert("Direct hit!. You've defeated your opponent!");
+						} else {
+							combatResult.setText("Direct hit! (-" + damage + " Shields)");
+						}
 					} else {
-						combatResult.setText("Direct hit! (-" + damage + " Shields)");
+						combatResult.setText("You've missed!");
 					}
-				} else if (enemyAttack > enemyWeapons) {
-					int damage = DiceRoller.rollD6();
-					adv.setCurrentShields(adv.getCurrentShields() - damage);
-					if (adv.getCurrentShields() <= 0) {
-						adv.setCurrentShields(0);
-						adv.showAlert("The enemy has destroyed your vehicle...");
+				} else if (enemy2Shields > 0) {
+					if (DiceRoller.roll2D6() <= adv.getCurrentWeapons()) {
+						int damage = 1;
+						enemy2Shields -= damage;
+						if (enemy2Shields <= 0) {
+							enemy2Shields = 0;
+							adv.showAlert("Direct hit!. You've defeated the second opponent!");
+						} else {
+							combatResult.setText("Direct hit! (-" + damage + " Shields)");
+						}
 					} else {
-						combatResult.setText("The enemy has hit your vehicle. (-" + damage + " Shields)");
+						combatResult.setText("You've missed!");
 					}
 				} else {
-					combatResult.setText("Both you and your enemy have missed!");
+					return;
+				}
+				if (enemyShields > 0) {
+					if (DiceRoller.roll2D6() <= enemyWeapons) {
+						int damage = 1;
+						adv.setCurrentShields(adv.getCurrentShields() - damage);
+						if (adv.getCurrentShields() <= 0) {
+							adv.setCurrentShields(0);
+							adv.showAlert("The enemy has destroyed your starship...");
+						} else {
+							combatResult.setText(combatResult.getText() + "\nThe enemy has hit your starship. (-" + damage + " Shields)");
+						}
+					} else {
+						combatResult.setText(combatResult.getText() + "\nYou're enemy has missed!");
+					}
+				}
+				
+
+				if (enemy2Shields > 0) {
+					if (DiceRoller.roll2D6() <= enemy2Weapons) {
+						int damage = 1;
+						adv.setCurrentShields(adv.getCurrentShields() - damage);
+						if (adv.getCurrentShields() <= 0) {
+							adv.setCurrentShields(0);
+							adv.showAlert("The enemy has destroyed your starship...");
+						} else {
+							combatResult.setText(combatResult.getText() + "\nThe second enemy has hit your starship. (-" + damage + " Shields)");
+						}
+					} else {
+						combatResult.setText(combatResult.getText() + "\nThe second enemy has missed!");
+					}
 				}
 
 				refreshScreensFromResume();
@@ -106,8 +148,10 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 
 		enemyShieldsValue.setText("" + enemyShields);
 		enemyWeaponsValue.setText("" + enemyWeapons);
-		vehicleShieldsValue.setText("" + adv.getCurrentShields());
-		vehicleWeaponsValue.setText("" + adv.getCurrentWeapons());
+		enemy2ShieldsValue.setText("" + enemy2Shields);
+		enemy2WeaponsValue.setText("" + enemy2Weapons);
+		starshipShieldsValue.setText("" + adv.getCurrentShields());
+		starshipWeaponsValue.setText("" + adv.getCurrentWeapons());
 	}
 
 	public int getEnemyWeapons() {
@@ -124,6 +168,22 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 
 	public void setEnemyShields(int enemyShields) {
 		this.enemyShields = enemyShields;
+	}
+
+	public int getEnemy2Weapons() {
+		return enemy2Weapons;
+	}
+
+	public void setEnemy2Weapons(int enemy2Weapons) {
+		this.enemy2Weapons = enemy2Weapons;
+	}
+
+	public int getEnemy2Shields() {
+		return enemy2Shields;
+	}
+
+	public void setEnemy2Shields(int enemy2Shields) {
+		this.enemy2Shields = enemy2Shields;
 	}
 
 }
