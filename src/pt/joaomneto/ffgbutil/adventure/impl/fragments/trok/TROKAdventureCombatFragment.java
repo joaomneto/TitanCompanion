@@ -24,30 +24,25 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class TROKAdventureCombatFragment extends AdventureCombatFragment{
+public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
 	public static final String TROK15_GUNFIGHT = "TROK15_GUNFIGHT";
 
 	private Spinner damageSpinner = null;
 	private TextView damageText = null;
 
-	private List<String> damageList = Arrays.asList(new String[] { "1", "2",
-			"3", "4", "1D6" });
+	private List<String> damageList = Arrays.asList(new String[] { "4", "5", "6", "1D6" });
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		rootView = inflater.inflate(R.layout.fragment_adventure_combat,
-				container, false);
+		rootView = inflater.inflate(R.layout.fragment_15trok_adventure_combat, container, false);
 
 		damageSpinner = (Spinner) rootView.findViewById(R.id.damageSpinner);
 		damageText = (TextView) rootView.findViewById(R.id.damageText);
 
 		if (damageSpinner != null) {
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-					getActivity(), android.R.layout.simple_list_item_1,
-					android.R.id.text1, damageList);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, damageList);
 			damageSpinner.setAdapter(adapter);
 		}
 
@@ -60,8 +55,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment{
 		damageSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				overrideDamage = damageList.get(arg2);
 
 			}
@@ -88,10 +82,10 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment{
 			combatStarted = true;
 			combatTypeSwitch.setClickable(false);
 		}
-		if (combatMode.equals(NORMAL)) {
-			standardCombatTurn();
+		if (combatMode.equals(TROK15_GUNFIGHT)) {
+			gunfightCombatTurn();
 		} else {
-			sequenceCombatTurn();
+			standardCombatTurn();
 		}
 
 	}
@@ -131,21 +125,17 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment{
 		addCombatButton.setVisibility(View.GONE);
 		combatTypeSwitch.setVisibility(View.GONE);
 		startCombatButton.setVisibility(View.GONE);
-		// testLuckButton.setVisibility(View.VISIBLE);
+		testLuckButton.setVisibility(View.VISIBLE);
 		combatTurnButton.setVisibility(View.VISIBLE);
 
-		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(
-				ViewGroup.LayoutParams.MATCH_PARENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT);
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
 		p.addRule(RelativeLayout.ABOVE, R.id.attackButton);
 		p.addRule(RelativeLayout.LEFT_OF, R.id.resetCombat);
 
 		testLuckButton.setLayoutParams(p);
 
-		p = new RelativeLayout.LayoutParams(
-				ViewGroup.LayoutParams.WRAP_CONTENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT);
+		p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
 		p.addRule(RelativeLayout.ABOVE, R.id.attackButton);
 		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
@@ -160,12 +150,10 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment{
 		addCombatButton.setVisibility(View.VISIBLE);
 		combatTypeSwitch.setVisibility(View.VISIBLE);
 		startCombatButton.setVisibility(View.VISIBLE);
-		// testLuckButton.setVisibility(View.GONE);
+		testLuckButton.setVisibility(View.GONE);
 		combatTurnButton.setVisibility(View.GONE);
 
-		LayoutParams p = new RelativeLayout.LayoutParams(
-				ViewGroup.LayoutParams.WRAP_CONTENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT);
+		LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
 		p.addRule(RelativeLayout.BELOW, R.id.addCombatButton);
 		p.addRule(RelativeLayout.ALIGN_RIGHT, R.id.combatType);
@@ -181,8 +169,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment{
 
 		Adventure adv = (Adventure) getActivity();
 
-		final InputMethodManager mgr = (InputMethodManager) adv
-				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
 		if (combatStarted)
 			return;
@@ -193,51 +180,36 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment{
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
-		final View addCombatantView = adv
-				.getLayoutInflater()
-				.inflate(
-						combatMode == null || combatMode.equals(TROK15_GUNFIGHT) ? R.layout.component_add_combatant
-								: R.layout.component_13ff_add_combatant, null);
+		final View addCombatantView = adv.getLayoutInflater().inflate(
+				combatMode == null || combatMode.equals(NORMAL) ? R.layout.component_add_combatant : R.layout.component_add_combatant_damage, null);
 
-		final EditText damageValue = (EditText) addCombatantView
-				.findViewById(R.id.enemyDamage);
+		final EditText damageValue = (EditText) addCombatantView.findViewById(R.id.enemyDamage);
+		if(damageValue!=null)
+			damageValue.setText(getDefaultEnemyDamage());
 
-		builder.setTitle("Add Enemy")
-				.setCancelable(false)
-				.setNegativeButton("Close",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
-								mgr.hideSoftInputFromWindow(
-										addCombatantView.getWindowToken(), 0);
-								dialog.cancel();
-							}
-						});
+		builder.setTitle("Add Enemy").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
+				dialog.cancel();
+			}
+		});
 
 		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 
 				int currentRow = getNextRow();
 
-				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(),
-						0);
+				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
 
-				EditText enemySkillValue = (EditText) addCombatantView
-						.findViewById(R.id.enemySkillValue);
-				EditText enemyStaminaValue = (EditText) addCombatantView
-						.findViewById(R.id.enemyStaminaValue);
-				EditText handicapValue = (EditText) addCombatantView
-						.findViewById(R.id.handicapValue);
+				EditText enemySkillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
+				EditText enemyStaminaValue = (EditText) addCombatantView.findViewById(R.id.enemyStaminaValue);
+				EditText handicapValue = (EditText) addCombatantView.findViewById(R.id.handicapValue);
 
-				Integer skill = Integer.valueOf(enemySkillValue.getText()
-						.toString());
-				Integer stamina = Integer.valueOf(enemyStaminaValue.getText()
-						.toString());
-				Integer handicap = Integer.valueOf(handicapValue.getText()
-						.toString());
+				Integer skill = Integer.valueOf(enemySkillValue.getText().toString());
+				Integer stamina = Integer.valueOf(enemyStaminaValue.getText().toString());
+				Integer handicap = Integer.valueOf(handicapValue.getText().toString());
 
-				addCombatant(rootView, currentRow, skill, stamina, handicap,
-						damageValue == null ? null : damageValue.getText()
-								.toString());
+				addCombatant(rootView, currentRow, skill, stamina, handicap, damageValue == null ? getDefaultEnemyDamage() : damageValue.getText().toString());
 
 			}
 
@@ -245,13 +217,11 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment{
 
 		AlertDialog alert = builder.create();
 
-		EditText skillValue = (EditText) addCombatantView
-				.findViewById(R.id.enemySkillValue);
+		EditText skillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
 
 		alert.setView(addCombatantView);
 
-		mgr.toggleSoftInput(InputMethodManager.SHOW_FORCED,
-				InputMethodManager.HIDE_IMPLICIT_ONLY);
+		mgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 		skillValue.requestFocus();
 
 		alert.show();
@@ -267,6 +237,10 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment{
 			}
 		}
 		super.startCombat();
+	}
+	
+	protected String getDefaultEnemyDamage(){
+		return "4";
 	}
 
 }

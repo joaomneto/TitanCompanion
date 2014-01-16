@@ -474,8 +474,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int component_04st_add_combatant=0x7f03000a;
         public static final int component_04st_combatant=0x7f03000b;
         public static final int component_12sa_add_combatant=0x7f03000c;
-        public static final int component_13ff_add_combatant=0x7f03000d;
-        public static final int component_add_combatant=0x7f03000e;
+        public static final int component_add_combatant=0x7f03000d;
+        public static final int component_add_combatant_damage=0x7f03000e;
         public static final int component_combatant=0x7f03000f;
         public static final int fragment_02tcoc_adventure_spells=0x7f030010;
         public static final int fragment_02tcoc_adventurecreation_spells=0x7f030011;
@@ -496,18 +496,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int fragment_13ff_adventure_vehiclecombat=0x7f030020;
         public static final int fragment_13ff_adventure_vehicleequipment=0x7f030021;
         public static final int fragment_13ff_adventurecreation_vital_statistics=0x7f030022;
-        public static final int fragment_15trok_adventure_starshipcombat=0x7f030023;
-        public static final int fragment_15trok_adventurecreation_vital_statistics=0x7f030024;
-        public static final int fragment_adventure_combat=0x7f030025;
-        public static final int fragment_adventure_combat_old=0x7f030026;
-        public static final int fragment_adventure_equipment=0x7f030027;
-        public static final int fragment_adventure_notes=0x7f030028;
-        public static final int fragment_adventure_provisions=0x7f030029;
-        public static final int fragment_adventure_vitalstats=0x7f03002a;
-        public static final int fragment_adventurecreation_potions=0x7f03002b;
-        public static final int fragment_adventurecreation_vital_statistics=0x7f03002c;
-        public static final int fragment_gamebook_selection_gamebook_selection=0x7f03002d;
-        public static final int potions_item=0x7f03002e;
+        public static final int fragment_15trok_adventure_combat=0x7f030023;
+        public static final int fragment_15trok_adventure_starshipcombat=0x7f030024;
+        public static final int fragment_15trok_adventurecreation_vital_statistics=0x7f030025;
+        public static final int fragment_adventure_combat=0x7f030026;
+        public static final int fragment_adventure_combat_old=0x7f030027;
+        public static final int fragment_adventure_equipment=0x7f030028;
+        public static final int fragment_adventure_notes=0x7f030029;
+        public static final int fragment_adventure_provisions=0x7f03002a;
+        public static final int fragment_adventure_vitalstats=0x7f03002b;
+        public static final int fragment_adventurecreation_potions=0x7f03002c;
+        public static final int fragment_adventurecreation_vital_statistics=0x7f03002d;
+        public static final int fragment_gamebook_selection_gamebook_selection=0x7f03002e;
+        public static final int potions_item=0x7f03002f;
     }
     public static final class menu {
         public static final int adventure=0x7f090000;
@@ -1104,6 +1105,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int vitalStats=0x7f060064;
         public static final int votv=0x7f060030;
         public static final int weapon=0x7f060235;
+        public static final int weaponDamage=0x7f060247;
         public static final int weapons=0x7f060086;
         public static final int weaponsvalue=0x7f060234;
     }

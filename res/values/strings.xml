@@ -745,4 +745,5 @@
     <string name="starship">Starship: </string>
     <string name="missiles">Missiles: </string>
     <string name="enemyShips">Enemy Ships: </string>
+    <string name="weaponDamage">Weapon Damage: </string>
 </resources>

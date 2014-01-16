@@ -22,7 +22,7 @@ public class TROKAdventureCreation extends AdventureCreation {
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
-				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.ff.TKOKVitalStatisticsFragment"));
+				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.trok.TROKVitalStatisticsFragment"));
 		
 	}
 

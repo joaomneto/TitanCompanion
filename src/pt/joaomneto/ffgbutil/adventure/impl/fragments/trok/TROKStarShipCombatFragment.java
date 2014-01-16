@@ -45,6 +45,8 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 		starshipShieldsValue = (TextView) rootView.findViewById(R.id.starshipShieldsValue);
 		enemyWeaponsValue = (TextView) rootView.findViewById(R.id.enemyWeaponsValue);
 		enemyShieldsValue = (TextView) rootView.findViewById(R.id.enemyShieldsValue);
+		enemy2WeaponsValue = (TextView) rootView.findViewById(R.id.enemy2WeaponsValue);
+		enemy2ShieldsValue = (TextView) rootView.findViewById(R.id.enemy2ShieldsValue);
 
 		starshipWeaponsValue.setText("" + adv.getCurrentWeapons());
 		starshipShieldsValue.setText("" + adv.getCurrentShields());

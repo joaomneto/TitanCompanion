@@ -197,7 +197,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 				.getLayoutInflater()
 				.inflate(
 						combatMode == null || combatMode.equals(FF13_GUNFIGHT) ? R.layout.component_add_combatant
-								: R.layout.component_13ff_add_combatant, null);
+								: R.layout.component_add_combatant_damage, null);
 
 		final EditText damageValue = (EditText) addCombatantView
 				.findViewById(R.id.enemyDamage);

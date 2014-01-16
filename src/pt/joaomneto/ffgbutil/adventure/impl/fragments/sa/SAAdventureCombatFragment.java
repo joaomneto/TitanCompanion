@@ -106,7 +106,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment{
 		}
 	}
 
-	private void gunfightCombatTurn() {
+	protected void gunfightCombatTurn() {
 
 		setFirstCombat();
 		Combatant position = combatPositions.get(currentCombat);
