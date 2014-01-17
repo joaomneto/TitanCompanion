@@ -37,8 +37,6 @@ public class TWOFMAdventure extends Adventure {
 		bw.write("standardPotion=" + getStandardPotion() + "\n");
 		bw.write("standardPotionValue=" + getStandardPotionValue()
 				+ "\n");
-		bw.write("provisions=" + getProvisions() + "\n");
-		bw.write("provisionsValue=" + getProvisionsValue() + "\n");
 		bw.write("gold=" + getGold() + "\n");
 	}
 
@@ -49,8 +47,6 @@ public class TWOFMAdventure extends Adventure {
 		setStandardPotionValue(Integer.valueOf(getSavedGame()
 				.getProperty("standardPotionValue")));
 		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
-		setProvisions(Integer.valueOf(getSavedGame().getProperty("provisions")));
-		setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
 		
 	}
 	

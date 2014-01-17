@@ -205,6 +205,10 @@ public abstract class Adventure extends FragmentActivity {
 			}
 		}
 
+
+		provisions = Integer.valueOf(getSavedGame().getProperty("provisions"));
+		provisionsValue = Integer.valueOf(getSavedGame().getProperty("provisionsValue"));
+		
 		loadAdventureSpecificValuesFromFile();
 	}
 
@@ -455,6 +459,8 @@ public abstract class Adventure extends FragmentActivity {
 		bw.write("currentReference=" + ref + "\n");
 		bw.write("equipment=" + equipmentS + "\n");
 		bw.write("notes=" + notesS + "\n");
+		bw.write("provisions=" + getProvisions() + "\n");
+		bw.write("provisionsValue=" + getProvisionsValue() + "\n");
 		storeAdventureSpecificValuesInFile(bw);
 	}
 

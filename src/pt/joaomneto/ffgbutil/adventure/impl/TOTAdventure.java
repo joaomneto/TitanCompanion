@@ -15,7 +15,6 @@ import android.view.Menu;
 public class TOTAdventure extends SpellAdventure {
 
 	List<String> spells = new ArrayList<String>();;
-	Set<String> visitedClearings = new HashSet<String>();
 
 	protected static final int FRAGMENT_SPELLS = 2;
 
@@ -55,7 +54,6 @@ public class TOTAdventure extends SpellAdventure {
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
 		bw.write("spells=" + arrayToString(spells) + "\n");
-		bw.write("clearings=" + arrayToString(visitedClearings) + "\n");
 		bw.write("gold=" + getGold() + "\n");
 	}
 
@@ -75,21 +73,5 @@ public class TOTAdventure extends SpellAdventure {
 		setSpells(stringToArray(new String(getSavedGame().getProperty("spells").getBytes(
 				java.nio.charset.Charset.forName("ISO-8859-1")))));
 
-		setVisitedClearings(stringToSet(new String(getSavedGame().getProperty("clearings").getBytes(
-				java.nio.charset.Charset.forName("ISO-8859-1")))));
-
 	}
-
-	public void addVisitedClearings(String clearing) {
-		visitedClearings.add(clearing);
-	}
-
-	public Set<String> getVisitedClearings() {
-		return visitedClearings;
-	}
-
-	public synchronized void setVisitedClearings(Set<String> visitedClearings) {
-		this.visitedClearings = visitedClearings;
-	}
-
 }
