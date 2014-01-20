@@ -17,6 +17,8 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 	TextView staminaValue = null;
 	TextView luckValue = null;
 	TextView provisionsValue = null;
+	TextView provisionsText = null;
+	
 
 	Button increaseStaminaButton = null;
 	Button increaseSkillButton = null;
@@ -27,6 +29,8 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 	Button decreaseSkillButton = null;
 	Button decreaseLuckButton = null;
 	Button decreaseProvisionsButton = null;
+	
+	Button buttonConsumeProvisions = null;
 	
 
 	public AdventureVitalStatsFragment() {
@@ -41,8 +45,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 				R.layout.fragment_adventure_vitalstats, container, false);
 
 		initialize(rootView);
-
-		refreshScreensFromResume();
+		
 
 		return rootView;
 	}
@@ -52,10 +55,8 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 		staminaValue = (TextView) rootView.findViewById(R.id.statsStaminaValue);
 		luckValue = (TextView) rootView.findViewById(R.id.statsLuckValue);
 		provisionsValue = (TextView) rootView.findViewById(R.id.provisionsValue);
-		
-		
-		TextView provText = (TextView) rootView.findViewById(R.id.textView4);
-		Button provButton = (Button) rootView.findViewById(R.id.buttonConsumeProvisions);
+		provisionsText = (TextView) rootView.findViewById(R.id.provisionsText);
+		Button buttonConsumeProvisions = (Button) rootView.findViewById(R.id.buttonConsumeProvisions);
 		
 
 		increaseStaminaButton = (Button) rootView
@@ -169,9 +170,13 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 			increaseProvisionsButton.setVisibility(View.INVISIBLE);
 			decreaseProvisionsButton.setVisibility(View.INVISIBLE);
 			provisionsValue.setVisibility(View.INVISIBLE);
-			provText.setVisibility(View.INVISIBLE);
-			provButton.setVisibility(View.INVISIBLE);
+			provisionsText.setVisibility(View.INVISIBLE);
+			buttonConsumeProvisions.setVisibility(View.INVISIBLE);
 		}
+		
+		
+		buttonConsumeProvisions.setText(adv.getConsumeProvisionText());
+		provisionsText.setText(adv.getConsumeProvisionText());
 	}
 	
 	public void setProvisionsValue(Integer value) {
@@ -189,5 +194,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 		provisionsValue.setText("" + adv.getProvisions());
 
 	}
+	
+	
 
 }

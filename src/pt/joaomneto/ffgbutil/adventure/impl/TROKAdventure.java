@@ -9,8 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 
 public class TROKAdventure extends Adventure {
-	
-	
+
 	private int currentWeapons = -1;
 	private int currentShields = -1;
 	private int initialWeapons = -1;
@@ -22,16 +21,11 @@ public class TROKAdventure extends Adventure {
 	public TROKAdventure() {
 		super();
 		fragmentConfiguration.clear();
-		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
-		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.trok.TROKAdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_VEHICLE_COMBAT, new AdventureFragmentRunner(R.string.vehicleCombat,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.trok.TROKStarShipCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.trok.TROKAdventureCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_VEHICLE_COMBAT, new AdventureFragmentRunner(R.string.vehicleCombat, "pt.joaomneto.ffgbutil.adventure.impl.fragments.trok.TROKStarShipCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
+		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	@Override
@@ -54,19 +48,15 @@ public class TROKAdventure extends Adventure {
 	@Override
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
-
-		bw.write("currentWeapons="+currentWeapons+"\n");
-		bw.write("currentShields="+currentShields+"\n");
-		bw.write("initialWeapons="+initialWeapons+"\n");
-		bw.write("initialShields="+initialShields+"\n");
-		bw.write("missiles="+missiles+"\n");
+		bw.write("currentWeapons=" + currentWeapons + "\n");
+		bw.write("currentShields=" + currentShields + "\n");
+		bw.write("initialWeapons=" + initialWeapons + "\n");
+		bw.write("initialShields=" + initialShields + "\n");
+		bw.write("missiles=" + missiles + "\n");
 		bw.write("gold=" + getGold() + "\n");
 		bw.write("provisions=" + getProvisions() + "\n");
 		bw.write("provisionsValue=" + getProvisionsValue() + "\n");
 	}
-
-	
-
 
 	public int getCurrentWeapons() {
 		return currentWeapons;
@@ -120,10 +110,17 @@ public class TROKAdventure extends Adventure {
 		this.missiles = missiles;
 	}
 
-	
-	
-	
+	public String getConsumeProvisionText() {
+		return getResources().getString(R.string.usePepPill);
+	}
 	
 
+	public String getProvisionsText() {
+		return getResources().getString(R.string.pepPills);
+	}
 	
+	public String getCurrencyName() {
+		return getResources().getString(R.string.kopecks);
+	}
+
 }

@@ -40,41 +40,13 @@
         android:layout_toRightOf="@+id/potionName"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/provisions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/selectedPotion"
-        android:layout_marginTop="10dp"
-        android:text="@string/provisions"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/provisionsValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/provisions"
-        android:layout_alignTop="@+id/provisions"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/provisions"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-
-
     <Button
         android:id="@+id/buttonConsumePotion"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonConsumeProvisions"
-        android:text="@string/consumePotion"
-        android:onClick="consumePotion" />
-
-    <Button
-        android:id="@+id/buttonConsumeProvisions"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/section_label"
         android:layout_alignParentBottom="true"
-        android:text="@string/consumeProvision" 
-        android:onClick="consumeProvision"/>
+        android:onClick="consumePotion"
+        android:text="@string/consumePotion" />
+
 </RelativeLayout>

@@ -31,30 +31,12 @@ public class FFAdventure extends Adventure {
 	public FFAdventure() {
 		super();
 		fragmentConfiguration.clear();
-		fragmentConfiguration
-				.put(FRAGMENT_VITAL_STATS,
-						new AdventureFragmentRunner(R.string.vitalStats,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_COMBAT,
-						new AdventureFragmentRunner(R.string.fights,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.ff.FFAdventureCombatFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_VEHICLE_COMBAT,
-						new AdventureFragmentRunner(R.string.vehicleCombat,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.ff.FFVehicleCombatFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_VEHICLE_EQUIPMENT,
-						new AdventureFragmentRunner(R.string.vehicleCombat,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.ff.FFVehicleStatsFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_EQUIPMENT,
-						new AdventureFragmentRunner(R.string.goldEquipment,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_NOTES,
-						new AdventureFragmentRunner(R.string.notes,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.ff.FFAdventureCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_VEHICLE_COMBAT, new AdventureFragmentRunner(R.string.vehicleCombat, "pt.joaomneto.ffgbutil.adventure.impl.fragments.ff.FFVehicleCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_VEHICLE_EQUIPMENT, new AdventureFragmentRunner(R.string.vehicleCombat, "pt.joaomneto.ffgbutil.adventure.impl.fragments.ff.FFVehicleStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
+		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	@Override
@@ -75,8 +57,7 @@ public class FFAdventure extends Adventure {
 	}
 
 	@Override
-	public void storeAdventureSpecificValuesInFile(BufferedWriter bw)
-			throws IOException {
+	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
 		bw.write("currentFirepower=" + currentFirepower + "\n");
 		bw.write("currentArmour=" + currentArmour + "\n");
@@ -96,26 +77,18 @@ public class FFAdventure extends Adventure {
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
 
-		setCurrentFirepower(Integer.valueOf(getSavedGame().getProperty(
-				"currentFirepower")));
-		setCurrentArmour(Integer.valueOf(getSavedGame().getProperty(
-				"currentArmour")));
-		setInitialFirepower(Integer.valueOf(getSavedGame().getProperty(
-				"initialFirepower")));
-		setInitialArmour(Integer.valueOf(getSavedGame().getProperty(
-				"initialArmour")));
+		setCurrentFirepower(Integer.valueOf(getSavedGame().getProperty("currentFirepower")));
+		setCurrentArmour(Integer.valueOf(getSavedGame().getProperty("currentArmour")));
+		setInitialFirepower(Integer.valueOf(getSavedGame().getProperty("initialFirepower")));
+		setInitialArmour(Integer.valueOf(getSavedGame().getProperty("initialArmour")));
 		setRockets(Integer.valueOf(getSavedGame().getProperty("rockets")));
 		setIronSpikes(Integer.valueOf(getSavedGame().getProperty("ironSpikes")));
-		setOilCannisters(Integer.valueOf(getSavedGame().getProperty(
-				"oilCannisters")));
+		setOilCannisters(Integer.valueOf(getSavedGame().getProperty("oilCannisters")));
 		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
 		setProvisions(Integer.valueOf(getSavedGame().getProperty("provisions")));
-		setProvisionsValue(Integer.valueOf(getSavedGame().getProperty(
-				"provisionsValue")));
-		setSpareWheels(Integer.valueOf(getSavedGame()
-				.getProperty("spareWheels")));
-		setCarEnhancements(stringToArray(getSavedGame().getProperty(
-				"provisionsValue")));
+		setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
+		setSpareWheels(Integer.valueOf(getSavedGame().getProperty("spareWheels")));
+		setCarEnhancements(stringToArray(getSavedGame().getProperty("provisionsValue")));
 	}
 
 	public int getCurrentFirepower() {
@@ -190,6 +163,17 @@ public class FFAdventure extends Adventure {
 		this.carEnhancements = carEnhancements;
 	}
 
+	public String getConsumeProvisionText() {
+		return getResources().getString(R.string.useMedKit);
+	}
 	
+
+	public String getProvisionsText() {
+		return getResources().getString(R.string.medKits);
+	}
 	
+	public String getCurrencyName() {
+		return getResources().getString(R.string.credits);
+	}
+
 }

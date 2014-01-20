@@ -128,7 +128,7 @@
         android:text="@string/plus" />
     
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignLeft="@+id/textView3"
@@ -158,14 +158,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/plusarmorButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonTestLuck"
-        android:layout_alignTop="@+id/textView4"
-        android:text="@string/plus"/>
-
-    <Button
         android:id="@+id/buttonSavePoint"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -174,12 +166,12 @@
         android:onClick="savepoint"
         android:text="@string/saveAdventure" />
 
-    <Button
+      <Button
         android:id="@+id/buttonTestLuck"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonSavePoint"
-        android:layout_alignLeft="@+id/buttonTestSkill"
+        android:layout_alignParentLeft="true"
         android:onClick="testLuck"
         android:text="@string/testLuck" />
 
@@ -187,8 +179,63 @@
         android:id="@+id/buttonTestSkill"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonTestLuck"
+        android:layout_toRightOf="@+id/buttonTestLuck"
+        android:layout_above="@+id/buttonSavePoint"
         android:onClick="testSkill"
         android:text="@string/testSkill" />
+
+    <Button
+        android:id="@+id/buttonConsumeProvisions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonTestLuck"
+        android:layout_alignParentLeft="true"
+        android:onClick="consumeProvision"/>
+
+    <TextView
+        android:id="@+id/provisionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_above="@+id/buttonConsumeProvisions"
+        android:layout_alignLeft="@+id/buttonConsumeProvisions"
+        android:gravity="center"
+        android:text="@string/provisions"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+     <Button
+        android:id="@+id/minusProvisionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusProvisionsButton"
+        android:layout_alignTop="@+id/plusProvisionsButton"
+        android:layout_toLeftOf="@+id/provisionsValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/provisionsValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusProvisionsButton"
+        android:layout_alignTop="@+id/plusProvisionsButton"
+        android:layout_toLeftOf="@+id/plusProvisionsButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/plusProvisionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignTop="@+id/provisionsText"
+        android:text="@string/plus" />
+
+    <Button
+        android:id="@+id/plusarmorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_toRightOf="@+id/statsLuckValue"
+        android:text="@string/plus" />
 
 </RelativeLayout>

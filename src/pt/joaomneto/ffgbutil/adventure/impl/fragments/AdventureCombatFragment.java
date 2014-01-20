@@ -6,7 +6,6 @@ import java.util.Set;
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
-import pt.joaomneto.ffgbutil.adventure.impl.SAAdventure;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.app.AlertDialog;
 import android.content.Context;

@@ -25,30 +25,12 @@ public class SSAdventure extends SpellAdventure {
 	public SSAdventure() {
 		super();
 		fragmentConfiguration.clear();
-		fragmentConfiguration
-				.put(FRAGMENT_VITAL_STATS,
-						new AdventureFragmentRunner(R.string.vitalStats,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_COMBAT,
-						new AdventureFragmentRunner(R.string.fights,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_SPELLS,
-						new AdventureFragmentRunner(R.string.spells,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.ss.SSAdventureSpellsFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_EQUIPMENT,
-						new AdventureFragmentRunner(R.string.goldEquipment,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_MAP,
-						new AdventureFragmentRunner(R.string.map,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.ss.SSAdventureMapFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_NOTES,
-						new AdventureFragmentRunner(R.string.notes,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(R.string.spells, "pt.joaomneto.ffgbutil.adventure.impl.fragments.ss.SSAdventureSpellsFragment"));
+		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
+		fragmentConfiguration.put(FRAGMENT_MAP, new AdventureFragmentRunner(R.string.map, "pt.joaomneto.ffgbutil.adventure.impl.fragments.ss.SSAdventureMapFragment"));
+		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	@Override
@@ -69,8 +51,7 @@ public class SSAdventure extends SpellAdventure {
 	}
 
 	@Override
-	public void storeAdventureSpecificValuesInFile(BufferedWriter bw)
-			throws IOException {
+	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
 		bw.write("spells=" + arrayToString(spells) + "\n");
 		bw.write("clearings=" + arrayToString(visitedClearings) + "\n");
@@ -89,12 +70,9 @@ public class SSAdventure extends SpellAdventure {
 	protected void loadAdventureSpecificValuesFromFile() {
 		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
 
-		setSpells(stringToArray(new String(getSavedGame().getProperty("spells")
-				.getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
+		setSpells(stringToArray(new String(getSavedGame().getProperty("spells").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
 
-		setVisitedClearings(stringToSet(new String(getSavedGame().getProperty(
-				"clearings").getBytes(
-				java.nio.charset.Charset.forName("ISO-8859-1")))));
+		setVisitedClearings(stringToSet(new String(getSavedGame().getProperty("clearings").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
 
 	}
 
@@ -109,7 +87,5 @@ public class SSAdventure extends SpellAdventure {
 	public synchronized void setVisitedClearings(Set<String> visitedClearings) {
 		this.visitedClearings = visitedClearings;
 	}
-
-	
 
 }

@@ -746,4 +746,11 @@
     <string name="missiles">Missiles: </string>
     <string name="enemyShips">Enemy Ships: </string>
     <string name="weaponDamage">Weapon Damage: </string>
+    <string name="usePepPill">Use Pep Pill</string>
+    <string name="pepPills">Pep Pills: </string>
+    <string name="consumeProvisions">Consume Provisions</string>
+    <string name="useMedKit">Use Med-Kit</string>
+    <string name="medKits">Med-Kits: </string>
+    <string name="kopecks">Kopecks: </string>
+    <string name="credits">Credits: </string>
 </resources>

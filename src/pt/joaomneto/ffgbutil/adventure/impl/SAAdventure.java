@@ -67,6 +67,8 @@ public class SAAdventure extends Adventure {
 
 		bw.write("currentArmor=" + currentArmor + "\n");
 		bw.write("weapons=" + arrayToString(weapons) + "\n");
+		bw.write("provisions=4\n");
+		bw.write("provisionsValue=5\n");
 	}
 
 	@Override
@@ -97,6 +99,17 @@ public class SAAdventure extends Adventure {
 		SAAdventureWeaponsFragment frag = (SAAdventureWeaponsFragment) getSupportFragmentManager()
 				.getFragments().get(FRAGMENT_WEAPONS);
 		return frag;
+	}
+	
+
+
+	public String getConsumeProvisionText() {
+		return getResources().getString(R.string.usePepPill);
+	}
+	
+
+	public String getProvisionsText() {
+		return getResources().getString(R.string.pepPills);
 	}
 
 }

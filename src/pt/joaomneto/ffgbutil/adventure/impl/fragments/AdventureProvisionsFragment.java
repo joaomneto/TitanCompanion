@@ -24,7 +24,7 @@ public class AdventureProvisionsFragment extends AdventureFragment {
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		View rootView = inflater.inflate(
-				R.layout.fragment_adventure_provisions, container, false);
+				R.layout.fragment_adventure_potions, container, false);
 
 		potionName = (TextView) rootView.findViewById(R.id.potionName);
 		potionValue = (TextView) rootView.findViewById(R.id.potionValue);
@@ -55,7 +55,6 @@ public class AdventureProvisionsFragment extends AdventureFragment {
 
 		potionName.setText(stringArray[adv.getStandardPotion()]);
 		potionValue.setText("("+adv.getStandardPotionValue()+")");
-		provisionsValue.setText(adv.getProvisions().toString());
 		
 	}
 	

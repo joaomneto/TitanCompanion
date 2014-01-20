@@ -151,11 +151,11 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/textView4"
+        android:layout_alignTop="@+id/provisionsText"
         android:text="@string/plus" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/provisionsText"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignLeft="@+id/textView3"

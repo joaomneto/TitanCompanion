@@ -48,6 +48,8 @@ public class SAAdventureCreation extends AdventureCreation {
 		bw.write("currentArmor="+currentArmor+"\n");
 		bw.write("currentWeapons="+currentWeapons+"\n");
 		bw.write("weapons="+Adventure.arrayToString(weapons)+"\n");
+		bw.write("provisions=4\n");
+		bw.write("provisionsValue=5\n");
 	}
 	
 	private SAVitalStatisticsFragment getSAVitalStatisticsFragmentt() {

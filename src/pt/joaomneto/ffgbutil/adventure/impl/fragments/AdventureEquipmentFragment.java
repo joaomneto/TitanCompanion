@@ -44,6 +44,9 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 		plusGoldButton = (Button) rootView.findViewById(R.id.plusGoldButton);
 
 		Button buttonAddNote = (Button) rootView.findViewById(R.id.buttonAddEquipment);
+		
+		TextView goldLabel = (TextView) rootView.findViewById(R.id.goldLabel);
+		goldLabel.setText(adv.getCurrencyName());
 
 		goldValue = (TextView) rootView.findViewById(R.id.goldValue);
 		goldValue.setText(adv.getGold().toString());
