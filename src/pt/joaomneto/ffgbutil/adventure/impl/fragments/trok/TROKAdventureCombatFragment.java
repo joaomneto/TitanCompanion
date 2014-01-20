@@ -93,12 +93,9 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 	@Override
 	protected int getDamage() {
 		if (combatMode.equals(NORMAL)) {
-			if (overrideDamage == null) {
-				return 1;
-			} else
-				return convertDamageStringToInteger(overrideDamage);
+				return 2;
 		} else if (combatMode.equals(TROK15_GUNFIGHT)) {
-			return DiceRoller.rollD6();
+			return convertDamageStringToInteger(overrideDamage);
 		}
 
 		return 2;
@@ -162,7 +159,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 	}
 
 	protected Integer getKnockoutStamina() {
-		return 6;
+		return null;
 	}
 
 	protected void addCombatButtonOnClick() {
@@ -233,7 +230,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 			for (int i = 0; i < combatPositions.size(); i++) {
 				Combatant c = combatPositions.get(i);
 				if (c != null)
-					c.setDamage("1D6");
+					c.setDamage("4");
 			}
 		}
 		super.startCombat();

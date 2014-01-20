@@ -534,13 +534,17 @@ public class AdventureCombatFragment extends AdventureFragment {
 		for (int i = 0; i < maxRows; i++) {
 			LinearLayout ll = (LinearLayout) rootView.findViewById(gridRows[i]);
 			RadioButton combatSelected = (RadioButton) ll.findViewById(R.id.combatSelected);
-			TextView combatText = (TextView) ll.findViewById(R.id.combatText);
+			TextView combatStaminaText = (TextView) ll.findViewById(R.id.combatTextStaminaValue);
+			TextView combatSkillText = (TextView) ll.findViewById(R.id.combatTextSkillValue);
 
 			if (combatSelected != null)
 				combatSelected.setChecked(i == currentCombat);
 
-			if (combatText != null)
-				combatText.setText(combatPositions.get(i).toGridString());
+			if (combatStaminaText != null)
+				combatStaminaText.setText(""+combatPositions.get(i).getCurrentStamina());
+
+			if (combatSkillText != null)
+				combatSkillText.setText(""+combatPositions.get(i).getCurrentSkill());
 		}
 	}
 

@@ -11,11 +11,11 @@ import android.view.Menu;
 public class TROKAdventure extends Adventure {
 	
 	
-	private Integer currentWeapons = -1;
-	private Integer currentShields = -1;
-	private Integer initialWeapons = -1;
-	private Integer initialShields = -1;
-	private Integer missiles = -1;
+	private int currentWeapons = -1;
+	private int currentShields = -1;
+	private int initialWeapons = -1;
+	private int initialShields = -1;
+	private int missiles = -1;
 
 	protected static final int FRAGMENT_VEHICLE_COMBAT = 2;
 
@@ -68,35 +68,35 @@ public class TROKAdventure extends Adventure {
 	
 
 
-	public Integer getCurrentWeapons() {
+	public int getCurrentWeapons() {
 		return currentWeapons;
 	}
 
-	public void setCurrentWeapons(Integer currentWeapons) {
+	public void setCurrentWeapons(int currentWeapons) {
 		this.currentWeapons = currentWeapons;
 	}
 
-	public Integer getCurrentShields() {
+	public int getCurrentShields() {
 		return currentShields;
 	}
 
-	public void setCurrentShields(Integer currentShields) {
+	public void setCurrentShields(int currentShields) {
 		this.currentShields = currentShields;
 	}
 
-	public Integer getInitialWeapons() {
+	public int getInitialWeapons() {
 		return initialWeapons;
 	}
 
-	public void setInitialWeapons(Integer initialWeapons) {
+	public void setInitialWeapons(int initialWeapons) {
 		this.initialWeapons = initialWeapons;
 	}
 
-	public Integer getInitialShields() {
+	public int getInitialShields() {
 		return initialShields;
 	}
 
-	public void setInitialShields(Integer initialShields) {
+	public void setInitialShields(int initialShields) {
 		this.initialShields = initialShields;
 	}
 
@@ -112,11 +112,11 @@ public class TROKAdventure extends Adventure {
 		setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
 	}
 
-	public Integer getMissiles() {
+	public int getMissiles() {
 		return missiles;
 	}
 
-	public void setMissiles(Integer missiles) {
+	public void setMissiles(int missiles) {
 		this.missiles = missiles;
 	}
 
