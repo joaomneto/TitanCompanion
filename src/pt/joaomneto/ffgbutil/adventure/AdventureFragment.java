@@ -13,18 +13,17 @@ public abstract class AdventureFragment extends DialogFragment {
 
 	public abstract void refreshScreensFromResume();
 
-	public void setupIncDecButton(View rootView, Integer incButtonId,
-			Integer decButtonId, final String getMethod,
-			final String setMethod, final Integer maxValue) {
-		setupIncDecButton(rootView, incButtonId, decButtonId, null, null,
-				getMethod, setMethod, maxValue);
+	public void setupIncDecButton(View rootView, Integer incButtonId, Integer decButtonId, final String getMethod, final String setMethod, final Integer maxValue) {
+		setupIncDecButton(rootView, incButtonId, decButtonId, null, null, getMethod, setMethod, maxValue);
 	}
 
-	public void setupIncDecButton(View rootView, Integer incButtonId,
-			Integer decButtonId, final Adventure adv,
-			@SuppressWarnings("rawtypes") final Class clazz,
-			final String getMethod, final String setMethod,
-			final Integer maxValue) {
+	public void setupIncDecButton(View rootView, Integer incButtonId, Integer decButtonId, final Adventure adv, @SuppressWarnings("rawtypes") final Class clazz, final String getMethod,
+			final String setMethod, final Integer maxValue) {
+		setupIncDecButton(rootView, incButtonId, decButtonId, adv, clazz, getMethod, setMethod, maxValue, null, null);
+	}
+
+	public void setupIncDecButton(View rootView, Integer incButtonId, Integer decButtonId, final Adventure adv, @SuppressWarnings("rawtypes") final Class clazz, final String getMethod,
+			final String setMethod, final Integer maxValue, final Runnable incTrigger, final Runnable decTrigger) {
 
 		Button incButton = (Button) rootView.findViewById(incButtonId);
 		Button decButton = (Button) rootView.findViewById(decButtonId);
@@ -38,6 +37,9 @@ public abstract class AdventureFragment extends DialogFragment {
 				try {
 
 					incDec(adv, clazz, getMethod, setMethod, maxValue, this_, true);
+
+					if (incTrigger != null)
+						incTrigger.run();
 
 					refreshScreensFromResume();
 				} catch (Exception e) {
@@ -53,7 +55,10 @@ public abstract class AdventureFragment extends DialogFragment {
 			public void onClick(View v) {
 				try {
 
-					incDec(adv, clazz, getMethod, setMethod,maxValue, this_, false);
+					incDec(adv, clazz, getMethod, setMethod, maxValue, this_, false);
+
+					if (decTrigger != null)
+						decTrigger.run();
 
 					refreshScreensFromResume();
 				} catch (Exception e) {
@@ -66,10 +71,8 @@ public abstract class AdventureFragment extends DialogFragment {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private void incDec(final Adventure adv, final Class clazz,
-			final String getMethod, final String setMethod, final Integer maxValue, final Object this_,
-			boolean increase) throws NoSuchMethodException,
-			IllegalAccessException, InvocationTargetException {
+	private void incDec(final Adventure adv, final Class clazz, final String getMethod, final String setMethod, final Integer maxValue, final Object this_, boolean increase)
+			throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 		Method mGetMethod;
 		Method mSetMethod;
 		Object instance;
@@ -85,11 +88,9 @@ public abstract class AdventureFragment extends DialogFragment {
 		}
 
 		if (increase)
-			mSetMethod.invoke(instance, Math.min(
-					((Integer) mGetMethod.invoke(instance)) + 1, maxValue));
+			mSetMethod.invoke(instance, Math.min(((Integer) mGetMethod.invoke(instance)) + 1, maxValue));
 		else
-			mSetMethod.invoke(instance,
-					Math.max(((Integer) mGetMethod.invoke(instance)) - 1, 0));
+			mSetMethod.invoke(instance, Math.max(((Integer) mGetMethod.invoke(instance)) - 1, 0));
 	}
 
 }

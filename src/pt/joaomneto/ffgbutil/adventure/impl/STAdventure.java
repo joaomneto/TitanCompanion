@@ -84,7 +84,7 @@ public class STAdventure extends Adventure {
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STCrewStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_PHASER_COMBAT, new AdventureFragmentRunner(R.string.combat,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_SHIP_COMBAT, new AdventureFragmentRunner(R.string.shipCombat,
+		fragmentConfiguration.put(FRAGMENT_SHIP_COMBAT, new AdventureFragmentRunner(R.string.starshipCombat,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.st.STStarshipCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));

@@ -288,7 +288,7 @@
     <string name="restoreStaminaLandingParty">Restore Landing Party Stamina</string>
     <string name="traveller">Traveller: </string>
     <string name="enemyShip">Enemy Ship: </string>
-    <string name="shipCombat">Starship Combat</string>
+    <string name="starshipCombat">Starship Combat</string>
     <string name="handToHandCombat">Hand to Hand Combat</string>
     <string name="phaserCombat">PhaserCombat</string>
     <string name="combatTurn">Combat Turn</string>
@@ -299,8 +299,6 @@
     <string-array name="array_name">
         <item>@string/engineeringOfficer</item>
     </string-array>
-    
-    
 
     <string name="crewman">Crewman: </string>
     <string name="enemySkill">Enemy Skill: </string>
@@ -709,14 +707,10 @@
     <string name="number_398">398</string>
     <string name="number_399">399</string>
     <string name="number_400">400</string>
-    
-    
     <string name="hifen">&#8212;</string>
     <string name="pipe">|</string>
     <string name="addClearing">Add Clearing</string>
-    
     <string name="startCombat">Start Combat</string>
-    
     <string name="add">Add</string>
     <string name="fear">Fear: </string>
     <string name="armor">Armour: </string>
@@ -726,7 +720,6 @@
     <string name="weaponsvalue">Weapons Value: </string>
     <string name="weapon">Weapon: </string>
     <string name="grenade">Grenade</string>
-    
     <string name="dodge">Dodge Interceptor: </string>
     <string name="enemyVehicles">Enemy Vehicles: </string>
     <string name="enemyVehicle">Enemy Vehicle: </string>
@@ -740,8 +733,6 @@
     <string name="spareWheels">Spare Wheels: </string>
     <string name="vehicleSpecs">Car Specs</string>
     <string name="addEnhancement">Add Enhancement</string>
-    
-    
     <string name="starship">Starship: </string>
     <string name="missiles">Missiles: </string>
     <string name="enemyShips">Enemy Ships: </string>
@@ -753,4 +744,21 @@
     <string name="medKits">Med-Kits: </string>
     <string name="kopecks">Kopecks: </string>
     <string name="credits">Credits: </string>
+    <string name="crewStrength">Crew Strength: </string>
+    <string name="crewStrike">Crew Strike: </string>
+    <string name="log">Log: </string>
+    <string name="shipC">Ship: </string>
+    <string name="booty">Booty</string>
+    <string name="addBooty">Add Booty</string>
+    <string name="shipCombat">Ship Combat</string>
+    <string name="title_adventure_creation_superpower">Superpower</string>
+    <string-array name="superpower_list">
+        <item>Super Strength</item>
+        <item>Psi Powers</item>
+        <item>Enhanced Technological Skill</item>
+        <item>Energy Blast</item>        
+    </string-array>
+    <string name="heroPoints">Hero Points: </string>
+    <string name="unarmed">Unarmed: </string>
+
 </resources>

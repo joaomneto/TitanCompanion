@@ -251,18 +251,24 @@ public class AdventureCombatFragment extends AdventureFragment {
 			hit = false;
 			Adventure adv = (Adventure) getActivity();
 			int diceRoll = DiceRoller.roll2D6();
-			int skill = adv.getCurrentSkill();
+			int skill = adv.getCombatSkillValue();
 			int attackStrength = diceRoll + skill + position.getHandicap();
 			int enemyDiceRoll = DiceRoller.roll2D6();
 			int enemyAttackStrength = enemyDiceRoll + position.getCurrentSkill();
 			LinearLayout row = (LinearLayout) rootView.findViewById(gridRows[currentCombat]);
 			if (attackStrength > enemyAttackStrength) {
 				if (!position.isDefenseOnly()) {
-					int damage = getDamage();
-					position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
-					hit = true;
-					combatResult.setText("You have hit the enemy! (" + diceRoll + " + " + skill + (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "") + ") vs (" + enemyDiceRoll
-							+ " + " + position.getCurrentSkill() + "). (-" + damage + "ST)");
+					Boolean suddenDeath = suddenDeath();
+					if (suddenDeath == null) {
+						int damage = getDamage();
+						position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
+						hit = true;
+						combatResult.setText("You have hit the enemy! (" + diceRoll + " + " + skill + (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "") + ") vs (" + enemyDiceRoll
+								+ " + " + position.getCurrentSkill() + "). (-" + damage + "ST)");
+					} else {
+						position.setCurrentStamina(0);
+						adv.showAlert("You've defeated an enemy by sudden death!");
+					}
 				} else {
 					draw = true;
 					combatResult.setText("You have blocked the enemy attack! (" + diceRoll + " + " + skill + (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "") + ") vs ("
@@ -356,20 +362,25 @@ public class AdventureCombatFragment extends AdventureFragment {
 			hit = false;
 			Adventure adv = (Adventure) getActivity();
 			int diceRoll = DiceRoller.roll2D6();
-			int skill = adv.getCurrentSkill();
+			int skill = adv.getCombatSkillValue();
 			int attackStrength = diceRoll + skill + position.getHandicap();
 			int enemyDiceRoll = DiceRoller.roll2D6();
 			int enemyAttackStrength = enemyDiceRoll + position.getCurrentSkill();
 			LinearLayout row = (LinearLayout) rootView.findViewById(gridRows[currentCombat]);
 			if (attackStrength > enemyAttackStrength) {
+				Boolean suddenDeath = suddenDeath();
+				if (suddenDeath == null) {
+					int damage = getDamage();
 
-				int damage = getDamage();
-
-				position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - getDamage()));
-				position.setStaminaLoss(position.getStaminaLoss() + damage);
-				hit = true;
-				combatResult.setText("You have hit the enemy! (" + diceRoll + " + " + skill + (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "") + ") vs (" + enemyDiceRoll + " + "
-						+ position.getCurrentSkill() + ")");
+					position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - getDamage()));
+					position.setStaminaLoss(position.getStaminaLoss() + damage);
+					hit = true;
+					combatResult.setText("You have hit the enemy! (" + diceRoll + " + " + skill + (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "") + ") vs (" + enemyDiceRoll
+							+ " + " + position.getCurrentSkill() + ")");
+				} else {
+					position.setCurrentStamina(0);
+					adv.showAlert("You've defeated an enemy by sudden death!");
+				}
 
 			} else if (attackStrength < enemyAttackStrength) {
 				int damage = convertDamageStringToInteger(position.getDamage());
@@ -407,8 +418,14 @@ public class AdventureCombatFragment extends AdventureFragment {
 	}
 
 	protected void addCombatButtonOnClick() {
+		addCombatButtonOnClick(R.layout.component_add_combatant);
+	}
+
+	protected void addCombatButtonOnClick(int layoutId) {
 
 		Adventure adv = (Adventure) getActivity();
+
+		final View addCombatantView = adv.getLayoutInflater().inflate(R.layout.component_add_combatant, null);
 
 		final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -420,8 +437,6 @@ public class AdventureCombatFragment extends AdventureFragment {
 		}
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-
-		final View addCombatantView = adv.getLayoutInflater().inflate(R.layout.component_add_combatant, null);
 
 		builder.setTitle("Add Enemy").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
@@ -540,10 +555,10 @@ public class AdventureCombatFragment extends AdventureFragment {
 				combatSelected.setChecked(i == currentCombat);
 
 			if (combatStaminaText != null)
-				combatStaminaText.setText(""+combatPositions.get(i).getCurrentStamina());
+				combatStaminaText.setText("" + combatPositions.get(i).getCurrentStamina());
 
 			if (combatSkillText != null)
-				combatSkillText.setText(""+combatPositions.get(i).getCurrentSkill());
+				combatSkillText.setText("" + combatPositions.get(i).getCurrentSkill());
 		}
 	}
 
@@ -704,7 +719,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 			luckTest = false;
 			hit = false;
 			int diceRoll = DiceRoller.roll2D6();
-			int skill = adv.getCurrentSkill();
+			int skill = adv.getCombatSkillValue();
 			boolean hitEnemy = diceRoll <= skill;
 			LinearLayout row = (LinearLayout) rootView.findViewById(gridRows[currentCombat]);
 			if (hitEnemy) {
@@ -746,8 +761,12 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 		refreshScreensFromResume();
 	}
-	
-	protected String getDefaultEnemyDamage(){
+
+	protected String getDefaultEnemyDamage() {
 		return "2";
+	}
+
+	protected Boolean suddenDeath() {
+		return null;
 	}
 }

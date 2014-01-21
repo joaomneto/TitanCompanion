@@ -191,15 +191,41 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TROKAdventureCreation"
-            android:label="@string/trok" >
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.SOBAdventureCreation"
+            android:label="@string/sob" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.TROKAdventure"
-            android:label="@string/trok"
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.SOBAdventure"
+            android:label="@string/sob"
             android:screenOrientation="portrait" >
         </activity>
-        
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.AWFAdventureCreation"
+            android:label="@string/awf" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.AWFAdventure"
+            android:label="@string/awf"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.RPAdventureCreation"
+            android:label="@string/rp" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.RPAdventure"
+            android:label="@string/rp"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.DOTDAdventureCreation"
+            android:label="@string/dotd" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.DOTDAdventure"
+            android:label="@string/dotd"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

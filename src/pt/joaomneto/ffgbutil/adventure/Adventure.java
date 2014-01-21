@@ -742,5 +742,9 @@ public abstract class Adventure extends FragmentActivity {
 	public String getCurrencyName() {
 		return getResources().getString(R.string.gold);
 	}
+	
+	public Integer getCombatSkillValue(){
+		return getCurrentSkill();
+	}
 
 }

@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".adventurecreation.impl.fragments.ff.FFVitalStatisticsFragment" >
+    tools:context=".adventurecreation.impl.fragments.sob.SOBVitalStatisticsFragment" >
 
     <TextView
         android:id="@+id/section_label"
@@ -72,23 +72,23 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <TextView
-        android:id="@+id/armorCount"
+        android:id="@+id/crewStrengthCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/luckCount"
         android:layout_marginTop="10dp"
-        android:text="@string/car_armor"
+        android:text="@string/crewStrength"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
      <TextView
-        android:id="@+id/firepowerCount"
+        android:id="@+id/crewStrikeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/armorCount"
+        android:layout_below="@+id/crewStrengthCount"
         android:layout_marginTop="10dp"
-        android:text="@string/car_firepower"
+        android:text="@string/crewStrike"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <TextView
@@ -96,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/firepowerCount"
+        android:layout_below="@+id/crewStrikeCount"
         android:layout_marginTop="10dp"
         android:text="@string/name"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonSaveAdventure"
-        android:layout_alignLeft="@+id/armorCount"
+        android:layout_alignLeft="@+id/crewStrengthCount"
         android:layout_alignParentRight="true"
         android:text="@string/rollStats"
         android:onClick="rollStats" />
@@ -133,25 +133,25 @@
     </EditText>
 
     <TextView
-        android:id="@+id/armorValue"
+        android:id="@+id/crewStrengthValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/firepowerCount"
+        android:layout_above="@+id/crewStrikeCount"
         android:layout_alignRight="@+id/adventureNameInput"
-        android:layout_alignTop="@+id/armorCount"
+        android:layout_alignTop="@+id/crewStrengthCount"
         android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/armorCount"
+        android:layout_toRightOf="@+id/crewStrengthCount"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
      <TextView
-         android:id="@+id/firepowerValue"
+         android:id="@+id/crewStrikeValue"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_above="@+id/adventureName"
          android:layout_alignRight="@+id/buttonRollStats"
-         android:layout_alignTop="@+id/firepowerCount"
+         android:layout_alignTop="@+id/crewStrikeCount"
          android:layout_marginLeft="14dp"
-         android:layout_toRightOf="@+id/firepowerCount"
+         android:layout_toRightOf="@+id/crewStrikeCount"
          android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
