@@ -181,9 +181,9 @@ public abstract class Adventure extends FragmentActivity {
 		}
 
 		String provisionsS = getSavedGame().getProperty("provisions");
-		provisions = provisionsS!=null?Integer.valueOf(provisionsS):null;
+		provisions = provisionsS!=null&&!provisionsS.equals("null")?Integer.valueOf(provisionsS):null;
 		String provisionsValueS = getSavedGame().getProperty("provisionsValue");
-		provisionsValue = provisionsValueS!=null?Integer.valueOf(provisionsValueS):null;
+		provisionsValue = provisionsValueS!=null&&!provisionsValueS.equals("null")?Integer.valueOf(provisionsValueS):null;
 
 		loadAdventureSpecificValuesFromFile();
 	}
