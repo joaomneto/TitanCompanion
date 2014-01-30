@@ -204,7 +204,7 @@
             android:label="@string/awf" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.AWFAdventure"
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.SOTSAdventure"
             android:label="@string/awf"
             android:screenOrientation="portrait" >
         </activity>
@@ -224,6 +224,15 @@
         <activity
             android:name="pt.joaomneto.ffgbutil.adventure.impl.DOTDAdventure"
             android:label="@string/dotd"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.SOTSAdventureCreation"
+            android:label="@string/sots" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.SOTSAdventure"
+            android:label="@string/sots"
             android:screenOrientation="portrait" >
         </activity>
     </application>

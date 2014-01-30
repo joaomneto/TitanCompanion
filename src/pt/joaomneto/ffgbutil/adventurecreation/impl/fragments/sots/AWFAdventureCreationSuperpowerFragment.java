@@ -1,4 +1,4 @@
-package pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.awf;
+package pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.sots;
 
 import java.util.ArrayList;
 import java.util.HashMap;

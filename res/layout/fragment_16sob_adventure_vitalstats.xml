@@ -202,14 +202,6 @@
         android:onClick="testSkill"
         android:text="@string/testSkill" />
 
-    <Button
-        android:id="@+id/buttonConsumeProvisions"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonTestLuck"
-        android:layout_alignParentLeft="true"
-        android:onClick="consumeProvision"/>
-
     <TextView
         android:id="@+id/provisionsText"
         android:layout_width="wrap_content"
@@ -236,5 +228,22 @@
         android:layout_alignTop="@+id/provisionsValue"
         android:layout_toLeftOf="@+id/provisionsValue"
         android:text="@string/minus" />
+
+    <Button
+        android:id="@+id/testCrewStrengthButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonTestLuck"
+        android:layout_alignLeft="@+id/buttonTestLuck"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:text="@string/testCrewStrength" />
+
+    <Button
+        android:id="@+id/buttonConsumeProvisions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/testCrewStrengthButton"
+        android:layout_alignLeft="@+id/testCrewStrengthButton"
+        android:onClick="consumeProvision" />
 
 </RelativeLayout>

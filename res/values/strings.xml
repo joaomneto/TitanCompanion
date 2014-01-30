@@ -760,5 +760,13 @@
     </string-array>
     <string name="heroPoints">Hero Points: </string>
     <string name="unarmed">Unarmed: </string>
-
+    <string name="testCrewStrength">Test Crew Strength</string>
+    <string-array name="skill_list">
+        <item>Kyujutsu</item>
+        <item>Iaijutsu</item>
+        <item>Karumijutsu</item>
+        <item>Ni-to-Kenjutsu</item>        
+    </string-array>
+    <string name="skillName">Skill</string>
+    <string name="arrows">Arrows</string>
 </resources>
