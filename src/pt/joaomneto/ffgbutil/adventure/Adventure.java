@@ -270,7 +270,8 @@ public abstract class Adventure extends FragmentActivity {
 		public Fragment getItem(int position) {
 
 			try {
-				return (Fragment) Class.forName(fragmentConfiguration.get(position).getClassName()).newInstance();
+				Fragment o = (Fragment) Class.forName(fragmentConfiguration.get(position).getClassName()).newInstance();
+				return  o;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

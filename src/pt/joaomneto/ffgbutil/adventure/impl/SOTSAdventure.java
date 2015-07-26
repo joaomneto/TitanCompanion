@@ -9,7 +9,7 @@ import pt.joaomneto.ffgbutil.adventurecreation.impl.SOTSAdventureCreation;
 import android.os.Bundle;
 import android.view.Menu;
 
-public class SOTSAdventure extends Adventure {
+public class SOTSAdventure extends TFODAdventure {
 
 	int currentHonour = -1;
 	int willowLeafArrows = -1;
@@ -19,17 +19,15 @@ public class SOTSAdventure extends Adventure {
 	String skill = "";
 
 	static Integer FRAGMENT_20STOS_ARROWS = 2;
-	static Integer FRAGMENT_COMBAT = 3;
-	static Integer FRAGMENT_PROVISIONS = 4;
-	static Integer FRAGMENT_EQUIPMENT = 5;
-	static Integer FRAGMENT_NOTES = 6;
+	static Integer FRAGMENT_EQUIPMENT = 2;
+	static Integer FRAGMENT_NOTES = 3;
 
 	public SOTSAdventure() {
 		super();
-		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
-		fragmentConfiguration.put(FRAGMENT_20STOS_ARROWS, new AdventureFragmentRunner(R.string.arrows, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_PROVISIONS, new AdventureFragmentRunner(R.string.potionsProvisions, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment"));
+		fragmentConfiguration.clear();
+		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureVitalStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
+//		fragmentConfiguration.put(FRAGMENT_20STOS_ARROWS, new AdventureFragmentRunner(R.string.arrows, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}

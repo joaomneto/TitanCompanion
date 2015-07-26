@@ -45,7 +45,6 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 				R.layout.fragment_adventure_vitalstats, container, false);
 
 		initialize(rootView);
-		
 
 		return rootView;
 	}

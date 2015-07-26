@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +13,12 @@ import android.widget.Button;
 public abstract class AdventureFragment extends DialogFragment {
 
 	public abstract void refreshScreensFromResume();
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		refreshScreensFromResume();
+	}
 
 	public void setupIncDecButton(View rootView, Integer incButtonId, Integer decButtonId, final String getMethod, final String setMethod, final Integer maxValue) {
 		setupIncDecButton(rootView, incButtonId, decButtonId, null, null, getMethod, setMethod, maxValue);
@@ -92,5 +99,16 @@ public abstract class AdventureFragment extends DialogFragment {
 		else
 			mSetMethod.invoke(instance, Math.max(((Integer) mGetMethod.invoke(instance)) - 1, 0));
 	}
+
+
+//		@Override
+//		public void setUserVisibleHint(boolean isVisibleToUser) {
+//			super.setUserVisibleHint(isVisibleToUser);
+//			if (isVisibleToUser) {
+//				refreshScreensFromResume();
+//			}
+//			else {  }
+//		}
+
 
 }

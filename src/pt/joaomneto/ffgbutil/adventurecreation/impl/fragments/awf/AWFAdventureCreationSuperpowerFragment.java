@@ -1,4 +1,4 @@
-package pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.sots;
+package pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.awf;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,18 +27,18 @@ public class AWFAdventureCreationSuperpowerFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		View rootView = inflater.inflate(R.layout.fragment_17awf_adventure_creation_superpowers, container, false);
 		
-		List<Map<String, String>> superpowerList = new ArrayList<Map<String,String>>();
+		List<Map<String, String>> skillList = new ArrayList<Map<String,String>>();
 
 		
 		final String[] stringArray = getResources().getStringArray(R.array.superpower_list);
 		
 		for (String string : stringArray) {
-			Map<String, String> superpower = new HashMap<String, String>();
-			superpower.put("superpower", string);
-			superpowerList.add(superpower);
+			Map<String, String> skill = new HashMap<String, String>();
+			skill.put("skill", string);
+			skillList.add(skill);
 		}
 		
-		SimpleAdapter mAdapter = new SimpleAdapter(getActivity(), superpowerList, R.layout.potions_item, new String[] {"superpower"}, new int[] {R.id.potion_name} );
+		SimpleAdapter mAdapter = new SimpleAdapter(getActivity(), skillList, R.layout.potions_item, new String[] {"skill"}, new int[] {R.id.potion_name} );
 		
 		ListView lView = (ListView) rootView.findViewById(R.id.superpowerList);
 		lView.setAdapter(mAdapter);

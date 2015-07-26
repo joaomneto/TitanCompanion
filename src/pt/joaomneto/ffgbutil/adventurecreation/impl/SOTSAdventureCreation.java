@@ -12,17 +12,12 @@ public class SOTSAdventureCreation extends TFODAdventureCreation {
 	String skill;
 
 	public static String SOTS20_KYUJUTSTU = "Kyujutsu";
-	public static String SOTS20_IAIJUTSU = "Iaijutsu";
-	public static String SOTS20_KARUMIJUTSTU = "Karumijutsu";
-	public static String SOTS20_NITOKENJUTSU = "Ni-to-Kenjutsu";
 
 	public SOTSAdventureCreation() {
 		super();
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(0, new AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, "pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_superpower,
-				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.PotionsFragment.java"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_superpower,
+		fragmentConfiguration.put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_skill,
 				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.sots.SOTSAdventureCreationSkillFragment"));
 
 	}
@@ -31,6 +26,9 @@ public class SOTSAdventureCreation extends TFODAdventureCreation {
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 		bw.write("honour=3\n");
 		bw.write("skill=" + skill + "\n");
+		bw.write("provisions=10\n");
+		bw.write("provisionsValue=4\n");
+		bw.write("gold=0\n");
 		if (skill.equals(SOTS20_KYUJUTSTU)) {
 			bw.write("willowLeafArrows=3\n");
 			bw.write("bowelRakerArrows=3\n");
