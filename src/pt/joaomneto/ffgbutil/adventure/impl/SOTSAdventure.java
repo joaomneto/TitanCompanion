@@ -18,7 +18,6 @@ public class SOTSAdventure extends TFODAdventure {
 	int hummingBulbArrows = -1;
 	String skill = "";
 
-	static Integer FRAGMENT_20STOS_ARROWS = 2;
 	static Integer FRAGMENT_EQUIPMENT = 2;
 	static Integer FRAGMENT_NOTES = 3;
 
@@ -27,8 +26,7 @@ public class SOTSAdventure extends TFODAdventure {
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureVitalStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
-//		fragmentConfiguration.put(FRAGMENT_20STOS_ARROWS, new AdventureFragmentRunner(R.string.arrows, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
+		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
@@ -67,11 +65,6 @@ public class SOTSAdventure extends TFODAdventure {
 		setBowelRakerArrows(Integer.parseInt(getSavedGame().getProperty("bowelRakerArrows")));
 		setHummingBulbArrows(Integer.parseInt(getSavedGame().getProperty("hummingBulbArrows")));
 		setWillowLeafArrows(Integer.parseInt(getSavedGame().getProperty("willowLeafArrows")));
-		
-		if(!skill.equals(SOTSAdventureCreation.SOTS20_KYUJUTSTU)){
-			
-		}
-
 	}
 
 	public int getCurrentHonour() {

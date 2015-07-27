@@ -770,4 +770,8 @@
     <string name="title_adventure_creation_skill">Feat</string>
     <string name="arrows">Arrows</string>
     <string name="honour">Honor:</string>
+    <string name="willow">Willow Leaf:</string>
+    <string name="bowel">Bowel Raker:</string>
+    <string name="armourP">Armour Piercer:</string>
+    <string name="humming">Humming Bulb:</string>
 </resources>

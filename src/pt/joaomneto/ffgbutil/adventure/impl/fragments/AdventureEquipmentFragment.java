@@ -39,20 +39,26 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 
 		final Adventure adv = (Adventure) getActivity();
 
+		initialize(rootView, adv);
+
+		return rootView;
+	}
+
+	protected void initialize(View rootView, final Adventure adv) {
 		equipmentList = (ListView) rootView.findViewById(R.id.equipmentList);
 		minusGoldButton = (Button) rootView.findViewById(R.id.minusGoldButton);
 		plusGoldButton = (Button) rootView.findViewById(R.id.plusGoldButton);
 
 		Button buttonAddNote = (Button) rootView.findViewById(R.id.buttonAddEquipment);
-		
+
 		TextView goldLabel = (TextView) rootView.findViewById(R.id.goldLabel);
 		goldLabel.setText(adv.getCurrencyName());
 
 		goldValue = (TextView) rootView.findViewById(R.id.goldValue);
 		goldValue.setText(adv.getGold().toString());
-		
+
 		goldValue.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
@@ -86,7 +92,7 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 						});
 
 				alert.show();
-				
+
 			}
 		});
 
@@ -173,8 +179,6 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 				refreshScreensFromResume();
 			}
 		});
-
-		return rootView;
 	}
 
 	@SuppressWarnings("unchecked")
