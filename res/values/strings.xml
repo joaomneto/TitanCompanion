@@ -774,4 +774,13 @@
     <string name="bowel">Bowel Raker:</string>
     <string name="armourP">Armour Piercer:</string>
     <string name="humming">Humming Bulb:</string>
+    <string name="robotFights">Robot Combat</string>
+    <string name="medikits">Medikits: </string>
+    <string name="useMedikit">Use Medikit</string>
+    <string name="robotArmor">Robot Armor: </string>
+    <string name="robotSpeed">Robot Speed: </string>
+    <string name="robotCombat">Robot Combat: </string>
+    <string name="robotBonus">Robot Bonus: </string>
+
+
 </resources>

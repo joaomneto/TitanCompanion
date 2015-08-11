@@ -173,9 +173,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 			buttonConsumeProvisions.setVisibility(View.INVISIBLE);
 		}
 		
-		
-		buttonConsumeProvisions.setText(adv.getConsumeProvisionText());
-		provisionsText.setText(adv.getConsumeProvisionText());
+
 	}
 	
 	public void setProvisionsValue(Integer value) {
