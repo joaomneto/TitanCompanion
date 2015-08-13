@@ -127,6 +127,158 @@
         android:layout_alignTop="@+id/textView3"
         android:text="@string/plus" />
 
+    <TextView
+    android:id="@+id/textView4"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:gravity="center"
+    android:text="@string/robotArmor"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:layout_below="@+id/textView3"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/minusRobotArmorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusRobotArmorButton"
+        android:layout_alignTop="@+id/plusRobotArmorButton"
+        android:layout_toLeftOf="@+id/statsRobotArmorValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/statsRobotArmorValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusRobotArmorButton"
+        android:layout_alignTop="@+id/plusRobotArmorButton"
+        android:layout_toLeftOf="@+id/plusRobotArmorButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/plusRobotArmorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignTop="@+id/textView4"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/robotSpeed"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/minusRobotSpeedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusRobotSpeedButton"
+        android:layout_alignTop="@+id/plusRobotSpeedButton"
+        android:layout_toLeftOf="@+id/statsRobotSpeedValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/statsRobotSpeedValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusRobotSpeedButton"
+        android:layout_alignTop="@+id/plusRobotSpeedButton"
+        android:layout_toLeftOf="@+id/plusRobotSpeedButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/plusRobotSpeedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignTop="@+id/textView5"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/robotCombat"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/minusRobotCombatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusRobotCombatButton"
+        android:layout_alignTop="@+id/plusRobotCombatButton"
+        android:layout_toLeftOf="@+id/statsRobotCombatValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/statsRobotCombatValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusRobotCombatButton"
+        android:layout_alignTop="@+id/plusRobotCombatButton"
+        android:layout_toLeftOf="@+id/plusRobotCombatButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/plusRobotCombatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignTop="@+id/textView6"
+        android:text="@string/plus" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/robotBonus"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/minusRobotBonusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusRobotBonusButton"
+        android:layout_alignTop="@+id/plusRobotBonusButton"
+        android:layout_toLeftOf="@+id/statsRobotBonusValue"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/statsRobotBonusValue"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusRobotBonusButton"
+        android:layout_alignTop="@+id/plusRobotBonusButton"
+        android:layout_toLeftOf="@+id/plusRobotBonusButton"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/plusRobotBonusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignTop="@+id/textView7"
+        android:text="@string/plus" />
+
         <Button
         android:id="@+id/minusProvisionsButton"
         android:layout_width="wrap_content"
