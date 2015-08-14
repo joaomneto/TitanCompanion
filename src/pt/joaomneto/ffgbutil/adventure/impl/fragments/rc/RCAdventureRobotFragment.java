@@ -34,6 +34,8 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 	protected Button addRobotButton = null;
 	protected View rootView = null;
+	
+	protected int currentRobot;
 
 	protected SparseArray<Robot> robotPositions = new SparseArray<RCAdventureRobotFragment.Robot>();
 
@@ -84,36 +86,24 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 	protected void removeCombatant(LinearLayout row, int position) {
 		row.removeAllViews();
-		finishedCombats.add(position);
 		robotPositions.remove(position);
-
-		for (int i = 0; i < maxRows; i++) {
-			Combatant cp = robotPositions.get(i);
-			if (cp != null) {
-				cp.setDefenseOnly(false);
-				break;
-			}
-		}
-		if (robotPositions.size() == 0) {
-			resetCombat();
-		}
 	}
 
 	protected void removeCombatant(LinearLayout row) {
-		removeCombatant(row, currentCombat);
+		removeCombatant(row, currentRobot);
 	}
 
 
 
 	protected void addRobotButtonOnClick() {
-		addRobotButtonOnClick(R.layout.component_add_robot);
+		addRobotButtonOnClick(R.layout.component_22rc_add_robot);
 	}
 
 	protected void addRobotButtonOnClick(int layoutId) {
 
 		Adventure adv = (Adventure) getActivity();
 
-		final View addRobotView = adv.getLayoutInflater().inflate(R.layout.component_add_robot, null);
+		final View addRobotView = adv.getLayoutInflater().inflate(R.layout.component_22rc_add_robot, null);
 
 		final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -137,15 +127,15 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 				mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 
-				EditText armorValue = (EditText) addRobotView.findViewById(R.id.robotArmorValue);
-				Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.robotSpeedValue);
-				EditText combatBonusValue = (EditText) addRobotView.findViewById(R.id.combatBonusValue);
+//				EditText armorValue = (EditText) addRobotView.findViewById(R.id.robotArmorValue);
+//				Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.robotSpeedValue);
+//				EditText combatBonusValue = (EditText) addRobotView.findViewById(R.id.combatBonusValue);
 
-				Integer armor = Integer.valueOf(armorValue.getText().toString());
-				Integer speed = (Integer) speedValue.getSelectedItem();
-				String combatBonus = combatBonusValue.getText().toString();
-
-				addRobot(rootView, currentRow, armor, speed, combatBonus);
+//				Integer armor = Integer.valueOf(armorValue.getText().toString());
+//				Integer speed = (Integer) speedValue.getSelectedItem();
+//				String combatBonus = combatBonusValue.getText().toString();
+//
+//				addRobot(rootView, currentRow, armor, speed, combatBonus);
 
 			}
 
@@ -166,7 +156,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 	protected void addRobot(final View rootView, int currentRow, Integer armor, Integer speed, String combatBonus) {
 		Adventure adv = (Adventure) getActivity();
 
-		final View robotView = adv.getLayoutInflater().inflate(R.layout.component_robot, null);
+		final View robotView = adv.getLayoutInflater().inflate(R.layout.component_22rc_robot, null);
 
 		final TextView robotTextArmor = (TextView) robotView.getRootView().findViewById(R.id.robotTextArmorValue);
 
@@ -218,18 +208,23 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 	public void refreshScreensFromResume() {
 		for (int i = 0; i < maxRows; i++) {
 			LinearLayout ll = (LinearLayout) rootView.findViewById(gridRows[i]);
-			RadioButton combatSelected = (RadioButton) ll.findViewById(R.id.combatSelected);
-			TextView combatStaminaText = (TextView) ll.findViewById(R.id.combatTextStaminaValue);
-			TextView combatSkillText = (TextView) ll.findViewById(R.id.combatTextSkillValue);
+			RadioButton robotSelected = (RadioButton) ll.findViewById(R.id.combatSelected);
+			TextView robotTextArmorValue = (TextView) ll.findViewById(R.id.robotTextArmorValue);
+			TextView robotTextBonusValue = (TextView) ll.findViewById(R.id.robotTextBonusValue);
+			TextView robotTextSpeedValue = (TextView) ll.findViewById(R.id.robotTextSpeedValue);
+			TextView robotTextLocationValue = (TextView) ll.findViewById(R.id.robotTextLocationValue);
 
-			if (combatSelected != null)
-				combatSelected.setChecked(i == currentCombat);
+			if (robotSelected != null)
+				robotSelected.setChecked(i == currentRobot);
 
-			if (combatStaminaText != null)
-				combatStaminaText.setText("" + robotPositions.get(i).getCurrentStamina());
-
-			if (combatSkillText != null)
-				combatSkillText.setText("" + robotPositions.get(i).getCurrentSkill());
+			if (robotTextArmorValue != null)
+				robotTextArmorValue.setText("" + robotPositions.get(i).getArmor());
+			if (robotTextBonusValue != null)
+				robotTextBonusValue.setText("" + robotPositions.get(i).getBonus());
+			if (robotTextSpeedValue != null)
+				robotTextSpeedValue.setText("" + robotPositions.get(i).getSpeed());
+			if (robotTextLocationValue != null)
+				robotTextLocationValue.setText("" + robotPositions.get(i).getLocation());
 		}
 	}
 
@@ -243,13 +238,15 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 		Integer armor;
 		Integer speed;
-		String bonus;
+		Integer bonus;
 		String location = "";
+		SpecialAbility specialAbility
 
-		public Robot(Integer armor, Integer speed, String bonus) {
+		public Robot(Integer armor, Integer speed, Integer bonus, SpecialAbility specialAbility) {
 			this.armor = armor;
 			this.speed = speed;
 			this.bonus = bonus;
+			this.specialAbility = specialAbility;
 		}
 
 
@@ -273,13 +270,25 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 			this.speed = speed;
 		}
 
-		public String getBonus() {
+		public Integer getBonus() {
 			return bonus;
 		}
 
-		public void setBonus(String bonus) {
+		public void setBonus(Integer bonus) {
 			this.bonus = bonus;
 		}
+
+		
+		
+		public SpecialAbility getSpecialAbility() {
+			return specialAbility;
+		}
+
+
+		public void setSpecialAbility(SpecialAbility specialAbility) {
+			this.specialAbility = specialAbility;
+		}
+
 
 		public String getLocation() {
 			return location;
