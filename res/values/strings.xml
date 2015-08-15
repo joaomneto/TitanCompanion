@@ -783,5 +783,14 @@
     <string name="robotLocation">Location: </string>
     <string name="addRobot">Add Robot</string>
 
+    <string-array name="robotSpeeds">
+        <item>Slow</item>
+        <item>Medium</item>
+        <item>Fast</item>
+        <item>Very Fast</item>
+    </string-array>
+
+    <string name="robotSpecialAbility">Special Ability</string>
+
 
 </resources>

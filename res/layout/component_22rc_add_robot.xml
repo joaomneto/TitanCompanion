@@ -5,66 +5,87 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/enemySkillText"
+        android:id="@+id/armorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/crewmanSpinner"
         android:layout_marginTop="10dp"
-        android:text="@string/enemySkill"
+        android:text="@string/robotArmor"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/enemySkillValue"
+        android:id="@+id/armorValue"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/enemySkillText"
+        android:layout_alignTop="@+id/armorText"
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/enemyStaminaText"
+        android:id="@+id/bonusText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/enemySkillValue"
+        android:layout_below="@id/armorValue"
         android:layout_marginTop="10dp"
-        android:text="@string/enemyStamina"
+        android:text="@string/robotBonus"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/enemyStaminaValue"
+        android:id="@+id/bonusValue"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/enemySkillValue"
+        android:layout_alignLeft="@+id/armorValue"
         android:layout_alignParentRight="true"
-        android:layout_alignRight="@+id/enemySkillValue"
-        android:layout_alignTop="@+id/enemyStaminaText"
+        android:layout_alignRight="@+id/armorValue"
+        android:layout_alignTop="@+id/bonusText"
         android:ems="10"
         android:inputType="number" />
-    
+
     <TextView
-        android:id="@+id/handicapText"
+        android:id="@+id/speedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/enemyStaminaValue"
+        android:layout_below="@id/bonusValue"
         android:layout_marginTop="10dp"
-        android:text="@string/handicap"
+        android:text="@string/robotSpeed"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/speedValue"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/armorValue"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/armorValue"
+        android:layout_alignTop="@+id/speedText"
+        android:entries="@array/robotSpeeds"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/specialAbilityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/speedValue"
+        android:layout_marginTop="10dp"
+        android:text="@string/robotSpecialAbility"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/handicapValue"
+        android:id="@+id/specialAbilityValue"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/enemyStaminaValue"
+        android:layout_alignLeft="@+id/armorValue"
         android:layout_alignParentRight="true"
-        android:layout_alignRight="@+id/enemyStaminaValue"
-        android:layout_alignTop="@+id/handicapText"
-        android:ems="10"
-        android:text="0"
-        android:inputType="number" />
+        android:layout_alignRight="@+id/armorValue"
+        android:layout_alignTop="@+id/specialAbilityText"
+        android:ems="10" />
+    
+   
 
 </RelativeLayout>
