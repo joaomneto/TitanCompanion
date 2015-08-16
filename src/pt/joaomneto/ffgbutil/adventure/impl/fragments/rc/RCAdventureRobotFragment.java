@@ -11,10 +11,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
@@ -26,6 +31,8 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
     static {
         gridRows = new Integer[]{R.id.robot0, R.id.robot1, R.id.robot2, R.id.robot3, R.id.robot4, R.id.robot5};
+
+
     }
 
     protected Button addRobotButton = null;
@@ -108,15 +115,19 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
                 mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 
-//				EditText armorValue = (EditText) addRobotView.findViewById(R.id.robotArmorValue);
-//				Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.robotSpeedValue);
-//				EditText combatBonusValue = (EditText) addRobotView.findViewById(R.id.combatBonusValue);
+				EditText nameValue = (EditText) addRobotView.findViewById(R.id.nameValue);
+                EditText armorValue = (EditText) addRobotView.findViewById(R.id.armorValue);
+                EditText combatBonusValue = (EditText) addRobotView.findViewById(R.id.bonusValue);
+				Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.speedValue);
+                EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
+                CheckBox alternateForm = (CheckBox) addRobotView.findViewById(R.id.alternateFormValue);
+                EditText armorAltValue = (EditText) addRobotView.findViewById(R.id.armorAltValue);
+                EditText combatBonusAltValue = (EditText) addRobotView.findViewById(R.id.bonusAltValue);
+                Spinner speedAltValue = (Spinner) addRobotView.findViewById(R.id.speedAltValue);
 
-//				Integer armor = Integer.valueOf(armorValue.getText().toString());
-//				Integer speed = (Integer) speedValue.getSelectedItem();
-//				String combatBonus = combatBonusValue.getText().toString();
-//
-//				addRobot(rootView, currentRow, armor, speed, combatBonus);
+				addRobot(rootView, currentRow, nameValue.getText().toString(), Integer.parseInt(armorValue.getText().toString()), Integer.parseInt(combatBonusValue.getText().toString()),
+                        (String) speedValue.getSelectedItem(), Integer.parseInt(specialAbilityValue.getText().toString()), Integer.parseInt(armorAltValue.getText().toString()),
+                                Integer.parseInt(combatBonusAltValue.getText().toString()), (String) speedAltValue.getSelectedItem(), alternateForm.isChecked());
 
             }
 
@@ -134,16 +145,17 @@ public class RCAdventureRobotFragment extends AdventureFragment {
         alert.show();
     }
 
-    protected void addRobot(final View rootView, int currentRow, Integer armor, Integer speed, String combatBonus) {
+    protected void addRobot(final View rootView, int currentRow, String name, Integer armor, Integer bonus, String speed, Integer specialAbility, Integer armorAlt, Integer bonusAlt, String speedAlt, boolean checked) {
         Adventure adv = (Adventure) getActivity();
 
         final View robotView = adv.getLayoutInflater().inflate(R.layout.component_22rc_robot, null);
 
+        final TextView robotTextName = (TextView) robotView.getRootView().findViewById(R.id.robotTextNameValue);
         final TextView robotTextArmor = (TextView) robotView.getRootView().findViewById(R.id.robotTextArmorValue);
-
         final TextView robotTextSpeed = (TextView) robotView.getRootView().findViewById(R.id.robotTextSpeedValue);
-
         final TextView robotTextBonus = (TextView) robotView.getRootView().findViewById(R.id.robotTextBonusValue);
+        final TextView robotTextLocation = (TextView) robotView.getRootView().findViewById(R.id.robotTextLocationValue);
+        final TextView robotTextSpecialAbility = (TextView) robotView.getRootView().findViewById(R.id.robotTextSpecialAbilityValue);
 
         if (robotPositions.size() == 0) {
 
@@ -153,7 +165,9 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
         LinearLayout grid = (LinearLayout) rootView.findViewById(gridRows[currentRow]);
 
-        final Robot robotPosition = new Robot(armor, speed, combatBonus);
+        final Robot robotPosition = new Robot(robotTextName.getText().toString(), Integer.parseInt(robotTextArmor.getText().toString())
+                , robotTextSpeed.getText().toString(), Integer.parseInt(robotTextBonus.getText().toString()),
+                RobotSpecialAbility.getAbiliyByReference(Integer.parseInt(robotTextSpecialAbility.getText().toString())));
 
         robotPositions.put(currentRow, robotPosition);
 
@@ -216,24 +230,19 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
     protected class Robot {
 
+        String name;
         Integer armor;
-        Integer speed;
+        String speed;
         Integer bonus;
-        Integer alternateArmor;
-        Integer alternateSpeed;
-        Integer alternateBonus;
 
         String location = "";
         RobotSpecialAbility robotSpecialAbility;
 
-        public Robot(Integer armor, Integer speed, Integer bonus, Integer alternateArmor, Integer alternateSpeed, Integer alternateBonus, RobotSpecialAbility robotSpecialAbility) {
+        public Robot(String name, Integer armor, String speed, Integer bonus, RobotSpecialAbility robotSpecialAbility) {
+            this.name = name;
             this.armor = armor;
             this.speed = speed;
             this.bonus = bonus;
-            this.alternateArmor = alternateArmor;
-            this.alternateSpeed = alternateSpeed;
-            this.alternateBonus = alternateBonus;
-
             this.robotSpecialAbility = robotSpecialAbility;
         }
 
@@ -250,11 +259,11 @@ public class RCAdventureRobotFragment extends AdventureFragment {
             this.armor = armor;
         }
 
-        public Integer getSpeed() {
+        public String getSpeed() {
             return speed;
         }
 
-        public void setSpeed(Integer speed) {
+        public void setSpeed(String speed) {
             this.speed = speed;
         }
 
@@ -266,29 +275,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
             this.bonus = bonus;
         }
 
-        public Integer getAlternateArmor() {
-            return alternateArmor;
-        }
 
-        public void setAlternateArmor(Integer alternateArmor) {
-            this.alternateArmor = alternateArmor;
-        }
-
-        public Integer getAlternateSpeed() {
-            return alternateSpeed;
-        }
-
-        public void setAlternateSpeed(Integer alternateSpeed) {
-            this.alternateSpeed = alternateSpeed;
-        }
-
-        public Integer getAlternateBonus() {
-            return alternateBonus;
-        }
-
-        public void setAlternateBonus(Integer alternateBonus) {
-            this.alternateBonus = alternateBonus;
-        }
 
         public RobotSpecialAbility getRobotSpecialAbility() {
             return robotSpecialAbility;

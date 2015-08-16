@@ -777,9 +777,6 @@
     <string name="robotFights">Robot Combat</string>
     <string name="medikits">Medikits: </string>
     <string name="useMedikit">Use Medikit</string>
-    <string name="robotArmor">Armor: </string>
-    <string name="robotSpeed">Speed: </string>
-    <string name="robotBonus">Bonus: </string>
     <string name="robotLocation">Location: </string>
     <string name="addRobot">Add Robot</string>
 
@@ -790,7 +787,16 @@
         <item>Very Fast</item>
     </string-array>
 
-    <string name="robotSpecialAbility">Special Ability</string>
+    <string name="robotArmor">Armor: </string>
+    <string name="robotSpeed">Speed: </string>
+    <string name="robotBonus">Bonus: </string>
+    <string name="robotSpecialAbility">Special Ability: </string>
+    <string name="robotAltArmor">Alternate Armor: </string>
+    <string name="robotAltSpeed">Alternate Speed: </string>
+    <string name="robotAltBonus">Alternate Bonus: </string>
+    <string name="robotAltSpecialAbility">Special Ability</string>
+    <string name="robotAlternateForm">Alternate Form</string>
+    <string name="robots">Robots</string>
 
 
 </resources>
