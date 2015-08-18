@@ -62,7 +62,7 @@
         android:layout_alignRight="@+id/armorValue"
         android:layout_alignTop="@+id/bonusText"
         android:ems="10"
-        android:inputType="text" />
+        android:inputType="numberSigned" />
 
     <TextView
         android:id="@+id/speedText"
@@ -134,7 +134,8 @@
         android:layout_below="@id/alternateFormText"
         android:layout_marginTop="10dp"
         android:text="@string/robotAltArmor"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="gone"/>
 
     <EditText
         android:id="@+id/armorAltValue"
@@ -144,7 +145,8 @@
         android:layout_alignTop="@+id/armorAltText"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="number"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/bonusAltText"
@@ -154,7 +156,8 @@
         android:layout_below="@id/armorAltValue"
         android:layout_marginTop="10dp"
         android:text="@string/robotAltBonus"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/bonusAltValue"
@@ -165,7 +168,8 @@
         android:layout_alignRight="@+id/armorAltValue"
         android:layout_alignTop="@+id/bonusAltText"
         android:ems="10"
-        android:inputType="text" />
+        android:inputType="numberSigned"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/speedAltText"
@@ -175,7 +179,8 @@
         android:layout_below="@id/bonusAltValue"
         android:layout_marginTop="10dp"
         android:text="@string/robotAltSpeed"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="gone" />
 
     <Spinner
         android:id="@+id/speedAltValue"
@@ -186,7 +191,8 @@
         android:layout_alignRight="@+id/armorAltValue"
         android:layout_alignTop="@+id/speedAltText"
         android:entries="@array/robotSpeeds"
-        android:ems="10" />
+        android:ems="10"
+        android:visibility="gone"/>
 
 
 
