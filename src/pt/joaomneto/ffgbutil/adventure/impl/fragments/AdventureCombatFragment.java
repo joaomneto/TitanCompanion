@@ -59,7 +59,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 	protected boolean combatStarted = false;
 
-	int staminaLoss = 0;
+	protected int staminaLoss = 0;
 
 	protected static Integer[] gridRows;
 
@@ -570,7 +570,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		return 2;
 	}
 
-	protected class Combatant {
+	public class Combatant {
 
 		Integer currentStamina;
 		Integer currentSkill;

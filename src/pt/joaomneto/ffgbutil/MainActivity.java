@@ -6,9 +6,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -34,7 +38,33 @@ public class MainActivity extends Activity {
 	    	showAlert(DiceRoller.rollD6()+"");
 	        return true;
 	    case R.id.roll2d6:
-	    	showAlert(DiceRoller.roll2D6()+"");
+	    	int d1 = DiceRoller.rollD6();
+	    	int d2 = DiceRoller.rollD6();
+	    	View toastView = getLayoutInflater().inflate(R.layout.d2toast, (ViewGroup)findViewById(R.id.d2ToastLayout));
+	    	ImageView imageViewD1 = (ImageView)toastView.findViewById(R.id.d1);
+	    	ImageView imageViewD2 = (ImageView)toastView.findViewById(R.id.d2);
+	    	
+	    	int d1Id = getResources().getIdentifier(
+	    		    "d6"+d1,
+	    		    "drawable",
+	    		    this.getPackageName());
+	    	
+	     	int d2Id = getResources().getIdentifier(
+	    		    "d6"+d2,
+	    		    "drawable",
+	    		    this.getPackageName());
+	     	
+	     	imageViewD1.setImageResource(d1Id);
+	     	imageViewD2.setImageResource(d2Id);
+
+	     	Toast toast = new Toast(this);
+
+	     	toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+	     	toast.setDuration(Toast.LENGTH_LONG);
+	     	toast.setView(toastView);
+
+	     	toast.show();
+	     	
 	        return true;
 	    default:
 	        return super.onOptionsItemSelected(item);

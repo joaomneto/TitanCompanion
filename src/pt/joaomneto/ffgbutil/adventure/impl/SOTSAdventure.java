@@ -20,12 +20,17 @@ public class SOTSAdventure extends TFODAdventure {
 
 	static Integer FRAGMENT_EQUIPMENT = 2;
 	static Integer FRAGMENT_NOTES = 3;
+	
+	public static final String SKILL_KYUJUTSU = "Kyujutsu";
+	public static final String SKILL_IAIJUTSU = "Iaijutsu";
+	public static final String SKILL_KARUMIJUTSU = "Karumijutsu";
+	public static final String SKILL_NI_TO_KENJUTSU = "Ni-to-Kenjutsu";
 
 	public SOTSAdventure() {
 		super();
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureVitalStatsFragment"));
-		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.ffgbutil.adventure.impl.fragments.sots.SOTSAdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
