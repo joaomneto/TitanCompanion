@@ -21,7 +21,7 @@
         android:layout_alignTop="@+id/nameText"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/armorText"
@@ -62,7 +62,7 @@
         android:layout_alignRight="@+id/armorValue"
         android:layout_alignTop="@+id/bonusText"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/speedText"
@@ -103,6 +103,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignRight="@+id/armorValue"
         android:layout_alignTop="@+id/specialAbilityText"
+        android:inputType="number"
         android:ems="10" />
 
     <TextView
@@ -164,7 +165,7 @@
         android:layout_alignRight="@+id/armorAltValue"
         android:layout_alignTop="@+id/bonusAltText"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/speedAltText"
