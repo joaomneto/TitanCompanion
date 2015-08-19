@@ -4,30 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.RCAdventure;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.SparseArray;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 public class RCAdventureRobotFragment extends AdventureFragment {
 
@@ -57,11 +59,23 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 	protected void init() {
 
-		RCAdventure adv = (RCAdventure) this.getActivity();
+		final RCAdventure adv = (RCAdventure) this.getActivity();
 
 		addRobotButton = (Button) rootView.findViewById(R.id.addRobotButton);
 		robotListView = (ListView) rootView.findViewById(R.id.robotList);
 		robotListView.setAdapter(new RobotListAdapter(adv, robots));
+
+		robotListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				adv.openOptionsMenu();
+				return true;
+			}
+		});
+		
+		registerForContextMenu(robotListView);
 
 		addRobotButton.setOnClickListener(new OnClickListener() {
 
@@ -74,6 +88,86 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 		});
 
 		refreshScreensFromResume();
+	}
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+
+		final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+		final RCAdventure adv = (RCAdventure) this.getActivity();
+
+		final Robot robot = robots.get(info.position);
+
+		MenuItem delete = menu.add("Remove");
+		MenuItem location = menu.add("Set Location");
+		delete.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			public boolean onMenuItemClick(MenuItem item) {
+
+				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
+				builder.setTitle("Remove robot?")
+						.setCancelable(false)
+						.setNegativeButton("Close",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int id) {
+										dialog.cancel();
+									}
+								});
+				builder.setPositiveButton("Ok",
+						new DialogInterface.OnClickListener() {
+							@SuppressWarnings("unchecked")
+							public void onClick(DialogInterface dialog,
+									int which) {
+								adv.getNotes().remove(info.position);
+								((ArrayAdapter<String>) robotListView
+										.getAdapter()).notifyDataSetChanged();
+							}
+						});
+
+				AlertDialog alert = builder.create();
+				alert.show();
+				return true;
+			}
+		});
+		location.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			public boolean onMenuItemClick(MenuItem item) {
+				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
+
+				alert.setTitle("Set Location");
+
+				// Set an EditText view to get user input
+				final EditText input = new EditText(adv);
+				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+				input.requestFocus();
+				alert.setView(input);
+
+				alert.setPositiveButton("Ok",
+						new DialogInterface.OnClickListener() {
+							@SuppressWarnings("unchecked")
+							public void onClick(DialogInterface dialog,
+									int whichButton) {
+								String value = input.getText().toString();
+								robot.setLocation(value);
+								adv.getNotes().add(value);
+								((ArrayAdapter<String>)robotListView.getAdapter()).notifyDataSetChanged();
+							}
+						});
+
+				alert.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int whichButton) {
+								// Canceled.
+							}
+						});
+
+				alert.show();
+				
+				return true;
+			}
+		});
 	}
 
 	protected void addRobotButtonOnClick() {
@@ -164,18 +258,24 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 								.length() > 0));
 				if (valid) {
 					if (alternateForm.isChecked())
-						addRobot(name, Integer.parseInt(armor),
+						addRobot(
+								name,
+								Integer.parseInt(armor),
 								Integer.parseInt(bonus),
 								(String) speedValue.getSelectedItem(),
-								specialAbility.length()>0?Integer.parseInt(specialAbility):null, nameAlt,
-								Integer.parseInt(armorAlt),
-								Integer.parseInt(bonusAlt),
+								specialAbility.length() > 0 ? Integer
+										.parseInt(specialAbility) : null,
+								nameAlt, Integer.parseInt(armorAlt), Integer
+										.parseInt(bonusAlt),
 								(String) speedAltValue.getSelectedItem());
 					else
-						addRobot(name, Integer.parseInt(armor),
+						addRobot(
+								name,
+								Integer.parseInt(armor),
 								Integer.parseInt(bonus),
 								(String) speedValue.getSelectedItem(),
-								specialAbility.length()>0?Integer.parseInt(specialAbility):null);
+								specialAbility.length() > 0 ? Integer
+										.parseInt(specialAbility) : null);
 				} else {
 					adv.showAlert("At least the name, armor and bonus values must be filled.");
 				}
