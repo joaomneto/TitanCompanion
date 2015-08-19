@@ -2,8 +2,12 @@ package pt.joaomneto.ffgbutil.adventure.impl;
 
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotFragment.Robot;
 
 public class RCAdventure extends TFODAdventure {
+	
+
+	protected Robot currentRobot = null;
 
     private static final int FRAGMENT_ROBOTS = 1;
 
@@ -18,5 +22,17 @@ public class RCAdventure extends TFODAdventure {
 //        fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
 //        fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
     }
+
+
+	public Robot getCurrentRobot() {
+		return currentRobot;
+	}
+
+
+	public void setCurrentRobot(Robot currentRobot) {
+		this.currentRobot = currentRobot;
+	}
+    
+    
 
 }
