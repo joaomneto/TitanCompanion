@@ -41,6 +41,7 @@ public abstract class Constants {
 							+ "AdventureCreation");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			return null;
 		}
 
 		return intentClass;

@@ -115,6 +115,8 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int whichButton) {
 						String value = input.getText().toString();
+						if(value.isEmpty())
+							return;
 						adv.getEquipment().add(value);
 						((ArrayAdapter<String>) equipmentList.getAdapter()).notifyDataSetChanged();
 					}

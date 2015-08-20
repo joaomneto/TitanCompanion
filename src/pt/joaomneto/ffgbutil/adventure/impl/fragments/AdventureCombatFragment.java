@@ -201,7 +201,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 						int enemyStamina = combatant.getCurrentStamina();
 						if (enemyStamina <= 0 || (getKnockoutStamina() != null && staminaLoss >= getKnockoutStamina())) {
 							enemyStamina = 0;
-							adv.showAlert("You've defeated your opponent!");
+							Adventure.showAlert("You've defeated your opponent!", adv);
 							LinearLayout row = (LinearLayout) rootView.findViewById(gridRows[previousCombat]);
 							removeCombatant(row, previousCombat);
 							advanceCombat();
@@ -223,11 +223,11 @@ public class AdventureCombatFragment extends AdventureFragment {
 					}
 
 					if (getKnockoutStamina() != null && adv.getCurrentStamina() <= getKnockoutStamina()) {
-						adv.showAlert("You've been knocked out...");
+						Adventure.showAlert("You've been knocked out...", adv);
 					}
 
 					if (adv.getCurrentStamina() == 0) {
-						adv.showAlert("You're dead...");
+						Adventure.showAlert("You're dead...", adv);
 					}
 				}
 				refreshScreensFromResume();
@@ -267,7 +267,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 								+ " + " + position.getCurrentSkill() + "). (-" + damage + "ST)");
 					} else {
 						position.setCurrentStamina(0);
-						adv.showAlert("You've defeated an enemy by sudden death!");
+						Adventure.showAlert("You've defeated an enemy by sudden death!",adv);
 					}
 				} else {
 					draw = true;
@@ -379,7 +379,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 							+ " + " + position.getCurrentSkill() + ")");
 				} else {
 					position.setCurrentStamina(0);
-					adv.showAlert("You've defeated an enemy by sudden death!");
+					Adventure.showAlert("You've defeated an enemy by sudden death!",adv);
 				}
 
 			} else if (attackStrength < enemyAttackStrength) {
@@ -402,11 +402,11 @@ public class AdventureCombatFragment extends AdventureFragment {
 			}
 
 			if (getKnockoutStamina() != null && staminaLoss >= getKnockoutStamina()) {
-				adv.showAlert("You've been knocked out...");
+				Adventure.showAlert("You've been knocked out...",adv);
 			}
 
 			if (adv.getCurrentStamina() == 0) {
-				adv.showAlert("You're dead...");
+				Adventure.showAlert("You're dead...",adv);
 			}
 		}
 		if (combatPositions.size() == 0) {
@@ -456,8 +456,17 @@ public class AdventureCombatFragment extends AdventureFragment {
 				EditText enemyStaminaValue = (EditText) addCombatantView.findViewById(R.id.enemyStaminaValue);
 				EditText handicapValue = (EditText) addCombatantView.findViewById(R.id.handicapValue);
 
-				Integer skill = Integer.valueOf(enemySkillValue.getText().toString());
-				Integer stamina = Integer.valueOf(enemyStaminaValue.getText().toString());
+				String skillS = enemySkillValue.getText().toString();
+				String staminaS = enemyStaminaValue.getText().toString();
+				Integer skill = null;
+				Integer stamina = null;
+				try {
+					skill = Integer.valueOf(skillS);
+					stamina = Integer.valueOf(staminaS);
+				} catch (NumberFormatException e) {
+					Adventure.showAlert("You must fill the skill and stamina values!", AdventureCombatFragment.this.getActivity());
+					return;
+				}
 				Integer handicap = Integer.valueOf(handicapValue.getText().toString());
 
 				addCombatant(rootView, currentRow, skill, stamina, handicap, getDefaultEnemyDamage());

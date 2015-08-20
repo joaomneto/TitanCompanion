@@ -10,15 +10,6 @@
     android:useDefaultMargins="true"
     tools:context="pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotFragment" >
 
-     <ListView
-         android:id="@+id/robotList"
-         android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:layout_above="@+id/addRobotButton"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentTop="true" />
-    
-
     <Button
         android:id="@+id/addRobotButton"
         android:layout_width="fill_parent"
@@ -26,5 +17,21 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="@string/addRobot" />
+
+    <View
+        android:id="@+id/centerShim"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
+
+    <ListView
+        android:id="@+id/robotList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/centerShim"
+        android:layout_alignLeft="@+id/addRobotButton"
+        android:layout_alignParentRight="true" >
+    </ListView>
 
 </RelativeLayout>

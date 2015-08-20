@@ -5,9 +5,12 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -173,7 +176,7 @@ public abstract class Adventure extends FragmentActivity {
 	private void loadGameFromFile(File dir, String fileName)
 			throws IOException, FileNotFoundException {
 		savedGame = new Properties();
-		savedGame.load(new FileInputStream(new File(dir, fileName)));
+		savedGame.load(new InputStreamReader(new FileInputStream(new File(dir, fileName)), "UTF-8"));
 
 		gamebook = Integer.valueOf(savedGame.getProperty("gamebook"));
 		initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"));
@@ -186,9 +189,9 @@ public abstract class Adventure extends FragmentActivity {
 				.getProperty("currentStamina"));
 
 		String equipmentS = new String(savedGame.getProperty("equipment")
-				.getBytes(java.nio.charset.Charset.forName("ISO-8859-1")));
+				.getBytes(java.nio.charset.Charset.forName("UTF-8")));
 		String notesS = new String(savedGame.getProperty("notes").getBytes(
-				java.nio.charset.Charset.forName("ISO-8859-1")));
+				java.nio.charset.Charset.forName("UTF-8")));
 		currentReference = Integer.valueOf(savedGame
 				.getProperty("currentReference"));
 
@@ -262,7 +265,7 @@ public abstract class Adventure extends FragmentActivity {
 		boolean result = DiceRoller.roll2D6() < currentSkill;
 
 		String message = result ? "Success!" : "Failed...";
-		showAlert(message);
+		showAlert(message, this);
 	}
 
 	public void testLuck(View v) {
@@ -270,7 +273,7 @@ public abstract class Adventure extends FragmentActivity {
 		boolean result = testLuckInternal();
 
 		String message = result ? "Success!" : "Failed...";
-		showAlert(message);
+		showAlert(message, this);
 	}
 
 	public boolean testLuckInternal() {
@@ -280,8 +283,8 @@ public abstract class Adventure extends FragmentActivity {
 		return result;
 	}
 
-	public void showAlert(String message) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	public static void showAlert(String message, Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle("Result")
 				.setMessage(message)
 				.setCancelable(false)
@@ -345,7 +348,7 @@ public abstract class Adventure extends FragmentActivity {
 		// Handle item selection
 		switch (item.getItemId()) {
 		case R.id.rolld6:
-			showAlert(DiceRoller.rollD6() + "");
+			showAlert(DiceRoller.rollD6() + "", this);
 			return true;
 		case R.id.roll2d6:
 			int d1 = DiceRoller.rollD6();
@@ -403,7 +406,8 @@ public abstract class Adventure extends FragmentActivity {
 					String ref = input.getText().toString();
 					File file = new File(dir, ref + ".xml");
 
-					BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+					BufferedWriter bw = new BufferedWriter
+						    (new OutputStreamWriter(new FileOutputStream(file),"UTF-8"));
 
 					storeValuesInFile(ref, bw);
 					storeNotesForRestart(dir);
@@ -411,7 +415,6 @@ public abstract class Adventure extends FragmentActivity {
 					bw.close();
 
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -504,7 +507,7 @@ public abstract class Adventure extends FragmentActivity {
 
 	public void consumePotion(View view) {
 		if (standardPotionValue == 0) {
-			showAlert("You have no potion left...");
+			showAlert("You have no potion left...", this);
 		} else {
 			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
 			adventureProvisionsFragment.setPotionValue(--standardPotionValue);
@@ -523,22 +526,22 @@ public abstract class Adventure extends FragmentActivity {
 				setCurrentLuck(getInitialLuck() + 1);
 				break;
 			}
-			showAlert(message);
+			showAlert(message, this);
 		}
 	}
 
 	public void consumeProvision(View view) {
 		if (provisions == 0) {
-			showAlert("You have no provisions left...");
+			showAlert("You have no provisions left...", this);
 		} else if (getCurrentStamina() == getInitialStamina()) {
-			showAlert("You are already at maximum Stamina!");
+			showAlert("You are already at maximum Stamina!", this);
 		} else {
 			AdventureVitalStatsFragment vitalstats = getVitalStatsFragment();
 			vitalstats.setProvisionsValue(--provisions);
 			setCurrentStamina(getCurrentStamina() + provisionsValue);
 			if (getCurrentStamina() > getInitialStamina())
 				setCurrentStamina(getInitialStamina());
-			showAlert("You have gained " + provisionsValue + " Stamina points!");
+			showAlert("You have gained " + provisionsValue + " Stamina points!", this);
 		}
 	}
 
@@ -698,7 +701,8 @@ public abstract class Adventure extends FragmentActivity {
 		try {
 			File file = new File(dir, "temp" + ".xml");
 
-			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			BufferedWriter bw = new BufferedWriter
+				    (new OutputStreamWriter(new FileOutputStream(file),"UTF-8"));
 
 			storeValuesInFile("-1", bw);
 

@@ -779,6 +779,7 @@
     <string name="useMedikit">Use Medikit</string>
     <string name="robotLocation">Location: </string>
     <string name="addRobot">Add Robot</string>
+    <string name="addEnemyRobot">Add Enemy Robot</string>
 
     <string-array name="robotSpeeds">
         <item>Slow</item>
@@ -797,6 +798,7 @@
     <string name="robotAltSpecialAbility">Special Ability</string>
     <string name="robotAlternateForm">Alternate Form</string>
     <string name="robots">Robots</string>
+    <string name="currentRobot">Current Robot: </string>
 
 
 </resources>

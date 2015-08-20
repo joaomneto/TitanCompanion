@@ -3,7 +3,6 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments.rc;
 import java.util.List;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotFragment.Robot;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

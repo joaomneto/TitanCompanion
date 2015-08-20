@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventurecreation.impl.AWFAdventureCreation;
 import pt.joaomneto.ffgbutil.adventurecreation.impl.SOTSAdventureCreation;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;

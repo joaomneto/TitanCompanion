@@ -61,6 +61,8 @@ public class AdventureNotesFragment extends AdventureFragment {
 							public void onClick(DialogInterface dialog,
 									int whichButton) {
 								String value = input.getText().toString();
+								if(value.isEmpty())
+									return;
 								adv.getNotes().add(value);
 								((ArrayAdapter<String>)noteList.getAdapter()).notifyDataSetChanged();
 							}

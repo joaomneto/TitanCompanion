@@ -1,6 +1,7 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.trok;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.TROKAdventure;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
@@ -83,7 +84,7 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 						enemyShields -= damage;
 						if (enemyShields <= 0) {
 							enemyShields = 0;
-							adv.showAlert("Direct hit!. You've defeated your opponent!");
+							Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
 						} else {
 							combatResult.setText("Direct hit! (-" + damage + " Shields)");
 						}
@@ -96,7 +97,7 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 						enemy2Shields -= damage;
 						if (enemy2Shields <= 0) {
 							enemy2Shields = 0;
-							adv.showAlert("Direct hit!. You've defeated the second opponent!");
+							Adventure.showAlert("Direct hit!. You've defeated the second opponent!",adv);
 						} else {
 							combatResult.setText("Direct hit! (-" + damage + " Shields)");
 						}
@@ -112,7 +113,7 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 						adv.setCurrentShields(adv.getCurrentShields() - damage);
 						if (adv.getCurrentShields() <= 0) {
 							adv.setCurrentShields(0);
-							adv.showAlert("The enemy has destroyed your starship...");
+							Adventure.showAlert("The enemy has destroyed your starship...",adv);
 						} else {
 							combatResult.setText(combatResult.getText() + "\nThe enemy has hit your starship. (-" + damage + " Shields)");
 						}
@@ -128,7 +129,7 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 						adv.setCurrentShields(adv.getCurrentShields() - damage);
 						if (adv.getCurrentShields() <= 0) {
 							adv.setCurrentShields(0);
-							adv.showAlert("The enemy has destroyed your starship...");
+							Adventure.showAlert("The enemy has destroyed your starship...",adv);
 						} else {
 							combatResult.setText(combatResult.getText() + "\nThe second enemy has hit your starship. (-" + damage + " Shields)");
 						}

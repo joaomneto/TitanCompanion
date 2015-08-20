@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Set;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure.STCrewman;
@@ -172,7 +173,7 @@ public class STCombatFragment extends AdventureFragment {
 					combatResult.setText("The " + crewmanString + " has died...");
 					adv.setCrewmanDead(position.getCrewman());
 					if (position.getCrewman().equals(STCrewman.CAPTAIN)) {
-						adv.showAlert("You're dead...");
+						Adventure.showAlert("You're dead...",adv);
 					}
 				}
 			}

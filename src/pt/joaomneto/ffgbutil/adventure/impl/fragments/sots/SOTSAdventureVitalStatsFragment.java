@@ -1,5 +1,8 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.sots;
 
+import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.impl.SOTSAdventure;
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,12 +10,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
-import pt.joaomneto.ffgbutil.adventure.impl.SOTSAdventure;
-import pt.joaomneto.ffgbutil.adventure.impl.fragments.*;
 
 public class SOTSAdventureVitalStatsFragment extends AdventureVitalStatsFragment {
 

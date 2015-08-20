@@ -1,6 +1,7 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.ff;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.FFAdventure;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
@@ -103,7 +104,7 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 					enemyArmour -= damage;
 					if (enemyArmour <= 0) {
 						enemyArmour = 0;
-						adv.showAlert("Direct hit!. You've defeated your opponent!");
+						Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
 					} else {
 						combatResult.setText("Direct hit! (-" + damage
 								+ " Armour)");
@@ -113,7 +114,7 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 					adv.setCurrentArmour(adv.getCurrentArmour() - damage);
 					if (adv.getCurrentArmour() <= 0) {
 						adv.setCurrentArmour(0);
-						adv.showAlert("The enemy has destroyed your vehicle...");
+						Adventure.showAlert("The enemy has destroyed your vehicle...",adv);
 					} else {
 						combatResult
 								.setText("The enemy has hit your vehicle. (-"
@@ -136,7 +137,7 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 							enemy2Armour -= damage;
 							if (enemy2Armour <= 0) {
 								enemy2Armour = 0;
-								adv.showAlert("Direct hit!. You've defeated your opponent!");
+								Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
 							} else {
 								combatResult.setText("Direct hit! (-" + damage
 										+ " Armour)");
@@ -148,7 +149,7 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 						adv.setCurrentArmour(adv.getCurrentArmour() - damage);
 						if (adv.getCurrentArmour() <= 0) {
 							adv.setCurrentArmour(0);
-							adv.showAlert("The enemy has destroyed your vehicle...");
+							Adventure.showAlert("The enemy has destroyed your vehicle...",adv);
 						} else {
 							combatResult.setText(combatResult.getText()
 									+ "\nThe second enemy has hit your vehicle. (-"

@@ -4,8 +4,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.adventurecreation.impl.SOTSAdventureCreation;
 import android.os.Bundle;
 import android.view.Menu;
 

@@ -1,5 +1,7 @@
 package pt.joaomneto.ffgbutil;
 
+import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
 import pt.joaomneto.ffgbutil.consts.Constants;
 import android.content.Intent;
 import android.os.Bundle;
@@ -124,6 +126,7 @@ public class GamebookSelectionActivity extends FragmentActivity {
 			imageLink = Constants.getGameBookCoverAddress(position);
 			img.setImageResource(imageLink);
 
+			
 			img.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -150,7 +153,12 @@ public class GamebookSelectionActivity extends FragmentActivity {
 
 				@Override
 				public void onClick(View view) {
-					Intent intent = new Intent(getActivity().getBaseContext(), Constants.getCreationActivity(getActivity(), position));
+					Class<? extends AdventureCreation> creationActivity = Constants.getCreationActivity(getActivity(), position);
+					if(creationActivity == null){
+						Adventure.showAlert("Sorry,  this gamebook is not implemented yet!", GamebookSelectionFragment.this.getActivity());
+						return;
+					}
+					Intent intent = new Intent(getActivity().getBaseContext(), creationActivity);
 					intent.putExtra(GAMEBOOK_ID, position);
 					startActivity(intent);
 

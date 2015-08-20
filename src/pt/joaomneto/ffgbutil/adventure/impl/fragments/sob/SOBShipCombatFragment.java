@@ -1,6 +1,7 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.sob;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.SOBAdventure;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
@@ -75,7 +76,7 @@ public class SOBShipCombatFragment extends AdventureFragment {
 						enemyCrewStrength -= damage;
 						if (enemyCrewStrength <= 0) {
 							enemyCrewStrength = 0;
-							adv.showAlert("Direct hit!. You've defeated your opponent!");
+							Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
 						} else {
 							combatResult.setText("Direct hit! (-" + damage + " CrewStrength)");
 						}
@@ -84,7 +85,7 @@ public class SOBShipCombatFragment extends AdventureFragment {
 						adv.setCurrentCrewStrength(adv.getCurrentCrewStrength() - damage);
 						if (adv.getCurrentCrewStrength() <= 0) {
 							adv.setCurrentCrewStrength(0);
-							adv.showAlert("The enemy has destroyed your ship...");
+							Adventure.showAlert("The enemy has destroyed your ship...",adv);
 						} else {
 							combatResult.setText(combatResult.getText() + "\nThe enemy has hit your ship. (-" + damage + " CrewStrength)");
 						}

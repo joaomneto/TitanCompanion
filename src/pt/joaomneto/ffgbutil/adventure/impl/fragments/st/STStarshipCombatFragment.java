@@ -1,6 +1,7 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.st;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
@@ -161,7 +162,7 @@ public class STStarshipCombatFragment extends AdventureFragment {
 					enemyShields -= 2;
 					if (enemyShields <= 0) {
 						enemyShields = 0;
-						adv.showAlert("Direct hit!. You've defeated your opponent!");
+						Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
 					} else {
 						combatResult.setText("Direct hit!");
 					}
@@ -173,7 +174,7 @@ public class STStarshipCombatFragment extends AdventureFragment {
 					adv.setCurrentShipShields(adv.getCurrentShipShields()-2);
 					if (adv.getCurrentShipShields() <= 0) {
 						adv.setCurrentShipShields(0);
-						adv.showAlert("The enemy has destroyed your ship...");
+						Adventure.showAlert("The enemy has destroyed your ship...",adv);
 					} else {
 						combatResult.setText(combatResult.getText().toString()+"\nThe enemy has hit your ship.");
 					}

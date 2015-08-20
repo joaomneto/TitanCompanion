@@ -148,7 +148,7 @@ public class AdventureCombatOldFragment extends AdventureFragment {
 					enemyStamina -= 2;
 					if (enemyStamina <= 0) {
 						enemyStamina = 0;
-						adv.showAlert("You've defeated your opponent!");
+						Adventure.showAlert("You've defeated your opponent!",adv);
 					} else {
 						combatResult.setText("You hit your opponent!");
 					}
@@ -158,10 +158,10 @@ public class AdventureCombatOldFragment extends AdventureFragment {
 					adv.setCurrentStamina(adv.getCurrentStamina() - 2);
 					if (adv.getCurrentStamina() < 0) {
 						adv.setCurrentStamina(0);
-						adv.showAlert("You're dead...");
+						Adventure.showAlert("You're dead...",adv);
 					} else if (adv.getCurrentStamina() == 0) {
 						adv.setCurrentStamina(0);
-						adv.showAlert("You've been dealt a fatal blow (try your luck!)");
+						Adventure.showAlert("You've been dealt a fatal blow (try your luck!)",adv);
 					} else {
 						combatResult.setText("You've been hit! You lose 2 stamina points");
 					}
@@ -188,7 +188,7 @@ public class AdventureCombatOldFragment extends AdventureFragment {
 						enemyStamina--;
 						if (enemyStamina <= 0) {
 							enemyStamina = 0;
-							adv.showAlert("You've defeated your opponent!");
+							Adventure.showAlert("You've defeated your opponent!",adv);
 						}
 					} else {
 						adv.setCurrentStamina(adv.getCurrentStamina() + 1);
@@ -202,7 +202,7 @@ public class AdventureCombatOldFragment extends AdventureFragment {
 						adv.setCurrentStamina(adv.getCurrentStamina() - 1);
 					}
 					if (adv.getCurrentStamina() == 0) {
-						adv.showAlert("You're dead...");
+						Adventure.showAlert("You're dead...",adv);
 					}
 				}
 				updateValues();
@@ -219,10 +219,10 @@ public class AdventureCombatOldFragment extends AdventureFragment {
 				draw = false;
 				if (adv.getCurrentStamina() < 0) {
 					adv.setCurrentStamina(0);
-					adv.showAlert("You're dead...");
+					Adventure.showAlert("You're dead...",adv);
 				} else if (adv.getCurrentStamina() == 0) {
 					adv.setCurrentStamina(0);
-					adv.showAlert("You've been dealt a fatal blow (try your luck!)");
+					Adventure.showAlert("You've been dealt a fatal blow (try your luck!)",adv);
 				} else {
 					combatResult.setText("You've escaped! You lose 2 stamina points");
 				}

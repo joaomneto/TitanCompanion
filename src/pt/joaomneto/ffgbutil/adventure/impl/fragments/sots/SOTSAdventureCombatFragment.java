@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 
 	protected boolean firstRound;
+	protected Integer enemyDiceRoll = null;
 
 	protected void sequenceCombatTurn() {
 
@@ -33,7 +34,7 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 						.setText("You have hit the enemy with the Iaijutsu fast draw strike (-3 ST)");
 			} else {
 
-				int diceRoll = DiceRoller.roll2D6();
+				int diceRoll = DiceRoller.roll2D6();				
 				int skill = adv.getCombatSkillValue();
 				int attackStrength = diceRoll + skill + position.getHandicap();
 				int enemyDiceRoll = DiceRoller.roll2D6();
@@ -59,7 +60,7 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 											+ "). (-" + damage + "ST)");
 						} else {
 							position.setCurrentStamina(0);
-							adv.showAlert("You've defeated an enemy by sudden death!");
+							Adventure.showAlert("You've defeated an enemy by sudden death!",adv);
 						}
 					} else {
 						draw = true;
@@ -143,6 +144,9 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 				int enemyAttackStrength = enemyDiceRoll
 						+ position.getCurrentSkill();
 				if (attackStrength > enemyAttackStrength) {
+					
+					
+					
 					Boolean suddenDeath = suddenDeath();
 					if (suddenDeath == null) {
 						int damage = getDamage();
@@ -163,7 +167,7 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 										+ position.getCurrentSkill() + ")");
 					} else {
 						position.setCurrentStamina(0);
-						adv.showAlert("You've defeated an enemy by sudden death!");
+						Adventure.showAlert("You've defeated an enemy by sudden death!",adv);
 					}
 
 				} else if (attackStrength < enemyAttackStrength) {
@@ -198,11 +202,11 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 
 			if (getKnockoutStamina() != null
 					&& staminaLoss >= getKnockoutStamina()) {
-				adv.showAlert("You've been knocked out...");
+				Adventure.showAlert("You've been knocked out...",adv);
 			}
 
 			if (adv.getCurrentStamina() == 0) {
-				adv.showAlert("You're dead...");
+				Adventure.showAlert("You're dead...",adv);
 			}
 		}
 		if (combatPositions.size() == 0) {
@@ -223,6 +227,7 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 	protected void resetCombat() {
 		super.resetCombat();
 		firstRound = true;
+		enemyDiceRoll = null;
 	}
 
 }

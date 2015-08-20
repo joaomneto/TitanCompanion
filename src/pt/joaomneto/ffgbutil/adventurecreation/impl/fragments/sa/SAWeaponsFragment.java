@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventurecreation.impl.SAAdventureCreation;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -120,7 +121,7 @@ public class SAWeaponsFragment extends Fragment {
 									int whichButton) {
 								String value = input.getSelectedItem().toString();
 								if(getCurrentWeaponsCount(adv) + weaponvalues.get(value) > Integer.valueOf(weaponsValue.getText().toString())){
-									adv.showAlert("You don't have enough weapon points to add the "+value);
+									Adventure.showAlert("You don't have enough weapon points to add the "+value, adv);
 									return;
 								}
 								adv.getWeapons().add(value);

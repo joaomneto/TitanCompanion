@@ -1,6 +1,7 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.sob;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.impl.SOBAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
@@ -48,7 +49,7 @@ public class SOBAdventureVitalStatsFragment extends AdventureVitalStatsFragment 
 				boolean result = DiceRoller.roll3D6() < adv.getCurrentCrewStrength();
 
 				String message = result ? "Success!" : "Failed...";
-				adv.showAlert(message);
+				Adventure.showAlert(message, adv);
 			}
 		});
 
