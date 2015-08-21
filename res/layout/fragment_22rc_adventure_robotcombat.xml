@@ -11,7 +11,7 @@
     tools:context="pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotFragment" >
 
     <ListView
-        android:id="@+id/robotList"
+        android:id="@+id/robotEnemyList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/centerShim"
@@ -33,7 +33,7 @@
         android:layout_centerHorizontal="true" >
 
         <TextView
-            android:id="@+id/nameValue"
+            android:id="@+id/nameCombatValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -42,57 +42,57 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
         
         <TextView
-            android:id="@+id/armorText"
+            android:id="@+id/armorCombatText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/nameValue"
+            android:layout_below="@id/nameCombatValue"
             android:text="@string/armor"
             android:textAppearance="?android:attr/textAppearanceMedium" />
         
         
         <TextView
-            android:id="@+id/armorValue"
+            android:id="@+id/armorCombatValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/armorText"
-            android:layout_alignTop="@id/armorText"
+            android:layout_toRightOf="@id/armorCombatText"
+            android:layout_alignTop="@id/armorCombatText"
             android:textAppearance="?android:attr/textAppearanceMedium" />
         
          <TextView
-            android:id="@+id/bonusText"
+            android:id="@+id/bonusCombatText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/armorText"
+            android:layout_below="@id/armorCombatText"
             android:text="@string/robotBonus"
             android:textAppearance="?android:attr/textAppearanceMedium" />
         
         
         <TextView
-            android:id="@+id/bonusValue"
+            android:id="@+id/bonusCombatValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/bonusText"
-            android:layout_alignTop="@id/bonusText"
+            android:layout_toRightOf="@id/bonusCombatText"
+            android:layout_alignTop="@id/bonusCombatText"
             android:textAppearance="?android:attr/textAppearanceMedium" />
         
          <TextView
-            android:id="@+id/skillText"
+            android:id="@+id/skillCombatText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/bonusText"
+            android:layout_below="@id/bonusCombatText"
             android:text="@string/skill"
             android:textAppearance="?android:attr/textAppearanceMedium" />
         
         
         <TextView
-            android:id="@+id/skillValue"
+            android:id="@+id/skillCombatValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/skillText"
-            android:layout_alignTop="@id/skillText"
+            android:layout_toRightOf="@id/skillCombatText"
+            android:layout_alignTop="@id/skillCombatText"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
        
@@ -102,12 +102,12 @@
             android:id="@+id/combatStatus"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/addRobotButton"
+            android:layout_above="@+id/addEnemyRobotButton"
             android:layout_below="@id/currentRobotGroup"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/addRobotButton"
+        android:id="@+id/addEnemyRobotButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -59,14 +59,14 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 		final RCAdventure adv = (RCAdventure) this.getActivity();
 
-		addRobotButton = (Button) rootView.findViewById(R.id.addRobotButton);
-		robotListView = (ListView) rootView.findViewById(R.id.robotList);
+		addRobotButton = (Button) rootView.findViewById(R.id.addEnemyRobotButton);
+		robotListView = (ListView) rootView.findViewById(R.id.robotEnemyList);
 //		robotListView.setAdapter(new RobotListAdapter(adv, adv.getRobots()));
 
-		nameValue = (TextView) rootView.findViewById(R.id.nameValue);
-		armorValue = (TextView) rootView.findViewById(R.id.armorValue);
-		bonusValue = (TextView) rootView.findViewById(R.id.bonusValue);
-		skillValue = (TextView) rootView.findViewById(R.id.skillValue);
+		nameValue = (TextView) rootView.findViewById(R.id.nameCombatValue);
+		armorValue = (TextView) rootView.findViewById(R.id.armorCombatValue);
+		bonusValue = (TextView) rootView.findViewById(R.id.bonusCombatValue);
+		skillValue = (TextView) rootView.findViewById(R.id.skillCombatValue);
 
 		registerForContextMenu(robotListView);
 
