@@ -160,12 +160,19 @@
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/robotTextLocation"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+     <Button
+        android:id="@+id/removeRobotButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/removeRobot"
+        android:layout_below="@id/robotTextLocation" />
 
     <View
         android:id="@+id/separator"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/robotTextLocation"
+        android:layout_below="@+id/removeRobotButton"
         android:layout_marginTop="1dp"
         android:background="@android:color/darker_gray" />
 

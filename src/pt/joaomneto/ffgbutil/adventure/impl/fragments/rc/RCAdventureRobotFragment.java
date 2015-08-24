@@ -341,11 +341,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 		}
 
 		adv.getRobots().get(adv.getRobots().size() - 1).setActive(true);
-		RobotListAdapter adapter = (RobotListAdapter) robotListView
-				.getAdapter();
-		adapter.notifyDataSetChanged();
-
-		adv.setCurrentRobot(adapter.getCurrentRobot());
+		refreshScreensFromResume();
 	}
 
 	@Override
@@ -355,7 +351,8 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 				.getAdapter();
 		adapter.notifyDataSetChanged();
 
-		adv.setCurrentRobot(adapter.getCurrentRobot());
+		if(adapter.getCurrentRobot()!=null)
+			adv.setCurrentRobot(adapter.getCurrentRobot());
 	}
 
 }

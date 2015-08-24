@@ -27,10 +27,10 @@ public class RCAdventure extends TFODAdventure {
 	}
 
 	private static final int FRAGMENT_ROBOTS = 1;
-	private static final int FRAGMENT_ROBOTCOMBAT = 5;
-	private static final int FRAGMENT_COMBAT = 2;
-	private static final int FRAGMENT_EQUIPMENT = 3;
-	private static final int FRAGMENT_NOTES = 4;
+	private static final int FRAGMENT_ROBOTCOMBAT = 2;
+	private static final int FRAGMENT_COMBAT = 3;
+	private static final int FRAGMENT_EQUIPMENT = 4;
+	private static final int FRAGMENT_NOTES = 5;
 
 	public RCAdventure() {
 		super();
@@ -39,8 +39,8 @@ public class RCAdventure extends TFODAdventure {
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureVitalStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_ROBOTS, new AdventureFragmentRunner(R.string.robots,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotFragment"));
-//		fragmentConfiguration.put(FRAGMENT_ROBOTCOMBAT, new AdventureFragmentRunner(R.string.robotFights,
-//				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_ROBOTCOMBAT, new AdventureFragmentRunner(R.string.robotFights,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,

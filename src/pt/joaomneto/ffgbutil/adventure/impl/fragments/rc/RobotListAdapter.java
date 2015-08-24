@@ -3,6 +3,7 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments.rc;
 import java.util.List;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.impl.RCAdventure;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,8 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 				.findViewById(R.id.robotTextLocationValue);
 		final TextView robotTextSpecialAbility = (TextView) robotView
 				.getRootView().findViewById(R.id.robotTextSpecialAbilityValue);
+		final Button removeRobotButton = (Button) robotView
+				.getRootView().findViewById(R.id.removeRobotButton);
 
 		final Robot robotPosition = values.get(position);
 
@@ -73,6 +76,20 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 		
 		final RobotListAdapter adapter = this; 
 		
+		removeRobotButton.setOnClickListener(new  OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				RCAdventure adv = (RCAdventure) context;
+				adv.getRobots().remove(adv.getCurrentRobot());
+
+				adv.setCurrentRobot(null);
+				setCurrentRobot(null);
+				
+				adv.fullRefresh();
+			}
+		});
+		
 		radio.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
 			@Override
@@ -82,6 +99,10 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 				}
 				robotPosition.setActive(true);
 				adapter.notifyDataSetChanged();
+				setCurrentRobot(robotPosition);
+				
+				RCAdventure adv = (RCAdventure) context;
+				adv.fullRefresh();
 				
 			}
 		});

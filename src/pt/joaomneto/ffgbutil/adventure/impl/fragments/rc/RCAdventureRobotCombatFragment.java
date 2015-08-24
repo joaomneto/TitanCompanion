@@ -290,6 +290,11 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			armorValue.setText("" + adv.getCurrentRobot().getArmor());
 			bonusValue.setText("" + adv.getCurrentRobot().getBonus());
 			skillValue.setText("" + adv.getCurrentSkill());
+		}else{
+			nameValue.setText("You have no robot at the moment.");
+			armorValue.setText("N/A");
+			bonusValue.setText("N/A");
+			skillValue.setText("N/A");
 		}
 	}
 
