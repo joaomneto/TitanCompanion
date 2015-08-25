@@ -17,6 +17,8 @@ public class TROKAdventure extends Adventure {
 	private int missiles = -1;
 
 	protected static final int FRAGMENT_VEHICLE_COMBAT = 2;
+	protected static final int FRAGMENT_EQUIPMENT = 3;
+	protected static final int FRAGMENT_NOTES = 4;
 
 	public TROKAdventure() {
 		super();

@@ -17,6 +17,8 @@ public class TCOCAdventure extends Adventure {
 	Integer spellValue;
 
 	protected static final int FRAGMENT_SPELLS = 2;
+	protected static final int FRAGMENT_EQUIPMENT = 3;
+	protected static final int FRAGMENT_NOTES = 4;
 
 	public TCOCAdventure() {
 		super();

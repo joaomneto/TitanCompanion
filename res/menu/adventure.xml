@@ -10,5 +10,11 @@
         android:orderInCategory="200"
         android:showAsAction="never"
         android:title="@string/roll2d6"/>
+    
+     <item
+        android:id="@+id/roll3d6"
+        android:orderInCategory="200"
+        android:showAsAction="never"
+        android:title="@string/roll3d6"/>
 
 </menu>

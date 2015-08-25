@@ -16,32 +16,22 @@ public class SAAdventure extends Adventure {
 	List<String> weapons;
 
 	static final Integer FRAGMENT_WEAPONS = 2;
+	static final Integer FRAGMENT_EQUIPMENT = 3;
+	static final Integer FRAGMENT_NOTES = 4;
 
 	public SAAdventure() {
 		super();
 		fragmentConfiguration.clear();
-		fragmentConfiguration
-				.put(FRAGMENT_VITAL_STATS,
-						new AdventureFragmentRunner(
-								R.string.vitalStats,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.sa.SAAdventureVitalStatsFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_COMBAT,
-						new AdventureFragmentRunner(R.string.fights,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.sa.SAAdventureCombatFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_WEAPONS,
-						new AdventureFragmentRunner(
-								R.string.title_adventure_creation_weapons,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.sa.SAAdventureWeaponsFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_EQUIPMENT,
-						new AdventureFragmentRunner(R.string.goldEquipment,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_NOTES,
-						new AdventureFragmentRunner(R.string.notes,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.sa.SAAdventureVitalStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.sa.SAAdventureCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_WEAPONS, new AdventureFragmentRunner(R.string.title_adventure_creation_weapons,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.sa.SAAdventureWeaponsFragment"));
+		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
+		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	@Override
@@ -62,8 +52,7 @@ public class SAAdventure extends Adventure {
 	}
 
 	@Override
-	public void storeAdventureSpecificValuesInFile(BufferedWriter bw)
-			throws IOException {
+	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
 		bw.write("currentArmor=" + currentArmor + "\n");
 		bw.write("weapons=" + arrayToString(weapons) + "\n");
@@ -73,8 +62,7 @@ public class SAAdventure extends Adventure {
 
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
-		setCurrentArmor(Integer.valueOf(getSavedGame().getProperty(
-				"currentArmor")));
+		setCurrentArmor(Integer.valueOf(getSavedGame().getProperty("currentArmor")));
 		setWeapons(stringToArray(getSavedGame().getProperty("weapons")));
 
 	}
@@ -94,19 +82,15 @@ public class SAAdventure extends Adventure {
 	public void setWeapons(List<String> weapons) {
 		this.weapons = weapons;
 	}
-	
+
 	public SAAdventureWeaponsFragment getVitalStatsFragment() {
-		SAAdventureWeaponsFragment frag = (SAAdventureWeaponsFragment) getSupportFragmentManager()
-				.getFragments().get(FRAGMENT_WEAPONS);
+		SAAdventureWeaponsFragment frag = (SAAdventureWeaponsFragment) getSupportFragmentManager().getFragments().get(FRAGMENT_WEAPONS);
 		return frag;
 	}
-	
-
 
 	public String getConsumeProvisionText() {
 		return getResources().getString(R.string.usePepPill);
 	}
-	
 
 	public String getProvisionsText() {
 		return getResources().getString(R.string.pepPills);

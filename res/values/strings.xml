@@ -252,6 +252,7 @@
     <string name="handicap">Handicap:</string>
     <string name="rolld6">Roll D6</string>
     <string name="roll2d6">Roll 2D6</string>
+    <string name="roll3d6">Roll 3D6</string>
     <string name="addEnemy">Add Enemy</string>
 
     <string-array name="tcoc_spells">

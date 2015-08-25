@@ -31,6 +31,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 	Button decreaseProvisionsButton = null;
 	
 	Button buttonConsumeProvisions = null;
+	Button buttonConsumePotion = null;
 	
 
 	public AdventureVitalStatsFragment() {
@@ -76,6 +77,12 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 		decreaseProvisionsButton = (Button) rootView
 				.findViewById(R.id.minusProvisionsButton);
 		final Adventure adv = (Adventure) getActivity();
+		
+		buttonConsumePotion = (Button) rootView.findViewById(R.id.buttonConsumePotion);
+		
+		String[] stringArray = getResources().getStringArray(R.array.standard_potion_list);
+
+		buttonConsumePotion.setText("Use "+stringArray[adv.getStandardPotion()]+" Potion");
 
 
 		increaseStaminaButton.setOnClickListener(new OnClickListener() {
@@ -189,6 +196,12 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 		staminaValue.setText("" + adv.getCurrentStamina());
 		luckValue.setText("" + adv.getCurrentLuck());
 		provisionsValue.setText("" + adv.getProvisions());
+		
+		if(adv.getStandardPotionValue() <=0){
+			buttonConsumePotion.setVisibility(View.GONE);
+		}else{
+			buttonConsumePotion.setVisibility(View.VISIBLE);
+		}
 
 	}
 	

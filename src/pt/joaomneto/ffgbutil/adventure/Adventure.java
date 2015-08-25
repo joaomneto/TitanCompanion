@@ -88,14 +88,15 @@ public abstract class Adventure extends FragmentActivity {
 	int gamebook = -1;
 	String name = null;
 	Properties savedGame;
-	
+
 	Set<Fragment> fragments = new HashSet<>();
 
 	protected static final int FRAGMENT_VITAL_STATS = 0;
 	protected static final int FRAGMENT_COMBAT = 1;
-	protected static final int FRAGMENT_PROVISIONS = 2;
-	protected static final int FRAGMENT_EQUIPMENT = 3;
-	protected static final int FRAGMENT_NOTES = 4;
+	protected static final int FRAGMENT_EQUIPMENT = 2;
+	protected static final int FRAGMENT_NOTES = 3;
+
+	Toast lastToast = null;
 
 	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
 
@@ -105,12 +106,11 @@ public abstract class Adventure extends FragmentActivity {
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_PROVISIONS, new AdventureFragmentRunner(R.string.potionsProvisions,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+
 	}
 
 	public static class AdventureFragmentRunner {
@@ -223,12 +223,6 @@ public abstract class Adventure extends FragmentActivity {
 		return adventureVitalStatsFragment;
 	}
 
-	private AdventureProvisionsFragment getProvisionsFragment() {
-		AdventureProvisionsFragment adventureProvisionsFragment = (AdventureProvisionsFragment) getSupportFragmentManager().getFragments().get(
-				FRAGMENT_PROVISIONS);
-		return adventureProvisionsFragment;
-	}
-
 	public void setCurrentStamina(Integer currentStamina) {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
 		this.currentStamina = currentStamina;
@@ -265,6 +259,17 @@ public abstract class Adventure extends FragmentActivity {
 	public static void showAlert(String message, Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle("Result").setMessage(message).setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+			}
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
+
+	public static void showAlert(View view, Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle("Result").setView(view).setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
 			}
@@ -313,44 +318,82 @@ public abstract class Adventure extends FragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
+
 		getMenuInflater().inflate(R.menu.adventure, menu);
 		return true;
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
 		switch (item.getItemId()) {
-		case R.id.rolld6:
-			showAlert(DiceRoller.rollD6() + "", this);
-			return true;
-		case R.id.roll2d6:
-			int d1 = DiceRoller.rollD6();
-			int d2 = DiceRoller.rollD6();
-			View toastView = getLayoutInflater().inflate(R.layout.d2toast, (ViewGroup) findViewById(R.id.d2ToastLayout));
-			ImageView imageViewD1 = (ImageView) toastView.findViewById(R.id.d1);
-			ImageView imageViewD2 = (ImageView) toastView.findViewById(R.id.d2);
-			TextView resultView = (TextView) toastView.findViewById(R.id.diceResult);
-
-			int d1Id = getResources().getIdentifier("d6" + d1, "drawable", this.getPackageName());
-
-			int d2Id = getResources().getIdentifier("d6" + d2, "drawable", this.getPackageName());
-
-			imageViewD1.setImageResource(d1Id);
-			imageViewD2.setImageResource(d2Id);
-			resultView.setText("Result: " + (d1 + d2));
-
-			Toast toast = new Toast(this);
-
-			toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-			toast.setDuration(Toast.LENGTH_LONG);
-			toast.setView(toastView);
-
-			toast.show();
-
-			return true;
+		case R.id.rolld6: {
+			return displayRollXD6(1);
+		}
+		case R.id.roll2d6: {
+			return displayRollXD6(2);
+		}
+		case R.id.roll3d6: {
+			return displayRollXD6(3);
+		}
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	private boolean displayRollXD6(int diceNumber) {
+
+		Integer d1 = DiceRoller.rollD6();
+		Integer d2 = 0;
+		Integer d3 = 0;
+		if (diceNumber > 1) {
+			d2 = DiceRoller.rollD6();
+		}
+		if (diceNumber > 2) {
+			d3 = DiceRoller.rollD6();
+		}
+
+		View toastView = getLayoutInflater().inflate(R.layout.d3toast, (ViewGroup) findViewById(R.id.d3ToastLayout));
+		ImageView imageViewD1 = (ImageView) toastView.findViewById(R.id.d1);
+		ImageView imageViewD2 = null;
+		ImageView imageViewD3 = null;
+
+		if (diceNumber > 1) {
+			imageViewD2 = (ImageView) toastView.findViewById(R.id.d2);
+		}
+
+		if (diceNumber > 2) {
+			imageViewD3 = (ImageView) toastView.findViewById(R.id.d3);
+		}
+
+		TextView resultView = (TextView) toastView.findViewById(R.id.diceResult);
+
+		Integer d1Id = getResources().getIdentifier("d6" + d1, "drawable", this.getPackageName());
+
+		Integer d2Id = null;
+		Integer d3Id = null;
+
+		if (diceNumber > 1) {
+			d2Id = getResources().getIdentifier("d6" + d2, "drawable", this.getPackageName());
+		}
+
+		if (diceNumber > 2) {
+			d3Id = getResources().getIdentifier("d6" + d3, "drawable", this.getPackageName());
+		}
+
+		imageViewD1.setImageResource(d1Id);
+
+		if (diceNumber > 1) {
+			imageViewD2.setImageResource(d2Id);
+		}
+
+		if (diceNumber > 2) {
+			imageViewD3.setImageResource(d3Id);
+		}
+
+		resultView.setText(" = " + (d1 + d2 + d3));
+
+		showAlert(toastView, this);
+
+		return true;
 	}
 
 	public void savepoint(View v) {
@@ -472,8 +515,6 @@ public abstract class Adventure extends FragmentActivity {
 		if (standardPotionValue == 0) {
 			showAlert("You have no potion left...", this);
 		} else {
-			AdventureProvisionsFragment adventureProvisionsFragment = getProvisionsFragment();
-			adventureProvisionsFragment.setPotionValue(--standardPotionValue);
 			String message = "";
 			switch (standardPotion) {
 			case 0:
@@ -788,11 +829,11 @@ public abstract class Adventure extends FragmentActivity {
 	}
 
 	public void fullRefresh() {
-			for (Fragment fragment : getFragments()) {
-				AdventureFragment frag = (AdventureFragment) fragment;
-				frag.refreshScreensFromResume();
-			}
-		
+		for (Fragment fragment : getFragments()) {
+			AdventureFragment frag = (AdventureFragment) fragment;
+			frag.refreshScreensFromResume();
+		}
+
 	}
 
 	public Set<Fragment> getFragments() {
@@ -802,7 +843,5 @@ public abstract class Adventure extends FragmentActivity {
 	public void setFragments(Set<Fragment> fragments) {
 		this.fragments = fragments;
 	}
-	
-	
 
 }

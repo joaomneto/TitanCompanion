@@ -12,29 +12,19 @@ public class HOHAdventure extends Adventure {
 
 	Integer currentFear;
 	Integer maximumFear;
-	
-	static final Integer FRAGMENT_EQUIPMENT = 2;
-	static final Integer FRAGMENT_NOTES = 3;
+
 
 	public HOHAdventure() {
 		super();
 		fragmentConfiguration.clear();
-		fragmentConfiguration
-				.put(FRAGMENT_VITAL_STATS,
-						new AdventureFragmentRunner(R.string.vitalStats,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.hoh.HOHAdventureVitalStatsFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_COMBAT,
-						new AdventureFragmentRunner(R.string.fights,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_EQUIPMENT,
-						new AdventureFragmentRunner(R.string.goldEquipment,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration
-				.put(FRAGMENT_NOTES,
-						new AdventureFragmentRunner(R.string.notes,
-								"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.hoh.HOHAdventureVitalStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
+		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
+		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
 	@Override
@@ -55,14 +45,11 @@ public class HOHAdventure extends Adventure {
 	}
 
 	@Override
-	public void storeAdventureSpecificValuesInFile(BufferedWriter bw)
-			throws IOException {
+	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
 		bw.write("currentFear=" + currentFear + "\n");
 		bw.write("maximumFear=" + maximumFear + "\n");
 	}
-
-
 
 	public Integer getCurrentFear() {
 		return currentFear;

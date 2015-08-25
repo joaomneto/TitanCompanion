@@ -10,8 +10,6 @@ import android.view.Menu;
 
 public class RPAdventure extends Adventure {
 
-	static final Integer FRAGMENT_EQUIPMENT = 2;
-	static final Integer FRAGMENT_NOTES = 3;
 
 	public RPAdventure() {
 		super();

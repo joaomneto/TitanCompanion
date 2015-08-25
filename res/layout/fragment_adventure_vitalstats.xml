@@ -185,9 +185,17 @@
         android:id="@+id/buttonConsumeProvisions"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonTestLuck"
+        android:layout_above="@+id/usePotionButton"
         android:layout_alignParentLeft="true"
         android:text="@string/consumeProvision"
+        android:onClick="consumeProvision"/>
+    
+     <Button
+        android:id="@+id/usePotionButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonTestLuck"
+        android:layout_alignParentLeft="true"
         android:onClick="consumeProvision"/>
 
     <TextView

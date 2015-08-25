@@ -20,6 +20,7 @@ public class SOBAdventure extends Adventure {
 	private List<String> booty = new ArrayList<String>();
 
 	protected static final int FRAGMENT_SHIP_COMBAT = 2;
+	protected static final int FRAGMENT_EQUIPMENT = 3;
 	protected static final int FRAGMENT_BOOTY = 4;
 	protected static final int FRAGMENT_NOTES = 5;
 

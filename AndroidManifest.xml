@@ -204,7 +204,7 @@
             android:label="@string/awf" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.SOTSAdventure"
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.AWFAdventure"
             android:label="@string/awf"
             android:screenOrientation="portrait" >
         </activity>

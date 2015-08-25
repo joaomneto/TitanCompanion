@@ -15,6 +15,8 @@ public class TOTAdventure extends SpellAdventure {
 	List<String> spells = new ArrayList<String>();;
 
 	protected static final int FRAGMENT_SPELLS = 2;
+	protected static final int FRAGMENT_EQUIPMENT = 3;
+	protected static final int FRAGMENT_NOTES = 4;
 
 	public TOTAdventure() {
 		super();
@@ -63,13 +65,11 @@ public class TOTAdventure extends SpellAdventure {
 		this.spells = spells;
 	}
 
-
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
 		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
 
-		setSpells(stringToArray(new String(getSavedGame().getProperty("spells").getBytes(
-				java.nio.charset.Charset.forName("ISO-8859-1")))));
+		setSpells(stringToArray(new String(getSavedGame().getProperty("spells").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
 
 	}
 }
