@@ -14,16 +14,67 @@
         android:id="@+id/combatants"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/combatButtons"
+        android:layout_above="@+id/combatResults"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
 
+    <LinearLayout
+        android:id="@+id/combatResults"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/combatButtons"
+        android:orientation="vertical"  >
+
+        <LinearLayout
+            android:id="@+id/combatRolls"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+        android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/playerCombatRollText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player" />
+
+            <ImageView
+                android:id="@+id/playerCombatRoll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/enemyCombatRollText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enemy" 
+                android:layout_marginLeft="10dp" />
+
+            <ImageView
+                android:id="@+id/enemyCombatRoll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  
+                android:layout_marginLeft="10dp"/>
+            
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/combatResult"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:lines="3"
+            android:maxLines="3"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="10dp" />
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/combatButtons"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"   >
 
         <Button
             android:id="@+id/testLuckButton"

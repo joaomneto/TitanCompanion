@@ -10,132 +10,145 @@
     android:useDefaultMargins="true"
     tools:context=".adventure.impl.fragments.AdventureCombatFragment" >
 
-    <Button
-        android:id="@+id/testLuckButton"
+    <ListView
+        android:id="@+id/combatants"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/addCombatButton"
-        android:layout_above="@+id/attackButton"
-        android:layout_toLeftOf="@+id/resetCombat"
-        android:text="@string/testLuck"
-        android:visibility="invisible" />
-
-    <LinearLayout
-        android:id="@+id/combat0"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_above="@+id/combatResults"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:padding="0dp" />
+        android:layout_alignParentTop="true" />
 
     <LinearLayout
-        android:id="@+id/combat1"
+        android:id="@+id/combatResults"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/combat0"
-        android:orientation="vertical"
-        android:padding="0dp" />
+        android:layout_above="@+id/damageText"
+        android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/combat2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/combat1"
-        android:orientation="vertical"
-        android:padding="0dp" />
+        <LinearLayout
+            android:id="@+id/combatRolls"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
 
-    <LinearLayout
-        android:id="@+id/combat3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/combat2"
-        android:orientation="vertical"
-        android:padding="0dp" />
+            <TextView
+                android:id="@+id/playerCombatRollText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player" />
 
-    <LinearLayout
-        android:id="@+id/combat4"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/combat3"
-        android:orientation="vertical"
-        android:padding="0dp" />
+            <ImageView
+                android:id="@+id/playerCombatRoll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp" />
 
-    <LinearLayout
-        android:id="@+id/combat5"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/combat4"
-        android:orientation="vertical"
-        android:padding="0dp" />
+            <TextView
+                android:id="@+id/enemyCombatRollText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/enemy" />
 
-    <TextView
-        android:id="@+id/combatResult"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/combat5"
-        android:layout_centerVertical="true"
-        android:lines="5"
-        android:maxLines="5"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            <ImageView
+                android:id="@+id/enemyCombatRoll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/attackButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/testLuckButton"
-        android:layout_alignParentBottom="true"
-        android:text="@string/combatTurn"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/combatResult"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:lines="3"
+            android:maxLines="3"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/startCombat"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/resetCombat"
-        android:text="@string/startCombat" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/resetCombat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/combatType"
-        android:text="@string/reset" />
+<!--     <RelativeLayout -->
+<!--         android:id="@+id/combatButtons" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" > -->
 
-    <Button
-        android:id="@+id/addCombatButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/startCombat"
-        android:layout_alignLeft="@+id/startCombat"
-        android:text="@string/addCombatant" />
+        <Button
+            android:id="@+id/attackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/resetCombat"
+            android:layout_alignBottom="@+id/resetCombat"
+            android:layout_alignLeft="@+id/addCombatButton"
+            android:layout_toLeftOf="@+id/resetCombat"
+            android:text="@string/combatTurn"
+            android:visibility="invisible" />
 
-    <Switch
-        android:id="@+id/combatType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/addCombatButton"
-        android:layout_alignBottom="@+id/addCombatButton"
-        android:layout_alignRight="@+id/combatResult"/>
+        <Spinner
+            android:id="@+id/damageSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/damageText"
+            android:layout_alignLeft="@+id/resetCombat"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/damageText" />
 
-    <TextView
-        android:id="@+id/damageText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/addCombatButton"
-        android:layout_alignLeft="@+id/addCombatButton"
-        android:text="@string/hthDamage"
-        android:layout_marginBottom="10dp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <Button
+            android:id="@+id/resetCombat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/reset" />
 
-    <Spinner
-        android:id="@+id/damageSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/addCombatButton"
-        android:layout_alignTop="@+id/damageText"
-        android:layout_toRightOf="@+id/damageText" />
+        <Button
+            android:id="@+id/startCombat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/resetCombat"
+            android:text="@string/startCombat" />
+
+        <Button
+            android:id="@+id/addCombatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/startCombat"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/combatType"
+            android:text="@string/addCombatant" />
+
+        <Switch
+            android:id="@+id/combatType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/addCombatButton"
+            android:layout_alignRight="@+id/damageSpinner"
+            android:layout_alignTop="@+id/addCombatButton" />
+
+        <TextView
+            android:id="@+id/damageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/addCombatButton"
+            android:layout_alignParentLeft="true"
+            android:text="@string/hthDamage"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<!--     </RelativeLayout> -->
+
+        <Button
+            android:id="@+id/testLuckButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/attackButton"
+            android:layout_alignLeft="@+id/addCombatButton"
+            android:layout_toLeftOf="@+id/combatType"
+            android:text="@string/testLuck"
+            android:visibility="invisible" />
+
+       
 
 </RelativeLayout>

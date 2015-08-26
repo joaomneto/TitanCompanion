@@ -801,6 +801,8 @@
     <string name="robots">Robots</string>
     <string name="removeRobot">Delete</string>
     <string name="currentRobot">Current Robot: </string>
+    <string name="player">Player: </string>
+    <string name="enemy">Enemy: </string>
 
 
 </resources>
