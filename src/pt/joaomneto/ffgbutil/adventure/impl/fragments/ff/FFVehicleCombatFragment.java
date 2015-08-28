@@ -96,8 +96,8 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 
 				combatResult.setText("");
 
-				int myAttack = DiceRoller.roll2D6() + adv.getCurrentFirepower();
-				int enemyAttack = DiceRoller.roll2D6() + enemyFirepower;
+				int myAttack = DiceRoller.roll2D6().getSum() + adv.getCurrentFirepower();
+				int enemyAttack = DiceRoller.roll2D6().getSum() + enemyFirepower;
 
 				if (myAttack > enemyAttack) {
 					int damage = DiceRoller.rollD6();
@@ -126,8 +126,8 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 				}
 
 				if (enemy2Armour > 0 && enemy2Firepower > 0) {
-					myAttack = DiceRoller.roll2D6() + adv.getCurrentFirepower();
-					enemyAttack = DiceRoller.roll2D6() + enemy2Firepower;
+					myAttack = DiceRoller.roll2D6().getSum() + adv.getCurrentFirepower();
+					enemyAttack = DiceRoller.roll2D6().getSum() + enemy2Firepower;
 					if (myAttack > enemyAttack) {
 						if (enemyArmour > 0) {
 							combatResult.setText(combatResult.getText()

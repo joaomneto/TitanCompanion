@@ -87,19 +87,19 @@ public class STAdventureCreation extends AdventureCreation {
 	@Override
 	protected void rollGamebookSpecificStats(View view) {
 		scienceOfficerSkill=DiceRoller.rollD6()+6;
-		scienceOfficerStamina=DiceRoller.roll2D6()+12;
+		scienceOfficerStamina=DiceRoller.roll2D6().getSum()+12;
 		medicalOfficerSkill=DiceRoller.rollD6()+6;
-		medicalOfficerStamina=DiceRoller.roll2D6()+12;
+		medicalOfficerStamina=DiceRoller.roll2D6().getSum()+12;
 		engineeringOfficerSkill=DiceRoller.rollD6()+6;
-		engineeringOfficerStamina=DiceRoller.roll2D6()+12;
+		engineeringOfficerStamina=DiceRoller.roll2D6().getSum()+12;
 		securityOfficerSkill=DiceRoller.rollD6()+6;
-		securityOfficerStamina=DiceRoller.roll2D6()+12;
+		securityOfficerStamina=DiceRoller.roll2D6().getSum()+12;
 		securityGuard1Skill=DiceRoller.rollD6()+6;
-		securityGuard1Stamina=DiceRoller.roll2D6()+12;
+		securityGuard1Stamina=DiceRoller.roll2D6().getSum()+12;
 		securityGuard2Skill=DiceRoller.rollD6()+6;
-		securityGuard2Stamina=DiceRoller.roll2D6()+12;
+		securityGuard2Stamina=DiceRoller.roll2D6().getSum()+12;
 		shipWeapons=DiceRoller.rollD6()+6;
-		shipShields=DiceRoller.roll2D6()+12;
+		shipShields=DiceRoller.roll2D6().getSum()+12;
 		getSTCrewAndShipVitalStatisticsFragment().updateFields();	
 	}
 

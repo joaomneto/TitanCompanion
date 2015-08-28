@@ -11,6 +11,7 @@ import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure.STCrewman;
+import pt.joaomneto.ffgbutil.adventure.impl.util.DiceRoll;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -138,28 +139,28 @@ public class STCombatFragment extends AdventureFragment {
 
 		if (!finishedCombats.contains(currentCombat)) {
 			STAdventure adv = (STAdventure) getActivity();
-			int crewmanDiceRoll = DiceRoller.roll2D6();
+			DiceRoll crewmanDiceRoll = DiceRoller.roll2D6();
 			int crewmanSkill = adv.getCrewmanSkill(position.getCrewman());
-			int crewmanAttackStrength = crewmanDiceRoll + crewmanSkill;
-			int enemyDiceRoll = DiceRoller.roll2D6();
-			int enemyAttackStrength = enemyDiceRoll + position.getCurrentSkill();
+			int crewmanAttackStrength = crewmanDiceRoll.getSum() +  crewmanSkill;
+			DiceRoll enemyDiceRoll = DiceRoller.roll2D6();
+			int enemyAttackStrength = enemyDiceRoll.getSum() +  position.getCurrentSkill();
 			LinearLayout row = (LinearLayout) rootView.findViewById(gridRows[currentCombat]);
 			String crewmanString = adv.getStringForCrewman(position.getCrewman());
 			if (crewmanAttackStrength > enemyAttackStrength) {
 				if (!position.isDefenseOnly()) {
 					position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - 2));
-					combatResult.setText("The " + crewmanString + " has hit his enemy! (" + crewmanDiceRoll + " + "
-							+ crewmanSkill + ") vs (" + enemyDiceRoll + " + " + position.getCurrentSkill() + ")");
+					combatResult.setText("The " + crewmanString + " has hit his enemy! (" + crewmanDiceRoll.getSum() +  " + "
+							+ crewmanSkill + ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill() + ")");
 				} else {
 					combatResult.setText("The " + crewmanString + " has blocked the enemy attack! (" + crewmanDiceRoll
-							+ " + " + crewmanSkill + ") vs (" + enemyDiceRoll + " + " + position.getCurrentSkill()
+							+ " + " + crewmanSkill + ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill()
 							+ ")");
 				}
 			} else if (crewmanAttackStrength < enemyAttackStrength) {
 				adv.setCrewmanStamina(position.getCrewman(),
 						(Math.max(0, adv.getCrewmanStamina(position.getCrewman()) - 2)));
-				combatResult.setText("The " + crewmanString + " has been hit... (" + crewmanDiceRoll + " + "
-						+ crewmanSkill + ") vs (" + enemyDiceRoll + " + " + position.getCurrentSkill() + ")");
+				combatResult.setText("The " + crewmanString + " has been hit... (" + crewmanDiceRoll.getSum() +  " + "
+						+ crewmanSkill + ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill() + ")");
 			} else {
 				combatResult.setText("Both the " + crewmanString + " and his enemy have missed");
 			}
@@ -220,9 +221,9 @@ public class STCombatFragment extends AdventureFragment {
 		if (!finishedCombats.contains(currentCombat)) {
 			STAdventure adv = (STAdventure) getActivity();
 			CombatPosition position = combatPositions.get(currentCombat);
-			int crewmanDiceRoll = DiceRoller.roll2D6();
+			DiceRoll crewmanDiceRoll = DiceRoller.roll2D6();
 			int crewmanSkill = adv.getCrewmanSkill(position.getCrewman());
-			int enemyDiceRoll = DiceRoller.roll2D6();
+			DiceRoll enemyDiceRoll = DiceRoller.roll2D6();
 
 			int crewmanHandicap = 0;
 
@@ -234,9 +235,9 @@ public class STCombatFragment extends AdventureFragment {
 			LinearLayout row = (LinearLayout) rootView.findViewById(gridRows[currentCombat]);
 			String crewmanString = adv.getStringForCrewman(position.getCrewman());
 
-			if (crewmanDiceRoll < (crewmanSkill + crewmanHandicap + handicap)) {
+			if (crewmanDiceRoll.getSum() < (crewmanSkill + crewmanHandicap + handicap)) {
 				position.setCurrentStamina(0);
-				combatResult.setText("The " + crewmanString + " has killed his enemy! (" + crewmanDiceRoll + ") > ("
+				combatResult.setText("The " + crewmanString + " has killed his enemy! (" + crewmanDiceRoll.getSum() +  ") > ("
 						+ crewmanSkill + (crewmanHandicap != 0 ? (" + " + crewmanHandicap) : "")
 						+ (handicap != 0 ? (" + " + handicap) : "") + ")");
 				removeCombatant(row);
@@ -245,11 +246,11 @@ public class STCombatFragment extends AdventureFragment {
 				combatResult.setText("The " + crewmanString + " has missed his shot!");
 			}
 			if (position.getCurrentStamina() > 0) {
-				if (enemyDiceRoll < position.getCurrentSkill()) {
+				if (enemyDiceRoll.getSum() < position.getCurrentSkill()) {
 					if (!position.isDefenseOnly()) {
 						adv.setCrewmanDead(position.getCrewman());
 						combatResult.setText(combatResult.getText() + "\nThe " + crewmanString + " has died... ("
-								+ enemyDiceRoll + ") > (" + position.getCurrentSkill() + ")");
+								+ enemyDiceRoll.getSum() +  ") > (" + position.getCurrentSkill() + ")");
 						removeCombatant(row);
 					} else {
 						int killedCrewman = new Random(System.currentTimeMillis()).nextInt(combatPositions.size() - 1);
@@ -263,7 +264,7 @@ public class STCombatFragment extends AdventureFragment {
 						combatResult.setText(combatResult.getText() + "\nThe "
 								+ adv.getStringForCrewman(killedCrewmanObj) + " was killed by (Sk:"
 								+ position.getCurrentSkill() + " St:" + position.getCurrentStamina() + ")... ("
-								+ enemyDiceRoll + ") > (" + position.getCurrentSkill() + ")");
+								+ enemyDiceRoll.getSum() +  ") > (" + position.getCurrentSkill() + ")");
 						for (int i = 0; i < maxRows; i++) {
 							CombatPosition combat = combatPositions.get(i);
 							if (combat != null && combat.getCrewman().equals(killedCrewmanObj)) {

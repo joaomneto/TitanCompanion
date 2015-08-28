@@ -54,8 +54,8 @@ public class FFAdventureCreation extends AdventureCreation {
 	@Override
 	protected void rollGamebookSpecificStats(View view) {
 		currentFirepower = DiceRoller.rollD6()+6;
-		currentArmour = DiceRoller.roll2D6()+24;
-		stamina = DiceRoller.roll2D6()+24;
+		currentArmour = DiceRoller.roll2D6().getSum()+24;
+		stamina = DiceRoller.roll2D6().getSum()+24;
 		getFFVitalStatsFragment().getFirepowerValue().setText(""+currentFirepower);
 		getFFVitalStatsFragment().getArmorValue().setText(""+currentArmour);
 		

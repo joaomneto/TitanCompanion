@@ -233,7 +233,7 @@ public abstract class Adventure extends FragmentActivity {
 
 	public void testSkill(View v) {
 
-		boolean result = DiceRoller.roll2D6() < currentSkill;
+		boolean result = DiceRoller.roll2D6().getSum() < currentSkill;
 
 		String message = result ? "Success!" : "Failed...";
 		showAlert(message, this);
@@ -248,7 +248,7 @@ public abstract class Adventure extends FragmentActivity {
 	}
 
 	public boolean testLuckInternal() {
-		boolean result = DiceRoller.roll2D6() < currentLuck;
+		boolean result = DiceRoller.roll2D6().getSum() < currentLuck;
 
 		setCurrentLuck(--currentLuck);
 		return result;

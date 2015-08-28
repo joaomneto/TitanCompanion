@@ -57,7 +57,7 @@ public class TCOCAdventureCreation extends AdventureCreation {
 
 	@Override
 	protected void rollGamebookSpecificStats(View view) {
-		spellValue = DiceRoller.roll2D6()+6;
+		spellValue = DiceRoller.roll2D6().getSum()+6;
 		getTCOCSpellsFragment().getSpellScoreValue().setText(""+spellValue);
 		
 	}

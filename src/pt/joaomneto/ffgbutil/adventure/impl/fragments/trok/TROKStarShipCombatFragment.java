@@ -79,7 +79,7 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 				combatResult.setText("");
 
 				if (enemyShields > 0) {
-					if (DiceRoller.roll2D6() <= adv.getCurrentWeapons()) {
+					if (DiceRoller.roll2D6().getSum() <= adv.getCurrentWeapons()) {
 						int damage = 1;
 						enemyShields -= damage;
 						if (enemyShields <= 0) {
@@ -92,7 +92,7 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 						combatResult.setText("You've missed!");
 					}
 				} else if (enemy2Shields > 0) {
-					if (DiceRoller.roll2D6() <= adv.getCurrentWeapons()) {
+					if (DiceRoller.roll2D6().getSum() <= adv.getCurrentWeapons()) {
 						int damage = 1;
 						enemy2Shields -= damage;
 						if (enemy2Shields <= 0) {
@@ -108,7 +108,7 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 					return;
 				}
 				if (enemyShields > 0) {
-					if (DiceRoller.roll2D6() <= enemyWeapons) {
+					if (DiceRoller.roll2D6().getSum() <= enemyWeapons) {
 						int damage = 1;
 						adv.setCurrentShields(adv.getCurrentShields() - damage);
 						if (adv.getCurrentShields() <= 0) {
@@ -124,7 +124,7 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 				
 
 				if (enemy2Shields > 0) {
-					if (DiceRoller.roll2D6() <= enemy2Weapons) {
+					if (DiceRoller.roll2D6().getSum() <= enemy2Weapons) {
 						int damage = 1;
 						adv.setCurrentShields(adv.getCurrentShields() - damage);
 						if (adv.getCurrentShields() <= 0) {

@@ -4,6 +4,7 @@ import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.STAdventure;
+import pt.joaomneto.ffgbutil.adventure.impl.util.DiceRoll;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -155,10 +156,10 @@ public class STStarshipCombatFragment extends AdventureFragment {
 				
 				combatResult.setText("");
 
-				int me = DiceRoller.roll2D6();
-				int enemy = DiceRoller.roll2D6();
+				DiceRoll me = DiceRoller.roll2D6();
+				DiceRoll enemy = DiceRoller.roll2D6();
 
-				if (me < adv.getCurrentShipWeapons()) {
+				if (me.getSum() < adv.getCurrentShipWeapons()) {
 					enemyShields -= 2;
 					if (enemyShields <= 0) {
 						enemyShields = 0;
@@ -170,7 +171,7 @@ public class STStarshipCombatFragment extends AdventureFragment {
 					combatResult.setText("You've missed...");
 				} 
 				
-				if (enemy < enemyWeapons) {
+				if (enemy.getSum() < enemyWeapons) {
 					adv.setCurrentShipShields(adv.getCurrentShipShields()-2);
 					if (adv.getCurrentShipShields() <= 0) {
 						adv.setCurrentShipShields(0);

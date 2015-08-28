@@ -49,7 +49,7 @@ public class SOBAdventureCreation extends AdventureCreation {
 	@Override
 	protected void rollGamebookSpecificStats(View view) {
 		currentCrewStrike = DiceRoller.rollD6()+6;
-		currentCrewStrength = DiceRoller.roll2D6()+6;
+		currentCrewStrength = DiceRoller.roll2D6().getSum()+6;
 		getSOBVitalStatisticsFragment().getCrewStrikeValue().setText(""+currentCrewStrike);
 		getSOBVitalStatisticsFragment().getCrewStrengthValue().setText(""+currentCrewStrength);
 		

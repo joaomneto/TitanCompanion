@@ -82,9 +82,13 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 		
 		String[] stringArray = getResources().getStringArray(R.array.standard_potion_list);
 
-		buttonConsumePotion.setText("Use "+stringArray[adv.getStandardPotion()]+" Potion");
-
-
+		if (buttonConsumePotion != null) {
+			if (adv.getStandardPotion() == -1) {
+				buttonConsumePotion.setVisibility(View.GONE);
+			} else {
+				buttonConsumePotion.setText("Use " + stringArray[adv.getStandardPotion()] + " Potion");
+			}
+		}
 		increaseStaminaButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -197,10 +201,12 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 		luckValue.setText("" + adv.getCurrentLuck());
 		provisionsValue.setText("" + adv.getProvisions());
 		
-		if(adv.getStandardPotionValue() <=0){
-			buttonConsumePotion.setVisibility(View.GONE);
-		}else{
-			buttonConsumePotion.setVisibility(View.VISIBLE);
+		if (buttonConsumePotion!=null) {
+			if (adv.getStandardPotionValue() <= 0) {
+				buttonConsumePotion.setVisibility(View.GONE);
+			} else {
+				buttonConsumePotion.setVisibility(View.VISIBLE);
+			}
 		}
 
 	}

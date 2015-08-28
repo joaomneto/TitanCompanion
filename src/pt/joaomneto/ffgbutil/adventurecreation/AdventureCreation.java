@@ -126,7 +126,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 	public void rollStats(View view) {
 		skill = DiceRoller.rollD6() + 6;
 		luck = DiceRoller.rollD6() + 6;
-		stamina = DiceRoller.roll2D6() + 12;
+		stamina = DiceRoller.roll2D6().getSum() + 12;
 
 		
 		
