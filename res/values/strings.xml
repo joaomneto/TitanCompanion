@@ -235,8 +235,8 @@
     <string name="vitalStats">Vital Statistics</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
-    <string name="testLuck">Test Your Luck</string>
-    <string name="testSkill">Test Your Skill</string>
+    <string name="testLuck">Test Luck</string>
+    <string name="testSkill">Test Skill</string>
     <string name="selectedPotion">Potion: </string>
     <string name="provisions">Provisions: </string>
     <string name="consumePotion">Consume Potion</string>
@@ -803,6 +803,7 @@
     <string name="currentRobot">Current Robot: </string>
     <string name="player">Player: </string>
     <string name="enemy">Enemy: </string>
+    <string name="diceRoll">Dice Roll</string>
 
 
 </resources>

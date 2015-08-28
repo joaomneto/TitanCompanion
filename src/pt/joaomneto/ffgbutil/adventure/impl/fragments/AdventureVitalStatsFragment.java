@@ -78,7 +78,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 				.findViewById(R.id.minusProvisionsButton);
 		final Adventure adv = (Adventure) getActivity();
 		
-		buttonConsumePotion = (Button) rootView.findViewById(R.id.buttonConsumePotion);
+		buttonConsumePotion = (Button) rootView.findViewById(R.id.usePotionButton);
 		
 		String[] stringArray = getResources().getStringArray(R.array.standard_potion_list);
 

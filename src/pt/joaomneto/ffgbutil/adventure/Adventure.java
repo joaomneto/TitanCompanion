@@ -24,7 +24,6 @@ import java.util.Set;
 
 import pt.joaomneto.ffgbutil.LoadAdventureActivity;
 import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureProvisionsFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.app.AlertDialog;
@@ -39,7 +38,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.InputType;
 import android.util.SparseArray;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;

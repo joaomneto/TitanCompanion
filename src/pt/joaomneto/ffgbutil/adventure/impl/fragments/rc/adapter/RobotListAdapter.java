@@ -1,9 +1,10 @@
-package pt.joaomneto.ffgbutil.adventure.impl.fragments.rc;
+package pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.adapter;
 
 import java.util.List;
 
 import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.impl.RCAdventure;
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.Robot;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

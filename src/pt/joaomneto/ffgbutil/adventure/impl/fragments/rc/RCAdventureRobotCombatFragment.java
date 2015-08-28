@@ -4,6 +4,7 @@ import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.RCAdventure;
+import pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.adapter.RobotListAdapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
