@@ -804,6 +804,8 @@
     <string name="player">Player: </string>
     <string name="enemy">Enemy: </string>
     <string name="diceRoll">Dice Roll</string>
+    <string name="yourRobot">Your Robot</string>
+    <string name="enemyRobot">Enemy Robot</string>
 
 
 </resources>

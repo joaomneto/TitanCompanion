@@ -26,7 +26,7 @@ public enum RobotSpecialAbility {
     protected static Map<Integer, RobotSpecialAbility> specialAbilities;
 
     static{
-        specialAbilities = new HashMap<>();
+        specialAbilities = new HashMap<Integer, RobotSpecialAbility>();
         specialAbilities.put(9, SUPER_COWBOY_ROBOT_SONIC_SCREAM);
         specialAbilities.put(13, DIGGER_ROBOT_SHOVEL);
         specialAbilities.put(41, WASP_FIGHTER_SPECIAL_ATTACK);

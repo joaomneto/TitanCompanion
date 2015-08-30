@@ -87,7 +87,7 @@ public abstract class Adventure extends FragmentActivity {
 	String name = null;
 	Properties savedGame;
 
-	Set<Fragment> fragments = new HashSet<>();
+	Set<Fragment> fragments = new HashSet<Fragment>();
 
 	protected static final int FRAGMENT_VITAL_STATS = 0;
 	protected static final int FRAGMENT_COMBAT = 1;

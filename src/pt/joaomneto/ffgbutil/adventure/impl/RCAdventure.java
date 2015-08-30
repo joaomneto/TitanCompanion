@@ -16,7 +16,7 @@ import pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RobotSpeed;
 public class RCAdventure extends TFODAdventure {
 
 	protected Robot currentRobot = null;
-	protected List<Robot> robots = new ArrayList<>();
+	protected List<Robot> robots = new ArrayList<Robot>();
 
 	public List<Robot> getRobots() {
 		return robots;
@@ -85,8 +85,8 @@ public class RCAdventure extends TFODAdventure {
 
 		String robotsS = new String(getSavedGame().getProperty("robots").getBytes(java.nio.charset.Charset.forName("UTF-8")));
 
-		Map<String, Robot> robotCache = new HashMap<>();
-		Map<Robot, String> robotAltCache = new HashMap<>();
+		Map<String, Robot> robotCache = new HashMap<String, Robot>();
+		Map<Robot, String> robotAltCache = new HashMap<Robot, String>();
 
 		if (robotsS != null) {
 			robots = new ArrayList<Robot>();

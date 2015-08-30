@@ -38,7 +38,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 	protected Switch combatTypeSwitch = null;
 	protected View rootView = null;
 
-	protected List<Combatant> combatPositions = new ArrayList<>();
+	protected List<Combatant> combatPositions = new ArrayList<AdventureCombatFragment.Combatant>();
 	protected CombatantListAdapter combatantListAdapter = null;
 	protected ListView combatantsListView = null;
 
