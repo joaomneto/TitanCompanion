@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -39,6 +40,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	protected TextView armorValue = null;
 	protected TextView bonusValue = null;
 	protected TextView skillValue = null;
+	protected LinearLayout combatRobots = null;
 
 	protected View rootView = null;
 
@@ -61,7 +63,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		final RCAdventure adv = (RCAdventure) this.getActivity();
 
 		addRobotButton = (Button) rootView.findViewById(R.id.addEnemyRobotButton);
-		robotListView = (ListView) rootView.findViewById(R.id.robotEnemyList);
+		combatRobots = (LinearLayout) rootView.findViewById(R.id.combatRobots);
+//		robotListView = (ListView) rootView.findViewById(R.id.robotEnemyList);
 //		robotListView.setAdapter(new RobotListAdapter(adv, adv.getRobots()));
 
 		nameValue = (TextView) rootView.findViewById(R.id.nameCombatValue);
@@ -286,12 +289,13 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		RCAdventure adv = (RCAdventure) this.getActivity();
 
 		if (adv.getCurrentRobot() != null) {
-
+			combatRobots.setVisibility(View.VISIBLE);
 			nameValue.setText("" + adv.getCurrentRobot().getName());
 			armorValue.setText("" + adv.getCurrentRobot().getArmor());
 			bonusValue.setText("" + adv.getCurrentRobot().getBonus());
 			skillValue.setText("" + adv.getCurrentSkill());
 		}else{
+			combatRobots.setVisibility(View.INVISIBLE);
 			nameValue.setText("You have no robot at the moment.");
 			armorValue.setText("N/A");
 			bonusValue.setText("N/A");
