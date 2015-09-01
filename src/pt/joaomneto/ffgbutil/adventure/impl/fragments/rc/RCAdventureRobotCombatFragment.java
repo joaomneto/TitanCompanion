@@ -41,6 +41,9 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	protected TextView bonusValue = null;
 	protected TextView skillValue = null;
 	protected LinearLayout combatRobots = null;
+	protected LinearLayout enemyRobotLayout = null;
+	
+	protected Robot enemyRobot = null;
 
 	protected View rootView = null;
 
@@ -64,8 +67,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 		addRobotButton = (Button) rootView.findViewById(R.id.addEnemyRobotButton);
 		combatRobots = (LinearLayout) rootView.findViewById(R.id.combatRobots);
-//		robotListView = (ListView) rootView.findViewById(R.id.robotEnemyList);
-//		robotListView.setAdapter(new RobotListAdapter(adv, adv.getRobots()));
+		enemyRobotLayout = (LinearLayout) rootView.findViewById(R.id.enemyRobot);
 
 		nameValue = (TextView) rootView.findViewById(R.id.nameCombatValue);
 		armorValue = (TextView) rootView.findViewById(R.id.armorCombatValue);
@@ -294,6 +296,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			armorValue.setText("" + adv.getCurrentRobot().getArmor());
 			bonusValue.setText("" + adv.getCurrentRobot().getBonus());
 			skillValue.setText("" + adv.getCurrentSkill());
+			enemyRobotLayout.setVisibility(enemyRobot==null?View.INVISIBLE:View.VISIBLE);
 		}else{
 			combatRobots.setVisibility(View.INVISIBLE);
 			nameValue.setText("You have no robot at the moment.");
@@ -301,6 +304,15 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			bonusValue.setText("N/A");
 			skillValue.setText("N/A");
 		}
+		
+	}
+
+	public Robot getEnemyRobot() {
+		return enemyRobot;
+	}
+
+	public void setEnemyRobot(Robot enemyRobot) {
+		this.enemyRobot = enemyRobot;
 	}
 
 }
