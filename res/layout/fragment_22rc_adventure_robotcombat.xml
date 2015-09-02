@@ -1,15 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/adventureVitalStats"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:useDefaultMargins="true"
-    tools:context=".adventure.impl.fragments.sob.SOBShipCombatFragment" >
+    tools:context=".adventure.impl.fragments.rc.RCAdventureRobotCombatFragment" >
 
     <RelativeLayout
         android:id="@+id/combatRobots"
@@ -49,12 +48,10 @@
             android:id="@+id/robotSpecialAbilityValue"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textField22"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/textField22"
             android:layout_toRightOf="@+id/textField22"
             android:lines="2"
-            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Button
@@ -190,7 +187,6 @@
                 android:id="@+id/enemySpecialAbilityValue"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/textField221"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/textField221"
                 android:layout_toRightOf="@+id/textField221"
@@ -204,7 +200,7 @@
                 android:layout_below="@+id/enemySkillValue"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-            android:lines="2"
+                android:lines="2"
                 android:text="@string/robotSpecialAbility"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -259,7 +255,6 @@
                 android:layout_toRightOf="@+id/textField5"
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-
         </RelativeLayout>
     </RelativeLayout>
 
@@ -267,14 +262,74 @@
         android:id="@+id/combatResult"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/robotCombatButtons"
+        android:layout_below="@id/combatRobots"
         android:lines="4"
         android:maxLines="4"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/addEnemyRobotButton"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:id="@+id/robotCombatButtons"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/addEnemyRobot" />
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/robotCombatPrepareRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/addEnemyRobotButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/addEnemyRobot" />
+
+            <Button
+                android:id="@+id/resetRobotCombatButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reset" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/robotCombatButtonUpperRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/changeRobotForm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/changeRobotForm" />
+
+            <Button
+                android:id="@+id/resetRobotCombatButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/reset" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/robotCombatButtonLowerRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/robotCombatTurn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/combatTurn" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

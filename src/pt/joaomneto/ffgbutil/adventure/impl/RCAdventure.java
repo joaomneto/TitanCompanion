@@ -26,27 +26,30 @@ public class RCAdventure extends TFODAdventure {
 		this.robots = robots;
 	}
 
-	private static final int FRAGMENT_ROBOTS = 1;
-	private static final int FRAGMENT_ROBOTCOMBAT = 2;
-	private static final int FRAGMENT_COMBAT = 3;
-	private static final int FRAGMENT_EQUIPMENT = 4;
-	private static final int FRAGMENT_NOTES = 5;
+	private static int fragIndex = 0;
+	
+//	private static final int FRAGMENT_ROBOTS = fragIndex++;
+//	private static final int FRAGMENT_ROBOTCOMBAT = fragIndex++;
+//	private static final int FRAGMENT_COMBAT = fragIndex++;
+//	private static final int FRAGMENT_EQUIPMENT = fragIndex++;
+//	private static final int FRAGMENT_NOTES = fragIndex++;
 
 	public RCAdventure() {
 		super();
 		fragmentConfiguration.clear();
-		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats,
+		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.vitalStats,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureVitalStatsFragment"));
-		fragmentConfiguration.put(FRAGMENT_ROBOTS, new AdventureFragmentRunner(R.string.robots,
+		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.robots,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotFragment"));
-		fragmentConfiguration.put(FRAGMENT_ROBOTCOMBAT, new AdventureFragmentRunner(R.string.robotFights,
-				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
+//		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.robotFights,
+//				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotCombatFragment"));
+		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.fights,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
+		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.goldEquipment,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
-		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
+		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
+		fragIndex = 0;
 	}
 
 	public Robot getCurrentRobot() {

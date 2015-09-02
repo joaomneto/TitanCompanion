@@ -34,15 +34,22 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 	protected static Integer[] gridRows;
 
-	protected ListView robotListView = null;
 	protected Button addRobotButton = null;
 	protected TextView nameValue = null;
 	protected TextView armorValue = null;
 	protected TextView bonusValue = null;
 	protected TextView skillValue = null;
-	protected LinearLayout combatRobots = null;
-	protected LinearLayout enemyRobotLayout = null;
-	
+	protected RelativeLayout combatRobots = null;
+	protected RelativeLayout enemyRobotLayout = null;
+	protected LinearLayout robotCombatPrepareRow = null;
+	protected LinearLayout robotCombatButtonUpperRow = null;
+	protected LinearLayout robotCombatButtonLowerRow = null;
+
+	protected TextView robotSpecialAbilityValue = null;
+	protected TextView enemySpecialAbilityValue = null;
+
+	protected boolean combatStarted = false;
+
 	protected Robot enemyRobot = null;
 
 	protected View rootView = null;
@@ -66,15 +73,20 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		final RCAdventure adv = (RCAdventure) this.getActivity();
 
 		addRobotButton = (Button) rootView.findViewById(R.id.addEnemyRobotButton);
-		combatRobots = (LinearLayout) rootView.findViewById(R.id.combatRobots);
-		enemyRobotLayout = (LinearLayout) rootView.findViewById(R.id.enemyRobot);
+		combatRobots = (RelativeLayout) rootView.findViewById(R.id.combatRobots);
+		enemyRobotLayout = (RelativeLayout) rootView.findViewById(R.id.enemyRobot);
 
 		nameValue = (TextView) rootView.findViewById(R.id.nameCombatValue);
 		armorValue = (TextView) rootView.findViewById(R.id.armorCombatValue);
 		bonusValue = (TextView) rootView.findViewById(R.id.bonusCombatValue);
 		skillValue = (TextView) rootView.findViewById(R.id.skillCombatValue);
 
-		registerForContextMenu(robotListView);
+		robotCombatPrepareRow = (LinearLayout) rootView.findViewById(R.id.robotCombatPrepareRow);
+		robotCombatButtonUpperRow = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonUpperRow);
+		robotCombatButtonLowerRow = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRow);
+
+		robotSpecialAbilityValue = (TextView) rootView.findViewById(R.id.robotSpecialAbilityValue);
+		enemySpecialAbilityValue = (TextView) rootView.findViewById(R.id.enemySpecialAbilityValue);
 
 		addRobotButton.setOnClickListener(new OnClickListener() {
 
@@ -87,74 +99,6 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		});
 
 		refreshScreensFromResume();
-	}
-
-	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-
-		final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-		final RCAdventure adv = (RCAdventure) this.getActivity();
-
-		final Robot robot = adv.getRobots().get(info.position);
-
-		MenuItem delete = menu.add("Remove");
-		MenuItem location = menu.add("Set Location");
-		delete.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-			public boolean onMenuItemClick(MenuItem item) {
-
-				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Remove robot?").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
-					}
-				});
-				builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-					@SuppressWarnings("unchecked")
-					public void onClick(DialogInterface dialog, int which) {
-						adv.getNotes().remove(info.position);
-						((ArrayAdapter<String>) robotListView.getAdapter()).notifyDataSetChanged();
-					}
-				});
-
-				AlertDialog alert = builder.create();
-				alert.show();
-				return true;
-			}
-		});
-		location.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-			public boolean onMenuItemClick(MenuItem item) {
-				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
-
-				alert.setTitle("Set Location");
-
-				// Set an EditText view to get user input
-				final EditText input = new EditText(adv);
-				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
-				input.requestFocus();
-				alert.setView(input);
-
-				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-					@SuppressWarnings("unchecked")
-					public void onClick(DialogInterface dialog, int whichButton) {
-						String value = input.getText().toString();
-						robot.setLocation(value);
-						adv.getNotes().add(value);
-						((ArrayAdapter<String>) robotListView.getAdapter()).notifyDataSetChanged();
-					}
-				});
-
-				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						// Canceled.
-					}
-				});
-
-				alert.show();
-
-				return true;
-			}
-		});
 	}
 
 	protected void addRobotButtonOnClick() {
@@ -256,34 +200,14 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	protected void addRobot(String name, Integer armor, Integer bonus, RobotSpeed speed, Integer specialAbility, String nameAlt, Integer armorAlt,
 			Integer bonusAlt, RobotSpeed speedAlt) {
 
-		RCAdventure adv = (RCAdventure) this.getActivity();
-
-		for (Robot r : adv.getRobots()) {
-			r.setActive(false);
-
-		}
-
 		RobotSpecialAbility abilityByReference = RobotSpecialAbility.getAbiliyByReference(specialAbility);
 
 		Robot robotPosition = new Robot(name, armor, speed, bonus,
 				(!RobotSpecialAbility.TROOPER_XI_HUMAN_SHIELD.equals(abilityByReference) || (RobotSpecialAbility.TROOPER_XI_HUMAN_SHIELD
 						.equals(abilityByReference) && armor == 12)) ? abilityByReference : null);
 
-		adv.getRobots().add(robotPosition);
+		setEnemyRobot(robotPosition);
 
-		if (armorAlt != null) {
-			Robot robotPositionAlt = new Robot(nameAlt, armorAlt, speedAlt, bonusAlt,
-					(RobotSpecialAbility.TROOPER_XI_HUMAN_SHIELD.equals(abilityByReference) && armorAlt == 12) ? abilityByReference : null);
-			robotPositionAlt.setAlternateForm(robotPosition);
-			robotPosition.setAlternateForm(robotPositionAlt);
-			adv.getRobots().add(robotPositionAlt);
-		}
-
-		adv.getRobots().get(adv.getRobots().size() - 1).setActive(true);
-		RobotListAdapter adapter = (RobotListAdapter) robotListView.getAdapter();
-		adapter.notifyDataSetChanged();
-
-		adv.setCurrentRobot(adapter.getCurrentRobot());
 	}
 
 	@Override
@@ -296,15 +220,28 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			armorValue.setText("" + adv.getCurrentRobot().getArmor());
 			bonusValue.setText("" + adv.getCurrentRobot().getBonus());
 			skillValue.setText("" + adv.getCurrentSkill());
-			enemyRobotLayout.setVisibility(enemyRobot==null?View.INVISIBLE:View.VISIBLE);
-		}else{
-			combatRobots.setVisibility(View.INVISIBLE);
-			nameValue.setText("You have no robot at the moment.");
-			armorValue.setText("N/A");
-			bonusValue.setText("N/A");
-			skillValue.setText("N/A");
+
+			if (adv.getCurrentRobot().getRobotSpecialAbility() != null)
+				robotSpecialAbilityValue.setText(adv.getCurrentRobot().getRobotSpecialAbility().getDescription());
+
+			enemyRobotLayout.setVisibility(enemyRobot == null ? View.INVISIBLE : View.VISIBLE);
+
+			robotCombatPrepareRow.setVisibility(combatStarted ? View.GONE : View.VISIBLE);
+			robotCombatButtonUpperRow.setVisibility(!combatStarted ? View.GONE : View.VISIBLE);
+			robotCombatButtonLowerRow.setVisibility(!combatStarted ? View.GONE : View.VISIBLE);
+
+			if (enemyRobot!=null) {
+				if (enemyRobot.getRobotSpecialAbility() != null)
+					enemySpecialAbilityValue.setText(enemyRobot.getRobotSpecialAbility().getDescription());
+			}
+
+		} else {
+			combatRobots.setVisibility(View.GONE);
+			robotCombatPrepareRow.setVisibility(View.GONE);
+			robotCombatButtonUpperRow.setVisibility(View.GONE);
+			robotCombatButtonLowerRow.setVisibility(View.GONE);
 		}
-		
+
 	}
 
 	public Robot getEnemyRobot() {

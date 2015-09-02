@@ -326,6 +326,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 						: null);
 
 		adv.getRobots().add(robotPosition);
+		adv.setCurrentRobot(robotPosition);
 
 		if (armorAlt != null) {
 			Robot robotPositionAlt = new Robot(
@@ -342,7 +343,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 		}
 
 		adv.getRobots().get(adv.getRobots().size() - 1).setActive(true);
-		refreshScreensFromResume();
+		adv.fullRefresh();
 	}
 
 	@Override
