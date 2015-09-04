@@ -22,7 +22,8 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:text="@string/skill"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/minusSkillButton"
@@ -41,7 +42,7 @@
         android:layout_alignTop="@+id/plusSkillButton"
         android:layout_toLeftOf="@+id/plusSkillButton"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/plusSkillButton"
@@ -55,12 +56,13 @@
         android:id="@+id/textField2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textField1"
         android:gravity="center"
         android:text="@string/stamina"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@+id/textField1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/minusStaminaButton"
@@ -79,7 +81,7 @@
         android:layout_alignTop="@+id/plusStaminaButton"
         android:layout_toLeftOf="@+id/plusStaminaButton"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/plusStaminaButton"
@@ -90,15 +92,16 @@
         android:text="@string/plus" />
 
     <TextView
-    android:id="@+id/textView3"
-    android:layout_width="wrap_content"
-    android:layout_height="40dp"
-        android:gravity="center"
-    android:text="@string/luck"
-    android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@+id/textField2"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textField2"
+        android:gravity="center"
+        android:text="@string/luck"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/minusLuckButton"
@@ -117,7 +120,7 @@
         android:layout_alignTop="@+id/plusLuckButton"
         android:layout_toLeftOf="@+id/plusLuckButton"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/plusLuckButton"
@@ -127,7 +130,7 @@
         android:layout_alignTop="@+id/textView3"
         android:text="@string/plus" />
 
-        <Button
+    <Button
         android:id="@+id/minusProvisionsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,7 +147,7 @@
         android:layout_alignTop="@+id/plusProvisionsButton"
         android:layout_toLeftOf="@+id/plusProvisionsButton"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/plusProvisionsButton"
@@ -176,8 +179,8 @@
         android:id="@+id/buttonTestSkill"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/buttonTestLuck"
         android:layout_above="@+id/buttonSavePoint"
+        android:layout_toRightOf="@+id/buttonTestLuck"
         android:onClick="testSkill"
         android:text="@string/testSkill" />
 
@@ -187,18 +190,19 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonTestLuck"
         android:layout_alignParentLeft="true"
-        android:text="@string/useMedikit"
-        android:onClick="consumeProvision"/>
+        android:onClick="consumeProvision"
+        android:text="@string/useMedikit" />
 
     <TextView
         android:id="@+id/provisionsText"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:gravity="center"
-        android:text="@string/medikits"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
         android:layout_above="@+id/buttonConsumeProvisions"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:text="@string/medikits"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

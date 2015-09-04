@@ -10,7 +10,7 @@ public class COHAdventureCombatFragment extends AdventureCombatFragment {
 	}
 	
 	protected String getDefaultEnemyDamage() {
-		return "3";
+		return "1";
 	}
 
 }

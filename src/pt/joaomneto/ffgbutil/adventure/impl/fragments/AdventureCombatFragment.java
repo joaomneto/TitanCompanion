@@ -342,7 +342,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		int enemyAttackStrength = enemyDiceRoll.getSum() +  position.getCurrentSkill();
 		if (attackStrength > enemyAttackStrength) {
 			Boolean suddenDeath = suddenDeath(diceRoll, enemyDiceRoll);
-			if (suddenDeath == null) {
+			if (suddenDeath == null || !suddenDeath) {
 				int damage = getDamage();
 
 				position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - getDamage()));

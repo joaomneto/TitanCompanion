@@ -36,20 +36,20 @@ public class RCAdventure extends TFODAdventure {
 
 	public RCAdventure() {
 		super();
+		fragIndex = 0;
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.vitalStats,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureVitalStatsFragment"));
 		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.robots,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotFragment"));
-//		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.robotFights,
-//				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotCombatFragment"));
+		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.robotFights,
+				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureRobotCombatFragment"));
 		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.fights,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureCombatFragment"));
 		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.goldEquipment,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.AdventureNotesFragment"));
-		fragIndex = 0;
 	}
 
 	public Robot getCurrentRobot() {

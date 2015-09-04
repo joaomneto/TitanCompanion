@@ -3,6 +3,7 @@ package pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.adapter;
 import java.util.List;
 
 import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.impl.RCAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.Robot;
 import android.content.Context;
@@ -21,36 +22,28 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 
 	private final Context context;
 	private final List<Robot> values;
-	private Robot currentRobot;
+	private RCAdventure adv;
 
 	public RobotListAdapter(Context context, List<Robot> values) {
 		super(context, -1, values);
 		this.context = context;
 		this.values = values;
+		this.adv = (RCAdventure) context;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-		View robotView = inflater.inflate(R.layout.component_22rc_robot,
-				parent, false);
+		View robotView = inflater.inflate(R.layout.component_22rc_robot, parent, false);
 
-		final TextView robotTextName = (TextView) robotView.getRootView()
-				.findViewById(R.id.robotTextNameValue);
-		final TextView robotTextArmor = (TextView) robotView.getRootView()
-				.findViewById(R.id.robotTextArmorValue);
-		final TextView robotTextSpeed = (TextView) robotView.getRootView()
-				.findViewById(R.id.robotTextSpeedValue);
-		final TextView robotTextBonus = (TextView) robotView.getRootView()
-				.findViewById(R.id.robotTextBonusValue);
-		final TextView robotTextLocation = (TextView) robotView.getRootView()
-				.findViewById(R.id.robotTextLocationValue);
-		final TextView robotTextSpecialAbility = (TextView) robotView
-				.getRootView().findViewById(R.id.robotTextSpecialAbilityValue);
-		final Button removeRobotButton = (Button) robotView
-				.getRootView().findViewById(R.id.removeRobotButton);
+		final TextView robotTextName = (TextView) robotView.getRootView().findViewById(R.id.robotTextNameValue);
+		final TextView robotTextArmor = (TextView) robotView.getRootView().findViewById(R.id.robotTextArmorValue);
+		final TextView robotTextSpeed = (TextView) robotView.getRootView().findViewById(R.id.robotTextSpeedValue);
+		final TextView robotTextBonus = (TextView) robotView.getRootView().findViewById(R.id.robotTextBonusValue);
+		final TextView robotTextLocation = (TextView) robotView.getRootView().findViewById(R.id.robotTextLocationValue);
+		final TextView robotTextSpecialAbility = (TextView) robotView.getRootView().findViewById(R.id.robotTextSpecialAbilityValue);
+//		final Button removeRobotButton = (Button) robotView.getRootView().findViewById(R.id.removeRobotButton);
 
 		final Robot robotPosition = values.get(position);
 
@@ -59,40 +52,35 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 		robotTextSpeed.setText("" + robotPosition.getSpeed());
 		robotTextBonus.setText("" + robotPosition.getBonus());
 		robotTextLocation.setText(robotPosition.getLocation());
-		robotTextSpecialAbility.setText(robotPosition.getRobotSpecialAbility()!=null?robotPosition.getRobotSpecialAbility()
-				.getName():null);
+		robotTextSpecialAbility.setText(robotPosition.getRobotSpecialAbility() != null ? robotPosition.getRobotSpecialAbility().getName() : null);
 
-		Button minusCombatArmor = (Button) robotView
-				.findViewById(R.id.minusRobotArmorButton);
-		Button plusCombatArmor = (Button) robotView
-				.findViewById(R.id.plusRobotArmorButton);
+		Button minusCombatArmor = (Button) robotView.findViewById(R.id.minusRobotArmorButton);
+		Button plusCombatArmor = (Button) robotView.findViewById(R.id.plusRobotArmorButton);
 
-		RadioButton radio = (RadioButton) robotView.getRootView().findViewById(
-				R.id.robotSelected);
+		RadioButton radio = (RadioButton) robotView.getRootView().findViewById(R.id.robotSelected);
 		radio.setChecked(robotPosition.isActive());
-		
-		if(robotPosition.isActive()){
-			currentRobot = robotPosition;
-		}
-		
-		final RobotListAdapter adapter = this; 
-		
-		removeRobotButton.setOnClickListener(new  OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				RCAdventure adv = (RCAdventure) context;
-				adv.getRobots().remove(adv.getCurrentRobot());
 
-				adv.setCurrentRobot(null);
-				setCurrentRobot(null);
-				
-				adv.fullRefresh();
-			}
-		});
-		
+		if (robotPosition.isActive()) {
+			setCurrentRobot(robotPosition);
+		}
+
+		final RobotListAdapter adapter = this;
+
+//		removeRobotButton.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View arg0) {
+//				adv.getRobots().remove(adv.getCurrentRobot());
+//
+//				adv.setCurrentRobot(null);
+//				setCurrentRobot(null);
+//
+//				adv.fullRefresh();
+//			}
+//		});
+
 		radio.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			
+
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				for (Robot r : values) {
@@ -101,10 +89,9 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 				robotPosition.setActive(true);
 				adapter.notifyDataSetChanged();
 				setCurrentRobot(robotPosition);
-				
-				RCAdventure adv = (RCAdventure) context;
+
 				adv.fullRefresh();
-				
+
 			}
 		});
 
@@ -125,17 +112,25 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 			}
 		});
 
+		robotTextSpecialAbility.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				if (getCurrentRobot().getRobotSpecialAbility() != null)
+					Adventure.showAlert(adv.getCurrentRobot().getRobotSpecialAbility().getName(), adv.getCurrentRobot().getRobotSpecialAbility()
+							.getDescription(), adv);
+			}
+		});
+
 		return robotView;
 	}
 
 	public Robot getCurrentRobot() {
-		return currentRobot;
+		return adv.getCurrentRobot();
 	}
 
 	public void setCurrentRobot(Robot currentRobot) {
-		this.currentRobot = currentRobot;
+		adv.setCurrentRobot(currentRobot);
 	}
-	
-	
 
 }

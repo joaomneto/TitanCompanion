@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/textField22"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/textField22"
-            android:lines="2"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Button
@@ -89,12 +89,13 @@
         <TextView
             android:id="@+id/textField22"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/textField1"
             android:layout_marginTop="10dp"
             android:text="@string/robotSpecialAbility"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textField2"
@@ -104,7 +105,8 @@
             android:layout_below="@+id/nameCombatValue"
             android:gravity="center"
             android:text="@string/armor"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textField1"
@@ -115,7 +117,8 @@
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@string/skill"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textField21"
@@ -126,7 +129,8 @@
             android:layout_toLeftOf="@+id/armorCombatValue"
             android:gravity="center"
             android:text="@string/robotBonus"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:id="@+id/enemyRobot"
@@ -196,13 +200,13 @@
             <TextView
                 android:id="@+id/textField221"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/enemySkillValue"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:lines="2"
                 android:text="@string/robotSpecialAbility"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textField4"
@@ -213,7 +217,8 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:text="@string/enemyRobot"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textField6"
@@ -223,7 +228,8 @@
                 android:layout_below="@+id/textField4"
                 android:gravity="center"
                 android:text="@string/armor"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textField5"
@@ -234,7 +240,8 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/skill"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textField212"
@@ -244,7 +251,8 @@
                 android:layout_alignLeft="@+id/minusEnemyArmorButton"
                 android:gravity="center"
                 android:text="@string/robotBonus"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/enemySkillValue"

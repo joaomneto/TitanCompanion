@@ -253,16 +253,20 @@ public abstract class Adventure extends FragmentActivity {
 		setCurrentLuck(--currentLuck);
 		return result;
 	}
-
-	public static void showAlert(String message, Context context) {
+	
+	public static void showAlert(String title, String message, Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle("Result").setMessage(message).setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+		builder.setTitle(title!=null?title:"Result").setMessage(message).setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
 			}
 		});
 		AlertDialog alert = builder.create();
 		alert.show();
+	}
+
+	public static void showAlert(String message, Context context) {
+		showAlert(null, message, context);
 	}
 
 	public static void showAlert(View view, Context context) {

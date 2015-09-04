@@ -17,6 +17,7 @@
         android:id="@+id/robotTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/robotSelected"
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/robotTextName"
         android:layout_alignBottom="@+id/robotTextName"
-        android:layout_alignRight="@+id/separator"
+        android:layout_alignParentRight="true"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/robotTextName"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -39,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/robotTextName"
+        android:textStyle="bold"
         android:layout_alignStart="@+id/robotTextName"
         android:layout_below="@+id/robotTextName"
         android:gravity="center"
@@ -82,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/robotTextArmor"
         android:layout_alignBottom="@+id/robotTextArmor"
+        android:textStyle="bold"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/plusRobotArmorButton"
         android:text="@string/robotSpeed"
@@ -104,6 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/robotTextArmor"
         android:layout_below="@id/robotTextArmor"
+        android:textStyle="bold"
         android:layout_marginTop="3dp"
         android:text="@string/robotBonus"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -125,6 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/robotTextBonus"
         android:layout_below="@id/robotTextBonus"
+        android:textStyle="bold"
         android:layout_marginTop="5dp"
         android:text="@string/robotSpecialAbility"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -146,6 +151,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/robotTextSpecialAbility"
         android:layout_below="@id/robotTextSpecialAbility"
+        android:textStyle="bold"
         android:layout_marginTop="5dp"
         android:text="@string/robotLocation"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -156,24 +162,24 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/robotTextLocation"
         android:layout_alignBottom="@+id/robotTextLocation"
-        android:layout_alignRight="@+id/separator"
+        android:layout_alignRight="@+id/robotTextSpecialAbilityValue"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/robotTextLocation"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
-     <Button
-        android:id="@+id/removeRobotButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/removeRobot"
-        android:layout_below="@id/robotTextLocation" />
+<!--      <Button -->
+<!--         android:id="@+id/removeRobotButton" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:text="@string/removeRobot" -->
+<!--         android:layout_below="@id/robotTextLocation" /> -->
 
-    <View
-        android:id="@+id/separator"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/removeRobotButton"
-        android:layout_marginTop="1dp"
-        android:background="@android:color/darker_gray" />
+<!--     <View -->
+<!--         android:id="@+id/separator" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="1dp" -->
+<!--         android:layout_below="@+id/robotTextLocation" -->
+<!--         android:layout_marginTop="1dp" -->
+<!--         android:background="@android:color/darker_gray" /> -->
 
 </RelativeLayout>

@@ -88,6 +88,24 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		robotSpecialAbilityValue = (TextView) rootView.findViewById(R.id.robotSpecialAbilityValue);
 		enemySpecialAbilityValue = (TextView) rootView.findViewById(R.id.enemySpecialAbilityValue);
 
+		robotSpecialAbilityValue.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				if (adv.getCurrentRobot().getRobotSpecialAbility() != null)
+					Adventure.showAlert(adv.getCurrentRobot().getRobotSpecialAbility().getName(), adv.getCurrentRobot().getRobotSpecialAbility().getDescription(), adv);
+			}
+		});
+
+		enemySpecialAbilityValue.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				if (enemyRobot.getRobotSpecialAbility() != null)
+					Adventure.showAlert(enemyRobot.getRobotSpecialAbility().getName(), enemyRobot.getRobotSpecialAbility().getDescription(), adv);
+			}
+		});
+
 		addRobotButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -222,7 +240,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			skillValue.setText("" + adv.getCurrentSkill());
 
 			if (adv.getCurrentRobot().getRobotSpecialAbility() != null)
-				robotSpecialAbilityValue.setText(adv.getCurrentRobot().getRobotSpecialAbility().getDescription());
+				robotSpecialAbilityValue.setText(adv.getCurrentRobot().getRobotSpecialAbility().getName());
 
 			enemyRobotLayout.setVisibility(enemyRobot == null ? View.INVISIBLE : View.VISIBLE);
 
@@ -230,9 +248,9 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			robotCombatButtonUpperRow.setVisibility(!combatStarted ? View.GONE : View.VISIBLE);
 			robotCombatButtonLowerRow.setVisibility(!combatStarted ? View.GONE : View.VISIBLE);
 
-			if (enemyRobot!=null) {
+			if (enemyRobot != null) {
 				if (enemyRobot.getRobotSpecialAbility() != null)
-					enemySpecialAbilityValue.setText(enemyRobot.getRobotSpecialAbility().getDescription());
+					enemySpecialAbilityValue.setText(enemyRobot.getRobotSpecialAbility().getName());
 			}
 
 		} else {

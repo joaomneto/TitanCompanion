@@ -88,6 +88,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 		MenuItem delete = menu.add("Remove");
 		MenuItem location = menu.add("Set Location");
+		
 		delete.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			public boolean onMenuItemClick(MenuItem item) {
 
@@ -117,6 +118,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 				return true;
 			}
 		});
+		
 		location.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			public boolean onMenuItemClick(MenuItem item) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);

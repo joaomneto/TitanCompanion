@@ -17,7 +17,7 @@ public enum RobotSpecialAbility {
     SERPENT_VII_COIL(208, "Serpent Coil", "After a combat roll bigger than 16, the Serpent VII deals 1 automatic damage point each turn afterwards."),
     ROBOTANK_SONIC_SHOT(247, "Sonic Shot", "3 optional sonic shots. Deals 1d6 damage for robots and 2d6 damage for dinosaurs."),
     ENEMY_CRUSHER_DOUBLE_ATTACK(27, "Double Damage", "The Crusher deals double damage in each successfull attack."),
-    ENEMY_BATTLEMAN_EXTRA_DAMAGE(108, "Critical Hit", "When battleman wins the round with a roll difference of 4 or more points it deals an additional damange point."),
+    ENEMY_BATTLEMAN_EXTRA_DAMAGE(108, "Critical Hit", "When Battleman wins the round with a roll difference of 4 or more points it deals an additional damage point."),
     ENEMY_SUPERTANK_SMALL_WEAPONS(156, "Small Weapons", "Reduces dinosaur scream skill by 1"),
     ENEMY_WASP_FIGHTER_SPECIAL_ATTACK(341, "Fly in circles", "If the combat roll is won by 4 or more points, Wasp Fighter deals double damage."),
     ENEMY_ANKYLOSAURUS_SPECIAL_ATTACK(400, "Ankylosaurus stun", "Player can only parry in next round after losing a combat round.");
