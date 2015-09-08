@@ -69,9 +69,9 @@ public class SOBShipCombatFragment extends AdventureFragment {
 
 				if (enemyCrewStrength > 0) {
 					int attackStrength = DiceRoller.roll2D6().getSum()+ adv.getCurrentCrewStrike();
-					int énemyStrength = DiceRoller.roll2D6().getSum()+ enemyCrewStrike;
+					int enemyStrength = DiceRoller.roll2D6().getSum()+ enemyCrewStrike;
 					
-					if (attackStrength>énemyStrength) {
+					if (attackStrength>enemyStrength) {
 						int damage = 2;
 						enemyCrewStrength -= damage;
 						if (enemyCrewStrength <= 0) {
@@ -80,7 +80,7 @@ public class SOBShipCombatFragment extends AdventureFragment {
 						} else {
 							combatResult.setText("Direct hit! (-" + damage + " CrewStrength)");
 						}
-					} else if (attackStrength<énemyStrength) {
+					} else if (attackStrength<enemyStrength) {
 						int damage = 2;
 						adv.setCurrentCrewStrength(adv.getCurrentCrewStrength() - damage);
 						if (adv.getCurrentCrewStrength() <= 0) {

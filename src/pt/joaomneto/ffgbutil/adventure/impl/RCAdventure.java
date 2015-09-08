@@ -73,7 +73,7 @@ public class RCAdventure extends TFODAdventure {
 			Integer armor = r.getArmor();
 			String ability = r.getRobotSpecialAbility() != null ? r.getRobotSpecialAbility().getReference() + "" : "";
 			String alternateName = r.getAlternateForm() != null ? r.getAlternateForm().getName() : "";
-			robotsS += name + "ง" + location + "ง" + speed.name() + "ง" + armor + "ง" + ability + "ง" + r.getBonus() + "ง" + alternateName + "ง" + r.isActive()
+			robotsS += name + "ยง" + location + "ยง" + speed.name() + "ยง" + armor + "ยง" + ability + "ยง" + r.getBonus() + "ยง" + alternateName + "ยง" + r.isActive()
 					+ "#";
 		}
 		robotsS = robotsS.substring(0, robotsS.length() - 1);
@@ -96,7 +96,7 @@ public class RCAdventure extends TFODAdventure {
 			List<String> list = Arrays.asList(robotsS.split("#", -1));
 			for (String string : list) {
 				if (!string.isEmpty()) {
-					String[] split = string.split("ง", -1);
+					String[] split = string.split("ยง", -1);
 					String specialAbility = split[4];
 					String alternateFormName = split[6];
 					boolean active = Boolean.parseBoolean(split[7]);

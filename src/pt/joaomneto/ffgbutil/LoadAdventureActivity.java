@@ -40,6 +40,9 @@ public class LoadAdventureActivity extends Activity {
 
 		String[] fileList = baseDir.list();
 
+		if(fileList == null)
+			fileList = new String[]{};
+
 		final ArrayList<String> files = new ArrayList<String>();
 
 		for (String string : fileList) {
