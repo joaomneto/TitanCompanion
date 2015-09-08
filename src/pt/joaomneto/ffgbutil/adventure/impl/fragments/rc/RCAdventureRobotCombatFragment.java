@@ -35,10 +35,20 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	protected static Integer[] gridRows;
 
 	protected Button addRobotButton = null;
+	protected Button resetRobotCombatButton = null;
 	protected TextView nameValue = null;
 	protected TextView armorValue = null;
 	protected TextView bonusValue = null;
 	protected TextView skillValue = null;
+
+	protected TextView armorEnemyValue = null;
+	protected TextView skillEnemyValue = null;
+
+	protected Button minusArmorButton = null;
+	protected Button plusArmorButton = null;
+	protected Button minusEnemyArmorButton = null;
+	protected Button plusEnemyArmorButton = null;
+
 	protected RelativeLayout combatRobots = null;
 	protected RelativeLayout enemyRobotLayout = null;
 	protected LinearLayout robotCombatPrepareRow = null;
@@ -81,6 +91,62 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		bonusValue = (TextView) rootView.findViewById(R.id.bonusCombatValue);
 		skillValue = (TextView) rootView.findViewById(R.id.skillCombatValue);
 
+		armorEnemyValue = (TextView) rootView.findViewById(R.id.enemyArmorValue);
+		skillEnemyValue = (TextView) rootView.findViewById(R.id.enemySkillValue);
+
+		minusArmorButton = (Button) rootView.findViewById(R.id.minusArmorButton);
+		plusArmorButton = (Button) rootView.findViewById(R.id.plusArmorButton);
+		minusEnemyArmorButton = (Button) rootView.findViewById(R.id.minusEnemyArmorButton);
+		plusEnemyArmorButton = (Button) rootView.findViewById(R.id.plusEnemyArmorButton);
+		resetRobotCombatButton = (Button) rootView.findViewById(R.id.resetRobotCombatButton);
+
+		resetRobotCombatButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				enemyRobot = null;
+				refreshScreensFromResume();
+			}
+		});
+
+		final Robot robot = adv.getCurrentRobot();
+
+		minusArmorButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				robot.setArmor(Math.max(robot.getArmor() - 1, 0));
+				refreshScreensFromResume();
+			}
+		});
+
+		plusArmorButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				robot.setArmor(robot.getArmor() + 1);
+				refreshScreensFromResume();
+			}
+		});
+
+		minusEnemyArmorButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				enemyRobot.setArmor(Math.max(enemyRobot.getArmor() - 1, 0));
+				refreshScreensFromResume();
+			}
+		});
+
+		plusEnemyArmorButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				enemyRobot.setArmor(enemyRobot.getArmor() + 1);
+				refreshScreensFromResume();
+			}
+		});
+
 		robotCombatPrepareRow = (LinearLayout) rootView.findViewById(R.id.robotCombatPrepareRow);
 		robotCombatButtonUpperRow = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonUpperRow);
 		robotCombatButtonLowerRow = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRow);
@@ -93,7 +159,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			@Override
 			public void onClick(View arg0) {
 				if (adv.getCurrentRobot().getRobotSpecialAbility() != null)
-					Adventure.showAlert(adv.getCurrentRobot().getRobotSpecialAbility().getName(), adv.getCurrentRobot().getRobotSpecialAbility().getDescription(), adv);
+					Adventure.showAlert(adv.getCurrentRobot().getRobotSpecialAbility().getName(), adv.getCurrentRobot().getRobotSpecialAbility()
+							.getDescription(), adv);
 			}
 		});
 
@@ -120,31 +187,16 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	}
 
 	protected void addRobotButtonOnClick() {
-		addRobotButtonOnClick(R.layout.component_22rc_add_robot);
-	}
-
-	protected void addRobotButtonOnClick(int layoutId) {
 
 		final RCAdventure adv = (RCAdventure) getActivity();
 
-		final View addRobotView = adv.getLayoutInflater().inflate(R.layout.component_22rc_add_robot, null);
+		final View addRobotView = adv.getLayoutInflater().inflate(R.layout.component_22rc_add_enemy_robot, null);
 
 		final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-		CheckBox alternateForm = (CheckBox) addRobotView.findViewById(R.id.alternateFormValue);
-
-		final RelativeLayout alternateStatsGroup = (RelativeLayout) addRobotView.findViewById(R.id.alternateStatsGroup);
-
-		alternateForm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				alternateStatsGroup.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-			}
-		});
-
 		AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
-		builder.setTitle("Add Robot").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+		builder.setTitle("Add Enemy Robot").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 				dialog.cancel();
@@ -156,42 +208,25 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 				mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 
-				EditText nameAltValue = (EditText) addRobotView.findViewById(R.id.nameAltValue);
-				EditText armorAltValue = (EditText) addRobotView.findViewById(R.id.armorAltValue);
-				EditText combatBonusAltValue = (EditText) addRobotView.findViewById(R.id.bonusAltValue);
-				Spinner speedAltValue = (Spinner) addRobotView.findViewById(R.id.speedAltValue);
-
-				speedAltValue.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
-
 				EditText nameValue = (EditText) addRobotView.findViewById(R.id.nameValue);
 				EditText armorValue = (EditText) addRobotView.findViewById(R.id.armorValue);
-				EditText combatBonusValue = (EditText) addRobotView.findViewById(R.id.bonusValue);
+				EditText skillValue = (EditText) addRobotView.findViewById(R.id.skillValue);
 				Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.speedValue);
 				EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
-				CheckBox alternateForm = (CheckBox) addRobotView.findViewById(R.id.alternateFormValue);
 
 				speedValue.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
 
 				String armor = armorValue.getText().toString();
-				String bonus = combatBonusValue.getText().toString();
+				String skill = skillValue.getText().toString();
 				String specialAbility = specialAbilityValue.getText().toString();
-				String armorAlt = armorAltValue.getText().toString();
-				String bonusAlt = combatBonusAltValue.getText().toString();
-				String name = nameValue.getText().toString();
-				String nameAlt = nameAltValue.getText().toString();
 
-				boolean valid = name.length() > 0 && armor.length() > 0 && bonus.length() > 0
-						&& (!alternateForm.isChecked() || (alternateForm.isChecked() && armorAlt.length() > 0 && bonusAlt.length() > 0));
+				boolean valid = armor.length() > 0 && skill.length() > 0;
+
 				if (valid) {
-					if (alternateForm.isChecked())
-						addRobot(name, Integer.parseInt(armor), Integer.parseInt(bonus), (RobotSpeed) speedValue.getSelectedItem(),
-								specialAbility.length() > 0 ? Integer.parseInt(specialAbility) : null, nameAlt, Integer.parseInt(armorAlt),
-								Integer.parseInt(bonusAlt), (RobotSpeed) speedAltValue.getSelectedItem());
-					else
-						addRobot(name, Integer.parseInt(armor), Integer.parseInt(bonus), (RobotSpeed) speedValue.getSelectedItem(),
-								specialAbility.length() > 0 ? Integer.parseInt(specialAbility) : null);
+					addRobot(Integer.parseInt(armor), (RobotSpeed) speedValue.getSelectedItem(), specialAbility.length() > 0 ? Integer.parseInt(specialAbility)
+							: null, Integer.parseInt(skill));
 				} else {
-					Adventure.showAlert("At least the name, armor and bonus values must be filled.", adv);
+					Adventure.showAlert("At least the name, armor and skill values must be filled.", adv);
 				}
 
 			}
@@ -210,22 +245,15 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		alert.show();
 	}
 
-	protected void addRobot(String name, Integer armor, Integer bonus, RobotSpeed speed, Integer specialAbility) {
-
-		addRobot(name, armor, bonus, speed, specialAbility, null, null, null, null);
-	}
-
-	protected void addRobot(String name, Integer armor, Integer bonus, RobotSpeed speed, Integer specialAbility, String nameAlt, Integer armorAlt,
-			Integer bonusAlt, RobotSpeed speedAlt) {
+	protected void addRobot(Integer armor, RobotSpeed speed, Integer specialAbility, Integer skill) {
 
 		RobotSpecialAbility abilityByReference = RobotSpecialAbility.getAbiliyByReference(specialAbility);
 
-		Robot robotPosition = new Robot(name, armor, speed, bonus,
-				(!RobotSpecialAbility.TROOPER_XI_HUMAN_SHIELD.equals(abilityByReference) || (RobotSpecialAbility.TROOPER_XI_HUMAN_SHIELD
-						.equals(abilityByReference) && armor == 12)) ? abilityByReference : null);
+		Robot robotPosition = new Robot(null, armor, speed, null, abilityByReference);
+		robotPosition.setSkill(skill);
 
 		setEnemyRobot(robotPosition);
-
+		refreshScreensFromResume();
 	}
 
 	@Override
@@ -251,6 +279,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			if (enemyRobot != null) {
 				if (enemyRobot.getRobotSpecialAbility() != null)
 					enemySpecialAbilityValue.setText(enemyRobot.getRobotSpecialAbility().getName());
+				armorEnemyValue.setText(enemyRobot.getArmor());
+				skillEnemyValue.setText(enemyRobot.getSkill());
 			}
 
 		} else {
