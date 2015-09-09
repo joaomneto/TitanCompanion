@@ -33,5 +33,21 @@ public enum RobotSpeed {
 	public String toString() {
 		return name;
 	}
+	
+	public boolean gt(RobotSpeed rs){
+		return id>rs.getId();
+	}
+	
+	public boolean gte(RobotSpeed rs){
+		return id>=rs.getId();
+	}
+	
+	public boolean lt(RobotSpeed rs){
+		return id<rs.getId();
+	}
+	
+	public boolean lte(RobotSpeed rs){
+		return id<=rs.getId();
+	}
 
 }

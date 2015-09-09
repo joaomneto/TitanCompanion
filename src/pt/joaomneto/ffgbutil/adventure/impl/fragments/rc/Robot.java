@@ -9,6 +9,9 @@ public class Robot {
 	boolean active;
 	Robot alternateForm;
 	Integer skill;
+	boolean legged = false;
+	boolean dinosaur = false;
+	boolean airborne = false;
 
 	String location = "";
 	RobotSpecialAbility robotSpecialAbility;
@@ -96,5 +99,39 @@ public class Robot {
 	public void setSkill(Integer skill) {
 		this.skill = skill;
 	}
+
+	public boolean isLegged() {
+		return legged;
+	}
+
+	public void setLegged(boolean legged) {
+		this.legged = legged;
+	}
+
+	public boolean isDinosaur() {
+		return dinosaur;
+	}
+
+	public void setDinosaur(boolean dinosaur) {
+		this.dinosaur = dinosaur;
+	}
+
+	public boolean fasterThan(Robot r) {
+		return this.getSpeed().gt(r.getSpeed());
+	}
+
+	public boolean slowerThan(Robot r) {
+		return this.getSpeed().lt(r.getSpeed());
+	}
+
+	public boolean isAirborne() {
+		return airborne;
+	}
+
+	public void setAirborne(boolean airborne) {
+		this.airborne = airborne;
+	}
+	
+	
 
 }

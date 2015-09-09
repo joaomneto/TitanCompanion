@@ -4,28 +4,22 @@ import pt.joaomneto.ffgbutil.R;
 import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
 import pt.joaomneto.ffgbutil.adventure.impl.RCAdventure;
-import pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.adapter.RobotListAdapter;
+import pt.joaomneto.ffgbutil.adventure.impl.util.DiceRoll;
+import pt.joaomneto.ffgbutil.util.DiceRoller;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,6 +30,9 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 	protected Button addRobotButton = null;
 	protected Button resetRobotCombatButton = null;
+	protected Button resetRobotCombatButton2 = null;
+	protected Button robotCombatTurn = null;
+
 	protected TextView nameValue = null;
 	protected TextView armorValue = null;
 	protected TextView bonusValue = null;
@@ -58,9 +55,11 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	protected TextView robotSpecialAbilityValue = null;
 	protected TextView enemySpecialAbilityValue = null;
 
-	protected boolean combatStarted = false;
-
 	protected Robot enemyRobot = null;
+
+	boolean serpentVIIPermDamage = false;
+	boolean enemyRoboTankPermDamage = false;
+	boolean parryOnlyNextTurn = false;
 
 	protected View rootView = null;
 
@@ -99,13 +98,30 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		minusEnemyArmorButton = (Button) rootView.findViewById(R.id.minusEnemyArmorButton);
 		plusEnemyArmorButton = (Button) rootView.findViewById(R.id.plusEnemyArmorButton);
 		resetRobotCombatButton = (Button) rootView.findViewById(R.id.resetRobotCombatButton);
+		resetRobotCombatButton2 = (Button) rootView.findViewById(R.id.resetRobotCombatButton2);
 
-		resetRobotCombatButton.setOnClickListener(new OnClickListener() {
+		robotCombatTurn = (Button) rootView.findViewById(R.id.robotCombatTurn);
+
+		OnClickListener onClickListener = new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				enemyRobot = null;
+				serpentVIIPermDamage = false;
+				enemyRoboTankPermDamage = false;
+				parryOnlyNextTurn = false;
 				refreshScreensFromResume();
+			}
+		};
+
+		resetRobotCombatButton.setOnClickListener(onClickListener);
+		resetRobotCombatButton2.setOnClickListener(onClickListener);
+
+		robotCombatTurn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				combatTurn();
 			}
 		});
 
@@ -208,10 +224,11 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 				mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 
-				EditText nameValue = (EditText) addRobotView.findViewById(R.id.nameValue);
 				EditText armorValue = (EditText) addRobotView.findViewById(R.id.armorValue);
+				CheckBox airborneValue = (CheckBox) addRobotView.findViewById(R.id.airborneValue);
 				EditText skillValue = (EditText) addRobotView.findViewById(R.id.skillValue);
 				Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.speedValue);
+				Spinner typeValue = (Spinner) addRobotView.findViewById(R.id.typeValue);
 				EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
 
 				speedValue.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
@@ -219,12 +236,13 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 				String armor = armorValue.getText().toString();
 				String skill = skillValue.getText().toString();
 				String specialAbility = specialAbilityValue.getText().toString();
+				String type = (String) typeValue.getSelectedItem();
 
-				boolean valid = armor.length() > 0 && skill.length() > 0;
+				boolean valid = armor.length() > 0 && skill.length() > 0 && type.length() > 0;
 
 				if (valid) {
 					addRobot(Integer.parseInt(armor), (RobotSpeed) speedValue.getSelectedItem(), specialAbility.length() > 0 ? Integer.parseInt(specialAbility)
-							: null, Integer.parseInt(skill));
+							: null, Integer.parseInt(skill), type, airborneValue.isChecked());
 				} else {
 					Adventure.showAlert("At least the name, armor and skill values must be filled.", adv);
 				}
@@ -245,12 +263,17 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		alert.show();
 	}
 
-	protected void addRobot(Integer armor, RobotSpeed speed, Integer specialAbility, Integer skill) {
+	protected void addRobot(Integer armor, RobotSpeed speed, Integer specialAbility, Integer skill, String type, boolean airborne) {
 
 		RobotSpecialAbility abilityByReference = RobotSpecialAbility.getAbiliyByReference(specialAbility);
 
 		Robot robotPosition = new Robot(null, armor, speed, null, abilityByReference);
 		robotPosition.setSkill(skill);
+		robotPosition.setAirborne(airborne);
+
+		if (type.equals("Dinosaur")) {
+			robotPosition.setDinosaur(true);
+		}
 
 		setEnemyRobot(robotPosition);
 		refreshScreensFromResume();
@@ -272,9 +295,9 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 			enemyRobotLayout.setVisibility(enemyRobot == null ? View.INVISIBLE : View.VISIBLE);
 
-			robotCombatPrepareRow.setVisibility(combatStarted ? View.GONE : View.VISIBLE);
-			robotCombatButtonUpperRow.setVisibility(!combatStarted ? View.GONE : View.VISIBLE);
-			robotCombatButtonLowerRow.setVisibility(!combatStarted ? View.GONE : View.VISIBLE);
+			robotCombatPrepareRow.setVisibility(enemyRobot != null ? View.GONE : View.VISIBLE);
+			robotCombatButtonUpperRow.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
+			robotCombatButtonLowerRow.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
 
 			if (enemyRobot != null) {
 				if (enemyRobot.getRobotSpecialAbility() != null)
@@ -300,4 +323,83 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		this.enemyRobot = enemyRobot;
 	}
 
+	public void combatTurn() {
+
+		int playerDamage = 2;
+		int enemyDamage = 2;
+
+		RCAdventure adv = (RCAdventure) getActivity();
+
+		DiceRoll playerRoll = DiceRoller.roll2D6();
+		DiceRoll enemyRoll = DiceRoller.roll2D6();
+
+		Robot currentRobot = adv.getCurrentRobot();
+		int playerCombatScore = playerRoll.getSum() + adv.getCurrentSkill() + currentRobot.getBonus();
+		int enemyCombatScore = enemyRoll.getSum() + adv.getCurrentSkill();
+
+		if (currentRobot.fasterThan(enemyRobot)) {
+			playerCombatScore++;
+		}
+
+		if (currentRobot.slowerThan(enemyRobot)) {
+			enemyCombatScore++;
+		}
+
+		switch (currentRobot.getRobotSpecialAbility()) {
+		case SUPER_COWBOY_ROBOT_SONIC_SCREAM: {
+			if (enemyRobot.isDinosaur()) {
+				enemyCombatScore--;
+			}
+			break;
+		}
+		case WASP_FIGHTER_SPECIAL_ATTACK: {
+			if (playerCombatScore - enemyCombatScore > 4) {
+				enemyDamage = 4;
+			}
+			break;
+		}
+		case TROOPER_XI_HUMAN_SHIELD: {
+			if (playerCombatScore >= 18) {
+				playerDamage = 0;
+			}
+			break;
+		}
+		case SERPENT_VII_COIL: {
+			if (playerCombatScore >= 16) {
+				serpentVIIPermDamage = true;
+			}
+			break;
+
+		}
+		case HEDGEHOG_ANTI_AIR: {
+			if (enemyRobot.isAirborne()) {
+				playerCombatScore += 3;
+			}
+			break;
+		}
+		default:
+			break;
+		}
+
+		switch (enemyRobot.getRobotSpecialAbility()) {
+		case ENEMY_BATTLEMAN_EXTRA_DAMAGE: {
+			if (enemyCombatScore - playerCombatScore >= 4) {
+				playerDamage +=1;
+			}
+			break;
+		}
+		case ENEMY_CRUSHER_DOUBLE_ATTACK: {
+			playerDamage = 4;
+			break;
+		}
+		case ENEMY_WASP_FIGHTER_SPECIAL_ATTACK: {
+			if (enemyCombatScore - playerCombatScore > 4) {
+				playerDamage = 4;
+			}
+			break;
+		}
+		default:
+			break;
+		}
+	}
 }

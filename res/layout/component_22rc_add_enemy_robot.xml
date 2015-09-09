@@ -103,4 +103,55 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/typeGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/specialAbilityGroup" >
+
+        <Spinner
+            android:id="@+id/typeValue"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:entries="@array/robotTypes" >
+        </Spinner>
+
+        <TextView
+            android:id="@+id/typeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:labelFor="@id/typeValue"
+            android:text="@string/type"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </RelativeLayout>
+    
+      <RelativeLayout
+        android:id="@+id/airborneGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/typeGroup" >
+
+        <CheckBox
+            android:id="@+id/airborneValue"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+        </CheckBox>
+
+        <TextView
+            android:id="@+id/airborneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:labelFor="@id/airborneValue"
+            android:text="@string/airborne"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -16,6 +16,7 @@ public enum RobotSpecialAbility {
     TROOPER_XI_HUMAN_SHIELD(167, "Shield", "If combat roll is 18 or more, the Tropper XI suffers no damage."),
     SERPENT_VII_COIL(208, "Serpent Coil", "After a combat roll bigger than 16, the Serpent VII deals 1 automatic damage point each turn afterwards."),
     ROBOTANK_SONIC_SHOT(247, "Sonic Shot", "3 optional sonic shots. Deals 1d6 damage for robots and 2d6 damage for dinosaurs."),
+    HEDGEHOG_ANTI_AIR(261, "Aircraft Defense", "Has +3 bonus against flying enemies."),
     ENEMY_CRUSHER_DOUBLE_ATTACK(27, "Double Damage", "The Crusher deals double damage in each successfull attack."),
     ENEMY_BATTLEMAN_EXTRA_DAMAGE(108, "Critical Hit", "When Battleman wins the round with a roll difference of 4 or more points it deals an additional damage point."),
     ENEMY_SUPERTANK_SMALL_WEAPONS(156, "Small Weapons", "Reduces dinosaur scream skill by 1"),
@@ -33,6 +34,7 @@ public enum RobotSpecialAbility {
         specialAbilities.put(167, TROOPER_XI_HUMAN_SHIELD);
         specialAbilities.put(208, SERPENT_VII_COIL);
         specialAbilities.put(247, ROBOTANK_SONIC_SHOT);
+        specialAbilities.put(261, HEDGEHOG_ANTI_AIR);
         specialAbilities.put(27, ENEMY_CRUSHER_DOUBLE_ATTACK);
         specialAbilities.put(108, ENEMY_BATTLEMAN_EXTRA_DAMAGE);
         specialAbilities.put(156, ENEMY_SUPERTANK_SMALL_WEAPONS);
