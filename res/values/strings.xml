@@ -816,6 +816,8 @@
     <string name="changeRobotForm">Change Form</string>
     <string name="type">Type :</string>
     <string name="airborne">Airborne :</string>
+    <string name="useShovel">Use Shovel</string>
+    <string name="sonicShot">Sonic Shot</string>
 
 
 </resources>

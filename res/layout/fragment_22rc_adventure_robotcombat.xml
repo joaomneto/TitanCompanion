@@ -265,15 +265,52 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RelativeLayout>
     </RelativeLayout>
+    
+     <LinearLayout
+            android:id="@+id/combatRolls"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+        	android:layout_below="@id/combatRobots"
+            android:visibility="invisible" >
+
+            <TextView
+                android:id="@+id/playerCombatRollText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player" />
+
+            <ImageView
+                android:id="@+id/playerCombatRoll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/diceRoll" />
+
+            <TextView
+                android:id="@+id/enemyCombatRollText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/enemy" />
+
+            <ImageView
+                android:id="@+id/enemyCombatRoll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/diceRoll" />
+        </LinearLayout>
 
     <TextView
         android:id="@+id/combatResult"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/robotCombatButtons"
-        android:layout_below="@id/combatRobots"
-        android:lines="4"
-        android:maxLines="4"
+        android:layout_below="@id/combatRolls"
+        android:lines="3"
+        android:maxLines="3"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
@@ -304,11 +341,34 @@
                 android:text="@string/reset" />
         </LinearLayout>
 
-        <LinearLayout
+         <LinearLayout
             android:id="@+id/robotCombatButtonUpperRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
+
+            
+            <Button
+                android:id="@+id/useLuck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/testLuck" />
+
+            <Button
+                android:id="@+id/resetRobotCombatButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/reset" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/robotCombatButtonUpperRowTransformer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/changeRobotForm"
@@ -316,9 +376,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/changeRobotForm" />
+            
+            <Button
+                android:id="@+id/useLuck2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/testLuck" />
 
             <Button
-                android:id="@+id/resetRobotCombatButton2"
+                android:id="@+id/resetRobotCombatButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -329,7 +396,7 @@
             android:id="@+id/robotCombatButtonLowerRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/robotCombatTurn"
@@ -337,6 +404,50 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="@string/combatTurn" />
+        </LinearLayout>
+        
+         <LinearLayout
+            android:id="@+id/robotCombatButtonLowerRowDigger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/robotCombatTurn2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/combatTurn" />
+            
+             <Button
+                android:id="@+id/robotCombatTurnShovel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/useShovel" />
+        </LinearLayout>
+        
+          <LinearLayout
+            android:id="@+id/robotCombatButtonLowerRowSuperTank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/robotCombatTurn3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/combatTurn" />
+            
+             <Button
+                android:id="@+id/robotCombatTurnSonicShot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sonicShot" />
         </LinearLayout>
     </LinearLayout>
 

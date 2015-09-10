@@ -121,4 +121,12 @@ public class RCAdventure extends TFODAdventure {
 
 	}
 
+	public void destroyCurrentRobot() {
+		robots.remove(currentRobot);
+		robots.remove(currentRobot.getAlternateForm());
+		currentRobot = null;
+		fullRefresh();
+		
+	}
+
 }

@@ -31,7 +31,12 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	protected Button addRobotButton = null;
 	protected Button resetRobotCombatButton = null;
 	protected Button resetRobotCombatButton2 = null;
+	protected Button resetRobotCombatButton3 = null;
 	protected Button robotCombatTurn = null;
+	protected Button robotCombatTurn2 = null;
+	protected Button robotCombatTurn3 = null;
+	protected Button robotCombatTurnShovel = null;
+	protected Button robotCombatTurnSonicShot = null;
 
 	protected TextView nameValue = null;
 	protected TextView armorValue = null;
@@ -50,12 +55,18 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	protected RelativeLayout enemyRobotLayout = null;
 	protected LinearLayout robotCombatPrepareRow = null;
 	protected LinearLayout robotCombatButtonUpperRow = null;
+	protected LinearLayout robotCombatButtonUpperRowTransformer = null;
+	
 	protected LinearLayout robotCombatButtonLowerRow = null;
+	protected LinearLayout robotCombatButtonLowerRowDigger = null;
+	protected LinearLayout robotCombatButtonLowerRowSupertank = null;
 
 	protected TextView robotSpecialAbilityValue = null;
 	protected TextView enemySpecialAbilityValue = null;
+	protected TextView combatResult = null;
 
 	protected Robot enemyRobot = null;
+	protected boolean currentRobotLegged = false;
 
 	boolean serpentVIIPermDamage = false;
 	boolean enemyRoboTankPermDamage = false;
@@ -99,8 +110,15 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		plusEnemyArmorButton = (Button) rootView.findViewById(R.id.plusEnemyArmorButton);
 		resetRobotCombatButton = (Button) rootView.findViewById(R.id.resetRobotCombatButton);
 		resetRobotCombatButton2 = (Button) rootView.findViewById(R.id.resetRobotCombatButton2);
+		resetRobotCombatButton3 = (Button) rootView.findViewById(R.id.resetRobotCombatButton3);
+
+		combatResult = (TextView) rootView.findViewById(R.id.combatResult);
 
 		robotCombatTurn = (Button) rootView.findViewById(R.id.robotCombatTurn);
+		robotCombatTurn2 = (Button) rootView.findViewById(R.id.robotCombatTurn2);
+		robotCombatTurn3 = (Button) rootView.findViewById(R.id.robotCombatTurn3);
+		robotCombatTurnShovel = (Button) rootView.findViewById(R.id.robotCombatTurnShovel);
+		robotCombatTurnSonicShot = (Button) rootView.findViewById(R.id.robotCombatTurnSonicShot);
 
 		OnClickListener onClickListener = new OnClickListener() {
 
@@ -110,18 +128,41 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 				serpentVIIPermDamage = false;
 				enemyRoboTankPermDamage = false;
 				parryOnlyNextTurn = false;
+				currentRobotLegged = false;
+
 				refreshScreensFromResume();
 			}
 		};
 
 		resetRobotCombatButton.setOnClickListener(onClickListener);
 		resetRobotCombatButton2.setOnClickListener(onClickListener);
+		resetRobotCombatButton3.setOnClickListener(onClickListener);
 
-		robotCombatTurn.setOnClickListener(new OnClickListener() {
+		OnClickListener combatTurnClickListener = new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 				combatTurn();
+			}
+		};
+
+		robotCombatTurn.setOnClickListener(combatTurnClickListener);
+		robotCombatTurn2.setOnClickListener(combatTurnClickListener);
+		robotCombatTurn3.setOnClickListener(combatTurnClickListener);
+
+		robotCombatTurnShovel.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				combatTurnShovel();
+			}
+		});
+
+		robotCombatTurnShovel.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				combatTurnSonicShot();
 			}
 		});
 
@@ -165,7 +206,10 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 		robotCombatPrepareRow = (LinearLayout) rootView.findViewById(R.id.robotCombatPrepareRow);
 		robotCombatButtonUpperRow = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonUpperRow);
+		robotCombatButtonUpperRowTransformer = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonUpperRowTransformer);
 		robotCombatButtonLowerRow = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRow);
+		robotCombatButtonLowerRowDigger = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRowDigger);
+		robotCombatButtonLowerRowSupertank = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRowSuperTank);
 
 		robotSpecialAbilityValue = (TextView) rootView.findViewById(R.id.robotSpecialAbilityValue);
 		enemySpecialAbilityValue = (TextView) rootView.findViewById(R.id.enemySpecialAbilityValue);
@@ -221,7 +265,44 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
+				
+				EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
+				
+				if(specialAbilityValue.getText().toString().equals("400")){
+					AlertDialog.Builder builder = new AlertDialog.Builder(adv);
+					builder.setTitle("Ankylosaurus");
+					builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface arg0, int arg1) {
+							currentRobotLegged = true;
+							addRobotClickOk(adv, addRobotView, mgr);
+							
+						}
+					});
+					builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
+							dialog.cancel();
+							
+						}
+					});
+					
+					AlertDialog alert = builder.create();
+					alert.setMessage("Does your robot have legs?");
+					alert.show();
+					
+				}else{
+					addRobotClickOk(adv, addRobotView, mgr);
+				}
+				
+				
 
+			}
+
+			private void addRobotClickOk(final RCAdventure adv, final View addRobotView, final InputMethodManager mgr) {
 				mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 
 				EditText armorValue = (EditText) addRobotView.findViewById(R.id.armorValue);
@@ -246,7 +327,6 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 				} else {
 					Adventure.showAlert("At least the name, armor and skill values must be filled.", adv);
 				}
-
 			}
 
 		});
@@ -298,12 +378,32 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			robotCombatPrepareRow.setVisibility(enemyRobot != null ? View.GONE : View.VISIBLE);
 			robotCombatButtonUpperRow.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
 			robotCombatButtonLowerRow.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
+			
+			if(adv.getCurrentRobot().getAlternateForm()!=null){
+
+				robotCombatButtonUpperRow.setVisibility(View.GONE);
+				robotCombatButtonUpperRowTransformer.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
+			}
+			
+			if(adv.getCurrentRobot().getRobotSpecialAbility().equals(RobotSpecialAbility.ROBOTANK_SONIC_SHOT)){
+
+				robotCombatButtonLowerRow.setVisibility(View.GONE);
+				robotCombatButtonLowerRowSupertank.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
+			}
+			
+			if(adv.getCurrentRobot().getRobotSpecialAbility().equals(RobotSpecialAbility.DIGGER_ROBOT_SHOVEL)){
+
+				robotCombatButtonLowerRow.setVisibility(View.GONE);
+				robotCombatButtonLowerRowDigger.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
+			}
 
 			if (enemyRobot != null) {
 				if (enemyRobot.getRobotSpecialAbility() != null)
 					enemySpecialAbilityValue.setText(enemyRobot.getRobotSpecialAbility().getName());
 				armorEnemyValue.setText(enemyRobot.getArmor());
 				skillEnemyValue.setText(enemyRobot.getSkill());
+			} else {
+				combatResult.setText("");
 			}
 
 		} else {
@@ -324,9 +424,25 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	}
 
 	public void combatTurn() {
+		combatTurn(false, false);
+	}
+
+	public void combatTurnSonicShot() {
+		combatTurn(false, true);
+	}
+
+	public void combatTurnShovel() {
+		combatTurn(true, false);
+	}
+
+	public void combatTurn(boolean shovelAttack, boolean sonicShotAttack) {
 
 		int playerDamage = 2;
 		int enemyDamage = 2;
+		int enemyExtraDamage = 0;
+		int playerExtraDamage = 0;
+
+		StringBuilder combatStatus = new StringBuilder();
 
 		RCAdventure adv = (RCAdventure) getActivity();
 
@@ -348,24 +464,28 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		switch (currentRobot.getRobotSpecialAbility()) {
 		case SUPER_COWBOY_ROBOT_SONIC_SCREAM: {
 			if (enemyRobot.isDinosaur()) {
+				combatStatus.append("Super Cowboy using Sonic Scream. ");
 				enemyCombatScore--;
 			}
 			break;
 		}
 		case WASP_FIGHTER_SPECIAL_ATTACK: {
 			if (playerCombatScore - enemyCombatScore > 4) {
+				combatStatus.append("Wasp Fighter deals 4 DP. ");
 				enemyDamage = 4;
 			}
 			break;
 		}
 		case TROOPER_XI_HUMAN_SHIELD: {
 			if (playerCombatScore >= 18) {
+				combatStatus.append("Trooper XI uses shield. ");
 				playerDamage = 0;
 			}
 			break;
 		}
 		case SERPENT_VII_COIL: {
 			if (playerCombatScore >= 16) {
+				combatStatus.append("Serpent VII has coiled around the enemy. ");
 				serpentVIIPermDamage = true;
 			}
 			break;
@@ -373,6 +493,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		}
 		case HEDGEHOG_ANTI_AIR: {
 			if (enemyRobot.isAirborne()) {
+				combatStatus.append("Hedgehog attacking airborne target. ");
 				playerCombatScore += 3;
 			}
 			break;
@@ -384,22 +505,101 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		switch (enemyRobot.getRobotSpecialAbility()) {
 		case ENEMY_BATTLEMAN_EXTRA_DAMAGE: {
 			if (enemyCombatScore - playerCombatScore >= 4) {
-				playerDamage +=1;
+				combatStatus.append("Battleman deals an extra DP. ");
+				playerDamage += 1;
 			}
 			break;
 		}
 		case ENEMY_CRUSHER_DOUBLE_ATTACK: {
+			combatStatus.append("Crusher deals double damage. ");
 			playerDamage = 4;
 			break;
 		}
 		case ENEMY_WASP_FIGHTER_SPECIAL_ATTACK: {
 			if (enemyCombatScore - playerCombatScore > 4) {
+				combatStatus.append("Wasp Fighter deals 4 DP. ");
 				playerDamage = 4;
 			}
+			break;
+		}
+		case ENEMY_SUPERTANK_SMALL_WEAPONS: {
+			playerExtraDamage = 1;
+			combatStatus.append("Supertank deals 1 damage. ");
 			break;
 		}
 		default:
 			break;
 		}
+
+		if (serpentVIIPermDamage) {
+			combatStatus.append("Serpent VII deals 1 DP. ");
+		}
+
+		if (sonicShotAttack) {
+			combatStatus.append("Using sonic shot (");
+			if (enemyRobot.isDinosaur()) {
+				enemyExtraDamage = DiceRoller.roll2D6().getSum();
+			} else {
+				enemyExtraDamage = DiceRoller.rollD6();
+			}
+			combatStatus.append(enemyExtraDamage);
+			combatStatus.append(" DP)");
+		}
+
+		if (shovelAttack) {
+			combatStatus.append("Using shovel (6 DP) ");
+			playerCombatScore -= 2;
+			enemyDamage = 6;
+		}
+
+		if (playerExtraDamage > 0) {
+			adv.getCurrentRobot().setArmor(Math.max(adv.getCurrentRobot().getArmor() - playerExtraDamage, 0));
+			if (adv.getCurrentRobot().getArmor() == 0) {
+				combatStatus.append("You've lost your robot! ");
+				enemyRobot = null;
+				adv.destroyCurrentRobot();
+			}
+		}
+
+		if (enemyExtraDamage > 0) {
+			enemyRobot.setArmor(Math.max(enemyRobot.getArmor() - enemyExtraDamage, 0));
+			if (enemyRobot.getArmor() == 0) {
+				combatStatus.append("You've defeated the enemy! ");
+				enemyRobot = null;
+			}
+		}
+
+		if (enemyRobot.getArmor() > 0 && adv.getCurrentRobot().getArmor() > 0 && playerCombatScore > enemyCombatScore) {
+			if (parryOnlyNextTurn) {
+				combatStatus.append("You've have defended the Ankylosaurus attack. ");
+				parryOnlyNextTurn = false;
+			} else {
+				combatStatus.append("You've hit the enemy! (" + enemyDamage + " DP) ");
+				enemyRobot.setArmor(Math.max(enemyRobot.getArmor() - enemyDamage, 0));
+				if (enemyRobot.getArmor() == 0) {
+					combatStatus.append("You've defeated the enemy! ");
+					enemyRobot = null;
+				}
+			}
+		} else if (playerCombatScore < enemyCombatScore) {
+			combatStatus.append("The enemy has hit you! (" + playerDamage + " DP) ");
+			adv.getCurrentRobot().setArmor(Math.max(adv.getCurrentRobot().getArmor() - playerDamage, 0));
+			if (adv.getCurrentRobot().getArmor() == 0) {
+				combatStatus.append("You've lost your robot! ");
+				enemyRobot = null;
+				adv.destroyCurrentRobot();
+			} else {
+				if (enemyRobot.getRobotSpecialAbility().equals(RobotSpecialAbility.ENEMY_ANKYLOSAURUS_SPECIAL_ATTACK) && currentRobotLegged) {
+					combatStatus.append("The Ankylosaurus has knocked you out! ");
+					parryOnlyNextTurn = true;
+				}
+			}
+		} else if (playerCombatScore == enemyCombatScore) {
+			combatStatus.append("Both you and the enemy have missed ");
+		}
+		
+		combatResult.setText(combatStatus.toString());
+		refreshScreensFromResume();
+
 	}
 }
