@@ -56,7 +56,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 	protected LinearLayout robotCombatPrepareRow = null;
 	protected LinearLayout robotCombatButtonUpperRow = null;
 	protected LinearLayout robotCombatButtonUpperRowTransformer = null;
-	
+
 	protected LinearLayout robotCombatButtonLowerRow = null;
 	protected LinearLayout robotCombatButtonLowerRowDigger = null;
 	protected LinearLayout robotCombatButtonLowerRowSupertank = null;
@@ -124,14 +124,10 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 			@Override
 			public void onClick(View v) {
-				enemyRobot = null;
-				serpentVIIPermDamage = false;
-				enemyRoboTankPermDamage = false;
-				parryOnlyNextTurn = false;
-				currentRobotLegged = false;
-
-				refreshScreensFromResume();
+				resetCombat();
 			}
+
+			
 		};
 
 		resetRobotCombatButton.setOnClickListener(onClickListener);
@@ -265,40 +261,38 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				
+
 				EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
-				
-				if(specialAbilityValue.getText().toString().equals("400")){
+
+				if (specialAbilityValue.getText().toString().equals("400")) {
 					AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 					builder.setTitle("Ankylosaurus");
 					builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-						
+
 						@Override
 						public void onClick(DialogInterface arg0, int arg1) {
 							currentRobotLegged = true;
 							addRobotClickOk(adv, addRobotView, mgr);
-							
+
 						}
 					});
 					builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-						
+
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 							dialog.cancel();
-							
+
 						}
 					});
-					
+
 					AlertDialog alert = builder.create();
 					alert.setMessage("Does your robot have legs?");
 					alert.show();
-					
-				}else{
+
+				} else {
 					addRobotClickOk(adv, addRobotView, mgr);
 				}
-				
-				
 
 			}
 
@@ -378,20 +372,20 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			robotCombatPrepareRow.setVisibility(enemyRobot != null ? View.GONE : View.VISIBLE);
 			robotCombatButtonUpperRow.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
 			robotCombatButtonLowerRow.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
-			
-			if(adv.getCurrentRobot().getAlternateForm()!=null){
+
+			if (adv.getCurrentRobot().getAlternateForm() != null) {
 
 				robotCombatButtonUpperRow.setVisibility(View.GONE);
 				robotCombatButtonUpperRowTransformer.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
 			}
-			
-			if(adv.getCurrentRobot().getRobotSpecialAbility().equals(RobotSpecialAbility.ROBOTANK_SONIC_SHOT)){
+
+			if (adv.getCurrentRobot().getRobotSpecialAbility().equals(RobotSpecialAbility.ROBOTANK_SONIC_SHOT)) {
 
 				robotCombatButtonLowerRow.setVisibility(View.GONE);
 				robotCombatButtonLowerRowSupertank.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
 			}
-			
-			if(adv.getCurrentRobot().getRobotSpecialAbility().equals(RobotSpecialAbility.DIGGER_ROBOT_SHOVEL)){
+
+			if (adv.getCurrentRobot().getRobotSpecialAbility().equals(RobotSpecialAbility.DIGGER_ROBOT_SHOVEL)) {
 
 				robotCombatButtonLowerRow.setVisibility(View.GONE);
 				robotCombatButtonLowerRowDigger.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
@@ -400,10 +394,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			if (enemyRobot != null) {
 				if (enemyRobot.getRobotSpecialAbility() != null)
 					enemySpecialAbilityValue.setText(enemyRobot.getRobotSpecialAbility().getName());
-				armorEnemyValue.setText(enemyRobot.getArmor());
-				skillEnemyValue.setText(enemyRobot.getSkill());
-			} else {
-				combatResult.setText("");
+				armorEnemyValue.setText("" + enemyRobot.getArmor());
+				skillEnemyValue.setText("" + enemyRobot.getSkill());
 			}
 
 		} else {
@@ -461,74 +453,78 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 			enemyCombatScore++;
 		}
 
-		switch (currentRobot.getRobotSpecialAbility()) {
-		case SUPER_COWBOY_ROBOT_SONIC_SCREAM: {
-			if (enemyRobot.isDinosaur()) {
-				combatStatus.append("Super Cowboy using Sonic Scream. ");
-				enemyCombatScore--;
+		if (currentRobot.getRobotSpecialAbility() != null) {
+			switch (currentRobot.getRobotSpecialAbility()) {
+			case SUPER_COWBOY_ROBOT_SONIC_SCREAM: {
+				if (enemyRobot.isDinosaur()) {
+					combatStatus.append("Super Cowboy using Sonic Scream. ");
+					enemyCombatScore--;
+				}
+				break;
 			}
-			break;
-		}
-		case WASP_FIGHTER_SPECIAL_ATTACK: {
-			if (playerCombatScore - enemyCombatScore > 4) {
-				combatStatus.append("Wasp Fighter deals 4 DP. ");
-				enemyDamage = 4;
+			case WASP_FIGHTER_SPECIAL_ATTACK: {
+				if (playerCombatScore - enemyCombatScore > 4) {
+					combatStatus.append("Wasp Fighter deals 4 DP. ");
+					enemyDamage = 4;
+				}
+				break;
 			}
-			break;
-		}
-		case TROOPER_XI_HUMAN_SHIELD: {
-			if (playerCombatScore >= 18) {
-				combatStatus.append("Trooper XI uses shield. ");
-				playerDamage = 0;
+			case TROOPER_XI_HUMAN_SHIELD: {
+				if (playerCombatScore >= 18) {
+					combatStatus.append("Trooper XI uses shield. ");
+					playerDamage = 0;
+				}
+				break;
 			}
-			break;
-		}
-		case SERPENT_VII_COIL: {
-			if (playerCombatScore >= 16) {
-				combatStatus.append("Serpent VII has coiled around the enemy. ");
-				serpentVIIPermDamage = true;
-			}
-			break;
+			case SERPENT_VII_COIL: {
+				if (playerCombatScore >= 16) {
+					combatStatus.append("Serpent VII has coiled around the enemy. ");
+					serpentVIIPermDamage = true;
+				}
+				break;
 
-		}
-		case HEDGEHOG_ANTI_AIR: {
-			if (enemyRobot.isAirborne()) {
-				combatStatus.append("Hedgehog attacking airborne target. ");
-				playerCombatScore += 3;
 			}
-			break;
-		}
-		default:
-			break;
+			case HEDGEHOG_ANTI_AIR: {
+				if (enemyRobot.isAirborne()) {
+					combatStatus.append("Hedgehog attacking airborne target. ");
+					playerCombatScore += 3;
+				}
+				break;
+			}
+			default:
+				break;
+			}
 		}
 
-		switch (enemyRobot.getRobotSpecialAbility()) {
-		case ENEMY_BATTLEMAN_EXTRA_DAMAGE: {
-			if (enemyCombatScore - playerCombatScore >= 4) {
-				combatStatus.append("Battleman deals an extra DP. ");
-				playerDamage += 1;
+		if (enemyRobot.getRobotSpecialAbility() != null) {
+			switch (enemyRobot.getRobotSpecialAbility()) {
+			case ENEMY_BATTLEMAN_EXTRA_DAMAGE: {
+				if (enemyCombatScore - playerCombatScore >= 4) {
+					combatStatus.append("Battleman deals an extra DP. ");
+					playerDamage += 1;
+				}
+				break;
 			}
-			break;
-		}
-		case ENEMY_CRUSHER_DOUBLE_ATTACK: {
-			combatStatus.append("Crusher deals double damage. ");
-			playerDamage = 4;
-			break;
-		}
-		case ENEMY_WASP_FIGHTER_SPECIAL_ATTACK: {
-			if (enemyCombatScore - playerCombatScore > 4) {
-				combatStatus.append("Wasp Fighter deals 4 DP. ");
+			case ENEMY_CRUSHER_DOUBLE_ATTACK: {
+				combatStatus.append("Crusher deals double damage. ");
 				playerDamage = 4;
+				break;
 			}
-			break;
-		}
-		case ENEMY_SUPERTANK_SMALL_WEAPONS: {
-			playerExtraDamage = 1;
-			combatStatus.append("Supertank deals 1 damage. ");
-			break;
-		}
-		default:
-			break;
+			case ENEMY_WASP_FIGHTER_SPECIAL_ATTACK: {
+				if (enemyCombatScore - playerCombatScore > 4) {
+					combatStatus.append("Wasp Fighter deals 4 DP. ");
+					playerDamage = 4;
+				}
+				break;
+			}
+			case ENEMY_SUPERTANK_SMALL_WEAPONS: {
+				playerExtraDamage = 1;
+				combatStatus.append("Supertank deals 1 damage. ");
+				break;
+			}
+			default:
+				break;
+			}
 		}
 
 		if (serpentVIIPermDamage) {
@@ -589,7 +585,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 				enemyRobot = null;
 				adv.destroyCurrentRobot();
 			} else {
-				if (enemyRobot.getRobotSpecialAbility().equals(RobotSpecialAbility.ENEMY_ANKYLOSAURUS_SPECIAL_ATTACK) && currentRobotLegged) {
+				if (RobotSpecialAbility.ENEMY_ANKYLOSAURUS_SPECIAL_ATTACK.equals(enemyRobot.getRobotSpecialAbility()) && currentRobotLegged) {
 					combatStatus.append("The Ankylosaurus has knocked you out! ");
 					parryOnlyNextTurn = true;
 				}
@@ -597,9 +593,21 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 		} else if (playerCombatScore == enemyCombatScore) {
 			combatStatus.append("Both you and the enemy have missed ");
 		}
-		
+
 		combatResult.setText(combatStatus.toString());
 		refreshScreensFromResume();
 
+	}
+	
+	private void resetCombat() {
+		enemyRobot = null;
+		serpentVIIPermDamage = false;
+		enemyRoboTankPermDamage = false;
+		parryOnlyNextTurn = false;
+		currentRobotLegged = false;
+		
+		combatResult.setText("");
+
+		refreshScreensFromResume();
 	}
 }
