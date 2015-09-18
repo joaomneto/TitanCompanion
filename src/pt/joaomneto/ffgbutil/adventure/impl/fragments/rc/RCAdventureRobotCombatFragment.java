@@ -318,6 +318,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 				if (valid) {
 					addRobot(Integer.parseInt(armor), (RobotSpeed) speedValue.getSelectedItem(), specialAbility.length() > 0 ? Integer.parseInt(specialAbility)
 							: null, Integer.parseInt(skill), type, airborneValue.isChecked());
+					combatResult.setText("");
 				} else {
 					Adventure.showAlert("At least the name, armor and skill values must be filled.", adv);
 				}

@@ -7,9 +7,11 @@ import pt.joaomneto.ffgbutil.adventure.Adventure;
 import pt.joaomneto.ffgbutil.adventure.impl.RCAdventure;
 import pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.Robot;
 import android.content.Context;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,7 +20,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-public class RobotListAdapter extends ArrayAdapter<Robot> {
+public class RobotListAdapter extends ArrayAdapter<Robot> implements View.OnCreateContextMenuListener {
 
 	private final Context context;
 	private final List<Robot> values;
@@ -43,7 +45,8 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 		final TextView robotTextBonus = (TextView) robotView.getRootView().findViewById(R.id.robotTextBonusValue);
 		final TextView robotTextLocation = (TextView) robotView.getRootView().findViewById(R.id.robotTextLocationValue);
 		final TextView robotTextSpecialAbility = (TextView) robotView.getRootView().findViewById(R.id.robotTextSpecialAbilityValue);
-//		final Button removeRobotButton = (Button) robotView.getRootView().findViewById(R.id.removeRobotButton);
+		// final Button removeRobotButton = (Button)
+		// robotView.getRootView().findViewById(R.id.removeRobotButton);
 
 		final Robot robotPosition = values.get(position);
 
@@ -66,18 +69,18 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 
 		final RobotListAdapter adapter = this;
 
-//		removeRobotButton.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View arg0) {
-//				adv.getRobots().remove(adv.getCurrentRobot());
-//
-//				adv.setCurrentRobot(null);
-//				setCurrentRobot(null);
-//
-//				adv.fullRefresh();
-//			}
-//		});
+		// removeRobotButton.setOnClickListener(new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View arg0) {
+		// adv.getRobots().remove(adv.getCurrentRobot());
+		//
+		// adv.setCurrentRobot(null);
+		// setCurrentRobot(null);
+		//
+		// adv.fullRefresh();
+		// }
+		// });
 
 		radio.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -112,16 +115,17 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 			}
 		});
 
-		robotTextSpecialAbility.setOnClickListener(new OnClickListener() {
+		
 
+		
+		robotView.setOnLongClickListener(new OnLongClickListener() {
+			
 			@Override
-			public void onClick(View arg0) {
-				if (getCurrentRobot().getRobotSpecialAbility() != null)
-					Adventure.showAlert(adv.getCurrentRobot().getRobotSpecialAbility().getName(), adv.getCurrentRobot().getRobotSpecialAbility()
-							.getDescription(), adv);
+			public boolean onLongClick(View v) {
+				return false;
 			}
 		});
-
+		
 		return robotView;
 	}
 
@@ -131,6 +135,10 @@ public class RobotListAdapter extends ArrayAdapter<Robot> {
 
 	public void setCurrentRobot(Robot currentRobot) {
 		adv.setCurrentRobot(currentRobot);
+	}
+
+	public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+		System.out.println();
 	}
 
 }
