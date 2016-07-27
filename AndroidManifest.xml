@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="17"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="18"
+        android:targetSdkVersion="24" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -244,16 +244,16 @@
             android:label="@string/toc"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.RCAdventureCreation"
-            android:label="@string/rc"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.RCAdventure"
-            android:label="@string/rc"
-            android:screenOrientation="portrait" >
-        </activity>
+        <!--<activity-->
+            <!--android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.RCAdventureCreation"-->
+            <!--android:label="@string/rc"-->
+            <!--android:screenOrientation="portrait" >-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name="pt.joaomneto.ffgbutil.adventure.impl.RCAdventure"-->
+            <!--android:label="@string/rc"-->
+            <!--android:screenOrientation="portrait" >-->
+        <!--</activity>-->
         <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.MOMAdventureCreation"
             android:label="@string/mom"

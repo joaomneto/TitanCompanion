@@ -1,8 +1,6 @@
 package pt.joaomneto.ffgbutil;
 
-import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
-import pt.joaomneto.ffgbutil.consts.Constants;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +15,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventurecreation.AdventureCreation;
+import pt.joaomneto.ffgbutil.consts.Constants;
 
 public class GamebookSelectionActivity extends FragmentActivity {
 
@@ -160,7 +162,12 @@ public class GamebookSelectionActivity extends FragmentActivity {
 					}
 					Intent intent = new Intent(getActivity().getBaseContext(), creationActivity);
 					intent.putExtra(GAMEBOOK_ID, position);
-					startActivity(intent);
+					try {
+						startActivity(intent);
+					} catch (ActivityNotFoundException e) {
+						Adventure.showAlert("Sorry,  this gamebook is not implemented yet!", GamebookSelectionFragment.this.getActivity());
+						e.printStackTrace();
+					}
 
 				}
 			});

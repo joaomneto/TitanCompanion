@@ -16,9 +16,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
@@ -87,7 +89,7 @@ public abstract class Adventure extends FragmentActivity {
 	String name = null;
 	Properties savedGame;
 
-	Set<Fragment> fragments = new HashSet<Fragment>();
+	Map<Integer, Fragment> fragments = new HashMap<Integer, Fragment>();
 
 	protected static final int FRAGMENT_VITAL_STATS = 0;
 	protected static final int FRAGMENT_COMBAT = 1;
@@ -216,7 +218,7 @@ public abstract class Adventure extends FragmentActivity {
 	}
 
 	private AdventureVitalStatsFragment getVitalStatsFragment() {
-		AdventureVitalStatsFragment adventureVitalStatsFragment = (AdventureVitalStatsFragment) getSupportFragmentManager().getFragments().get(
+		AdventureVitalStatsFragment adventureVitalStatsFragment = (AdventureVitalStatsFragment) getFragments().get(
 				FRAGMENT_VITAL_STATS);
 		return adventureVitalStatsFragment;
 	}
@@ -295,7 +297,7 @@ public abstract class Adventure extends FragmentActivity {
 
 			try {
 				Fragment o = (Fragment) Class.forName(fragmentConfiguration.get(position).getClassName()).newInstance();
-				fragments.add(o);
+				fragments.put(position, o);
 				return o;
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -764,7 +766,7 @@ public abstract class Adventure extends FragmentActivity {
 
 	public void refreshScreens() {
 
-		List<Fragment> afList = getSupportFragmentManager().getFragments();
+		Collection<Fragment> afList = getFragments().values();
 
 		for (Fragment fragment : afList) {
 			AdventureFragment af = (AdventureFragment) fragment;
@@ -831,18 +833,18 @@ public abstract class Adventure extends FragmentActivity {
 	}
 
 	public void fullRefresh() {
-		for (Fragment fragment : getFragments()) {
+		for (Fragment fragment : getFragments().values()) {
 			AdventureFragment frag = (AdventureFragment) fragment;
 			frag.refreshScreensFromResume();
 		}
 
 	}
 
-	public Set<Fragment> getFragments() {
+	public Map<Integer, Fragment> getFragments() {
 		return fragments;
 	}
 
-	public void setFragments(Set<Fragment> fragments) {
+	public void setFragments(Map<Integer, Fragment> fragments) {
 		this.fragments = fragments;
 	}
 

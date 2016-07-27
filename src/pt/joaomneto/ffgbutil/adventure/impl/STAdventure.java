@@ -698,7 +698,7 @@ public class STAdventure extends Adventure {
 	}
 
 	private STCrewStatsFragment getSTCrewStatsFragment() {
-		STCrewStatsFragment stcrewStatsFragment = (STCrewStatsFragment) getSupportFragmentManager().getFragments().get(
+		STCrewStatsFragment stcrewStatsFragment = (STCrewStatsFragment) getFragments().get(
 				FRAGMENT_CREW_STATS);
 		return stcrewStatsFragment;
 	}

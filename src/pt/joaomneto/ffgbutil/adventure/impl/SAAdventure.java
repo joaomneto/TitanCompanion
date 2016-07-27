@@ -84,7 +84,7 @@ public class SAAdventure extends Adventure {
 	}
 
 	public SAAdventureWeaponsFragment getVitalStatsFragment() {
-		SAAdventureWeaponsFragment frag = (SAAdventureWeaponsFragment) getSupportFragmentManager().getFragments().get(FRAGMENT_WEAPONS);
+		SAAdventureWeaponsFragment frag = (SAAdventureWeaponsFragment) getFragments().get(FRAGMENT_WEAPONS);
 		return frag;
 	}
 
