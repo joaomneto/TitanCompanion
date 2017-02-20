@@ -147,6 +147,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 
 	public void saveAdventure(View view) {
 		try {
+
 			EditText et = (EditText) findViewById(R.id.adventureNameInput);
 
 			String relDir = "save_"+Constants.getActivityPrefix(this, gamebook)+"_"

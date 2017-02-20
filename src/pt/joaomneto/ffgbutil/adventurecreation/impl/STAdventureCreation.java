@@ -12,7 +12,7 @@ import android.view.View;
 
 public class STAdventureCreation extends AdventureCreation {
 
-	private final static int FRAGMENT_ST_SHIPCREW = 1;
+	private final static int FRAGMENT_ST_SHIPCREW = 0;
 	
 	private int scienceOfficerSkill = -1;
 	private int medicalOfficerSkill = -1;
