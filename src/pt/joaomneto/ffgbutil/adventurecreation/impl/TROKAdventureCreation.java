@@ -41,8 +41,7 @@ public class TROKAdventureCreation extends AdventureCreation {
 	}
 	
 	private TROKVitalStatisticsFragment getTROKVitalStatisticsFragment() {
-		TROKVitalStatisticsFragment trokVitalStatsFragment = (TROKVitalStatisticsFragment) getSupportFragmentManager()
-				.getFragments().get(0);
+		TROKVitalStatisticsFragment trokVitalStatsFragment = (TROKVitalStatisticsFragment) getFragments().get(0);
 		return trokVitalStatsFragment;
 	}
 	

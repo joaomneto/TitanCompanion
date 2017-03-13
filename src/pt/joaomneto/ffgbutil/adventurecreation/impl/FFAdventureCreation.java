@@ -45,8 +45,7 @@ public class FFAdventureCreation extends AdventureCreation {
 	}
 	
 	private FFVitalStatisticsFragment getFFVitalStatsFragment() {
-		FFVitalStatisticsFragment ffVitalStatsFragment = (FFVitalStatisticsFragment) getSupportFragmentManager()
-				.getFragments().get(0);
+		FFVitalStatisticsFragment ffVitalStatsFragment = (FFVitalStatisticsFragment) getFragments().get(0);
 		return ffVitalStatsFragment;
 	}
 	

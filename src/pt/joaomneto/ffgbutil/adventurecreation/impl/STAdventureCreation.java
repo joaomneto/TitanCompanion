@@ -12,7 +12,7 @@ import android.view.View;
 
 public class STAdventureCreation extends AdventureCreation {
 
-	private final static int FRAGMENT_ST_SHIPCREW = 0;
+	private final static int FRAGMENT_ST_SHIPCREW = 1;
 	
 	private int scienceOfficerSkill = -1;
 	private int medicalOfficerSkill = -1;
@@ -36,7 +36,7 @@ public class STAdventureCreation extends AdventureCreation {
 		fragmentConfiguration.put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(
+		fragmentConfiguration.put(FRAGMENT_ST_SHIPCREW, new AdventureFragmentRunner(
 				R.string.shipCrewStats,
 				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment"));
 
@@ -79,8 +79,7 @@ public class STAdventureCreation extends AdventureCreation {
 	}
 	
 	private STCrewAndShipVitalStatisticsFragment getSTCrewAndShipVitalStatisticsFragment() {
-		STCrewAndShipVitalStatisticsFragment stCrewAndShipVitalStatisticsFragment = (STCrewAndShipVitalStatisticsFragment) getSupportFragmentManager()
-				.getFragments().get(FRAGMENT_ST_SHIPCREW);
+		STCrewAndShipVitalStatisticsFragment stCrewAndShipVitalStatisticsFragment = (STCrewAndShipVitalStatisticsFragment) getFragments().get(FRAGMENT_ST_SHIPCREW);
 		return stCrewAndShipVitalStatisticsFragment;
 	}
 

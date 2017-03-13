@@ -4,7 +4,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import pt.joaomneto.ffgbutil.GamebookSelectionActivity;
 import pt.joaomneto.ffgbutil.LoadAdventureActivity;
@@ -52,6 +54,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 	protected int gamebook = -1;
 
 	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
+	final private static Map<Integer, Fragment> fragments = new HashMap<>();
 
 	public AdventureCreation() {
 		super();
@@ -103,8 +106,11 @@ public abstract class AdventureCreation extends FragmentActivity {
 			try {
 				Class<Fragment> fragmentClass;
 				fragmentClass = (Class<Fragment>) Class.forName(fragmentConfiguration.get(position).getClassName());
+				Fragment fragment = fragmentClass.newInstance();
 
-				return fragmentClass.newInstance();
+				fragments.put(position, fragment);
+
+				return fragment;
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
@@ -206,4 +212,8 @@ public abstract class AdventureCreation extends FragmentActivity {
 		alert.show();
 	}
 
+
+    public static Map<Integer, Fragment> getFragments() {
+        return fragments;
+    }
 }
