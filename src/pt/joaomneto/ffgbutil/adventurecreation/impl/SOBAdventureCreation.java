@@ -40,8 +40,7 @@ public class SOBAdventureCreation extends AdventureCreation {
 	}
 	
 	private SOBVitalStatisticsFragment getSOBVitalStatisticsFragment() {
-		SOBVitalStatisticsFragment sobVitalStatisticsFragment = (SOBVitalStatisticsFragment) getSupportFragmentManager()
-				.getFragments().get(0);
+		SOBVitalStatisticsFragment sobVitalStatisticsFragment = (SOBVitalStatisticsFragment) getFragments().get(0);
 		return sobVitalStatisticsFragment;
 	}
 	

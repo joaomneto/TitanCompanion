@@ -15,7 +15,7 @@ import android.view.View;
 public class TCOCAdventureCreation extends AdventureCreation {
 
 	private final static int FRAGMENT_TCOC_SPELLS = 1;
-	
+
 	private int spellValue = -1;
 	List<String> spells = new ArrayList<String>();
 	
@@ -25,7 +25,7 @@ public class TCOCAdventureCreation extends AdventureCreation {
 		fragmentConfiguration.put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(
+		fragmentConfiguration.put(FRAGMENT_TCOC_SPELLS, new AdventureFragmentRunner(
 				R.string.spells,
 				"pt.joaomneto.ffgbutil.adventurecreation.impl.fragments.tcoc.TCOCAdventureCreationSpellsFragment"));
 
@@ -50,8 +50,7 @@ public class TCOCAdventureCreation extends AdventureCreation {
 	}
 	
 	private TCOCAdventureCreationSpellsFragment getTCOCSpellsFragment() {
-		TCOCAdventureCreationSpellsFragment tcocSpellsFragment = (TCOCAdventureCreationSpellsFragment) getSupportFragmentManager()
-				.getFragments().get(FRAGMENT_TCOC_SPELLS);
+		TCOCAdventureCreationSpellsFragment tcocSpellsFragment = (TCOCAdventureCreationSpellsFragment) getFragments().get(FRAGMENT_TCOC_SPELLS);
 		return tcocSpellsFragment;
 	}
 

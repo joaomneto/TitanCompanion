@@ -33,8 +33,7 @@ public class HOHAdventureCreation extends AdventureCreation {
 	}
 	
 	private HOHVitalStatisticsFragment getHOHVitalStatisticsFragment() {
-		HOHVitalStatisticsFragment hohvitalStatisticsFragment = (HOHVitalStatisticsFragment) getSupportFragmentManager()
-				.getFragments().get(0);
+		HOHVitalStatisticsFragment hohvitalStatisticsFragment = (HOHVitalStatisticsFragment) getFragments().get(0);
 		return hohvitalStatisticsFragment;
 	}
 

@@ -53,14 +53,12 @@ public class SAAdventureCreation extends AdventureCreation {
 	}
 	
 	private SAVitalStatisticsFragment getSAVitalStatisticsFragmentt() {
-		SAVitalStatisticsFragment saVitalStatisticsFragment = (SAVitalStatisticsFragment) getSupportFragmentManager()
-				.getFragments().get(0);
+		SAVitalStatisticsFragment saVitalStatisticsFragment = (SAVitalStatisticsFragment) getFragments().get(0);
 		return saVitalStatisticsFragment;
 	}
 	
 	private SAWeaponsFragment getSAWeaponsFragment() {
-		SAWeaponsFragment saWeaponsFragment = (SAWeaponsFragment) getSupportFragmentManager()
-				.getFragments().get(1);
+		SAWeaponsFragment saWeaponsFragment = (SAWeaponsFragment) getFragments().get(1);
 		return saWeaponsFragment;
 	}
 
