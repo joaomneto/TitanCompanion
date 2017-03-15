@@ -1,5 +1,3 @@
-//Comment MIGUEL
-
 buildscript {
     repositories {
         jcenter()
