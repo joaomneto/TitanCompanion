@@ -22,7 +22,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
             android:id="@+id/skillCombatValue"
@@ -32,7 +32,7 @@
             android:layout_alignTop="@+id/textField1"
             android:layout_toRightOf="@+id/textField1"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
             android:id="@+id/bonusCombatValue"
@@ -42,7 +42,7 @@
             android:layout_alignTop="@+id/textField21"
             android:layout_toRightOf="@+id/textField21"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
             android:id="@+id/robotSpecialAbilityValue"
@@ -52,7 +52,7 @@
             android:layout_alignTop="@+id/textField22"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/textField22"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <Button
             android:id="@+id/minusArmorButton"
@@ -73,7 +73,7 @@
             android:layout_alignTop="@+id/plusArmorButton"
             android:layout_toLeftOf="@+id/plusArmorButton"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <Button
             android:id="@+id/plusArmorButton"
@@ -94,7 +94,7 @@
             android:layout_below="@+id/textField1"
             android:layout_marginTop="10dp"
             android:text="@string/robotSpecialAbility"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold" />
 
         <TextView
@@ -105,7 +105,7 @@
             android:layout_below="@+id/nameCombatValue"
             android:gravity="center"
             android:text="@string/armor"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold" />
 
         <TextView
@@ -117,7 +117,7 @@
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@string/skill"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold" />
 
         <TextView
@@ -129,7 +129,7 @@
             android:layout_toLeftOf="@+id/armorCombatValue"
             android:gravity="center"
             android:text="@string/robotBonus"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold" />
 
         <RelativeLayout
@@ -164,7 +164,7 @@
                 android:layout_alignTop="@+id/plusEnemyArmorButton"
                 android:layout_toLeftOf="@+id/plusEnemyArmorButton"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <Button
                 android:id="@+id/plusEnemyArmorButton"
@@ -185,7 +185,7 @@
                 android:layout_alignTop="@+id/textField212"
                 android:layout_toRightOf="@+id/textField212"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/enemySpecialAbilityValue"
@@ -195,7 +195,7 @@
                 android:layout_alignTop="@+id/textField221"
                 android:layout_toRightOf="@+id/textField221"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/textField221"
@@ -205,7 +205,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/robotSpecialAbility"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold" />
 
             <TextView
@@ -217,7 +217,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:text="@string/enemyRobot"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold" />
 
             <TextView
@@ -228,7 +228,7 @@
                 android:layout_below="@+id/textField4"
                 android:gravity="center"
                 android:text="@string/armor"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold" />
 
             <TextView
@@ -240,7 +240,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/skill"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold" />
 
             <TextView
@@ -251,7 +251,7 @@
                 android:layout_alignLeft="@+id/minusEnemyArmorButton"
                 android:gravity="center"
                 android:text="@string/robotBonus"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold" />
 
             <TextView
@@ -262,7 +262,7 @@
                 android:layout_alignBottom="@+id/textField5"
                 android:layout_toRightOf="@+id/textField5"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </RelativeLayout>
     </RelativeLayout>
     
@@ -311,7 +311,7 @@
         android:layout_below="@id/combatRolls"
         android:lines="3"
         android:maxLines="3"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <LinearLayout
         android:id="@+id/robotCombatButtons"
@@ -396,7 +396,7 @@
             android:id="@+id/robotCombatButtonLowerRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/robotCombatTurn"
@@ -410,14 +410,14 @@
             android:id="@+id/robotCombatButtonLowerRowDigger"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" 
-            android:visibility="gone" >
+            android:orientation="horizontal"
+             android:visibility="gone">
 
             <Button
                 android:id="@+id/robotCombatTurn2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1.13"
                 android:text="@string/combatTurn" />
             
              <Button
@@ -432,14 +432,14 @@
             android:id="@+id/robotCombatButtonLowerRowSuperTank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" 
-            android:visibility="gone">
+            android:orientation="horizontal"
+              android:visibility="gone">
 
             <Button
                 android:id="@+id/robotCombatTurn3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1.14"
                 android:text="@string/combatTurn" />
             
              <Button

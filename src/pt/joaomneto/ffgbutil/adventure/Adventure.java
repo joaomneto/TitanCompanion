@@ -409,7 +409,7 @@ public abstract class Adventure extends FragmentActivity {
 		final EditText input = new EditText(this);
 		final InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-		input.setInputType(InputType.TYPE_CLASS_NUMBER);
+		input.setInputType(InputType.TYPE_CLASS_PHONE);
 		input.requestFocus();
 		alert.setView(input);
 

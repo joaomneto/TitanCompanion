@@ -244,16 +244,16 @@
             android:label="@string/toc"
             android:screenOrientation="portrait" >
         </activity>
-        <!--<activity-->
-            <!--android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.RCAdventureCreation"-->
-            <!--android:label="@string/rc"-->
-            <!--android:screenOrientation="portrait" >-->
-        <!--</activity>-->
-        <!--<activity-->
-            <!--android:name="pt.joaomneto.ffgbutil.adventure.impl.RCAdventure"-->
-            <!--android:label="@string/rc"-->
-            <!--android:screenOrientation="portrait" >-->
-        <!--</activity>-->
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.RCAdventureCreation"
+            android:label="@string/rc"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.ffgbutil.adventure.impl.RCAdventure"
+            android:label="@string/rc"
+            android:screenOrientation="portrait" >
+        </activity>
         <activity
             android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.MOMAdventureCreation"
             android:label="@string/mom"

@@ -29,7 +29,7 @@ public class RCAdventure extends TFODAdventure {
 	private static int fragIndex = 0;
 	
 //	private static final int FRAGMENT_ROBOTS = fragIndex++;
-//	private static final int FRAGMENT_ROBOTCOMBAT = fragIndex++;
+	public static final int FRAGMENT_ROBOTCOMBAT = 1;
 //	private static final int FRAGMENT_COMBAT = fragIndex++;
 //	private static final int FRAGMENT_EQUIPMENT = fragIndex++;
 //	private static final int FRAGMENT_NOTES = fragIndex++;
@@ -76,7 +76,9 @@ public class RCAdventure extends TFODAdventure {
 			robotsS += name + "§" + location + "§" + speed.name() + "§" + armor + "§" + ability + "§" + r.getBonus() + "§" + alternateName + "§" + r.isActive()
 					+ "#";
 		}
-		robotsS = robotsS.substring(0, robotsS.length() - 1);
+		if (robots.size()>0) {
+			robotsS = robotsS.substring(0, robotsS.length() - 1);
+		}
 
 		bw.write("standardPotion=" + getStandardPotion() + "\n");
 		bw.write("robots=" + robotsS + "\n");
