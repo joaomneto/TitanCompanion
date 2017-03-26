@@ -21,16 +21,16 @@
             android:layout_height="20dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:text="@string/bvp"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/skillCombatValue"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textField1"
-            android:layout_alignTop="@+id/textField1"
-            android:layout_toRightOf="@+id/textField1"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -38,9 +38,9 @@
             android:id="@+id/bonusCombatValue"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textField21"
-            android:layout_alignTop="@+id/textField21"
-            android:layout_toRightOf="@+id/textField21"
+            android:layout_alignBottom="@+id/bonusLabel"
+            android:layout_alignTop="@+id/bonusLabel"
+            android:layout_toRightOf="@+id/bonusLabel"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -49,58 +49,58 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/textField22"
+            android:layout_alignTop="@+id/specialAbilityLabel"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/textField22"
+            android:layout_toRightOf="@+id/specialAbilityLabel"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <Button
             android:id="@+id/minusArmorButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textField2"
-            android:layout_alignTop="@+id/plusArmorButton"
-            android:layout_toLeftOf="@+id/armorCombatValue"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:gravity="center"
             android:padding="0dp"
-            android:text="@string/minus" />
+            android:text="@string/minus"
+            android:layout_alignTop="@+id/armorLabel"
+            android:layout_alignBottom="@+id/armorLabel"
+            android:layout_toEndOf="@+id/armorLabel" />
 
         <TextView
             android:id="@+id/armorCombatValue"
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/plusArmorButton"
-            android:layout_alignTop="@+id/plusArmorButton"
-            android:layout_toLeftOf="@+id/plusArmorButton"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_alignTop="@+id/armorLabel"
+            android:layout_alignBottom="@+id/armorLabel"
+            android:layout_toEndOf="@+id/minusArmorButton" />
 
         <Button
             android:id="@+id/plusArmorButton"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="20dp"
-            android:layout_alignBottom="@+id/textField2"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/textField2"
             android:gravity="center"
             android:padding="0dp"
-            android:text="@string/plus" />
+            android:text="@string/plus"
+            android:layout_below="@+id/nameCombatValue"
+            android:layout_toEndOf="@+id/armorCombatValue"
+            android:layout_alignBottom="@+id/minusArmorButton" />
 
         <TextView
-            android:id="@+id/textField22"
+            android:id="@+id/specialAbilityLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/textField1"
+            android:layout_below="@+id/skillLabel"
             android:layout_marginTop="10dp"
             android:text="@string/robotSpecialAbility"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textField2"
+            android:id="@+id/armorLabel"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/nameCombatValue"
             android:gravity="center"
@@ -109,28 +109,39 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textField1"
+            android:id="@+id/skillLabel"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/textField2"
-            android:layout_marginTop="16dp"
+            android:layout_height="35dp"
             android:gravity="center"
             android:text="@string/skill"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_alignBottom="@id/armorLabel"
+            android:layout_alignTop="@id/armorLabel"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/plusArmorButton"/>
 
         <TextView
-            android:id="@+id/textField21"
+            android:id="@+id/skillValue"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/armorLabel"
+            android:layout_alignTop="@id/armorLabel"
+            android:layout_toRightOf="@id/skillLabel"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/bonusLabel"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:layout_alignBaseline="@+id/skillCombatValue"
-            android:layout_alignBottom="@+id/skillCombatValue"
-            android:layout_toLeftOf="@+id/armorCombatValue"
             android:gravity="center"
             android:text="@string/robotBonus"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_alignBottom="@id/armorLabel"
+            android:layout_alignTop="@id/armorLabel"
+            android:layout_toRightOf="@id/skillValue" />
 
         <RelativeLayout
             android:id="@+id/enemyRobot"
