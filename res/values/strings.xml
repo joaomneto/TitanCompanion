@@ -813,6 +813,7 @@
     <string name="diceRoll">Dice Roll</string>
     <string name="yourRobot">Your Robot</string>
     <string name="enemyRobot">Enemy Robot</string>
+    <string name="enemyRobot2">Enemy Robot 2</string>
     <string name="changeRobotForm">Change Form</string>
     <string name="type">Type :</string>
     <string name="airborne">Airborne :</string>
