@@ -800,6 +800,7 @@
     <string name="robotSpeed">Speed: </string>
     <string name="robotBonus">Bonus: </string>
     <string name="robotSpecialAbility">Special Ability: </string>
+    <string name="robotSpecialAbilityInput">Special Ability (Reference): </string>
     <string name="robotAltArmor">Alternate Armor: </string>
     <string name="robotAltSpeed">Alternate Speed: </string>
     <string name="robotAltBonus">Alternate Bonus: </string>
@@ -817,6 +818,7 @@
     <string name="changeRobotForm">Change Form</string>
     <string name="type">Type :</string>
     <string name="airborne">Airborne :</string>
+    <string name="secondEnemy">Second Enemy? :</string>
     <string name="useShovel">Use Shovel</string>
     <string name="sonicShot">Sonic Shot</string>
 
