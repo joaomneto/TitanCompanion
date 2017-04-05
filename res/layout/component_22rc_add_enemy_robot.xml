@@ -4,6 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
+    <!--
     <EditText
         android:id="@+id/addEnemyRobot_armorCombatantValue"
         android:layout_width="75dp"
@@ -102,7 +103,6 @@
             android:layout_toRightOf="@id/addEnemyRobot_speedValue"
             android:layout_alignBottom="@id/speedText"
             android:layout_alignTop="@id/speedText"/>
-    <!--
            <EditText
                android:id="@+id/addEnemyRobot_specialAbilityValue"
                android:layout_width="75dp"
