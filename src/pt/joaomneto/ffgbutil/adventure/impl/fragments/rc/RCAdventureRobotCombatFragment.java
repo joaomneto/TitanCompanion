@@ -344,10 +344,10 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                 mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 
                 EditText armorValue = (EditText) addRobotView.findViewById(R.id.armorValue);
-                CheckBox airborneValue = (CheckBox) addRobotView.findViewById(R.id.airborneValue);
-                EditText skillValue = (EditText) addRobotView.findViewById(R.id.skillValue);
+                CheckBox airborneValue = null;//(CheckBox) addRobotView.findViewById(R.id.airborneValue);
+                EditText skillValue = null;//(EditText) addRobotView.findViewById(R.id.skillValue);
                 Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.speedValue);
-                Spinner typeValue = (Spinner) addRobotView.findViewById(R.id.typeValue);
+                Spinner typeValue  = null;//(Spinner) addRobotView.findViewById(R.id.typeValue);
                 EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
 
                 speedValue.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
