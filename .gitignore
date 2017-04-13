@@ -1,6 +1,10 @@
 /.project
 /.idea/
+/.gradle/
 /gen/
+/build/
+gradle*
+local.properties
 FFCompanion.iml
 FFGBUtil.iml
 lint.xml
