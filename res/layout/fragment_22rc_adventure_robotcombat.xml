@@ -243,31 +243,6 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:id="@+id/bonusEnemyLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:gravity="center"
-                android:text="@string/robotBonus"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textStyle="bold"
-                android:layout_alignBottom="@id/armorEnemyLabel"
-                android:layout_alignTop="@id/armorEnemyLabel"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/enemySkillValue" />
-
-
-
-
-            <TextView
-                android:id="@+id/enemyBonusValue"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/bonusEnemyLabel"
-                android:layout_alignTop="@+id/bonusEnemyLabel"
-                android:layout_toRightOf="@+id/bonusEnemyLabel"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/enemySpecialAbilityValue"
@@ -319,7 +294,7 @@
                 android:layout_toEndOf="@+id/armorEnemy2Label" />
 
             <TextView
-                android:id="@+id/Enemy2ArmorValue"
+                android:id="@+id/enemy2ArmorValue"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -335,20 +310,9 @@
                 android:gravity="center"
                 android:padding="0dp"
                 android:text="@string/plus"
-                android:layout_toEndOf="@+id/Enemy2ArmorValue"
+                android:layout_toEndOf="@+id/enemy2ArmorValue"
                 android:layout_alignBottom="@+id/minusEnemy2ArmorButton"
-                android:layout_alignTop="@+id/Enemy2ArmorValue" />
-
-            <TextView
-                android:id="@+id/specialAbilityEnemy2Label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/skillEnemy2Label"
-                android:layout_marginTop="10dp"
-                android:text="@string/robotSpecialAbility"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textStyle="bold" />
+                android:layout_alignTop="@+id/enemy2ArmorValue" />
 
             <TextView
                 android:id="@+id/armorEnemy2Label"
@@ -375,7 +339,7 @@
                 android:layout_toRightOf="@id/plusEnemy2ArmorButton"/>
 
             <TextView
-                android:id="@+id/Enemy2SkillValue"
+                android:id="@+id/enemy2SkillValue"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/armorEnemy2Label"
@@ -383,45 +347,6 @@
                 android:layout_toRightOf="@id/skillEnemy2Label"
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            <TextView
-                android:id="@+id/bonusEnemy2Label"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:gravity="center"
-                android:text="@string/robotBonus"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textStyle="bold"
-                android:layout_alignBottom="@id/armorEnemy2Label"
-                android:layout_alignTop="@id/armorEnemy2Label"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/Enemy2SkillValue" />
-
-
-
-
-            <TextView
-                android:id="@+id/Enemy2BonusValue"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/bonusEnemy2Label"
-                android:layout_alignTop="@+id/bonusEnemy2Label"
-                android:layout_toRightOf="@+id/bonusEnemy2Label"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            <TextView
-                android:id="@+id/Enemy2SpecialAbilityValue"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignTop="@+id/specialAbilityEnemy2Label"
-                android:layout_toRightOf="@+id/specialAbilityEnemy2Label"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-
-
 
 
         </RelativeLayout>

@@ -50,6 +50,10 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
     protected TextView armorEnemyValue = null;
     protected TextView skillEnemyValue = null;
 
+
+    protected TextView armorEnemy2Value = null;
+    protected TextView skillEnemy2Value = null;
+
     protected Button minusArmorButton = null;
     protected Button plusArmorButton = null;
     protected Button minusEnemyArmorButton = null;
@@ -112,6 +116,10 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         armorEnemyValue = (TextView) rootView.findViewById(R.id.enemyArmorValue);
         skillEnemyValue = (TextView) rootView.findViewById(R.id.enemySkillValue);
+
+
+        armorEnemy2Value = (TextView) rootView.findViewById(R.id.enemy2ArmorValue);
+        skillEnemy2Value = (TextView) rootView.findViewById(R.id.enemy2SkillValue);
 
         minusArmorButton = (Button) rootView.findViewById(R.id.minusArmorButton);
         plusArmorButton = (Button) rootView.findViewById(R.id.plusArmorButton);
@@ -320,7 +328,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
-                EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
+                EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.addEnemyRobot_specialAbilityValue);
 
                 if (specialAbilityValue.getText().toString().equals("400")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(adv);
@@ -369,7 +377,6 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                 EditText skillValue2 = (EditText) addRobotView.findViewById(R.id.addEnemyRobot2_skillValue);
                 Spinner speedValue2 = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot2_speedValue);
                 Spinner typeValue2  = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot2_typeValue);
-                EditText specialAbilityValue2 = (EditText) addRobotView.findViewById(R.id.addEnemyRobot2_specialAbilityValue);
 
                 speedValue.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
                 speedValue2.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
@@ -382,7 +389,6 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
                 String armor2 = armorValue2.getText().toString();
                 String skill2 = skillValue2.getText().toString();
-                String specialAbility2 = specialAbilityValue2.getText().toString();
                 String type2 = (String) typeValue2.getSelectedItem();
 
                 boolean valid = armor.length() > 0 && skill.length() > 0 && type.length() > 0 && armor2.length() > 0 && skill2.length() > 0 && type2.length() > 0;
@@ -391,8 +397,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                     addRobot(Integer.parseInt(armor), (RobotSpeed) speedValue.getSelectedItem(), specialAbility.length() > 0 ? Integer.parseInt(specialAbility)
                             : null, Integer.parseInt(skill), type, airborneValue.isChecked(), false);
                     if(secondEnemy.isChecked()){
-                        addRobot(Integer.parseInt(armor2), (RobotSpeed) speedValue2.getSelectedItem(), specialAbility2.length() > 0 ? Integer.parseInt(specialAbility2)
-                                : null, Integer.parseInt(skill2), type, airborneValue2.isChecked(), true);
+                        addRobot(Integer.parseInt(armor2), (RobotSpeed) speedValue2.getSelectedItem(), null, Integer.parseInt(skill2), type, airborneValue2.isChecked(), true);
                     }
                     combatResult.setText("");
                 } else {
@@ -404,7 +409,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         AlertDialog alert = builder.create();
 
-        Spinner speed = (Spinner) addRobotView.findViewById(R.id.speedValue);
+        Spinner speed = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot_speedValue);
 
         alert.setView(addRobotView);
 
@@ -478,6 +483,12 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                     enemySpecialAbilityValue.setText(enemyRobot.getRobotSpecialAbility().getName());
                 armorEnemyValue.setText("" + enemyRobot.getArmor());
                 skillEnemyValue.setText("" + enemyRobot.getSkill());
+            }
+
+
+            if (enemyRobot2 != null) {
+                armorEnemy2Value.setText("" + enemyRobot2.getArmor());
+                skillEnemy2Value.setText("" + enemyRobot2.getSkill());
             }
 
         } else {
