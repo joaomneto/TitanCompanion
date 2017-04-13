@@ -4,9 +4,10 @@
 /gradle/
 /gen/
 /build/
-gradlew*
+gradle*
+local.properties
 FFCompanion.iml
 FFGBUtil.iml
+lint.xml
 proguard-project.txt
 project.properties
-lint.xml

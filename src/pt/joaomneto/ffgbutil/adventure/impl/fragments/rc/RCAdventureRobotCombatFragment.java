@@ -294,6 +294,20 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
+        final CheckBox secondEnemy = (CheckBox) addRobotView.findViewById(R.id.addEnemyRobot_secondEnemyValue);
+        final View secondEnemyLayout = (View) addRobotView.findViewById(R.id.addEnemyRobot_adventureVitalStats2);
+
+        secondEnemy.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(secondEnemy.isChecked()){
+                    secondEnemyLayout.setVisibility(View.VISIBLE);
+                }else{
+                    secondEnemyLayout.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
         AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
         builder.setTitle("Add Enemy Robot").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -343,25 +357,43 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             private void addRobotClickOk(final RCAdventure adv, final View addRobotView, final InputMethodManager mgr) {
                 mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 
-                EditText armorValue = (EditText) addRobotView.findViewById(R.id.armorValue);
-                CheckBox airborneValue = null;//(CheckBox) addRobotView.findViewById(R.id.airborneValue);
-                EditText skillValue = null;//(EditText) addRobotView.findViewById(R.id.skillValue);
-                Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.speedValue);
-                Spinner typeValue  = null;//(Spinner) addRobotView.findViewById(R.id.typeValue);
-                EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
+                EditText armorValue = (EditText) addRobotView.findViewById(R.id.addEnemyRobot_armorValue);
+                CheckBox airborneValue = (CheckBox) addRobotView.findViewById(R.id.addEnemyRobot_airborneValue);
+                EditText skillValue = (EditText) addRobotView.findViewById(R.id.addEnemyRobot_skillValue);
+                Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot_speedValue);
+                Spinner typeValue  = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot_typeValue);
+                EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.addEnemyRobot_specialAbilityValue);
+
+                EditText armorValue2 = (EditText) addRobotView.findViewById(R.id.addEnemyRobot2_armorValue);
+                CheckBox airborneValue2 = (CheckBox) addRobotView.findViewById(R.id.addEnemyRobot2_airborneValue);
+                EditText skillValue2 = (EditText) addRobotView.findViewById(R.id.addEnemyRobot2_skillValue);
+                Spinner speedValue2 = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot2_speedValue);
+                Spinner typeValue2  = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot2_typeValue);
+                EditText specialAbilityValue2 = (EditText) addRobotView.findViewById(R.id.addEnemyRobot2_specialAbilityValue);
 
                 speedValue.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
+                speedValue2.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
 
                 String armor = armorValue.getText().toString();
                 String skill = skillValue.getText().toString();
                 String specialAbility = specialAbilityValue.getText().toString();
                 String type = (String) typeValue.getSelectedItem();
 
-                boolean valid = armor.length() > 0 && skill.length() > 0 && type.length() > 0;
+
+                String armor2 = armorValue2.getText().toString();
+                String skill2 = skillValue2.getText().toString();
+                String specialAbility2 = specialAbilityValue2.getText().toString();
+                String type2 = (String) typeValue2.getSelectedItem();
+
+                boolean valid = armor.length() > 0 && skill.length() > 0 && type.length() > 0 && armor2.length() > 0 && skill2.length() > 0 && type2.length() > 0;
 
                 if (valid) {
                     addRobot(Integer.parseInt(armor), (RobotSpeed) speedValue.getSelectedItem(), specialAbility.length() > 0 ? Integer.parseInt(specialAbility)
-                            : null, Integer.parseInt(skill), type, airborneValue.isChecked());
+                            : null, Integer.parseInt(skill), type, airborneValue.isChecked(), false);
+                    if(secondEnemy.isChecked()){
+                        addRobot(Integer.parseInt(armor2), (RobotSpeed) speedValue2.getSelectedItem(), specialAbility2.length() > 0 ? Integer.parseInt(specialAbility2)
+                                : null, Integer.parseInt(skill2), type, airborneValue2.isChecked(), true);
+                    }
                     combatResult.setText("");
                 } else {
                     Adventure.showAlert("At least the name, armor and skill values must be filled.", adv);
@@ -382,7 +414,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         alert.show();
     }
 
-    protected void addRobot(Integer armor, RobotSpeed speed, Integer specialAbility, Integer skill, String type, boolean airborne) {
+    protected void addRobot(Integer armor, RobotSpeed speed, Integer specialAbility, Integer skill, String type, boolean airborne, boolean secondEnemy) {
 
         RobotSpecialAbility abilityByReference = RobotSpecialAbility.getAbiliyByReference(specialAbility);
 
@@ -394,7 +426,11 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             robotPosition.setDinosaur(true);
         }
 
-        setEnemyRobot(robotPosition);
+        if(secondEnemy) {
+            setEnemyRobot(robotPosition);
+        }else{
+            setEnemyRobot2(robotPosition);
+        }
         refreshScreensFromResume();
     }
 

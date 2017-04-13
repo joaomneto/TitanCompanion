@@ -8,50 +8,44 @@
         android:id="@+id/addEnemyRobot_enemyRobotText"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:gravity="center_vertical"
-        android:labelForid="@id/addEnemyRobot_armorValue"
         android:text="@string/enemyRobot"
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
-        android:id="@+id/addEnemyRobot_armorValue"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/addEnemyRobot_armorText"
-        android:layout_alignBottomid="@id/addEnemyRobot_armorText"
-        android:layout_alignTop="@+id/addEnemyRobot_armorText"
-        android:layout_alignTopid="@id/addEnemyRobot_armorText"
-        android:layout_toEndOf="@+id/addEnemyRobot_armorText"
-        android:layout_toRightOfid="@id/addEnemyRobot_armorText"
-        android:inputType="number" />
 
     <TextView
         android:id="@+id/addEnemyRobot_armorText"
         android:layout_width="75dp"
         android:layout_height="35dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
         android:layout_below="@id/addEnemyRobot_enemyRobotText"
         android:gravity="center_vertical"
-        android:labelForid="@id/addEnemyRobot_armorValue"
         android:text="@string/armor"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/addEnemyRobot_armorValue"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/addEnemyRobot_armorText"
+        android:layout_alignTop="@id/addEnemyRobot_armorText"
+        android:layout_toEndOf="@+id/addEnemyRobot_armorText"
+        android:inputType="number" />
+
 
     <EditText
         android:id="@+id/addEnemyRobot_skillValue"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/addEnemyRobot_skillText"
-        android:layout_alignBottomid="@id/addEnemyRobot_armorText"
-        android:layout_alignTop="@+id/addEnemyRobot_skillText"
-        android:layout_alignTopid="@id/addEnemyRobot_armorText"
-        android:layout_marginLeft="10dp"
+        android:layout_alignTop="@id/addEnemyRobot_armorText"
+        android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/addEnemyRobot_skillText"
-        android:layout_toRightOfid="@id/addEnemyRobot_skillText"
         android:inputType="numberSigned" />
 
     <TextView
@@ -62,7 +56,7 @@
         android:layout_alignTop="@+id/addEnemyRobot_armorText"
         android:layout_toEndOf="@+id/addEnemyRobot_speedValue"
         android:gravity="center_vertical"
-        android:labelForid="@id/addEnemyRobot_skillValue"
+        android:labelFor="@id/addEnemyRobot_skillValue"
         android:text="@string/skill"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -72,11 +66,8 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/addEnemyRobot_speedText"
-        android:layout_alignBottomid="@id/addEnemyRobot_speedText"
-        android:layout_alignTop="@+id/addEnemyRobot_speedText"
-        android:layout_alignTopid="@id/addEnemyRobot_speedText"
+        android:layout_alignTop="@id/addEnemyRobot_speedText"
         android:layout_toEndOf="@+id/addEnemyRobot_speedText"
-        android:layout_toRightOfid="@id/addEnemyRobot_speedText"
         android:entries="@array/robotSpeeds" />
 
     <TextView
@@ -84,11 +75,9 @@
         android:layout_width="75dp"
         android:layout_height="35dp"
         android:layout_alignStart="@+id/addEnemyRobot_armorText"
-        android:layout_below="@+id/addEnemyRobot_armorText"
-        android:layout_belowid="@id/addEnemyRobot_armorText"
+        android:layout_below="@id/addEnemyRobot_armorText"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:labelForid="@id/addEnemyRobot_typeValue"
         android:text="@string/robotSpeed"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -98,12 +87,9 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/addEnemyRobot_typeText"
-        android:layout_alignBottomid="@id/addEnemyRobot_speedText"
-        android:layout_alignTop="@+id/addEnemyRobot_typeText"
-        android:layout_alignTopid="@id/addEnemyRobot_speedText"
+        android:layout_alignTop="@id/addEnemyRobot_speedText"
         android:layout_toEndOf="@+id/addEnemyRobot_typeText"
-        android:layout_toRightOfid="@id/addEnemyRobot_typeText"
-        android:entries="@array/robotTypes"></Spinner>
+        android:entries="@array/robotTypes"/>
 
     <TextView
         android:id="@+id/addEnemyRobot_typeText"
@@ -122,18 +108,17 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/addEnemyRobot_specialAbilityText"
         android:layout_toEndOf="@+id/addEnemyRobot_specialAbilityText"
-        android:inputType="number"></EditText>
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/addEnemyRobot_specialAbilityText"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_alignStart="@+id/addEnemyRobot_speedText"
-        android:layout_below="@+id/addEnemyRobot_speedValue"
-        android:layout_belowid="@id/addEnemyRobot_speedText"
+        android:layout_below="@id/addEnemyRobot_speedText"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:labelForid="@id/addEnemyRobot_specialAbilityValue"
+        android:labelFor="@id/addEnemyRobot_specialAbilityValue"
         android:text="@string/robotSpecialAbilityInput"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -142,12 +127,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/addEnemyRobot_airborneText"
-        android:layout_alignBottomid="@id/addEnemyRobot_airborneText"
-        android:layout_alignTop="@+id/addEnemyRobot_airborneText"
-        android:layout_alignTopid="@id/addEnemyRobot_airborneText"
+        android:layout_alignTop="@id/addEnemyRobot_airborneText"
         android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/addEnemyRobot_airborneText"
-        android:layout_toRightOfid="@id/addEnemyRobot_airborneText"></CheckBox>
+        android:layout_toEndOf="@+id/addEnemyRobot_airborneText"/>
 
     <TextView
         android:id="@+id/addEnemyRobot_airborneText"
@@ -155,10 +137,9 @@
         android:layout_height="35dp"
         android:layout_alignStart="@+id/addEnemyRobot_specialAbilityText"
         android:layout_below="@+id/addEnemyRobot_specialAbilityValue"
-        android:layout_belowid="@id/addEnemyRobot_specialAbilityText"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:labelForid="@id/addEnemyRobot_airborneValue"
+        android:labelFor="@id/addEnemyRobot_airborneValue"
         android:text="@string/airborne"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -167,24 +148,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/addEnemyRobot_secondEnemyText"
-        android:layout_alignBottomid="@id/addEnemyRobot_airborneText"
-        android:layout_alignTop="@+id/addEnemyRobot_secondEnemyText"
-        android:layout_alignTopid="@id/addEnemyRobot_airborneText"
+        android:layout_alignTop="@id/addEnemyRobot_airborneText"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@+id/addEnemyRobot_secondEnemyText"
-        android:layout_toRightOfid="@id/addEnemyRobot_secondEnemyText"></CheckBox>
+        />
 
     <TextView
         android:id="@+id/addEnemyRobot_secondEnemyText"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_alignBottom="@+id/addEnemyRobot_airborneValue"
-        android:layout_alignBottomid="@id/addEnemyRobot_airborneValue"
-        android:layout_alignTop="@+id/addEnemyRobot_airborneValue"
-        android:layout_alignTopid="@id/addEnemyRobot_airborneValue"
-        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@id/addEnemyRobot_airborneValue"
+        android:layout_alignTop="@id/addEnemyRobot_airborneValue"
+        android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/addEnemyRobot_airborneValue"
-        android:layout_toRightOfid="@id/addEnemyRobot_airborneValue"
         android:gravity="center_vertical"
         android:text="@string/secondEnemy"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -196,7 +172,148 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/addEnemyRobot_secondEnemyText"
         android:layout_marginTop="10dp"
+        android:visibility="invisible"
         >
+
+        <TextView
+            android:id="@+id/addEnemyRobot2_enemyRobotText"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/enemyRobot2"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+        <TextView
+            android:id="@+id/addEnemyRobot2_armorText"
+            android:layout_width="75dp"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_below="@id/addEnemyRobot2_enemyRobotText"
+            android:gravity="center_vertical"
+            android:text="@string/armor"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/addEnemyRobot2_armorValue"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/addEnemyRobot2_armorText"
+            android:layout_alignTop="@id/addEnemyRobot2_armorText"
+            android:layout_toEndOf="@+id/addEnemyRobot2_armorText"
+            android:inputType="number" />
+
+
+        <EditText
+            android:id="@+id/addEnemyRobot2_skillValue"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/addEnemyRobot2_skillText"
+            android:layout_alignTop="@id/addEnemyRobot2_armorText"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/addEnemyRobot2_skillText"
+            android:inputType="numberSigned" />
+
+        <TextView
+            android:id="@+id/addEnemyRobot2_skillText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/addEnemyRobot2_armorValue"
+            android:layout_alignTop="@+id/addEnemyRobot2_armorText"
+            android:layout_toEndOf="@+id/addEnemyRobot2_speedValue"
+            android:gravity="center_vertical"
+            android:labelFor="@id/addEnemyRobot2_skillValue"
+            android:text="@string/skill"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <Spinner
+            android:id="@+id/addEnemyRobot2_speedValue"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/addEnemyRobot2_speedText"
+            android:layout_alignTop="@id/addEnemyRobot2_speedText"
+            android:layout_toEndOf="@+id/addEnemyRobot2_speedText"
+            android:entries="@array/robotSpeeds" />
+
+        <TextView
+            android:id="@+id/addEnemyRobot2_speedText"
+            android:layout_width="75dp"
+            android:layout_height="35dp"
+            android:layout_alignStart="@+id/addEnemyRobot2_armorText"
+            android:layout_below="@id/addEnemyRobot2_armorText"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/robotSpeed"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <Spinner
+            android:id="@+id/addEnemyRobot2_typeValue"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/addEnemyRobot2_typeText"
+            android:layout_alignTop="@id/addEnemyRobot2_speedText"
+            android:layout_toEndOf="@+id/addEnemyRobot2_typeText"
+            android:entries="@array/robotTypes"/>
+
+        <TextView
+            android:id="@+id/addEnemyRobot2_typeText"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/addEnemyRobot2_speedValue"
+            android:layout_alignTop="@+id/addEnemyRobot2_speedValue"
+            android:layout_toEndOf="@+id/addEnemyRobot2_speedValue"
+            android:gravity="center_vertical"
+            android:text="@string/type"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/addEnemyRobot2_specialAbilityValue"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/addEnemyRobot2_specialAbilityText"
+            android:layout_toEndOf="@+id/addEnemyRobot2_specialAbilityText"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@+id/addEnemyRobot2_specialAbilityText"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignStart="@+id/addEnemyRobot2_speedText"
+            android:layout_below="@id/addEnemyRobot2_speedText"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:labelFor="@id/addEnemyRobot2_specialAbilityValue"
+            android:text="@string/robotSpecialAbilityInput"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <CheckBox
+            android:id="@+id/addEnemyRobot2_airborneValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/addEnemyRobot2_airborneText"
+            android:layout_alignTop="@id/addEnemyRobot2_airborneText"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/addEnemyRobot2_airborneText"/>
+
+        <TextView
+            android:id="@+id/addEnemyRobot2_airborneText"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignStart="@+id/addEnemyRobot2_specialAbilityText"
+            android:layout_below="@+id/addEnemyRobot2_specialAbilityValue"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:labelFor="@id/addEnemyRobot2_airborneValue"
+            android:text="@string/airborne"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
 
         </RelativeLayout>
 
