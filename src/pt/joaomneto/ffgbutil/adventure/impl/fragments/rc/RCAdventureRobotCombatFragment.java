@@ -61,7 +61,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
     protected RelativeLayout combatRobots = null;
     protected RelativeLayout enemyRobotLayout = null;
-    protected RelativeLayout enemyRobot2Layout = null;
+    protected LinearLayout enemyRobotDualLayout = null;
     protected LinearLayout robotCombatPrepareRow = null;
     protected LinearLayout robotCombatButtonUpperRow = null;
     protected LinearLayout robotCombatButtonUpperRowTransformer = null;
@@ -104,10 +104,11 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         final RCAdventure adv = (RCAdventure) this.getActivity();
 
+
         addRobotButton = (Button) rootView.findViewById(R.id.addEnemyRobotButton);
         combatRobots = (RelativeLayout) rootView.findViewById(R.id.combatRobots);
         enemyRobotLayout = (RelativeLayout) rootView.findViewById(R.id.enemyRobot);
-        enemyRobot2Layout = (RelativeLayout) rootView.findViewById(R.id.enemyRobot2);
+        enemyRobotDualLayout = (LinearLayout) rootView.findViewById(R.id.enemyRobotDual);
 
         nameValue = (TextView) rootView.findViewById(R.id.nameCombatValue);
         armorValue = (TextView) rootView.findViewById(R.id.armorCombatValue);
@@ -453,8 +454,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             if (adv.getCurrentRobot().getRobotSpecialAbility() != null)
                 robotSpecialAbilityValue.setText(adv.getCurrentRobot().getRobotSpecialAbility().getName());
 
-            enemyRobotLayout.setVisibility(enemyRobot == null ? View.INVISIBLE : View.VISIBLE);
-            enemyRobot2Layout.setVisibility(enemyRobot2 == null ? View.INVISIBLE : View.VISIBLE);
+            alternateSingleToDoubleEnemyLayout();
 
             robotCombatPrepareRow.setVisibility(enemyRobot != null ? View.GONE : View.VISIBLE);
             robotCombatButtonUpperRow.setVisibility(enemyRobot == null ? View.GONE : View.VISIBLE);
@@ -721,5 +721,20 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         combatResult.setText("");
 
         refreshScreensFromResume();
+    }
+
+    private void alternateSingleToDoubleEnemyLayout(){
+
+        if(enemyRobot == null){
+            enemyRobotDualLayout.setVisibility(View.GONE);
+            enemyRobotLayout.setVisibility(View.GONE);
+        }
+        if(enemyRobot2!=null){
+            enemyRobotDualLayout.setVisibility(View.VISIBLE);
+            enemyRobotLayout.setVisibility(View.GONE);
+        }else{
+            enemyRobotDualLayout.setVisibility(View.GONE);
+            enemyRobotLayout.setVisibility(View.VISIBLE);
+        }
     }
 }
