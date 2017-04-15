@@ -142,7 +142,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/robotSpecialAbilityValue"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <View
                 android:id="@+id/line"
@@ -271,7 +271,7 @@
             android:orientation="horizontal"
             android:baselineAligned="false"
             android:id="@+id/enemyRobotDual"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_below="@id/line2">
 
             <RelativeLayout
@@ -293,6 +293,14 @@
                     android:text="@string/enemyRobot"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/enemyRobot1Selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/textField442"
+                    android:layout_alignBottom="@id/textField442"
+                    android:layout_alignTop="@id/textField442"/>
 
 
                 <Button
@@ -382,6 +390,15 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textStyle="bold"
                      />
+
+
+                <RadioButton
+                    android:id="@+id/enemyRobot2Selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/textField42"
+                    android:layout_alignBottom="@id/textField42"
+                    android:layout_alignTop="@id/textField42"/>
 
 
                 <Button

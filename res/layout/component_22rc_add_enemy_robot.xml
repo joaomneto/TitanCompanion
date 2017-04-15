@@ -295,6 +295,25 @@
             android:text="@string/airborne"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
+        <CheckBox
+            android:id="@+id/addEnemyRobot2_simulCombatValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/addEnemyRobot2_simulCombatText"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/addEnemyRobot2_simulCombatText"
+            android:layout_alignTop="@+id/addEnemyRobot2_simulCombatText" />
+
+        <TextView
+            android:id="@+id/addEnemyRobot2_simulCombatText"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/addEnemyRobot2_airborneValue"
+            android:gravity="center_vertical"
+            android:text="@string/simulCombat"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
 
     </RelativeLayout>
 
