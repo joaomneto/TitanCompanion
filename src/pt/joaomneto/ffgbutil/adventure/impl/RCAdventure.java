@@ -26,17 +26,13 @@ public class RCAdventure extends TFODAdventure {
 		this.robots = robots;
 	}
 
-	private static int fragIndex = 0;
-	
-//	private static final int FRAGMENT_ROBOTS = fragIndex++;
-	public static final int FRAGMENT_ROBOTCOMBAT = 1;
-//	private static final int FRAGMENT_COMBAT = fragIndex++;
-//	private static final int FRAGMENT_EQUIPMENT = fragIndex++;
-//	private static final int FRAGMENT_NOTES = fragIndex++;
+
+	public static final int FRAGMENT_ROBOTS = 1;
+	public static final int FRAGMENT_ROBOTCOMBAT = 2;
 
 	public RCAdventure() {
 		super();
-		fragIndex = 0;
+		int fragIndex = 0;
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(fragIndex++, new AdventureFragmentRunner(R.string.vitalStats,
 				"pt.joaomneto.ffgbutil.adventure.impl.fragments.rc.RCAdventureVitalStatsFragment"));

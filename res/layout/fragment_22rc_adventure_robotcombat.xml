@@ -271,7 +271,7 @@
             android:orientation="horizontal"
             android:baselineAligned="false"
             android:id="@+id/enemyRobotDual"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_below="@id/line2">
 
             <RelativeLayout

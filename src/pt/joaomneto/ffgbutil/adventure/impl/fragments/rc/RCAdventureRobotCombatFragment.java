@@ -11,6 +11,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -769,6 +770,9 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         combatResult.setText(combatStatus.toString());
         changeRobotForm.setEnabled(true);
+        RCAdventure activity = (RCAdventure) this.getActivity();
+        RCAdventureRobotFragment rcarf = (RCAdventureRobotFragment) activity.getFragments().get(RCAdventure.FRAGMENT_ROBOTS);
+        rcarf.refreshScreensFromResume();
         refreshScreensFromResume();
 
     }
@@ -793,13 +797,14 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         if(enemyRobot == null){
             enemyRobotDualLayout.setVisibility(View.GONE);
             enemyRobotLayout.setVisibility(View.GONE);
-        }
-        if(enemyRobot2!=null){
-            enemyRobotDualLayout.setVisibility(View.VISIBLE);
-            enemyRobotLayout.setVisibility(View.GONE);
-        }else{
-            enemyRobotDualLayout.setVisibility(View.GONE);
-            enemyRobotLayout.setVisibility(View.VISIBLE);
+        }else {
+            if (enemyRobot2 != null) {
+                enemyRobotDualLayout.setVisibility(View.VISIBLE);
+                enemyRobotLayout.setVisibility(View.GONE);
+            } else {
+                enemyRobotDualLayout.setVisibility(View.GONE);
+                enemyRobotLayout.setVisibility(View.VISIBLE);
+            }
         }
     }
 }
