@@ -1,17 +1,9 @@
 package pt.joaomneto.ffgbutil.adventure.impl.fragments.rc;
 
-import pt.joaomneto.ffgbutil.R;
-import pt.joaomneto.ffgbutil.adventure.Adventure;
-import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
-import pt.joaomneto.ffgbutil.adventure.impl.RCAdventure;
-import pt.joaomneto.ffgbutil.adventure.impl.util.DiceRoll;
-import pt.joaomneto.ffgbutil.util.DiceRoller;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,10 +19,13 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.List;
+import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.ffgbutil.adventure.Adventure;
+import pt.joaomneto.ffgbutil.adventure.AdventureFragment;
+import pt.joaomneto.ffgbutil.adventure.impl.RCAdventure;
+import pt.joaomneto.ffgbutil.adventure.impl.util.DiceRoll;
+import pt.joaomneto.ffgbutil.util.DiceRoller;
 
-import static pt.joaomneto.ffgbutil.adventure.impl.RCAdventure.FRAGMENT_ROBOTCOMBAT;
 import static pt.joaomneto.ffgbutil.adventure.impl.RCAdventure.FRAGMENT_ROBOTS;
 
 public class RCAdventureRobotCombatFragment extends AdventureFragment {
@@ -81,6 +76,10 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
     protected LinearLayout robotCombatButtonLowerRow = null;
     protected LinearLayout robotCombatButtonLowerRowDigger = null;
     protected LinearLayout robotCombatButtonLowerRowSupertank = null;
+
+    protected RelativeLayout enemyRobotDual1 = null;
+    protected RelativeLayout enemyRobotDual2 = null;
+
 
     protected TextView robotSpecialAbilityValue = null;
     protected TextView enemySpecialAbilityValue = null;
@@ -285,6 +284,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         robotCombatButtonLowerRow = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRow);
         robotCombatButtonLowerRowDigger = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRowDigger);
         robotCombatButtonLowerRowSupertank = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRowSuperTank);
+        enemyRobotDual1 = (RelativeLayout) rootView.findViewById(R.id.enemyRobotDual1);
+        enemyRobotDual2 = (RelativeLayout) rootView.findViewById(R.id.enemyRobotDual2);
 
         robotSpecialAbilityValue = (TextView) rootView.findViewById(R.id.robotSpecialAbilityValue);
         enemySpecialAbilityValue = (TextView) rootView.findViewById(R.id.enemySpecialAbilityValue);
@@ -448,7 +449,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
 
                 boolean valid = armor.length() > 0 && skill.length() > 0 && type.length() > 0;
-                if(secondEnemy.isChecked())
+                if (secondEnemy.isChecked())
                     valid &= armor2.length() > 0 && skill2.length() > 0 && type2.length() > 0;
 
                 if (valid) {
@@ -497,6 +498,9 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             enemies[1] = robotPosition;
         }
 
+        currentEnemy = 0;
+        enemyRobot1Selected.setChecked(true);
+
         refreshScreensFromResume();
     }
 
@@ -505,7 +509,6 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         RCAdventure adv = (RCAdventure) this.getActivity();
 
         if (adv.getCurrentRobot() != null) {
-            combatRobots.setVisibility(View.VISIBLE);
             nameValue.setText("" + adv.getCurrentRobot().getName());
             armorValue.setText("" + adv.getCurrentRobot().getArmor());
             bonusValue.setText("" + adv.getCurrentRobot().getBonus());
@@ -514,11 +517,11 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             if (adv.getCurrentRobot().getRobotSpecialAbility() != null)
                 robotSpecialAbilityValue.setText(adv.getCurrentRobot().getRobotSpecialAbility().getName());
 
-            alternateSingleToDoubleEnemyLayout();
+            manageEnemyRobotLayouts();
 
-            robotCombatPrepareRow.setVisibility(enemies[0] != null ? View.GONE : View.VISIBLE);
-            robotCombatButtonUpperRow.setVisibility(enemies[0] == null ? View.GONE : View.VISIBLE);
-            robotCombatButtonLowerRow.setVisibility(enemies[0] == null ? View.GONE : View.VISIBLE);
+            robotCombatPrepareRow.setVisibility(enemies[0] != null || enemies[1] != null ? View.GONE : View.VISIBLE);
+            robotCombatButtonUpperRow.setVisibility(enemies[0] == null && enemies[1] == null ? View.GONE : View.VISIBLE);
+            robotCombatButtonLowerRow.setVisibility(enemies[0] == null && enemies[1] == null ? View.GONE : View.VISIBLE);
 
             if (adv.getCurrentRobot().getAlternateForm() != null) {
 
@@ -538,29 +541,15 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                 robotCombatButtonLowerRowDigger.setVisibility(enemies[0] == null ? View.GONE : View.VISIBLE);
             }
 
-            if (enemies[0] != null) {
-                if (enemies[0].getRobotSpecialAbility() != null)
-                    enemySpecialAbilityValue.setText(enemies[0].getRobotSpecialAbility().getName());
-                armorEnemyValue.setText("" + enemies[0].getArmor());
-                skillEnemyValue.setText("" + enemies[0].getSkill());
-                armorEnemyValue2.setText("" + enemies[0].getArmor());
-                skillEnemyValue2.setText("" + enemies[0].getSkill());
-            }
-
-
-            if (enemies[1] != null) {
-                enemyRobot1Selected.setChecked(getAndModifyCurrentEnemyIndex() == 0);
-                enemyRobot2Selected.setChecked(getAndModifyCurrentEnemyIndex() == 1);
-                armorEnemy2Value.setText("" + enemies[1].getArmor());
-                skillEnemy2Value.setText("" + enemies[1].getSkill());
-            }
+            combatRobots.setVisibility(View.VISIBLE);
 
         } else {
-            combatRobots.setVisibility(View.GONE);
+            combatRobots.setVisibility(View.INVISIBLE);
             robotCombatPrepareRow.setVisibility(View.GONE);
             robotCombatButtonUpperRow.setVisibility(View.GONE);
             robotCombatButtonLowerRow.setVisibility(View.GONE);
         }
+
 
     }
 
@@ -587,6 +576,9 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
     public void combatTurn(boolean shovelAttack, boolean sonicShotAttack) {
 
+        StringBuilder rolls = new StringBuilder();
+        StringBuilder enemyRolls = new StringBuilder();
+
         combatStarted = true;
 
         int playerDamage = 2;
@@ -603,14 +595,20 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         Robot currentRobot = adv.getCurrentRobot();
         int playerCombatScore = playerRoll.getSum() + adv.getCurrentSkill() + currentRobot.getBonus();
-        int enemyCombatScore = enemyRoll.getSum() + adv.getCurrentSkill();
+        int enemyCombatScore = enemyRoll.getSum() + getCurrentEnemy().getSkill();
+
+
+        rolls.append("("+playerRoll.getSum() + "+"+adv.getCurrentSkill() +"+"+ currentRobot.getBonus());
+        enemyRolls.append("("+enemyRoll.getSum() + "+"+ getCurrentEnemy().getSkill());
 
         if (currentRobot.fasterThan(getCurrentEnemy())) {
             playerCombatScore++;
+            rolls.append("+1");
         }
 
         if (currentRobot.slowerThan(getCurrentEnemy())) {
             enemyCombatScore++;
+            enemyRolls.append("+1");
         }
 
         if (currentRobot.getRobotSpecialAbility() != null) {
@@ -619,6 +617,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                     if (getCurrentEnemy().isDinosaur()) {
                         combatStatus.append("Super Cowboy using Sonic Scream. ");
                         enemyCombatScore--;
+                        enemyRolls.append("-1");
                     }
                     break;
                 }
@@ -648,6 +647,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                     if (getCurrentEnemy().isAirborne()) {
                         combatStatus.append("Hedgehog attacking airborne target. ");
                         playerCombatScore += 3;
+                        rolls.append("+3");
                     }
                     break;
                 }
@@ -705,6 +705,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         if (shovelAttack) {
             combatStatus.append("Using shovel (6 DP) ");
             playerCombatScore -= 2;
+            rolls.append("-2");
             enemyDamage = 6;
         }
 
@@ -725,13 +726,15 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             }
         }
 
+        rolls.append("="+playerCombatScore+")");
+        enemyRolls.append("="+enemyCombatScore+")");
+
         if (getCurrentEnemy().getArmor() > 0 && adv.getCurrentRobot().getArmor() > 0 && playerCombatScore > enemyCombatScore) {
             if (parryOnlyNextTurn) {
                 combatStatus.append("You have parried the enemy attack. ");
                 parryOnlyNextTurn = false;
             } else if (parryOnlyNextTurnCombat) {
                 combatStatus.append("You have parried the enemy attack. ");
-                parryOnlyNextTurnCombat = false;
             } else {
                 combatStatus.append("You've hit the enemy! (" + enemyDamage + " DP) ");
                 getCurrentEnemy().setArmor(Math.max(getCurrentEnemy().getArmor() - enemyDamage, 0));
@@ -763,11 +766,15 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             if (enemies[0] == null || enemies[1] == null) {
                 simultaneousCombat = false;
                 parryOnlyNextTurnCombat = false;
-            }else{
-                currentEnemy = currentEnemy == 0?1:0;
+            } else {
+                currentEnemy = currentEnemy == 0 ? 1 : 0;
                 parryOnlyNextTurnCombat = !parryOnlyNextTurnCombat;
             }
         }
+
+        combatStatus.append(rolls);
+        combatStatus.append(" vs ");
+        combatStatus.append(enemyRolls);
 
         combatResult.setText(combatStatus.toString());
         changeRobotForm.setEnabled(true);
@@ -794,20 +801,41 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         refreshScreensFromResume();
     }
 
-    private void alternateSingleToDoubleEnemyLayout() {
+    private void manageEnemyRobotLayouts() {
 
-        if (enemies[0] == null && enemies[1] == null ) {
+        if (enemies[0] == null && enemies[1] == null) {
             enemyRobotDualLayout.setVisibility(View.GONE);
             enemyRobotLayout.setVisibility(View.GONE);
-        } else if(!combatStarted){
+        } else if (!combatStarted) {
             if (enemies[1] != null) {
                 enemyRobotDualLayout.setVisibility(View.VISIBLE);
+                enemyRobotDual1.setVisibility(View.VISIBLE);
+                enemyRobotDual2.setVisibility(View.VISIBLE);
                 enemyRobotLayout.setVisibility(View.GONE);
             } else {
                 enemyRobotDualLayout.setVisibility(View.GONE);
                 enemyRobotLayout.setVisibility(View.VISIBLE);
             }
         }
+
+        if (enemies[0] != null) {
+            if (enemies[0].getRobotSpecialAbility() != null)
+                enemySpecialAbilityValue.setText(enemies[0].getRobotSpecialAbility().getName());
+            armorEnemyValue.setText("" + enemies[0].getArmor());
+            skillEnemyValue.setText("" + enemies[0].getSkill());
+            armorEnemyValue2.setText("" + enemies[0].getArmor());
+            skillEnemyValue2.setText("" + enemies[0].getSkill());
+        }
+
+
+        if (enemies[1] != null) {
+            armorEnemy2Value.setText("" + enemies[1].getArmor());
+            skillEnemy2Value.setText("" + enemies[1].getSkill());
+        }
+
+        enemyRobot1Selected.setChecked(getAndModifyCurrentEnemyIndex() == 0);
+        enemyRobot2Selected.setChecked(getAndModifyCurrentEnemyIndex() == 1);
+
     }
 
     private int getAndModifyCurrentEnemyIndex() {
@@ -829,8 +857,13 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
     private void destroyCurrentEnemy() {
         enemies[getAndModifyCurrentEnemyIndex()] = null;
 
-        if(enemies[0] == null && enemies[1] == null){
+        if (enemies[0] == null && enemies[1] == null) {
             combatStarted = false;
         }
+
+        if (currentEnemy == 0)
+            enemyRobotDual1.setVisibility(View.INVISIBLE);
+        else
+            enemyRobotDual2.setVisibility(View.INVISIBLE);
     }
 }

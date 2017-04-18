@@ -790,7 +790,6 @@
     </string-array>
     
     <string-array name="robotTypes">
-        <item></item>
         <item>Robot</item>
         <item>Dinosaur</item>
     </string-array>
