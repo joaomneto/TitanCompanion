@@ -157,7 +157,6 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						String value = input.getText().toString();
 						robot.setLocation(value);
-						adv.getNotes().add(value);
 						((ArrayAdapter<String>) robotListView.getAdapter()).notifyDataSetChanged();
 					}
 				});

@@ -23,4 +23,11 @@ public class DiceRoll {
 		return d1+d2;
 	}
 
+	@Override
+	public String toString() {
+		return "DiceRoll{" +
+				"d1=" + d1 +
+				", d2=" + d2 +
+				", total="+ (d1+d2) +"}";
+	}
 }

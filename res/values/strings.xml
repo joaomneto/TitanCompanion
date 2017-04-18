@@ -790,7 +790,6 @@
     </string-array>
     
     <string-array name="robotTypes">
-        <item></item>
         <item>Robot</item>
         <item>Dinosaur</item>
     </string-array>
@@ -800,6 +799,7 @@
     <string name="robotSpeed">Speed: </string>
     <string name="robotBonus">Bonus: </string>
     <string name="robotSpecialAbility">Special Ability: </string>
+    <string name="robotSpecialAbilityInput">Special Ability (Reference): </string>
     <string name="robotAltArmor">Alternate Armor: </string>
     <string name="robotAltSpeed">Alternate Speed: </string>
     <string name="robotAltBonus">Alternate Bonus: </string>
@@ -813,9 +813,12 @@
     <string name="diceRoll">Dice Roll</string>
     <string name="yourRobot">Your Robot</string>
     <string name="enemyRobot">Enemy Robot</string>
+    <string name="enemyRobot2">Enemy Robot 2</string>
     <string name="changeRobotForm">Change Form</string>
     <string name="type">Type :</string>
     <string name="airborne">Airborne :</string>
+    <string name="secondEnemy">Second Enemy? :</string>
+    <string name="simulCombat">Simultaneous Combat? :</string>
     <string name="useShovel">Use Shovel</string>
     <string name="sonicShot">Sonic Shot</string>
 
