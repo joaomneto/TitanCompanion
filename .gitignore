@@ -1,7 +1,6 @@
 /.project
 /.idea/
 /.gradle/
-/gradle/
 /gen/
 /build/
 gradle*
