@@ -43,7 +43,16 @@ public class FFAdventureCreation extends AdventureCreation {
 		bw.write("gold=200\n");
 		bw.write("carEnhancements=\n");
 	}
-	
+
+	@Override
+	public String validateCreationSpecificParameters() {
+		StringBuilder sb = new StringBuilder();
+		if(this.currentFirepower < 0){
+			sb.append("Firepower and Armor");
+		}
+		return  sb.toString();
+	}
+
 	private FFVitalStatisticsFragment getFFVitalStatsFragment() {
 		FFVitalStatisticsFragment ffVitalStatsFragment = (FFVitalStatisticsFragment) getFragments().get(0);
 		return ffVitalStatsFragment;

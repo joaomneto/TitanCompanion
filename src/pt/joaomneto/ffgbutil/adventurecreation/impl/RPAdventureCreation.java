@@ -27,4 +27,10 @@ public class RPAdventureCreation extends AdventureCreation {
 	protected void rollGamebookSpecificStats(View view) {
 	}
 
+
+	@Override
+	public String validateCreationSpecificParameters() {
+		return NO_PARAMETERS_TO_VALIDATE;
+	}
+
 }

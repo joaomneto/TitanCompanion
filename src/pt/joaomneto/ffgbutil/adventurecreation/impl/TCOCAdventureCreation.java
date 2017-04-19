@@ -48,7 +48,23 @@ public class TCOCAdventureCreation extends AdventureCreation {
 		bw.write("spells="+spellsS+"\n");
 		bw.write("gold=0\n");
 	}
-	
+
+	@Override
+	public String validateCreationSpecificParameters() {
+		StringBuilder sb = new StringBuilder();
+		boolean error = false;
+		if(this.spellValue < 0){
+			sb.append("Spell Count");
+			error = true;
+		}
+		sb.append(error?"; ":"");
+		if(this.spells == null || this.spells.isEmpty()){
+			sb.append("Chosen Spells");
+		}
+
+		return  sb.toString();
+	}
+
 	private TCOCAdventureCreationSpellsFragment getTCOCSpellsFragment() {
 		TCOCAdventureCreationSpellsFragment tcocSpellsFragment = (TCOCAdventureCreationSpellsFragment) getFragments().get(FRAGMENT_TCOC_SPELLS);
 		return tcocSpellsFragment;

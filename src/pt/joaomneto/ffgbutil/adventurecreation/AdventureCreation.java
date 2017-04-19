@@ -52,6 +52,9 @@ public abstract class AdventureCreation extends FragmentActivity {
 	protected int luck = -1;
 	protected int stamina = -1;
 	protected int gamebook = -1;
+	protected String adventureName;
+
+	protected static final String NO_PARAMETERS_TO_VALIDATE = "";
 
 	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
 	final private static Map<Integer, Fragment> fragments = new HashMap<>();
@@ -154,10 +157,21 @@ public abstract class AdventureCreation extends FragmentActivity {
 	public void saveAdventure(View view) {
 		try {
 
+
+
 			EditText et = (EditText) findViewById(R.id.adventureNameInput);
 
+			adventureName = et.getText().toString();
+
+			try {
+				validateCreationParameters();
+			}catch (IllegalArgumentException e){
+				showAlert(e.getMessage());
+				return;
+			}
+
 			String relDir = "save_"+Constants.getActivityPrefix(this, gamebook)+"_"
-								+ et.getText().toString().replace(' ', '-');
+								+ adventureName.replace(' ', '-');
 			String dirName = Environment.getExternalStorageDirectory()
 					.getPath() + "/ffgbutil/" + relDir;
 			File dir = new File(dirName);
@@ -170,7 +184,7 @@ public abstract class AdventureCreation extends FragmentActivity {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
 			bw.write("gamebook=" + gamebook + "\n");
-			bw.write("name=" + et.getText().toString() + "\n");
+			bw.write("name=" + adventureName + "\n");
 			bw.write("initialSkill=" + skill + "\n");
 			bw.write("initialLuck=" + luck + "\n");
 			bw.write("initialStamina=" + stamina + "\n");
@@ -216,4 +230,35 @@ public abstract class AdventureCreation extends FragmentActivity {
     public static Map<Integer, Fragment> getFragments() {
         return fragments;
     }
+
+    public abstract String validateCreationSpecificParameters();
+
+	public void validateCreationParameters() throws IllegalArgumentException {
+		StringBuilder sb = new StringBuilder();
+		boolean error = false;
+		sb.append("Some adventure parameters are missing (");
+
+		if(this.stamina < 0){
+			sb.append("Skill, Stamina and Luck");
+			error = true;
+		}
+		sb.append(error?"; ":"");
+		if(this.adventureName == null || this.adventureName.trim().length() == 0){
+			sb.append("Adventure Name");
+			error = true;
+		}
+
+		String specificParameters = validateCreationSpecificParameters();
+
+		if(specificParameters!=null && specificParameters.length() >0){
+			sb.append(error?"; ":"");
+			error = true;
+			sb.append(specificParameters);
+		}
+
+		sb.append(")");
+		if(error){
+			throw new IllegalArgumentException(sb.toString());
+		}
+	}
 }

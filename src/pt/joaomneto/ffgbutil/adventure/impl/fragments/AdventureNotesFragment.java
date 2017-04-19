@@ -63,7 +63,7 @@ public class AdventureNotesFragment extends AdventureFragment {
 								String value = input.getText().toString();
 								if(value.isEmpty())
 									return;
-								adv.getNotes().add(value);
+								adv.getNotes().add(value.trim());
 								((ArrayAdapter<String>)noteList.getAdapter()).notifyDataSetChanged();
 							}
 						});

@@ -87,8 +87,15 @@ public class SAAdventureCreation extends AdventureCreation {
 		this.currentWeapons = currentWeapons;
 	}
 
-	
 
+	@Override
+	public String validateCreationSpecificParameters() {
+		StringBuilder sb = new StringBuilder();
+		if(this.currentArmor < 0){
+			sb.append("Weapons and Armor");
+		}
+		return  sb.toString();
+	}
 
 	
 	

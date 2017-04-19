@@ -213,7 +213,15 @@ public class STAdventureCreation extends AdventureCreation {
 	public void setShipShields(int shipShields) {
 		this.shipShields = shipShields;
 	}
-	
+
+	@Override
+	public String validateCreationSpecificParameters() {
+		StringBuilder sb = new StringBuilder();
+		if(this.shipShields < 0){
+			sb.append("Ship and Crew Stats");
+		}
+		return  sb.toString();
+	}
 	
 
 }

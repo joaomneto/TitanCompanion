@@ -54,4 +54,14 @@ public class SOBAdventureCreation extends AdventureCreation {
 		
 	}
 
+
+	@Override
+	public String validateCreationSpecificParameters() {
+		StringBuilder sb = new StringBuilder();
+		if(this.currentCrewStrike < 0){
+			sb.append("Crew Strike and Strength");
+		}
+		return  sb.toString();
+	}
+
 }
