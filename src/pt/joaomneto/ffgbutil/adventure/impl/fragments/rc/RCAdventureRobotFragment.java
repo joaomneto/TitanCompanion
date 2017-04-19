@@ -152,6 +152,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 				input.requestFocus();
 				alert.setView(input);
 
+
 				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int whichButton) {

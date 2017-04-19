@@ -32,4 +32,10 @@ public class SSAdventureCreation extends AdventureCreation{
 		
 	}
 
+
+	@Override
+	public String validateCreationSpecificParameters() {
+		return NO_PARAMETERS_TO_VALIDATE;
+	}
+
 }

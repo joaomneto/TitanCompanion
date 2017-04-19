@@ -31,6 +31,16 @@ public class TWOFMAdventureCreation extends AdventureCreation {
 	}
 
 	@Override
+	public String validateCreationSpecificParameters() {
+		StringBuilder sb = new StringBuilder();
+		if(this.potion < 0){
+			sb.append("Potion");
+		}
+		return  sb.toString();
+	}
+
+
+	@Override
 	protected void rollGamebookSpecificStats(View view) {
 
 	}

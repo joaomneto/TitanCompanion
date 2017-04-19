@@ -44,7 +44,16 @@ public class TROKAdventureCreation extends AdventureCreation {
 		TROKVitalStatisticsFragment trokVitalStatsFragment = (TROKVitalStatisticsFragment) getFragments().get(0);
 		return trokVitalStatsFragment;
 	}
-	
+
+	@Override
+	public String validateCreationSpecificParameters() {
+		StringBuilder sb = new StringBuilder();
+		if(this.currentWeapons < 0){
+			sb.append("Ship Weapons and Shields");
+		}
+		return  sb.toString();
+	}
+
 
 	@Override
 	protected void rollGamebookSpecificStats(View view) {
