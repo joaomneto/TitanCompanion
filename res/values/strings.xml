@@ -821,6 +821,10 @@
     <string name="simulCombat">Simultaneous Combat? :</string>
     <string name="useShovel">Use Shovel</string>
     <string name="sonicShot">Sonic Shot</string>
+    <string name="result">Result</string>
+    <string name="close">Close</string>
+    <string name="storagePermissionsRequired">Storage permission is required to used this app!</string>
+    <string name="gamebookNotImplemented">Sorry,  this gamebook is not implemented yet!</string>
 
 
 </resources>

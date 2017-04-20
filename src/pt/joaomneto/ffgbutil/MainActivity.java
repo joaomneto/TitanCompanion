@@ -7,38 +7,38 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 public class MainActivity extends Activity {
 
-	public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
+    public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
 
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 //		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(
 //				MainActivity.this));
-		// Here, thisActivity is the current activity
-		if (ContextCompat.checkSelfPermission(this,
-				Manifest.permission.WRITE_EXTERNAL_STORAGE)
-				!= PackageManager.PERMISSION_GRANTED) {
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
 
 
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
 
-				ActivityCompat.requestPermissions(this,
-						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-						MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+            // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+            // app-defined int constant. The callback method gets the
+            // result of the request.
 
-				// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-				// app-defined int constant. The callback method gets the
-				// result of the request.
-
-		}
-	}
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
 
                 } else {
 
-                    showAlert("Storage permission is required to used this app!");
+                    showAlert(R.string.storagePermissionsRequired);
                     finish();
                     android.os.Process.killProcess(android.os.Process.myPid());
                     super.onDestroy();
@@ -67,35 +67,38 @@ public class MainActivity extends Activity {
         }
     }
 
-	
-	
+
+    public void createNewAdventure(View view) {
+        Intent intent = new Intent(this, GamebookListActivity.class);
+        startActivity(intent);
+    }
+
+    public void loadAdventure(View view) {
+        Intent intent = new Intent(this, LoadAdventureActivity.class);
+        startActivity(intent);
+    }
 
 
-	public void createNewAdventure(View view) {
-		Intent intent = new Intent(this, GamebookListActivity.class);
-		startActivity(intent);
-	}
+    public void showAlert(int messageId) {
+        AlertDialog.Builder builder = getBuilder();
+        builder.setMessage(messageId);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
-	public void loadAdventure(View view) {
-		Intent intent = new Intent(this, LoadAdventureActivity.class);
-		startActivity(intent);
-	}
-
-	public void showAlert(String message){
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Result")
-				.setMessage(message)
-				.setCancelable(false)
-				.setNegativeButton("Close",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
-								dialog.cancel();
-							}
-						});
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
-	
+    @NonNull
+    private AlertDialog.Builder getBuilder() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.result)
+                .setCancelable(false)
+                .setNegativeButton(R.string.close,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        return builder;
+    }
 
 
 }

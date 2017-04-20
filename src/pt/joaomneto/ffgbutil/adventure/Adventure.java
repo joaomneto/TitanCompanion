@@ -256,9 +256,9 @@ public abstract class Adventure extends FragmentActivity {
 		return result;
 	}
 	
-	public static void showAlert(String title, String message, Context context) {
+	public static void showAlert(int title, int message, Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle(title!=null?title:"Result").setMessage(message).setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+		builder.setTitle(title>0?title:R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
 			}
@@ -267,13 +267,13 @@ public abstract class Adventure extends FragmentActivity {
 		alert.show();
 	}
 
-	public static void showAlert(String message, Context context) {
+	public static void showAlert(int message, Context context) {
 		showAlert(null, message, context);
 	}
 
 	public static void showAlert(View view, Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle("Result").setView(view).setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+		builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
 			}
