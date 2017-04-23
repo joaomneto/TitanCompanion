@@ -757,7 +757,7 @@
         <item>Super Strength</item>
         <item>Psi Powers</item>
         <item>Enhanced Technological Skill</item>
-        <item>Energy Blast</item>        
+        <item>Energy Blast</item>
     </string-array>
     <string name="heroPoints">Hero Points: </string>
     <string name="unarmed">Unarmed: </string>
@@ -766,7 +766,7 @@
         <item>Kyujutsu</item>
         <item>Iaijutsu</item>
         <item>Karumijutsu</item>
-        <item>Ni-to-Kenjutsu</item>        
+        <item>Ni-to-Kenjutsu</item>
     </string-array>
     <string name="title_adventure_creation_skill">Feat</string>
     <string name="arrows">Arrows</string>
@@ -788,12 +788,12 @@
         <item>Fast</item>
         <item>Very Fast</item>
     </string-array>
-    
+
     <string-array name="robotTypes">
         <item>Robot</item>
         <item>Dinosaur</item>
     </string-array>
-    
+
 
     <string name="robotArmor">Armor: </string>
     <string name="robotSpeed">Speed: </string>
@@ -825,6 +825,44 @@
     <string name="close">Close</string>
     <string name="storagePermissionsRequired">Storage permission is required to used this app!</string>
     <string name="gamebookNotImplemented">Sorry,  this gamebook is not implemented yet!</string>
+    <string name="success">Success!</string>
+    <string name="failed">Failed...</string>
+    <string name="noProvisionsLeft">You have no provisions left...</string>
+    <string name="provisionsMaxStamina">You are already at maximum Stamina!</string>
+    <string name="provisionsStaminaGain">You have gained %1$d stamina points!</string>
+    <string name="noPotionLeft">You have no potion left...</string>
+    <string name="potionSkillReplenish">You have replenished your Skill level!</string>
+    <string name="potionStaminaReplenish">You have replenished your Stamina level!</string>
+    <string name="potionLuckReplenish">You have replenished your Luck level (+1)!</string>
+
+
+    <string name="robotSpecialAbilitySonicScream">Sonic Scream</string>
+    <string name="robotSpecialAbilitySonicScreamDesc">Reduces dinosaur scream skill by 1.</string>
+    <string name="robotSpecialAbilityShovel">Shovel</string>
+    <string name="robotSpecialAbilityShovelDesc">If using shovel, 2 points gets subtracted to combat roll. When hitting the robot deals 6 damage.</string>
+    <string name="robotSpecialAbilityFlyCircles">Fly in circles</string>
+    <string name="robotSpecialAbilityFlyCirclesDesc">If the combat roll is won by 4 or more points, Wasp Fighter deals double damage.</string>
+    <string name="robotSpecialAbilityUltraFast">Ultra Fast</string>
+    <string name="robotSpecialAbilityUltraFastDesc">This robot can evade other robots with very high speed.</string>
+    <string name="robotSpecialAbilityShield">Shield</string>
+    <string name="robotSpecialAbilityShieldDEsc">If combat roll is 18 or more, the Tropper XI suffers no damage.</string>
+    <string name="robotSpecialAbilitySerpentCoil">Serpent Coil</string>
+    <string name="robotSpecialAbilitySerpentCoilDesc">After a combat roll bigger than 16, the Serpent VII deals 1 automatic damage point each turn afterwards.</string>
+    <string name="robotSpecialAbilitySonicShot">Sonic Shot</string>
+    <string name="robotSpecialAbilitySonicShotDesc">3 optional sonic shots. Deals 1d6 damage for robots and 2d6 damage for dinosaurs.</string>
+    <string name="robotSpecialAbilityAirDefense">Aircraft Defense</string>
+    <string name="robotSpecialAbilityAirDefenseDesc">Has +3 bonus against flying enemies.</string>
+    <string name="robotSpecialAbilityDoubleDamage">Double Damage</string>
+    <string name="robotSpecialAbilityDoubleDamageDesc">The Crusher deals double damage in each successfull attack.</string>
+    <string name="robotSpecialAbilityCriticalHit">Critical Hit</string>
+    <string name="robotSpecialAbilityCriticalHitDesc">When Battleman wins the round with a roll difference of 4 or more points it deals an additional damage point.</string>
+    <string name="robotSpecialAbilitySmallWeapons">Small Weapons</string>
+    <string name="robotSpecialAbilitySmallWeaponsDesc">Reduces dinosaur scream skill by 1</string>
+    <string name="robotSpecialAbilityFlyInCircles">Fly in circles</string>
+    <string name="robotSpecialAbilityFlyInCirclesDesc">If the combat roll is won by 4 or more points, Wasp Fighter deals double damage.</string>
+    <string name="robotSpecialAbilityAnkylosaurus">Ankylosaurus stun</string>
+    <string name="robotSpecialAbilityAnkylosaurusDesc">Player can only parry in next round after losing a combat round.</string>
+
 
 
 </resources>
