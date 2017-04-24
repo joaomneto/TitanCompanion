@@ -1,9 +1,10 @@
-package pt.joaomneto.ffgbutil.adventure.impl.fragments.rc;
+package pt.joaomneto.titancompanion.adventure.impl.fragments.rc;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import pt.joaomneto.ffgbutil.R;
+import pt.joaomneto.titancompanion.R;
+
 
 /**
  * Created by Joao on 15-08-2015.
