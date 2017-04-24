@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Fighting Fantasy</string>
+    <string name="app_name">Titan Companion</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_main">FF Companion</string>
+    <string name="title_activity_main">Titan Companion</string>
     <string name="hello_world">Hello world!</string>
     <string name="saved_games">Saved games: </string>
     <string name="create_new_adventure">Start New Adventure</string>

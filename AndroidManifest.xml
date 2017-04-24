@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pt.joaomneto.ffgbutil"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="pt.joaomneto.titancompanion"
+    android:versionCode="3"
+    android:versionName="0.3-alpha" >
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -14,11 +14,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppBaseTheme" >
         <activity
-            android:name="pt.joaomneto.ffgbutil.MainActivity"
+            android:name="pt.joaomneto.titancompanion.MainActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,29 +27,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.GamebookListActivity"
+            android:name="pt.joaomneto.titancompanion.GamebookListActivity"
             android:label="@string/title_activity_gamebook_list" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.GamebookSelectionActivity"
+            android:name="pt.joaomneto.titancompanion.GamebookSelectionActivity"
             android:label="@string/title_activity_gamebook_selection" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.GamebookWikiaActivity"
+            android:name="pt.joaomneto.titancompanion.GamebookWikiaActivity"
             android:label="@string/title_activity_gamebook_wikia" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.GamebookFullImageActivity"
+            android:name="pt.joaomneto.titancompanion.GamebookFullImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_gamebook_full_image"
             android:theme="@style/FullscreenTheme" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.AdventureCreationPhaseListActivity"
+            android:name="pt.joaomneto.titancompanion.AdventureCreationPhaseListActivity"
             android:label="@string/title_adventurecreationphase_list" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.AdventureCreationPhaseDetailActivity"
+            android:name="pt.joaomneto.titancompanion.AdventureCreationPhaseDetailActivity"
             android:label="@string/title_adventurecreationphase_detail"
             android:parentActivityName=".AdventureCreationPhaseListActivity" >
             <meta-data
@@ -57,220 +57,220 @@
                 android:value=".AdventureCreationPhaseListActivity" />
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.LoadAdventureActivity"
+            android:name="pt.joaomneto.titancompanion.LoadAdventureActivity"
             android:label="@string/title_activity_load_adventure" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.ErrorActivity"
+            android:name="pt.joaomneto.titancompanion.ErrorActivity"
             android:label="@string/title_activity_error" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TWOFMAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TWOFMAdventureCreation"
             android:label="@string/twofm" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.TWOFMAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.TWOFMAdventure"
             android:label="@string/twofm"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TCOCAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TCOCAdventureCreation"
             android:label="@string/tcoc" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.TCOCAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.TCOCAdventure"
             android:label="@string/tcoc"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TFODAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TFODAdventureCreation"
             android:label="@string/tfod" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.TFODAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.TFODAdventure"
             android:label="@string/tfod"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.STAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.STAdventureCreation"
             android:label="@string/st" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.STAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.STAdventure"
             android:label="@string/st"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.COTAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.COTAdventureCreation"
             android:label="@string/cot" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.COTAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.COTAdventure"
             android:label="@string/cot"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.DDAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.DDAdventureCreation"
             android:label="@string/dd" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.DDAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.DDAdventure"
             android:label="@string/dd"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.IOTLKAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.IOTLKAdventureCreation"
             android:label="@string/iotlk" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.IOTLKAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.IOTLKAdventure"
             android:label="@string/iotlk"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.SSAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SSAdventureCreation"
             android:label="@string/ss" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.SSAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.SSAdventure"
             android:label="@string/ss"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.COTSWAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.COTSWAdventureCreation"
             android:label="@string/cotsw" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.COTSWAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.COTSWAdventure"
             android:label="@string/cotsw"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.HOHAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.HOHAdventureCreation"
             android:label="@string/hoh" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.HOHAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.HOHAdventure"
             android:label="@string/hoh"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TTODAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TTODAdventureCreation"
             android:label="@string/tod" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.TTODAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.TTODAdventure"
             android:label="@string/tod"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.SAAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SAAdventureCreation"
             android:label="@string/sa" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.SAAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.SAAdventure"
             android:label="@string/sa"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.FFAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.FFAdventureCreation"
             android:label="@string/ff" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.FFAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.FFAdventure"
             android:label="@string/ff"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TOTAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TOTAdventureCreation"
             android:label="@string/tot" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.TOTAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.TOTAdventure"
             android:label="@string/tot"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.SOBAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SOBAdventureCreation"
             android:label="@string/sob" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.SOBAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.SOBAdventure"
             android:label="@string/sob"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.AWFAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AWFAdventureCreation"
             android:label="@string/awf" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.AWFAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.AWFAdventure"
             android:label="@string/awf"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.RPAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.RPAdventureCreation"
             android:label="@string/rp" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.RPAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.RPAdventure"
             android:label="@string/rp"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.DOTDAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.DOTDAdventureCreation"
             android:label="@string/dotd" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.DOTDAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.DOTDAdventure"
             android:label="@string/dotd"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.SOTSAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SOTSAdventureCreation"
             android:label="@string/sots" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.SOTSAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.SOTSAdventure"
             android:label="@string/sots"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.TOCAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TOCAdventureCreation"
             android:label="@string/toc" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.TOCAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.TOCAdventure"
             android:label="@string/toc"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.RCAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.RCAdventureCreation"
             android:label="@string/rc"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.RCAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.RCAdventure"
             android:label="@string/rc"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.MOMAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.MOMAdventureCreation"
             android:label="@string/mom"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.MOMAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.MOMAdventure"
             android:label="@string/mom"
             android:screenOrientation="portrait" >
         </activity>
          <activity
-            android:name="pt.joaomneto.ffgbutil.adventurecreation.impl.COHAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.COHAdventureCreation"
             android:label="@string/coh"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.ffgbutil.adventure.impl.COHAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.COHAdventure"
             android:label="@string/coh"
             android:screenOrientation="portrait" >
         </activity>

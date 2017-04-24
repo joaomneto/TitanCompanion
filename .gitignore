@@ -10,3 +10,4 @@ FFGBUtil.iml
 lint.xml
 proguard-project.txt
 project.properties
+*.apk
