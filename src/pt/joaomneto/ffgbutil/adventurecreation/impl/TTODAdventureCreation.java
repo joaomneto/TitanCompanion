@@ -1,5 +1,0 @@
-package pt.joaomneto.ffgbutil.adventurecreation.impl;
-
-public class TTODAdventureCreation extends TFODAdventureCreation {
-
-}
