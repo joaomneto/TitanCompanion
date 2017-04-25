@@ -32,7 +32,7 @@ public class BNCAdventureCreation extends AdventureCreation {
 
 		bw.write("currentWillpower="+willpowerValue+"\n");
 		bw.write("initialWillpower="+willpowerValue+"\n");
-		bw.write("provisions=10\n");
+		bw.write("provisions=0\n");
 		bw.write("provisionsValue=4\n");
 		bw.write("gold=0\n");
 	}

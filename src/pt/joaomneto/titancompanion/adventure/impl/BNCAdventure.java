@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.bnc.BNCAdventureVitalStatsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class BNCAdventure extends Adventure {
@@ -88,5 +89,7 @@ public class BNCAdventure extends Adventure {
 
         String message = result ? "Success!" : "Failed...";
         showAlert(message, this);
+
+		((BNCAdventureVitalStatsFragment)(getFragments().get(0))).refreshScreensFromResume();
     }
 }
