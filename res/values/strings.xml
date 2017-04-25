@@ -821,6 +821,8 @@
     <string name="simulCombat">Simultaneous Combat? :</string>
     <string name="useShovel">Use Shovel</string>
     <string name="sonicShot">Sonic Shot</string>
+    <string name="willpower">Willpower: </string>
+    <string name="testWillpower">Test Willpower</string>
 
 
 </resources>

@@ -283,6 +283,16 @@
             android:label="@string/coh"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.BNCAdventureCreation"
+            android:label="@string/bnc"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.BNCAdventure"
+            android:label="@string/bnc"
+            android:screenOrientation="portrait" >
+        </activity>
 
 
 
