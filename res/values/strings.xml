@@ -823,6 +823,10 @@
     <string name="sonicShot">Sonic Shot</string>
     <string name="willpower">Willpower: </string>
     <string name="testWillpower">Test Willpower</string>
+    <string name="goldTreasure">Gold &amp; Treasure</string>
+    <string name="soldiers">Soldiers</string>
+    <string name="fightBattle">Fight Battle</string>
+    <string name="total">Total</string>
 
 
 </resources>

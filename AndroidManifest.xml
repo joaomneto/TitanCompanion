@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
     android:versionCode="4"
-    android:versionName="0.4
-    -alpha" >
+    android:versionName="0.4-alpha" >
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -294,9 +293,16 @@
             android:label="@string/bnc"
             android:screenOrientation="portrait" >
         </activity>
-
-
-
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AODAdventureCreation"
+            android:label="@string/aod"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.AODAdventure"
+            android:label="@string/aod"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
