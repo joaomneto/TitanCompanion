@@ -827,6 +827,18 @@
     <string name="soldiers">Soldiers</string>
     <string name="fightBattle">Fight Battle</string>
     <string name="total">Total</string>
+    <string name="total2">Total: </string>
+    <string name="addNewSoldiers">Add Soldiers</string>
+    <string name="cancel">Cancel</string>
+    <string name="startBattle">Start Battle</string>
+    <string name="inBattle">In Battle:</string>
+    <string name="plusFiveArrowRight">⇨</string>
+    <string name="plusFive">+5</string>
+    <string name="minusFive">-5</string>
+    <string name="warriors">Warriors</string>
+    <string name="enemyForces">Enemy Forces</string>
+    <string name="soldiersType">Soldiers Type: </string>
+    <string name="quantity">Quantity:</string>
 
 
 </resources>

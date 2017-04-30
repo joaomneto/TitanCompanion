@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.AODAdventureSoldiersFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.Army;
 
 public class AODAdventure extends Adventure {
@@ -26,7 +27,7 @@ public class AODAdventure extends Adventure {
         fragmentConfiguration.clear();
         fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"));
         fragmentConfiguration.put(FRAGMENT_SOLDIERS, new AdventureFragmentRunner(R.string.soldiers, "pt.joaomneto.titancompanion.adventure.impl.fragments.aod.AODAdventureSoldiersFragment"));
-        fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.rp.RPAdventureCombatFragment"));
+        fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"));
         fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldTreasure, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"));
         fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
     }
@@ -74,6 +75,9 @@ public class AODAdventure extends Adventure {
         this.soldiers = soldiers;
     }
 
+    public AODAdventureSoldiersFragment getSoldiersFragment(){
+        return (AODAdventureSoldiersFragment) getFragments().get(FRAGMENT_SOLDIERS);
+    }
 
 
 }

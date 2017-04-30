@@ -12,7 +12,7 @@ public class Army extends ArrayList<SoldiersDivision> {
 
         String[] armyList = savedArmy.split("#");
         for (String division : armyList) {
-            String[] divisionParameters = savedArmy.split("§");
+            String[] divisionParameters = division.split("§");
             result.add(new SoldiersDivision(divisionParameters[0], Integer.parseInt(divisionParameters[1])));
         }
 
@@ -27,6 +27,7 @@ public class Army extends ArrayList<SoldiersDivision> {
         for (SoldiersDivision division : this) {
             sb.append(!first ? '#' : "");
             sb.append(division.getType() + "§" + division.getQuantity());
+            first = false;
         }
 
         return sb.toString();

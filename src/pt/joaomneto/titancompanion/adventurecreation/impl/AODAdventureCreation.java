@@ -22,7 +22,7 @@ public class AODAdventureCreation extends AdventureCreation {
 	@Override
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 		bw.write("gold=700\n");
-		bw.write("soldier=Warriors§100#Dwarves§50#Elves§50#Knights§20\n");
+		bw.write("soldiers=Warriors§100#Dwarves§50#Elves§50#Knights§20\n");
 	}
 
 	@Override
