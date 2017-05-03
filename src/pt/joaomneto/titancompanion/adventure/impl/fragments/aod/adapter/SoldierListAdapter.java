@@ -23,6 +23,8 @@ import pt.joaomneto.titancompanion.adventure.impl.AODAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.AODAdventureSoldiersFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.SoldiersDivision;
 
+import static android.view.View.GONE;
+
 public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
 
     private final Context context;
@@ -40,8 +42,10 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        if(fragment.isBattleStaging()){
+        if (fragment.isBattleStaging()) {
             return getViewStaging(position, parent);
+        } else if (fragment.isBattleStarted()) {
+            return getViewBattle(position, parent);
         }
         return getViewStandard(position, parent);
     }
@@ -69,7 +73,7 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
 
             @Override
             public void onClick(View arg0) {
-                division.setQuantity(Math.max(0, division.getQuantity() - 5));
+                division.decrementAllValues();
                 divisionTotal.setText("" + division.getQuantity());
 
                 if (division.getQuantity() == 0) {
@@ -81,11 +85,59 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
 
             @Override
             public void onClick(View arg0) {
-                division.setQuantity(division.getQuantity() + 5);
+                division.incrementAllValues();
                 divisionTotal.setText("" + division.getQuantity());
             }
         });
 
+
+        return soldiersView;
+    }
+
+    @NonNull
+    private View getViewBattle(final int position, ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        final View soldiersView = inflater.inflate(R.layout.component_36aod_division_battle, parent, false);
+
+        final TextView divisionName = (TextView) soldiersView.getRootView().findViewById(R.id.aod_division_name);
+        final TextView divisionTotal = (TextView) soldiersView.getRootView().findViewById(R.id.aod_division_totalValue);
+
+        final String type = values.get(position).getType();
+        final int divisionQuantity = fragment.getSkirmishValueForDivision(type);
+
+        if (divisionQuantity == 0) {
+            soldiersView.setVisibility(GONE);
+            return soldiersView;
+        }
+
+        divisionName.setText(type);
+        divisionTotal.setText("" + divisionQuantity);
+
+        final Button minusDivisionTotal = (Button) soldiersView.findViewById(R.id.aod_division_minusDivisionTotalTotal);
+
+
+        minusDivisionTotal.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                synchronized (this) {
+                    int currentQuantity = fragment.getSkirmishValueForDivision(type);
+                    if (currentQuantity > 0 && (fragment.getTargetLosses() >= fragment.getTurnArmyLosses())) {
+                        fragment.incrementTurnArmyLosses();
+                        if (fragment.getTargetLosses() == fragment.getTurnArmyLosses()) {
+                            fragment.setBattleState(AODAdventureSoldiersFragment.AODAdventureBattleState.STARTED);
+                            fragment.refreshScreensFromResume();
+                        }
+                        int newQuantity = Math.max(0, currentQuantity - 5);
+                        fragment.setSkirmishValueForDivision(type, newQuantity);
+                        divisionTotal.setText("" + newQuantity);
+                    }
+                }
+            }
+        });
+
+        minusDivisionTotal.setVisibility(fragment.isBattleDamage() ? View.VISIBLE : View.GONE);
 
         return soldiersView;
     }
@@ -117,14 +169,14 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
                     if (!event.isShiftPressed()) {
 
                         Editable text = divisionBattleTotal.getText();
-                        if (text != null && text.toString().length()>0) {
+                        if (text != null && text.toString().length() > 0) {
                             Integer value = new Integer(text.toString());
 
-                            if(value%5!=0){
-                                value = 5*(Math.round(value/5));
+                            if (value % 5 != 0) {
+                                value = 5 * (Math.round(value / 5));
                             }
                             divisionBattleTotal.setText(value + "");
-                        }else{
+                        } else {
                             divisionBattleTotal.setText("0");
                         }
                         return true; // consume.
@@ -144,7 +196,7 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
 
             @Override
             public void onClick(View arg0) {
-                if(division.getQuantity()>0) {
+                if (division.getQuantity() > 0) {
                     division.setQuantity(Math.max(0, division.getQuantity() - 5));
                     fragment.setSkirmishValueForDivision(division.getType(), fragment.getSkirmishValueForDivision(division.getType()) + 5);
                     fragment.refreshScreensFromResume();
@@ -157,7 +209,7 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
             @Override
             public void onClick(View arg0) {
                 Integer skirmishValueForDivision = fragment.getSkirmishValueForDivision(division.getType());
-                if(skirmishValueForDivision>0) {
+                if (skirmishValueForDivision > 0) {
                     division.setQuantity(division.getQuantity() + 5);
                     fragment.setSkirmishValueForDivision(division.getType(), Math.max(0, skirmishValueForDivision - 5));
                     fragment.refreshScreensFromResume();

@@ -39,7 +39,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:inputType="number" />
+            android:inputType="phone" />
 
         <TextView
             android:id="@+id/armorText"
@@ -111,7 +111,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:inputType="number" />
+            android:inputType="phone" />
 
         <TextView
             android:id="@+id/specialAbilityText"

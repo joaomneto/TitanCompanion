@@ -16,6 +16,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignBottom="@+id/aod_division_minusDivisionTotalTotal"
         android:layout_alignParentTop="true"
+        android:text="@string/addBooty"
         android:layout_toStartOf="@+id/aod_division_minusDivisionTotalTotal" />
 
     <Button

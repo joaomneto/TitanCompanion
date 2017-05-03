@@ -35,7 +35,7 @@
         android:layout_alignBottom="@id/addEnemyRobot_armorText"
         android:layout_alignTop="@id/addEnemyRobot_armorText"
         android:layout_toEndOf="@+id/addEnemyRobot_armorText"
-        android:inputType="number" />
+        android:inputType="phone" />
 
 
     <EditText
@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/addEnemyRobot_specialAbilityText"
         android:layout_toEndOf="@+id/addEnemyRobot_specialAbilityText"
-        android:inputType="number"/>
+        android:inputType="phone"/>
 
     <TextView
         android:id="@+id/addEnemyRobot_specialAbilityText"
@@ -205,7 +205,7 @@
             android:layout_alignBottom="@id/addEnemyRobot2_armorText"
             android:layout_alignTop="@id/addEnemyRobot2_armorText"
             android:layout_toEndOf="@+id/addEnemyRobot2_armorText"
-            android:inputType="number" />
+            android:inputType="phone" />
 
 
         <EditText

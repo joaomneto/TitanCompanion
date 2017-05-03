@@ -66,116 +66,156 @@
                     android:id="@+id/aod_soldiers_enemyForcesLabel"
                     android:layout_width="80dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentStart="true"
-                    android:gravity="center_vertical"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_alignBottom="@+id/aod_division_minusEnemyForcesButton"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toStartOf="@+id/aod_division_minusEnemyForcesButton"
+                    android:gravity="center_vertical"
                     android:text="@string/enemyForces"
-                    android:layout_toStartOf="@+id/aod_division_minusEnemyForcesButton" />
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <Button
                     android:id="@+id/aod_division_minusEnemyForcesButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:padding="0dp"
-                    android:text="@string/minusFive"
                     android:layout_alignParentTop="true"
-                    android:layout_toStartOf="@+id/aod_division_enemyForcesValue" />
+                    android:layout_toStartOf="@+id/aod_division_enemyForcesValue"
+                    android:padding="0dp"
+                    android:text="@string/minusFive" />
 
 
                 <Button
                     android:id="@+id/aod_division_plusEnemyForcesButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:padding="0dp"
-                    android:text="@string/plusFive"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true" />
+                    android:padding="0dp"
+                    android:text="@string/plusFive" />
 
                 <TextView
                     android:id="@+id/aod_division_enemyForcesValue"
-                    android:layout_width="40dp"
+                    android:layout_width="60dp"
                     android:layout_height="40dp"
-                    android:gravity="center_vertical"
                     android:layout_toLeftOf="@id/aod_division_plusEnemyForcesButton"
+                    android:gravity="center"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                </RelativeLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/aod_soldiers_ButtonsStaging_buttons"
-                android:layout_marginTop="10dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:visibility="visible">
 
-            <Button
-                android:id="@+id/aod_soldiers_buttonCommitForces"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/startBattle" />
+                <Button
+                    android:id="@+id/aod_soldiers_buttonCommitForces"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/startBattle" />
 
-            <Button
-                android:id="@+id/aod_soldiers_buttonCancelBattle"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/cancel" />
+                <Button
+                    android:id="@+id/aod_soldiers_buttonCancelBattle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cancel" />
 
+            </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/aod_soldiers_ButtonsBattle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+
+            <Button
+                android:id="@+id/aod_soldiers_buttonCombatTurn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/combatTurn" />
+
+            <Button
+                android:id="@+id/aod_soldiers_buttonResetBattle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/reset" />
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/aod_soldiers_ButtonsBattle"
+    <TextView
+        android:id="@+id/aod_soldiers_combatResultText"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:visibility="gone">
+        android:layout_height="100dp"
+        android:layout_above="@id/aod_soldiers_buttons"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:visibility="visible" />
 
 
-        <Button
-            android:id="@+id/aod_soldiers_buttonCombatTurn"
+    <RelativeLayout
+        android:id="@+id/aod_soldiers_enemyTroopsLayout"
+        android:layout_above="@id/aod_soldiers_combatResultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/aod_soldiers_enemyTroopsValue"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/aod_soldiers_enemyTroopsLabel"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/combatTurn" />
-
-        <Button
-            android:id="@+id/aod_soldiers_buttonResetBattle"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/reset" />
-    </LinearLayout>
-
-</LinearLayout>
-
-<TextView
-android:id="@+id/aod_soldiers_combatResultText"
-android:layout_width="fill_parent"
-android:layout_height="100dp"
-android:layout_above="@id/aod_soldiers_buttons"
-android:visibility="gone" />
-
-<ListView
-android:id="@+id/aod_soldiers_soldiersList"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:layout_above="@+id/aod_soldiers_combatResultText"
-android:layout_alignParentLeft="true"
-android:layout_alignParentTop="true"
-android:background="@drawable/border_back">
-
-</ListView>
-
+            android:layout_height="40dp"
+            android:layout_toStartOf="@id/aod_soldiers_enemyTroopsValue"
+            android:gravity="end|center_vertical"
+            android:text="@string/enemyForces2"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:visibility="visible" />
 
     </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/aod_soldiers_soldiersList"
+        android:layout_width="fill_parent"
+        android:layout_height="100px"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/aod_soldiers_armyTitle"
+        android:background="@drawable/border_back"
+        android:layout_above="@+id/aod_soldiers_enemyTroopsLayout">
+
+    </ListView>
+
+    <TextView
+
+        android:id="@+id/aod_soldiers_armyTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/currentArmy"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>
