@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
-    android:versionCode="3"
-    android:versionName="0.3-alpha" >
+    android:versionCode="5"
+    android:versionName="0.5-alpha" >
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -191,6 +191,15 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TROKAdventureCreation"
+            android:label="@string/trok" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.TROKAdventure"
+            android:label="@string/trok"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SOBAdventureCreation"
             android:label="@string/sob" >
         </activity>
@@ -274,9 +283,26 @@
             android:label="@string/coh"
             android:screenOrientation="portrait" >
         </activity>
-
-
-
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.BNCAdventureCreation"
+            android:label="@string/bnc"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.BNCAdventure"
+            android:label="@string/bnc"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AODAdventureCreation"
+            android:label="@string/aod"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.AODAdventure"
+            android:label="@string/aod"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

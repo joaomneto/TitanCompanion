@@ -223,7 +223,6 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 				EditText combatBonusAltValue = (EditText) addRobotView.findViewById(R.id.bonusAltValue);
 				Spinner speedAltValue = (Spinner) addRobotView.findViewById(R.id.speedAltValue);
 
-				speedAltValue.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
 
 				EditText nameValue = (EditText) addRobotView.findViewById(R.id.nameValue);
 				EditText armorValue = (EditText) addRobotView.findViewById(R.id.armorValue);
@@ -232,7 +231,6 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 				EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
 				CheckBox alternateForm = (CheckBox) addRobotView.findViewById(R.id.alternateFormValue);
 
-				speedValue.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
 
 				String armor = armorValue.getText().toString();
 				String bonus = combatBonusValue.getText().toString();
@@ -246,11 +244,11 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 						&& (!alternateForm.isChecked() || (alternateForm.isChecked() && armorAlt.length() > 0 && bonusAlt.length() > 0));
 				if (valid) {
 					if (alternateForm.isChecked())
-						addRobot(name, Integer.parseInt(armor), Integer.parseInt(bonus), (RobotSpeed) speedValue.getSelectedItem(),
+						addRobot(name, Integer.parseInt(armor), Integer.parseInt(bonus), RobotSpeed.getSpeedForId((int)speedValue.getSelectedItemId()),
 								specialAbility.length() > 0 ? Integer.parseInt(specialAbility) : null, nameAlt, Integer.parseInt(armorAlt),
-								Integer.parseInt(bonusAlt), (RobotSpeed) speedAltValue.getSelectedItem());
+								Integer.parseInt(bonusAlt), RobotSpeed.getSpeedForId((int)speedAltValue.getSelectedItemId()));
 					else
-						addRobot(name, Integer.parseInt(armor), Integer.parseInt(bonus), (RobotSpeed) speedValue.getSelectedItem(),
+						addRobot(name, Integer.parseInt(armor), Integer.parseInt(bonus), RobotSpeed.getSpeedForId((int)speedValue.getSelectedItemId()),
 								specialAbility.length() > 0 ? Integer.parseInt(specialAbility) : null);
 				} else {
 					Adventure.showAlert("At least the name, armor and bonus values must be filled.", adv);
