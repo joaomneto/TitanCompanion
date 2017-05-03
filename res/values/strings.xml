@@ -271,10 +271,10 @@
     </string-array>
 
     <string name="title_activity_error">ErrorActivity</string>
-    <string name="spellList">Spell List</string>
-    <string name="selectedSpellList">Selected Spells</string>
+    <string name="spellList">Available Spells:</string>
+    <string name="selectedSpellList">Selected Spells:</string>
     <string name="rollSpellValue">Roll Spell Score</string>
-    <string name="spellScore">Remaining Spells: </string>
+    <string name="spellScore">Remaining Spell Points: </string>
     <string name="shipCrewStats">Ship and Crew</string>
     <string name="scienceOfficer">Science Officer</string>
     <string name="medicalOfficer">Medical Officer</string>

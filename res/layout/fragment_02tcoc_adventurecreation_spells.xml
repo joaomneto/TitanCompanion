@@ -3,61 +3,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="11"
-    tools:context=".adventurecreation.impl.fragments.tcoc.TCOCSpellsFragment" >
+    android:padding="10dp"
+    android:weightSum="2"
+    tools:context=".adventurecreation.impl.fragments.tcoc.TCOCAdventureSpellsFragment">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="@string/spellScore"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/spellScoreValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/textView3"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </RelativeLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="0.60"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
         android:text="@string/spellList"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/spellListView"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="4.26" >
-    </ListView>
+        android:layout_weight="1"
+        android:background="@drawable/border_back"></ListView>
 
     <TextView
         android:id="@+id/textField2"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="0.53"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
         android:text="@string/selectedSpellList"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/selectedSpellListView"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="5.48" >
-    </ListView>
+        android:layout_weight="1"
+        android:background="@drawable/border_back"></ListView>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/spellScoreValue"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_toStartOf="@id/spellScoreValue"
+            android:gravity="end|center_vertical"
+            android:text="@string/spellScore"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/buttonSaveAdventure"
