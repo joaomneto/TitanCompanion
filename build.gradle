@@ -36,6 +36,7 @@ android {
             assets.srcDirs = ['assets']
         }
 
+
         // Move the tests to tests/java, tests/res, etc...
         instrumentTest.setRoot('tests')
 
