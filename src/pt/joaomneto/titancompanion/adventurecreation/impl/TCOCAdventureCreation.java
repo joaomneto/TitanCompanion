@@ -3,7 +3,10 @@ package pt.joaomneto.titancompanion.adventurecreation.impl;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
@@ -17,7 +20,8 @@ public class TCOCAdventureCreation extends AdventureCreation {
 	private final static int FRAGMENT_TCOC_SPELLS = 1;
 
 	private int spellValue = -1;
-	List<String> spells = new ArrayList<String>();
+	Map<String, Integer> spells = new HashMap<>();
+    List<String> spellList = new ArrayList<>();
 	
 	public TCOCAdventureCreation() {
 		super();
@@ -38,8 +42,8 @@ public class TCOCAdventureCreation extends AdventureCreation {
 		String spellsS = "";
 
 		if (!spells.isEmpty()) {
-			for (String spell : spells) {
-				spellsS += spell + "#";
+			for (String spell : getSpellList()) {
+				spellsS += spell + "§"+spells.get(spell)+"#";
 			}
 			spellsS = spellsS.substring(0, spellsS.length() - 1);
 		}
@@ -81,10 +85,49 @@ public class TCOCAdventureCreation extends AdventureCreation {
 		return spellValue;
 	}
 
-	public synchronized List<String> getSpells() {
-		return spells;
-	}
-	
-	
+	public synchronized List<String> getSpellList() {
+        for(String spell: spells.keySet()){
+            if(!spellList.contains(spell)){
+                spellList.add(spell);
+            }
+        }
 
+        Collections.sort(spellList);
+        return spellList;
+	}
+
+
+    public void addSpell(String spell) {
+        if(!spells.containsKey(spell)){
+            spells.put(spell, 1);
+        }
+        spells.put(spell, spells.get(spell)+1);
+    }
+
+    public void removeSpell(int position) {
+        String spell = getSpellList().get(position);
+        int value = spells.get(spell) - 1;
+        if(value == 0){
+            spells.remove(spell);
+        }else {
+            spells.put(spell, value);
+        }
+    }
+
+    public Map<String, Integer> getSpells() {
+        return spells;
+    }
+
+    public int getSpellListSize() {
+        int size = 0;
+        for (String spell: getSpellList()) {
+            Integer value = spells.get(spell);
+            if(value !=null ){
+                size+=value;
+            }else{
+                size+=1;
+            }
+        }
+        return size;
+    }
 }
