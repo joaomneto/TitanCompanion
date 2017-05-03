@@ -38,15 +38,14 @@
         android:text="@string/total2"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <EditText
+    <TextView
         android:id="@+id/aod_division_battleValue"
         android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_alignBottom="@+id/aod_division_addToBattle"
         android:layout_alignTop="@+id/aod_division_addToBattle"
         android:layout_toStartOf="@+id/aod_division_addToBattle"
-        android:digits="0123456789"
-        android:inputType="number"
+        android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView

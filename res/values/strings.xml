@@ -839,6 +839,10 @@
     <string name="enemyForces">Enemy Forces</string>
     <string name="soldiersType">Soldiers Type: </string>
     <string name="quantity">Quantity:</string>
+    <string name="currentArmy">Current Army:</string>
+    <string name="selectForces">Select Forces:</string>
+    <string name="skirmishForces">In Battle:</string>
+    <string name="enemyForces2">Enemy Forces:</string>
 
 
 </resources>

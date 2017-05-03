@@ -43,7 +43,7 @@
         android:layout_alignTop="@+id/enemySkillText"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="phone" />
 
     <TextView
         android:id="@+id/enemyStaminaText"
@@ -64,6 +64,6 @@
         android:layout_alignRight="@+id/enemySkillValue"
         android:layout_alignTop="@+id/enemyStaminaText"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="phone" />
 
 </RelativeLayout>

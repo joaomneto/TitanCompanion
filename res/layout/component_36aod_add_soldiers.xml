@@ -39,7 +39,7 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="phone"
         android:digits="0123456789"
         android:layout_alignBottom="@+id/aod_soldiers_quantityLabel"
         android:layout_alignStart="@+id/aod_soldiers_type" />
