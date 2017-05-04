@@ -99,7 +99,7 @@ public class TCOCAdventureCreation extends AdventureCreation {
 
     public void addSpell(String spell) {
         if(!spells.containsKey(spell)){
-            spells.put(spell, 1);
+            spells.put(spell, 0);
         }
         spells.put(spell, spells.get(spell)+1);
     }
