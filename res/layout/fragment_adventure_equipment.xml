@@ -10,8 +10,10 @@
 
     <ListView
         android:id="@+id/equipmentList"
+        android:layout_marginTop="5dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/border_back"
         android:layout_above="@+id/buttonAddEquipment"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/equipmentLabel" >
