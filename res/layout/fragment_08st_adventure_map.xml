@@ -3,7 +3,7 @@
     android:id="@+id/lefta_11"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".adventurecreation.impl.fragments.ss.SSAdventureMapFragment" >
+    tools:context=".adventurecreation.impl.fragments.ss.SSAdventureMapFragment">
 
     <Button
         android:id="@+id/addClearingButton"
@@ -14,977 +14,533 @@
         android:layout_marginTop="10dp"
         android:text="@string/addClearing" />
 
-    <TextView
-        android:id="@+id/clearing_1"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@id/addClearingButton"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_1"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_1"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/clearing_1"
-        android:layout_alignBottom="@+id/clearing_1"
-        android:layout_toLeftOf="@+id/clearing_1"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/righta_4"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/clearing_1"
-        android:layout_alignBottom="@+id/clearing_1"
-        android:layout_toLeftOf="@+id/left_1"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/right_4"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/clearing_1"
-        android:layout_alignBottom="@+id/clearing_1"
-        android:layout_toLeftOf="@+id/righta_4"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_4"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/right_4"
-        android:layout_alignBottom="@+id/right_4"
-        android:layout_toLeftOf="@+id/right_4"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_4"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/right_1"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/clearing_1"
-        android:layout_alignBottom="@+id/clearing_1"
-        android:layout_toRightOf="@+id/clearing_1"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_12"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@id/addClearingButton"
-        android:layout_toRightOf="@id/right_1"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_12"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/right_12"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/clearing_25"
-        android:layout_alignBottom="@+id/clearing_25"
-        android:layout_toRightOf="@+id/clearing_12"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_25"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@id/addClearingButton"
-        android:layout_toRightOf="@id/right_12"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_25"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_4"
-        android:layout_width="25dp"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_4"
-        android:layout_alignLeft="@+id/clearing_4"
-        android:layout_alignRight="@+id/clearing_4"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_34"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_34"
-        android:layout_alignLeft="@+id/clearing_4"
-        android:layout_alignRight="@+id/clearing_4"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_12"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_12"
-        android:layout_alignLeft="@+id/clearing_12"
-        android:layout_alignRight="@+id/clearing_12"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_34"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_4"
-        android:layout_alignLeft="@+id/up_4"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_34"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_17"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_12"
-        android:layout_toLeftOf="@+id/right_12"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_17"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_17"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_17"
-        android:layout_toLeftOf="@+id/right_12"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_18"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_34"
-        android:layout_alignLeft="@+id/up_34"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_18"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_18"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_34"
-        android:layout_toLeftOf="@+id/up_34"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_6"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_34"
-        android:layout_toLeftOf="@+id/left_18"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_6"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_24"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_17"
-        android:layout_toRightOf="@+id/right_1"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_24"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/right_24"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_17"
-        android:layout_toRightOf="@+id/up_17"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_26"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_17"
-        android:layout_alignLeft="@+id/clearing_25"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_26"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/down_26"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/up_17"
-        android:layout_alignBottom="@+id/up_17"
-        android:layout_alignLeft="@+id/clearing_26"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_8"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignLeft="@+id/down_26"
-        android:layout_below="@+id/down_26"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_8"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/right_3"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_26"
-        android:layout_toRightOf="@+id/up_26"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_3"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_26"
-        android:layout_toLeftOf="@+id/up_26"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/down_9"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/up_26"
-        android:layout_alignBottom="@+id/up_26"
-        android:layout_toLeftOf="@+id/left_13"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_24"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_17"
-        android:layout_toLeftOf="@+id/clearing_13"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_18"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_18"
-        android:layout_toLeftOf="@+id/right_4"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_3"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_26"
-        android:layout_toLeftOf="@+id/right_3"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_3"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_181"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_29"
-        android:layout_toLeftOf="@+id/right_4"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_26"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_26"
-        android:layout_alignLeft="@+id/clearing_26"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_13"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/down_9"
-        android:layout_alignLeft="@+id/clearing_24"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_13"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_5"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_17"
-        android:layout_toLeftOf="@+id/left_13"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_5"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_9"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/down_9"
-        android:layout_alignLeft="@+id/clearing_1"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_9"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_33"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_181"
-        android:layout_toLeftOf="@+id/right_4"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_33"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_29"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_18"
-        android:layout_toLeftOf="@+id/right_4"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_29"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_13"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/clearing_13"
-        android:layout_alignBottom="@+id/clearing_13"
-        android:layout_toLeftOf="@+id/clearing_13"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_21"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_26"
-        android:layout_toRightOf="@+id/right_3"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_21"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_29"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/clearing_29"
-        android:layout_alignBottom="@+id/clearing_29"
-        android:layout_toLeftOf="@+id/clearing_29"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_23"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_18"
-        android:layout_toLeftOf="@+id/left_29"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_23"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_23"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/clearing_33"
-        android:layout_toLeftOf="@+id/left_29"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_14"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_23"
-        android:layout_toLeftOf="@+id/left_29"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_14"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_9"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/down_9"
-        android:layout_alignLeft="@+id/left_1"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/righta_29"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_18"
-        android:layout_alignLeft="@+id/righta_4"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/TextView09"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/down_9"
-        android:layout_toLeftOf="@+id/down_9"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/leftUpa_5"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_5"
-        android:layout_toLeftOf="@+id/down_9"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/leftUp_5"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/down_9"
-        android:layout_toLeftOf="@+id/down_9"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_5"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_34"
-        android:layout_alignRight="@+id/leftUp_5"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_9"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_9"
-        android:layout_toLeftOf="@+id/left_13"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_20"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_9"
-        android:layout_toLeftOf="@+id/left_13"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_20"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/righta_33"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_181"
-        android:layout_toRightOf="@+id/right_29"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_20"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_9"
-        android:layout_toRightOf="@+id/righta_29"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_13"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/clearing_20"
-        android:layout_toLeftOf="@+id/left_3"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_35"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_13"
-        android:layout_toLeftOf="@+id/left_3"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_35"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_35"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_35"
-        android:layout_toLeftOf="@+id/left_3"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_16"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_35"
-        android:layout_toLeftOf="@+id/left_3"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_16"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/right_16"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_below="@+id/up_16"
-        android:layout_toLeftOf="@+id/clearing_3"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_16"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_35"
-        android:layout_toLeftOf="@+id/up_35"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_30"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_35"
-        android:layout_toLeftOf="@+id/right_3"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_30"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_30"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_30"
-        android:layout_toLeftOf="@+id/right_3"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_7"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_30"
-        android:layout_toLeftOf="@+id/right_3"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_7"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_7"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_7"
-        android:layout_toLeftOf="@+id/right_3"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_11"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_7"
-        android:layout_toLeftOf="@+id/right_3"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_11"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_7"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/clearing_7"
-        android:layout_alignBottom="@+id/clearing_7"
-        android:layout_toLeftOf="@+id/clearing_7"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/right_29"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/leftUpa_5"
-        android:layout_toLeftOf="@+id/righta_29"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_32"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/left_16"
-        android:layout_alignBottom="@+id/left_16"
-        android:layout_toLeftOf="@+id/left_16"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_32"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_16"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_32"
-        android:layout_alignLeft="@+id/clearing_32"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/upa_16"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/up_16"
-        android:layout_alignLeft="@+id/up_16"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/upb_16"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/upa_16"
-        android:layout_toLeftOf="@+id/left_16"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/upc_16"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/lefta_7"
-        android:layout_toLeftOf="@+id/left_16"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_19"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/upc_16"
-        android:layout_toLeftOf="@+id/left_16"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_19"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_19"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_19"
-        android:layout_toLeftOf="@+id/left_16"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/lefta_7"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_below="@+id/up_7"
-        android:layout_toLeftOf="@+id/right_24"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/lefb_7"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_16"
-        android:layout_toLeftOf="@+id/lefta_7"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/lefc_7"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_16"
-        android:layout_toLeftOf="@+id/lefb_7"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/lefd_7"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_16"
-        android:layout_toLeftOf="@+id/lefc_7"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/right_33"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_181"
-        android:layout_toLeftOf="@+id/righta_33"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/lefb_27"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/lefta_27"
-        android:layout_alignBottom="@+id/lefta_27"
-        android:layout_toLeftOf="@+id/lefta_27"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/lefc_27"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/lefb_27"
-        android:layout_alignBottom="@+id/lefb_27"
-        android:layout_toLeftOf="@+id/lefb_27"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/lefd_27"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/lefc_27"
-        android:layout_alignBottom="@+id/lefc_27"
-        android:layout_alignLeft="@+id/lefd_7"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_27"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/claering_27"
-        android:layout_alignBottom="@+id/claering_27"
-        android:layout_toLeftOf="@+id/claering_27"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/lefta_27"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/left_27"
-        android:layout_alignBottom="@+id/left_27"
-        android:layout_toLeftOf="@+id/left_27"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/upa_19"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/up_19"
-        android:layout_toLeftOf="@+id/left_16"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/claering_27"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignBottom="@+id/upa_19"
-        android:layout_toLeftOf="@+id/right_3"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_27"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/righta_15"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_below="@+id/upc_16"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_15"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignLeft="@+id/right_33"
-        android:layout_below="@+id/upc_16"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_15"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/right_15"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_16"
-        android:layout_toRightOf="@+id/clearing_15"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/down_15"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clearing_32"
-        android:layout_toLeftOf="@+id/right_15"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_28"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignLeft="@+id/down_15"
-        android:layout_below="@+id/down_15"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_28"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/left_28"
-        android:layout_width="10dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_35"
-        android:layout_toLeftOf="@+id/clearing_28"
-        android:gravity="center"
-        android:text="@string/hifen"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/clearing_10"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/up_35"
-        android:layout_toLeftOf="@+id/left_28"
-        android:background="@drawable/border_back"
-        android:gravity="center"
-        android:text="@string/number_10"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/up_10"
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/down_15"
-        android:layout_alignBottom="@+id/down_15"
-        android:layout_toLeftOf="@+id/left_28"
-        android:gravity="center"
-        android:text="@string/pipe"
-        android:visibility="invisible" />
+        android:layout_above="@+id/addClearingButton"
+        android:layout_alignParentTop="true">
+
+        <TableLayout
+            android:id="@+id/clearingGrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_19"
+                    android:background="@mipmap/cross_2dr"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_19"  />
+
+                <TextView
+                    android:id="@+id/clearing_27"
+                    android:background="@mipmap/cross_1l"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_27" />
+
+                <TextView
+                    android:id="@+id/clearing_11"
+                    android:background="@mipmap/cross_1d"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_11" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/clearing_10_w"
+                    android:background="@mipmap/cross_vertical"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_15"
+                    android:background="@mipmap/cross_3lrd"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_15" />
+
+                <TextView
+                    android:id="@+id/clearing_7_15_19_32"
+                    android:background="@mipmap/cross_cross"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_7_15"
+                    android:background="@mipmap/cross_horoizontal"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/clearing_7"
+                    android:background="@mipmap/cross_3lud"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_7" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/clearing_10"
+                    android:background="@mipmap/cross_2ur"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_10" />
+
+                <TextView
+                    android:id="@+id/clearing_28_10"
+                    android:background="@mipmap/cross_horoizontal"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_28"
+                    android:background="@mipmap/cross_2ul"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_28"  />
+
+                <TextView
+                    android:id="@+id/clearing_32"
+                    android:background="@mipmap/cross_2ur"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_32" />
+
+                <TextView
+                    android:id="@+id/clearing_16"
+                    android:background="@mipmap/cross_3lrd"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_16" />
+
+                <TextView
+                    android:id="@+id/clearing_30"
+                    android:background="@mipmap/cross_2ul"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_30" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_33"
+                    android:background="@mipmap/cross_2dr"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_33" />
+
+                <TextView
+                    android:id="@+id/clearing_20"
+                    android:background="@mipmap/cross_2dl"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_20"  />
+
+                <TextView
+                    android:id="@+id/clearing_35"
+                    android:background="@mipmap/cross_2ud"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_35" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_14"
+                    android:background="@mipmap/cross_1d"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_14" />
+
+                <TextView
+                    android:id="@+id/clearing_29_33"
+                    android:background="@mipmap/cross_vertical"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_9"
+                    android:background="@mipmap/cross_3rud"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_9" />
+
+                <TextView
+                    android:id="@+id/clearing_13"
+                    android:background="@mipmap/cross_3lru"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_13" />
+
+                <TextView
+                    android:id="@+id/clearing_3"
+                    android:background="@mipmap/cross_3lrd"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_3" />
+
+                <TextView
+                    android:id="@+id/clearing_21"
+                    android:background="@mipmap/cross_1l"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_21"  />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_23"
+                    android:background="@mipmap/cross_2ur"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_23"  />
+
+                <TextView
+                    android:id="@+id/clearing_29"
+                    android:background="@mipmap/cross_4"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_29"/>
+
+                <TextView
+                    android:id="@+id/clearing_5"
+                    android:background="@mipmap/cross_3lru"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_5"/>
+
+                <TextView
+                    android:id="@+id/clearing_24"
+                    android:background="@mipmap/cross_3lrd"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_24" />
+
+                <TextView
+                    android:id="@+id/clearing_26"
+                    android:background="@mipmap/cross_3lud"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_26" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_6"
+                    android:background="@mipmap/cross_1r"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_6"/>
+
+                <TextView
+                    android:id="@+id/clearing_18"
+                    android:background="@mipmap/cross_3lud"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_18"/>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_18_24"
+                    android:background="@mipmap/cross_vertical"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/clearing_8"
+                    android:background="@mipmap/cross_1u"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_8"  />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_34"
+                    android:background="@mipmap/cross_2ud"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_34"/>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_17"
+                    android:background="@mipmap/cross_2ud"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:text="@string/number_17"/>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/clearing_4"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:background="@mipmap/cross_2ur"
+                    android:text="@string/number_4"/>
+
+                <TextView
+                    android:id="@+id/clearing_1"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:background="@mipmap/cross_3lrd"
+                    android:gravity="center"
+                    android:text="@string/number_1" />
+
+                <TextView
+                    android:id="@+id/clearing_12"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:background="@mipmap/cross_3lru"
+                    android:text="@string/number_12"/>
+
+                <TextView
+                    android:id="@+id/clearing_25"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center"
+                    android:background="@mipmap/cross_1l"
+                    android:text="@string/number_25"/>
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:visibility="invisible"
+                    android:gravity="center" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
