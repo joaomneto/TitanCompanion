@@ -231,6 +231,7 @@
     <string name="title_activity_load_adventure">LoadAdventureActivity</string>
     <string name="potionsProvisions">Potions &amp; Provisions</string>
     <string name="goldEquipment">Gold &amp; Equipment</string>
+    <string name="moneyEquipment">Money &amp; Equipment</string>
     <string name="spells">Spells</string>
     <string name="fights">Fights</string>
     <string name="notes">Notes</string>
@@ -848,6 +849,8 @@
     <string name="skirmishForces">In Battle:</string>
     <string name="enemyForces2">Enemy Forces:</string>
     <string name="crew">Crew:</string>
+    <string name="date">Date:</string>
+    <string name="name2">Name:</string>
 
 
 </resources>

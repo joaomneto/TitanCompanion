@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/nameLabel"
+        android:layout_alignStart="@+id/nameLabel" />
+
+    <RelativeLayout
+        android:id="@+id/gamebookIconLayout"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_width="40dp"
+        android:layout_alignBottom="@id/dateLabel"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/gamebookIcon"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/gamebookValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/gamebookIconLayout"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Warlock of Firetop Mountain"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/gamebookValue"
+        android:layout_toEndOf="@id/gamebookIconLayout"
+        android:text="@string/name2"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nameValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/nameLabel"
+        android:layout_toEndOf="@id/nameLabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:lines="2"
+        android:text="Test"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_alignTop="@+id/nameLabel" />
+
+
+
+    <TextView
+        android:id="@+id/dateValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="2017-01-01 11:25"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_toEndOf="@+id/nameLabel"
+        android:layout_alignBottom="@+id/dateLabel"
+        android:layout_alignTop="@+id/dateLabel" />
+
+</RelativeLayout>

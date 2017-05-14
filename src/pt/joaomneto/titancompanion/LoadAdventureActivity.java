@@ -7,7 +7,10 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 
+import pt.joaomneto.titancompanion.adapter.Savegame;
+import pt.joaomneto.titancompanion.adapter.SavegameListAdapter;
 import pt.joaomneto.titancompanion.consts.Constants;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -43,16 +46,16 @@ public class LoadAdventureActivity extends Activity {
 		if(fileList == null)
 			fileList = new String[]{};
 
-		final ArrayList<String> files = new ArrayList<String>();
+		final ArrayList<Savegame> files = new ArrayList<Savegame>();
 
 		for (String string : fileList) {
 			if (string.startsWith("save")) {
-				files.add(string);
+				File f = new File(baseDir, string);
+				files.add(new Savegame(string, new Date(f.lastModified())));
 			}
 		}
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, files);
+		SavegameListAdapter adapter = new SavegameListAdapter(this, files);
 		listview.setAdapter(adapter);
 
 		final Context _this = this;
@@ -63,7 +66,7 @@ public class LoadAdventureActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 
-				final String dir_ = files.get(position);
+				final String dir_ = files.get(position).getFilename();
 
 				final File dir = new File(baseDir, dir_);
 				
@@ -156,7 +159,7 @@ public class LoadAdventureActivity extends Activity {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
 									int which) {
-								String file = files.get(position);
+								String file = files.get(position).getFilename();
 								File f = new File(baseDir, file);
 								if (deleteDirectory(f)) {
 									files.remove(position);
