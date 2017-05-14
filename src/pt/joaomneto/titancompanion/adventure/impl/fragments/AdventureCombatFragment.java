@@ -45,8 +45,6 @@ public class AdventureCombatFragment extends AdventureFragment {
 	public static final String NORMAL = "NORMAL";
 	public static final String SEQUENCE = "SEQUENCE";
 
-	public String offText = "Normal";
-	public String onText = "Sequence";
 
 	protected String combatMode = NORMAL;
 	protected int handicap = 0;
@@ -558,7 +556,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		combatantListAdapter.setCurrentEnemy(null);
 
 		combatTypeSwitch.setClickable(true);
-		combatMode = combatTypeSwitch.isChecked() ? SEQUENCE : NORMAL;
+		combatTypeSwitch.setChecked(false);
 
 		switchLayoutReset();
 
@@ -570,6 +568,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		combatTypeSwitch.setVisibility(View.VISIBLE);
 		startCombatButton.setVisibility(View.VISIBLE);
 		resetButton.setVisibility(View.VISIBLE);
+
 		testLuckButton.setVisibility(View.GONE);
 		combatTurnButton.setVisibility(View.GONE);
 		resetButton2.setVisibility(View.GONE);

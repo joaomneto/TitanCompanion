@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.consts;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
@@ -8,6 +10,9 @@ import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import android.content.Context;
 
 public abstract class Constants {
+
+
+
 
 	private static int[] gameBookCovers = new int[] { R.drawable.ff1,
 			R.drawable.ff2, R.drawable.ff3, R.drawable.ff4, R.drawable.ff5,

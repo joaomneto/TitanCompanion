@@ -3,6 +3,7 @@ package pt.joaomneto.titancompanion.adventure.impl.fragments.tcoc;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.TCOCAdventure;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -31,9 +32,10 @@ public class TCOCAdventureSpellsFragment extends AdventureFragment {
 
 		final TCOCAdventure adv = (TCOCAdventure) getActivity();
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv, android.R.layout.simple_list_item_1,
-				android.R.id.text1, adv.getSpells());
-		spellList.setAdapter(adapter);
+
+		final ArrayAdapter<String> selectedSpellsAdapter = new SpellListAdapter(adv, adv.getSpellList());
+
+		spellList.setAdapter(selectedSpellsAdapter);
 
 		spellList.setOnItemClickListener(new OnItemClickListener() {
 
@@ -50,7 +52,7 @@ public class TCOCAdventureSpellsFragment extends AdventureFragment {
 				builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int which) {
-						String spell = adv.getSpells().get(position);
+						String spell = adv.getSpellList().get(position);
 						if (spell.equals("Skill")) {
 							adv.setCurrentSkill(adv.getCurrentSkill() + (adv.getInitialSkill() / 2));
 							if (adv.getCurrentSkill() > adv.getInitialSkill())
@@ -64,7 +66,7 @@ public class TCOCAdventureSpellsFragment extends AdventureFragment {
 							if (adv.getCurrentLuck() > adv.getInitialLuck())
 								adv.setCurrentLuck(adv.getInitialLuck());
 						}
-						adv.getSpells().remove(position);
+						adv.removeSpell(position);
 						((ArrayAdapter<String>) spellList.getAdapter()).notifyDataSetChanged();
 					}
 				});

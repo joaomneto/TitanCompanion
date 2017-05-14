@@ -20,6 +20,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
 	public static final String SA12_GUNFIGHT = "SA12_GUNFIGHT";
@@ -52,8 +55,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
 				String result = "";
 
-				for (int i = 0; i < 6; i++) {
-					Combatant enemy = combatPositions.get(i);
+				for (Combatant enemy: combatPositions) {
 
 					if (enemy != null && enemy.getCurrentStamina() > 0) {
 						int damage = DiceRoller.rollD6();
@@ -129,8 +131,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
 		}
 
-		for (int i = 0; i < 6; i++) {
-			Combatant enemy = combatPositions.get(i);
+		for (Combatant enemy: combatPositions) {
 			if (enemy != null && enemy.getCurrentStamina() > 0) {
 				if (DiceRoller.roll2D6().getSum() <= enemy.getCurrentSkill()) {
 					int damage = enemy.getDamage().equals("2") ? 2 : DiceRoller.rollD6();
@@ -198,7 +199,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 				Integer handicap = Integer.valueOf(handicapValue.getText().toString());
 
 				addCombatant(rootView, skill, stamina, handicap,
-						weaponSpinner == null ? null : weaponSpinner.getSelectedItem().toString().equals("Assault Blaster") ? "1d6" : "2");
+						weaponSpinner == null ? "2" : weaponSpinner.getSelectedItem().toString().equals("Assault Blaster") ? "1d6" : "2");
 
 			}
 
@@ -217,18 +218,26 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 	}
 
 	protected String combatTypeSwitchBehaviour(boolean isChecked) {
+		combatPositions.clear();
+		refreshScreensFromResume();
 		return combatMode = isChecked ? SA12_GUNFIGHT : NORMAL;
 	}
 
 	protected void switchLayoutCombatStarted() {
-		grenadeButton.setVisibility(View.GONE);
+		grenadeButton.setVisibility(combatMode.equals(SA12_GUNFIGHT)?VISIBLE:GONE);
 		super.switchLayoutCombatStarted();
 
 	}
 
 	protected void switchLayoutReset() {
-		grenadeButton.setVisibility(View.VISIBLE);
+		grenadeButton.setVisibility(GONE);
 		super.switchLayoutReset();
 	}
+
+	public String getOntext() {
+		return "Weapons";
+	}
+
+
 
 }

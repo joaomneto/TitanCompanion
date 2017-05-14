@@ -149,18 +149,18 @@ public class STCombatFragment extends AdventureFragment {
 			if (crewmanAttackStrength > enemyAttackStrength) {
 				if (!position.isDefenseOnly()) {
 					position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - 2));
-					combatResult.setText("The " + crewmanString + " has hit his enemy! (" + crewmanDiceRoll.getSum() +  " + "
-							+ crewmanSkill + ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill() + ")");
+					combatResult.setText("The " + crewmanString + " has hit his enemy! (dice: " + crewmanDiceRoll.getSum() +  " + skill: "
+							+ crewmanSkill + ") vs (dice: " + enemyDiceRoll.getSum() +  " + skill: " + position.getCurrentSkill() + ")");
 				} else {
-					combatResult.setText("The " + crewmanString + " has blocked the enemy attack! (" + crewmanDiceRoll
-							+ " + " + crewmanSkill + ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill()
+					combatResult.setText("The " + crewmanString + " has blocked the enemy attack! (dice: " + crewmanDiceRoll.getSum()
+							+ " + skill: " + crewmanSkill + ") vs (dice: " + enemyDiceRoll.getSum() +  " + skill: " + position.getCurrentSkill()
 							+ ")");
 				}
 			} else if (crewmanAttackStrength < enemyAttackStrength) {
 				adv.setCrewmanStamina(position.getCrewman(),
 						(Math.max(0, adv.getCrewmanStamina(position.getCrewman()) - 2)));
-				combatResult.setText("The " + crewmanString + " has been hit... (" + crewmanDiceRoll.getSum() +  " + "
-						+ crewmanSkill + ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill() + ")");
+				combatResult.setText("The " + crewmanString + " has been hit... (dice: " + crewmanDiceRoll.getSum() +  " + skill: "
+						+ crewmanSkill + ") vs (dice: " + enemyDiceRoll.getSum() +  " + skill: " + position.getCurrentSkill() + ")");
 			} else {
 				combatResult.setText("Both the " + crewmanString + " and his enemy have missed");
 			}
@@ -237,8 +237,8 @@ public class STCombatFragment extends AdventureFragment {
 
 			if (crewmanDiceRoll.getSum() < (crewmanSkill + crewmanHandicap + handicap)) {
 				position.setCurrentStamina(0);
-				combatResult.setText("The " + crewmanString + " has killed his enemy! (" + crewmanDiceRoll.getSum() +  ") > ("
-						+ crewmanSkill + (crewmanHandicap != 0 ? (" + " + crewmanHandicap) : "")
+				combatResult.setText("The " + crewmanString + " has killed his enemy! (dice: " + crewmanDiceRoll.getSum() +  ") > (skill: "
+						+ crewmanSkill + (crewmanHandicap != 0 ? (" + mod: " + crewmanHandicap) : "")
 						+ (handicap != 0 ? (" + " + handicap) : "") + ")");
 				removeCombatant(row);
 
@@ -249,8 +249,8 @@ public class STCombatFragment extends AdventureFragment {
 				if (enemyDiceRoll.getSum() < position.getCurrentSkill()) {
 					if (!position.isDefenseOnly()) {
 						adv.setCrewmanDead(position.getCrewman());
-						combatResult.setText(combatResult.getText() + "\nThe " + crewmanString + " has died... ("
-								+ enemyDiceRoll.getSum() +  ") > (" + position.getCurrentSkill() + ")");
+						combatResult.setText(combatResult.getText() + "\nThe " + crewmanString + " has died... (dice: "
+								+ enemyDiceRoll.getSum() +  ") > (skill: " + position.getCurrentSkill() + ")");
 						removeCombatant(row);
 					} else {
 						int killedCrewman = new Random(System.currentTimeMillis()).nextInt(combatPositions.size() - 1);
@@ -263,8 +263,8 @@ public class STCombatFragment extends AdventureFragment {
 						adv.setCrewmanDead(killedCrewmanObj);
 						combatResult.setText(combatResult.getText() + "\nThe "
 								+ adv.getStringForCrewman(killedCrewmanObj) + " was killed by (Sk:"
-								+ position.getCurrentSkill() + " St:" + position.getCurrentStamina() + ")... ("
-								+ enemyDiceRoll.getSum() +  ") > (" + position.getCurrentSkill() + ")");
+								+ position.getCurrentSkill() + " St:" + position.getCurrentStamina() + ")... (dice: "
+								+ enemyDiceRoll.getSum() +  ") > (skill: " + position.getCurrentSkill() + ")");
 						for (int i = 0; i < maxRows; i++) {
 							CombatPosition combat = combatPositions.get(i);
 							if (combat != null && combat.getCrewman().equals(killedCrewmanObj)) {

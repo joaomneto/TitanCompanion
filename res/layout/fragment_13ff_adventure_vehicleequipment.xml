@@ -171,6 +171,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonAddEnhancement"
         android:layout_marginTop="10dp"
+        android:background="@drawable/border_back"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/minusSpareWheelsButton" >
 

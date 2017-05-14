@@ -190,6 +190,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonTestLuck"
         android:layout_alignParentLeft="true"
+        android:text="@string/usePepPill"
         android:onClick="consumeProvision"/>
 
     <TextView

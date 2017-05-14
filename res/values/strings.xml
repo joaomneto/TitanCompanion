@@ -218,6 +218,8 @@
 
     <string name="skill">Skill: </string>
     <string name="stamina">Stamina: </string>
+    <string name="skill2">Skill</string>
+    <string name="stamina2">Stamina</string>
     <string name="luck">Luck: </string>
     <string name="name">Name:</string>
     <string name="saveAdventure">Save Adventure</string>
@@ -229,6 +231,7 @@
     <string name="title_activity_load_adventure">LoadAdventureActivity</string>
     <string name="potionsProvisions">Potions &amp; Provisions</string>
     <string name="goldEquipment">Gold &amp; Equipment</string>
+    <string name="moneyEquipment">Money &amp; Equipment</string>
     <string name="spells">Spells</string>
     <string name="fights">Fights</string>
     <string name="notes">Notes</string>
@@ -283,6 +286,7 @@
     <string name="securityGuard1">Security Guard 1</string>
     <string name="securityGuard2">Security Guard 2</string>
     <string name="ship">Ship</string>
+    <string name="ship2">Ship:</string>
     <string name="weapons">Weapons: </string>
     <string name="shields">Shields: </string>
     <string name="landingParty">Landing</string>
@@ -302,6 +306,7 @@
     </string-array>
 
     <string name="crewman">Crewman: </string>
+    <string name="crewman2">Crewman</string>
     <string name="enemySkill">Enemy Skill: </string>
     <string name="enemyStamina">Enemy Stamina: </string>
     <string name="versus">vs.</string>
@@ -843,6 +848,9 @@
     <string name="selectForces">Select Forces:</string>
     <string name="skirmishForces">In Battle:</string>
     <string name="enemyForces2">Enemy Forces:</string>
+    <string name="crew">Crew:</string>
+    <string name="date">Date:</string>
+    <string name="name2">Name:</string>
     <string name="result">Result</string>
     <string name="close">Close</string>
     <string name="storagePermissionsRequired">Storage permission is required to used this app!</string>

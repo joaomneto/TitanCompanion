@@ -30,6 +30,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/addRobotButton"
+        android:background="@drawable/border_back"
         android:layout_alignLeft="@+id/addRobotButton"
         android:layout_alignParentRight="true" >
     </ListView>
