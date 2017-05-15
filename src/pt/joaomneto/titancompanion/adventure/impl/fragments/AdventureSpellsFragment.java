@@ -60,14 +60,14 @@ public abstract class AdventureSpellsFragment extends AdventureFragment {
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 				builder.setTitle("Use spell?")
 						.setCancelable(false)
-						.setNegativeButton("Close",
+						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int id) {
 										dialog.cancel();
 									}
 								});
-				builder.setPositiveButton("Ok",
+				builder.setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,

@@ -418,7 +418,7 @@ public abstract class Adventure extends FragmentActivity {
 	public void savepoint(View v) {
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-		alert.setTitle("Current Reference?");
+		alert.setTitle(R.string.currentReference);
 
 		// Set an EditText view to get user input
 		final EditText input = new EditText(this);
@@ -428,7 +428,7 @@ public abstract class Adventure extends FragmentActivity {
 		input.requestFocus();
 		alert.setView(input);
 
-		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 
 				try {
@@ -449,7 +449,7 @@ public abstract class Adventure extends FragmentActivity {
 			}
 		});
 
-		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
 			}

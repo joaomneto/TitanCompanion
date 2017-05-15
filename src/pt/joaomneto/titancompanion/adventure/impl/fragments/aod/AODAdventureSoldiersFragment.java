@@ -344,14 +344,14 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
-        builder.setTitle("Add Soldiers").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+        builder.setTitle("Add Soldiers").setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 mgr.hideSoftInputFromWindow(addSoldiersView.getWindowToken(), 0);
                 dialog.cancel();
             }
         });
 
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
                 mgr.hideSoftInputFromWindow(addSoldiersView.getWindowToken(), 0);

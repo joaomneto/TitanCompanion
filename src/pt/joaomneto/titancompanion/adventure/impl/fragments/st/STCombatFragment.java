@@ -311,14 +311,14 @@ public class STCombatFragment extends AdventureFragment {
 		final View addCombatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_add_combatant, null);
 
 		builder.setTitle("Add Combatants").setCancelable(false)
-				.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+				.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
 						dialog.cancel();
 					}
 				});
 
-		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 
 				int currentRow = getNextRow();

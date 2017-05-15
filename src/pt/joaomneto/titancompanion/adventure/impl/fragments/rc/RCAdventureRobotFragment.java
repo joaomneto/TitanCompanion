@@ -116,12 +116,12 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 			public boolean onMenuItemClick(MenuItem item) {
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Remove robot?").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+				builder.setTitle("Remove robot?").setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}
 				});
-				builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int which) {
 						adv.getRobots().remove(robot);
@@ -153,7 +153,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 				alert.setView(input);
 
 
-				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int whichButton) {
 						String value = input.getText().toString();
@@ -162,7 +162,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 					}
 				});
 
-				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						// Canceled.
 					}
@@ -206,14 +206,14 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
-		builder.setTitle("Add Robot").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+		builder.setTitle("Add Robot").setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 				dialog.cancel();
 			}
 		});
 
-		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 
 				mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);

@@ -373,14 +373,14 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
-        builder.setTitle("Add Enemy Robot").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+        builder.setTitle("Add Enemy Robot").setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
                 dialog.cancel();
             }
         });
 
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
                 EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.addEnemyRobot_specialAbilityValue);

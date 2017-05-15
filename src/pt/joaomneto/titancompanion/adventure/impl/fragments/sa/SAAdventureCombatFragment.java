@@ -178,14 +178,14 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 			weaponSpinner.setAdapter(adapter);
 		}
 
-		builder.setTitle("Add Enemy").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+		builder.setTitle("Add Enemy").setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
 				dialog.cancel();
 			}
 		});
 
-		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 
 				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);

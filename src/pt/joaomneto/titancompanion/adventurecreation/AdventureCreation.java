@@ -216,8 +216,8 @@ public abstract class AdventureCreation extends FragmentActivity {
 	
 	public void showAlert(String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Result").setMessage(message).setCancelable(false)
-				.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+		builder.setTitle(R.string.result).setMessage(message).setCancelable(false)
+				.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}
@@ -236,15 +236,15 @@ public abstract class AdventureCreation extends FragmentActivity {
 	public void validateCreationParameters() throws IllegalArgumentException {
 		StringBuilder sb = new StringBuilder();
 		boolean error = false;
-		sb.append("Some adventure parameters are missing (");
+		sb.append(getString(R.string.someParametersMIssing));
 
 		if(this.stamina < 0){
-			sb.append("Skill, Stamina and Luck");
+			sb.append(getString(R.string.skill2)+", "+getString(R.string.stamina2)+" and "+getString(R.string.luck2));
 			error = true;
 		}
 		sb.append(error?"; ":"");
 		if(this.adventureName == null || this.adventureName.trim().length() == 0){
-			sb.append("Adventure Name");
+			sb.append(getString(R.string.adventureName));
 			error = true;
 		}
 

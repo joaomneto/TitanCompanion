@@ -166,7 +166,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 
 		builder.setTitle("Add Enemy")
 				.setCancelable(false)
-				.setNegativeButton("Close",
+				.setNegativeButton(R.string.close,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								mgr.hideSoftInputFromWindow(
@@ -175,7 +175,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 							}
 						});
 
-		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 
 				

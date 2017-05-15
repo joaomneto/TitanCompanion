@@ -89,7 +89,7 @@ public class SSAdventureMapFragment extends AdventureFragment {
                 input.requestFocus();
                 alert.setView(input);
 
-                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
 
                         imm.hideSoftInputFromWindow(input.getWindowToken(), 0);

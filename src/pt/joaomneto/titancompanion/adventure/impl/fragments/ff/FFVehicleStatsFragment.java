@@ -92,7 +92,7 @@ public class FFVehicleStatsFragment extends AdventureFragment {
 				input.requestFocus();
 				alert.setView(input);
 
-				alert.setPositiveButton("Ok",
+				alert.setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
@@ -103,7 +103,7 @@ public class FFVehicleStatsFragment extends AdventureFragment {
 							}
 						});
 
-				alert.setNegativeButton("Cancel",
+				alert.setNegativeButton(R.string.cancel,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int whichButton) {
@@ -125,13 +125,13 @@ public class FFVehicleStatsFragment extends AdventureFragment {
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 				builder.setTitle("Delete note?")
 						.setCancelable(false)
-						.setNegativeButton("Close",
+						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
 										dialog.cancel();
 									}
 								});
-						builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+						builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog, int which) {
 								adv.getCarEnhancements().remove(position);

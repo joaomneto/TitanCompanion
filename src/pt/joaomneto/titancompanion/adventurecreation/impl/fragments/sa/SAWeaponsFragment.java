@@ -69,14 +69,14 @@ public class SAWeaponsFragment extends Fragment {
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 				builder.setTitle("Delete weapon?")
 						.setCancelable(false)
-						.setNegativeButton("Close",
+						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int id) {
 										dialog.cancel();
 									}
 								});
-				builder.setPositiveButton("Ok",
+				builder.setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
@@ -114,7 +114,7 @@ public class SAWeaponsFragment extends Fragment {
 				input.requestFocus();
 				alert.setView(input);
 
-				alert.setPositiveButton("Ok",
+				alert.setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
@@ -130,7 +130,7 @@ public class SAWeaponsFragment extends Fragment {
 							}
 						});
 
-				alert.setNegativeButton("Cancel",
+				alert.setNegativeButton(R.string.cancel,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int whichButton) {

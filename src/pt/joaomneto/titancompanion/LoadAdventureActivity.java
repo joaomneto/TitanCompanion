@@ -147,14 +147,14 @@ public class LoadAdventureActivity extends Activity {
 				AlertDialog.Builder builder = new AlertDialog.Builder(_this);
 				builder.setTitle("Delete save?")
 						.setCancelable(false)
-						.setNegativeButton("Close",
+						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int id) {
 										dialog.cancel();
 									}
 								});
-				builder.setPositiveButton("Ok",
+				builder.setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,

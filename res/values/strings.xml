@@ -219,6 +219,7 @@
     <string name="skill">Skill: </string>
     <string name="stamina">Stamina: </string>
     <string name="skill2">Skill</string>
+    <string name="luck2">Luck</string>
     <string name="stamina2">Stamina</string>
     <string name="luck">Luck: </string>
     <string name="name">Name:</string>
@@ -248,6 +249,7 @@
     <string name="gold">Gold:</string>
     <string name="editGold">Edit</string>
     <string name="equipment">Equipment:</string>
+    <string name="equipment2">Equipment</string>
     <string name="addEquipment">Add Equipment</string>
     <string name="addWeapon">Add Weapon</string>
     <string name="escape">Escape</string>
@@ -892,7 +894,28 @@
     <string name="robotSpecialAbilityFlyInCirclesDesc">If the combat roll is won by 4 or more points, Wasp Fighter deals double damage.</string>
     <string name="robotSpecialAbilityAnkylosaurus">Ankylosaurus stun</string>
     <string name="robotSpecialAbilityAnkylosaurusDesc">Player can only parry in next round after losing a combat round.</string>
-
+    <string name="currentReference">Current Reference?</string>
+    <string name="ok">Ok</string>
+    <string name="normal">Normal</string>
+    <string name="sequence">Sequence</string>
+    <string name="youreLucky">You\'re lucky!</string>
+    <string name="defeatedOpponent">You\'ve defeated your opponent!</string>
+    <string name="youreUnlucky">You\'re unlucky...</string>
+    <string name="knockedOut">You\'ve been knocked out...</string>
+    <string name="youreDead">You\'re dead...</string>
+    <string name="hitEnemy">You have hit the enemy!</string>
+    <string name="staminaInitials">ST</string>
+    <string name="defeatSuddenDeath">You\'ve defeated an enemy by sudden death!</string>
+    <string name="blockedAttack">You have blocked the enemy attack!</string>
+    <string name="youWereHit">You\'ve been hit...</string>
+    <string name="bothMissed">Both you and the enemy have missed</string>
+    <string name="defeatedEnemy">You have defeated an enemy!</string>
+    <string name="youveDied">You have died...</string>
+    <string name="youMustFillSkillAndStamina">You must fill the skill and stamina values!</string>
+    <string name="someParametersMIssing">Some adventure parameters are missing (</string>
+    <string name="adventureName">Adventure Name</string>
+    <string name="setValue">Set Value</string>
+    <string name="deleteEquipmentQuestion">Delete equipment?</string>
 
 
 </resources>
