@@ -12,6 +12,8 @@
     <string name="load_adventure">Load Adventure</string>
     <string name="title_activity_gamebook_list">Gamebook List</string>
     <string name="viewSite">View Description</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="twofm">The Warlock of Firetop Mountain</string>
     <string name="tcoc">The Citadel of Chaos</string>
     <string name="tfod">The Forest of Doom</string>
@@ -715,12 +717,34 @@
     <string name="number_398">398</string>
     <string name="number_399">399</string>
     <string name="number_400">400</string>
+
+    <string name="number_0_word">zero</string>
+    <string name="number_1_word">one</string>
+    <string name="number_2_word">two</string>
+    <string name="number_3_word">three</string>
+    <string name="number_4_word">four</string>
+    <string name="number_5_word">five</string>
+    <string name="number_6_word">six</string>
+    <string name="number_7_word">seven</string>
+    <string name="number_8_word">eight</string>
+    <string name="number_9_word">nine</string>
+    <string name="number_10_word">ten</string>
+    <string name="number_11_word">eleven</string>
+    <string name="number_12_word">twelve</string>
+    <string name="number_13_word">thirteen</string>
+    <string name="number_14_word">fourteen</string>
+    <string name="number_15_word">fifteen</string>
+    <string name="number_16_word">sixteen</string>
+    <string name="number_17_word">seventeen</string>
+    <string name="number_18_word">eighteen</string>
+
     <string name="hifen">&#8212;</string>
     <string name="pipe">|</string>
     <string name="addClearing">Add Clearing</string>
     <string name="startCombat">Start Combat</string>
     <string name="add">Add</string>
     <string name="fear">Fear: </string>
+    <string name="fear2">Fear</string>
     <string name="armor">Armour: </string>
     <string name="firepower">Firepower: </string>
     <string name="car_armor">Car Armour: </string>
@@ -789,16 +813,21 @@
     <string name="addRobot">Add Robot</string>
     <string name="addEnemyRobot">Add Enemy Robot</string>
 
+    <string name="robotSpeedSlow">Slow</string>
+    <string name="robotSpeedMedium">Medium</string>
+    <string name="robotSpeedFast">Fast</string>
+    <string name="robotSpeedVeryFast">VeryFast</string>
+
     <string-array name="robotSpeeds">
-        <item>Slow</item>
-        <item>Medium</item>
-        <item>Fast</item>
-        <item>Very Fast</item>
+        <item>@string/robotSpeedSlow</item>
+        <item>@string/robotSpeedMedium</item>
+        <item>@string/robotSpeedFast</item>
+        <item>@string/robotSpeedVeryFast</item>
     </string-array>
 
     <string-array name="robotTypes">
-        <item>Robot</item>
-        <item>Dinosaur</item>
+        <item>@string/rcRobot</item>
+        <item>@string/rcDinosaur</item>
     </string-array>
 
 
@@ -916,6 +945,80 @@
     <string name="adventureName">Adventure Name</string>
     <string name="setValue">Set Value</string>
     <string name="deleteEquipmentQuestion">Delete equipment?</string>
+    <string name="note">Note</string>
+    <string name="deleteNote">Delete note?</string>
+    <string name="useSpellQuestion">Use spell?</string>
+    <string name="use">Use</string>
+    <string name="potion">Potion</string>
+    <string name="mustSetEnemyForces">You must set the number of enemy forces!</string>
+    <string name="mustCommitTroops">You must commit some of your troops to the battle!</string>
+    <string name="mustDistributeLosses">You must distribute the losses for your army.</string>
+    <string name="youveRolled">You\'ve rolled a %1$s.</string>
 
+    <string name="aodSituationSuperior">You are in a superior situation compared to your enemy (%1$d vs %2$d).</string>
+    <string name="aodSituationEven">You are in an even situation with your enemy (%1$d vs %2$d).</string>
+    <string name="aodSituationInferior">You are in an inferior situation compared to your enemy (%1$d vs %2$d).</string>
+    <string name="aodSufferLossTropps"> and you suffer the loss of %1$d troops.</string>
+    <string name="aodKillEnemyTroops"> and you kill %1$d enemy troops.</string>
+    <string name="aodDestroyEnemy">You have therefore destroyed the opposing army!</string>
+    <string name="closeCombat">Close Combat</string>
+    <string name="aodArmyDestroyed">Your army has therefore been destroyed...</string>
+    <string name="addSoldiers">Add Soldiers</string>
+    <string name="aodMustFillTypeAndQuantity">You must fill the type and quantity values!</string>
+    <string name="awfSuperStrength">Super Strength</string>
+    <string name="aodSuperpower">Superpower</string>
+    <string name="bncWillpower">Willpower</string>
+    <string name="gunfight">Gunfight</string>
+    <string name="ffFirepowerAndArmor">Firepower and Armor</string>
+    <string name="ffDirectHitDefeat">Direct hit!. You\'ve defeated your opponent!</string>
+    <string name="ffDirectHit">Direct hit!. (-%1$d Armour)</string>
+    <string name="ffEnemyHit">"The enemy has hit your vehicle. (-%1$d Armour)</string>
+    <string name="ffSecondEnemyHit">"The second enemy has hit your vehicle. (-%1$d Armour)</string>
+    <string name="ffEnemyDestroyedYourVehicle">The enemy has destroyed your vehicle...</string>
+    <string name="ffAvoiedSecondAttack">You\'ve avoided the second enemy attack.</string>
+    <string name="ffavoidedSecondAttack">You\'ve avoided the second enemy attack.</string>
+    <string name="chooseSavePoint">Choose savepoint:</string>
+    <string name="deleteSavegame">Delete save?</string>
+    <string name="rcRobotSwitchedConfig">Your robot has switched to alternate configuration.</string>
+    <string name="rcAddEnemyRobot">Add Enemy Robot</string>
+    <string name="rcAnkylosaurus">Ankylosaurus</string>
+    <string name="rcRobotHaveLegs">Does your robot have legs?</string>
+    <string name="rcNameArmorSkillMandatory">At least the name, armor and skill values must be filled.</string>
+    <string name="rcDinosaur">Dinosaur</string>
+    <string name="rcSuperCowboySonicScream">Super Cowboy using Sonic Scream.</string>
+    <string name="rcWaspFighterSpecial">Wasp Fighter deals 4 DP.</string>
+    <string name="rcTrooperXISpecial">Trooper XI uses shield.</string>
+    <string name="rcSerpencVIISpecial">Serpent VII has coiled around the enemy.</string>
+    <string name="rcHedgehogSpecial">Hedgehog attacking airborne target.</string>
+    <string name="rcBattlemanSpecial">Battleman deals an extra DP.</string>
+    <string name="rcCrusherSpecial">Crusher deals double damage.</string>
+    <string name="rcWaspSpecial">Wasp Fighter deals 4 DP.</string>
+    <string name="rcSupertankSpecila">Supertank deals 1 damage.</string>
+    <string name="rcSerpentVIISpecial2">Serpent VII deals 1 DP.</string>
+    <string name="rcSonicShot">Using sonic shot (%1$d DP)</string>
+    <string name="rcShovel">Using shovel (6 DP)</string>
+    <string name="rcLostRobot">You\'ve lost your robot!</string>
+    <string name="rcDefeatedEnemy">You\'ve defeated the enemy!</string>
+    <string name="rcParryAttack">You have parried the enemy attack.</string>
+    <string name="rcHitEnemy">You\'ve hit the enemy! (%1$d DP)</string>
+    <string name="rcEnemyHitYou">The enemy has hit you! (%1$d DP)</string>
+    <string name="rcAnkylosaurusKO">The Ankylosaurus has knocked you out!</string>
+    <string name="rcBothMissed">Both you and the enemy have missed</string>
+    <string name="remove">Remove</string>
+    <string name="setLocation">Set Location</string>
+    <string name="rcSpecialAbilityDesc">Special Ability Description</string>
+    <string name="rcRemoveRobot">Remove robot?</string>
+    <string name="rcAddRobot">Add Robot</string>
+    <string name="rcNameArmorBonusMandatory">At least the name, armor and bonus values must be filled.</string>
+    <string name="rcRobot">Robot</string>
+    <string name="saGrenade">Grenade</string>
+    <string name="saCombatText1">The enemy (SK: %1$d ST: %2$d) has been hit. (-%3$d ST)</string>
+    <string name="saCombatText2">An enemy (SK: %1$d ST: %2$d) has hit you. (-%3$d ST)</string>
+    <string name="saCombatText3">An enemy (SK: %1$d ST: %2$d) has missed.</string>
+    <string name="saAssaultBlaster">Assault Blaster</string>
+    <string name="missedTheEnemy">You have missed the enemy...</string>
+    <string name="saHitEnemy">You\'ve hit the enemy! (%1$d ST)</string>
+    <string name="saElectricLash">Electric Lash</string>
+    <string name="saWeapons">Weapons</string>
 
 </resources>

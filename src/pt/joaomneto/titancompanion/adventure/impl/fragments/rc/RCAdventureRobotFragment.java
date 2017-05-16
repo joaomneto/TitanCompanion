@@ -92,11 +92,11 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 		final Robot robot = adv.getRobots().get(info.position);
 
-		MenuItem delete = menu.add("Remove");
-		MenuItem location = menu.add("Set Location");
+		MenuItem delete = menu.add(R.string.remove);
+		MenuItem location = menu.add(R.string.setLocation);
 		
 		if(robot.getRobotSpecialAbility()!=null){
-			MenuItem specialAbility = menu.add("Special Ability Description");
+			MenuItem specialAbility = menu.add(R.string.rcSpecialAbilityDesc);
 			
 			specialAbility.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 				
@@ -116,7 +116,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 			public boolean onMenuItemClick(MenuItem item) {
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Remove robot?").setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+				builder.setTitle(R.string.rcRemoveRobot).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}
@@ -143,7 +143,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 			public boolean onMenuItemClick(MenuItem item) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setTitle("Set Location");
+				alert.setTitle(R.string.setLocation);
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
@@ -206,7 +206,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
-		builder.setTitle("Add Robot").setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+		builder.setTitle(R.string.rcAddRobot).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 				dialog.cancel();
@@ -251,7 +251,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 						addRobot(name, Integer.parseInt(armor), Integer.parseInt(bonus), RobotSpeed.getSpeedForId((int)speedValue.getSelectedItemId()),
 								specialAbility.length() > 0 ? Integer.parseInt(specialAbility) : null);
 				} else {
-					Adventure.showAlert("At least the name, armor and bonus values must be filled.", adv);
+					Adventure.showAlert(getString(R.string.rcNameArmorBonusMandatory), adv);
 				}
 
 			}

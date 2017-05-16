@@ -230,14 +230,14 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
         alertbox.setTitle("Soldiers killed?");
 
 
-        alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertbox.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 division.setQuantity(5);
                 dialog.cancel();
             }
         });
 
-        alertbox.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertbox.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 values.remove(position);

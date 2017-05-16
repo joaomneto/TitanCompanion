@@ -56,7 +56,7 @@ public class HOHAdventureCreation extends AdventureCreation {
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
 		if(this.fearValue < 0){
-			sb.append("Fear");
+			sb.append(R.string.fear2);
 		}
 		return  sb.toString();
 	}

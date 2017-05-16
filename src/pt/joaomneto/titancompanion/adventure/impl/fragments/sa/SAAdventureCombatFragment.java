@@ -44,7 +44,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 			public void onClick(View v) {
 				SAAdventure adv = (SAAdventure) getActivity();
 
-				int idx = adv.getWeapons().indexOf("Grenade");
+				int idx = adv.getWeapons().indexOf(getString(R.string.saGrenade));
 
 				if (idx < 0)
 					return;
@@ -60,7 +60,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 					if (enemy != null && enemy.getCurrentStamina() > 0) {
 						int damage = DiceRoller.rollD6();
 						enemy.setCurrentStamina(Math.max(enemy.getCurrentStamina() - damage, 0));
-						String text = "The enemy (SK: " + enemy.getCurrentSkill() + " ST: " + enemy.getCurrentStamina() + ") has been hit (-" + damage + " ST)";
+						String text = getString(R.string.saCombatText1, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage);
 						if (result.isEmpty()) {
 							result = text;
 						} else {
@@ -106,7 +106,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 		Combatant position = getCurrentEnemy();
 		SAAdventure adv = (SAAdventure) getActivity();
 
-		assaultBlaster = adv.getWeapons().contains("Assault Blaster");
+		assaultBlaster = adv.getWeapons().contains(getString(R.string.saAssaultBlaster));
 
 		draw = false;
 		luckTest = false;
@@ -119,15 +119,15 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 			int damage = assaultBlaster ? DiceRoller.rollD6() : 2;
 			position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
 			hit = true;
-			combatResult.setText("You have hit the enemy! (-" + damage + " ST)");
+			combatResult.setText(getString(R.string.saHitEnemy, damage));
 		} else {
 			draw = true;
-			combatResult.setText("You have missed the enemy...");
+			combatResult.setText(R.string.missedTheEnemy);
 		}
 
 		if (position.getCurrentStamina() == 0) {
 			combatPositions.remove(position);
-			combatResult.setText(combatResult.getText() + "\nYou have defeated an enemy!");
+			combatResult.setText(combatResult.getText() + "\n"+getString(R.string.defeatedEnemy));
 
 		}
 
@@ -135,18 +135,16 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 			if (enemy != null && enemy.getCurrentStamina() > 0) {
 				if (DiceRoller.roll2D6().getSum() <= enemy.getCurrentSkill()) {
 					int damage = enemy.getDamage().equals("2") ? 2 : DiceRoller.rollD6();
-					combatResult.setText(combatResult.getText() + "\nAn enemy (SK: " + enemy.getCurrentSkill() + " ST: " + enemy.getCurrentStamina()
-							+ ") has hit you.(-" + damage + " ST)");
+					combatResult.setText(combatResult.getText() + "\n"+getString(R.string.saCombatText2, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage));
 					adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage));
 				} else {
-					combatResult.setText(combatResult.getText() + "\nAn enemy (SK: " + enemy.getCurrentSkill() + " ST: " + enemy.getCurrentStamina()
-							+ ") has missed!");
+					combatResult.setText(combatResult.getText() + getString(R.string.saCombatText3, enemy.getCurrentSkill(), enemy.getCurrentStamina());
 				}
 			}
 		}
 
 		if (adv.getCurrentStamina() <= 0) {
-			combatResult.setText("You have died...");
+			combatResult.setText(R.string.youveDied);
 		}
 
 		if (combatPositions.size() == 0) {
@@ -170,7 +168,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 		final View addCombatantView = adv.getLayoutInflater().inflate(
 				combatMode == null || combatMode.equals(NORMAL) ? R.layout.component_add_combatant : R.layout.component_12sa_add_combatant, null);
 
-		String[] allWeapons = { "Electric Lash", "Assault Blaster" };
+		String[] allWeapons = { getString(R.string.saElectricLash), getString(R.string.saAssaultBlaster) };
 
 		final Spinner weaponSpinner = (Spinner) addCombatantView.findViewById(R.id.weaponSpinner);
 		if (weaponSpinner != null) {
@@ -178,7 +176,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 			weaponSpinner.setAdapter(adapter);
 		}
 
-		builder.setTitle("Add Enemy").setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+		builder.setTitle(R.string.addEnemy).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
 				dialog.cancel();
@@ -199,7 +197,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 				Integer handicap = Integer.valueOf(handicapValue.getText().toString());
 
 				addCombatant(rootView, skill, stamina, handicap,
-						weaponSpinner == null ? "2" : weaponSpinner.getSelectedItem().toString().equals("Assault Blaster") ? "1d6" : "2");
+						weaponSpinner == null ? "2" : weaponSpinner.getSelectedItem().toString().equals(getString(R.string.saAssaultBlaster)) ? "1d6" : "2");
 
 			}
 
@@ -235,7 +233,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 	}
 
 	public String getOntext() {
-		return "Weapons";
+		return getString(R.string.saWeapons);
 	}
 
 

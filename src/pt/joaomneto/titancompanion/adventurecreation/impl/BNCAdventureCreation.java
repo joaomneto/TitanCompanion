@@ -54,7 +54,7 @@ public class BNCAdventureCreation extends AdventureCreation {
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
 		if(this.willpowerValue < 0){
-			sb.append("Willpower");
+			sb.append(getString(R.string.bncWillpower));
 		}
 		return  sb.toString();
 	}

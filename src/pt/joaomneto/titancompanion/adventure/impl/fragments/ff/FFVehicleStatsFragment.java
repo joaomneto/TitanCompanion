@@ -83,7 +83,7 @@ public class FFVehicleStatsFragment extends AdventureFragment {
 			public void onClick(View v) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setTitle("Note");
+				alert.setTitle(R.string.note);
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
@@ -123,7 +123,7 @@ public class FFVehicleStatsFragment extends AdventureFragment {
 					int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Delete note?")
+				builder.setTitle(R.string.deleteNote)
 						.setCancelable(false)
 						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {

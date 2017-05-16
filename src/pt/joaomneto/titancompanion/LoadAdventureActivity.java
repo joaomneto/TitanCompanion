@@ -99,7 +99,7 @@ public class LoadAdventureActivity extends Activity {
 				}
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(_this);
-				builder.setTitle("Choose savepoint:");
+				builder.setTitle(R.string.chooseSavePoint);
 				builder.setItems(names, new OnClickListener() {
 
 					@Override
@@ -145,7 +145,7 @@ public class LoadAdventureActivity extends Activity {
 					int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(_this);
-				builder.setTitle("Delete save?")
+				builder.setTitle(R.string.deleteSavegame)
 						.setCancelable(false)
 						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {

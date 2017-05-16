@@ -3,10 +3,12 @@ package pt.joaomneto.titancompanion.adventure.impl.fragments.rc;
 import java.util.HashMap;
 import java.util.Map;
 
+import pt.joaomneto.titancompanion.R;
+
 public enum RobotSpeed {
 
-    SLOW(0, "Slow"), MEDIUM(1, "Medium"), FAST(2, "Fast"), VERY_FAST(3,
-            "Very Fast");
+    SLOW(0, R.string.robotSpeedSlow), MEDIUM(1, R.string.robotSpeedMedium), FAST(2, R.string.robotSpeedFast), VERY_FAST(3,
+            R.string.robotSpeedVeryFast);
 
     protected static Map<Integer, RobotSpeed> speeds;
 
@@ -23,9 +25,9 @@ public enum RobotSpeed {
     }
 
     Integer id;
-    String name;
+    int name;
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
@@ -37,18 +39,13 @@ public enum RobotSpeed {
         this.id = id;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
-    private RobotSpeed(Integer id, String name) {
+    private RobotSpeed(Integer id, int name) {
         this.name = name;
         this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 
     public boolean gt(RobotSpeed rs) {

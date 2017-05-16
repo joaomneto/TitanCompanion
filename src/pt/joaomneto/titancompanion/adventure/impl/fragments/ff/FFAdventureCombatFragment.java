@@ -115,7 +115,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 	}
 
 	public String getOntext() {
-		return "Gunfight";
+		return getString(R.string.gunfight);
 	}
 
 	@Override
@@ -164,7 +164,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 		final EditText damageValue = (EditText) addCombatantView
 				.findViewById(R.id.enemyDamage);
 
-		builder.setTitle("Add Enemy")
+		builder.setTitle(R.string.addEnemy)
 				.setCancelable(false)
 				.setNegativeButton(R.string.close,
 						new DialogInterface.OnClickListener() {

@@ -86,7 +86,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 			if (adv.getStandardPotion() == -1) {
 				buttonConsumePotion.setVisibility(View.GONE);
 			} else {
-				buttonConsumePotion.setText("Use " + stringArray[adv.getStandardPotion()] + " Potion");
+				buttonConsumePotion.setText(getString(R.string.use) + stringArray[adv.getStandardPotion()] + getString(R.string.potion));
 			}
 		}
 		increaseStaminaButton.setOnClickListener(new OnClickListener() {

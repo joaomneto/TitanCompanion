@@ -58,7 +58,7 @@ public abstract class AdventureSpellsFragment extends AdventureFragment {
 					long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Use spell?")
+				builder.setTitle(R.string.useSpellQuestion)
 						.setCancelable(false)
 						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {

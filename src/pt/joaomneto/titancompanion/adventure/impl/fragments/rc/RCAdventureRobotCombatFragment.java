@@ -338,7 +338,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         parryOnlyNextTurn = true;
 
 
-        combatResult.setText("Your robot has switched to alternate configuration.");
+        combatResult.setText(R.string.rcRobotSwitchedConfig);
         changeRobotForm.setEnabled(false);
 
         RCAdventureRobotFragment rcarf = (RCAdventureRobotFragment) adv.getFragments().get(FRAGMENT_ROBOTS);
@@ -373,7 +373,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
-        builder.setTitle("Add Enemy Robot").setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.rcAddEnemyRobot).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
                 dialog.cancel();
@@ -387,8 +387,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
                 if (specialAbilityValue.getText().toString().equals("400")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-                    builder.setTitle("Ankylosaurus");
-                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    builder.setTitle(R.string.rcAnkylosaurus);
+                    builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface arg0, int arg1) {
@@ -397,7 +397,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
                         }
                     });
-                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -408,7 +408,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                     });
 
                     AlertDialog alert = builder.create();
-                    alert.setMessage("Does your robot have legs?");
+                    alert.setMessage(getString(R.string.rcRobotHaveLegs));
                     alert.show();
 
                 } else {
@@ -461,7 +461,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                     }
                     combatResult.setText("");
                 } else {
-                    Adventure.showAlert("At least the name, armor and skill values must be filled.", adv);
+                    Adventure.showAlert(getString(R.string.rcNameArmorSkillMandatory), adv);
                 }
             }
 
@@ -488,7 +488,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         robotPosition.setSkill(skill);
         robotPosition.setAirborne(airborne);
 
-        if (type.equals("Dinosaur")) {
+        if (type.equals(getString(R.string.rcDinosaur))) {
             robotPosition.setDinosaur(true);
         }
 
@@ -615,7 +615,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             switch (currentRobot.getRobotSpecialAbility()) {
                 case SUPER_COWBOY_ROBOT_SONIC_SCREAM: {
                     if (getCurrentEnemy().isDinosaur()) {
-                        combatStatus.append("Super Cowboy using Sonic Scream. ");
+                        combatStatus.append(getString(R.string.rcSuperCowboySonicScream));
                         enemyCombatScore--;
                         enemyRolls.append("-1");
                     }
@@ -623,21 +623,21 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                 }
                 case WASP_FIGHTER_SPECIAL_ATTACK: {
                     if (playerCombatScore - enemyCombatScore > 4) {
-                        combatStatus.append("Wasp Fighter deals 4 DP. ");
+                        combatStatus.append(getString(R.string.rcWaspFighterSpecial));
                         enemyDamage = 4;
                     }
                     break;
                 }
                 case TROOPER_XI_HUMAN_SHIELD: {
                     if (playerCombatScore >= 18) {
-                        combatStatus.append("Trooper XI uses shield. ");
+                        combatStatus.append(getString(R.string.rcTrooperXISpecial));
                         playerDamage = 0;
                     }
                     break;
                 }
                 case SERPENT_VII_COIL: {
                     if (playerCombatScore >= 16) {
-                        combatStatus.append("Serpent VII has coiled around the enemy. ");
+                        combatStatus.append(getString(R.string.rcSerpencVIISpecial));
                         serpentVIIPermDamage = true;
                     }
                     break;
@@ -645,7 +645,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                 }
                 case HEDGEHOG_ANTI_AIR: {
                     if (getCurrentEnemy().isAirborne()) {
-                        combatStatus.append("Hedgehog attacking airborne target. ");
+                        combatStatus.append(getString(R.string.rcHedgehogSpecial));
                         playerCombatScore += 3;
                         rolls.append("+3");
                     }
@@ -660,26 +660,26 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             switch (getCurrentEnemy().getRobotSpecialAbility()) {
                 case ENEMY_BATTLEMAN_EXTRA_DAMAGE: {
                     if (enemyCombatScore - playerCombatScore >= 4) {
-                        combatStatus.append("Battleman deals an extra DP. ");
+                        combatStatus.append(getString(R.string.rcBattlemanSpecial));
                         playerDamage += 1;
                     }
                     break;
                 }
                 case ENEMY_CRUSHER_DOUBLE_ATTACK: {
-                    combatStatus.append("Crusher deals double damage. ");
+                    combatStatus.append(getString(R.string.rcCrusherSpecial));
                     playerDamage = 4;
                     break;
                 }
                 case ENEMY_WASP_FIGHTER_SPECIAL_ATTACK: {
                     if (enemyCombatScore - playerCombatScore > 4) {
-                        combatStatus.append("Wasp Fighter deals 4 DP. ");
+                        combatStatus.append(getString(R.string.rcWaspSpecial));
                         playerDamage = 4;
                     }
                     break;
                 }
                 case ENEMY_SUPERTANK_SMALL_WEAPONS: {
                     playerExtraDamage = 1;
-                    combatStatus.append("Supertank deals 1 damage. ");
+                    combatStatus.append(getString(R.string.rcSupertankSpecila));
                     break;
                 }
                 default:
@@ -688,22 +688,20 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         }
 
         if (serpentVIIPermDamage) {
-            combatStatus.append("Serpent VII deals 1 DP. ");
+            combatStatus.append(getString(R.string.rcSerpentVIISpecial2));
         }
 
         if (sonicShotAttack) {
-            combatStatus.append("Using sonic shot (");
             if (getCurrentEnemy().isDinosaur()) {
                 enemyExtraDamage = DiceRoller.roll2D6().getSum();
             } else {
                 enemyExtraDamage = DiceRoller.rollD6();
             }
-            combatStatus.append(enemyExtraDamage);
-            combatStatus.append(" DP)");
+            combatStatus.append(getString(R.string.rcSonicShot, enemyExtraDamage));
         }
 
         if (shovelAttack) {
-            combatStatus.append("Using shovel (6 DP) ");
+            combatStatus.append(getString(R.string.rcShovel));
             playerCombatScore -= 2;
             rolls.append("-2");
             enemyDamage = 6;
@@ -712,7 +710,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         if (playerExtraDamage > 0) {
             adv.getCurrentRobot().setArmor(Math.max(adv.getCurrentRobot().getArmor() - playerExtraDamage, 0));
             if (adv.getCurrentRobot().getArmor() == 0) {
-                combatStatus.append("You've lost your robot! ");
+                combatStatus.append(getString(R.string.rcLostRobot));
                 destroyCurrentEnemy();
                 adv.destroyCurrentRobot();
             }
@@ -721,7 +719,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         if (enemyExtraDamage > 0 && !parryOnlyNextTurn) {
             getCurrentEnemy().setArmor(Math.max(getCurrentEnemy().getArmor() - enemyExtraDamage, 0));
             if (getCurrentEnemy().getArmor() == 0) {
-                combatStatus.append("You've defeated the enemy! ");
+                combatStatus.append(getString(R.string.rcDefeatedEnemy));
                 destroyCurrentEnemy();
             }
         }
@@ -731,35 +729,35 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         if (getCurrentEnemy().getArmor() > 0 && adv.getCurrentRobot().getArmor() > 0 && playerCombatScore > enemyCombatScore) {
             if (parryOnlyNextTurn) {
-                combatStatus.append("You have parried the enemy attack. ");
+                combatStatus.append(getString(R.string.rcParryAttack));
                 parryOnlyNextTurn = false;
             } else if (parryOnlyNextTurnCombat) {
-                combatStatus.append("You have parried the enemy attack. ");
+                combatStatus.append(getString(R.string.rcParryAttack));
             } else {
-                combatStatus.append("You've hit the enemy! (" + enemyDamage + " DP) ");
+                combatStatus.append(getString(R.string.rcHitEnemy, enemyDamage));
                 getCurrentEnemy().setArmor(Math.max(getCurrentEnemy().getArmor() - enemyDamage, 0));
                 if (getCurrentEnemy().getArmor() == 0) {
-                    combatStatus.append("You've defeated the enemy! ");
+                    combatStatus.append(R.string.rcDefeatedEnemy);
                     destroyCurrentEnemy();
                 }
 
 
             }
         } else if (playerCombatScore < enemyCombatScore) {
-            combatStatus.append("The enemy has hit you! (" + playerDamage + " DP) ");
+            combatStatus.append(getString(R.string.rcEnemyHitYou, playerDamage));
             adv.getCurrentRobot().setArmor(Math.max(adv.getCurrentRobot().getArmor() - playerDamage, 0));
             if (adv.getCurrentRobot().getArmor() == 0) {
-                combatStatus.append("You've lost your robot! ");
+                combatStatus.append(R.string.rcLostRobot);
                 adv.destroyCurrentRobot();
                 destroyCurrentEnemy();
             } else {
                 if (RobotSpecialAbility.ENEMY_ANKYLOSAURUS_SPECIAL_ATTACK.equals(getCurrentEnemy().getRobotSpecialAbility()) && currentRobotLegged) {
-                    combatStatus.append("The Ankylosaurus has knocked you out! ");
+                    combatStatus.append(getString(R.string.rcAnkylosaurusKO));
                     parryOnlyNextTurn = true;
                 }
             }
         } else if (playerCombatScore == enemyCombatScore) {
-            combatStatus.append("Both you and the enemy have missed ");
+            combatStatus.append(getString(R.string.rcBothMissed));
         }
 
         if (simultaneousCombat) {
