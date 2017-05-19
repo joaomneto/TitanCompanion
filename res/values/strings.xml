@@ -746,6 +746,7 @@
     <string name="fear">Fear: </string>
     <string name="fear2">Fear</string>
     <string name="armor">Armour: </string>
+    <string name="armor2">Armour</string>
     <string name="firepower">Firepower: </string>
     <string name="car_armor">Car Armour: </string>
     <string name="car_firepower">Car Firepower: </string>
@@ -1020,5 +1021,10 @@
     <string name="saHitEnemy">You\'ve hit the enemy! (%1$d ST)</string>
     <string name="saElectricLash">Electric Lash</string>
     <string name="saWeapons">Weapons</string>
+    <string name="saWeapon">Weapon</string>
+    <string name="saDeleteWeapon">Delete weapon?</string>
+    <string name="saGravityBomb">Gravity Bomb</string>
+    <string name="sa2xArmor">2x Armour</string>
+    <string name="saNoWeaponPoints">You don\'t have enough weapon points to add the %1$s</string>
 
 </resources>

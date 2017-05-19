@@ -27,25 +27,21 @@ import android.widget.TextView;
 public class SAWeaponsFragment extends Fragment {
 
 	public SAWeaponsFragment() {
-
+		weaponvalues.put(getString(R.string.saElectricLash), 1);
+		weaponvalues.put(getString(R.string.saAssaultBlaster), 3);
+		weaponvalues.put(getString(R.string.saGrenade), 1);
+		weaponvalues.put(getString(R.string.saGravityBomb), 3);
+		weaponvalues.put(getString(R.string.sa2xArmor), 1);
 	}
 
 	View rootView;
 	TextView weaponsValue;
 	ListView weaponList = null;
 	Button buttonAddWeapon = null;
-	String[] allWeapons = {"Electric Lash", "Assault Blaster", "Grenade", "Gravity Bomb", "Armour"};
+	String[] allWeapons = {getString(R.string.saElectricLash), getString(R.string.saAssaultBlaster), getString(R.string.saGrenade), getString(R.string.saGravityBomb), getString(R.string.armor2)};
 
 	
-	static Map<String, Integer> weaponvalues = new HashMap<String, Integer>();
-	
-	static{
-		weaponvalues.put("Electric Lash", 1);
-		weaponvalues.put("Assault Blaster", 3);
-		weaponvalues.put("Grenade", 1);
-		weaponvalues.put("Gravity Bomb", 3);
-		weaponvalues.put("2x Armour", 1);
-	}
+	Map<String, Integer> weaponvalues = new HashMap<String, Integer>();
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,7 +63,7 @@ public class SAWeaponsFragment extends Fragment {
 					int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Delete weapon?")
+				builder.setTitle(R.string.saDeleteWeapon)
 						.setCancelable(false)
 						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {
@@ -100,7 +96,7 @@ public class SAWeaponsFragment extends Fragment {
 			public void onClick(View v) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setTitle("Weapon");
+				alert.setTitle(R.string.saWeapon);
 
 				// Set an EditText view to get user input
 				final Spinner input = new Spinner(adv);
@@ -121,7 +117,7 @@ public class SAWeaponsFragment extends Fragment {
 									int whichButton) {
 								String value = input.getSelectedItem().toString();
 								if(getCurrentWeaponsCount(adv) + weaponvalues.get(value) > Integer.valueOf(weaponsValue.getText().toString())){
-									Adventure.showAlert("You don't have enough weapon points to add the "+value, adv);
+									Adventure.showAlert(getString(R.string.saNoWeaponPoints, value), adv);
 									return;
 								}
 								adv.getWeapons().add(value);
