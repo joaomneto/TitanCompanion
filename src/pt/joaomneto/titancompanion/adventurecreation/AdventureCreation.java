@@ -261,4 +261,5 @@ public abstract class AdventureCreation extends FragmentActivity {
 			throw new IllegalArgumentException(sb.toString());
 		}
 	}
+
 }

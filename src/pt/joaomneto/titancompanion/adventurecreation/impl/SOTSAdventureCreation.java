@@ -5,9 +5,11 @@ import java.io.IOException;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
+import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
+
 import android.view.View;
 
-public class SOTSAdventureCreation extends TFODAdventureCreation {
+public class SOTSAdventureCreation extends AdventureCreation {
 
 	String skill;
 
@@ -21,6 +23,13 @@ public class SOTSAdventureCreation extends TFODAdventureCreation {
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSAdventureCreationSkillFragment"));
 
 	}
+
+	@Override
+	protected void rollGamebookSpecificStats(View view) {
+
+	}
+
+
 
 	@Override
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
@@ -37,9 +46,6 @@ public class SOTSAdventureCreation extends TFODAdventureCreation {
 		}
 	}
 
-	@Override
-	protected void rollGamebookSpecificStats(View view) {
-	}
 
 	public String getSkill() {
 		return skill;
@@ -49,6 +55,13 @@ public class SOTSAdventureCreation extends TFODAdventureCreation {
 		this.skill = skill;
 	}
 
-	
+	@Override
+	public String validateCreationSpecificParameters() {
+		StringBuilder sb = new StringBuilder();
+		if(this.skill == null){
+			sb.append("Martial Art");
+		}
+		return  sb.toString();
+	}
 
 }

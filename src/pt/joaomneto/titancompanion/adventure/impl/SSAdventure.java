@@ -22,6 +22,8 @@ public class SSAdventure extends SpellAdventure {
 	protected static final int FRAGMENT_MAP = 4;
 	protected static final int FRAGMENT_NOTES = 5;
 
+
+
 	public SSAdventure() {
 		super();
 		fragmentConfiguration.clear();
