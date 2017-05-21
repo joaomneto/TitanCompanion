@@ -31,7 +31,7 @@ public class AWFAdventureCreation extends AdventureCreation {
 	@Override
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
-		if(this.superPower != null && this.superPower.length()>0){
+		if(this.superPower == null || this.superPower.length()==0){
 			sb.append("Superpower");
 		}
 		return  sb.toString();

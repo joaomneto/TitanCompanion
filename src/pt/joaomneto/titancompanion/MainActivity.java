@@ -81,6 +81,11 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
+	public void quit(View view) {
+		android.os.Process.killProcess(android.os.Process.myPid());
+		System.exit(0);
+	}
+
 	public void showAlert(String message){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Result")

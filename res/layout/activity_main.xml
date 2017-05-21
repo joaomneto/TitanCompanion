@@ -21,4 +21,24 @@
         android:onClick="loadAdventure"
         android:text="@string/load_adventure" />
 
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="rate"
+        android:text="@string/quit" />
+
+
+    <Button
+        android:id="@+id/buttonRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:above="@+id/buttonExit"
+        android:onClick="quit"
+        android:text="@string/rateApp"
+        android:layout_above="@+id/buttonExit"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

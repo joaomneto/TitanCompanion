@@ -851,6 +851,9 @@
     <string name="crew">Crew:</string>
     <string name="date">Date:</string>
     <string name="name2">Name:</string>
+    <string name="exit">Exit</string>
+    <string name="quit">Quit</string>
+    <string name="rateApp">Rate this app!</string>
 
 
 </resources>
