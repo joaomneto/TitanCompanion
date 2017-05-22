@@ -1026,5 +1026,9 @@
     <string name="saGravityBomb">Gravity Bomb</string>
     <string name="sa2xArmor">2x Armour</string>
     <string name="saNoWeaponPoints">You don\'t have enough weapon points to add the %1$s</string>
+    <string name="deleteBooty">Delete Booty?</string>
+    <string name="crewParamsMandatory">Crew Strike and Strength</string>
+    <string name="soldiersKilledQuestion">Soldiers killed?</string>
+    <string name="aod_removeAllSoldiers">Do you wish to remove all %1$s from the army?</string>
 
 </resources>

@@ -46,7 +46,7 @@ public class SOBAdventureBootyFragment extends AdventureFragment {
 			public void onClick(View v) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setTitle("Booty");
+				alert.setTitle(getString(R.string.booty));
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
@@ -90,7 +90,7 @@ public class SOBAdventureBootyFragment extends AdventureFragment {
 					int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Delete Booty?")
+				builder.setTitle(R.string.deleteBooty)
 						.setCancelable(false)
 						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {

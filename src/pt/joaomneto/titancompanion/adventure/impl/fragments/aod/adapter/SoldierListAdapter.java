@@ -226,8 +226,8 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
         final SoldiersDivision division = values.get(position);
 
         AlertDialog.Builder alertbox = new AlertDialog.Builder(view.getRootView().getContext());
-        alertbox.setMessage("Do you wish to remove all " + division.getType() + " from the army?");
-        alertbox.setTitle("Soldiers killed?");
+        alertbox.setMessage(context.getString(R.string.aod_removeAllSoldiers, division.getType()));
+        alertbox.setTitle(R.string.soldiersKilledQuestion);
 
 
         alertbox.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
