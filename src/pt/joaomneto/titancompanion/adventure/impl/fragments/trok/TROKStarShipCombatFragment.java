@@ -84,12 +84,12 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 						enemyShields -= damage;
 						if (enemyShields <= 0) {
 							enemyShields = 0;
-							Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
+							Adventure.showAlert(R.string.ffDirectHitDefeat,adv);
 						} else {
-							combatResult.setText("Direct hit! (-" + damage + " Shields)");
+							combatResult.setText(getString(R.string.trokDirectHit, damage));
 						}
 					} else {
-						combatResult.setText("You've missed!");
+						combatResult.setText(R.string.missedTheEnemy);
 					}
 				} else if (enemy2Shields > 0) {
 					if (DiceRoller.roll2D6().getSum() <= adv.getCurrentWeapons()) {
@@ -97,12 +97,12 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 						enemy2Shields -= damage;
 						if (enemy2Shields <= 0) {
 							enemy2Shields = 0;
-							Adventure.showAlert("Direct hit!. You've defeated the second opponent!",adv);
+							Adventure.showAlert(getString(R.string.directHitDefeatSecondEnemy),adv);
 						} else {
-							combatResult.setText("Direct hit! (-" + damage + " Shields)");
+							combatResult.setText(getString(R.string.trokDirectHit, damage));
 						}
 					} else {
-						combatResult.setText("You've missed!");
+						combatResult.setText(R.string.missedTheEnemy);
 					}
 				} else {
 					return;
@@ -113,12 +113,12 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 						adv.setCurrentShields(adv.getCurrentShields() - damage);
 						if (adv.getCurrentShields() <= 0) {
 							adv.setCurrentShields(0);
-							Adventure.showAlert("The enemy has destroyed your starship...",adv);
+							Adventure.showAlert(getString(R.string.trokPlayerStarshipDestroyed),adv);
 						} else {
-							combatResult.setText(combatResult.getText() + "\nThe enemy has hit your starship. (-" + damage + " Shields)");
+							combatResult.setText(combatResult.getText() + "\n"+getString(R.string.trokEnemyHitPlayerStarship, damage));
 						}
 					} else {
-						combatResult.setText(combatResult.getText() + "\nYou're enemy has missed!");
+						combatResult.setText(combatResult.getText() + "\n"+getString(R.string.enemyMissed));
 					}
 				}
 				
@@ -129,12 +129,12 @@ public class TROKStarShipCombatFragment extends AdventureFragment {
 						adv.setCurrentShields(adv.getCurrentShields() - damage);
 						if (adv.getCurrentShields() <= 0) {
 							adv.setCurrentShields(0);
-							Adventure.showAlert("The enemy has destroyed your starship...",adv);
+							Adventure.showAlert(R.string.trokPlayerStarshipDestroyed,adv);
 						} else {
-							combatResult.setText(combatResult.getText() + "\nThe second enemy has hit your starship. (-" + damage + " Shields)");
+							combatResult.setText(combatResult.getText() + "\n"+getString(R.string.trokSecondEnemyHitPlayerStarship, damage));
 						}
 					} else {
-						combatResult.setText(combatResult.getText() + "\nThe second enemy has missed!");
+						combatResult.setText(combatResult.getText() + "\n"+getString(R.string.secondEnemyMissed));
 					}
 				}
 

@@ -43,7 +43,7 @@ public class TCOCAdventureSpellsFragment extends AdventureFragment {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Use spell?").setCancelable(false)
+				builder.setTitle(R.string.useSpellQuestion).setCancelable(false)
 						.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								dialog.cancel();
@@ -53,15 +53,15 @@ public class TCOCAdventureSpellsFragment extends AdventureFragment {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int which) {
 						String spell = adv.getSpellList().get(position);
-						if (spell.equals("Skill")) {
+						if (spell.equals(getString(R.string.skill2))) {
 							adv.setCurrentSkill(adv.getCurrentSkill() + (adv.getInitialSkill() / 2));
 							if (adv.getCurrentSkill() > adv.getInitialSkill())
 								adv.setCurrentSkill(adv.getInitialSkill());
-						} else if (spell.equals("Stamina")) {
+						} else if (spell.equals(getString(R.string.stamina2))) {
 							adv.setCurrentStamina(adv.getCurrentStamina() + (adv.getInitialStamina() / 2));
 							if (adv.getCurrentStamina() > adv.getInitialStamina())
 								adv.setCurrentStamina(adv.getInitialStamina());
-						} else if (spell.equals("Luck")) {
+						} else if (spell.equals(getString(R.string.luck2))) {
 							adv.setCurrentLuck(adv.getCurrentLuck() + (adv.getInitialLuck() / 2));
 							if (adv.getCurrentLuck() > adv.getInitialLuck())
 								adv.setCurrentLuck(adv.getInitialLuck());

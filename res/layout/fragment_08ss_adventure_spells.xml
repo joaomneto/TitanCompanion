@@ -6,8 +6,7 @@
     android:paddingBottom="0dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".adventure.impl.fragments.ss.SSAdventureSpellsFragment" >
+    android:paddingTop="@dimen/activity_vertical_margin" >
 
     <ListView
         android:id="@+id/spellList"

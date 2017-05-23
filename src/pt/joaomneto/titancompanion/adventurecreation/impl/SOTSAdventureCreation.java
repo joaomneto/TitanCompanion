@@ -11,7 +11,7 @@ public class SOTSAdventureCreation extends TFODAdventureCreation {
 
 	String skill;
 
-	public static String SOTS20_KYUJUTSTU = "Kyujutsu";
+	public static int SOTS20_KYUJUTSTU = R.string.kyujutsu;
 
 	public SOTSAdventureCreation() {
 		super();

@@ -149,32 +149,29 @@ public class STCombatFragment extends AdventureFragment {
 			if (crewmanAttackStrength > enemyAttackStrength) {
 				if (!position.isDefenseOnly()) {
 					position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - 2));
-					combatResult.setText("The " + crewmanString + " has hit his enemy! (dice: " + crewmanDiceRoll.getSum() +  " + skill: "
-							+ crewmanSkill + ") vs (dice: " + enemyDiceRoll.getSum() +  " + skill: " + position.getCurrentSkill() + ")");
+					combatResult.setText(getString(R.string.stCrewmanHitEnemy, crewmanString, crewmanDiceRoll.getSum(), crewmanSkill, enemyDiceRoll.getSum(), position.getCurrentSkill()));
 				} else {
-					combatResult.setText("The " + crewmanString + " has blocked the enemy attack! (dice: " + crewmanDiceRoll.getSum()
-							+ " + skill: " + crewmanSkill + ") vs (dice: " + enemyDiceRoll.getSum() +  " + skill: " + position.getCurrentSkill()
-							+ ")");
+					combatResult.setText(getString(R.string.stCrewmanBlockedEnemy, crewmanString, crewmanDiceRoll.getSum(), crewmanSkill, enemyDiceRoll.getSum(), position.getCurrentSkill()));
 				}
 			} else if (crewmanAttackStrength < enemyAttackStrength) {
 				adv.setCrewmanStamina(position.getCrewman(),
 						(Math.max(0, adv.getCrewmanStamina(position.getCrewman()) - 2)));
-				combatResult.setText("The " + crewmanString + " has been hit... (dice: " + crewmanDiceRoll.getSum() +  " + skill: "
-						+ crewmanSkill + ") vs (dice: " + enemyDiceRoll.getSum() +  " + skill: " + position.getCurrentSkill() + ")");
+				combatResult.setText(getString(R.string.stCrewmanHit, crewmanString, crewmanDiceRoll.getSum(), crewmanSkill, enemyDiceRoll.getSum(), position.getCurrentSkill()));
 			} else {
-				combatResult.setText("Both the " + crewmanString + " and his enemy have missed");
+				combatResult.setText(getString(R.string.stCombatBothMissed, crewmanString));
+//				combatResult.setText("Both the " + crewmanString + " and his enemy have missed");
 			}
 			if (position.getCurrentStamina() == 0 || adv.getCrewmanStamina(position.getCrewman()) == 0) {
 				removeCombatant(row);
 
 				if (position.getCurrentStamina() == 0)
-					combatResult.setText("The " + crewmanString + " has defeated his enemy!");
+					combatResult.setText(getString(R.string.stCrewmanDefeatedEnemy, crewmanString));
 
 				if (adv.getCrewmanStamina(position.getCrewman()) == 0) {
-					combatResult.setText("The " + crewmanString + " has died...");
+					combatResult.setText(getString(R.string.stCrewmanDied, crewmanString));
 					adv.setCrewmanDead(position.getCrewman());
 					if (position.getCrewman().equals(STCrewman.CAPTAIN)) {
-						Adventure.showAlert("You're dead...",adv);
+						Adventure.showAlert(R.string.youreDead,adv);
 					}
 				}
 			}

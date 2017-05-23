@@ -78,7 +78,7 @@ public class SSAdventureMapFragment extends AdventureFragment {
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
-                alert.setTitle("Current clearing?");
+                alert.setTitle(R.string.currentClearing);
 
                 // Set an EditText view to get user input
                 final EditText input = new EditText(getActivity());

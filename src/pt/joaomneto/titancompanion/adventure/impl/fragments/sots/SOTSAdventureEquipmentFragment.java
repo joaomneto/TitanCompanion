@@ -150,7 +150,7 @@ public class SOTSAdventureEquipmentFragment extends AdventureEquipmentFragment {
 			}
 		});
 
-		if(!adv.getSkill().equals("Kyujutsu")){
+		if(adv.getSkill() != R.string.kyujutsu){
 			minusHummingButton.setVisibility(View.GONE);
 			plusHummingButton.setVisibility(View.GONE);
 			hummingValue.setVisibility(View.GONE);

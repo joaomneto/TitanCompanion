@@ -49,7 +49,7 @@ public class TROKAdventureCreation extends AdventureCreation {
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
 		if(this.currentWeapons < 0){
-			sb.append("Ship Weapons and Shields");
+			sb.append(getString(R.string.shipStatsMandatory));
 		}
 		return  sb.toString();
 	}

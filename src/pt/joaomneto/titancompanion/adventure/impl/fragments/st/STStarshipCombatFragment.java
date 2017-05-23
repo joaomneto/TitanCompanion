@@ -163,24 +163,24 @@ public class STStarshipCombatFragment extends AdventureFragment {
 					enemyShields -= 2;
 					if (enemyShields <= 0) {
 						enemyShields = 0;
-						Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
+						Adventure.showAlert(R.string.ffDirectHitDefeat,adv);
 					} else {
-						combatResult.setText("Direct hit!");
+						combatResult.setText(R.string.directHit);
 					}
 				} else{
-					combatResult.setText("You've missed...");
+					combatResult.setText(R.string.missedTheEnemy);
 				} 
 				
 				if (enemy.getSum() < enemyWeapons) {
 					adv.setCurrentShipShields(adv.getCurrentShipShields()-2);
 					if (adv.getCurrentShipShields() <= 0) {
 						adv.setCurrentShipShields(0);
-						Adventure.showAlert("The enemy has destroyed your ship...",adv);
+						Adventure.showAlert(getString(R.string.enemyDestroyedShip),adv);
 					} else {
-						combatResult.setText(combatResult.getText().toString()+"\nThe enemy has hit your ship.");
+						combatResult.setText(combatResult.getText().toString()+"\n"+getString(R.string.enemyHitYourShip));
 					}
 				} else{
-					combatResult.setText(combatResult.getText().toString()+"\nThe enemy ship missed!");
+					combatResult.setText(combatResult.getText().toString()+"\n"+getString(R.string.enemyShipMissed));
 				} 
 				
 				refreshScreensFromResume();

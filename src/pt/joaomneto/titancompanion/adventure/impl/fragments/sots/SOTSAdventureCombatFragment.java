@@ -1,5 +1,6 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sots;
 
+import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.SOTSAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
 
@@ -20,7 +21,7 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 			position.setStaminaLoss(position.getStaminaLoss() + damage);
 			hit = true;
 			firstRound = false;
-			combatResult.setText("You have hit the enemy with the Iaijutsu fast draw strike (-3 ST)");
+			combatResult.setText(R.string.iaijutsuFastDraw);
 		} else {
 
 			super.sequenceCombatTurn();
@@ -39,7 +40,7 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 			position.setStaminaLoss(position.getStaminaLoss() + damage);
 			hit = true;
 			firstRound = false;
-			combatResult.setText("You have hit the enemy with the Iaijutsu fast draw strike (-3 ST)");
+			combatResult.setText(R.string.iaijutsuFastDraw);
 		} else {
 
 			super.standardCombatTurn();

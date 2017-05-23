@@ -9,12 +9,13 @@ import java.util.Set;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.SpellAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
+
 import android.os.Bundle;
 import android.view.Menu;
 
 public class SSAdventure extends SpellAdventure {
 
-	List<String> spells = new ArrayList<String>();;
 	Set<String> visitedClearings = new HashSet<String>();
 
 	protected static final int FRAGMENT_SPELLS = 2;
@@ -27,7 +28,7 @@ public class SSAdventure extends SpellAdventure {
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(R.string.spells, "pt.joaomneto.titancompanion.adventure.impl.fragments.ss.SSAdventureSpellsFragment"));
+		fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(R.string.spells, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureSpellsFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_MAP, new AdventureFragmentRunner(R.string.map, "pt.joaomneto.titancompanion.adventure.impl.fragments.ss.SSAdventureMapFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
@@ -53,24 +54,18 @@ public class SSAdventure extends SpellAdventure {
 	@Override
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
-		bw.write("spells=" + arrayToString(spells) + "\n");
+		bw.write("spells=" + arrayToStringSpells(getSpells()) + "\n");
 		bw.write("clearings=" + arrayToString(visitedClearings) + "\n");
 		bw.write("gold=" + getGold() + "\n");
 	}
 
-	public List<String> getSpells() {
-		return spells;
-	}
 
-	public void setSpells(List<String> spells) {
-		this.spells = spells;
-	}
 
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
 		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
 
-		setSpells(stringToArray(new String(getSavedGame().getProperty("spells").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
+		setSpells(stringToArraySpells(new String(getSavedGame().getProperty("spells").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
 
 		setVisitedClearings(stringToSet(new String(getSavedGame().getProperty("clearings").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
 

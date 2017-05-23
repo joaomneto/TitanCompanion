@@ -14,15 +14,15 @@ public class SOTSAdventure extends TFODAdventure {
 	int bowelRakerArrows = -1;
 	int armourPiercerArrows = -1;
 	int hummingBulbArrows = -1;
-	String skill = "";
+	int skill = -1;
 
 	static Integer FRAGMENT_EQUIPMENT = 2;
 	static Integer FRAGMENT_NOTES = 3;
 	
-	public static final String SKILL_KYUJUTSU = "Kyujutsu";
-	public static final String SKILL_IAIJUTSU = "Iaijutsu";
-	public static final String SKILL_KARUMIJUTSU = "Karumijutsu";
-	public static final String SKILL_NI_TO_KENJUTSU = "Ni-to-Kenjutsu";
+	public static final int SKILL_KYUJUTSU = R.string.kyujutsu;
+	public static final int SKILL_IAIJUTSU = R.string.iaijutsu;
+	public static final int SKILL_KARUMIJUTSU = R.string.karumijutsu;
+	public static final int SKILL_NI_TO_KENJUTSU = R.string.nitoKenjutsu;
 
 	public SOTSAdventure() {
 		super();
@@ -110,11 +110,11 @@ public class SOTSAdventure extends TFODAdventure {
 		this.hummingBulbArrows = hummingBulbArrows;
 	}
 
-	public String getSkill() {
+	public int getSkill() {
 		return skill;
 	}
 
-	public void setSkill(String skill) {
+	public void setSkill(int skill) {
 		this.skill = skill;
 	}
 
