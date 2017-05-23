@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Titan Companion</string>
+    <string name="action_settings">Definições</string>
+    <string name="add">Adicionar</string>
+    <string name="addBooty">Adicionar Saque</string>
+    <string name="addClearing">Adicionar Clareira</string>
+    <string name="addCombat">Adicionar Combatentes</string>
+    <string name="addCombatant">Adicionar Combatente</string>
+    <string name="addEnemy">Adicionar Inimigo</string>
+    <string name="addEnemyRobot">Adicionar Robot Inimigo</string>
+    <string name="addEnhancement"></string>
+    <string name="addEquipment">Adicionar Equipamento</string>
+    <string name="addNewSoldiers">Adicionar Soldados</string>
+    <string name="addNote">Adicionar Nota</string>
+    <string name="addRobot">Adicionar Robot</string>
+    <string name="addSoldiers">Adicionar Soldados</string>
+    <string name="addWeapon">Adicionar Arma</string>
+    <string name="adventureName">Nome da Aventura</string>
+    <string name="airborne">Voador:</string>
+    <string name="aod">Exércitos da Morte</string>
+    <string name="aodArmyDestroyed">O teu exército foi destruído...</string>
+    <string name="aodDestroyEnemy">Destruiste portanto o exército inimigo!</string>
+    <string name="aodKillEnemyTroops">" e mataste %1$d tropas inimigas."</string>
+    <string name="aodMustFillTypeAndQuantity">Tens de preencher os valores de tipo e quantidade!</string>
+    <string name="aodSituationEven">Estás em situação de igualdade com o inimigo (% 1 $ d vs% 2 $ d).</string>
+    <string name="aodSituationInferior">Estás em situação de inferioridade em relação ao inimigo (% 1 $ d vs% 2 $ d).</string>
+</resources>
