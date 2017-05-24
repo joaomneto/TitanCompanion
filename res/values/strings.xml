@@ -227,7 +227,6 @@
     <string name="name">Name:</string>
     <string name="saveAdventure">Save Adventure</string>
     <string name="rollStats">Reroll Statistics</string>
-    <string name="title_activity_twofmadventure">TWOFMAdventure</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -246,7 +245,6 @@
     <string name="selectedPotion">Potion: </string>
     <string name="provisions">Provisions: </string>
     <string name="consumePotion">Consume Potion</string>
-    <string name="consumeProvision">Consume Provisions</string>
     <string name="addNote">Add Note</string>
     <string name="gold">Gold:</string>
     <string name="editGold">Edit</string>
@@ -280,7 +278,6 @@
     <string name="title_activity_error">ErrorActivity</string>
     <string name="spellList">Available Spells:</string>
     <string name="selectedSpellList">Selected Spells:</string>
-    <string name="rollSpellValue">Roll Spell Score</string>
     <string name="spellScore">Remaining Spell Points: </string>
     <string name="shipCrewStats">Ship and Crew</string>
     <string name="scienceOfficer">Science Officer</string>
@@ -304,10 +301,6 @@
     <string name="addCombat">Add Combatants</string>
     <string name="addCombatant">Add Combatant</string>
     <string name="combat">Combat</string>
-
-    <string-array name="array_name">
-        <item>@string/engineeringOfficer</item>
-    </string-array>
 
     <string name="crewman">Crewman: </string>
     <string name="crewman2">Crewman</string>
@@ -738,8 +731,8 @@
     <string name="number_17_word">seventeen</string>
     <string name="number_18_word">eighteen</string>
 
-    <string name="hifen">&#8212;</string>
-    <string name="pipe">|</string>
+    <string name="hifen" translatable="false">&#8212;</string>
+    <string name="pipe" translatable="false">|</string>
     <string name="addClearing">Add Clearing</string>
     <string name="startCombat">Start Combat</string>
     <string name="add">Add</string>
@@ -795,12 +788,12 @@
     <string name="unarmed">Unarmed: </string>
     <string name="testCrewStrength">Test Crew Strength</string>
     <string-array name="skill_list">
-        <item>Kyujutsu</item>
-        <item>Iaijutsu</item>
-        <item>Karumijutsu</item>
-        <item>Ni-to-Kenjutsu</item>
+        <item>@string/kyujutsu</item>
+        <item>@string/iaijutsu</item>
+        <item>@string/karumijutsu</item>
+        <item>@string/nitoKenjutsu</item>
     </string-array>
-    <string name="title_adventure_creation_skill">Feat</string>
+    <string name="title_adventure_creation_skill">Arte Marcial</string>
     <string name="arrows">Arrows</string>
     <string name="honour">Honor:</string>
     <string name="willow">Willow Leaf:</string>
@@ -972,6 +965,7 @@
     <string name="gunfight">Gunfight</string>
     <string name="ffFirepowerAndArmor">Firepower and Armor</string>
     <string name="ffDirectHitDefeat">Direct hit!. You\'ve defeated your opponent!</string>
+    <string name="ffDirectHit">Direct hit!. (-%1$d Armour)</string>
     <string name="ffEnemyHit">"The enemy has hit your vehicle. (-%1$d Armour)</string>
     <string name="ffSecondEnemyHit">"The second enemy has hit your vehicle. (-%1$d Armour)</string>
     <string name="ffEnemyDestroyedYourVehicle">The enemy has destroyed your vehicle...</string>
@@ -1029,10 +1023,10 @@
     <string name="crewParamsMandatory">Crew Strike and Strength</string>
     <string name="soldiersKilledQuestion">Soldiers killed?</string>
     <string name="aod_removeAllSoldiers">Do you wish to remove all %1$s from the army?</string>
-    <string name="kyujutsu">Kyujutsu</string>
-    <string name="iaijutsu">Iaijutsu</string>
-    <string name="karumijutsu">Karumijutsu</string>
-    <string name="nitoKenjutsu">Ni-to-Kenjutsu</string>
+    <string name="kyujutsu" translatable="false">Kyujutsu</string>
+    <string name="iaijutsu" translatable="false">Iaijutsu</string>
+    <string name="karumijutsu" translatable="false">Karumijutsu</string>
+    <string name="nitoKenjutsu" translatable="false">Ni-to-Kenjutsu</string>
     <string name="iaijutsuFastDraw">You have hit the enemy with the Iaijutsu fast draw strike (-3 ST)</string>
     <string name="currentClearing">Current clearing?</string>
     <string name="shipCrewStatsMandatory">Ship and Crew Stats</string>
@@ -1080,9 +1074,9 @@
     <string name="sobDirectHit">Direct hit! (-%1$d CrewStrength)</string>
     <string name="sobEnemyHitYourShip">The enemy has hit your ship. (-%1$d CrewStrength)</string>
     <string name="bothShipsMissed">Both ships missed!</string>
-    <string name="stCrewmanHitEnemy">The %1$s has hit his enemy! (dice: %2$d + skill: %3d$d) vs (dice: %4$d + skill: %5$d)</string>
-    <string name="stCrewmanBlockedEnemy">The %1$s has blocked the enemy attack! (dice: %2$d + skill: %3d$d) vs (dice: %4$d + skill: %5$d)</string>
-    <string name="stCrewmanHit">The %1$s has been hit... (dice: %2$d + skill: %3d$d) vs (dice: %4$d + skill: %5$d)</string>
+    <string name="stCrewmanHitEnemy">The %1$s has hit his enemy! (dice: %2$d + skill: %3$d) vs (dice: %4$d + skill: %5$d)</string>
+    <string name="stCrewmanBlockedEnemy">The %1$s has blocked the enemy attack! (dice: %2$d + skill: %3$d) vs (dice: %4$d + skill: %5$d)</string>
+    <string name="stCrewmanHit">The %1$s has been hit... (dice: %2$d + skill: %3$d) vs (dice: %4$d + skill: %5$d)</string>
     <string name="stCombatBothMissed">Both the %1$s and his enemy have missed</string>
     <string name="stCrewmanDefeatedEnemy">The %1$s has defeated his enemy!</string>
     <string name="stCrewmanDied">The %1$s has died...</string>

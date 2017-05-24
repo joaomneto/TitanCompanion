@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt;
+
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -14,16 +16,11 @@ public class SOTSAdventure extends TFODAdventure {
 	int bowelRakerArrows = -1;
 	int armourPiercerArrows = -1;
 	int hummingBulbArrows = -1;
-	int skill = -1;
+	SOTSMartialArt skill = null;
 
 	static Integer FRAGMENT_EQUIPMENT = 2;
 	static Integer FRAGMENT_NOTES = 3;
 	
-	public static final int SKILL_KYUJUTSU = R.string.kyujutsu;
-	public static final int SKILL_IAIJUTSU = R.string.iaijutsu;
-	public static final int SKILL_KARUMIJUTSU = R.string.karumijutsu;
-	public static final int SKILL_NI_TO_KENJUTSU = R.string.nitoKenjutsu;
-
 	public SOTSAdventure() {
 		super();
 		fragmentConfiguration.clear();
@@ -53,7 +50,7 @@ public class SOTSAdventure extends TFODAdventure {
 	@Override
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 		bw.write("honour=" + getCurrentHonour() + "\n");
-		bw.write("skill=" + getSkill() + "\n");
+		bw.write("skill=" + getSkill().name() + "\n");
 		bw.write("armourPiercerArrows=" + getArmourPiercerArrows() + "\n");
 		bw.write("bowelRakerArrows=" + getBowelRakerArrows() + "\n");
 		bw.write("hummingBulbArrows=" + getHummingBulbArrows() + "\n");
@@ -63,7 +60,7 @@ public class SOTSAdventure extends TFODAdventure {
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
 		setCurrentHonour(Integer.valueOf(getSavedGame().getProperty("honour")));
-		setSkill(getSavedGame().getProperty("skill"));
+		setSkill(SOTSMartialArt.valueOf(getSavedGame().getProperty("skill")));
 		setArmourPiercerArrows(Integer.parseInt(getSavedGame().getProperty("armourPiercerArrows")));
 		setBowelRakerArrows(Integer.parseInt(getSavedGame().getProperty("bowelRakerArrows")));
 		setHummingBulbArrows(Integer.parseInt(getSavedGame().getProperty("hummingBulbArrows")));
@@ -110,11 +107,11 @@ public class SOTSAdventure extends TFODAdventure {
 		this.hummingBulbArrows = hummingBulbArrows;
 	}
 
-	public int getSkill() {
+	public SOTSMartialArt getSkill() {
 		return skill;
 	}
 
-	public void setSkill(int skill) {
+	public void setSkill(SOTSMartialArt skill) {
 		this.skill = skill;
 	}
 

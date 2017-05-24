@@ -3,6 +3,7 @@ package pt.joaomneto.titancompanion.adventure.impl.fragments.sots;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.SOTSAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt;
 
 public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 
@@ -15,7 +16,7 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 
 		SOTSAdventure adv = (SOTSAdventure) getActivity();
 
-		if (adv.getSkill().equals(SOTSAdventure.SKILL_IAIJUTSU) && firstRound) {
+		if (adv.getSkill().equals(SOTSMartialArt.IAIJUTSU) && firstRound) {
 			int damage = 3;
 			position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
 			position.setStaminaLoss(position.getStaminaLoss() + damage);
@@ -34,7 +35,7 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 
 		SOTSAdventure adv = (SOTSAdventure) getActivity();
 
-		if (adv.getSkill().equals(SOTSAdventure.SKILL_IAIJUTSU) && firstRound) {
+		if (adv.getSkill().equals(SOTSMartialArt.IAIJUTSU) && firstRound) {
 			int damage = 3;
 			position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
 			position.setStaminaLoss(position.getStaminaLoss() + damage);

@@ -138,7 +138,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 					combatResult.setText(combatResult.getText() + "\n"+getString(R.string.saCombatText2, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage));
 					adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage));
 				} else {
-					combatResult.setText(combatResult.getText() + getString(R.string.saCombatText3, enemy.getCurrentSkill(), enemy.getCurrentStamina());
+					combatResult.setText(combatResult.getText() + getString(R.string.saCombatText3, enemy.getCurrentSkill(), enemy.getCurrentStamina()));
 				}
 			}
 		}
