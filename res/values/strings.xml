@@ -302,6 +302,10 @@
     <string name="addCombatant">Add Combatant</string>
     <string name="combat">Combat</string>
 
+    <string-array name="stCrewList">
+        <item>@string/engineeringOfficer</item>
+    </string-array>
+
     <string name="crewman">Crewman: </string>
     <string name="crewman2">Crewman</string>
     <string name="enemySkill">Enemy Skill: </string>
