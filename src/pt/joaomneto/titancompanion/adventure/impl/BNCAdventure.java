@@ -87,7 +87,7 @@ public class BNCAdventure extends Adventure {
 
         setCurrentWillpower(Math.max(0, getCurrentWillpower()-1));
 
-        String message = result ? "Success!" : "Failed...";
+        int message = result ? R.string.success : R.string.failed;
         showAlert(message, this);
 
 		((BNCAdventureVitalStatsFragment)(getFragments().get(0))).refreshScreensFromResume();

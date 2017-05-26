@@ -226,18 +226,18 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
         final SoldiersDivision division = values.get(position);
 
         AlertDialog.Builder alertbox = new AlertDialog.Builder(view.getRootView().getContext());
-        alertbox.setMessage("Do you wish to remove all " + division.getType() + " from the army?");
-        alertbox.setTitle("Soldiers killed?");
+        alertbox.setMessage(context.getString(R.string.aod_removeAllSoldiers, division.getType()));
+        alertbox.setTitle(R.string.soldiersKilledQuestion);
 
 
-        alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertbox.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 division.setQuantity(5);
                 dialog.cancel();
             }
         });
 
-        alertbox.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertbox.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 values.remove(position);

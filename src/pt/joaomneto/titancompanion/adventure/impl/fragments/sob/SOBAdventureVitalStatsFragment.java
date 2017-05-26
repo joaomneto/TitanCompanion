@@ -48,7 +48,7 @@ public class SOBAdventureVitalStatsFragment extends AdventureVitalStatsFragment 
 			public void onClick(View arg0) {
 				boolean result = DiceRoller.roll3D6() < adv.getCurrentCrewStrength();
 
-				String message = result ? "Success!" : "Failed...";
+				int message = result ? R.string.success : R.string.failed;
 				Adventure.showAlert(message, adv);
 			}
 		});

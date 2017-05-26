@@ -58,12 +58,12 @@ public class TCOCAdventureCreation extends AdventureCreation {
         StringBuilder sb = new StringBuilder();
         boolean error = false;
         if(this.spellValue < 0){
-            sb.append("Spell Count");
+            sb.append(getString(R.string.spellCount));
             error = true;
         }
         sb.append(error?"; ":"");
         if(this.spells == null || this.spells.isEmpty()){
-            sb.append("Chosen Spells");
+            sb.append(getString(R.string.chosenSpells));
         }
 
         return  sb.toString();

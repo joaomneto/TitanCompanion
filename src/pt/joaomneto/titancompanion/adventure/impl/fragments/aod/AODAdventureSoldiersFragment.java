@@ -24,11 +24,9 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.AODAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.adapter.SoldierListAdapter;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.adapter.RobotListAdapter;
 import pt.joaomneto.titancompanion.util.DiceRoller;
-import pt.joaomneto.titancompanion.util.EnglishNumberToWords;
+import pt.joaomneto.titancompanion.util.DiceNumberToWords;
 
 public class AODAdventureSoldiersFragment extends AdventureFragment {
 
@@ -211,7 +209,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         combatResult.setText("");
 
         if (enemyForces == 0) {
-            Adventure.showAlert("You must set the number of enemy forces!", adv);
+            Adventure.showAlert(getString(R.string.mustSetEnemyForces), adv);
             return;
         }
 
@@ -222,7 +220,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         }
 
         if (totalForces == 0) {
-            Adventure.showAlert("You must commit some of your troops to the battle!", adv);
+            Adventure.showAlert(getString(R.string.mustCommitTroops), adv);
             return;
         }
 
@@ -250,7 +248,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         }
 
         if (battleState.equals(AODAdventureBattleState.DAMAGE)) {
-            Adventure.showAlert("You must distribute the losses for your army.", adv);
+            Adventure.showAlert(getString(R.string.mustDistributeLosses), adv);
             return;
         }
 
@@ -279,17 +277,17 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
         AODAdventureBattleResults result = battleResults.get(battleBalance).get(diceRoll);
 
-        combatResult.append("You've rolled a " + EnglishNumberToWords.convert(diceRoll) + ". ");
-        combatResult.append("You are in ");
-        combatResult.append(battleBalance.getTextToDisplay() +" ("+totalForces+" vs "+enemyForces+")");
+        combatResult.append(getString(R.string.youveRolled, getString(DiceNumberToWords.convert(diceRoll))));
+        combatResult.append("\n");
+        combatResult.append(getString(battleBalance.getTextToDisplay(), totalForces, enemyForces));
 
 
         if (result.getArmyOrEnemy().equals("ARMY")) {
-            combatResult.append(" and you suffer the loss of " + result.getQuantity() + " troops. ");
+            combatResult.append(getString(R.string.aodSufferLossTropps, result.getQuantity()));
             battleState = AODAdventureBattleState.DAMAGE;
             targetLosses = result.getQuantity();
         } else {
-            combatResult.append(" and you kill " + result.getQuantity() + " enemy troops!");
+            combatResult.append(getString(R.string.aodKillEnemyTroops, result.getQuantity()));
             enemyForces -= result.getQuantity();
         }
 
@@ -297,17 +295,17 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
         if(enemyForces==0){
             adv.getSoldiers().recalculate(skirmishArmy);
-            combatResult.append(" You have therefore destroyed the opposing army!");
+            combatResult.append(getString(R.string.aodDestroyEnemy));
             buttonCombatTurn.setVisibility(View.GONE);
-            buttonCombatReset.setText("Close Combat");
+            buttonCombatReset.setText(R.string.closeCombat);
         }
 
         if(battleState.equals(AODAdventureBattleState.DAMAGE) && totalForces <= result.getQuantity()){
             skirmishArmy.clear();
             adv.getSoldiers().recalculate(skirmishArmy);
-            combatResult.append(" Your army has therefore been destroyed...");
+            combatResult.append(getString(R.string.aodArmyDestroyed));
             buttonCombatTurn.setVisibility(View.GONE);
-            buttonCombatReset.setText("Close Combat");
+            buttonCombatReset.setText(R.string.closeCombat);
         }
 
 
@@ -344,14 +342,14 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
-        builder.setTitle("Add Soldiers").setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.addSoldiers).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 mgr.hideSoftInputFromWindow(addSoldiersView.getWindowToken(), 0);
                 dialog.cancel();
             }
         });
 
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
                 mgr.hideSoftInputFromWindow(addSoldiersView.getWindowToken(), 0);
@@ -365,7 +363,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
                 try {
                     quantity = Integer.valueOf(quantityS);
                 } catch (NumberFormatException e) {
-                    Adventure.showAlert("You must fill the type and quantity values!", AODAdventureSoldiersFragment.this.getActivity());
+                    Adventure.showAlert(getString(R.string.aodMustFillTypeAndQuantity), AODAdventureSoldiersFragment.this.getActivity());
                     return;
                 }
 
@@ -490,21 +488,21 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
     }
 
     private enum AODAdventureBattleBalance {
-        EVEN("an even situation with your enemy"),
-        SUPERIOR("a superior situation compared to your enemy"),
-        INFERIOR("an inferior situation compared to your enemy");
+        EVEN(R.string.aodSituationEven),
+        SUPERIOR(R.string.aodSituationSuperior),
+        INFERIOR(R.string.aodSituationInferior);
 
-        String textToDisplay;
+        int textToDisplay;
 
-        public String getTextToDisplay() {
+        public int getTextToDisplay() {
             return textToDisplay;
         }
 
-        public void setTextToDisplay(String textToDisplay) {
+        public void setTextToDisplay(int textToDisplay) {
             this.textToDisplay = textToDisplay;
         }
 
-        AODAdventureBattleBalance(String textToDisplay) {
+        AODAdventureBattleBalance(int textToDisplay) {
             this.textToDisplay = textToDisplay;
         }
     }

@@ -46,7 +46,7 @@ public class AdventureNotesFragment extends AdventureFragment {
 			public void onClick(View v) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setTitle("Note");
+				alert.setTitle(R.string.note);
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
@@ -55,7 +55,7 @@ public class AdventureNotesFragment extends AdventureFragment {
 				input.requestFocus();
 				alert.setView(input);
 
-				alert.setPositiveButton("Ok",
+				alert.setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog,
@@ -68,7 +68,7 @@ public class AdventureNotesFragment extends AdventureFragment {
 							}
 						});
 
-				alert.setNegativeButton("Cancel",
+				alert.setNegativeButton(R.string.cancel,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int whichButton) {
@@ -92,15 +92,15 @@ public class AdventureNotesFragment extends AdventureFragment {
 					int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Delete note?")
+				builder.setTitle(R.string.deleteNote)
 						.setCancelable(false)
-						.setNegativeButton("Close",
+						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
 										dialog.cancel();
 									}
 								});
-						builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+						builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 							@SuppressWarnings("unchecked")
 							public void onClick(DialogInterface dialog, int which) {
 								adv.getNotes().remove(position);

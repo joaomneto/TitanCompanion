@@ -78,7 +78,7 @@ public class SSAdventureMapFragment extends AdventureFragment {
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
-                alert.setTitle("Current clearing?");
+                alert.setTitle(R.string.currentClearing);
 
                 // Set an EditText view to get user input
                 final EditText input = new EditText(getActivity());
@@ -89,7 +89,7 @@ public class SSAdventureMapFragment extends AdventureFragment {
                 input.requestFocus();
                 alert.setView(input);
 
-                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
 
                         imm.hideSoftInputFromWindow(input.getWindowToken(), 0);

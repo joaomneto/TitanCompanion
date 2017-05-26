@@ -92,7 +92,7 @@ public class SAAdventureCreation extends AdventureCreation {
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
 		if(this.currentArmor < 0){
-			sb.append("Weapons and Armor");
+			sb.append(getString(R.string.weaponsArmorMandatory));
 		}
 		return  sb.toString();
 	}

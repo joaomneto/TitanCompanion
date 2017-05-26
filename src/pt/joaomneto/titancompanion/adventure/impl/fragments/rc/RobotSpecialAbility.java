@@ -3,6 +3,9 @@ package pt.joaomneto.titancompanion.adventure.impl.fragments.rc;
 import java.util.HashMap;
 import java.util.Map;
 
+import pt.joaomneto.titancompanion.R;
+
+
 /**
  * Created by Joao on 15-08-2015.
  */
@@ -10,19 +13,19 @@ public enum RobotSpecialAbility {
 
 
 
-    SUPER_COWBOY_ROBOT_SONIC_SCREAM(9, "Sonic Scream", "Reduces dinosaur scream skill by 1."),
-    DIGGER_ROBOT_SHOVEL(13, "Shovel", "If using shovel, 2 points gets subtracted to combat roll. When hitting the robot deals 6 damage."),
-    WASP_FIGHTER_SPECIAL_ATTACK(41, "Fly in circles", "If the combat roll is won by 4 or more points, Wasp Fighter deals double damage."),
-    DRAGONFLY_MODEL_D_EVADE(47, "Ultra Fast", "This robot can evade other robots with very high speed."),
-    TROOPER_XI_HUMAN_SHIELD(167, "Shield", "If combat roll is 18 or more, the Tropper XI suffers no damage."),
-    SERPENT_VII_COIL(208, "Serpent Coil", "After a combat roll bigger than 16, the Serpent VII deals 1 automatic damage point each turn afterwards."),
-    ROBOTANK_SONIC_SHOT(247, "Sonic Shot", "3 optional sonic shots. Deals 1d6 damage for robots and 2d6 damage for dinosaurs."),
-    HEDGEHOG_ANTI_AIR(261, "Aircraft Defense", "Has +3 bonus against flying enemies."),
-    ENEMY_CRUSHER_DOUBLE_ATTACK(27, "Double Damage", "The Crusher deals double damage in each successfull attack."),
-    ENEMY_BATTLEMAN_EXTRA_DAMAGE(108, "Critical Hit", "When Battleman wins the round with a roll difference of 4 or more points it deals an additional damage point."),
-    ENEMY_SUPERTANK_SMALL_WEAPONS(156, "Small Weapons", "Reduces dinosaur scream skill by 1"),
-    ENEMY_WASP_FIGHTER_SPECIAL_ATTACK(341, "Fly in circles", "If the combat roll is won by 4 or more points, Wasp Fighter deals double damage."),
-    ENEMY_ANKYLOSAURUS_SPECIAL_ATTACK(400, "Ankylosaurus stun", "Player can only parry in next round after losing a combat round.");
+    SUPER_COWBOY_ROBOT_SONIC_SCREAM(9, R.string.robotSpecialAbilitySonicScream, R.string.robotSpecialAbilitySonicScreamDesc),
+    DIGGER_ROBOT_SHOVEL(13, R.string.robotSpecialAbilityShovel,R.string.robotSpecialAbilityShovelDesc),
+    WASP_FIGHTER_SPECIAL_ATTACK(41, R.string.robotSpecialAbilityFlyCircles,R.string.robotSpecialAbilityFlyCirclesDesc),
+    DRAGONFLY_MODEL_D_EVADE(47, R.string.robotSpecialAbilityUltraFast,R.string.robotSpecialAbilityUltraFastDesc),
+    TROOPER_XI_HUMAN_SHIELD(167, R.string.robotSpecialAbilityShield,R.string.robotSpecialAbilityShieldDEsc),
+    SERPENT_VII_COIL(208, R.string.robotSpecialAbilitySerpentCoil,R.string.robotSpecialAbilitySerpentCoilDesc),
+    ROBOTANK_SONIC_SHOT(247, R.string.robotSpecialAbilitySonicShot, R.string.robotSpecialAbilitySonicShotDesc),
+    HEDGEHOG_ANTI_AIR(261, R.string.robotSpecialAbilityAirDefense, R.string.robotSpecialAbilityAirDefenseDesc),
+    ENEMY_CRUSHER_DOUBLE_ATTACK(27, R.string.robotSpecialAbilityDoubleDamage, R.string.robotSpecialAbilityDoubleDamageDesc),
+    ENEMY_BATTLEMAN_EXTRA_DAMAGE(108, R.string.robotSpecialAbilityCriticalHit, R.string.robotSpecialAbilityCriticalHitDesc),
+    ENEMY_SUPERTANK_SMALL_WEAPONS(156, R.string.robotSpecialAbilitySmallWeapons, R.string.robotSpecialAbilitySmallWeaponsDesc),
+    ENEMY_WASP_FIGHTER_SPECIAL_ATTACK(341, R.string.robotSpecialAbilityFlyInCircles, R.string.robotSpecialAbilityFlyInCirclesDesc),
+    ENEMY_ANKYLOSAURUS_SPECIAL_ATTACK(400, R.string.robotSpecialAbilityAnkylosaurus, R.string.robotSpecialAbilityAnkylosaurusDesc);
 
 
     protected static Map<Integer, RobotSpecialAbility> specialAbilities;
@@ -45,10 +48,10 @@ public enum RobotSpecialAbility {
     }
 
     Integer reference;
-    String name;
-    String description;
+    Integer name;
+    Integer description;
 
-    RobotSpecialAbility(Integer reference, String name, String description) {
+    RobotSpecialAbility(Integer reference, Integer name, Integer description) {
         this.reference = reference;
         this.name = name;
         this.description = description;
@@ -62,19 +65,19 @@ public enum RobotSpecialAbility {
         this.reference = reference;
     }
 
-    public String getName() {
+    public Integer getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Integer name) {
         this.name = name;
     }
 
-    public String getDescription() {
+    public Integer getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Integer description) {
         this.description = description;
     }
 

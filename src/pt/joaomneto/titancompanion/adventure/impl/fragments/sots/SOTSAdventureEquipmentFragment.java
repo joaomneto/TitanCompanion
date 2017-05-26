@@ -4,6 +4,8 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.SOTSAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -150,7 +152,7 @@ public class SOTSAdventureEquipmentFragment extends AdventureEquipmentFragment {
 			}
 		});
 
-		if(!adv.getSkill().equals("Kyujutsu")){
+		if(!adv.getSkill().equals(SOTSMartialArt.KYUJUTSU)){
 			minusHummingButton.setVisibility(View.GONE);
 			plusHummingButton.setVisibility(View.GONE);
 			hummingValue.setVisibility(View.GONE);

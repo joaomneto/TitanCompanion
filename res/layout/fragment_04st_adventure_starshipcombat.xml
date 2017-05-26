@@ -65,7 +65,7 @@
         android:layout_below="@+id/textField1"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="@string/shields"
+        android:text="@string/stShields"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
@@ -150,7 +150,7 @@
         android:layout_below="@+id/textField5"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="@string/shields"
+        android:text="@string/stShields"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button

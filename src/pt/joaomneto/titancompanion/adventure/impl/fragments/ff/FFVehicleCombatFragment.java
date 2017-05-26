@@ -104,25 +104,23 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 					enemyArmour -= damage;
 					if (enemyArmour <= 0) {
 						enemyArmour = 0;
-						Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
+						Adventure.showAlert(getString(R.string.ffDirectHitDefeat),adv);
 					} else {
-						combatResult.setText("Direct hit! (-" + damage
-								+ " Armour)");
+						combatResult.setText(getString(R.string.ffDirectHit, damage));
 					}
 				} else if (enemyAttack > enemyFirepower) {
 					int damage = DiceRoller.rollD6();
 					adv.setCurrentArmour(adv.getCurrentArmour() - damage);
 					if (adv.getCurrentArmour() <= 0) {
 						adv.setCurrentArmour(0);
-						Adventure.showAlert("The enemy has destroyed your vehicle...",adv);
+						Adventure.showAlert(getString(R.string.ffEnemyDestroyedYourVehicle),adv);
 					} else {
 						combatResult
-								.setText("The enemy has hit your vehicle. (-"
-										+ damage + " Armour)");
+								.setText(getString(R.string.ffEnemyHit, damage));
 					}
 				} else {
 					combatResult
-							.setText("Both you and your enemy have missed!");
+							.setText(R.string.bothMissed);
 				}
 
 				if (enemy2Armour > 0 && enemy2Firepower > 0) {
@@ -131,16 +129,15 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 					if (myAttack > enemyAttack) {
 						if (enemyArmour > 0) {
 							combatResult.setText(combatResult.getText()
-									+ "\nYou've avoided the second enemy attack.");
+									+ "\n" +getString(R.string.ffAvoiedSecondAttack));
 						} else {
 							int damage = DiceRoller.rollD6();
 							enemy2Armour -= damage;
 							if (enemy2Armour <= 0) {
 								enemy2Armour = 0;
-								Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
+								Adventure.showAlert(R.string.ffDirectHitDefeat,adv);
 							} else {
-								combatResult.setText("Direct hit! (-" + damage
-										+ " Armour)");
+								combatResult.setText(getString(R.string.ffDirectHit, damage));
 							}
 						}
 
@@ -149,19 +146,18 @@ public class FFVehicleCombatFragment extends AdventureFragment {
 						adv.setCurrentArmour(adv.getCurrentArmour() - damage);
 						if (adv.getCurrentArmour() <= 0) {
 							adv.setCurrentArmour(0);
-							Adventure.showAlert("The enemy has destroyed your vehicle...",adv);
+							Adventure.showAlert(R.string.ffEnemyDestroyedYourVehicle,adv);
 						} else {
 							combatResult.setText(combatResult.getText()
-									+ "\nThe second enemy has hit your vehicle. (-"
-									+ damage + " Armour)");
+									+ "\n" + getString(R.string.ffSecondEnemyHit, damage));
 						}
 					} else {
 						if (enemyArmour > 0) {
 							combatResult.setText(combatResult.getText()
-									+ "\nYou've avoided the second enemy attack.");
+									+ "\n" + getString(R.string.ffavoidedSecondAttack));
 						} else {
 							combatResult.setText(combatResult.getText()
-									+ "\nBoth you and your enemy have missed!");
+									+ "\n" + getString(R.string.bothMissed));
 						}
 					}
 				}

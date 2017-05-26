@@ -63,7 +63,7 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 			public void onClick(View v) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setTitle("Set Value");
+				alert.setTitle(R.string.setValue);
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
@@ -75,7 +75,7 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 				input.requestFocus();
 				alert.setView(input);
 
-				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 
 							int value = Integer.parseInt(input.getText().toString());
@@ -84,7 +84,7 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 					}
 				});
 
-				alert.setNegativeButton("Cancel",
+				alert.setNegativeButton(R.string.cancel,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int whichButton) {
 								imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
@@ -102,7 +102,7 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 			public void onClick(View v) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setTitle("Equipment");
+				alert.setTitle(R.string.equipment2);
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
@@ -111,7 +111,7 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 				input.requestFocus();
 				alert.setView(input);
 
-				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int whichButton) {
 						String value = input.getText().toString();
@@ -122,7 +122,7 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 					}
 				});
 
-				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						// Canceled.
 					}
@@ -143,13 +143,13 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle("Delete equipment?").setCancelable(false)
-						.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+				builder.setTitle(R.string.deleteEquipmentQuestion).setCancelable(false)
+						.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								dialog.cancel();
 							}
 						});
-				builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int which) {
 						adv.getEquipment().remove(position);

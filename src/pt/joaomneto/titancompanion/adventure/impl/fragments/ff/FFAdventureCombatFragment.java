@@ -115,7 +115,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 	}
 
 	public String getOntext() {
-		return "Gunfight";
+		return getString(R.string.gunfight);
 	}
 
 	@Override
@@ -164,9 +164,9 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 		final EditText damageValue = (EditText) addCombatantView
 				.findViewById(R.id.enemyDamage);
 
-		builder.setTitle("Add Enemy")
+		builder.setTitle(R.string.addEnemy)
 				.setCancelable(false)
-				.setNegativeButton("Close",
+				.setNegativeButton(R.string.close,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								mgr.hideSoftInputFromWindow(
@@ -175,7 +175,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 							}
 						});
 
-		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 
 				

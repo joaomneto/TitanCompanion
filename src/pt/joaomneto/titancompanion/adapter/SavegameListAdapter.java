@@ -55,15 +55,15 @@ public class SavegameListAdapter extends ArrayAdapter<Savegame> implements View.
 
             String prefix = null;
 
-            if(name.equals("Spectral Stalkers")){
+            if(name.equals(context.getString(R.string.spectral))){
                 prefix = "spectral";
-            }else if (name.equals("Tower of Destruction")){
+            }else if (name.equals(context.getString(R.string.tower))){
                 prefix = "tower";
-            }else if (name.equals("Siege of Sardath")){
+            }else if (name.equals(context.getString(R.string.siege))){
                 prefix = "siege";
-            }else if (name.equals("Moonrunner")){
+            }else if (name.equals(context.getString(R.string.moon))){
                 prefix = "moon";
-            }else if (name.equals("Star Strider")){
+            }else if (name.equals(context.getString(R.string.star))){
                 prefix = "star";
             }
             else {

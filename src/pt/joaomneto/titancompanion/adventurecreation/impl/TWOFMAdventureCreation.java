@@ -34,7 +34,7 @@ public class TWOFMAdventureCreation extends AdventureCreation {
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
 		if(this.potion < 0){
-			sb.append("Potion");
+			sb.append(getString(R.string.potion));
 		}
 		return  sb.toString();
 	}

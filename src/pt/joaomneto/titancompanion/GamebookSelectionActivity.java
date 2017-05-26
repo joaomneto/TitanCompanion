@@ -157,7 +157,7 @@ public class GamebookSelectionActivity extends FragmentActivity {
 				public void onClick(View view) {
 					Class<? extends AdventureCreation> creationActivity = Constants.getCreationActivity(getActivity(), position);
 					if(creationActivity == null){
-						Adventure.showAlert("Sorry,  this gamebook is not implemented yet!", GamebookSelectionFragment.this.getActivity());
+						Adventure.showAlert(R.string.gamebookNotImplemented, GamebookSelectionFragment.this.getActivity());
 						return;
 					}
 					Intent intent = new Intent(getActivity().getBaseContext(), creationActivity);
@@ -165,7 +165,7 @@ public class GamebookSelectionActivity extends FragmentActivity {
 					try {
 						startActivity(intent);
 					} catch (ActivityNotFoundException e) {
-						Adventure.showAlert("Sorry,  this gamebook is not implemented yet!", GamebookSelectionFragment.this.getActivity());
+						Adventure.showAlert(R.string.gamebookNotImplemented, GamebookSelectionFragment.this.getActivity());
 						e.printStackTrace();
 					}
 

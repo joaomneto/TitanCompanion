@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -54,7 +55,7 @@ public class MainActivity extends Activity {
 
                 } else {
 
-                    showAlert("Storage permission is required to used this app!");
+                    showAlert(R.string.storagePermissionsRequired);
                     finish();
                     android.os.Process.killProcess(android.os.Process.myPid());
                     super.onDestroy();
@@ -81,6 +82,26 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
+    public void showAlert(int messageId) {
+        AlertDialog.Builder builder = getBuilder();
+        builder.setMessage(messageId);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    @NonNull
+    private AlertDialog.Builder getBuilder() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.result)
+                .setCancelable(false)
+                .setNegativeButton(R.string.close,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        return builder;
+    }
 	public void quit(View view) {
 		android.os.Process.killProcess(android.os.Process.myPid());
 		System.exit(0);
@@ -100,7 +121,7 @@ public class MainActivity extends Activity {
 		AlertDialog alert = builder.create();
 		alert.show();
 	}
-	
+
 
 
 }

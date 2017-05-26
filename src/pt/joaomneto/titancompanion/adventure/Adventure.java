@@ -237,7 +237,7 @@ public abstract class Adventure extends FragmentActivity {
 
 		boolean result = DiceRoller.roll2D6().getSum() < currentSkill;
 
-		String message = result ? "Success!" : "Failed...";
+		int message = result ? R.string.success : R.string.failed;
 		showAlert(message, this);
 	}
 
@@ -245,7 +245,7 @@ public abstract class Adventure extends FragmentActivity {
 
 		boolean result = testLuckInternal();
 
-		String message = result ? "Success!" : "Failed...";
+		int message = result ? R.string.success : R.string.failed;
 		showAlert(message, this);
 	}
 
@@ -256,9 +256,9 @@ public abstract class Adventure extends FragmentActivity {
 		return result;
 	}
 	
-	public static void showAlert(String title, String message, Context context) {
+	public static void showAlert(int title, int message, Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle(title!=null?title:"Result").setMessage(message).setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+		builder.setTitle(title>0?title:R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
 			}
@@ -267,13 +267,28 @@ public abstract class Adventure extends FragmentActivity {
 		alert.show();
 	}
 
+	public static void showAlert(int title, String message, Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(title>0?title:R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+			}
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
+
+	public static void showAlert(int message, Context context) {
+		showAlert(-1, message, context);
+	}
+
 	public static void showAlert(String message, Context context) {
-		showAlert(null, message, context);
+		showAlert(-1, message, context);
 	}
 
 	public static void showAlert(View view, Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle("Result").setView(view).setCancelable(false).setNegativeButton("Close", new DialogInterface.OnClickListener() {
+		builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
 			}
@@ -403,7 +418,7 @@ public abstract class Adventure extends FragmentActivity {
 	public void savepoint(View v) {
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-		alert.setTitle("Current Reference?");
+		alert.setTitle(R.string.currentReference);
 
 		// Set an EditText view to get user input
 		final EditText input = new EditText(this);
@@ -413,7 +428,7 @@ public abstract class Adventure extends FragmentActivity {
 		input.requestFocus();
 		alert.setView(input);
 
-		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 
 				try {
@@ -434,7 +449,7 @@ public abstract class Adventure extends FragmentActivity {
 			}
 		});
 
-		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
 			}
@@ -517,20 +532,20 @@ public abstract class Adventure extends FragmentActivity {
 
 	public void consumePotion(View view) {
 		if (standardPotionValue == 0) {
-			showAlert("You have no potion left...", this);
+			showAlert(R.string.noPotionLeft, this);
 		} else {
-			String message = "";
+			int message = -1;
 			switch (standardPotion) {
 			case 0:
-				message = "You have replenished your Skill level!";
+				message = R.string.potionSkillReplenish;
 				setCurrentSkill(getInitialSkill());
 				break;
 			case 1:
-				message = "You have replenished your Stamina level!";
+				message = R.string.potionStaminaReplenish;
 				setCurrentStamina(getInitialStamina());
 				break;
 			case 2:
-				message = "You have replenished your Luck level (+1)!";
+				message = R.string.potionLuckReplenish;
 				setCurrentLuck(getInitialLuck() + 1);
 				break;
 			}
@@ -540,16 +555,16 @@ public abstract class Adventure extends FragmentActivity {
 
 	public void consumeProvision(View view) {
 		if (provisions == 0) {
-			showAlert("You have no provisions left...", this);
+			showAlert(R.string.noProvisionsLeft, this);
 		} else if (getCurrentStamina() == getInitialStamina()) {
-			showAlert("You are already at maximum Stamina!", this);
+			showAlert(R.string.provisionsMaxStamina, this);
 		} else {
 			AdventureVitalStatsFragment vitalstats = getVitalStatsFragment();
 			vitalstats.setProvisionsValue(--provisions);
 			setCurrentStamina(getCurrentStamina() + provisionsValue);
 			if (getCurrentStamina() > getInitialStamina())
 				setCurrentStamina(getInitialStamina());
-			showAlert("You have gained " + provisionsValue + " Stamina points!", this);
+			showAlert(getResources().getString(R.string.provisionsStaminaGain, provisionsValue), this);
 		}
 	}
 

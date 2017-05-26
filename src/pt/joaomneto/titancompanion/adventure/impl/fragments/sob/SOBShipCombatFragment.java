@@ -76,21 +76,21 @@ public class SOBShipCombatFragment extends AdventureFragment {
 						enemyCrewStrength -= damage;
 						if (enemyCrewStrength <= 0) {
 							enemyCrewStrength = 0;
-							Adventure.showAlert("Direct hit!. You've defeated your opponent!",adv);
+							Adventure.showAlert(R.string.ffDirectHitDefeat,adv);
 						} else {
-							combatResult.setText("Direct hit! (-" + damage + " CrewStrength)");
+							combatResult.setText(R.string.sobDirectHit);
 						}
 					} else if (attackStrength<enemyStrength) {
 						int damage = 2;
 						adv.setCurrentCrewStrength(adv.getCurrentCrewStrength() - damage);
 						if (adv.getCurrentCrewStrength() <= 0) {
 							adv.setCurrentCrewStrength(0);
-							Adventure.showAlert("The enemy has destroyed your ship...",adv);
+							Adventure.showAlert(R.string.enemyDestroyedShip,adv);
 						} else {
-							combatResult.setText(combatResult.getText() + "\nThe enemy has hit your ship. (-" + damage + " CrewStrength)");
+							combatResult.setText(combatResult.getText() + "\n"+getString(R.string.sobEnemyHitYourShip));
 						}
 					}else {
-						combatResult.setText("Both ships missed!");
+						combatResult.setText(R.string.bothShipsMissed);
 					}
 				} else {
 					return;

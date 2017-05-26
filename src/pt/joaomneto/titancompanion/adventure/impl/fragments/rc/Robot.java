@@ -24,10 +24,6 @@ public class Robot {
 		this.robotSpecialAbility = robotSpecialAbility;
 	}
 
-	public CharSequence toGridString() {
-		return ("Armor:" + armor + " Speed:" + speed + "\nCombat Bonus: " + bonus + "\nLocation: " + location);
-	}
-
 	public Integer getArmor() {
 		return armor;
 	}

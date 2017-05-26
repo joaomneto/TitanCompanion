@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/crewmanText"
-        android:entries="@array/array_name" />
+        android:entries="@array/stCrewList" />
 
     <TextView
         android:id="@+id/enemySkillText"

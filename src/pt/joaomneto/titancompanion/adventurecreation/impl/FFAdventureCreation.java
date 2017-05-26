@@ -48,7 +48,7 @@ public class FFAdventureCreation extends AdventureCreation {
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
 		if(this.currentFirepower < 0){
-			sb.append("Firepower and Armor");
+			sb.append(getString(R.string.ffFirepowerAndArmor));
 		}
 		return  sb.toString();
 	}

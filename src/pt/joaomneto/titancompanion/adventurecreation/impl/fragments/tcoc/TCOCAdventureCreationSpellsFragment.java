@@ -78,15 +78,15 @@ public class TCOCAdventureCreationSpellsFragment extends Fragment {
 									int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-				builder.setTitle("Delete spell?")
+				builder.setTitle(R.string.deleteSpellQuestion)
 						.setCancelable(false)
-						.setNegativeButton("Close",
+						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
 										dialog.cancel();
 									}
 								});
-				builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						activity.removeSpell(position);
 						selectedSpellsAdapter.notifyDataSetChanged();

@@ -72,7 +72,7 @@ public class AWFAdventure extends Adventure {
 	}
 	
 	public Integer getCombatSkillValue(){
-		if(superPower.equals("Super Strength")){
+		if(superPower.equals(getString(R.string.awfSuperStrength))){
 			return 13;
 		}
 		return getCurrentSkill();
