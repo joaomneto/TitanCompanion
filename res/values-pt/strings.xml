@@ -265,20 +265,19 @@
     <string name="addEnemy">Adicionar Inimigo</string>
 
 
-    <!--TODO-->
     <string-array name="tcoc_spells">
-        <item>Creature Copy</item>
-        <item>ESP</item>
-        <item>Fire</item>
-        <item>Fool\'s Gold</item>
-        <item>Illusion</item>
-        <item>Levitation</item>
+        <item>Cópia de Criatura</item>
+        <item>P.E.S.</item>
+        <item>Fogo</item>
+        <item>Ouro Falso</item>
+        <item>Ilusão</item>
+        <item>Levitação</item>
         <item>Sorte</item>
-        <item>Shielding</item>
+        <item>Escudo</item>
         <item>Perícia</item>
         <item>Força</item>
-        <item>Strength</item>
-        <item>Weakness</item>
+        <item>Força</item>
+        <item>Fraqueza</item>
     </string-array>
 
     <string name="title_activity_error">Erro</string>
@@ -286,7 +285,6 @@
     <string name="selectedSpellList">Feitiços Seleccionados:</string>
     <string name="spellScore">Pontos de Feitiço restantes: </string>
 
-    <!--TODO-->
     <string name="shipCrewStats">Nave e Tripulação</string>
     <string name="scienceOfficer">Cientista Chefe</string>
     <string name="medicalOfficer">Médico Chefe</string>
@@ -386,7 +384,7 @@
     <string name="addBooty">Adicionar Saque</string>
     <string name="shipCombat">Combate Naval</string>
     <string name="title_adventure_creation_superpower">Super Poder</string>
-    <!--TODO-->
+
     <string-array name="superpower_list">
         <item>Super Strength</item>
         <item>Poderes Mentais</item>
