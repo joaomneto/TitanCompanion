@@ -35,7 +35,6 @@
         android:id="@+id/buttonRate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:above="@+id/buttonExit"
         android:onClick="quit"
         android:text="@string/rateApp"
         android:layout_above="@+id/buttonExit"
