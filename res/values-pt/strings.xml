@@ -266,17 +266,17 @@
 
 
     <string-array name="tcoc_spells">
-        <item>Cópia de Criatura</item>
+        <item>Disfarce de Monstro</item>
         <item>P.E.S.</item>
         <item>Fogo</item>
-        <item>Ouro Falso</item>
+        <item>Ouro Fingido</item>
         <item>Ilusão</item>
         <item>Levitação</item>
         <item>Sorte</item>
         <item>Escudo</item>
         <item>Perícia</item>
         <item>Força</item>
-        <item>Força</item>
+        <item>Energia</item>
         <item>Fraqueza</item>
     </string-array>
 
@@ -286,8 +286,8 @@
     <string name="spellScore">Pontos de Feitiço restantes: </string>
 
     <string name="shipCrewStats">Nave e Tripulação</string>
-    <string name="scienceOfficer">Cientista Chefe</string>
-    <string name="medicalOfficer">Médico Chefe</string>
+    <string name="scienceOfficer">Técnico Chefe</string>
+    <string name="medicalOfficer">Médica Chefe</string>
     <string name="engineeringOfficer">Engenheiro Chefe</string>
     <string name="securityOfficer">Chefe de Segurança</string>
     <string name="securityGuard1">Guarda de Segurança 1</string>
@@ -386,10 +386,10 @@
     <string name="title_adventure_creation_superpower">Super Poder</string>
 
     <string-array name="superpower_list">
-        <item>Super Strength</item>
-        <item>Poderes Mentais</item>
-        <item>Perícia Tecnológica Avançada</item>
-        <item>Descarga de Energia</item>
+        <item>Super Força</item>
+        <item>Psicopoderes</item>
+        <item>EPT</item>
+        <item>Fonte de Energia</item>
     </string-array>
     <string name="heroPoints">Pontos de Herói: </string>
     <string name="unarmed">Desarmado: </string>
@@ -680,5 +680,6 @@
     <string name="stCombatBothMissed">Tanto o %1$s como o inimigo falharam</string>
     <string name="stCrewmanDefeatedEnemy">O %1$s derrotou o inimigo!</string>
     <string name="stCrewmanDied">The %1$s morreu...</string>
+    <string name="stShields">Defesas</string>
 
 </resources>

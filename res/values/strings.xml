@@ -1084,5 +1084,6 @@
     <string name="stCombatBothMissed">Both the %1$s and his enemy have missed</string>
     <string name="stCrewmanDefeatedEnemy">The %1$s has defeated his enemy!</string>
     <string name="stCrewmanDied">The %1$s has died...</string>
+    <string name="stShields">Shields</string>
 
 </resources>
