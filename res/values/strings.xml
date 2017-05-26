@@ -866,9 +866,9 @@
     <string name="cancel">Cancel</string>
     <string name="startBattle">Start Battle</string>
     <string name="inBattle">In Battle:</string>
-    <string name="plusFiveArrowRight">⇨</string>
-    <string name="plusFive">+5</string>
-    <string name="minusFive">-5</string>
+    <string name="plusFiveArrowRight" translatable="false">⇨</string>
+    <string name="plusFive" translatable="false">+5</string>
+    <string name="minusFive" translatable="false">-5</string>
     <string name="warriors">Warriors</string>
     <string name="enemyForces">Enemy Forces</string>
     <string name="soldiersType">Soldiers Type: </string>
@@ -883,7 +883,7 @@
     <string name="result">Result</string>
     <string name="close">Close</string>
     <string name="storagePermissionsRequired">Storage permission is required to used this app!</string>
-    <string name="gamebookNotImplemented">Sorry,  this gamebook is not implemented yet!</string>
+    <string name="gamebookNotImplemented">Sorry, this gamebook is not implemented yet!</string>
     <string name="success">Success!</string>
     <string name="failed">Failed...</string>
     <string name="noProvisionsLeft">You have no provisions left...</string>
@@ -896,7 +896,7 @@
 
 
     <string name="robotSpecialAbilitySonicScream">Sonic Scream</string>
-    <string name="robotSpecialAbilitySonicScreamDesc">Reduces dinosaur scream skill by 1.</string>
+    <string name="robotSpecialAbilitySonicScreamDesc">Reduces dinosaur skill by 1.</string>
     <string name="robotSpecialAbilityShovel">Shovel</string>
     <string name="robotSpecialAbilityShovelDesc">If using shovel, 2 points gets subtracted to combat roll. When hitting the robot deals 6 damage.</string>
     <string name="robotSpecialAbilityFlyCircles">Fly in circles</string>
@@ -916,7 +916,7 @@
     <string name="robotSpecialAbilityCriticalHit">Critical Hit</string>
     <string name="robotSpecialAbilityCriticalHitDesc">When Battleman wins the round with a roll difference of 4 or more points it deals an additional damage point.</string>
     <string name="robotSpecialAbilitySmallWeapons">Small Weapons</string>
-    <string name="robotSpecialAbilitySmallWeaponsDesc">Reduces dinosaur scream skill by 1</string>
+    <string name="robotSpecialAbilitySmallWeaponsDesc">Each combat round supertank deals 1 damage point due to the presence of smaller arms.</string>
     <string name="robotSpecialAbilityFlyInCircles">Fly in circles</string>
     <string name="robotSpecialAbilityFlyInCirclesDesc">If the combat roll is won by 4 or more points, Wasp Fighter deals double damage.</string>
     <string name="robotSpecialAbilityAnkylosaurus">Ankylosaurus stun</string>
@@ -924,7 +924,7 @@
     <string name="currentReference">Current Reference?</string>
     <string name="ok">Ok</string>
     <string name="normal">Normal</string>
-    <string name="sequence">Sequence</string>
+    <string name="sequence">Simultaneous</string>
     <string name="youreLucky">You\'re lucky!</string>
     <string name="defeatedOpponent">You\'ve defeated your opponent!</string>
     <string name="youreUnlucky">You\'re unlucky...</string>
@@ -1033,8 +1033,8 @@
     <string name="nitoKenjutsu" translatable="false">Ni-to-Kenjutsu</string>
     <string name="iaijutsuFastDraw">You have hit the enemy with the Iaijutsu fast draw strike (-3 ST)</string>
     <string name="currentClearing">Current clearing?</string>
-    <string name="shipCrewStatsMandatory">Ship and Crew Stats</string>
-    <string name="shipStatsMandatory">Ship Weapons and Shields</string>
+    <string name="starshipCrewStatsMandatory">Ship and Crew Stats</string>
+    <string name="starshipStatsMandatory">Ship Weapons and Shields</string>
     <string name="weaponsArmorMandatory">Weapons and Armor</string>
     <string name="spellCount">Spell Count</string>
     <string name="chosenSpells">Chosen Spells</string>

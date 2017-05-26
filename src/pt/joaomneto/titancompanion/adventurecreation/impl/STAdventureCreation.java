@@ -218,7 +218,7 @@ public class STAdventureCreation extends AdventureCreation {
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
 		if(this.shipShields < 0){
-			sb.append(getString(R.string.shipCrewStatsMandatory));
+			sb.append(getString(R.string.starshipCrewStatsMandatory));
 		}
 		return  sb.toString();
 	}
