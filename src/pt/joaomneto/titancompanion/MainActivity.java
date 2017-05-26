@@ -102,6 +102,26 @@ public class MainActivity extends Activity {
                         });
         return builder;
     }
+	public void quit(View view) {
+		android.os.Process.killProcess(android.os.Process.myPid());
+		System.exit(0);
+	}
+
+	public void showAlert(String message){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Result")
+				.setMessage(message)
+				.setCancelable(false)
+				.setNegativeButton("Close",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
+							}
+						});
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
+
 
 
 }

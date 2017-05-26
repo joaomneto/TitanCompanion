@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
-    android:versionCode="9"
-    android:versionName="0.9-alpha" >
+    android:versionCode="10"
+    android:versionName="0.10-beta" >
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -155,11 +155,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TTODAdventureCreation"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TODAdventureCreation"
             android:label="@string/tod" >
         </activity>
         <activity
-            android:name="pt.joaomneto.titancompanion.adventure.impl.TTODAdventure"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.TODAdventure"
             android:label="@string/tod"
             android:screenOrientation="portrait" >
         </activity>

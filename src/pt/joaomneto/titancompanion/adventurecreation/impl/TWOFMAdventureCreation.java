@@ -53,4 +53,5 @@ public class TWOFMAdventureCreation extends AdventureCreation {
 		this.potion = potion;
 	}
 
+
 }

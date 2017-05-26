@@ -1,15 +1,18 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl;
 
+import android.view.View;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 
 /**
  * Created by Cristina on 28-07-2015.
  */
-public class TOCAdventureCreation  extends TFODAdventureCreation{
+public class TOCAdventureCreation  extends AdventureCreation {
 
     public TOCAdventureCreation() {
         super();
@@ -20,8 +23,18 @@ public class TOCAdventureCreation  extends TFODAdventureCreation{
     }
 
     @Override
+    protected void rollGamebookSpecificStats(View view) {
+
+    }
+
+    @Override
     protected void storeAdventureSpecificValuesInFile(BufferedWriter bw)
             throws IOException {
         bw.write("gold=0\n");
+    }
+
+    @Override
+    public String validateCreationSpecificParameters() {
+        return null;
     }
 }
