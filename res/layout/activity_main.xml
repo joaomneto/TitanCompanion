@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:onClick="rate"
+        android:onClick="quit"
         android:text="@string/quit" />
 
 
@@ -35,9 +35,18 @@
         android:id="@+id/buttonRate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="quit"
+        android:onClick="rate"
         android:text="@string/rateApp"
         android:layout_above="@+id/buttonExit"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/buttonSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="settings"
+        android:text="@string/action_settings"
+        android:layout_above="@+id/buttonRate"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

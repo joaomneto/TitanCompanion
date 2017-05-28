@@ -27,6 +27,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="pt.joaomneto.titancompanion.TCPreferenceActivity"
+            android:label="Preferences">
+        </activity>
+        <activity
             android:name="pt.joaomneto.titancompanion.GamebookListActivity"
             android:label="@string/title_activity_gamebook_list" >
         </activity>

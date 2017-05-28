@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="locale_en">English</string>
+    <string name="locale_pt">Portuguese</string>
+    <string-array name="languages">
+        <item>@string/locale_en</item>
+        <item>@string/locale_pt</item>
+    </string-array>
+
+    <string-array name="languageValues">
+        <item>en</item>
+        <item>pt</item>
+    </string-array>
+
     <string name="app_name">Titan Companion</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
@@ -1085,5 +1097,11 @@
     <string name="stCrewmanDefeatedEnemy">The %1$s has defeated his enemy!</string>
     <string name="stCrewmanDied">The %1$s has died...</string>
     <string name="stShields">Shields</string>
+    <string name="exit">Exit</string>
+    <string name="quit">Quit</string>
+    <string name="rateApp">Rate this app!</string>
+    <string name="language">Language</string>
+    <string name="languageDesc">Language for the App interface.</string>
+    <string name="locale">Regional Preferences</string>
 
 </resources>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="locale_en">Inglês</string>
+    <string name="locale_pt">Português</string>
+
     <string name="app_name">Titan Companion</string>
     <string name="edit_message">Introduzir Mensagem</string>
     <string name="button_send">Enviar</string>
@@ -681,5 +684,13 @@
     <string name="stCrewmanDefeatedEnemy">O %1$s derrotou o inimigo!</string>
     <string name="stCrewmanDied">The %1$s morreu...</string>
     <string name="stShields">Defesas</string>
+    <string name="exit">Sair</string>
+    <string name="quit">Sair</string>
+    <string name="rateApp">Classifica esta app!</string>
+    <string name="language">Língua</string>
+    <string name="languageDesc">Língua para a interface da aplicação</string>
+    <string name="locale">Preferências Regionais</string>
+
+
 
 </resources>
