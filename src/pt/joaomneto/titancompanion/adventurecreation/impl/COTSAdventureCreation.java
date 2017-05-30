@@ -1,7 +1,7 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+		import java.io.BufferedWriter;
+		import java.io.IOException;
 
 public class COTSAdventureCreation extends BaseAdventureCreation {
 

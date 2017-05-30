@@ -48,7 +48,7 @@
         android:layout_marginTop="5dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    
+
      <Button
         android:id="@+id/minusGoldButton"
         android:layout_width="wrap_content"

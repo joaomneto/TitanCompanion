@@ -12,6 +12,8 @@ import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 public abstract class BaseAdventureCreation extends AdventureCreation {
 
 
+
+
 	public BaseAdventureCreation() {
 		super();
 		fragmentConfiguration.clear();
