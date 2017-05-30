@@ -120,7 +120,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void rate(View view) {
-		Uri uri = Uri.parse("market://details?id=" + this.getPackageName());
+		Uri uri = Uri.parse("market://details?id=" + this.getPackageName().replace(".debug", ""));
 		Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
 		// To count with Play market backstack, After pressing back button,
 		// to taken back to our application, we need to add following flags to intent.

@@ -56,13 +56,6 @@ public class TCPreferenceActivity extends PreferenceActivity implements SharedPr
 
         String lang = pref.getString("lang", null);
 
-        if(lang == null){
-
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putString("lang", "en_US");
-            editor.commit();
-        }
-
         Locale locale = new Locale(lang);
 
         Context context = TCContextWrapper.wrap(newBase, locale);
