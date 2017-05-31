@@ -17,7 +17,7 @@ import android.view.View;
 
 import pt.joaomneto.titancompanion.fragment.TCPreferenceFragment;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity{
 
 	public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
 

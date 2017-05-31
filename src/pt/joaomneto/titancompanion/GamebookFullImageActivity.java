@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 
-public class GamebookFullImageActivity extends Activity {
+public class GamebookFullImageActivity extends BaseActivity{
 
 
 	@Override

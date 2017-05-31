@@ -20,7 +20,7 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.consts.Constants;
 
-public class GamebookSelectionActivity extends FragmentActivity {
+public class GamebookSelectionActivity extends BaseFragmentActivity {
 
 	public static final String GAMEBOOK_URL = "GAMEBOOK_URL";
 	public static final String GAMEBOOK_COVER = "GAMEBOOK_COVER";

@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class GamebookListActivity extends Activity {
+public class GamebookListActivity extends BaseActivity{
 	
 	
 

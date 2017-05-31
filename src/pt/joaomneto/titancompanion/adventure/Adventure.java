@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
@@ -50,7 +51,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public abstract class Adventure extends FragmentActivity {
+public abstract class Adventure extends BaseFragmentActivity {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide

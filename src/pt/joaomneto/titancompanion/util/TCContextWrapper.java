@@ -4,7 +4,9 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build;
+import android.os.LocaleList;
 
 import java.util.Locale;
 
@@ -14,49 +16,31 @@ public class TCContextWrapper extends ContextWrapper {
         super(base);
     }
 
-    @SuppressWarnings("deprecation")
-    public static ContextWrapper wrap(Context context, Locale language) {
-        Configuration config = context.getResources().getConfiguration();
-        Locale sysLocale = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            sysLocale = getSystemLocale(config);
+    public static ContextWrapper wrap(Context context, Locale newLocale) {
+
+        Resources res = context.getResources();
+        Configuration configuration = res.getConfiguration();
+
+        if (android.os.Build.VERSION.SDK_INT >= 24) {
+            configuration.setLocale(newLocale);
+
+            LocaleList localeList = new LocaleList(newLocale);
+            LocaleList.setDefault(localeList);
+            configuration.setLocales(localeList);
+
+            context = context.createConfigurationContext(configuration);
+
+
+        } else if (android.os.Build.VERSION.SDK_INT >= 17) {
+            configuration.setLocale(newLocale);
+            context = context.createConfigurationContext(configuration);
+
         } else {
-            sysLocale = getSystemLocaleLegacy(config);
+            configuration.locale = newLocale;
+            res.updateConfiguration(configuration, res.getDisplayMetrics());
         }
-        if (!language.equals("") && !sysLocale.getLanguage().equals(language)) {
-            Locale locale = language;
-            Locale.setDefault(locale);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                setSystemLocale(config, locale);
-            } else {
-                setSystemLocaleLegacy(config, locale);
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                context = context.createConfigurationContext(config);
-            } else {
-                context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
-            }
-        }
-        return new TCContextWrapper(context);
+
+        return new ContextWrapper(context);
     }
 
-    @SuppressWarnings("deprecation")
-    public static Locale getSystemLocaleLegacy(Configuration config){
-        return config.locale;
-    }
-
-    @TargetApi(Build.VERSION_CODES.N)
-    public static Locale getSystemLocale(Configuration config){
-        return config.getLocales().get(0);
-    }
-
-    @SuppressWarnings("deprecation")
-    public static void setSystemLocaleLegacy(Configuration config, Locale locale){
-        config.locale = locale;
-    }
-
-    @TargetApi(Build.VERSION_CODES.N)
-    public static void setSystemLocale(Configuration config, Locale locale){
-        config.setLocale(locale);
-    }
 }
