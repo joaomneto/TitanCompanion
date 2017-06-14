@@ -27,7 +27,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class LoadAdventureActivity extends Activity {
+public class LoadAdventureActivity extends BaseActivity{
 
 	public static final String ADVENTURE_FILE = "ADVENTURE_FILE";
 	public static final String ADVENTURE_DIR = "ADVENTURE_DIR";

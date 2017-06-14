@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 
 import java.util.List;
 import java.util.Locale;
@@ -32,27 +33,16 @@ public class TCPreferenceActivity extends PreferenceActivity implements SharedPr
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals("lang")) {
-
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("lang", sharedPreferences.getString(key, "en_US"));
-            editor.commit();
-
-            settings();
+            recreate();
         }
     }
 
-    public void settings() {
-        Intent intent = new Intent(this, TCPreferenceActivity.class);
-        intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, TCPreferenceFragment.class.getName());
-        intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
-        startActivity(intent);
-    }
 
 
     @Override
     protected void attachBaseContext(Context newBase) {
 
-        SharedPreferences pref =  newBase.getSharedPreferences("lang", MODE_PRIVATE);
+        SharedPreferences pref =  PreferenceManager.getDefaultSharedPreferences(newBase);
 
         String lang = pref.getString("lang", null);
 
