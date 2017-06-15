@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.hoh.HOHVitalStatisticsFragment;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.strider.STRIDERVitalStatisticsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
@@ -29,13 +28,12 @@ public class STRIDERAdventureCreation extends BaseAdventureCreation {
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw)
 			throws IOException {
 
-		bw.write("initialFear="+fearValue+"\n");
-		bw.write("currentFear="+fearValue+"\n");
+		bw.write("fear="+fearValue+"\n");
 		bw.write("time="+48+"\n");
 		bw.write("oxygen="+20+"\n");
 	}
 
-	private HOHVitalStatisticsFragment getSTRIDERVitalStatisticsFragment() {
+	private STRIDERVitalStatisticsFragment getSTRIDERVitalStatisticsFragment() {
 		STRIDERVitalStatisticsFragment striderVitalStatisticsFragment = (STRIDERVitalStatisticsFragment) getFragments().get(0);
 		return striderVitalStatisticsFragment;
 	}

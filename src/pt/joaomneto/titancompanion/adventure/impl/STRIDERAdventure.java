@@ -12,7 +12,6 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
 public class STRIDERAdventure extends Adventure {
 
 	Integer currentFear;
-	Integer initialFear;
 
 
 	public STRIDERAdventure() {
@@ -48,8 +47,7 @@ public class STRIDERAdventure extends Adventure {
 	@Override
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
-		bw.write("currentFear=" + currentFear + "\n");
-		bw.write("maximumFear=" + maximumFear + "\n");
+		bw.write("fear=" + currentFear + "\n");
 	}
 
 	public Integer getCurrentFear() {
@@ -60,18 +58,10 @@ public class STRIDERAdventure extends Adventure {
 		this.currentFear = currentFear;
 	}
 
-	public Integer getMaximumFear() {
-		return maximumFear;
-	}
-
-	public void setMaximumFear(Integer maximumFear) {
-		this.maximumFear = maximumFear;
-	}
 
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
-		setCurrentFear(Integer.valueOf(getSavedGame().getProperty("currentFear")));
-		setMaximumFear(Integer.valueOf(getSavedGame().getProperty("maximumFear")));
+		setCurrentFear(Integer.valueOf(getSavedGame().getProperty("fear")));
 
 	}
 

@@ -308,6 +308,16 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.STRIDERAdventureCreation"
+            android:label="@string/cots"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.STRIDERAdventure"
+            android:label="@string/cots"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AODAdventureCreation"
             android:label="@string/aod"
             android:screenOrientation="portrait" >

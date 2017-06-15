@@ -1,13 +1,15 @@
 package pt.joaomneto.titancompanion.consts;
 
-import java.util.HashMap;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+
 import java.util.Locale;
-import java.util.Map;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
-import android.content.Context;
 
 public abstract class Constants {
 
@@ -55,19 +57,24 @@ public abstract class Constants {
 
 	public static String getActivityPrefix(Context context, int position) {
 		Locale l = Locale.getDefault();
-		String name = context.getResources().getStringArray(
+		String name = getLocalizedResources(context, new Locale("en_US")).getStringArray(
 				R.array.gamebook_list_names)[position];
 
-		String[] tokens = name.split("\\ ");
+		if(name.equals("Star Strider")){
+			return "STRIDER";
+		}else {
 
-		String prefix = "";
+			String[] tokens = name.split("\\ ");
 
-		for (String string : tokens) {
-			prefix += string.charAt(0);
+			String prefix = "";
+
+			for (String string : tokens) {
+				prefix += string.charAt(0);
+			}
+			prefix = prefix.toUpperCase(l);
+
+			return prefix;
 		}
-		prefix = prefix.toUpperCase(l);
-
-		return prefix;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -86,4 +93,14 @@ public abstract class Constants {
 		return intentClass;
 
 	}
+
+	@NonNull
+	public static Resources getLocalizedResources(Context context, Locale desiredLocale) {
+		Configuration conf = context.getResources().getConfiguration();
+		conf = new Configuration(conf);
+		conf.setLocale(desiredLocale);
+		Context localizedContext = context.createConfigurationContext(conf);
+		return localizedContext.getResources();
+	}
+
 }
