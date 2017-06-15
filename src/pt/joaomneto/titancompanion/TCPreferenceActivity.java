@@ -1,7 +1,6 @@
 package pt.joaomneto.titancompanion;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -38,18 +37,18 @@ public class TCPreferenceActivity extends PreferenceActivity implements SharedPr
     }
 
 
-
     @Override
     protected void attachBaseContext(Context newBase) {
 
-        SharedPreferences pref =  PreferenceManager.getDefaultSharedPreferences(newBase);
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(newBase);
 
         String lang = pref.getString("lang", null);
 
         Locale locale = new Locale(lang);
 
         Context context = TCContextWrapper.wrap(newBase, locale);
-        super.attachBaseContext(newBase);
+        super.attachBaseContext(context);
     }
+
 
 }
