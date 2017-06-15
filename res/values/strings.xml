@@ -9,8 +9,8 @@
     </string-array>
 
     <string-array name="languageValues">
-        <item>en_US</item>
-        <item>pt_PT</item>
+        <item>en</item>
+        <item>pt</item>
     </string-array>
 
     <string name="app_name">Titan Companion</string>
