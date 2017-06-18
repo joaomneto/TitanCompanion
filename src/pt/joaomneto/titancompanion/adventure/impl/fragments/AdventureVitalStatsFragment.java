@@ -1,8 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments;
 
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +7,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 
 public class AdventureVitalStatsFragment extends AdventureFragment {
 
@@ -86,7 +87,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 			if (adv.getStandardPotion() == -1) {
 				buttonConsumePotion.setVisibility(View.GONE);
 			} else {
-				buttonConsumePotion.setText(getString(R.string.use) + stringArray[adv.getStandardPotion()] + getString(R.string.potion));
+				buttonConsumePotion.setText(getString(R.string.usePotion, stringArray[adv.getStandardPotion()]));
 			}
 		}
 		increaseStaminaButton.setOnClickListener(new OnClickListener() {

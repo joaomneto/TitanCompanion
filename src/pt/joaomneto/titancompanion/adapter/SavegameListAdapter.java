@@ -1,31 +1,25 @@
 package pt.joaomneto.titancompanion.adapter;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.Robot;
-
-import android.app.LauncherActivity;
-import android.content.Context;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.TextView;
+import pt.joaomneto.titancompanion.consts.Constants;
 
 public class SavegameListAdapter extends ArrayAdapter<Savegame> implements View.OnCreateContextMenuListener {
 
@@ -45,26 +39,29 @@ public class SavegameListAdapter extends ArrayAdapter<Savegame> implements View.
         this.adv = (LoadAdventureActivity) context;
 
 
-        String[] gamebookNames = context.getResources().getStringArray(
+        Resources enResources = Constants.getLocalizedResources(context, new Locale("en"));
+        String[] gamebookNames = enResources.getStringArray(
                 R.array.gamebook_list_names);
 
         int number = 0;
 
+
+        //TODO refactor this
         for (String name: gamebookNames) {
             number++;
 
             String prefix = null;
 
-            if(name.equals(context.getString(R.string.spectral))){
+            if(name.equals(enResources.getString(R.string.spectral))){
                 prefix = "spectral";
-            }else if (name.equals(context.getString(R.string.tower))){
+            }else if (name.equals(enResources.getString(R.string.tower))){
                 prefix = "tower";
-            }else if (name.equals(context.getString(R.string.siege))){
+            }else if (name.equals(enResources.getString(R.string.siege))){
                 prefix = "siege";
-            }else if (name.equals(context.getString(R.string.moon))){
+            }else if (name.equals(enResources.getString(R.string.moon))){
                 prefix = "moon";
-            }else if (name.equals(context.getString(R.string.star))){
-                prefix = "star";
+            }else if (name.equals(enResources.getString(R.string.strider))){
+                prefix = "strider";
             }
             else {
                 String[] tokens = name.split("\\ ");

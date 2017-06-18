@@ -26,7 +26,7 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.tot.TOTSpell;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 import pt.joaomneto.titancompanion.adventure.impl.util.SpellListAdapter;
 
-public abstract class AdventureSpellsFragment extends AdventureFragment {
+public class AdventureSpellsFragment extends AdventureFragment {
 
     protected SpellAdventure adv = null;
     ListView spellList = null;

@@ -59,7 +59,6 @@
     <string name="ff">O Guerreiro da Autoestrada</string>
     <string name="coh">A Criatura Selvagem</string>
     <string name="sob">Seas of Blood</string>
-    <string name="star">Star Strider</string>
     <string name="pof">Phantoms of Fear</string>
     <string name="mr">Midnight Rogue</string>
     <string name="dod">Daggers of Darkness</string>
@@ -106,7 +105,7 @@
         <item>@string/coh</item>
         <item>@string/bnc</item>
         <item>@string/cots</item>
-        <item>@string/star</item>
+        <item>@string/strider</item>
         <item>@string/pof</item>
         <item>@string/mr</item>
         <item>@string/com</item>
