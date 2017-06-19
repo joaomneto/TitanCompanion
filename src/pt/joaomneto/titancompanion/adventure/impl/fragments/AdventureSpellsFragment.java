@@ -14,15 +14,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adapter.SpellSpinnerAdapter;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.SpellAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.tot.TOTSpell;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 import pt.joaomneto.titancompanion.adventure.impl.util.SpellListAdapter;
 
@@ -132,24 +128,12 @@ public class AdventureSpellsFragment extends AdventureFragment {
 
     }
 
-    private ArrayAdapter<String> getSpellAdapter() {
+    private ArrayAdapter<Spell> getSpellAdapter() {
 
-        List<String> list = new ArrayList<>();
+        SpellSpinnerAdapter dataAdapter = new SpellSpinnerAdapter(getActivity(), ((SpellAdventure) getActivity()).getSpellList());
 
-        for (Spell spell : getSpellList()) {
-            list.add(getString(spell.getName()));
-        }
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(
-                getActivity(), android.R.layout.simple_spinner_item, list);
-        dataAdapter
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         return dataAdapter;
     }
 
-
-    protected List<Spell> getSpellList() {
-        return Arrays.asList(TOTSpell.values());
-    }
 
 }

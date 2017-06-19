@@ -63,4 +63,6 @@ public abstract class SpellAdventure extends Adventure {
     public void setSpells(List<Spell> spells) {
         this.spells = spells;
     }
+
+    public abstract List<Spell> getSpellList();
 }

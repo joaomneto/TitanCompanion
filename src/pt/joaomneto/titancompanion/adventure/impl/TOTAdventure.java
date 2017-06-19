@@ -11,6 +11,7 @@ import java.util.List;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.SpellAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.ss.SSSpell;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.tot.TOTSpell;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 
@@ -76,6 +77,10 @@ public class TOTAdventure extends SpellAdventure {
 
         setSpells(stringToArraySpells(new String(getSavedGame().getProperty("spells").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
 
+    }
+
+    public List<Spell> getSpellList() {
+        return Arrays.asList(TOTSpell.values());
     }
 
 

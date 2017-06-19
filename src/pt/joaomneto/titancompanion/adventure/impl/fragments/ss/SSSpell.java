@@ -13,10 +13,6 @@ import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 public enum SSSpell implements Spell {
 
 
-//    getString(R.string.ssSpellStamina), getString(R.string.ssSpellSkill),
-//    getString(R.string.ssSpellLuck), getString(R.string.ssSpellFire), getString(R.string.ssSpellIce), getString(R.string.ssSpellIllusion), getString(R.string.ssSpellFriendship), getString(R.string.ssSpellGrowth),
-//    getString(R.string.ssSpellBless), getString(R.string.ssSpellFear), getString(R.string.ssSpellWithering), getString(R.string.ssSpellCurse)
-
     STAMINA(R.string.ssSpellStamina, (adv) -> {
         adv.setCurrentStamina(adv
                 .getCurrentStamina()
@@ -73,4 +69,5 @@ public enum SSSpell implements Spell {
     public void setAction(Consumer<Adventure> action) {
         this.action = action;
     }
+
 }
