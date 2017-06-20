@@ -13,12 +13,22 @@ public class STRIDERAdventure extends Adventure {
 
 	Integer currentFear;
 
+	private static int fragmentIdx = 0;
+
+	private final static int FRAGMENT_VITAL_STATS = fragmentIdx++;
+	private final static int FRAGMENT_VITAL_TIME_OXYGEN = fragmentIdx++;
+	private final static int FRAGMENT_COMBAT = fragmentIdx++;
+	private final static int FRAGMENT_EQUIPMENT = fragmentIdx++;
+	private final static int FRAGMENT_NOTES = fragmentIdx++;
+
 
 	public STRIDERAdventure() {
 		super();
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureVitalStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_VITAL_TIME_OXYGEN, new AdventureFragmentRunner(R.string.vitalStats,
+				"pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureTimeOxygenFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
