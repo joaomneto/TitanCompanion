@@ -247,6 +247,7 @@
     <string name="goldEquipment">Gold &amp; Equipment</string>
     <string name="moneyEquipment">Money &amp; Equipment</string>
     <string name="spells">Spells</string>
+    <string name="spellAlreadyChosen">Your have already chosen this spell.</string>
     <string name="fights">Fights</string>
     <string name="notes">Notes</string>
     <string name="vitalStats">Vital Statistics</string>

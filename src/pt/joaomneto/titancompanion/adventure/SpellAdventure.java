@@ -65,4 +65,6 @@ public abstract class SpellAdventure extends Adventure {
     }
 
     public abstract List<Spell> getSpellList();
+
+    public abstract boolean isSpellSingleUse();
 }

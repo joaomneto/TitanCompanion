@@ -89,4 +89,8 @@ public class SSAdventure extends SpellAdventure {
 		return Arrays.asList(SSSpell.values());
 	}
 
+    public boolean isSpellSingleUse() {
+        return true;
+    }
+
 }

@@ -77,7 +77,7 @@ public class AdventureSpellsFragment extends AdventureFragment {
                                                 int which) {
                                 Spell spell = adv.getSpells().get(position);
                                 specificSpellActivation(adv, spell);
-                                if (getSingleUse()) {
+                                if (adv.isSpellSingleUse()) {
                                     adv.getSpells().remove(position);
                                     ((ArrayAdapter<String>) spellList
                                             .getAdapter())
@@ -97,8 +97,14 @@ public class AdventureSpellsFragment extends AdventureFragment {
 
             @Override
             public void onClick(View v) {
-                adv.getSpells().add(
-                        (Spell) chooseSpellSpinner.getSelectedItem());
+
+                Spell spell = (Spell) chooseSpellSpinner.getSelectedItem();
+                if (adv.isSpellSingleUse() || !adv.getSpells().contains(spell)) {
+                    adv.getSpells().add(
+                            spell);
+                } else {
+                    Adventure.showAlert(R.string.spellAlreadyChosen, adv);
+                }
                 refreshScreensFromResume();
 
             }
@@ -117,10 +123,6 @@ public class AdventureSpellsFragment extends AdventureFragment {
     }
 
 
-    protected boolean getSingleUse() {
-        return false;
-    }
-
     @SuppressWarnings("unchecked")
     @Override
     public void refreshScreensFromResume() {
@@ -131,6 +133,8 @@ public class AdventureSpellsFragment extends AdventureFragment {
     private ArrayAdapter<Spell> getSpellAdapter() {
 
         SpellSpinnerAdapter dataAdapter = new SpellSpinnerAdapter(getActivity(), ((SpellAdventure) getActivity()).getSpellList());
+        dataAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         return dataAdapter;
     }

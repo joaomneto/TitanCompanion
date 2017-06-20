@@ -83,5 +83,8 @@ public class TOTAdventure extends SpellAdventure {
         return Arrays.asList(TOTSpell.values());
     }
 
+    public boolean isSpellSingleUse() {
+        return false;
+    }
 
 }
