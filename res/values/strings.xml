@@ -1103,7 +1103,8 @@
     <string name="language">Language</string>
     <string name="languageDesc">Language for the App interface.</string>
     <string name="locale">Regional Preferences</string>
-    <string name="time">Time</string>
-    <string name="oxygen">Oxygen</string>
+    <string name="time">Time:</string>
+    <string name="oxygen">Oxygen:</string>
+    <string translatable="false" name="empty">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</string>
 
 </resources>

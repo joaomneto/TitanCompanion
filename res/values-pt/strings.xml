@@ -690,8 +690,8 @@
     <string name="language">Língua</string>
     <string name="languageDesc">Língua para a interface da aplicação</string>
     <string name="locale">Preferências Regionais</string>
-    <string name="time">Tempo</string>
-    <string name="oxygen">Oxigénio</string>
+    <string name="time">Tempo:</string>
+    <string name="oxygen">Oxigénio:</string>
     <string name="ffDirectHit">Impacto directo!. (-%1$d Armadura)</string>
 
 
