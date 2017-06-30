@@ -29,8 +29,8 @@ public class STRIDERAdventureCreation extends BaseAdventureCreation {
 			throws IOException {
 
 		bw.write("fear="+fearValue+"\n");
-		bw.write("time="+48+"\n");
-		bw.write("oxygen="+20+"\n");
+		bw.write("time="+0+"\n");
+		bw.write("oxygen="+0+"\n");
 	}
 
 	private STRIDERVitalStatisticsFragment getSTRIDERVitalStatisticsFragment() {

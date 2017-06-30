@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.HOHAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.STRIDERAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 
 public class STRIDERAdventureVitalStatsFragment extends AdventureVitalStatsFragment {
@@ -38,29 +39,11 @@ public class STRIDERAdventureVitalStatsFragment extends AdventureVitalStatsFragm
 		increaseFearButton = (Button) rootView
 				.findViewById(R.id.plusFearButton);
 		fearValue = (TextView) rootView.findViewById(R.id.statsFearValue);
-		final HOHAdventure adv = (HOHAdventure) getActivity();
+		final STRIDERAdventure adv = (STRIDERAdventure) getActivity();
 
-		decreaseFearButton.setOnClickListener(new OnClickListener() {
+		decreaseFearButton.setVisibility(View.INVISIBLE);
 
-			@Override
-			public void onClick(View v) {
-				if (adv.getCurrentFear() > 0)
-					adv.setCurrentFear(adv.getCurrentFear() - 1);
-				refreshScreensFromResume();
-
-			}
-		});
-
-		increaseFearButton.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (adv.getCurrentFear() < adv.getMaximumFear())
-					adv.setCurrentFear(adv.getCurrentFear() + 1);
-				refreshScreensFromResume();
-
-			}
-		});
+		increaseFearButton.setVisibility(View.INVISIBLE);
 
 		refreshScreensFromResume();
 
@@ -70,7 +53,7 @@ public class STRIDERAdventureVitalStatsFragment extends AdventureVitalStatsFragm
 	@Override
 	public void refreshScreensFromResume() {
 		super.refreshScreensFromResume();
-		HOHAdventure adv = (HOHAdventure) getActivity();
+		STRIDERAdventure adv = (STRIDERAdventure) getActivity();
 		fearValue.setText("" + adv.getCurrentFear());
 
 	}
