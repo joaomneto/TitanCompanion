@@ -3,12 +3,15 @@ package pt.joaomneto.titancompanion.adventure.impl;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.SpellAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.ss.SSSpell;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.tot.TOTSpell;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 
 import android.os.Bundle;
@@ -61,8 +64,6 @@ public class SSAdventure extends SpellAdventure {
 		bw.write("gold=" + getGold() + "\n");
 	}
 
-
-
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
 		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
@@ -70,7 +71,6 @@ public class SSAdventure extends SpellAdventure {
 		setSpells(stringToArraySpells(new String(getSavedGame().getProperty("spells").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
 
 		setVisitedClearings(stringToSet(new String(getSavedGame().getProperty("clearings").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
-
 	}
 
 	public void addVisitedClearings(String clearing) {
@@ -84,5 +84,13 @@ public class SSAdventure extends SpellAdventure {
 	public synchronized void setVisitedClearings(Set<String> visitedClearings) {
 		this.visitedClearings = visitedClearings;
 	}
+
+	public List<Spell> getSpellList() {
+		return Arrays.asList(SSSpell.values());
+	}
+
+    public boolean isSpellSingleUse() {
+        return true;
+    }
 
 }

@@ -6,10 +6,9 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceActivity;
 
 import java.util.List;
-import java.util.Locale;
 
 import pt.joaomneto.titancompanion.fragment.TCPreferenceFragment;
-import pt.joaomneto.titancompanion.util.TCContextWrapper;
+import pt.joaomneto.titancompanion.util.LocaleHelper;
 
 /**
  * Created by joao on 27/05/17.
@@ -32,34 +31,21 @@ public class TCPreferenceActivity extends PreferenceActivity implements SharedPr
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals("lang")) {
-
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("lang", sharedPreferences.getString(key, "en_US"));
-            editor.commit();
-
-            settings();
+            LocaleHelper.setLocale(this, sharedPreferences.getString("lang", null));
+            Intent i = getBaseContext().getPackageManager().
+                    getLaunchIntentForPackage(getBaseContext().getPackageName());
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+            finish();
         }
-    }
-
-    public void settings() {
-        Intent intent = new Intent(this, TCPreferenceActivity.class);
-        intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, TCPreferenceFragment.class.getName());
-        intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
-        startActivity(intent);
     }
 
 
     @Override
-    protected void attachBaseContext(Context newBase) {
-
-        SharedPreferences pref =  newBase.getSharedPreferences("lang", MODE_PRIVATE);
-
-        String lang = pref.getString("lang", null);
-
-        Locale locale = new Locale(lang);
-
-        Context context = TCContextWrapper.wrap(newBase, locale);
-        super.attachBaseContext(newBase);
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
     }
+
 
 }

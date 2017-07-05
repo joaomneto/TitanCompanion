@@ -14,19 +14,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adapter.SpellSpinnerAdapter;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.SpellAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.tot.TOTSpell;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 import pt.joaomneto.titancompanion.adventure.impl.util.SpellListAdapter;
 
-public abstract class AdventureSpellsFragment extends AdventureFragment {
+public class AdventureSpellsFragment extends AdventureFragment {
 
     protected SpellAdventure adv = null;
     ListView spellList = null;
@@ -81,7 +77,7 @@ public abstract class AdventureSpellsFragment extends AdventureFragment {
                                                 int which) {
                                 Spell spell = adv.getSpells().get(position);
                                 specificSpellActivation(adv, spell);
-                                if (getSingleUse()) {
+                                if (adv.isSpellSingleUse()) {
                                     adv.getSpells().remove(position);
                                     ((ArrayAdapter<String>) spellList
                                             .getAdapter())
@@ -101,8 +97,14 @@ public abstract class AdventureSpellsFragment extends AdventureFragment {
 
             @Override
             public void onClick(View v) {
-                adv.getSpells().add(
-                        (Spell) chooseSpellSpinner.getSelectedItem());
+
+                Spell spell = (Spell) chooseSpellSpinner.getSelectedItem();
+                if (adv.isSpellSingleUse() || !adv.getSpells().contains(spell)) {
+                    adv.getSpells().add(
+                            spell);
+                } else {
+                    Adventure.showAlert(R.string.spellAlreadyChosen, adv);
+                }
                 refreshScreensFromResume();
 
             }
@@ -121,10 +123,6 @@ public abstract class AdventureSpellsFragment extends AdventureFragment {
     }
 
 
-    protected boolean getSingleUse() {
-        return false;
-    }
-
     @SuppressWarnings("unchecked")
     @Override
     public void refreshScreensFromResume() {
@@ -132,24 +130,14 @@ public abstract class AdventureSpellsFragment extends AdventureFragment {
 
     }
 
-    private ArrayAdapter<String> getSpellAdapter() {
+    private ArrayAdapter<Spell> getSpellAdapter() {
 
-        List<String> list = new ArrayList<>();
-
-        for (Spell spell : getSpellList()) {
-            list.add(getString(spell.getName()));
-        }
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(
-                getActivity(), android.R.layout.simple_spinner_item, list);
+        SpellSpinnerAdapter dataAdapter = new SpellSpinnerAdapter(getActivity(), ((SpellAdventure) getActivity()).getSpellList());
         dataAdapter
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         return dataAdapter;
     }
 
-
-    protected List<Spell> getSpellList() {
-        return Arrays.asList(TOTSpell.values());
-    }
 
 }

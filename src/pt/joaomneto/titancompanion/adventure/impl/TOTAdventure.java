@@ -11,6 +11,7 @@ import java.util.List;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.SpellAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.ss.SSSpell;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.tot.TOTSpell;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 
@@ -78,5 +79,12 @@ public class TOTAdventure extends SpellAdventure {
 
     }
 
+    public List<Spell> getSpellList() {
+        return Arrays.asList(TOTSpell.values());
+    }
+
+    public boolean isSpellSingleUse() {
+        return false;
+    }
 
 }

@@ -68,7 +68,7 @@
         android:layout_alignBottom="@+id/luckCount"
         android:layout_alignTop="@+id/luckCount"
         android:layout_marginLeft="10dp"
-        android:layout_toLeftOf="@+id/staminaValue"
+        android:layout_toRightOf="@id/luckCount"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <TextView

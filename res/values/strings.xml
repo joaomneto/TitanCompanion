@@ -247,6 +247,7 @@
     <string name="goldEquipment">Gold &amp; Equipment</string>
     <string name="moneyEquipment">Money &amp; Equipment</string>
     <string name="spells">Spells</string>
+    <string name="spellAlreadyChosen">Your have already chosen this spell.</string>
     <string name="fights">Fights</string>
     <string name="notes">Notes</string>
     <string name="vitalStats">Vital Statistics</string>
@@ -960,6 +961,7 @@
     <string name="useSpellQuestion">Use spell?</string>
     <string name="use">Use</string>
     <string name="potion">Potion</string>
+    <string name="usePotion">Use %1$s potion</string>
     <string name="mustSetEnemyForces">You must set the number of enemy forces!</string>
     <string name="mustCommitTroops">You must commit some of your troops to the battle!</string>
     <string name="mustDistributeLosses">You must distribute the losses for your army.</string>

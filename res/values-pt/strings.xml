@@ -241,6 +241,7 @@
     <string name="goldEquipment">Ouro &amp; Equipamento</string>
     <string name="moneyEquipment">Dinheiro &amp; Equipamento</string>
     <string name="spells">Feitiços</string>
+    <string name="spellAlreadyChosen">Este feitiço já foi escolhido.</string>
     <string name="fights">Combates</string>
     <string name="notes">Notas</string>
     <string name="vitalStats">Dados Vitais</string>

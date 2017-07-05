@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.GamebookSelectionActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
@@ -31,7 +32,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public abstract class AdventureCreation extends FragmentActivity {
+public abstract class AdventureCreation extends BaseFragmentActivity {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
