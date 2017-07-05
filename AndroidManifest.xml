@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
-    android:versionCode="13"
-    android:versionName="0.13-beta" >
+    android:versionCode="14"
+    android:versionName="0.14-beta" >
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -306,6 +306,16 @@
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.COTSAdventure"
             android:label="@string/cots"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.STRIDERAdventureCreation"
+            android:label="@string/strider"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.STRIDERAdventure"
+            android:label="@string/strider"
             android:screenOrientation="portrait" >
         </activity>
         <activity
