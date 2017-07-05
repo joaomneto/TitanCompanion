@@ -54,8 +54,8 @@ public class STRIDERAdventureTimeOxygenFragment extends AdventureFragment {
 				container, false);
 
 
-        final STRIDERAdventure adventure = (STRIDERAdventure) this.getContext();
-        STRIDERAdventure adventureF = adventure;
+        adventure = (STRIDERAdventure) this.getContext();
+
 
 
         oxygenValue = (TextView) rootView.findViewById(R.id.statsOxygenValue);
@@ -68,22 +68,22 @@ public class STRIDERAdventureTimeOxygenFragment extends AdventureFragment {
         oxygenBar = (TableLayout) rootView.findViewById(R.id.strider_oxygenBar);
 
         increaseOxygenButton.setOnClickListener((View v) -> {
-            adventureF.increaseOxygen();
+            adventure.increaseOxygen();
             refreshScreensFromResume();
         });
 
         decreaseOxygenButton.setOnClickListener((View v) -> {
-            adventureF.decreaseOxygen();
+            adventure.decreaseOxygen();
             refreshScreensFromResume();
         });
 
         increaseTimeButton.setOnClickListener((View v) -> {
-            adventureF.increaseTime();
+            adventure.increaseTime();
             refreshScreensFromResume();
         });
 
         decreaseTimeButton.setOnClickListener((View v) -> {
-            adventureF.decreaseTime();
+            adventure.decreaseTime();
             refreshScreensFromResume();
         });
 
@@ -96,6 +96,8 @@ public class STRIDERAdventureTimeOxygenFragment extends AdventureFragment {
 	@Override
 	public void refreshScreensFromResume() {
 
+
+        adventure = (STRIDERAdventure) this.getContext();
 
         if (adventure!=null) {
             oxygenValue.setText(""+adventure.getOxygen());
@@ -117,7 +119,11 @@ public class STRIDERAdventureTimeOxygenFragment extends AdventureFragment {
 
 
                 if(i<time){
-                    cell.setBackgroundColor(Color.parseColor("#4fa5d5"));
+                    if(((double)time/(double)table.getChildCount())<0.85d){
+                        cell.setBackgroundColor(Color.parseColor("#4fa5d5"));
+                    }else{
+                        cell.setBackgroundColor(Color.parseColor("#ed1c00"));
+                    }
                 }else{
                     cell.setBackgroundColor(0x00000000);
                 }

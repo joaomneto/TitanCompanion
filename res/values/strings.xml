@@ -52,7 +52,7 @@
     <string name="coh">Creature of Havoc</string>
     <string name="bnc">Beneath Nightmare Castle</string>
     <string name="cots">Crypt of the Sorcerer</string>
-    <string name="star">Star Strider</string>
+    <string name="strider">Star Strider</string>
     <string name="pof">Phantoms of Fear</string>
     <string name="mr">Midnight Rogue</string>
     <string name="com">Chasms of Malice</string>
@@ -113,7 +113,7 @@
         <item>@string/coh</item>
         <item>@string/bnc</item>
         <item>@string/cots</item>
-        <item>@string/star</item>
+        <item>@string/strider</item>
         <item>@string/pof</item>
         <item>@string/mr</item>
         <item>@string/com</item>

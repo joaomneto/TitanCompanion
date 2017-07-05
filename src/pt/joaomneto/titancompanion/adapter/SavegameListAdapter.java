@@ -63,8 +63,8 @@ public class SavegameListAdapter extends ArrayAdapter<Savegame> implements View.
                 prefix = "siege";
             }else if (name.equals(context.getString(R.string.moon))){
                 prefix = "moon";
-            }else if (name.equals(context.getString(R.string.star))){
-                prefix = "star";
+            }else if (name.equals(context.getString(R.string.strider))){
+                prefix = "strider";
             }
             else {
                 String[] tokens = name.split("\\ ");
