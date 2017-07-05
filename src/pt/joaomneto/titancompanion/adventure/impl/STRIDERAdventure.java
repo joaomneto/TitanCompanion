@@ -2,12 +2,15 @@ package pt.joaomneto.titancompanion.adventure.impl;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureVitalStatsFragment;
+import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class STRIDERAdventure extends Adventure {
 
@@ -29,11 +32,11 @@ public class STRIDERAdventure extends Adventure {
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureVitalStatsFragment"));
-		fragmentConfiguration.put(FRAGMENT_VITAL_TIME_OXYGEN, new AdventureFragmentRunner(R.string.vitalStats,
+		fragmentConfiguration.put(FRAGMENT_VITAL_TIME_OXYGEN, new AdventureFragmentRunner(R.string.timeAndOxygen,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureTimeOxygenFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment,
+		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.equipment2,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
@@ -79,6 +82,16 @@ public class STRIDERAdventure extends Adventure {
 		setTime(Integer.valueOf(getSavedGame().getProperty("time")));
 		setOxygen(Integer.valueOf(getSavedGame().getProperty("oxygen")));
 	}
+
+    public void testFear(View v) {
+
+        boolean result = DiceRoller.roll2D6().getSum()<=getCurrentFear();
+
+        int message = result ? R.string.success : R.string.failed;
+        showAlert(message, this);
+
+        ((STRIDERAdventureVitalStatsFragment)(getFragments().get(0))).refreshScreensFromResume();
+    }
 
 	public Integer getTime() {
 		return time;

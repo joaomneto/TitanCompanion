@@ -309,12 +309,12 @@
         </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.STRIDERAdventureCreation"
-            android:label="@string/cots"
+            android:label="@string/strider"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.STRIDERAdventure"
-            android:label="@string/cots"
+            android:label="@string/strider"
             android:screenOrientation="portrait" >
         </activity>
         <activity

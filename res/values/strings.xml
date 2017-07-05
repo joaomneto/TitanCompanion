@@ -1106,5 +1106,7 @@
     <string name="time">Time:</string>
     <string name="oxygen">Oxygen:</string>
     <string translatable="false" name="empty">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</string>
+    <string name="testFear">Test Fear</string>
+    <string name="timeAndOxygen">Time and Oxygen</string>
 
 </resources>

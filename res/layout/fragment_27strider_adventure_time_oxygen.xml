@@ -123,8 +123,8 @@
             android:id="@+id/strider_timeBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="30dp"
             android:layout_weight="1">
 
             <TableRow
@@ -660,10 +660,65 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="45dp"
             android:id="@+id/strider_oxygenBar"
             android:layout_weight="1">
+
+            <TableRow
+                android:background="@drawable/border_back"
+                android:maxHeight="9dp"
+                android:minHeight="9dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:height="9dp"
+                    android:text="@string/empty" />
+            </TableRow>
+
+            <TableRow
+                android:background="@drawable/border_back"
+                android:maxHeight="9dp"
+                android:minHeight="9dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:height="9dp"
+                    android:text="@string/empty" />
+            </TableRow>
+
+            <TableRow
+                android:background="@drawable/border_back"
+                android:maxHeight="9dp"
+                android:minHeight="9dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:height="9dp"
+                    android:text="@string/empty" />
+            </TableRow>
+
+            <TableRow
+                android:background="@drawable/border_back"
+                android:maxHeight="9dp"
+                android:minHeight="9dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:height="9dp"
+                    android:text="@string/empty" />
+            </TableRow>
+
+            <TableRow
+                android:background="@drawable/border_back"
+                android:maxHeight="9dp"
+                android:minHeight="9dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:height="9dp"
+                    android:text="@string/empty" />
+            </TableRow>
 
             <TableRow
                 android:background="@drawable/border_back"

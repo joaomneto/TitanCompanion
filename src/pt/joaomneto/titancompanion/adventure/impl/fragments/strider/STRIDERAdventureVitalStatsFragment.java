@@ -30,20 +30,12 @@ public class STRIDERAdventureVitalStatsFragment extends AdventureVitalStatsFragm
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		View rootView = inflater.inflate(
-				R.layout.fragment_10hoh_adventure_vitalstats, container, false);
+				R.layout.fragment_27strider_adventure_vitalstats, container, false);
 
 		initialize(rootView);
 
-		decreaseFearButton = (Button) rootView
-				.findViewById(R.id.minusFearButton);
-		increaseFearButton = (Button) rootView
-				.findViewById(R.id.plusFearButton);
+
 		fearValue = (TextView) rootView.findViewById(R.id.statsFearValue);
-		final STRIDERAdventure adv = (STRIDERAdventure) getActivity();
-
-		decreaseFearButton.setVisibility(View.INVISIBLE);
-
-		increaseFearButton.setVisibility(View.INVISIBLE);
 
 		refreshScreensFromResume();
 
