@@ -13,7 +13,6 @@ public class TFODAdventureCreation extends TWOFMAdventureCreation {
 			throws IOException {
 		bw.write("standardPotion=" + potion + "\n");
 		bw.write("standardPotionValue=1\n");
-		bw.write("provisions=10\n");
 		bw.write("provisionsValue=4\n");
 		bw.write("gold=0\n");
 	}

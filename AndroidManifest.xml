@@ -320,6 +320,16 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.POFAdventureCreation"
+            android:label="@string/pof"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.POFAdventure"
+            android:label="@string/pof"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AODAdventureCreation"
             android:label="@string/aod"
             android:screenOrientation="portrait" >
