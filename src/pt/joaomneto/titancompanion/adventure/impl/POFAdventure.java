@@ -81,12 +81,12 @@ public class POFAdventure extends SpellAdventure {
     }
 
 
-    public List<Spell> getSpellList() {
-        return Arrays.asList(POFSpell.values());
+    public boolean isSpellSingleUse() {
+        return false;
     }
 
-    public boolean isSpellSingleUse() {
-        return true;
+    public List<Spell> getSpellList() {
+        return Arrays.asList(POFSpell.values());
     }
 
     public int getCurrentPower() {
