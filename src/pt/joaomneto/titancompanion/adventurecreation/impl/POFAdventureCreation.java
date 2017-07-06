@@ -21,6 +21,8 @@ public class POFAdventureCreation extends TFODAdventureCreation {
 		fragmentConfiguration.put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.pof.POFVitalStatisticsFragment"));
+		fragmentConfiguration.put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_potions,
+				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragment"));
 
 	}
 
@@ -29,6 +31,7 @@ public class POFAdventureCreation extends TFODAdventureCreation {
 			throws IOException {
 		bw.write("standardPotion=" + potion + "\n");
 		bw.write("standardPotionValue=1\n");
+		bw.write("provisions=0\n");
 		bw.write("provisionsValue=0\n");
 		bw.write("gold=0\n");
 		bw.write("currentPower="+ powerValue +"\n");
@@ -51,8 +54,8 @@ public class POFAdventureCreation extends TFODAdventureCreation {
 	@Override
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
-		if(this.powerValue < 0){
-			sb.append(getString(R.string.bncWillpower));
+		if(this.potion < 0){
+			sb.append(getString(R.string.potion));
 		}
 		return  sb.toString();
 	}

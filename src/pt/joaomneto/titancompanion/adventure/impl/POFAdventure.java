@@ -30,7 +30,7 @@ public class POFAdventure extends SpellAdventure {
         fragmentConfiguration.clear();
         fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.pof.POFAdventureVitalStatsFragment"));
         fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"));
-        fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(R.string.spells, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureSpellsFragment"));
+        fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(R.string.spells, "pt.joaomneto.titancompanion.adventure.impl.fragments.pof.POFAdventureSpellsFragment"));
         fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"));
         fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
     }
@@ -56,10 +56,12 @@ public class POFAdventure extends SpellAdventure {
     public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
 
+        bw.write("currentPower=" + getCurrentPower() + "\n");
+        bw.write("initialPower=" + getInitialPower() + "\n");
         bw.write("standardPotion=" + getStandardPotion() + "\n");
-        bw.write("standardPotionValue=" + getStandardPotionValue()
-                + "\n");
-
+        bw.write("standardPotionValue=" + getStandardPotionValue() + "\n");
+        bw.write("provisions=0\n");
+        bw.write("provisionsValue=4\n");
         bw.write("gold=" + getGold() + "\n");
         bw.write("currentPower=" + getGold() + "\n");
         bw.write("initialPower=" + getGold() + "\n");
@@ -72,6 +74,8 @@ public class POFAdventure extends SpellAdventure {
         setStandardPotionValue(Integer.valueOf(getSavedGame()
                 .getProperty("standardPotionValue")));
         setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
+        setCurrentPower(Integer.valueOf(getSavedGame().getProperty("currentPower")));
+        setInitialPower(Integer.valueOf(getSavedGame().getProperty("initialPower")));
         setSpells(getSpellList());
 
     }
