@@ -55,21 +55,22 @@ public abstract class Constants {
 
     //TODO refactor this
     public static String getActivityPrefix(Context context, int position) {
-        String name = getLocalizedResources(context, new Locale("en")).getStringArray(
+        Resources enResources = getLocalizedResources(context, new Locale("en"));
+        String name = enResources.getStringArray(
                 R.array.gamebook_list_names)[position];
 
 
         String prefix = "";
 
-        if (name.equals(context.getString(R.string.spectral))) {
+        if (name.equals(enResources.getString(R.string.spectral))) {
             prefix = "spectral";
-        } else if (name.equals(context.getString(R.string.tower))) {
+        } else if (name.equals(enResources.getString(R.string.tower))) {
             prefix = "tower";
-        } else if (name.equals(context.getString(R.string.siege))) {
+        } else if (name.equals(enResources.getString(R.string.siege))) {
             prefix = "siege";
-        } else if (name.equals(context.getString(R.string.moon))) {
+        } else if (name.equals(enResources.getString(R.string.moon))) {
             prefix = "moon";
-        } else if (name.equals(context.getString(R.string.strider))) {
+        } else if (name.equals(enResources.getString(R.string.strider))) {
             prefix = "strider";
         } else {
 
