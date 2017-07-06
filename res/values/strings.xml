@@ -1110,5 +1110,12 @@
     <string translatable="false" name="empty">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</string>
     <string name="testFear">Test Fear</string>
     <string name="timeAndOxygen">Time and Oxygen</string>
+    <string name="power">Power:</string>
+    <string name="pofSpellProtect">Protect</string>
+    <string name="pofSpellIllusion">Illusion</string>
+    <string name="pofSpellWeaken">Weaken</string>
+    <string name="pofSpellLevitation">Levitation</string>
+    <string name="pofSpellFinding">Finding</string>
+    <string name="pofSpellFire">Fire</string>
 
 </resources>

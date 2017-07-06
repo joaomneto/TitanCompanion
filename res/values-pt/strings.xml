@@ -695,6 +695,14 @@
     <string name="ffDirectHit">Impacto directo!. (-%1$d Armadura)</string>
     <string name="testFear">Testar Medo</string>
     <string name="timeAndOxygen">Tempo e Oxigénio</string>
+    <string name="usePotion">Usar poção de %1$s</string>
+    <string name="power">"Poder: "</string>
+    <string name="pofSpellProtect">Proteger</string>
+    <string name="pofSpellFinding">Procurar</string>
+    <string name="pofSpellFire">Fogo</string>
+    <string name="pofSpellIllusion">Ilusão</string>
+    <string name="pofSpellLevitation">Levitação</string>
+    <string name="pofSpellWeaken">Enfraquecer</string>
 
 
 </resources>
