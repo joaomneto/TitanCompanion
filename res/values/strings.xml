@@ -1141,5 +1141,6 @@
     <string name="pofSpellFire">Fire</string>
     <string name="change">Change</string>
     <string name="addKeyword">Add Keyword</string>
+    <string name="specialSkills">Special Skills</string>
 
 </resources>

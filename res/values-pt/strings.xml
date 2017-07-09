@@ -593,6 +593,7 @@
     <string name="setInitialStamina">Definir Força inicial</string>
     <string name="setInitialSkill">Definir Perícia inicial</string>
     <string name="setInitialLuck">Definir Sorte inicial</string>
+    <string name="specialSkills">Abilidades Especiais</string>
 
 
 </resources>
