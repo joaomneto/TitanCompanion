@@ -6,22 +6,19 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.tcoc.TCOCAdventureCreationSpellsFragment;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.mr.MRAdventureCreationSkillsFragment;
 
 public class MRAdventureCreation extends AdventureCreation {
 
     private final static int FRAGMENT_MR_SPELLS = 1;
     private final static int FRAGMENT_MR_POTION = 2;
 
-    Set<String> chosenSkills = new HashSet<>();
+    List<String> chosenSkills = new ArrayList<>();
     List<String> skillList = new ArrayList<>();
 
     public MRAdventureCreation() {
@@ -51,12 +48,12 @@ public class MRAdventureCreation extends AdventureCreation {
 
         if (!chosenSkills.isEmpty()) {
             for (String spell : getSpellList()) {
-                chosenSkillsS += spell + "§"+chosenSkills.get(spell)+"#";
+                chosenSkillsS += spell + "#";
             }
             chosenSkillsS = chosenSkillsS.substring(0, chosenSkillsS.length() - 1);
         }
 
-        bw.write("chosenSkills="+chosenSkillsS+"\n");
+        bw.write("chosenSkills=" + chosenSkillsS + "\n");
         bw.write("gold=0\n");
     }
 
@@ -64,16 +61,16 @@ public class MRAdventureCreation extends AdventureCreation {
     public String validateCreationSpecificParameters() {
         StringBuilder sb = new StringBuilder();
         boolean error = false;
-        if(this.chosenSkills == null || this.chosenSkills.isEmpty()){
-            sb.append(getString(R.string.chosenSpells));
+        if (this.chosenSkills == null || this.chosenSkills.isEmpty()) {
+            sb.append(getString(R.string.chosenSkills));
         }
 
-        return  sb.toString();
+        return sb.toString();
     }
 
-    private TCOCAdventureCreationSpellsFragment getTCOCSpellsFragment() {
-        TCOCAdventureCreationSpellsFragment tcocSpellsFragment = (TCOCAdventureCreationSpellsFragment) getFragments().get(FRAGMENT_MR_SPELLS);
-        return tcocSpellsFragment;
+    private MRAdventureCreationSkillsFragment getMRSkillFragment() {
+        MRAdventureCreationSkillsFragment mrSkillFragment = (MRAdventureCreationSkillsFragment) getFragments().get(FRAGMENT_MR_SPELLS);
+        return mrSkillFragment;
     }
 
 
@@ -82,8 +79,8 @@ public class MRAdventureCreation extends AdventureCreation {
     }
 
     public synchronized List<String> getSpellList() {
-        for(String spell: chosenSkills){
-            if(!skillList.contains(spell)){
+        for (String spell : chosenSkills) {
+            if (!skillList.contains(spell)) {
                 skillList.add(spell);
             }
         }
@@ -93,37 +90,17 @@ public class MRAdventureCreation extends AdventureCreation {
     }
 
 
-    public void addSkill(String spell) {
-        if(!chosenSkills.containsKey(spell)){
-            chosenSkills.add(spell, 0);
-        }
-        chosenSkills.add(spell, chosenSkills.get(spell)+1);
-    }
-
-    public void removeSpell(int position) {
-        String spell = getSpellList().get(position);
-        int value = chosenSkills.add(spell) - 1;
-        if(value == 0){
-            chosenSkills.remove(spell);
-        }else {
-            chosenSkills.add(spell, value);
+    public void addSkill(String skill) {
+        if (chosenSkills.contains(skill)) {
+            chosenSkills.add(skill);
         }
     }
 
-    public Map<String, Integer> getSpells() {
+    public void removeSpell(int skill) {
+        chosenSkills.remove(skill);
+    }
+
+    public List<String> getSkills() {
         return chosenSkills;
-    }
-
-    public int getSpellListSize() {
-        int size = 0;
-        for (String spell: getSpellList()) {
-            Integer value = chosenSkills.get(spell);
-            if(value !=null ){
-                size+=value;
-            }else{
-                size+=1;
-            }
-        }
-        return size;
     }
 }

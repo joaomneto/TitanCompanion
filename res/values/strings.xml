@@ -1073,6 +1073,7 @@
     <string name="weaponsArmorMandatory">Weapons and Armor</string>
     <string name="spellCount">Spell Count</string>
     <string name="chosenSpells">Chosen Spells</string>
+    <string name="chosenSkills">Chosen Skills</string>
     <string name="deleteSpellQuestion">Delete spell?</string>
 
     <string name="trokDirectHit">Direct hit!. (-%1$d Shields)</string>

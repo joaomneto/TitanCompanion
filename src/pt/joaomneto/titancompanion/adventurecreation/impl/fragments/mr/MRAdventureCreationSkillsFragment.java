@@ -19,18 +19,14 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.tcoc.SpellLi
 
 import static android.view.View.GONE;
 
-public class MRAdventureCreationSpellsFragment extends Fragment {
-
-	public static final int SKILL_POTION = 0;
-	public static final int STRENGTH_POTION = 1;
-	public static final int FORTUNE_POTION = 2;
+public class MRAdventureCreationSkillsFragment extends Fragment {
 
 	private TextView spellScoreValue = null;
 	private TextView spellPointsText = null;
 	private String[] skillList = null;
 	private MRAdventureCreation activity;
 
-	public MRAdventureCreationSpellsFragment() {
+	public MRAdventureCreationSkillsFragment() {
 
 	}
 
@@ -66,9 +62,9 @@ public class MRAdventureCreationSpellsFragment extends Fragment {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-				if (activity.getSpellValue() <= activity.getSpellListSize())
+				if (activity.getSpellValue() <= activity.getSkills().size())
 					return;
-				activity.addSpell(skillList[position]);
+				activity.addSkill(skillList[position]);
 				selectedSpellsAdapter.notifyDataSetChanged();
 			}
 		});
