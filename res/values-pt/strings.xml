@@ -595,6 +595,15 @@
     <string name="setInitialStamina">Definir Força inicial</string>
     <string name="setInitialSkill">Definir Perícia inicial</string>
     <string name="setInitialLuck">Definir Sorte inicial</string>
+    <string name="selectedSkills">Habilidades escolhidas:</string>
+    <string name="skillList">Habilidades:</string>
+    <string name="skill_climb">Escalada</string>
+    <string name="skill_hide">Esconder</string>
+    <string name="skill_picklock">Abrir Fechaduras</string>
+    <string name="skill_pickpocket">Carteirista</string>
+    <string name="skill_secretsigns">Sinais Ocultos</string>
+    <string name="skill_sneak">Furtivo</string>
+    <string name="spot_hidden">Detectar Ocultos</string>
 
 
 </resources>

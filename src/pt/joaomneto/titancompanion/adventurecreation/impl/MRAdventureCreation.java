@@ -13,7 +13,7 @@ import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.mr.MRAdventureCreationSkillsFragment;
 
-public class MRAdventureCreation extends AdventureCreation {
+public class MRAdventureCreation extends TWOFMAdventureCreation {
 
     private final static int FRAGMENT_MR_SPELLS = 1;
     private final static int FRAGMENT_MR_POTION = 2;
@@ -53,7 +53,10 @@ public class MRAdventureCreation extends AdventureCreation {
             chosenSkillsS = chosenSkillsS.substring(0, chosenSkillsS.length() - 1);
         }
 
-        bw.write("chosenSkills=" + chosenSkillsS + "\n");
+        bw.write("standardPotion=" + potion + "\n");
+        bw.write("standardPotionValue=1\n");
+        bw.write("provisionsValue=4\n");
+        bw.write("provisions=0\n");
         bw.write("gold=0\n");
     }
 

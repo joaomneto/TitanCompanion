@@ -1143,5 +1143,15 @@
     <string name="change">Change</string>
     <string name="addKeyword">Add Keyword</string>
     <string name="specialSkills">Special Skills</string>
+    <string name="skillList">Skills:</string>
+    <string name="selectedSkills">Selected Skills:</string>
+
+    <string name="skill_climb">Climb</string>
+    <string name="skill_hide">Hide</string>
+    <string name="skill_picklock">Pick Lock</string>
+    <string name="skill_pickpocket">Pick Pocket</string>
+    <string name="skill_secretsigns">Secret Signs</string>
+    <string name="skill_sneak">Sneak</string>
+    <string name="spot_hidden">Spot Hidden</string>
 
 </resources>
