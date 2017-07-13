@@ -1152,6 +1152,7 @@
     <string name="skill_pickpocket">Pick Pocket</string>
     <string name="skill_secretsigns">Secret Signs</string>
     <string name="skill_sneak">Sneak</string>
-    <string name="spot_hidden">Spot Hidden</string>
+    <string name="skill_spot_hidden">Spot Hidden</string>
+    <string name="deleteSkillQuestion">Delete Skill?</string>
 
 </resources>

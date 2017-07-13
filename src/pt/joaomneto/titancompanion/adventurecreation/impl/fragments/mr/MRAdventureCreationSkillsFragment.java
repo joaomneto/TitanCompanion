@@ -9,13 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.Arrays;
+import java.util.List;
+
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill;
+import pt.joaomneto.titancompanion.adventure.impl.util.SpellListAdapter;
 import pt.joaomneto.titancompanion.adventurecreation.impl.MRAdventureCreation;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.tcoc.SpellListAdapter;
 
 import static android.view.View.GONE;
 
@@ -47,16 +50,18 @@ public class MRAdventureCreationSkillsFragment extends Fragment {
 
 		activity = (MRAdventureCreation) getActivity();
 
-		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
-				android.R.layout.simple_list_item_1, android.R.id.text1, skillList);
+		SpellListAdapter adapter = new SpellListAdapter(activity,
+				android.R.layout.simple_list_item_1, android.R.id.text1, Arrays.asList(getSkills()));
 
 		listview.setAdapter(adapter);
 
 		final ListView selectedSpellsListView = (ListView) rootView.findViewById(R.id.selectedSpellListView);
 
-		final ArrayAdapter<String> selectedSpellsAdapter = new SpellListAdapter(activity, activity.getSpellList());
 
-		selectedSpellsListView.setAdapter(selectedSpellsAdapter);
+		SpellListAdapter selectedSkillsAdapter = new SpellListAdapter(activity,
+				android.R.layout.simple_list_item_1, android.R.id.text1, activity.getSkills());
+
+		selectedSpellsListView.setAdapter(selectedSkillsAdapter);
 
 		listview.setOnItemClickListener(new OnItemClickListener() {
 
@@ -64,8 +69,8 @@ public class MRAdventureCreationSkillsFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
 				if (activity.getSpellValue() <= activity.getSkills().size())
 					return;
-				activity.addSkill(skillList[position]);
-				selectedSpellsAdapter.notifyDataSetChanged();
+				activity.addSkill(getSkills()[position]);
+				selectedSkillsAdapter.notifyDataSetChanged();
 			}
 		});
 
@@ -76,7 +81,7 @@ public class MRAdventureCreationSkillsFragment extends Fragment {
 									int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-				builder.setTitle(R.string.deleteSpellQuestion)
+				builder.setTitle(R.string.deleteSkillQuestion)
 						.setCancelable(false)
 						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {
@@ -86,8 +91,8 @@ public class MRAdventureCreationSkillsFragment extends Fragment {
 								});
 				builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						activity.removeSpell(position);
-						selectedSpellsAdapter.notifyDataSetChanged();
+						activity.removeSkill(position);
+						selectedSkillsAdapter.notifyDataSetChanged();
 					}
 				});
 
@@ -100,6 +105,10 @@ public class MRAdventureCreationSkillsFragment extends Fragment {
 		return rootView;
 	}
 
+
+	public MRSkill[] getSkills() {
+		return MRSkill.values();
+	}
 
 
 

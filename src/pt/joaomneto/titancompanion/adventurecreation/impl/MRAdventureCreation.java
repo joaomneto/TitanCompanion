@@ -10,6 +10,8 @@ import java.util.List;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill;
+import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.mr.MRAdventureCreationSkillsFragment;
 
@@ -18,8 +20,7 @@ public class MRAdventureCreation extends TWOFMAdventureCreation {
     private final static int FRAGMENT_MR_SPELLS = 1;
     private final static int FRAGMENT_MR_POTION = 2;
 
-    List<String> chosenSkills = new ArrayList<>();
-    List<String> skillList = new ArrayList<>();
+    List<Spell> chosenSkills = new ArrayList<>();
 
     public MRAdventureCreation() {
         super();
@@ -47,8 +48,8 @@ public class MRAdventureCreation extends TWOFMAdventureCreation {
         String chosenSkillsS = "";
 
         if (!chosenSkills.isEmpty()) {
-            for (String spell : getSpellList()) {
-                chosenSkillsS += spell + "#";
+            for (Spell spell : getSkills()) {
+                chosenSkillsS += spell.name() + "#";
             }
             chosenSkillsS = chosenSkillsS.substring(0, chosenSkillsS.length() - 1);
         }
@@ -81,29 +82,17 @@ public class MRAdventureCreation extends TWOFMAdventureCreation {
         return 3;
     }
 
-    public synchronized List<String> getSpellList() {
-        for (String spell : chosenSkills) {
-            if (!skillList.contains(spell)) {
-                skillList.add(spell);
-            }
-        }
-
-        Collections.sort(skillList);
-        return skillList;
-    }
-
-
-    public void addSkill(String skill) {
+    public void addSkill(MRSkill skill) {
         if (chosenSkills.contains(skill)) {
             chosenSkills.add(skill);
         }
     }
 
-    public void removeSpell(int skill) {
+    public void removeSkill(int skill) {
         chosenSkills.remove(skill);
     }
 
-    public List<String> getSkills() {
+    public List<Spell> getSkills() {
         return chosenSkills;
     }
 }

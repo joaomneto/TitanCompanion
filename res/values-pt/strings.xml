@@ -597,13 +597,14 @@
     <string name="setInitialLuck">Definir Sorte inicial</string>
     <string name="selectedSkills">Habilidades escolhidas:</string>
     <string name="skillList">Habilidades:</string>
-    <string name="skill_climb">Escalada</string>
-    <string name="skill_hide">Esconder</string>
+    <string name="skill_climb">Escalar</string>
+    <string name="skill_hide">Esconder-se</string>
     <string name="skill_picklock">Abrir Fechaduras</string>
-    <string name="skill_pickpocket">Carteirista</string>
-    <string name="skill_secretsigns">Sinais Ocultos</string>
-    <string name="skill_sneak">Furtivo</string>
-    <string name="spot_hidden">Detectar Ocultos</string>
+    <string name="skill_pickpocket">Roubar Carteiras</string>
+    <string name="skill_secretsigns">Sinais Secretos</string>
+    <string name="skill_sneak">Andar em silêncio</string>
+    <string name="skill_spot_hidden">Percepção</string>
+    <string name="deleteSkillQuestion">Remover Habilidade?</string>
 
 
 </resources>
