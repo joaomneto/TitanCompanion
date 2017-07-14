@@ -3,7 +3,6 @@ package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.mr;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,20 +12,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Arrays;
-import java.util.List;
 
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill;
 import pt.joaomneto.titancompanion.adventure.impl.util.SpellListAdapter;
 import pt.joaomneto.titancompanion.adventurecreation.impl.MRAdventureCreation;
 
 import static android.view.View.GONE;
 
-public class MRAdventureCreationSkillsFragment extends Fragment {
+public class MRAdventureCreationSkillsFragment extends AdventureFragment {
 
 	private TextView spellScoreValue = null;
 	private TextView spellPointsText = null;
 	private String[] skillList = null;
+	private SpellListAdapter selectedSkillsAdapter = null;
 	private MRAdventureCreation activity;
 
 	public MRAdventureCreationSkillsFragment() {
@@ -58,7 +58,7 @@ public class MRAdventureCreationSkillsFragment extends Fragment {
 		final ListView selectedSpellsListView = (ListView) rootView.findViewById(R.id.selectedSpellListView);
 
 
-		SpellListAdapter selectedSkillsAdapter = new SpellListAdapter(activity,
+		selectedSkillsAdapter = new SpellListAdapter(activity,
 				android.R.layout.simple_list_item_1, android.R.id.text1, activity.getSkills());
 
 		selectedSpellsListView.setAdapter(selectedSkillsAdapter);
@@ -110,6 +110,12 @@ public class MRAdventureCreationSkillsFragment extends Fragment {
 		return MRSkill.values();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public void refreshScreensFromResume() {
 
+		selectedSkillsAdapter.notifyDataSetChanged();
+
+	}
 
 }

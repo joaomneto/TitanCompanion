@@ -83,7 +83,7 @@ public class MRAdventureCreation extends TWOFMAdventureCreation {
     }
 
     public void addSkill(MRSkill skill) {
-        if (chosenSkills.contains(skill)) {
+        if (!chosenSkills.contains(skill)) {
             chosenSkills.add(skill);
         }
     }
