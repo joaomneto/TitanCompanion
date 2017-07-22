@@ -77,6 +77,9 @@
     <string name="kod">Knights of Doom</string>
     <string name="m">Magehunter</string>
     <string name="rotv">Revenge of the Vampire</string>
+    <string name="eotd">Eye of the Dragon</string>
+    <string name="bb">Bloodbones</string>
+    <string name="hotww">Howl of the Werewolf</string>
 
     <string-array name="gamebook_list_names">
         <item>@string/twofm</item>
@@ -138,6 +141,9 @@
         <item>@string/m</item>
         <item>@string/rotv</item>
         <item>@string/cotm</item>
+        <item>@string/eotd</item>
+        <item>@string/bb</item>
+        <item>@string/hotww</item>
     </string-array>
 
     <string-array name="gamebook_list_urls">
@@ -200,6 +206,9 @@
         <item>http://fightingfantasy.wikia.com/wiki/Magehunter</item>
         <item>http://fightingfantasy.wikia.com/wiki/Revenge_of_the_Vampire</item>
         <item>http://fightingfantasy.wikia.com/wiki/Curse_of_the_Mummy</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Eye_of_the_Dragon_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Bloodbones_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Eye_of_the_Dragon_(book)</item>
     </string-array>
 
 
@@ -703,6 +712,7 @@
     <string name="pofSpellIllusion">Ilusão</string>
     <string name="pofSpellLevitation">Levitação</string>
     <string name="pofSpellWeaken">Enfraquecer</string>
+    <string name="change">Mudança</string>
 
 
 </resources>

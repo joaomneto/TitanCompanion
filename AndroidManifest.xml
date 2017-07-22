@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
-    android:versionCode="16"
-    android:versionName="0.16-beta" >
+    android:versionCode="17"
+    android:versionName="0.17-beta">
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -48,18 +48,6 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_gamebook_full_image"
             android:theme="@style/FullscreenTheme" >
-        </activity>
-        <activity
-            android:name="pt.joaomneto.titancompanion.AdventureCreationPhaseListActivity"
-            android:label="@string/title_adventurecreationphase_list" >
-        </activity>
-        <activity
-            android:name="pt.joaomneto.titancompanion.AdventureCreationPhaseDetailActivity"
-            android:label="@string/title_adventurecreationphase_detail"
-            android:parentActivityName=".AdventureCreationPhaseListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AdventureCreationPhaseListActivity" />
         </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.LoadAdventureActivity"
@@ -336,6 +324,22 @@
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.AODAdventure"
             android:label="@string/aod"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.EOTDAdventureCreation"
+            android:label="@string/eotd"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.EOTDAdventure"
+            android:label="@string/eotd"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.HOTWAdventureCreation"
+            android:label="@string/hotww"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.HOTWAdventure"
+            android:label="@string/hotww"
             android:screenOrientation="portrait" >
         </activity>
     </application>

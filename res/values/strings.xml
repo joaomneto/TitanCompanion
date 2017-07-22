@@ -85,6 +85,9 @@
     <string name="m">Magehunter</string>
     <string name="rotv">Revenge of the Vampire</string>
     <string name="cotm">Curse of the Mummy</string>
+    <string name="eotd">Eye of the Dragon</string>
+    <string name="bb">Bloodbones</string>
+    <string name="hotww">Howl of the Werewolf</string>
 
     <string-array name="gamebook_list_names">
         <item>@string/twofm</item>
@@ -146,6 +149,9 @@
         <item>@string/m</item>
         <item>@string/rotv</item>
         <item>@string/cotm</item>
+        <item>@string/eotd</item>
+        <item>@string/bb</item>
+        <item>@string/hotww</item>
     </string-array>
     <string-array name="gamebook_list_urls">
         <item>http://fightingfantasy.wikia.com/wiki/The_Warlock_of_Firetop_Mountain_(book)</item>
@@ -1107,7 +1113,7 @@
     <string name="locale">Regional Preferences</string>
     <string name="time">Time:</string>
     <string name="oxygen">Oxygen:</string>
-    <string translatable="false" name="empty">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</string>
+    <string name="empty" translatable="false">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</string>
     <string name="testFear">Test Fear</string>
     <string name="timeAndOxygen">Time and Oxygen</string>
     <string name="power">Power:</string>
@@ -1117,5 +1123,6 @@
     <string name="pofSpellLevitation">Levitation</string>
     <string name="pofSpellFinding">Finding</string>
     <string name="pofSpellFire">Fire</string>
+    <string name="change">Change</string>
 
 </resources>
