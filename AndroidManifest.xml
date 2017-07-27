@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
-    android:versionCode="17"
-    android:versionName="0.17-beta">
+    android:versionCode="18"
+    android:versionName="0.18-beta">
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -335,11 +335,11 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.HOTWAdventureCreation"
-            android:label="@string/hotww"
+            android:label="@string/hotw"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.HOTWAdventure"
-            android:label="@string/hotww"
+            android:label="@string/hotw"
             android:screenOrientation="portrait" >
         </activity>
     </application>

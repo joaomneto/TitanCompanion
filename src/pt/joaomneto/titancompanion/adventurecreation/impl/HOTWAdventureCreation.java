@@ -39,6 +39,7 @@ public class HOTWAdventureCreation extends AdventureCreation {
         bw.write("gold=0\n");
         bw.write("provisionsValue=4\n");
         bw.write("provisions=10\n");
+        bw.write("notes=\n");
         bw.write("change=0\n");
     }
 

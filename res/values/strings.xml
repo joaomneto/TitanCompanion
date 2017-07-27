@@ -87,7 +87,7 @@
     <string name="cotm">Curse of the Mummy</string>
     <string name="eotd">Eye of the Dragon</string>
     <string name="bb">Bloodbones</string>
-    <string name="hotww">Howl of the Werewolf</string>
+    <string name="hotw">Howl of the Werewolf</string>
 
     <string-array name="gamebook_list_names">
         <item>@string/twofm</item>
@@ -151,7 +151,7 @@
         <item>@string/cotm</item>
         <item>@string/eotd</item>
         <item>@string/bb</item>
-        <item>@string/hotww</item>
+        <item>@string/hotw</item>
     </string-array>
     <string-array name="gamebook_list_urls">
         <item>http://fightingfantasy.wikia.com/wiki/The_Warlock_of_Firetop_Mountain_(book)</item>
@@ -964,6 +964,7 @@
     <string name="deleteEquipmentQuestion">Delete equipment?</string>
     <string name="note">Note</string>
     <string name="deleteNote">Delete note?</string>
+    <string name="deleteKeyword">Delete keyword?</string>
     <string name="useSpellQuestion">Use spell?</string>
     <string name="use">Use</string>
     <string name="potion">Potion</string>
@@ -1124,5 +1125,6 @@
     <string name="pofSpellFinding">Finding</string>
     <string name="pofSpellFire">Fire</string>
     <string name="change">Change</string>
+    <string name="addKeyword">Add Keyword</string>
 
 </resources>

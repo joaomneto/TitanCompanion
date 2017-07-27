@@ -24,21 +24,23 @@ public class AdventureNotesFragment extends AdventureFragment {
 	ListView noteList = null;
 
 	public AdventureNotesFragment() {
-
+		setBaseLayout(R.layout.fragment_adventure_notes);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(R.layout.fragment_adventure_notes,
+		View rootView = inflater.inflate(getBaseLayout(),
 				container, false);
+
+
+		final Adventure adv = (Adventure) getActivity();
 
 		noteList = (ListView) rootView.findViewById(R.id.noteList);
 		Button buttonAddNote = (Button) rootView
 				.findViewById(R.id.buttonAddNote);
 
-		final Adventure adv = (Adventure) getActivity();
 
 		buttonAddNote.setOnClickListener(new OnClickListener() {
 
@@ -84,7 +86,7 @@ public class AdventureNotesFragment extends AdventureFragment {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv,
 	            android.R.layout.simple_list_item_1, android.R.id.text1, adv.getNotes());
 		noteList.setAdapter(adapter);
-		
+
 		noteList.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
@@ -107,11 +109,11 @@ public class AdventureNotesFragment extends AdventureFragment {
 								((ArrayAdapter<String>)noteList.getAdapter()).notifyDataSetChanged();
 							}
 						});
-						
+
 				AlertDialog alert = builder.create();
 				alert.show();
 				return true;
-				
+
 			}
 		});
 

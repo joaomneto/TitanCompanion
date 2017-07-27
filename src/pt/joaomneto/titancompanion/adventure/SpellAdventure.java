@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import pt.joaomneto.titancompanion.adventure.impl.SSAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.TOTAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.tot.TOTSpell;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 
 public abstract class SpellAdventure extends Adventure {

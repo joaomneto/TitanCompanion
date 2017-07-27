@@ -79,7 +79,7 @@
     <string name="rotv">Revenge of the Vampire</string>
     <string name="eotd">Eye of the Dragon</string>
     <string name="bb">Bloodbones</string>
-    <string name="hotww">Howl of the Werewolf</string>
+    <string name="hotw">Howl of the Werewolf</string>
 
     <string-array name="gamebook_list_names">
         <item>@string/twofm</item>
@@ -143,7 +143,7 @@
         <item>@string/cotm</item>
         <item>@string/eotd</item>
         <item>@string/bb</item>
-        <item>@string/hotww</item>
+        <item>@string/hotw</item>
     </string-array>
 
     <string-array name="gamebook_list_urls">
@@ -713,6 +713,8 @@
     <string name="pofSpellLevitation">Levitação</string>
     <string name="pofSpellWeaken">Enfraquecer</string>
     <string name="change">Mudança</string>
+    <string name="deleteKeyword">Apagar Palavra Chave?</string>
+    <string name="addKeyword">Adicionar Palavra Chave</string>
 
 
 </resources>

@@ -13,6 +13,16 @@ public abstract class AdventureFragment extends DialogFragment {
 
 	public abstract void refreshScreensFromResume();
 
+	private int baseLayout = -1;
+
+	public int getBaseLayout() {
+		return baseLayout;
+	}
+
+	public void setBaseLayout(int baseLayout) {
+		this.baseLayout = baseLayout;
+	}
+
 	@Override
 	public void onResume() {
 		super.onResume();

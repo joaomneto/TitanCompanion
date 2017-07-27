@@ -29,7 +29,7 @@ public class HOTWAdventureVitalStatsFragment extends AdventureVitalStatsFragment
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View rootView = inflater.inflate(
-                R.layout.fragment_62hotww_adventure_vitalstats, container, false);
+                R.layout.fragment_62hotw_adventure_vitalstats, container, false);
 
         initialize(rootView);
 
