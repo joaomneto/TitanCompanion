@@ -44,7 +44,7 @@ public abstract class SpellAdventure extends Adventure {
         try {
             String simpleName = this.getClass().getSimpleName();
             simpleName = simpleName.substring(0, simpleName.length() - "Adventure".length());
-            Class clazz = Class.forName("pt.joaomneto.titancompanion.adventure.impl.fragments."+simpleName.toLowerCase()+ "." + simpleName + "Spell");
+            Class<? extends Spell> clazz = (Class<? extends Spell>) Class.forName("pt.joaomneto.titancompanion.adventure.impl.fragments."+simpleName.toLowerCase()+ "." + simpleName + "Spell");
             Method method = clazz.getMethod("valueOf", String.class);
             Spell spell = (Spell) method.invoke(null, string);
             return spell;
