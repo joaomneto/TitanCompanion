@@ -3,6 +3,7 @@
 
     <string name="locale_en">Inglês</string>
     <string name="locale_pt">Português</string>
+    <string name="locale_fr">Francês</string>
 
     <string name="app_name">Titan Companion</string>
     <string name="edit_message">Introduzir Mensagem</string>
