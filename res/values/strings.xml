@@ -320,8 +320,8 @@
     <string name="handToHandCombat">Hand to Hand Combat</string>
     <string name="phaserCombat">PhaserCombat</string>
     <string name="combatTurn">Combat Turn</string>
-    <string name="addCombat">Add Combatants</string>
-    <string name="addCombatant">Add Combatant</string>
+    <string name="addCombat">Add Opponents</string>
+    <string name="addCombatant">Add Opponent</string>
     <string name="combat">Combat</string>
 
     <string-array name="stCrewList">

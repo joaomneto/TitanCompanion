@@ -259,8 +259,8 @@
     <string name="vitalStats">Caractéristiques</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
-    <string name="testLuck">Tenter sa Chance</string>
-    <string name="testSkill">Tester son Habileté</string>
+    <string name="testLuck">Tenter votre Chance</string>
+    <string name="testSkill">Tester votre Habileté</string>
     <string name="selectedPotion">Potion: </string>
     <string name="provisions">Provisions: </string>
     <string name="consumePotion">Utiliser une potion</string>
@@ -318,7 +318,7 @@
     <string name="traveller">Voyageur: </string>
     <string name="enemyShip">Vaisseau ennemi: </string>
     <string name="starshipCombat">Combat Spatial</string>
-    <string name="handToHandCombat">Combat au corps à corps</string>
+    <string name="handToHandCombat">Combat à mains nues</string>
     <string name="phaserCombat">Combat au Phaser</string>
     <string name="combatTurn">Tour de combat</string>
     <string name="addCombat">Ajouter des adversaires</string>
@@ -340,7 +340,7 @@
     <string name="stCrewmanHitEnemy">Le %1$s a touché son adversaire ! (dé: %2$d + Habileté: %3$d) vs (dé: %4$d + Habileté: %5$d)</string>
     <string name="stCrewmanBlockedEnemy">Le %1$s a bloqué l\'attaque de son adversaire ! (dé: %2$d + Habileté: %3$d) vs (dé: %4$d + Habileté: %5$d)</string>
     <string name="stCrewmanHit">Le %1$s a été touché... (dé: %2$d + habileté: %3$d) vs (dé: %4$d + habileté: %5$d)</string>
-    <string name="stCombatBothMissed">Le %1$s et son adversaire on tous les deux manqué leur coup</string>
+    <string name="stCombatBothMissed">Le %1$s et son adversaire ont tous les deux manqué leur coup</string>
     <string name="stCrewmanDefeatedEnemy">Le %1$s a vaincu son adversaire !</string>
     <string name="stCrewmanDied">Le %1$s a été vaincu...</string>
     <string name="stShields">Boucliers</string>
@@ -366,7 +366,7 @@
     <string name="number_18_word">dix-huit</string>
 
 <!-- Scorpion Swamp -->
-    <string name="addClearing">Ajouter un clairière</string>
+    <string name="addClearing">Ajouter une clairière</string>
     <string name="currentClearing">Clairière actuelle</string>
     <string name="startCombat">Commencer un combat</string>
     <string name="add">Ajouter</string>
@@ -438,7 +438,7 @@
 <!-- Space Assassin + Rings of Kelter -->
     <string name="starship">Vaisseau: </string>
     <string name="missiles">Missiles: </string>
-    <string name="enemyShips">Vaisseau ennemi: </string>
+    <string name="enemyShips">"Vaisseaux ennemis: "</string>
     <string name="weaponDamage">Dégât: </string>
     <string name="usePepPill">Utiliser une pilule de vigueur</string>
     <string name="pepPills">Pilules de vigueur: </string>
@@ -446,7 +446,7 @@
     <string name="kopecks">Kopecks: </string>
     <string name="saGrenade">Grenade</string>
     <string name="saCombatText1">Votre adversaire (HA: %1$d EN: %2$d) a été touché. (-%3$d EN)</string>
-    <string name="saCombatText2">Un adversaire (HA: %1$d EN: %2$d) vous a touché. (-%3$d ST)</string>
+    <string name="saCombatText2">Un adversaire (HA: %1$d EN: %2$d) vous a touché. (-%3$d EN)</string>
     <string name="saCombatText3">Un adversaire (HA: %1$d EN: %2$d) vous a manqué.</string>
     <string name="saAssaultBlaster">Explosif</string>
     <string name="missedTheEnemy">Vous avez manqué votre adversaire...</string>
@@ -457,7 +457,7 @@
     <string name="saDeleteWeapon">Enlever une arme?</string>
     <string name="saGravityBomb">Charge d\'antimatière</string>
     <string name="sa2xArmor">2x Armure</string>
-    <string name="saNoWeaponPoints">Vous n\'avez pas assez de point pour ajour le/la %1$s</string>
+    <string name="saNoWeaponPoints">Vous n\'avez pas assez de point pour ajouter le/la %1$s</string>
     <string name="weaponsArmorMandatory">Armement et Défense</string>
     <string name="trokDirectHit">Coup au but ! (-%1$d Défense)</string>
     <string name="directHitDefeatSecondEnemy">Coup au but ! Vous avez détruit votre second adversaire !</string>
@@ -478,7 +478,7 @@
     <string name="log">Livre de bord: </string>
     <string name="shipC">Navire: </string>
     <string name="booty">Butin</string>
-    <string name="addBooty">Ajouter du butin</string>
+    <string name="addBooty">Ajouter un butin</string>
     <string name="shipCombat">Combat Naval</string>
     <string name="testCrewStrength">Tester la combativité</string> 
     <string name="deleteBooty">Effacer le butin ?</string>
@@ -511,7 +511,7 @@
     <string name="title_adventure_creation_skill">Discipline spéciale</string>
     <string name="arrows">Flêches</string>
     <string name="honour">Honneur:</string>
-    <string name="willow">Saules:</string>
+    <string name="willow">Feuilles de Saule:</string>
     <string name="bowel">Harpons:</string>
     <string name="armourP">Perforantes:</string>
     <string name="humming">Hurleuses:</string>
@@ -554,7 +554,7 @@
     <string name="robotAlternateForm">Forme Alternative</string>
     <string name="robots">Robots</string>
     <string name="removeRobot">Effacer</string>
-    <string name="currentRobot">Robot Actual: </string>
+    <string name="currentRobot">"Robot Actuel: "</string>
     <string name="player">Joueur: </string>
     <string name="enemy">Ennemi: </string>
     <string name="diceRoll">Jet de dés</string>
@@ -578,7 +578,7 @@
     <string name="robotSpecialAbilityUltraFast">Ultra Rapide</string>
     <string name="robotSpecialAbilityUltraFastDesc">Ce robot peut Fuir même face à des robots très rapides.</string>
     <string name="robotSpecialAbilityShield">Bouclier</string>
-    <string name="robotSpecialAbilityShieldDEsc">Si la force d\'attaque du voltigeur est de 18 ou plus, il ne subit aucun dommage.</string>
+    <string name="robotSpecialAbilityShieldDEsc">Si la force d\'attaque du Voltigeur est de 18 ou plus, il ne subit aucun dommage.</string>
     <string name="robotSpecialAbilitySerpentCoil">Anneaux du serpent</string>
     <string name="robotSpecialAbilitySerpentCoilDesc">Si la force d\'attaque du Serpent VII est supérieure à 16, il infligera un point de dégat à chacun des tours suivants.</string>
     <string name="robotSpecialAbilitySonicShot">Canon Sonique</string>
@@ -656,17 +656,17 @@
     <string name="soldiersType">Type de Soldats: </string>
     <string name="quantity">Quantité:</string>
     <string name="currentArmy">Armée actuelle:</string>
-    <string name="selectForces">Selectionner vos Forces:</string>
+    <string name="selectForces">Sélectionner vos Forces:</string>
     <string name="skirmishForces">Au Combat:</string>
     <string name="enemyForces2">Forces Ennemies:</string>
     <string name="closeCombat">Combat au corps à corps</string>
     <string name="aodArmyDestroyed">Votre armée a été vaincue...</string>
-    <string name="aodDestroyEnemy">Vous avez vaincu l\'armée ennemie</string>
+    <string name="aodDestroyEnemy">Vous avez vaincu l\'armée ennemie !</string>
     <string name="aodKillEnemyTroops"> et vous détruisez %1$d troupes ennemies.</string>
     <string name="aodMustFillTypeAndQuantity">Vous devez remplir les champs type et quantité !</string>
     <string name="aodSituationEven">Vous êtes en situation égale par rapport à votre ennemi (%1$d vs %2$d).</string>
     <string name="aodSituationInferior">Vous êtes en infériorité par rapport à votre ennemi (%1$d vs %2$d).</string>
-    <string name="aodSituationSuperior">Vous êtes en su^ériorité par rapport à votre ennemi (%1$d vs %2$d).</string>
+    <string name="aodSituationSuperior">Vous êtes en supériorité par rapport à votre ennemi (%1$d vs %2$d).</string>
     <string name="aodSufferLossTropps"> et vous perdez %1$d soldats.</string>
     <string name="aodSuperpower">Super Pouvoir</string>
     <string name="aod_removeAllSoldiers">Voulez-vous retirer tous les %1$s soldats de votre armée ?</string>
@@ -686,9 +686,9 @@
     <string name="provisionsMaxStamina">Votre Endurance est déjà à son maximum.</string>
     <string name="provisionsStaminaGain">Vous gagnez %1$d points d\'endurance.</string>
     <string name="noPotionLeft">Vous avez déjà utilisé vos potions...</string>
-    <string name="potionSkillReplenish">Votre Habileté retrouve sa valeur originale.</string>
-    <string name="potionStaminaReplenish">Votre Endurance retrouve sa valeur originale.</string>
-    <string name="potionLuckReplenish">Votre Chance retrouve sa valeur originale (+1).</string>
+    <string name="potionSkillReplenish">Votre Habileté retrouve sa valeur initiale.</string>
+    <string name="potionStaminaReplenish">Votre Endurance retrouve sa valeur initiale.</string>
+    <string name="potionLuckReplenish">Votre Chance retrouve sa valeur initiale (+1).</string>
 
     <string name="currentReference">Paragraphe actuel ?</string>
     <string name="ok">Ok</string>
@@ -699,19 +699,19 @@
     <string name="youreUnlucky">Vous êtes malchanceux...</string>
     <string name="knockedOut">Vous êtes étourdi.</string>
     <string name="youreDead">Vous êtes mort...</string>
-    <string name="hitEnemy">Vous avez atteint votre adversaire</string>
+    <string name="hitEnemy">Vous avez atteint l\'adversaire</string>
     <string name="staminaInitials">En</string>
     <string name="defeatSuddenDeath">Vous avez vaincu votre adversaire par Mort Subite !</string>
     <string name="blockedAttack">Vous avez paré l\'attaque adverse !</string>
     <string name="youWereHit">Vous avez été blessé...</string>
     <string name="bothMissed">Votre adversaire et vous avez chacun manqué votre coup.</string>
-    <string name="defeatedEnemy">Vous avez vaincu votre adversaire!</string>
+    <string name="defeatedEnemy">Vous avez vaincu un adversaire !</string>
     <string name="youveDied">Vous êtes mort...</string>
     <string name="youMustFillSkillAndStamina">Vous devez remplir les valeurs d\'Habileté et d\'Endurance.</string>
     <string name="someParametersMIssing">Il manque des paramètres (</string>
     <string name="adventureName">Nom de l\'aventure</string>
     <string name="setValue">Définir la valeur</string>
-    <string name="deleteEquipmentQuestion">Lâcher un équipement ?</string>
+    <string name="deleteEquipmentQuestion">Effacer un équipement ?</string>
     <string name="note">Note</string>
     <string name="deleteNote">Effacer la note ?</string>
     <string name="useSpellQuestion">Utiliser un sort ?</string>
@@ -740,5 +740,7 @@
     <string name="timeAndOxygen">Temps et Oxygène</string>
     <string name="usePotion">Utiliser la potion de 1$s</string>
 
-    <string name="change">Monnaie</string>
+    <string name="change">Changement</string>
+    <string name="robotSpecialAbilityFlyInCircles">Vol circulaire</string>
+    <string name="robotSpecialAbilityFlyInCirclesDesc">Si l\'assaut est gagné d\'au moins 4 points, le Frelon inflige double dégâts.</string>
 </resources>
