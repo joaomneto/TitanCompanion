@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0-alpha9'
     }
 }
 apply plugin: 'com.android.application'
@@ -32,9 +32,6 @@ android {
     }
 
     defaultConfig {
-        jackOptions {
-            enabled true
-        }
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     compileOptions {
