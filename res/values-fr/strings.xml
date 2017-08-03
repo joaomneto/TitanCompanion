@@ -738,7 +738,7 @@
     <string name="oxygen">Oxygène:</string>
     <string name="testFear">Tester votre Peur</string>
     <string name="timeAndOxygen">Temps et Oxygène</string>
-    <string name="usePotion">Utiliser la potion de 1$s</string>
+    <string name="usePotion">Utiliser la potion de %1$s</string>
 
     <string name="change">Changement</string>
     <string name="robotSpecialAbilityFlyInCircles">Vol circulaire</string>

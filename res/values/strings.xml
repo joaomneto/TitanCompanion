@@ -10,7 +10,7 @@
         <item>@string/locale_fr</item>
     </string-array>
 
-    <string-array name="languageValues">
+    <string-array translatable="false" name="languageValues">
         <item>en</item>
         <item>pt</item>
         <item>fr</item>
