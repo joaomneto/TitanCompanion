@@ -80,7 +80,7 @@
     <string name="cotm">La Malédiction de la Momie</string>
     <string name="eotd">L\'Oeil d\'Emeraude</string>
     <string name="bb">Le Pirate de l\'Au-Delà</string>
-    <string name="hotww">La Nuit du Loup-Garou</string>
+    <string name="hotw">La Nuit du Loup-Garou</string>
 <!-- Books translated but not supported yet -->
 <!--
     <string name="ssl">Le Maître des Tempêtes</string>
@@ -150,7 +150,7 @@
         <item>@string/cotm</item>
         <item>@string/eotd</item>
         <item>@string/bb</item>
-        <item>@string/hotww</item>
+        <item>@string/hotw</item>
     </string-array>
 
     <string-array name="gamebook_list_urls">
@@ -743,4 +743,6 @@
     <string name="change">Changement</string>
     <string name="robotSpecialAbilityFlyInCircles">Vol circulaire</string>
     <string name="robotSpecialAbilityFlyInCirclesDesc">Si l\'assaut est gagné d\'au moins 4 points, le Frelon inflige double dégâts.</string>
+    <string name="deleteKeyword">Enlever mot clé?</string>
+    <string name="addKeyword">Ajouter Mot Clé</string>
 </resources>
