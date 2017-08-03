@@ -3,6 +3,7 @@
 
     <string name="locale_en">Inglês</string>
     <string name="locale_pt">Português</string>
+    <string name="locale_fr">Francês</string>
 
     <string name="app_name">Titan Companion</string>
     <string name="edit_message">Introduzir Mensagem</string>
@@ -239,7 +240,7 @@
     <string name="luck2">Sorte</string>
     <string name="stamina2">Força</string>
     <string name="luck">Sorte: </string>
-    <string name="name">Name:</string>
+    <string name="name">Nome:</string>
     <string name="saveAdventure">Gravar Aventura</string>
     <string name="rollStats">Lançar Dados</string>
     <string name="title_section1">Secção 1</string>

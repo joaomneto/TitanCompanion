@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="locale_en">Anglais</string>
+    <string name="locale_pt">Portugais</string>
+    <string name="locale_fr">Français</string>
+
+    <string name="app_name">Titan Companion</string>
+    <string name="edit_message">Créer un message</string>
+    <string name="button_send">Envoyer</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="title_activity_main">Titan Companion</string>
+    <string name="hello_world">Bonjour monde !</string>
+    <string name="saved_games">Parties sauvegardées: </string>
+    <string name="create_new_adventure">Commencer une nouvelle aventure</string>
+    <string name="load_adventure">Charger une aventure</string>
+    <string name="title_activity_gamebook_list">Liste des livres</string>
+    <string name="viewSite">Voir la description</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+
+    <string name="twofm">Le Sorcier de la Montagne de Feu</string>
+    <string name="tcoc">La Citadelle du Chaos</string>
+    <string name="tfod">La Forêt de la Malédiction</string>
+    <string name="st">La Galaxie Tragique</string>
+    <string name="cot">La Cité des Voleurs</string>
+    <string name="dd">Le Labyrinthe de la Mort</string>
+    <string name="iotlk">L\'Île du Roi Lézard</string>
+    <string name="ss">Le Marais aux Scorpions</string>
+    <string name="cotsw">La Sorcière des Neiges</string>
+    <string name="hoh">Le Manoir de l\'Enfer</string>
+    <string name="tod">Le Talisman de la Mort</string>
+    <string name="sa">Le Mercenaire de l\'Espace</string>
+    <string name="ff">Le Combattant de l\'Autoroute</string>
+    <string name="tot">Le Temple de la Terreur</string>
+    <string name="trok">Les Trafiquants de Kelter</string>
+    <string name="sob">Défis Sanglants sur l\'Océan</string>
+    <string name="awf">Rendez-vous avec la M.O.R.T.</string>
+    <string name="rp">La planète Rebelle</string>
+    <string name="dotd">Les démons des profondeurs</string>
+    <string name="sots">L\'Epée du Samouraï</string>
+    <string name="toc">L\'Epreuve des Champions</string>
+    <string name="rc">La Grande Menace des Robots</string>
+    <string name="mom">Les Screaux de la Destruction</string>
+    <string name="coh">La Créature venue du Chaos</string>
+    <string name="bnc">La Forteresse du Cauchemar</string>
+    <string name="cots">La Crypte du Sorcier</string>
+    <string name="strider">Le Chasseur des Etoiles</string>
+    <string name="pof">Les Spectres de l\'Angoisse</string>
+    <string name="mr">Les Rôdeurs de la Nuit</string>
+    <string name="com">Les Gouffres de la Cruauté</string>
+    <string name="bw">L\'Empire des Hommes-Lézards</string>
+    <string name="sota">Les Esclaves de l\'Eternité</string>
+    <string name="sl">Le Justicier de l\'Univers</string>
+    <string name="sos">Le Voleur d\'Âmes</string>
+    <string name="dod">L\'Elu des Six Clans</string>
+    <string name="aod">Les Sombres Cohortes</string>
+    <string name="poe">La Nuit des Mutants</string>
+    <string name="votv">Le Vampire du Château Noir</string>
+    <string name="fof">Le Volcan de Zamarra</string>
+    <string name="don">La Vengeance des Démons</string>
+    <string name="moc">Le Sceptre Noir</string>
+    <string name="bvp">L\'Ancienne Prophétie</string>
+    <string name="tkotll">Le Repaire des Morts-vivants</string>
+    <string name="lotsw">La Légendes des Guerriers Fantômes</string>
+    <string name="spectral">Les Mondes de l\'Aleph</string>
+    <string name="tower">La Tour de la Destruction</string>
+    <string name="tct">Les Mercenaires du Levant</string>
+    <string name="moon">L\'Arpenteur de la Lune</string>
+    <string name="siege">Le Siège de Sardath</string>
+    <string name="rtfm">Retour à la Montagne de Feu</string>
+    <string name="iotu">Les Mages de Solani</string>
+    <string name="nd">Le Dragon de la Nuit</string>
+    <string name="s">Le Sépulcre des Ombres</string>
+    <string name="loz">La Légende de Zagor</string>
+    <string name="d">Le Voleur de Vie</string>
+    <string name="kod">Les Chevaliers du Destin</string>
+    <string name="m">Le Chasseur de Mages</string>
+    <string name="rotv">La Revanche du Vampire</string>
+    <string name="cotm">La Malédiction de la Momie</string>
+    <string name="eotd">L\'Oeil d\'Emeraude</string>
+    <string name="bb">Le Pirate de l\'Au-Delà</string>
+    <string name="hotww">La Nuit du Loup-Garou</string>
+<!-- Books translated but not supported yet -->
+<!--
+    <string name="ssl">Le Maître des Tempêtes</string>
+    <string name="notn">La Nuit du Nécromancien</string>
+    <string name="botz">Le Sang des Zombies</string>
+-->
+
+    <string-array name="gamebook_list_names">
+        <item>@string/twofm</item>
+        <item>@string/tcoc</item>
+        <item>@string/tfod</item>
+        <item>@string/st</item>
+        <item>@string/cot</item>
+        <item>@string/dd</item>
+        <item>@string/iotlk</item>
+        <item>@string/ss</item>
+        <item>@string/cotsw</item>
+        <item>@string/hoh</item>
+        <item>@string/tod</item>
+        <item>@string/sa</item>
+        <item>@string/ff</item>
+        <item>@string/tot</item>
+        <item>@string/trok</item>
+        <item>@string/sob</item>
+        <item>@string/awf</item>
+        <item>@string/rp</item>
+        <item>@string/dotd</item>
+        <item>@string/sots</item>
+        <item>@string/toc</item>
+        <item>@string/rc</item>
+        <item>@string/mom</item>
+        <item>@string/coh</item>
+        <item>@string/bnc</item>
+        <item>@string/cots</item>
+        <item>@string/strider</item>
+        <item>@string/pof</item>
+        <item>@string/mr</item>
+        <item>@string/com</item>
+        <item>@string/bw</item>
+        <item>@string/sota</item>
+        <item>@string/sl</item>
+        <item>@string/sos</item>
+        <item>@string/dod</item>
+        <item>@string/aod</item>
+        <item>@string/poe</item>
+        <item>@string/votv</item>
+        <item>@string/fof</item>
+        <item>@string/don</item>
+        <item>@string/moc</item>
+        <item>@string/bvp</item>
+        <item>@string/tkotll</item>
+        <item>@string/lotsw</item>
+        <item>@string/spectral</item>
+        <item>@string/tower</item>
+        <item>@string/tct</item>
+        <item>@string/moon</item>
+        <item>@string/siege</item>
+        <item>@string/rtfm</item>
+        <item>@string/iotu</item>
+        <item>@string/nd</item>
+        <item>@string/s</item>
+        <item>@string/loz</item>
+        <item>@string/d</item>
+        <item>@string/kod</item>
+        <item>@string/m</item>
+        <item>@string/rotv</item>
+        <item>@string/cotm</item>
+        <item>@string/eotd</item>
+        <item>@string/bb</item>
+        <item>@string/hotww</item>
+    </string-array>
+
+    <string-array name="gamebook_list_urls">
+        <item>http://fightingfantasy.wikia.com/wiki/The_Warlock_of_Firetop_Mountain_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/The_Citadel_of_Chaos_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/The_Forest_of_Doom_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Starship_Traveller</item>
+        <item>http://fightingfantasy.wikia.com/wiki/City_of_Thieves_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Deathtrap_Dungeon_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Island_of_the_Lizard_King_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Scorpion_Swamp_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Caverns_of_the_Snow_Witch_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/House_of_Hell_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Talisman_of_Death_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Space_Assassin</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Freeway_Fighter</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Temple_of_Terror_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/The_Rings_of_Kether</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Seas_of_Blood_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Appointment_with_F.E.A.R._(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Rebel_Planet_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Demons_of_the_Deep_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Sword_of_the_Samurai_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Trial_of_Champions_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Robot_Commando</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Masks_of_Mayhem</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Creature_of_Havoc_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Beneath_Nightmare_Castle</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Crypt_of_the_Sorcerer</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Star_Strider</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Phantoms_of_Fear</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Midnight_Rogue</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Chasms_of_Malice</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Battleblade_Warrior</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Slaves_of_the_Abyss</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Sky_Lord</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Stealer_of_Souls</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Daggers_of_Darkness</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Armies_of_Death</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Portal_of_Evil_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Vault_of_the_Vampire</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Fangs_of_Fury_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Dead_of_Night</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Master_of_Chaos</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Black_Vein_Prophecy</item>
+        <item>http://fightingfantasy.wikia.com/wiki/The_Keep_of_the_Lich-Lord</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Legend_of_the_Shadow_Warriors</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Spectral_Stalkers_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Tower_of_Destruction_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/The_Crimson_Tide</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Moonrunner</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Siege_of_Sardath</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Return_to_Firetop_Mountain</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Island_of_the_Undead</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Night_Dragon_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Spellbreaker</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Legend_of_Zagor_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Deathmoor_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Knights_of_Doom</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Magehunter</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Revenge_of_the_Vampire</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Curse_of_the_Mummy</item>
+    </string-array>
+
+    <string name="title_activity_gamebook_selection">Choisir un livre</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="selectedGamebookCover">Couverture sélectionnée</string>
+    <string name="title_activity_gamebook_wikia">Titannica Wiki</string>
+    <string name="title_activity_gamebook_full_image">GamebookFullImageActivity</string>
+    <string name="title_activity_swipe">SwipeActivity</string>
+    <string name="title_activity_xpto">XPTOActivity</string>
+    <string name="title_activity_gamebook_selection_swipe">GamebookSelectionSwipeActivity</string>
+    <string name="title_adventurecreationphase_list">AdventureCreationPhases</string>
+    <string name="title_adventurecreationphase_detail">AdventureCreationPhase Detail</string>
+    <string name="title_activity_adventure_creation">Nouvelle aventure</string>
+    <string name="title_adventure_creation_vitalstats">Caractéristiques</string>
+    <string name="title_adventure_creation_potions">Potions</string>
+
+    <string-array name="standard_potion_list">
+        <item>Adresse</item>
+        <item>Vigueur</item>
+        <item>Bonne fortune</item>
+    </string-array>
+
+    <string name="skill">Habileté: </string>
+    <string name="stamina">Endurance: </string>
+    <string name="luck">Chance: </string>
+    <string name="skill2">Habileté</string>
+    <string name="stamina2">Endurance</string>
+    <string name="luck2">Chance</string>
+    <string name="name">Nom:</string>
+    <string name="saveAdventure">Sauver l\'aventure</string>
+    <string name="rollStats">Lancer les dés</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_load_adventure">Charger une aventure</string>
+    <string name="potionsProvisions">Potions &amp; Provisions</string>
+    <string name="goldEquipment">Or &amp; Equipement</string>
+    <string name="moneyEquipment">Fortune &amp; Equipement</string>
+    <string name="spells">Sorts</string>
+    <string name="spellAlreadyChosen">Vous avez déjà choisi ce sort.</string>
+    <string name="fights">Combats</string>
+    <string name="notes">Notes</string>
+    <string name="vitalStats">Caractéristiques</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="testLuck">Tenter votre Chance</string>
+    <string name="testSkill">Tester votre Habileté</string>
+    <string name="selectedPotion">Potion: </string>
+    <string name="provisions">Provisions: </string>
+    <string name="consumePotion">Utiliser une potion</string>
+    <string name="addNote">Ajouter une note</string>
+    <string name="gold">Or:</string>
+    <string name="editGold">Editer</string>
+    <string name="equipment">Equipement:</string>
+    <string name="equipment2">Equipement</string>
+    <string name="addEquipment">Ajouter un équipement</string>
+    <string name="addWeapon">Ajouter une arme</string>
+    <string name="escape">Fuir</string>
+    <string name="attackOpponent">Attaquer votre adversaire</string>
+    <string name="handicap">Handicap:</string>
+    <string name="rolld6">Jeter D6</string>
+    <string name="roll2d6">Jeter 2D6</string>
+    <string name="roll3d6">Jeter 3D6</string>
+    <string name="addEnemy">Ajouter un adversaire</string>
+
+<!-- Citadel of Chaos -->
+    <string-array name="tcoc_spells">
+        <item>Copie Conforme</item>
+        <item>Télépathie</item>
+        <item>Feu</item>
+        <item>L\'Or du Sot</item>
+        <item>Illusion</item>
+        <item>Lévitation</item>
+        <item>Chance</item>
+        <item>Protection</item>
+        <item>Habileté</item>
+        <item>Endurance</item>
+        <item>Force</item>
+        <item>Faiblesse</item>
+    </string-array>
+
+    <string name="title_activity_error">Erreur</string>
+    <string name="spellList">Sorts disponibles:</string>
+    <string name="selectedSpellList">Sorts sélectionnés:</string>
+    <string name="spellScore">Points de sort restants: </string>
+
+<!-- Starship Traveller -->
+    <string name="shipCrewStats">Equipage et Vaisseau</string>
+    <string name="scienceOfficer">Officier Scientifique</string>
+    <string name="medicalOfficer">Officier Médical</string>
+    <string name="engineeringOfficer">Officier Ingénieur</string>
+    <string name="securityOfficer">Officier de Sécurité</string>
+    <string name="securityGuard1">Agent de sécurité no. 1</string>
+    <string name="securityGuard2">Agent de sécurité no. 2</string>
+
+    <string name="ship">Vaisseau</string>
+    <string name="ship2">Vaisseau:</string>
+    <string name="weapons">Force de Frappe: </string>
+    <string name="shields">Boucliers </string>
+    <string name="landingParty">Equipe d\'exploration</string>
+    <string name="restoreStaminaLandingParty">Restaurer l\'Endurance de l\'équipe d\'exploration</string>
+    <string name="traveller">Voyageur: </string>
+    <string name="enemyShip">Vaisseau ennemi: </string>
+    <string name="starshipCombat">Combat Spatial</string>
+    <string name="handToHandCombat">Combat à mains nues</string>
+    <string name="phaserCombat">Combat au Phaser</string>
+    <string name="combatTurn">Tour de combat</string>
+    <string name="addCombat">Ajouter des adversaires</string>
+    <string name="addCombatant">Ajouter un adversaire</string>
+    <string name="combat">Combat</string>
+
+    <string name="crewman">Membre d\'équipage: </string>
+    <string name="crewman2">Membre d\'équipage</string>
+    <string name="enemySkill">Habileté de l\'adversaire: </string>
+    <string name="enemyStamina">Endurance de l\'adversaire: </string>
+    <string name="versus">vs.</string>
+    <string name="captain">Commandant</string>
+    <string name="reset">Réinitialiser</string>
+    <string name="map">Carte</string>
+	
+    <string name="starshipCrewStatsMandatory">Statistiques du vaisseau et de l\'équipage</string>
+    <string name="starshipStatsMandatory">Force de Frappe et Bouclier du vaisseau</string>
+
+    <string name="stCrewmanHitEnemy">Le %1$s a touché son adversaire ! (dé: %2$d + Habileté: %3$d) vs (dé: %4$d + Habileté: %5$d)</string>
+    <string name="stCrewmanBlockedEnemy">Le %1$s a bloqué l\'attaque de son adversaire ! (dé: %2$d + Habileté: %3$d) vs (dé: %4$d + Habileté: %5$d)</string>
+    <string name="stCrewmanHit">Le %1$s a été touché... (dé: %2$d + habileté: %3$d) vs (dé: %4$d + habileté: %5$d)</string>
+    <string name="stCombatBothMissed">Le %1$s et son adversaire ont tous les deux manqué leur coup</string>
+    <string name="stCrewmanDefeatedEnemy">Le %1$s a vaincu son adversaire !</string>
+    <string name="stCrewmanDied">Le %1$s a été vaincu...</string>
+    <string name="stShields">Boucliers</string>
+
+    <string name="number_0_word">zero</string>
+    <string name="number_1_word">un</string>
+    <string name="number_2_word">deux</string>
+    <string name="number_3_word">trois</string>
+    <string name="number_4_word">quatre</string>
+    <string name="number_5_word">cinq</string>
+    <string name="number_6_word">six</string>
+    <string name="number_7_word">sept</string>
+    <string name="number_8_word">huit</string>
+    <string name="number_9_word">neuf</string>
+    <string name="number_10_word">dix</string>
+    <string name="number_11_word">onze</string>
+    <string name="number_12_word">douze</string>
+    <string name="number_13_word">treize</string>
+    <string name="number_14_word">quatorze</string>
+    <string name="number_15_word">quinze</string>
+    <string name="number_16_word">seize</string>
+    <string name="number_17_word">dix-sept</string>
+    <string name="number_18_word">dix-huit</string>
+
+<!-- Scorpion Swamp -->
+    <string name="addClearing">Ajouter une clairière</string>
+    <string name="currentClearing">Clairière actuelle</string>
+    <string name="startCombat">Commencer un combat</string>
+    <string name="add">Ajouter</string>
+	<string name="ssSpellSkill">Habileté</string>
+    <string name="ssSpellStamina">Endurance</string>
+    <string name="ssSpellLuck">Chance</string>
+    <string name="ssSpellFire">Feu</string>
+    <string name="ssSpellIce">Glace</string>
+    <string name="ssSpellIllusion">Illusion</string>
+    <string name="ssSpellFriendship">Amitié</string>
+    <string name="ssSpellGrowth">Croissance</string>
+    <string name="ssSpellBless">Bénédiction</string>
+    <string name="ssSpellFear">Terreur</string>
+    <string name="ssSpellWithering">Flétrissure</string>
+    <string name="ssSpellCurse">Malédiction</string>
+
+<!-- House of Hell -->
+    <string name="fear">Peur: </string>
+    <string name="fear2">Peur</string>
+
+<!-- Temple of Terror -->
+    <string name="totSpellOpenDoor">Ouverture des portes</string>
+    <string name="totSpellCreatureSlepp">Sommeil de la Créature</string>
+    <string name="totSpellMagicArrow">La Flêche magique</string>
+    <string name="totSpellLanguage">Language</string>
+    <string name="totSpellReadSymbols">Lecture des symboles</string>
+    <string name="totSpellLight">Lumière</string>
+    <string name="totSpellFire">Feu</string>
+    <string name="totSpellStaminaCost">Choisissez le coût en Endurance ?</string>
+    <string name="totSpellJump">Saut</string>
+    <string name="totSpellDetectTrap">Détection de Pièges</string>
+    <string name="totSpellWater">Création d\'Eau</string>
+	
+<!-- Freeway Fighter -->
+    <string name="armor">Blindage: </string>
+    <string name="armor2">Blindage</string>
+    <string name="firepower">Puissance de Feu: </string>
+    <string name="car_armor">Blindage: </string>
+    <string name="car_firepower">Puissance de Feu: </string>
+    <string name="weaponsvalue">Valeur de l\'Armement: </string>
+    <string name="weapon">Armement: </string>
+    <string name="grenade">Grenade</string>
+    <string name="dodge">Interceptor: </string>
+    <string name="enemyVehicles">Véhicules ennemis: </string>
+    <string name="enemyVehicle">Véhicule ennemi: </string>
+    <string name="title_adventure_creation_weapons">Armement</string>
+    <string name="vehicleCombat">Combat de Véhicules</string>
+    <string name="damage">Dégât: </string>
+    <string name="hthDamage">Blessure au corps à corps: </string>
+    <string name="rockets">Roquettes: </string>
+    <string name="ironSpikes">Clous: </string>
+    <string name="oil">Huile: </string>
+    <string name="spareWheels">Roues de secours: </string>
+    <string name="vehicleSpecs">Caractéristiques de l\'Interceptor</string>
+    <string name="addEnhancement">Ajouter une modification</string>
+    <string name="useMedKit">Utiliser la trousse de secours</string>
+    <string name="medKits">Trousse de secours: </string>
+    <string name="credits">Crédits: </string>
+    <string name="gunfight">Combat motorisé</string>
+    <string name="ffFirepowerAndArmor">Puissance de Feu et Blindage</string>
+    <string name="ffDirectHitDefeat">Impact direct. Vous avez détruit votre adversaire.</string>
+    <string name="ffEnemyHit">Votre adversaire a atteint votre véhicule. (-%1$d Blindage)</string>
+    <string name="ffSecondEnemyHit">Votre second adversaire a atteint votre véhicule. (-%1$d Blindage)</string>
+    <string name="ffEnemyDestroyedYourVehicle">Votre adversaire a détruit votre véhicule...</string>
+    <string name="ffAvoiedSecondAttack">Vous avez évité l\'attaque de votre second adversaire.</string>
+    <string name="ffavoidedSecondAttack">Vous avez évité l\'attaque de votre second adversaire.</string>
+    <string name="ffDirectHit">Coup au but ! (-%1$d Blindage)</string>
+
+<!-- Space Assassin + Rings of Kelter -->
+    <string name="starship">Vaisseau: </string>
+    <string name="missiles">Missiles: </string>
+    <string name="enemyShips">"Vaisseaux ennemis: "</string>
+    <string name="weaponDamage">Dégât: </string>
+    <string name="usePepPill">Utiliser une pilule de vigueur</string>
+    <string name="pepPills">Pilules de vigueur: </string>
+    <string name="consumeProvisions">Manger une ration</string>
+    <string name="kopecks">Kopecks: </string>
+    <string name="saGrenade">Grenade</string>
+    <string name="saCombatText1">Votre adversaire (HA: %1$d EN: %2$d) a été touché. (-%3$d EN)</string>
+    <string name="saCombatText2">Un adversaire (HA: %1$d EN: %2$d) vous a touché. (-%3$d EN)</string>
+    <string name="saCombatText3">Un adversaire (HA: %1$d EN: %2$d) vous a manqué.</string>
+    <string name="saAssaultBlaster">Explosif</string>
+    <string name="missedTheEnemy">Vous avez manqué votre adversaire...</string>
+    <string name="saHitEnemy">Vous avez touché votre adversaire! (%1$d ST)</string>
+    <string name="saElectricLash">Fouet électrique</string>
+    <string name="saWeapons">Armes</string>
+    <string name="saWeapon">Arme</string>
+    <string name="saDeleteWeapon">Enlever une arme?</string>
+    <string name="saGravityBomb">Charge d\'antimatière</string>
+    <string name="sa2xArmor">2x Armure</string>
+    <string name="saNoWeaponPoints">Vous n\'avez pas assez de point pour ajouter le/la %1$s</string>
+    <string name="weaponsArmorMandatory">Armement et Défense</string>
+    <string name="trokDirectHit">Coup au but ! (-%1$d Défense)</string>
+    <string name="directHitDefeatSecondEnemy">Coup au but ! Vous avez détruit votre second adversaire !</string>
+    <string name="trokPlayerStarshipDestroyed">Votre adversaire a détruit votre vaisseau...</string>
+    <string name="enemyMissed">Votre adversaire vous a manqué !</string>
+    <string name="trokEnemyHitPlayerStarship">Votre adversaire a touché votre vaisseau (-%1$d Défense).</string>
+    <string name="trokSecondEnemyHitPlayerStarship">Votre second adversaire a touché votre vaisseau. (-%1 Défense).</string>
+    <string name="secondEnemyMissed">Votre second adversaire vous a manqué !</string>
+    <string name="hitEnemyDamage">Vous avez atteint votre adversaire ! (-%1$d En)</string>
+    <string name="directHit">Coup au but!</string>
+    <string name="enemyDestroyedShip">Votre adversaire a détruit votre vaisseau...</string>
+    <string name="enemyHitYourShip">Votre adversaire a touché votre vaisseau.</string>
+    <string name="enemyShipMissed">Le vaisseau adverse a manqué son coup.</string>
+	
+<!-- Seas of Blood -->
+    <string name="crewStrength">Force d\'équipage: </string>
+    <string name="crewStrike">Combativité d\'équipage: </string>
+    <string name="log">Livre de bord: </string>
+    <string name="shipC">Navire: </string>
+    <string name="booty">Butin</string>
+    <string name="addBooty">Ajouter un butin</string>
+    <string name="shipCombat">Combat Naval</string>
+    <string name="testCrewStrength">Tester la combativité</string> 
+    <string name="deleteBooty">Effacer le butin ?</string>
+    <string name="crewParamsMandatory">Attaque et Combativité</string>
+    <string name="sobDirectHit">Coup au but! (-%1$d Force d\'équipage)</string>
+    <string name="sobEnemyHitYourShip">Le navire adverse vous a atteint. (-%1$d Force d\'équipage)</string>
+    <string name="bothShipsMissed">Les deux navires ont manqué leur coup.</string>
+
+<!-- Appointment with F.E.A.R -->
+    <string name="title_adventure_creation_superpower">Super Pouvoir</string>
+	<string-array name="superpower_list">
+        <item>Super Force</item>
+        <item>Pouvoirs Psi</item>
+        <item>Accessoires Miniaturisés d\'Intervention</item>
+        <item>Souffle d\'Energie</item>
+    </string-array>
+    <string name="heroPoints">Points de Réussite: </string>
+    <string name="awfSuperStrength">Super Force</string>
+
+<!-- Rebel Planet -->
+    <string name="unarmed">A mains nues: </string>
+
+<!-- Sword of the Samurai -->
+    <string-array name="skill_list">
+        <item>Kyujutsu</item>
+        <item>Iaijutsu</item>
+        <item>Karumijutsu</item>
+        <item>Ni-to-Kenjutsu</item>
+    </string-array>
+    <string name="title_adventure_creation_skill">Discipline spéciale</string>
+    <string name="arrows">Flêches</string>
+    <string name="honour">Honneur:</string>
+    <string name="willow">Feuilles de Saule:</string>
+    <string name="bowel">Harpons:</string>
+    <string name="armourP">Perforantes:</string>
+    <string name="humming">Hurleuses:</string>
+    <string name="iaijutsuFastDraw">Vous avez atteint votre ennemi en utilisant le Iaijutsu (-3 En)</string>
+	
+<!-- Robot Commando -->	
+    <string name="robotFights">Combat de Robots</string>
+    <string name="medikits">Pilules de vigueur: </string>
+    <string name="useMedikit">Utiliser une pilule</string>
+    <string name="robotLocation">Localisation: </string>
+    <string name="addRobot">Ajouter un Robot</string>
+    <string name="addEnemyRobot">Ajouter un Robot ennemi</string>
+
+    <string name="robotSpeedSlow">Lente</string>
+    <string name="robotSpeedMedium">Moyenne</string>
+    <string name="robotSpeedFast">Rapide</string>
+    <string name="robotSpeedVeryFast">Très Rapide</string>
+
+    <string-array name="robotSpeeds">
+        <item>@string/robotSpeedSlow</item>
+        <item>@string/robotSpeedMedium</item>
+        <item>@string/robotSpeedFast</item>
+        <item>@string/robotSpeedVeryFast</item>
+    </string-array>
+
+    <string-array name="robotTypes">
+        <item>@string/rcRobot</item>
+        <item>@string/rcDinosaur</item>
+    </string-array>
+
+    <string name="robotArmor">Défense: </string>
+    <string name="robotSpeed">Vitesse: </string>
+    <string name="robotBonus">Bonus de Combat: </string>
+    <string name="robotSpecialAbility">Caractéristique spéciale: </string>
+    <string name="robotSpecialAbilityInput">Caractéristique spéciale (§): </string>
+    <string name="robotAltArmor">Défense alternative: </string>
+    <string name="robotAltSpeed">Vitesse alternative:  </string>
+    <string name="robotAltBonus">Bonus Alternatif: </string>
+    <string name="robotAltSpecialAbility">Caractéristique spéciale:</string>
+    <string name="robotAlternateForm">Forme Alternative</string>
+    <string name="robots">Robots</string>
+    <string name="removeRobot">Effacer</string>
+    <string name="currentRobot">"Robot Actuel: "</string>
+    <string name="player">Joueur: </string>
+    <string name="enemy">Ennemi: </string>
+    <string name="diceRoll">Jet de dés</string>
+    <string name="yourRobot">Votre Robot</string>
+    <string name="enemyRobot">Robot ennemi</string>
+    <string name="enemyRobot2">Robot ennemi 2</string>
+    <string name="changeRobotForm">Changer de forme</string>
+    <string name="type">Type :</string>
+    <string name="airborne">Volant:</string>
+    <string name="secondEnemy">Second ennemi? :</string>
+    <string name="simulCombat">Combat Simultané? :</string>
+    <string name="useShovel">Utiliser la pelle mécanique</string>
+    <string name="sonicShot">Utiliser le canon sonique</string>
+
+    <string name="robotSpecialAbilitySonicScream">Sifflet sonique</string>
+    <string name="robotSpecialAbilitySonicScreamDesc">Réduit l\'Habileté d\'un dinosaure de 1 point.</string>
+    <string name="robotSpecialAbilityShovel">Pelle mécanique</string>
+    <string name="robotSpecialAbilityShovelDesc">Utiliser la pelle réduit la force d\'Attaque de 2 points. Si le robot atteint son ennemi, il lui inflige 6 points de dommage.</string>
+    <string name="robotSpecialAbilityFlyCircles">Vol circulaire</string>
+    <string name="robotSpecialAbilityFlyCirclesDesc">Si l\'assaut est gagné par au moins 4 points, le Frelon inflige double dégat.</string>
+    <string name="robotSpecialAbilityUltraFast">Ultra Rapide</string>
+    <string name="robotSpecialAbilityUltraFastDesc">Ce robot peut Fuir même face à des robots très rapides.</string>
+    <string name="robotSpecialAbilityShield">Bouclier</string>
+    <string name="robotSpecialAbilityShieldDEsc">Si la force d\'attaque du Voltigeur est de 18 ou plus, il ne subit aucun dommage.</string>
+    <string name="robotSpecialAbilitySerpentCoil">Anneaux du serpent</string>
+    <string name="robotSpecialAbilitySerpentCoilDesc">Si la force d\'attaque du Serpent VII est supérieure à 16, il infligera un point de dégat à chacun des tours suivants.</string>
+    <string name="robotSpecialAbilitySonicShot">Canon Sonique</string>
+    <string name="robotSpecialAbilitySonicShotDesc">Inflige 1d6 dommage aux robots, et 2d6 aux dinosaures.</string>
+    <string name="robotSpecialAbilityAirDefense">Défense anti-aérienne</string>
+    <string name="robotSpecialAbilityAirDefenseDesc">Ce robot bénéficie d\'un bonus de +3 contre les adversaires volants.</string>
+    <string name="robotSpecialAbilityDoubleDamage">Double Dégât</string>
+    <string name="robotSpecialAbilityDoubleDamageDesc">Inflige double dommage en cas d\'attaque réussie.</string>
+    <string name="robotSpecialAbilityCriticalHit">Dommage critique</string>
+    <string name="robotSpecialAbilityCriticalHitDesc">Si la Force d\'attaque du Robot guerrier est supérieure d\'au moins 4 points à la vôtre, il inflige 1 point de dommage suppléméntaire.</string>
+    <string name="robotSpecialAbilitySmallWeapons">Armes mineures</string>
+    <string name="robotSpecialAbilitySmallWeaponsDesc">Inflige un point de dégât à chaque tour.</string>
+     <string name="robotSpecialAbilityAnkylosaurus">Etourdissement</string>
+    <string name="robotSpecialAbilityAnkylosaurusDesc">Vous ne pouvez pas infliger de dégât à l\'assaut suivant un assaut perdu.</string>
+    <string name="rcRobotSwitchedConfig">Votre robot a changé de configuration.</string>
+    <string name="rcAddEnemyRobot">Ajouter un robot ennemi</string>
+    <string name="rcAnkylosaurus">Ankylosaure</string>
+    <string name="rcRobotHaveLegs">Votre robot a-t-il des pattes ?</string>
+    <string name="rcNameArmorSkillMandatory">Les champs Nom, Armure et Habileté doivent être remplis.</string>
+    <string name="rcDinosaur">Dinosaure</string>
+    <string name="rcSuperCowboySonicScream">Le Super Cowboy utilise son sifflet sonique.</string>
+    <string name="rcWaspFighterSpecial">Le Frelon inflige 4 dommages.</string>
+    <string name="rcTrooperXISpecial">Le Voltigeur 11 utilise son bouclier.</string>
+    <string name="rcSerpencVIISpecial">Le Serpent s\'enroule autour de son adversaire.</string>
+    <string name="rcHedgehogSpecial">Le Hérisson attaque une cible volante.</string>
+    <string name="rcBattlemanSpecial">Le Supertank inflige 1 dommage supplémentaire.</string>
+    <string name="rcCrusherSpecial">Le Broyeur inflige double dégât.</string>
+    <string name="rcWaspSpecial">Le Frelon inflige 4 dommages.</string>
+    <string name="rcSupertankSpecila">Le Supertank inflige 1 dommage supplémentaire.</string>
+    <string name="rcSerpentVIISpecial2">Le Serpent inflige 1 dommage supplémentaire.</string>
+    <string name="rcSonicShot">Utilisation du canon sonique (%1$d DP)</string>
+    <string name="rcShovel">Utilisation dde la pelle mécanique (6 DP)</string>
+    <string name="rcLostRobot">Vous avez perdu votre robot !</string>
+    <!--STOP HERE-->
+    <string name="rcDefeatedEnemy">Vous avez vaincu votre adversaire !</string>
+    <string name="rcParryAttack">Vous avez paré l\'attaque ennemie.</string>
+    <string name="rcHitEnemy">Vous avez atteint votre adversaire ! (%1$d DP)</string>
+    <string name="rcEnemyHitYou">Votre adversaire vous a touché ! (%1$d DP)</string>
+    <string name="rcAnkylosaurusKO">L\'Ankylosaure  vous a étourdi !</string>
+    <string name="rcBothMissed">Votre adversaire et vous avez manqué votre coup.</string>
+    <string name="remove">Enlever</string>
+    <string name="setLocation">Définir votre position</string>
+    <string name="rcSpecialAbilityDesc">Description des caractéristiques particulières</string>
+    <string name="rcRemoveRobot">Enlever un Robot ?</string>
+    <string name="rcAddRobot">Ajouter un Robot</string>
+    <string name="rcNameArmorBonusMandatory">Les champs Nom, Armure et Bonus doivent être remplis.</string>
+    <string name="rcRobot">Robot</string>
+	
+<!-- Beneath Nightmare Castle -->
+    <string name="bncWillpower">Volonté</string>
+    <string name="willpower">Volonté: </string>
+    <string name="testWillpower">Tester votre volonté</string>
+    <string name="goldTreasure">Or &amp; Trésor</string>
+
+<!-- Phantoms of Fear -->
+    <string name="power">Pouvoir: </string>
+	<string name="pofSpellProtect">Ecran magique de Protection</string>
+    <string name="pofSpellFinding">Détection</string>
+    <string name="pofSpellFire">Feu</string>
+    <string name="pofSpellIllusion">Illusion</string>
+    <string name="pofSpellLevitation">Lévitation</string>
+    <string name="pofSpellWeaken">Handicap</string>
+
+<!-- Armies of Death -->
+    <string name="soldiers">Soldats</string>
+    <string name="fightBattle">Nouvelle Bataille</string>
+    <string name="total">Total</string>
+    <string name="total2">Total: </string>
+    <string name="addNewSoldiers">Ajouter des Soldats</string>
+    <string name="cancel">Annuler</string>
+    <string name="startBattle">Commencer la Bataille</string>
+    <string name="inBattle">Au combat:</string>
+    <string name="warriors">Guerriers</string>
+    <string name="enemyForces">Forces Ennemies</string>
+    <string name="soldiersType">Type de Soldats: </string>
+    <string name="quantity">Quantité:</string>
+    <string name="currentArmy">Armée actuelle:</string>
+    <string name="selectForces">Sélectionner vos Forces:</string>
+    <string name="skirmishForces">Au Combat:</string>
+    <string name="enemyForces2">Forces Ennemies:</string>
+    <string name="closeCombat">Combat au corps à corps</string>
+    <string name="aodArmyDestroyed">Votre armée a été vaincue...</string>
+    <string name="aodDestroyEnemy">Vous avez vaincu l\'armée ennemie !</string>
+    <string name="aodKillEnemyTroops"> et vous détruisez %1$d troupes ennemies.</string>
+    <string name="aodMustFillTypeAndQuantity">Vous devez remplir les champs type et quantité !</string>
+    <string name="aodSituationEven">Vous êtes en situation égale par rapport à votre ennemi (%1$d vs %2$d).</string>
+    <string name="aodSituationInferior">Vous êtes en infériorité par rapport à votre ennemi (%1$d vs %2$d).</string>
+    <string name="aodSituationSuperior">Vous êtes en supériorité par rapport à votre ennemi (%1$d vs %2$d).</string>
+    <string name="aodSufferLossTropps"> et vous perdez %1$d soldats.</string>
+    <string name="aodSuperpower">Super Pouvoir</string>
+    <string name="aod_removeAllSoldiers">Voulez-vous retirer tous les %1$s soldats de votre armée ?</string>
+    <string name="addSoldiers">Ajouter des soldats</string>
+    <string name="soldiersKilledQuestion">Soldat perdus ?</string>
+	
+    <string name="crew">Equipage:</string>
+    <string name="date">Date:</string>
+    <string name="name2">Nom:</string>
+    <string name="result">Résultat</string>
+    <string name="close">Fermer</string>
+    <string name="storagePermissionsRequired">Pour utiliser cette application vous devez lui donner accès au stockage du téléphone.</string>
+    <string name="gamebookNotImplemented">Désolé, ce livre n\'est pas encore supporté.</string>
+    <string name="success">Succès !</string>
+    <string name="failed">Echec...</string>
+    <string name="noProvisionsLeft">Vous n\'avez plus de provisions...</string>
+    <string name="provisionsMaxStamina">Votre Endurance est déjà à son maximum.</string>
+    <string name="provisionsStaminaGain">Vous gagnez %1$d points d\'endurance.</string>
+    <string name="noPotionLeft">Vous avez déjà utilisé vos potions...</string>
+    <string name="potionSkillReplenish">Votre Habileté retrouve sa valeur initiale.</string>
+    <string name="potionStaminaReplenish">Votre Endurance retrouve sa valeur initiale.</string>
+    <string name="potionLuckReplenish">Votre Chance retrouve sa valeur initiale (+1).</string>
+
+    <string name="currentReference">Paragraphe actuel ?</string>
+    <string name="ok">Ok</string>
+    <string name="normal">Normal</string>
+    <string name="sequence">Simultané</string>
+    <string name="youreLucky">Vous êtes chanceux !</string>
+    <string name="defeatedOpponent">Vous avez vaincu votre adversaire !</string>
+    <string name="youreUnlucky">Vous êtes malchanceux...</string>
+    <string name="knockedOut">Vous êtes étourdi.</string>
+    <string name="youreDead">Vous êtes mort...</string>
+    <string name="hitEnemy">Vous avez atteint l\'adversaire</string>
+    <string name="staminaInitials">En</string>
+    <string name="defeatSuddenDeath">Vous avez vaincu votre adversaire par Mort Subite !</string>
+    <string name="blockedAttack">Vous avez paré l\'attaque adverse !</string>
+    <string name="youWereHit">Vous avez été blessé...</string>
+    <string name="bothMissed">Votre adversaire et vous avez chacun manqué votre coup.</string>
+    <string name="defeatedEnemy">Vous avez vaincu un adversaire !</string>
+    <string name="youveDied">Vous êtes mort...</string>
+    <string name="youMustFillSkillAndStamina">Vous devez remplir les valeurs d\'Habileté et d\'Endurance.</string>
+    <string name="someParametersMIssing">Il manque des paramètres (</string>
+    <string name="adventureName">Nom de l\'aventure</string>
+    <string name="setValue">Définir la valeur</string>
+    <string name="deleteEquipmentQuestion">Effacer un équipement ?</string>
+    <string name="note">Note</string>
+    <string name="deleteNote">Effacer la note ?</string>
+    <string name="useSpellQuestion">Utiliser un sort ?</string>
+    <string name="use">Utiliser</string>
+    <string name="potion">Potion</string>
+    <string name="mustSetEnemyForces">Vous devez entrer le nombre des troupes ennemies. </string>
+    <string name="mustCommitTroops">Vous devez envoyer certaines de vos troupes au combat.</string>
+    <string name="mustDistributeLosses">Vous devez distribuer les pertes à votre armée.</string>
+    <string name="youveRolled">Vous avez obtenu un %1$s.</string>
+    <string name="chooseSavePoint">Choisir le paragraphe:</string>
+    <string name="deleteSavegame">Effacer la sauvegarde ?</string>
+ 
+    <string name="spellCount">Nombre de sorts</string>
+    <string name="chosenSpells">Sorts choisis</string>
+    <string name="deleteSpellQuestion">Effacer le sort ?</string>
+
+	<string name="exit">Quitter</string>
+    <string name="quit">Quitter</string>
+    <string name="rateApp">Evaluer cette application</string>
+    <string name="language">Langue</string>
+    <string name="languageDesc">Langue de l\'interface</string>
+    <string name="locale">Préférences régionales</string>
+    <string name="time">Temps:</string>
+    <string name="oxygen">Oxygène:</string>
+    <string name="testFear">Tester votre Peur</string>
+    <string name="timeAndOxygen">Temps et Oxygène</string>
+    <string name="usePotion">Utiliser la potion de 1$s</string>
+
+    <string name="change">Changement</string>
+    <string name="robotSpecialAbilityFlyInCircles">Vol circulaire</string>
+    <string name="robotSpecialAbilityFlyInCirclesDesc">Si l\'assaut est gagné d\'au moins 4 points, le Frelon inflige double dégâts.</string>
+</resources>
