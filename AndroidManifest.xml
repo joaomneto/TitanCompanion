@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
-    android:versionCode="20"
-    android:versionName="0.20-beta">
+    android:versionCode="21"
+    android:versionName="0.22-beta">
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -324,19 +324,27 @@
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.AODAdventure"
             android:label="@string/aod"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.EOTDAdventureCreation"
             android:label="@string/eotd"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.EOTDAdventure"
             android:label="@string/eotd"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.HOTWAdventureCreation"
             android:label="@string/hotw"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.HOTWAdventure"
             android:label="@string/hotw"

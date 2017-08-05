@@ -83,36 +83,41 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:weightSum="10"
             android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/addCombatButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/addCombatant" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:text="@string/addCombatant"
+                />
 
             <Button
                 android:id="@+id/testLuckButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:visibility="gone"
                 android:text="@string/testLuck"
-                android:visibility="gone" />
+                />
 
             <Switch
                 android:id="@+id/combatType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                />
 
             <Button
                 android:id="@+id/resetCombat2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:visibility="gone"
                 android:text="@string/reset"
-                android:visibility="gone" />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -120,28 +125,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:weightSum="10"
             android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/attackButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/combatTurn"
-                android:visibility="gone" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:visibility="gone"
+                android:text="@string/combatTurn" />
 
             <Button
                 android:id="@+id/startCombat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
                 android:text="@string/startCombat" />
 
             <Button
                 android:id="@+id/resetCombat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:visibility="gone"
                 android:text="@string/reset" />
         </LinearLayout>
     </LinearLayout>

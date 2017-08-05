@@ -22,7 +22,7 @@
         android:layout_toRightOf="@+id/combatSelected"
         android:gravity="center"
         android:text="@string/skill"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
