@@ -11,9 +11,10 @@ public class RPAdventureCombatFragment extends AdventureCombatFragment {
 
 	boolean unarmed = false;
 
+
 	protected void addCombatButtonOnClick() {
 		Adventure adv = (Adventure) getActivity();
-		final View addCombatantView = adv.getLayoutInflater().inflate(R.layout.component_add_combatant, null);
+		final View addCombatantView = adv.getLayoutInflater().inflate(R.layout.component_18rp_add_combatant, null);
 
 		CheckBox unarmedValue = (CheckBox) addCombatantView.findViewById(R.id.unarmedValue);
 		unarmed = unarmedValue.isChecked();

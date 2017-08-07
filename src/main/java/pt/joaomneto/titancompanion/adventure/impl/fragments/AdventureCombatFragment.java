@@ -393,7 +393,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 		Adventure adv = (Adventure) getActivity();
 
-		final View addCombatantView = adv.getLayoutInflater().inflate(R.layout.component_add_combatant, null);
+		final View addCombatantView = adv.getLayoutInflater().inflate(layoutId, null);
 
 		final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
