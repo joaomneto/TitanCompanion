@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.support.test.InstrumentationRegistry;
 
 /**
- * Created by 962633 on 03-08-2017.
+ * Created by Joao Neto on 03-08-2017.
  */
 
 public class TCBaseTest {

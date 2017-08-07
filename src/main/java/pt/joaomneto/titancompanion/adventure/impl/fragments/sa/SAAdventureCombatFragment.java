@@ -1,11 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sa;
 
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
-import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
-import pt.joaomneto.titancompanion.util.DiceRoller;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,10 +9,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
+import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponSpinnerAdapter;
+import pt.joaomneto.titancompanion.util.DiceRoller;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -36,7 +38,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 		super.onCreate(savedInstanceState);
 		rootView = inflater.inflate(R.layout.fragment_12sa_adventure_combat, container, false);
 
-		grenadeButton = (Button) rootView.findViewById(R.id.grenadeButton);
+		grenadeButton = rootView.findViewById(R.id.grenadeButton);
 
 		grenadeButton.setOnClickListener(new OnClickListener() {
 
@@ -168,11 +170,11 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 		final View addCombatantView = adv.getLayoutInflater().inflate(
 				combatMode == null || combatMode.equals(NORMAL) ? R.layout.component_add_combatant : R.layout.component_12sa_add_combatant, null);
 
-		String[] allWeapons = { getString(R.string.saElectricLash), getString(R.string.saAssaultBlaster) };
+		SAWeapon[] allWeapons = { SAWeapon.ELECTRIC_LASH, SAWeapon.ASSAULT_BLASTER };
 
-		final Spinner weaponSpinner = (Spinner) addCombatantView.findViewById(R.id.weaponSpinner);
+		final Spinner weaponSpinner = addCombatantView.findViewById(R.id.weaponSpinner);
 		if (weaponSpinner != null) {
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv, android.R.layout.simple_list_item_1, android.R.id.text1, allWeapons);
+			SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv, allWeapons);
 			weaponSpinner.setAdapter(adapter);
 		}
 
@@ -188,9 +190,9 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
 				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
 
-				EditText enemySkillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
-				EditText enemyStaminaValue = (EditText) addCombatantView.findViewById(R.id.enemyStaminaValue);
-				EditText handicapValue = (EditText) addCombatantView.findViewById(R.id.handicapValue);
+				EditText enemySkillValue = addCombatantView.findViewById(R.id.enemySkillValue);
+				EditText enemyStaminaValue = addCombatantView.findViewById(R.id.enemyStaminaValue);
+				EditText handicapValue = addCombatantView.findViewById(R.id.handicapValue);
 
 				Integer skill = Integer.valueOf(enemySkillValue.getText().toString());
 				Integer stamina = Integer.valueOf(enemyStaminaValue.getText().toString());
@@ -205,7 +207,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
 		AlertDialog alert = builder.create();
 
-		EditText skillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
+		EditText skillValue = addCombatantView.findViewById(R.id.enemySkillValue);
 
 		alert.setView(addCombatantView);
 

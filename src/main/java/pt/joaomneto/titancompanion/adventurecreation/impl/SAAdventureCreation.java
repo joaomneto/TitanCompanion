@@ -10,6 +10,7 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAVitalStatisticsFragment;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 import android.view.View;
@@ -19,15 +20,7 @@ public class SAAdventureCreation extends AdventureCreation {
 	
 	private int currentArmor = -1;
 	private int currentWeapons = -1;
-	List<String> weapons = new ArrayList<String>();
-	
-	public List<String> getWeapons() {
-		return weapons;
-	}
-
-	public void setWeapons(List<String> weapons) {
-		this.weapons = weapons;
-	}
+	List<SAWeapon> weapons = new ArrayList<SAWeapon>();
 
 	public SAAdventureCreation() {
 		super();
@@ -65,9 +58,9 @@ public class SAAdventureCreation extends AdventureCreation {
 	@Override
 	protected void rollGamebookSpecificStats(View view) {
 		currentArmor = DiceRoller.rollD6()+6;
-		getSAVitalStatisticsFragmentt().getArmorValue().setText(""+currentArmor);
+		getSAVitalStatisticsFragmentt().getArmorValue().setText(String.valueOf(currentArmor));
 		currentWeapons = DiceRoller.rollD6();
-		getSAWeaponsFragment().getWeaponsValue().setText(""+currentWeapons);
+		getSAWeaponsFragment().getWeaponsValue().setText(String.valueOf(currentWeapons));
 		
 	}
 
@@ -91,13 +84,21 @@ public class SAAdventureCreation extends AdventureCreation {
 	@Override
 	public String validateCreationSpecificParameters() {
 		StringBuilder sb = new StringBuilder();
-		if(this.currentArmor < 0){
+		if(this.currentArmor < 0 || this.getWeapons().isEmpty()){
 			sb.append(getString(R.string.weaponsArmorMandatory));
 		}
 		return  sb.toString();
 	}
 
-	
-	
+
+	public List<SAWeapon> getWeapons() {
+		return weapons;
+	}
+
+	public void setWeapons(List<SAWeapon> weapons) {
+		this.weapons = weapons;
+	}
+
+
 
 }

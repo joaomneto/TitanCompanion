@@ -7,7 +7,7 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.TCPreferenceActivity;
 
 /**
- * Created by joao on 27/05/17.
+ * Created by Joao Neto on 27/05/17.
  */
 
 public class TCPreferenceFragment extends PreferenceFragment {

@@ -15,7 +15,7 @@ import java.util.List;
 import pt.joaomneto.titancompanion.R;
 
 /**
- * Created by 962633 on 23-05-2017.
+ * Created by Joao Neto on 23-05-2017.
  */
 
 public class SpellListAdapter extends ArrayAdapter {
@@ -42,7 +42,7 @@ public class SpellListAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view = mInflater.inflate(mResource, parent, false);
-        TextView text = (TextView) view.findViewById(mFieldId);
+        TextView text = view.findViewById(mFieldId);
 
         text.setText(mObjects.get(position).getName());
 

@@ -1,7 +1,7 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.aod;
 
 /**
- * Created by joao on 26/04/17.
+ * Created by Joao Neto on 26/04/17.
  */
 
 public class SoldiersDivision {

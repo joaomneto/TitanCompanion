@@ -1,8 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sa;
 
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.AdventureFragment;
-import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,10 +11,15 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.AdventureFragment;
+import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponSpinnerAdapter;
 
 public class SAAdventureWeaponsFragment extends AdventureFragment {
 
@@ -34,8 +36,8 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 
 		final SAAdventure adv = (SAAdventure) getActivity();
 
-		Button buttonAddWeapon = (Button) rootView.findViewById(R.id.buttonAddweapon);
-		weaponsList = (ListView) rootView.findViewById(R.id.weaponList);
+		Button buttonAddWeapon = rootView.findViewById(R.id.buttonAddweapon);
+		weaponsList = rootView.findViewById(R.id.weaponList);
 
 
 		buttonAddWeapon.setOnClickListener(new OnClickListener() {
@@ -47,7 +49,10 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 				alert.setTitle(R.string.saWeapon);
 
 				// Set an EditText view to get user input
-				final EditText input = new EditText(adv);
+				final Spinner input = new Spinner(adv);
+				SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv,
+						SAWeapon.values());
+				input.setAdapter(adapter);
 				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
 				input.requestFocus();
@@ -56,9 +61,9 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 				alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int whichButton) {
-						String value = input.getText().toString();
-						adv.getWeapons().add(value);
-						((ArrayAdapter<String>) weaponsList.getAdapter()).notifyDataSetChanged();
+						SAWeapon selectedWeapon = SAWeapon.values()[input.getSelectedItemPosition()];
+						adv.getWeapons().add(selectedWeapon);
+						((SAWeaponSpinnerAdapter) weaponsList.getAdapter()).notifyDataSetChanged();
 					}
 				});
 
@@ -73,8 +78,8 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 
 		});
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv, android.R.layout.simple_list_item_1,
-				android.R.id.text1, adv.getWeapons());
+
+		SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv, adv.getWeapons());
 		weaponsList.setAdapter(adapter);
 
 		weaponsList.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -93,7 +98,7 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int which) {
 						adv.getWeapons().remove(position);
-						((ArrayAdapter<String>) weaponsList.getAdapter()).notifyDataSetChanged();
+						((SAWeaponSpinnerAdapter) weaponsList.getAdapter()).notifyDataSetChanged();
 					}
 				});
 
@@ -110,7 +115,7 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void refreshScreensFromResume() {
-		((ArrayAdapter<String>) weaponsList.getAdapter()).notifyDataSetChanged();
+		((SAWeaponSpinnerAdapter) weaponsList.getAdapter()).notifyDataSetChanged();
 	}
 
 }
