@@ -1,9 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/adventureVitalStats"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="3dp" >
+    android:padding="3dp">
 
     <RadioButton 
         android:id="@+id/combatSelected"
@@ -19,10 +18,10 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/combatSelected"
         android:layout_alignBottom="@+id/combatSelected"
+        android:layout_marginRight="5dp"
         android:layout_toRightOf="@+id/combatSelected"
         android:gravity="center"
-        android:text="@string/skill"
-        android:layout_marginRight="5dp"
+        android:text="@string/skillAbr"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
@@ -63,7 +62,7 @@
         android:layout_alignBaseline="@+id/combatTextSkill"
         android:layout_alignBottom="@+id/combatTextSkill"
         android:layout_toRightOf="@+id/plusCombatantSkillButton"
-        android:text="@string/stamina"
+       android:text="@string/staminaAbr"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
     <Button

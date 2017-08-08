@@ -1,11 +1,13 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.rp;
 
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
-import pt.joaomneto.titancompanion.util.DiceRoller;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
+import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
+import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class RPAdventureCombatFragment extends AdventureCombatFragment {
 
@@ -13,17 +15,25 @@ public class RPAdventureCombatFragment extends AdventureCombatFragment {
 
 
 	protected void addCombatButtonOnClick() {
-		Adventure adv = (Adventure) getActivity();
-		final View addCombatantView = adv.getLayoutInflater().inflate(R.layout.component_18rp_add_combatant, null);
-
-		CheckBox unarmedValue = (CheckBox) addCombatantView.findViewById(R.id.unarmedValue);
-		unarmed = unarmedValue.isChecked();
 
 		addCombatButtonOnClick(R.layout.component_18rp_add_combatant);
-	}
-	
-	protected Boolean suddenDeath(){
-		return unarmed?DiceRoller.rollD6()==6:null;
+
 	}
 
+	@Override
+	protected void confirmCombatAction(InputMethodManager mgr, View addCombatantView) {
+
+		CheckBox unarmedValue = addCombatantView.findViewById(R.id.unarmedValue);
+		unarmed = unarmedValue.isChecked();
+
+		super.confirmCombatAction(mgr, addCombatantView);
+	}
+
+	@Override
+	protected Boolean suddenDeath(DiceRoll diceRoll, DiceRoll enemyDiceRoll) {
+		if (unarmed) {
+			return DiceRoller.rollD6() == 6;
+		}
+		return super.suddenDeath(diceRoll, enemyDiceRoll);
+	}
 }

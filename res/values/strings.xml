@@ -10,7 +10,7 @@
         <item>@string/locale_fr</item>
     </string-array>
 
-    <string-array translatable="false" name="languageValues">
+    <string-array name="languageValues" translatable="false">
         <item>en</item>
         <item>pt</item>
         <item>fr</item>
@@ -243,6 +243,8 @@
     <string name="skill2">Skill</string>
     <string name="luck2">Luck</string>
     <string name="stamina2">Stamina</string>
+    <string name="skillAbr">Skill: </string>
+    <string name="staminaAbr">Stamina: </string>
     <string name="luck">Luck: </string>
     <string name="name">Name:</string>
     <string name="saveAdventure">Save Adventure</string>

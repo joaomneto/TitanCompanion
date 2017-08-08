@@ -238,6 +238,8 @@
     <string name="skill2">Perícia</string>
     <string name="luck2">Sorte</string>
     <string name="stamina2">Força</string>
+    <string name="skillAbr">Perícia: </string>
+    <string name="staminaAbr">Força: </string>
     <string name="luck">Sorte: </string>
     <string name="name">Nome:</string>
     <string name="saveAdventure">Gravar Aventura</string>
