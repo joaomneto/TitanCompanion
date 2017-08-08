@@ -11,7 +11,7 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureSpellsFragment;
 
 /**
- * Created by 962633 on 06-07-2017.
+ * Created by Joao Neto on 06-07-2017.
  */
 
 public class POFAdventureSpellsFragment extends AdventureSpellsFragment {
@@ -22,8 +22,8 @@ public class POFAdventureSpellsFragment extends AdventureSpellsFragment {
 
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
-        Button addSpellButton = (Button) rootView.findViewById(R.id.addSpellButton);
-        Spinner chooseSpellSpinner = (Spinner) rootView
+        Button addSpellButton = rootView.findViewById(R.id.addSpellButton);
+        Spinner chooseSpellSpinner = rootView
                 .findViewById(R.id.chooseSpellSpinner);
         View separator = rootView.findViewById(R.id.separator);
 

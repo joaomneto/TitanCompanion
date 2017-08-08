@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import pt.joaomneto.titancompanion.util.LocaleHelper;
 
 /**
- * Created by 962633 on 31-05-2017.
+ * Created by Joao Neto on 31-05-2017.
  */
 
 public class BaseFragmentActivity extends FragmentActivity {

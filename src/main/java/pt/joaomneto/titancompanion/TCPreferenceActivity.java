@@ -11,7 +11,7 @@ import pt.joaomneto.titancompanion.fragment.TCPreferenceFragment;
 import pt.joaomneto.titancompanion.util.LocaleHelper;
 
 /**
- * Created by joao on 27/05/17.
+ * Created by Joao Neto on 27/05/17.
  */
 
 public class TCPreferenceActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {

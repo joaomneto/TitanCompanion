@@ -307,7 +307,7 @@
 
     <string name="ship">Nave</string>
     <string name="ship2">Nave:</string>
-    <string name="weapons">Armas: </string>
+    <string name="weaponsStat">Armas: </string>
     <string name="shields">Escudos: </string>
     <string name="landingParty">Equipa de Aterragem</string>
     <string name="restoreStaminaLandingParty">Restaurar Força da Equipa de Aterragem</string>
@@ -464,7 +464,8 @@
     <string name="simulCombat">Combate Simultâneo? :</string>
     <string name="useShovel">Usar Pá</string>
     <string name="sonicShot">Disparo Sónico</string>
-    <string name="willpower">Força: </string>
+    <string name="willpower">Força de Vontade: </string>
+    <string name="setInitialWillpower">Definir Força de Vontade inicial</string>
     <string name="testWillpower">Testar Força de Vontade</string>
     <string name="goldTreasure">Ouro &amp; Tesouro</string>
     <string name="soldiers">Soldados</string>
@@ -699,7 +700,8 @@
     <string name="testFear">Testar Medo</string>
     <string name="timeAndOxygen">Tempo e Oxigénio</string>
     <string name="usePotion">Usar poção de %1$s</string>
-    <string name="power">"Poder: "</string>
+    <string name="power">Poder: </string>
+    <string name="setInitialPower">Definir Poder inicialr</string>
     <string name="pofSpellProtect">Proteger</string>
     <string name="pofSpellFinding">Procurar</string>
     <string name="pofSpellFire">Fogo</string>
@@ -709,6 +711,10 @@
     <string name="change">Mudança</string>
     <string name="deleteKeyword">Apagar Palavra Chave?</string>
     <string name="addKeyword">Adicionar Palavra Chave</string>
+    <string name="weapons">"Armas: "</string>
+    <string name="setInitialStamina">Definir Força inicial</string>
+    <string name="setInitialSkill">Definir Perícia inicial</string>
+    <string name="setInitialLuck">Definir Sorte inicial</string>
 
 
 </resources>

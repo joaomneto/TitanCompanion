@@ -7,7 +7,7 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 
 /**
- * Created by 962633 on 23-05-2017.
+ * Created by Joao Neto on 23-05-2017.
  */
 
 public enum SSSpell implements Spell {

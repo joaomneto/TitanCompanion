@@ -13,7 +13,7 @@ import pt.joaomneto.titancompanion.adventure.SpellAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 
 /**
- * Created by 962633 on 19-06-2017.
+ * Created by Joao Neto on 19-06-2017.
  */
 
 public class SpellSpinnerAdapter extends ArrayAdapter<Spell> {

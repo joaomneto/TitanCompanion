@@ -1,11 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:weightSum="2"
-    tools:context=".adventurecreation.impl.fragments.tcoc.TCOCAdventureSpellsFragment">
+    android:weightSum="2">
 
 
     <TextView

@@ -3,7 +3,7 @@ package pt.joaomneto.titancompanion.adapter;
 import java.util.Date;
 
 /**
- * Created by joao on 14/05/17.
+ * Created by Joao Neto on 14/05/17.
  */
 
 public class Savegame {

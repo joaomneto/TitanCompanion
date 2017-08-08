@@ -309,6 +309,7 @@
     <string name="securityGuard2">Security Guard 2</string>
     <string name="ship">Ship</string>
     <string name="ship2">Ship:</string>
+    <string name="weaponsStat">Weapons: </string>
     <string name="weapons">Weapons: </string>
     <string name="shields">Shields: </string>
     <string name="landingParty">Landing</string>
@@ -871,6 +872,7 @@
     <string name="useShovel">Use Shovel</string>
     <string name="sonicShot">Sonic Shot</string>
     <string name="willpower">Willpower: </string>
+    <string name="setInitialWillpower">Set initial Willpower</string>
     <string name="testWillpower">Test Willpower</string>
     <string name="goldTreasure">Gold &amp; Treasure</string>
     <string name="soldiers">Soldiers</string>
@@ -957,6 +959,9 @@
     <string name="someParametersMIssing">Some adventure parameters are missing (</string>
     <string name="adventureName">Adventure Name</string>
     <string name="setValue">Set Value</string>
+    <string name="setInitialStamina">Set initial Stamina</string>
+    <string name="setInitialSkill">Set initial Skill</string>
+    <string name="setInitialLuck">Set initial Luck</string>
     <string name="deleteEquipmentQuestion">Delete equipment?</string>
     <string name="note">Note</string>
     <string name="deleteNote">Delete note?</string>
@@ -1114,6 +1119,7 @@
     <string name="testFear">Test Fear</string>
     <string name="timeAndOxygen">Time and Oxygen</string>
     <string name="power">Power:</string>
+    <string name="setInitialPower">Set initial Power</string>
     <string name="pofSpellProtect">Protect</string>
     <string name="pofSpellIllusion">Illusion</string>
     <string name="pofSpellWeaken">Weaken</string>

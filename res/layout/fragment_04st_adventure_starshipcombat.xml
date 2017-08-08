@@ -27,7 +27,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/textField3"
         android:gravity="center"
-        android:text="@string/weapons"
+        android:text="@string/weaponsStat"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
@@ -112,7 +112,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/textField4"
         android:gravity="center"
-        android:text="@string/weapons"
+        android:text="@string/weaponsStat"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button

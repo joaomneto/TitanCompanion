@@ -1,14 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.AdventureFragment;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.adapter.CombatantListAdapter;
-import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
-import pt.joaomneto.titancompanion.util.DiceRoller;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,6 +16,16 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.AdventureFragment;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.adapter.CombatantListAdapter;
+import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
+import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class AdventureCombatFragment extends AdventureFragment {
 
@@ -107,23 +108,23 @@ public class AdventureCombatFragment extends AdventureFragment {
 	}
 
 	protected void init() {
-		
-		combatResult = (TextView) rootView.findViewById(R.id.combatResult);
-		combatTurnButton = (Button) rootView.findViewById(R.id.attackButton);
-		startCombatButton = (Button) rootView.findViewById(R.id.startCombat);
-		addCombatButton = (Button) rootView.findViewById(R.id.addCombatButton);
-		combatTypeSwitch = (Switch) rootView.findViewById(R.id.combatType);
-		resetButton = (Button) rootView.findViewById(R.id.resetCombat);
-		resetButton2 = (Button) rootView.findViewById(R.id.resetCombat2);
-		testLuckButton = (Button) rootView.findViewById(R.id.testLuckButton);
+
+        combatResult = rootView.findViewById(R.id.combatResult);
+        combatTurnButton = rootView.findViewById(R.id.attackButton);
+        startCombatButton = rootView.findViewById(R.id.startCombat);
+        addCombatButton = rootView.findViewById(R.id.addCombatButton);
+        combatTypeSwitch = rootView.findViewById(R.id.combatType);
+        resetButton = rootView.findViewById(R.id.resetCombat);
+        resetButton2 = rootView.findViewById(R.id.resetCombat2);
+        testLuckButton = rootView.findViewById(R.id.testLuckButton);
 
 		combatTypeSwitch.setTextOff(getOfftext());
 		combatTypeSwitch.setTextOn(getOntext());
 		combatTypeSwitch.setOnCheckedChangeListener(new CombatTypeSwitchChangeListener());
 
-		combatantsListView = (ListView) rootView.findViewById(R.id.combatants);
-		combatantListAdapter = new CombatantListAdapter(this.getActivity(), combatPositions);
-		combatantsListView.setAdapter(combatantListAdapter);
+        combatantsListView = rootView.findViewById(R.id.combatants);
+        combatantListAdapter = new CombatantListAdapter(this.getActivity(), combatPositions);
+        combatantsListView.setAdapter(combatantListAdapter);
 
 		addCombatButton.setOnClickListener(new OnClickListener() {
 
@@ -415,9 +416,9 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
 
-				EditText enemySkillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
-				EditText enemyStaminaValue = (EditText) addCombatantView.findViewById(R.id.enemyStaminaValue);
-				EditText handicapValue = (EditText) addCombatantView.findViewById(R.id.handicapValue);
+                EditText enemySkillValue = addCombatantView.findViewById(R.id.enemySkillValue);
+                EditText enemyStaminaValue = addCombatantView.findViewById(R.id.enemyStaminaValue);
+                EditText handicapValue = addCombatantView.findViewById(R.id.handicapValue);
 
 				String skillS = enemySkillValue.getText().toString();
 				String staminaS = enemyStaminaValue.getText().toString();
@@ -440,7 +441,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 		AlertDialog alert = builder.create();
 
-		EditText skillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
+        EditText skillValue = addCombatantView.findViewById(R.id.enemySkillValue);
 
 		alert.setView(addCombatantView);
 
@@ -464,7 +465,9 @@ public class AdventureCombatFragment extends AdventureFragment {
 	@Override
 	public void refreshScreensFromResume() {
 		combatantListAdapter.notifyDataSetChanged();
-	}
+
+
+    }
 
 
 	protected int getDamage() {
@@ -554,6 +557,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		combatMode = NORMAL;
 		combatStarted = false;
 		combatantListAdapter.setCurrentEnemy(null);
+        combatResult.setText("");
 
 		combatTypeSwitch.setClickable(true);
 		combatTypeSwitch.setChecked(false);

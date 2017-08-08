@@ -12,6 +12,7 @@ import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.GamebookSelectionActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.TechnicalException;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.consts.Constants;
@@ -82,7 +83,7 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 				GamebookSelectionActivity.GAMEBOOK_ID, -1);
 
 		// Set up the ViewPager with the sections adapter.
-		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager = findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
 	}
@@ -116,9 +117,8 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 
 				return fragment;
 			} catch (Exception e) {
-				e.printStackTrace();
+				throw new TechnicalException(e);
 			} 
-			return null;
 		}
 
 		@Override
@@ -142,13 +142,14 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 		
 		rollGamebookSpecificStats(view);
 		
-		TextView skillValue = (TextView) findViewById(R.id.skillValue);
-		TextView staminaValue = (TextView) findViewById(R.id.staminaValue);
-		TextView luckValue = (TextView) findViewById(R.id.luckValue);
+		TextView skillValue = findViewById(R.id.skillValue);
+		TextView staminaValue = findViewById(R.id.staminaValue);
+		TextView luckValue = findViewById(R.id.luckValue);
 
 		skillValue.setText("" + skill);
 		staminaValue.setText("" + stamina);
 		luckValue.setText("" + luck);
+
 	}
 
 	protected abstract void rollGamebookSpecificStats(View view);
@@ -160,7 +161,7 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 
 
 
-			EditText et = (EditText) findViewById(R.id.adventureNameInput);
+			EditText et = findViewById(R.id.adventureNameInput);
 
 			adventureName = et.getText().toString();
 

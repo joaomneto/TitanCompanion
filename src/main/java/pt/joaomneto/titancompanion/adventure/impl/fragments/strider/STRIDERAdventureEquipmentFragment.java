@@ -9,7 +9,7 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment;
 
 /**
- * Created by 962633 on 30-05-2017.
+ * Created by Joao Neto on 30-05-2017.
  */
 
 public class STRIDERAdventureEquipmentFragment extends AdventureEquipmentFragment {

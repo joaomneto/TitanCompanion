@@ -41,8 +41,8 @@ public abstract class AdventureFragment extends DialogFragment {
 	public void setupIncDecButton(View rootView, Integer incButtonId, Integer decButtonId, final Adventure adv, @SuppressWarnings("rawtypes") final Class clazz, final String getMethod,
 			final String setMethod, final Integer maxValue, final Runnable incTrigger, final Runnable decTrigger) {
 
-		Button incButton = (Button) rootView.findViewById(incButtonId);
-		Button decButton = (Button) rootView.findViewById(decButtonId);
+		Button incButton = rootView.findViewById(incButtonId);
+		Button decButton = rootView.findViewById(decButtonId);
 
 		final Object this_ = this;
 
@@ -110,14 +110,6 @@ public abstract class AdventureFragment extends DialogFragment {
 	}
 
 
-//		@Override
-//		public void setUserVisibleHint(boolean isVisibleToUser) {
-//			super.setUserVisibleHint(isVisibleToUser);
-//			if (isVisibleToUser) {
-//				refreshScreensFromResume();
-//			}
-//			else {  }
-//		}
 
 
 }

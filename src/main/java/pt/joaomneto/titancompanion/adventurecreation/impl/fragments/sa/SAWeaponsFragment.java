@@ -1,11 +1,5 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventurecreation.impl.SAAdventureCreation;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,150 +12,145 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventurecreation.impl.SAAdventureCreation;
+
 public class SAWeaponsFragment extends Fragment {
 
-	public SAWeaponsFragment() {
-		weaponvalues.put(getString(R.string.saElectricLash), 1);
-		weaponvalues.put(getString(R.string.saAssaultBlaster), 3);
-		weaponvalues.put(getString(R.string.saGrenade), 1);
-		weaponvalues.put(getString(R.string.saGravityBomb), 3);
-		weaponvalues.put(getString(R.string.sa2xArmor), 1);
-	}
+    View rootView;
+    TextView weaponsValue;
+    ListView weaponList = null;
+    Button buttonAddWeapon = null;
 
-	View rootView;
-	TextView weaponsValue;
-	ListView weaponList = null;
-	Button buttonAddWeapon = null;
-	String[] allWeapons = {getString(R.string.saElectricLash), getString(R.string.saAssaultBlaster), getString(R.string.saGrenade), getString(R.string.saGravityBomb), getString(R.string.armor2)};
+    public SAWeaponsFragment() {
+    }
 
-	
-	Map<String, Integer> weaponvalues = new HashMap<String, Integer>();
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		final SAAdventureCreation adv = (SAAdventureCreation) getActivity();
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        final SAAdventureCreation adv = (SAAdventureCreation) getActivity();
 
-		rootView = inflater.inflate(
-				R.layout.fragment_12sa_adventurecreation_weapons, container,
-				false);
-		weaponsValue = (TextView) rootView.findViewById(R.id.weaponsValue);
-		weaponList = (ListView) rootView.findViewById(R.id.weaponList);
-		buttonAddWeapon = (Button) rootView.findViewById(R.id.buttonAddweapon);
+        rootView = inflater.inflate(
+                R.layout.fragment_12sa_adventurecreation_weapons, container,
+                false);
+        weaponsValue = rootView.findViewById(R.id.weaponsValue);
+        weaponList = rootView.findViewById(R.id.weaponList);
+        buttonAddWeapon = rootView.findViewById(R.id.buttonAddweapon);
 
-		weaponList.setOnItemLongClickListener(new OnItemLongClickListener() {
+        weaponList.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				final int position = arg2;
-				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle(R.string.saDeleteWeapon)
-						.setCancelable(false)
-						.setNegativeButton(R.string.close,
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int id) {
-										dialog.cancel();
-									}
-								});
-				builder.setPositiveButton(R.string.ok,
-						new DialogInterface.OnClickListener() {
-							@SuppressWarnings("unchecked")
-							public void onClick(DialogInterface dialog,
-									int which) {
-								adv.getWeapons().remove(position);
-								((ArrayAdapter<String>) weaponList.getAdapter())
-										.notifyDataSetChanged();
-							}
-						});
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+                final int position = arg2;
+                AlertDialog.Builder builder = new AlertDialog.Builder(adv);
+                builder.setTitle(R.string.saDeleteWeapon)
+                        .setCancelable(false)
+                        .setNegativeButton(R.string.close,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                builder.setPositiveButton(R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @SuppressWarnings("unchecked")
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                                adv.getWeapons().remove(position);
+                                ((SAWeaponSpinnerAdapter) weaponList.getAdapter())
+                                        .notifyDataSetChanged();
+                            }
+                        });
 
-				AlertDialog alert = builder.create();
-				alert.show();
-				return true;
+                AlertDialog alert = builder.create();
+                alert.show();
+                return true;
 
-			}
-		});
+            }
+        });
 
-		buttonAddWeapon.setOnClickListener(new OnClickListener() {
+        buttonAddWeapon.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setTitle(R.string.saWeapon);
+                alert.setTitle(R.string.saWeapon);
 
-				// Set an EditText view to get user input
-				final Spinner input = new Spinner(adv);
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv,
-						android.R.layout.simple_list_item_1, android.R.id.text1,
-						allWeapons);
-				input.setAdapter(adapter);
-				InputMethodManager imm = (InputMethodManager) adv
-						.getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
-				input.requestFocus();
-				alert.setView(input);
+                // Set an EditText view to get user input
+                final Spinner input = new Spinner(adv);
+                SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv,
+                        adv.getWeapons().isEmpty() ? SAWeapon.INITIALWEAPONS : SAWeapon.values());
+                input.setAdapter(adapter);
+                InputMethodManager imm = (InputMethodManager) adv
+                        .getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+                input.requestFocus();
+                alert.setView(input);
 
-				alert.setPositiveButton(R.string.ok,
-						new DialogInterface.OnClickListener() {
-							@SuppressWarnings("unchecked")
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								String value = input.getSelectedItem().toString();
-								if(getCurrentWeaponsCount(adv) + weaponvalues.get(value) > Integer.valueOf(weaponsValue.getText().toString())){
-									Adventure.showAlert(getString(R.string.saNoWeaponPoints, value), adv);
-									return;
-								}
-								adv.getWeapons().add(value);
-								((ArrayAdapter<String>) weaponList
-										.getAdapter()).notifyDataSetChanged();
-							}
-						});
+                alert.setPositiveButton(R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @SuppressWarnings("unchecked")
+                            public void onClick(DialogInterface dialog,
+                                                int whichButton) {
+                                SAWeapon selectedWeapon = SAWeapon.values()[input.getSelectedItemPosition()];
+                                if (getCurrentWeaponsCount(adv) + selectedWeapon.getWeaponPoints() > adv.getCurrentWeapons()) {
+                                    Adventure.showAlert(getString(R.string.saNoWeaponPoints, getString(selectedWeapon.getLabelId())), adv);
+                                    return;
+                                }
+                                adv.getWeapons().add(selectedWeapon);
+                                ((SAWeaponSpinnerAdapter) weaponList
+                                        .getAdapter()).notifyDataSetChanged();
+                            }
+                        });
 
-				alert.setNegativeButton(R.string.cancel,
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								// Canceled.
-							}
-						});
+                alert.setNegativeButton(R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int whichButton) {
+                                // Canceled.
+                            }
+                        });
 
-				alert.show();
-			}
+                alert.show();
+            }
 
-		});
+        });
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv,
-				android.R.layout.simple_list_item_1, android.R.id.text1,
-				adv.getWeapons());
-		weaponList.setAdapter(adapter);
-		adapter.notifyDataSetChanged();
 
-		return rootView;
-	}
+        SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv,
+               adv.getWeapons());
 
-	public TextView getWeaponsValue() {
-		return weaponsValue;
-	}
+        weaponList.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
-	public void setWeaponsValue(TextView weaponsValue) {
-		this.weaponsValue = weaponsValue;
-	}
+        return rootView;
+    }
 
-	private float getCurrentWeaponsCount(SAAdventureCreation adv){
-		float count = 0;
-		for (String weapon : adv.getWeapons()) {
-			count+=weaponvalues.get(weapon);
-		}
-		return count;
-	}
-	
+
+    public TextView getWeaponsValue() {
+        return weaponsValue;
+    }
+
+    public void setWeaponsValue(TextView weaponsValue) {
+        this.weaponsValue = weaponsValue;
+    }
+
+    private float getCurrentWeaponsCount(SAAdventureCreation adv) {
+        float count = 0;
+        for (SAWeapon weapon : adv.getWeapons()) {
+            count += weapon.getWeaponPoints();
+        }
+        return count;
+    }
+
 }

@@ -88,7 +88,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/shieldsCount"
         android:layout_marginTop="10dp"
-        android:text="@string/weapons"
+         android:text="@string/weaponsStat"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <TextView

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * Created by joao on 26/04/17.
+ * Created by Joao Neto on 26/04/17.
  */
 
 public class Army extends ArrayList<SoldiersDivision> {

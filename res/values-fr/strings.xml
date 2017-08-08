@@ -230,9 +230,9 @@
     <string name="title_adventure_creation_potions">Potions</string>
 
     <string-array name="standard_potion_list">
-        <item>Adresse</item>
-        <item>Vigueur</item>
-        <item>Bonne fortune</item>
+        <item>d\' Adresse</item>
+        <item>de Vigueur</item>
+        <item>de Bonne fortune</item>
     </string-array>
 
     <string name="skill">Habileté: </string>
@@ -241,6 +241,9 @@
     <string name="skill2">Habileté</string>
     <string name="stamina2">Endurance</string>
     <string name="luck2">Chance</string>
+    <string name="setInitialStamina">Modifier Endurance initiale</string>
+    <string name="setInitialSkill">Modifier Habilité initiale</string>
+    <string name="setInitialLuck">Modifier Change initiale</string>
     <string name="name">Nom:</string>
     <string name="saveAdventure">Sauver l\'aventure</string>
     <string name="rollStats">Lancer les dés</string>
@@ -310,7 +313,7 @@
 
     <string name="ship">Vaisseau</string>
     <string name="ship2">Vaisseau:</string>
-    <string name="weapons">Force de Frappe: </string>
+    <string name="weaponsStat">Force de Frappe: </string>
     <string name="shields">Boucliers </string>
     <string name="landingParty">Equipe d\'exploration</string>
     <string name="restoreStaminaLandingParty">Restaurer l\'Endurance de l\'équipe d\'exploration</string>
@@ -623,11 +626,13 @@
 <!-- Beneath Nightmare Castle -->
     <string name="bncWillpower">Volonté</string>
     <string name="willpower">Volonté: </string>
+    <string name="setInitialWillpower">Modifier Volonté initiale</string>
     <string name="testWillpower">Tester votre volonté</string>
     <string name="goldTreasure">Or &amp; Trésor</string>
 
 <!-- Phantoms of Fear -->
     <string name="power">Pouvoir: </string>
+    <string name="setinitialPower">Modifier Pouvoir initial</string>
 	<string name="pofSpellProtect">Ecran magique de Protection</string>
     <string name="pofSpellFinding">Détection</string>
     <string name="pofSpellFire">Feu</string>
@@ -731,11 +736,12 @@
     <string name="oxygen">Oxygène:</string>
     <string name="testFear">Tester votre Peur</string>
     <string name="timeAndOxygen">Temps et Oxygène</string>
-    <string name="usePotion">Utiliser la potion de %1$s</string>
+    <string name="usePotion">Utiliser la potion %1$s</string>
 
     <string name="change">Changement</string>
     <string name="robotSpecialAbilityFlyInCircles">Vol circulaire</string>
     <string name="robotSpecialAbilityFlyInCirclesDesc">Si l\'assaut est gagné d\'au moins 4 points, le Frelon inflige double dégâts.</string>
     <string name="deleteKeyword">Enlever mot clé?</string>
     <string name="addKeyword">Ajouter Mot Clé</string>
+    <string name="weapons">"Armes: "</string>
 </resources>

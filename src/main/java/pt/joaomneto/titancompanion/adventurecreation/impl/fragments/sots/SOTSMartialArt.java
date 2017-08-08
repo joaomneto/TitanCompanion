@@ -7,7 +7,7 @@ import java.util.Objects;
 import pt.joaomneto.titancompanion.R;
 
 /**
- * Created by 962633 on 24-05-2017.
+ * Created by Joao Neto on 24-05-2017.
  */
 
 public enum SOTSMartialArt {

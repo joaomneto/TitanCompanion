@@ -147,7 +147,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 			mSectionsPagerAdapter = new StandardSectionsPagerAdapter(getSupportFragmentManager());
 
 			// Set up the ViewPager with the sections adapter.
-			mViewPager = (ViewPager) findViewById(R.id.pager);
+			mViewPager = findViewById(R.id.pager);
 			mViewPager.setAdapter(mSectionsPagerAdapter);
 
 			String fileName = getIntent().getStringExtra(LoadAdventureActivity.ADVENTURE_FILE);
@@ -162,7 +162,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 		}
 	}
 
-	private void loadGameFromFile(File dir, String fileName) throws IOException, FileNotFoundException {
+	private void loadGameFromFile(File dir, String fileName) throws IOException {
 		savedGame = new Properties();
 		savedGame.load(new InputStreamReader(new FileInputStream(new File(dir, fileName)), "UTF-8"));
 
@@ -371,20 +371,20 @@ public abstract class Adventure extends BaseFragmentActivity {
 			d3 = DiceRoller.rollD6();
 		}
 
-		View toastView = getLayoutInflater().inflate(R.layout.d3toast, (ViewGroup) findViewById(R.id.d3ToastLayout));
-		ImageView imageViewD1 = (ImageView) toastView.findViewById(R.id.d1);
+		View toastView = getLayoutInflater().inflate(R.layout.d3toast, findViewById(R.id.d3ToastLayout));
+		ImageView imageViewD1 = toastView.findViewById(R.id.d1);
 		ImageView imageViewD2 = null;
 		ImageView imageViewD3 = null;
 
 		if (diceNumber > 1) {
-			imageViewD2 = (ImageView) toastView.findViewById(R.id.d2);
+			imageViewD2 = toastView.findViewById(R.id.d2);
 		}
 
 		if (diceNumber > 2) {
-			imageViewD3 = (ImageView) toastView.findViewById(R.id.d3);
+			imageViewD3 = toastView.findViewById(R.id.d3);
 		}
 
-		TextView resultView = (TextView) toastView.findViewById(R.id.diceResult);
+		TextView resultView = toastView.findViewById(R.id.diceResult);
 
 		Integer d1Id = getResources().getIdentifier("d6" + d1, "drawable", this.getPackageName());
 
@@ -790,12 +790,12 @@ public abstract class Adventure extends BaseFragmentActivity {
 		}
 	}
 
-	public static String arrayToString(Collection<String> elements) {
+	public static String arrayToString(Collection<? extends Object> elements) {
 		String _string = "";
 
 		if (!elements.isEmpty()) {
-			for (String spell : elements) {
-				_string += spell + "#";
+			for (Object value : elements) {
+				_string += value.toString() + "#";
 			}
 			_string = _string.substring(0, _string.length() - 1);
 		}
