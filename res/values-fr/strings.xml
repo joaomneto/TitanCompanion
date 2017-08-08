@@ -502,12 +502,6 @@
     <string name="unarmed">A mains nues: </string>
 
 <!-- Sword of the Samurai -->
-    <string-array name="skill_list">
-        <item>Kyujutsu</item>
-        <item>Iaijutsu</item>
-        <item>Karumijutsu</item>
-        <item>Ni-to-Kenjutsu</item>
-    </string-array>
     <string name="title_adventure_creation_skill">Discipline spéciale</string>
     <string name="arrows">Flêches</string>
     <string name="honour">Honneur:</string>

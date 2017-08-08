@@ -32,7 +32,10 @@ public class SOTSAdventureCreationSkillFragment extends Fragment {
 		List<Map<String, String>> skillList = new ArrayList<Map<String,String>>();
 
 
-		final String[] stringArray = getResources().getStringArray(R.array.skill_list);
+		List<String> stringArray = new ArrayList<String>();
+		for (SOTSMartialArt art : SOTSMartialArt.values()) {
+			stringArray.add(getResources().getString(art.nameId));
+		}
 
 		for (String string : stringArray) {
 			Map<String, String> skill = new HashMap<String, String>();
@@ -50,7 +53,7 @@ public class SOTSAdventureCreationSkillFragment extends Fragment {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-				((SOTSAdventureCreation)getActivity()).setSkill(getArtFromString(stringArray[position]));
+				((SOTSAdventureCreation)getActivity()).setSkill(getArtFromString(stringArray.get(position)));
 			}
 
 		});

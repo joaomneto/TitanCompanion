@@ -813,12 +813,6 @@
     <string name="heroPoints">Hero Points: </string>
     <string name="unarmed">Unarmed: </string>
     <string name="testCrewStrength">Test Crew Strength</string>
-    <string-array name="skill_list">
-        <item>@string/kyujutsu</item>
-        <item>@string/iaijutsu</item>
-        <item>@string/karumijutsu</item>
-        <item>@string/nitoKenjutsu</item>
-    </string-array>
     <string name="title_adventure_creation_skill">Martial Art</string>
     <string name="arrows">Arrows</string>
     <string name="honour">Honor:</string>

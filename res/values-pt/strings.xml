@@ -407,12 +407,6 @@
     <string name="heroPoints">Pontos de Herói: </string>
     <string name="unarmed">Desarmado: </string>
     <string name="testCrewStrength">Testar Força da Tripulação</string>
-    <string-array name="skill_list">
-        <item>Kyujutsu</item>
-        <item>Iaijutsu</item>
-        <item>Karumijutsu</item>
-        <item>Ni-to-Kenjutsu</item>
-    </string-array>
     <string name="title_adventure_creation_skill">Arte Marcial</string>
     <string name="arrows">Flechas</string>
     <string name="honour">Honra:</string>
