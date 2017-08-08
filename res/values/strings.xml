@@ -819,7 +819,7 @@
         <item>@string/karumijutsu</item>
         <item>@string/nitoKenjutsu</item>
     </string-array>
-    <string name="title_adventure_creation_skill">Arte Marcial</string>
+    <string name="title_adventure_creation_skill">Martial Art</string>
     <string name="arrows">Arrows</string>
     <string name="honour">Honor:</string>
     <string name="willow">Willow Leaf:</string>

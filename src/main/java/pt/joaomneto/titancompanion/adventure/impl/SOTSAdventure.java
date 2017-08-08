@@ -60,7 +60,7 @@ public class SOTSAdventure extends TFODAdventure {
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
 		setCurrentHonour(Integer.valueOf(getSavedGame().getProperty("honour")));
-		setSkill(SOTSMartialArt.valueOf(getSavedGame().getProperty("skill")));
+		setSkill(SOTSMartialArt.getArtFromId(Integer.parseInt(getSavedGame().getProperty("skill"))));
 		setArmourPiercerArrows(Integer.parseInt(getSavedGame().getProperty("armourPiercerArrows")));
 		setBowelRakerArrows(Integer.parseInt(getSavedGame().getProperty("bowelRakerArrows")));
 		setHummingBulbArrows(Integer.parseInt(getSavedGame().getProperty("hummingBulbArrows")));

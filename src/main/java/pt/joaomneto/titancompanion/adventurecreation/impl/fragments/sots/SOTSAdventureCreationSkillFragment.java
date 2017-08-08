@@ -7,6 +7,8 @@ import java.util.Map;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventurecreation.impl.SOTSAdventureCreation;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -48,7 +50,7 @@ public class SOTSAdventureCreationSkillFragment extends Fragment {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-				((SOTSAdventureCreation)getActivity()).setSkill(stringArray[position]);
+				((SOTSAdventureCreation)getActivity()).setSkill(getArtFromString(stringArray[position]));
 			}
 
 		});
@@ -56,5 +58,12 @@ public class SOTSAdventureCreationSkillFragment extends Fragment {
 		return rootView;
 	}
 
+	SOTSMartialArt getArtFromString(String nameString) {
+		for (SOTSMartialArt art : SOTSMartialArt.values()) {
+			if (nameString.equals(getResources().getString(art.nameId)))
+				return art;
+		}
+		return null;
+	}
 
 }
