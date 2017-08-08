@@ -10,7 +10,6 @@
     <string name="button_send">Envoyer</string>
     <string name="action_settings">Paramètres</string>
     <string name="title_activity_main">Titan Companion</string>
-    <string name="hello_world">Bonjour monde !</string>
     <string name="saved_games">Parties sauvegardées: </string>
     <string name="create_new_adventure">Commencer une nouvelle aventure</string>
     <string name="load_adventure">Charger une aventure</string>
