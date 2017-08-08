@@ -29,6 +29,8 @@ import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class AdventureCombatFragment extends AdventureFragment {
 
+	public static final String NORMAL = "NORMAL";
+	public static final String SEQUENCE = "SEQUENCE";
 	protected TextView combatResult = null;
 	protected Button startCombatButton = null;
 	protected Button combatTurnButton = null;
@@ -38,15 +40,9 @@ public class AdventureCombatFragment extends AdventureFragment {
 	protected Button resetButton2 = null;
 	protected Switch combatTypeSwitch = null;
 	protected View rootView = null;
-
 	protected List<Combatant> combatPositions = new ArrayList<AdventureCombatFragment.Combatant>();
 	protected CombatantListAdapter combatantListAdapter = null;
 	protected ListView combatantsListView = null;
-
-	public static final String NORMAL = "NORMAL";
-	public static final String SEQUENCE = "SEQUENCE";
-
-
 	protected String combatMode = NORMAL;
 	protected int handicap = 0;
 
@@ -60,6 +56,14 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 	public AdventureCombatFragment() {
 
+	}
+
+	protected static int convertDamageStringToInteger(String damage) {
+		if (damage.equals("1D6")) {
+			return DiceRoller.rollD6();
+		} else {
+			return Integer.parseInt(damage);
+		}
 	}
 
 	@Override
@@ -144,7 +148,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 				refreshScreensFromResume();
 			}
 		});
-		
+
 		resetButton2.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -324,8 +328,6 @@ public class AdventureCombatFragment extends AdventureFragment {
 		}
 	}
 
-	
-
 	protected void standardCombatTurn() {
 		Combatant position = getCurrentEnemy();
 
@@ -414,26 +416,8 @@ public class AdventureCombatFragment extends AdventureFragment {
 		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 
-				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
+				confirmCombatAction(mgr, addCombatantView);
 
-                EditText enemySkillValue = addCombatantView.findViewById(R.id.enemySkillValue);
-                EditText enemyStaminaValue = addCombatantView.findViewById(R.id.enemyStaminaValue);
-                EditText handicapValue = addCombatantView.findViewById(R.id.handicapValue);
-
-				String skillS = enemySkillValue.getText().toString();
-				String staminaS = enemyStaminaValue.getText().toString();
-				Integer skill = null;
-				Integer stamina = null;
-				try {
-					skill = Integer.valueOf(skillS);
-					stamina = Integer.valueOf(staminaS);
-				} catch (NumberFormatException e) {
-					Adventure.showAlert(getString(R.string.youMustFillSkillAndStamina), AdventureCombatFragment.this.getActivity());
-					return;
-				}
-				Integer handicap = Integer.valueOf(handicapValue.getText().toString());
-
-				addCombatant(rootView, skill, stamina, handicap, getDefaultEnemyDamage());
 
 			}
 
@@ -441,7 +425,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 		AlertDialog alert = builder.create();
 
-        EditText skillValue = addCombatantView.findViewById(R.id.enemySkillValue);
+		EditText skillValue = addCombatantView.findViewById(R.id.enemySkillValue);
 
 		alert.setView(addCombatantView);
 
@@ -451,13 +435,37 @@ public class AdventureCombatFragment extends AdventureFragment {
 		alert.show();
 	}
 
+	protected void confirmCombatAction(InputMethodManager mgr, View addCombatantView) {
+		mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
+
+		EditText enemySkillValue = addCombatantView.findViewById(R.id.enemySkillValue);
+		EditText enemyStaminaValue = addCombatantView.findViewById(R.id.enemyStaminaValue);
+		EditText handicapValue = addCombatantView.findViewById(R.id.handicapValue);
+
+		String skillS = enemySkillValue.getText().toString();
+		String staminaS = enemyStaminaValue.getText().toString();
+		Integer skill = null;
+		Integer stamina = null;
+		try {
+			skill = Integer.valueOf(skillS);
+			stamina = Integer.valueOf(staminaS);
+		} catch (NumberFormatException e) {
+			Adventure.showAlert(getString(R.string.youMustFillSkillAndStamina), AdventureCombatFragment.this.getActivity());
+			return;
+		}
+		Integer handicap = Integer.valueOf(handicapValue.getText().toString());
+
+
+		addCombatant(rootView, skill, stamina, handicap, getDefaultEnemyDamage());
+	}
+
 	protected void addCombatant(final View rootView, Integer skill, Integer stamina, Integer handicap, String damage) {
 
 		Combatant combatPosition = new Combatant(stamina, skill, handicap, combatPositions.size() > 0, damage);
 		if(!combatPositions.isEmpty())
 			combatPosition.setDefenseOnly(true);
 		combatPositions.add(combatPosition);
-		combatantListAdapter.setCurrentEnemy(combatPosition);
+		combatantListAdapter.setCurrentEnemy(combatPositions.get(0));
 		refreshScreensFromResume();
 
 	}
@@ -469,9 +477,59 @@ public class AdventureCombatFragment extends AdventureFragment {
 
     }
 
-
 	protected int getDamage() {
 		return 2;
+	}
+
+	protected void resetCombat() {
+
+		staminaLoss = 0;
+
+		combatPositions.clear();
+		combatMode = NORMAL;
+		combatStarted = false;
+		combatantListAdapter.setCurrentEnemy(null);
+		combatResult.setText("");
+
+		combatTypeSwitch.setClickable(true);
+		combatTypeSwitch.setChecked(false);
+
+		switchLayoutReset();
+
+		refreshScreensFromResume();
+	}
+
+	protected void switchLayoutReset() {
+		addCombatButton.setVisibility(View.VISIBLE);
+		combatTypeSwitch.setVisibility(View.VISIBLE);
+		startCombatButton.setVisibility(View.VISIBLE);
+		resetButton.setVisibility(View.VISIBLE);
+
+		testLuckButton.setVisibility(View.GONE);
+		combatTurnButton.setVisibility(View.GONE);
+		resetButton2.setVisibility(View.GONE);
+	}
+
+	protected String combatTypeSwitchBehaviour(boolean isChecked) {
+		return combatMode = isChecked ? SEQUENCE : NORMAL;
+	}
+
+	protected void startCombat() {
+		combatTurn();
+
+		switchLayoutCombatStarted();
+	}
+
+	protected String getDefaultEnemyDamage() {
+		return "2";
+	}
+
+	protected Boolean suddenDeath(DiceRoll diceRoll, DiceRoll enemyDiceRoll) {
+		return false;
+	}
+
+	protected Combatant getCurrentEnemy() {
+		return combatantListAdapter.getCurrentEnemy();
 	}
 
 	public class Combatant {
@@ -503,16 +561,20 @@ public class AdventureCombatFragment extends AdventureFragment {
 			return currentStamina;
 		}
 
+		public void setCurrentStamina(Integer currentStamina) {
+			this.currentStamina = currentStamina;
+		}
+
 		public Integer getCurrentSkill() {
 			return currentSkill;
 		}
 
-		public boolean isDefenseOnly() {
-			return defenseOnly;
+		public void setCurrentSkill(Integer currentSkill) {
+			this.currentSkill = currentSkill;
 		}
 
-		public void setCurrentStamina(Integer currentStamina) {
-			this.currentStamina = currentStamina;
+		public boolean isDefenseOnly() {
+			return defenseOnly;
 		}
 
 		public void setDefenseOnly(boolean defenseOnly) {
@@ -523,8 +585,16 @@ public class AdventureCombatFragment extends AdventureFragment {
 			return handicap;
 		}
 
+		public void setHandicap(Integer handicap) {
+			this.handicap = handicap;
+		}
+
 		public String getDamage() {
 			return damage;
+		}
+
+		public void setDamage(String damage) {
+			this.damage = damage;
 		}
 
 		public Integer getStaminaLoss() {
@@ -535,51 +605,6 @@ public class AdventureCombatFragment extends AdventureFragment {
 			this.staminaLoss = staminaLoss;
 		}
 
-		public void setDamage(String damage) {
-			this.damage = damage;
-		}
-
-		public void setCurrentSkill(Integer currentSkill) {
-			this.currentSkill = currentSkill;
-		}
-
-		public void setHandicap(Integer handicap) {
-			this.handicap = handicap;
-		}
-
-	}
-
-	protected void resetCombat() {
-
-		staminaLoss = 0;
-
-		combatPositions.clear();
-		combatMode = NORMAL;
-		combatStarted = false;
-		combatantListAdapter.setCurrentEnemy(null);
-        combatResult.setText("");
-
-		combatTypeSwitch.setClickable(true);
-		combatTypeSwitch.setChecked(false);
-
-		switchLayoutReset();
-
-		refreshScreensFromResume();
-	}
-
-	protected void switchLayoutReset() {
-		addCombatButton.setVisibility(View.VISIBLE);
-		combatTypeSwitch.setVisibility(View.VISIBLE);
-		startCombatButton.setVisibility(View.VISIBLE);
-		resetButton.setVisibility(View.VISIBLE);
-
-		testLuckButton.setVisibility(View.GONE);
-		combatTurnButton.setVisibility(View.GONE);
-		resetButton2.setVisibility(View.GONE);
-	}
-
-	protected String combatTypeSwitchBehaviour(boolean isChecked) {
-		return combatMode = isChecked ? SEQUENCE : NORMAL;
 	}
 
 	private class CombatTypeSwitchChangeListener implements OnCheckedChangeListener {
@@ -590,34 +615,6 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 		}
 
-	}
-
-	protected static int convertDamageStringToInteger(String damage) {
-		if (damage.equals("1D6")) {
-			return DiceRoller.rollD6();
-		} else {
-			return Integer.parseInt(damage);
-		}
-	}
-
-	protected void startCombat() {
-		combatTurn();
-
-		switchLayoutCombatStarted();
-	}
-
-	
-
-	protected String getDefaultEnemyDamage() {
-		return "2";
-	}
-
-	protected Boolean suddenDeath(DiceRoll diceRoll, DiceRoll enemyDiceRoll) {
-		return null;
-	}
-	
-	protected Combatant getCurrentEnemy(){
-		return combatantListAdapter.getCurrentEnemy();
 	}
 
 }

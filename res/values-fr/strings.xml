@@ -241,6 +241,8 @@
     <string name="skill2">Habileté</string>
     <string name="stamina2">Endurance</string>
     <string name="luck2">Chance</string>
+    <string name="skillAbr">Habil.: </string>
+    <string name="staminaAbr">Endur.: </string>
     <string name="setInitialStamina">Modifier Endurance initiale</string>
     <string name="setInitialSkill">Modifier Habilité initiale</string>
     <string name="setInitialLuck">Modifier Change initiale</string>
@@ -329,8 +331,8 @@
 
     <string name="crewman">Membre d\'équipage: </string>
     <string name="crewman2">Membre d\'équipage</string>
-    <string name="enemySkill">Habileté de l\'adversaire: </string>
-    <string name="enemyStamina">Endurance de l\'adversaire: </string>
+    <string name="enemySkill">Habileté: </string>
+    <string name="enemyStamina">Endurance: </string>
     <string name="versus">vs.</string>
     <string name="captain">Commandant</string>
     <string name="reset">Réinitialiser</string>
