@@ -7,7 +7,7 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMar
 
 public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 
-	protected boolean firstRound;
+	protected boolean firstRound = true;
 	protected Integer enemyDiceRoll = null;
 
 	protected void sequenceCombatTurn() {

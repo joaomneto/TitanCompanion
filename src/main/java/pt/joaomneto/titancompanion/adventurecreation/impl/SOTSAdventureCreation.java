@@ -6,14 +6,13 @@ import java.io.IOException;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt;
 
 import android.view.View;
 
 public class SOTSAdventureCreation extends AdventureCreation {
 
-	String skill;
-
-	public static int SOTS20_KYUJUTSTU = R.string.kyujutsu;
+	SOTSMartialArt skill;
 
 	public SOTSAdventureCreation() {
 		super();
@@ -34,11 +33,11 @@ public class SOTSAdventureCreation extends AdventureCreation {
 	@Override
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 		bw.write("honour=3\n");
-		bw.write("skill=" + skill + "\n");
+		bw.write("skill=" + skill.getNameId() + "\n");
 		bw.write("provisions=10\n");
 		bw.write("provisionsValue=4\n");
 		bw.write("gold=0\n");
-		if (skill.equals(SOTS20_KYUJUTSTU)) {
+		if (SOTSMartialArt.KYUJUTSU == skill) {
 			bw.write("willowLeafArrows=3\n");
 			bw.write("bowelRakerArrows=3\n");
 			bw.write("armourPiercerArrows=3\n");
@@ -47,13 +46,14 @@ public class SOTSAdventureCreation extends AdventureCreation {
 	}
 
 
-	public String getSkill() {
+	public SOTSMartialArt getSkill() {
 		return skill;
 	}
 
-	public void setSkill(String skill) {
+	public void setSkill(SOTSMartialArt skill) {
 		this.skill = skill;
 	}
+
 
 	@Override
 	public String validateCreationSpecificParameters() {

@@ -1,5 +1,9 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots;
 
+import android.content.Context;
+
+import java.util.Objects;
+
 import pt.joaomneto.titancompanion.R;
 
 /**
@@ -19,11 +23,22 @@ public enum SOTSMartialArt {
         this.nameId = nameId;
     }
 
-    public int getNameId() {
-        return nameId;
+    public static boolean isIdValid(int id) {
+        for (SOTSMartialArt art : SOTSMartialArt.values()) {
+            if (id == art.nameId) return true;
+        }
+        return false;
     }
 
-    public void setNameId(int nameId) {
-        this.nameId = nameId;
+    public static SOTSMartialArt getArtFromId(int id) {
+        for (SOTSMartialArt art : SOTSMartialArt.values()) {
+            if (id == art.nameId) return art;
+        }
+        return null;
     }
+
+    public int getNameId() {
+        return this.nameId;
+    }
+
 }

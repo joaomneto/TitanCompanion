@@ -21,7 +21,6 @@
     <string name="button_send">Send</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">Titan Companion</string>
-    <string name="hello_world">Hello world!</string>
     <string name="saved_games">Saved games: </string>
     <string name="create_new_adventure">Start New Adventure</string>
     <string name="load_adventure">Load Adventure</string>
@@ -218,18 +217,18 @@
         <item>http://fightingfantasy.wikia.com/wiki/Curse_of_the_Mummy</item>
     </string-array>
 
-    <string name="title_activity_gamebook_selection">GamebookSelectionActivity</string>
+    <string name="title_activity_gamebook_selection">Select Gamebook</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="selectedGamebookCover">Selected Gamebook Cover</string>
-    <string name="title_activity_gamebook_wikia">GamebookWikiaActivity</string>
+    <string name="title_activity_gamebook_wikia">Titannica Wiki</string>
     <string name="title_activity_gamebook_full_image">GamebookFullImageActivity</string>
     <string name="title_activity_swipe">SwipeActivity</string>
     <string name="title_activity_xpto">XPTOActivity</string>
     <string name="title_activity_gamebook_selection_swipe">GamebookSelectionSwipeActivity</string>
     <string name="title_adventurecreationphase_list">AdventureCreationPhases</string>
     <string name="title_adventurecreationphase_detail">AdventureCreationPhase Detail</string>
-    <string name="title_activity_adventure_creation">AdventureCreation</string>
+    <string name="title_activity_adventure_creation">New Adventure</string>
     <string name="title_adventure_creation_vitalstats">Vital Statistics</string>
     <string name="title_adventure_creation_potions">Potions</string>
 
@@ -251,7 +250,7 @@
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
-    <string name="title_activity_load_adventure">LoadAdventureActivity</string>
+    <string name="title_activity_load_adventure">Load Adventure</string>
     <string name="potionsProvisions">Potions &amp; Provisions</string>
     <string name="goldEquipment">Gold &amp; Equipment</string>
     <string name="moneyEquipment">Money &amp; Equipment</string>
@@ -813,13 +812,7 @@
     <string name="heroPoints">Hero Points: </string>
     <string name="unarmed">Unarmed: </string>
     <string name="testCrewStrength">Test Crew Strength</string>
-    <string-array name="skill_list">
-        <item>@string/kyujutsu</item>
-        <item>@string/iaijutsu</item>
-        <item>@string/karumijutsu</item>
-        <item>@string/nitoKenjutsu</item>
-    </string-array>
-    <string name="title_adventure_creation_skill">Arte Marcial</string>
+    <string name="title_adventure_creation_skill">Martial Art</string>
     <string name="arrows">Arrows</string>
     <string name="honour">Honor:</string>
     <string name="willow">Willow Leaf:</string>

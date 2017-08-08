@@ -51,20 +51,24 @@ public class SOTSAdventure extends TFODAdventure {
 	public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 		bw.write("honour=" + getCurrentHonour() + "\n");
 		bw.write("skill=" + getSkill().name() + "\n");
-		bw.write("armourPiercerArrows=" + getArmourPiercerArrows() + "\n");
-		bw.write("bowelRakerArrows=" + getBowelRakerArrows() + "\n");
-		bw.write("hummingBulbArrows=" + getHummingBulbArrows() + "\n");
-		bw.write("willowLeafArrows=" + getWillowLeafArrows() + "\n");
+		if (SOTSMartialArt.KYUJUTSU == skill) {
+			bw.write("armourPiercerArrows=" + getArmourPiercerArrows() + "\n");
+			bw.write("bowelRakerArrows=" + getBowelRakerArrows() + "\n");
+			bw.write("hummingBulbArrows=" + getHummingBulbArrows() + "\n");
+			bw.write("willowLeafArrows=" + getWillowLeafArrows() + "\n");
+		}
 	}
 
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
 		setCurrentHonour(Integer.valueOf(getSavedGame().getProperty("honour")));
-		setSkill(SOTSMartialArt.valueOf(getSavedGame().getProperty("skill")));
-		setArmourPiercerArrows(Integer.parseInt(getSavedGame().getProperty("armourPiercerArrows")));
-		setBowelRakerArrows(Integer.parseInt(getSavedGame().getProperty("bowelRakerArrows")));
-		setHummingBulbArrows(Integer.parseInt(getSavedGame().getProperty("hummingBulbArrows")));
-		setWillowLeafArrows(Integer.parseInt(getSavedGame().getProperty("willowLeafArrows")));
+		setSkill(SOTSMartialArt.getArtFromId(Integer.parseInt(getSavedGame().getProperty("skill"))));
+		if (SOTSMartialArt.KYUJUTSU == skill) {
+			setArmourPiercerArrows(Integer.parseInt(getSavedGame().getProperty("armourPiercerArrows")));
+			setBowelRakerArrows(Integer.parseInt(getSavedGame().getProperty("bowelRakerArrows")));
+			setHummingBulbArrows(Integer.parseInt(getSavedGame().getProperty("hummingBulbArrows")));
+			setWillowLeafArrows(Integer.parseInt(getSavedGame().getProperty("willowLeafArrows")));
+		}
 	}
 
 	public int getCurrentHonour() {
