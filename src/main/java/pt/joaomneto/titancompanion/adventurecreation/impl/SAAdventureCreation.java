@@ -1,5 +1,7 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl;
 
+import android.view.View;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,7 +15,6 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAVitalSt
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
-import android.view.View;
 
 public class SAAdventureCreation extends AdventureCreation {
 
@@ -40,7 +41,7 @@ public class SAAdventureCreation extends AdventureCreation {
 
 		bw.write("currentArmor="+currentArmor+"\n");
 		bw.write("currentWeapons="+currentWeapons+"\n");
-		bw.write("weapons="+Adventure.arrayToString(weapons)+"\n");
+		bw.write("weaponsStat=" + Adventure.arrayToString(weapons) + "\n");
 		bw.write("provisions=4\n");
 		bw.write("provisionsValue=5\n");
 	}

@@ -27,7 +27,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/textField3"
         android:gravity="center"
-        android:text="@string/weapons"
+        android:text="@string/weaponsStat"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
@@ -163,7 +163,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/textField4"
         android:gravity="center"
-        android:text="@string/weapons"
+        android:text="@string/weaponsStat"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
@@ -338,7 +338,7 @@
         android:layout_below="@+id/textField6"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="@string/weapons"
+        android:text="@string/weaponsStat"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

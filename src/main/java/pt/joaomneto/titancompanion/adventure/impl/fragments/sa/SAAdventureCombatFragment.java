@@ -108,7 +108,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 		Combatant position = getCurrentEnemy();
 		SAAdventure adv = (SAAdventure) getActivity();
 
-		assaultBlaster = adv.getWeapons().contains(getString(R.string.saAssaultBlaster));
+		assaultBlaster = adv.getWeapons().contains(SAWeapon.ASSAULT_BLASTER);
 
 		draw = false;
 		luckTest = false;
@@ -199,7 +199,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 				Integer handicap = Integer.valueOf(handicapValue.getText().toString());
 
 				addCombatant(rootView, skill, stamina, handicap,
-						weaponSpinner == null ? "2" : weaponSpinner.getSelectedItem().toString().equals(getString(R.string.saAssaultBlaster)) ? "1d6" : "2");
+						weaponSpinner == null ? "2" : weaponSpinner.getSelectedItem().equals(SAWeapon.ASSAULT_BLASTER) ? "1d6" : "2");
 
 			}
 
@@ -238,6 +238,9 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 		return getString(R.string.saWeapons);
 	}
 
-
-
+	@Override
+	public void refreshScreensFromResume() {
+		super.refreshScreensFromResume();
+		grenadeButton.setEnabled(((SAAdventure) getContext()).getWeapons().contains(SAWeapon.GRENADE));
+	}
 }

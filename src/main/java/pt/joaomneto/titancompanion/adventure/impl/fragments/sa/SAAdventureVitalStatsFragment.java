@@ -1,8 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sa;
 
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +7,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 
 public class SAAdventureVitalStatsFragment extends AdventureVitalStatsFragment {
 
@@ -32,11 +33,11 @@ public class SAAdventureVitalStatsFragment extends AdventureVitalStatsFragment {
 
 		initialize(rootView);
 
-		decreasearmorButton = (Button) rootView
+		decreasearmorButton = rootView
 				.findViewById(R.id.minusarmorButton);
-		increasearmorButton = (Button) rootView
+		increasearmorButton = rootView
 				.findViewById(R.id.plusarmorButton);
-		armorValue = (TextView) rootView.findViewById(R.id.statsarmorValue);
+		armorValue = rootView.findViewById(R.id.statsarmorValue);
 		final SAAdventure adv = (SAAdventure) getActivity();
 
 		decreasearmorButton.setOnClickListener(new OnClickListener() {
@@ -59,6 +60,7 @@ public class SAAdventureVitalStatsFragment extends AdventureVitalStatsFragment {
 
 			}
 		});
+
 
 		refreshScreensFromResume();
 

@@ -89,7 +89,7 @@ public class SAWeaponsFragment extends Fragment {
                 // Set an EditText view to get user input
                 final Spinner input = new Spinner(adv);
                 SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv,
-                        SAWeapon.values());
+                        adv.getWeapons().isEmpty() ? SAWeapon.INITIALWEAPONS : SAWeapon.values());
                 input.setAdapter(adapter);
                 InputMethodManager imm = (InputMethodManager) adv
                         .getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -103,7 +103,7 @@ public class SAWeaponsFragment extends Fragment {
                             public void onClick(DialogInterface dialog,
                                                 int whichButton) {
                                 SAWeapon selectedWeapon = SAWeapon.values()[input.getSelectedItemPosition()];
-                                if (getCurrentWeaponsCount(adv) + selectedWeapon.getWeaponPoints() > Integer.valueOf(weaponsValue.getText().toString())) {
+                                if (getCurrentWeaponsCount(adv) + selectedWeapon.getWeaponPoints() > adv.getCurrentWeapons()) {
                                     Adventure.showAlert(getString(R.string.saNoWeaponPoints, getString(selectedWeapon.getLabelId())), adv);
                                     return;
                                 }

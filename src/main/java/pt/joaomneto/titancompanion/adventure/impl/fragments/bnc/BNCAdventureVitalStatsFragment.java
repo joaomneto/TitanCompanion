@@ -1,11 +1,13 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.bnc;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
@@ -33,12 +35,27 @@ public class BNCAdventureVitalStatsFragment extends AdventureVitalStatsFragment 
 
 		initialize(rootView);
 
-		decreaseWillpowerButton = (Button) rootView
+		decreaseWillpowerButton = rootView
 				.findViewById(R.id.minusWillpowerButton);
-		increaseWillpowerButton = (Button) rootView
+		increaseWillpowerButton = rootView
 				.findViewById(R.id.plusWillpowerButton);
-		willpowerValue = (TextView) rootView.findViewById(R.id.statsWillpowerValue);
+		willpowerValue = rootView.findViewById(R.id.statsWillpowerValue);
 		final BNCAdventure adv = (BNCAdventure) getActivity();
+
+		willpowerValue = rootView.findViewById(R.id.statsWillpowerValue);
+		willpowerValue.setOnClickListener(view -> {
+
+			AlertDialog.Builder alert = createAlertForInitialStatModification(R.string.setInitialWillpower, (dialog, whichButton) -> {
+
+				EditText input = ((AlertDialog) dialog).findViewById(R.id.alert_editText_field);
+
+				int value = Integer.parseInt(input.getText().toString());
+				adv.setInitialWillpower(value);
+			});
+
+
+			alert.show();
+		});
 
 		decreaseWillpowerButton.setOnClickListener(new OnClickListener() {
 

@@ -24,6 +24,8 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponS
 public class SAAdventureWeaponsFragment extends AdventureFragment {
 
 	ListView weaponsList = null;
+	Spinner weaponsDropdown = null;
+	SAWeaponSpinnerAdapter weaponsDropdownAdapter = null;
 
 	public SAAdventureWeaponsFragment() {
 

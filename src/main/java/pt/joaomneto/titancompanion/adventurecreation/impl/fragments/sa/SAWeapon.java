@@ -17,6 +17,8 @@ public enum SAWeapon {
     private int labelId;
     private int weaponPoints;
 
+    public static final SAWeapon[] INITIALWEAPONS = new SAWeapon[]{ELECTRIC_LASH, ASSAULT_BLASTER};
+
     SAWeapon(int labelId, int weaponPoints) {
         this.labelId = labelId;
         this.weaponPoints = weaponPoints;

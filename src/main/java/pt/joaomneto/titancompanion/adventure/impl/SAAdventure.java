@@ -57,7 +57,7 @@ public class SAAdventure extends Adventure {
     public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
         bw.write("currentArmor=" + currentArmor + "\n");
-        bw.write("weapons=" + arrayToString(weapons) + "\n");
+        bw.write("weaponsStat=" + arrayToString(weapons) + "\n");
         bw.write("provisions=4\n");
         bw.write("provisionsValue=5\n");
     }
@@ -65,7 +65,7 @@ public class SAAdventure extends Adventure {
     @Override
     protected void loadAdventureSpecificValuesFromFile() {
         setCurrentArmor(Integer.valueOf(getSavedGame().getProperty("currentArmor")));
-        List<String> weaponsStrings = stringToArray(getSavedGame().getProperty("weapons"));
+        List<String> weaponsStrings = stringToArray(getSavedGame().getProperty("weaponsStat"));
         for (String weaponName : weaponsStrings
                 ) {
             weapons.add(SAWeapon.valueOf(weaponName));

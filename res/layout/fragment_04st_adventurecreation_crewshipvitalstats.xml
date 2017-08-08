@@ -306,7 +306,7 @@
             android:layout_height="40dp"
             android:paddingLeft="10dp"
             android:gravity="center_vertical"
-            android:text="@string/weapons"
+            android:text="@string/weaponsStat"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
