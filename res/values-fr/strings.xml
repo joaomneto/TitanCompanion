@@ -230,7 +230,7 @@
     <string name="title_adventure_creation_potions">Potions</string>
 
     <string-array name="standard_potion_list">
-        <item>d\' Adresse</item>
+        <item>d\'Adresse</item>
         <item>de Vigueur</item>
         <item>de Bonne fortune</item>
     </string-array>
@@ -634,8 +634,7 @@
 
 <!-- Phantoms of Fear -->
     <string name="power">Pouvoir: </string>
-    <string name="setinitialPower">Modifier Pouvoir initial</string>
-	<string name="pofSpellProtect">Ecran magique de Protection</string>
+    <string name="pofSpellProtect">Ecran magique de Protection</string>
     <string name="pofSpellFinding">Détection</string>
     <string name="pofSpellFire">Feu</string>
     <string name="pofSpellIllusion">Illusion</string>
@@ -746,4 +745,5 @@
     <string name="deleteKeyword">Enlever mot clé?</string>
     <string name="addKeyword">Ajouter Mot Clé</string>
     <string name="weapons">"Armes: "</string>
+    <string name="setInitialPower">Modifier Pouvoir initial</string>
 </resources>
