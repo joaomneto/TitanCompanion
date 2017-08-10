@@ -122,23 +122,21 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 
             AlertDialog.Builder alert = createAlertForInitialStatModification(R.string.setInitialStamina, (dialog, whichButton) -> {
 
-                EditText input = ((AlertDialog) dialog).findViewById(R.id.alert_editText_field);
+                int value = getValueFromAlertTextField(rootView, (AlertDialog) dialog);
 
-                int value = Integer.parseInt(input.getText().toString());
                 adv.setInitialStamina(value);
             });
 
 
             alert.show();
+            rootView.clearFocus();
         });
 
         skillValue.setOnClickListener(view -> {
 
             AlertDialog.Builder alert = createAlertForInitialStatModification(R.string.setInitialSkill, (dialog, whichButton) -> {
 
-                EditText input = ((AlertDialog) dialog).findViewById(R.id.alert_editText_field);
-
-                int value = Integer.parseInt(input.getText().toString());
+                int value = getValueFromAlertTextField(rootView, (AlertDialog) dialog);
                 adv.setInitialSkill(value);
             });
 
@@ -150,9 +148,8 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 
             AlertDialog.Builder alert = createAlertForInitialStatModification(R.string.setInitialLuck, (dialog, whichButton) -> {
 
-                EditText input = ((AlertDialog) dialog).findViewById(R.id.alert_editText_field);
+                int value = getValueFromAlertTextField(rootView, (AlertDialog) dialog);
 
-                int value = Integer.parseInt(input.getText().toString());
                 adv.setInitialLuck(value);
             });
 
@@ -236,6 +233,16 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
 
     }
 
+    private int getValueFromAlertTextField(View view, AlertDialog dialog) {
+        EditText input = dialog.findViewById(R.id.alert_editText_field);
+
+        int value = Integer.parseInt(input.getText().toString());
+
+        ((Adventure) getActivity()).closeKeyboard(view);
+
+        return value;
+    }
+
 
     public void setProvisionsValue(Integer value) {
         this.provisionsValue.setText(value.toString());
@@ -261,6 +268,17 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
                 (dialog, whichButton) -> imm.hideSoftInputFromWindow(input.getWindowToken(), 0));
 
         alert.setPositiveButton(R.string.ok, positiveButtonListener);
+
+        alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                View view = getActivity().getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+            }
+        });
 
         return alert;
     }

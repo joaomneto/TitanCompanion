@@ -5,7 +5,7 @@
     android:versionName="0.22-beta">
 
     <uses-sdk
-        android:minSdkVersion="18"
+        android:minSdkVersion="19"
         android:targetSdkVersion="26" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -59,12 +59,15 @@
         </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TWOFMAdventureCreation"
-            android:label="@string/twofm" >
+            android:label="@string/twofm"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TWOFMAdventure"
             android:label="@string/twofm"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TCOCAdventureCreation"
