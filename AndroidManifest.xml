@@ -353,6 +353,17 @@
             android:label="@string/hotw"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TPOPAdventureCreation"
+            android:label="@string/hotw"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.TPOPAdventure"
+            android:label="@string/hotw"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

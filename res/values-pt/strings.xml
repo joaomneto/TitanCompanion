@@ -81,70 +81,7 @@
     <string name="bb">Bloodbones</string>
     <string name="hotw">Howl of the Werewolf</string>
 
-    <string-array name="gamebook_list_names">
-        <item>@string/twofm</item>
-        <item>@string/tcoc</item>
-        <item>@string/tfod</item>
-        <item>@string/st</item>
-        <item>@string/cot</item>
-        <item>@string/dd</item>
-        <item>@string/iotlk</item>
-        <item>@string/ss</item>
-        <item>@string/cotsw</item>
-        <item>@string/hoh</item>
-        <item>@string/tod</item>
-        <item>@string/sa</item>
-        <item>@string/ff</item>
-        <item>@string/tot</item>
-        <item>@string/trok</item>
-        <item>@string/sob</item>
-        <item>@string/awf</item>
-        <item>@string/rp</item>
-        <item>@string/dotd</item>
-        <item>@string/sots</item>
-        <item>@string/toc</item>
-        <item>@string/rc</item>
-        <item>@string/mom</item>
-        <item>@string/coh</item>
-        <item>@string/bnc</item>
-        <item>@string/cots</item>
-        <item>@string/strider</item>
-        <item>@string/pof</item>
-        <item>@string/mr</item>
-        <item>@string/com</item>
-        <item>@string/bw</item>
-        <item>@string/sota</item>
-        <item>@string/sl</item>
-        <item>@string/sos</item>
-        <item>@string/dod</item>
-        <item>@string/aod</item>
-        <item>@string/poe</item>
-        <item>@string/votv</item>
-        <item>@string/fof</item>
-        <item>@string/don</item>
-        <item>@string/moc</item>
-        <item>@string/bvp</item>
-        <item>@string/tkotll</item>
-        <item>@string/lotsw</item>
-        <item>@string/spectral</item>
-        <item>@string/tower</item>
-        <item>@string/tct</item>
-        <item>@string/moon</item>
-        <item>@string/siege</item>
-        <item>@string/rtfm</item>
-        <item>@string/iotu</item>
-        <item>@string/nd</item>
-        <item>@string/s</item>
-        <item>@string/loz</item>
-        <item>@string/d</item>
-        <item>@string/kod</item>
-        <item>@string/m</item>
-        <item>@string/rotv</item>
-        <item>@string/cotm</item>
-        <item>@string/eotd</item>
-        <item>@string/bb</item>
-        <item>@string/hotw</item>
-    </string-array>
+    
 
     <string-array name="gamebook_list_urls">
         <item>http://fightingfantasy.wikia.com/wiki/The_Warlock_of_Firetop_Mountain_(book)</item>
@@ -717,6 +654,7 @@
     <string name="setInitialStamina">Definir Força inicial</string>
     <string name="setInitialSkill">Definir Perícia inicial</string>
     <string name="setInitialLuck">Definir Sorte inicial</string>
+    <string name="tpop">The Port of Peril</string>
 
 
 </resources>
