@@ -19,13 +19,13 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponSpinnerAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter;
 
 public class SAAdventureWeaponsFragment extends AdventureFragment {
 
 	ListView weaponsList = null;
 	Spinner weaponsDropdown = null;
-	SAWeaponSpinnerAdapter weaponsDropdownAdapter = null;
+	TranslatableEnumAdapter weaponsDropdownAdapter = null;
 
 	public SAAdventureWeaponsFragment() {
 
@@ -52,7 +52,7 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 
 				// Set an EditText view to get user input
 				final Spinner input = new Spinner(adv);
-				SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv,
+				TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv,
 						SAWeapon.values());
 				input.setAdapter(adapter);
 				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -65,7 +65,7 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						SAWeapon selectedWeapon = SAWeapon.values()[input.getSelectedItemPosition()];
 						adv.getWeapons().add(selectedWeapon);
-						((SAWeaponSpinnerAdapter) weaponsList.getAdapter()).notifyDataSetChanged();
+						((TranslatableEnumAdapter) weaponsList.getAdapter()).notifyDataSetChanged();
 					}
 				});
 
@@ -81,7 +81,7 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 		});
 
 
-		SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv, adv.getWeapons());
+		TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv, adv.getWeapons());
 		weaponsList.setAdapter(adapter);
 
 		weaponsList.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -100,7 +100,7 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 					@SuppressWarnings("unchecked")
 					public void onClick(DialogInterface dialog, int which) {
 						adv.getWeapons().remove(position);
-						((SAWeaponSpinnerAdapter) weaponsList.getAdapter()).notifyDataSetChanged();
+						((TranslatableEnumAdapter) weaponsList.getAdapter()).notifyDataSetChanged();
 					}
 				});
 
@@ -117,7 +117,7 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void refreshScreensFromResume() {
-		((SAWeaponSpinnerAdapter) weaponsList.getAdapter()).notifyDataSetChanged();
+		((TranslatableEnumAdapter) weaponsList.getAdapter()).notifyDataSetChanged();
 	}
 
 }

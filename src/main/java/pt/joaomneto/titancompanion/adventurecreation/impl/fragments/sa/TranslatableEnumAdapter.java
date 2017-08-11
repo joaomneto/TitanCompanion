@@ -12,22 +12,22 @@ import android.widget.TextView;
 import java.util.Arrays;
 import java.util.List;
 
-import pt.joaomneto.titancompanion.adventurecreation.impl.SAAdventureCreation;
+import pt.joaomneto.titancompanion.adventure.impl.util.TranslatableEnum;
 
 /**
  * Created by Joao Neto on 19-06-2017.
  */
 
-public class SAWeaponSpinnerAdapter extends ArrayAdapter<SAWeapon> {
+public class TranslatableEnumAdapter extends ArrayAdapter<TranslatableEnum> {
 
-    private List<SAWeapon> values = null;
+    private List<? extends TranslatableEnum> values = null;
 
-    public SAWeaponSpinnerAdapter(Context context, List<SAWeapon> values) {
-        super(context, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+    public TranslatableEnumAdapter(Context context, List<? extends TranslatableEnum> values) {
+        super(context, android.R.layout.simple_list_item_1, android.R.id.text1, (List<TranslatableEnum>) values);
         this.values = values;
     }
 
-    public SAWeaponSpinnerAdapter(Context context, SAWeapon[] values) {
+    public TranslatableEnumAdapter(Context context, TranslatableEnum[] values) {
         this(context, Arrays.asList(values));
     }
 

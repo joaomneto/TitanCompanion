@@ -18,7 +18,7 @@ public abstract class SpellAdventure extends Adventure {
 
         if (!spells.isEmpty()) {
             for (Spell spell : spells) {
-                _string += spell.name() + "#";
+                _string += spell+ "#";
             }
             _string = _string.substring(0, _string.length() - 1);
         }

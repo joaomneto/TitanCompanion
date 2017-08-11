@@ -29,7 +29,8 @@ public abstract class Constants {
             R.drawable.ff46, R.drawable.ff47, R.drawable.ff48, R.drawable.ff49,
             R.drawable.ff50, R.drawable.ff51, R.drawable.ff52, R.drawable.ff53,
             R.drawable.ff54, R.drawable.ff55, R.drawable.ff56, R.drawable.ff57,
-            R.drawable.ff58, R.drawable.ff59, R.drawable.ff60, R.drawable.ff61, R.drawable.ff62};
+            R.drawable.ff58, R.drawable.ff59, R.drawable.ff60, R.drawable.ff61,
+            R.drawable.ff62, R.drawable.ff99};
 
     public static int getGameBookCoverAddress(int i) {
         return gameBookCovers[i];

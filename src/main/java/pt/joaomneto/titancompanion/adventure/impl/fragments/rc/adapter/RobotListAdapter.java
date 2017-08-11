@@ -1,11 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.rc.adapter;
 
-import java.util.List;
-
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.Robot;
 import android.content.Context;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -19,6 +13,12 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import java.util.List;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.Robot;
 
 public class RobotListAdapter extends ArrayAdapter<Robot> implements View.OnCreateContextMenuListener {
 
@@ -39,12 +39,12 @@ public class RobotListAdapter extends ArrayAdapter<Robot> implements View.OnCrea
 
 		View robotView = inflater.inflate(R.layout.component_22rc_robot, parent, false);
 
-		final TextView robotTextName = (TextView) robotView.getRootView().findViewById(R.id.robotTextNameValue);
-		final TextView robotTextArmor = (TextView) robotView.getRootView().findViewById(R.id.robotTextArmorValue);
-		final TextView robotTextSpeed = (TextView) robotView.getRootView().findViewById(R.id.robotTextSpeedValue);
-		final TextView robotTextBonus = (TextView) robotView.getRootView().findViewById(R.id.robotTextBonusValue);
-		final TextView robotTextLocation = (TextView) robotView.getRootView().findViewById(R.id.robotTextLocationValue);
-		final TextView robotTextSpecialAbility = (TextView) robotView.getRootView().findViewById(R.id.robotTextSpecialAbilityValue);
+		final TextView robotTextName = robotView.getRootView().findViewById(R.id.robotTextNameValue);
+		final TextView robotTextArmor = robotView.getRootView().findViewById(R.id.robotTextArmorValue);
+		final TextView robotTextSpeed = robotView.getRootView().findViewById(R.id.robotTextSpeedValue);
+		final TextView robotTextBonus = robotView.getRootView().findViewById(R.id.robotTextBonusValue);
+		final TextView robotTextLocation = robotView.getRootView().findViewById(R.id.robotTextLocationValue);
+		final TextView robotTextSpecialAbility = robotView.getRootView().findViewById(R.id.robotTextSpecialAbilityValue);
 		// final Button removeRobotButton = (Button)
 		// robotView.getRootView().findViewById(R.id.removeRobotButton);
 
@@ -55,12 +55,14 @@ public class RobotListAdapter extends ArrayAdapter<Robot> implements View.OnCrea
 		robotTextSpeed.setText("" + robotPosition.getSpeed());
 		robotTextBonus.setText("" + robotPosition.getBonus());
 		robotTextLocation.setText(robotPosition.getLocation());
-		robotTextSpecialAbility.setText(robotPosition.getRobotSpecialAbility() != null ? robotPosition.getRobotSpecialAbility().getName() : null);
+		if (robotPosition.getRobotSpecialAbility() != null) {
+			robotTextSpecialAbility.setText(robotPosition.getRobotSpecialAbility().getName());
+		}
 
-		Button minusCombatArmor = (Button) robotView.findViewById(R.id.minusRobotArmorButton);
-		Button plusCombatArmor = (Button) robotView.findViewById(R.id.plusRobotArmorButton);
+		Button minusCombatArmor = robotView.findViewById(R.id.minusRobotArmorButton);
+		Button plusCombatArmor = robotView.findViewById(R.id.plusRobotArmorButton);
 
-		RadioButton radio = (RadioButton) robotView.getRootView().findViewById(R.id.robotSelected);
+		RadioButton radio = robotView.getRootView().findViewById(R.id.robotSelected);
 		radio.setChecked(robotPosition.isActive());
 
 		if (robotPosition.isActive()) {
@@ -69,18 +71,6 @@ public class RobotListAdapter extends ArrayAdapter<Robot> implements View.OnCrea
 
 		final RobotListAdapter adapter = this;
 
-		// removeRobotButton.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View arg0) {
-		// adv.getRobots().remove(adv.getCurrentRobot());
-		//
-		// adv.setCurrentRobot(null);
-		// setCurrentRobot(null);
-		//
-		// adv.fullRefresh();
-		// }
-		// });
 
 		radio.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 

@@ -127,7 +127,15 @@ public class Robot {
 	public void setAirborne(boolean airborne) {
 		this.airborne = airborne;
 	}
-	
-	
+
+	public void addToArmor(int value) {
+		setArmor(getArmor() + value);
+	}
+
+	public void subtractFromArmor(int value) {
+		Integer armor = getArmor();
+		setArmor(Math.max(0, (armor - value)));
+	}
+
 
 }

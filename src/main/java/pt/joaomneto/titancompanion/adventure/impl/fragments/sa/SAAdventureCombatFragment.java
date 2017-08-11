@@ -19,7 +19,7 @@ import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponSpinnerAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
 import static android.view.View.GONE;
@@ -174,7 +174,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
 		final Spinner weaponSpinner = addCombatantView.findViewById(R.id.weaponSpinner);
 		if (weaponSpinner != null) {
-			SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv, allWeapons);
+			TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv, allWeapons);
 			weaponSpinner.setAdapter(adapter);
 		}
 

@@ -1,10 +1,29 @@
 package pt.joaomneto.titancompanion.adventure;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.text.InputType;
+import android.util.SparseArray;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -29,30 +48,14 @@ import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.os.Environment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.text.InputType;
-import android.util.SparseArray;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public abstract class Adventure extends BaseFragmentActivity {
 
+	protected static final int FRAGMENT_VITAL_STATS = 0;
+	protected static final int FRAGMENT_COMBAT = 1;
+	protected static final int FRAGMENT_EQUIPMENT = 2;
+	protected static final int FRAGMENT_NOTES = 3;
+	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -62,12 +65,10 @@ public abstract class Adventure extends BaseFragmentActivity {
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	StandardSectionsPagerAdapter mSectionsPagerAdapter;
-
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
-
 	Integer initialSkill = -1;
 	Integer initialLuck = -1;
 	Integer initialStamina = -1;
@@ -77,29 +78,18 @@ public abstract class Adventure extends BaseFragmentActivity {
 	List<String> equipment = new ArrayList<String>();
 	List<String> notes = new ArrayList<String>();
 	Integer currentReference = -1;
-
 	// Common values
 	Integer standardPotion = -1;
 	Integer gold = 0;
 	Integer provisions = -1;
 	Integer provisionsValue = -1;
 	Integer standardPotionValue = -1;
-
 	File dir = null;
 	int gamebook = -1;
 	String name = null;
 	Properties savedGame;
-
 	Map<Integer, Fragment> fragments = new HashMap<Integer, Fragment>();
-
-	protected static final int FRAGMENT_VITAL_STATS = 0;
-	protected static final int FRAGMENT_COMBAT = 1;
-	protected static final int FRAGMENT_EQUIPMENT = 2;
-	protected static final int FRAGMENT_NOTES = 3;
-
 	Toast lastToast = null;
-
-	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
 
 	public Adventure() {
 		super();
@@ -114,24 +104,57 @@ public abstract class Adventure extends BaseFragmentActivity {
 
 	}
 
-	public static class AdventureFragmentRunner {
-		int titleId;
-		String className;
+	public static void showAlert(int title, int message, Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+			}
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
 
-		public AdventureFragmentRunner(int titleId, String className) {
-			super();
-			this.titleId = titleId;
-			this.className = className;
+	public static void showAlert(int title, String message, Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+			}
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
+
+	public static void showAlert(int message, Context context) {
+		showAlert(-1, message, context);
+	}
+
+	public static void showAlert(String message, Context context) {
+		showAlert(-1, message, context);
+	}
+
+	public static void showAlert(View view, Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+			}
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
+
+	public static String arrayToString(Collection<? extends Object> elements) {
+		String _string = "";
+
+		if (!elements.isEmpty()) {
+			for (Object value : elements) {
+				_string += value.toString() + "#";
+			}
+			_string = _string.substring(0, _string.length() - 1);
 		}
-
-		public int getTitleId() {
-			return titleId;
-		}
-
-		public String getClassName() {
-			return className;
-		}
-
+		return _string;
 	}
 
 	@Override
@@ -206,32 +229,10 @@ public abstract class Adventure extends BaseFragmentActivity {
 
 	protected abstract void loadAdventureSpecificValuesFromFile();
 
-	public void setCurrentSkill(Integer currentSkill) {
-		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
-		this.currentSkill = currentSkill;
-		adventureVitalStatsFragment.refreshScreensFromResume();
-	}
-
-	public void setCurrentLuck(Integer currentLuck) {
-		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
-		this.currentLuck = currentLuck;
-		adventureVitalStatsFragment.refreshScreensFromResume();
-	}
-
 	private AdventureVitalStatsFragment getVitalStatsFragment() {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = (AdventureVitalStatsFragment) getFragments().get(
 				FRAGMENT_VITAL_STATS);
 		return adventureVitalStatsFragment;
-	}
-
-	public void setCurrentStamina(Integer currentStamina) {
-		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
-		this.currentStamina = currentStamina;
-		adventureVitalStatsFragment.refreshScreensFromResume();
-	}
-
-	public void setCurrentReference(Integer currentReference) {
-		this.currentReference = currentReference;
 	}
 
 	public void testSkill(View v) {
@@ -255,84 +256,6 @@ public abstract class Adventure extends BaseFragmentActivity {
 
 		setCurrentLuck(--currentLuck);
 		return result;
-	}
-	
-	public static void showAlert(int title, int message, Context context) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle(title>0?title:R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				dialog.cancel();
-			}
-		});
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
-
-	public static void showAlert(int title, String message, Context context) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle(title>0?title:R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				dialog.cancel();
-			}
-		});
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
-
-	public static void showAlert(int message, Context context) {
-		showAlert(-1, message, context);
-	}
-
-	public static void showAlert(String message, Context context) {
-		showAlert(-1, message, context);
-	}
-
-	public static void showAlert(View view, Context context) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				dialog.cancel();
-			}
-		});
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
-
-	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 */
-	public class StandardSectionsPagerAdapter extends FragmentPagerAdapter {
-
-		public StandardSectionsPagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-
-			try {
-				Fragment o = (Fragment) Class.forName(fragmentConfiguration.get(position).getClassName()).newInstance();
-				fragments.put(position, o);
-				return o;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return null;
-		}
-
-		@Override
-		public int getCount() {
-			return fragmentConfiguration.size();
-		}
-
-		@Override
-		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
-
-			return getString(fragmentConfiguration.get(position).getTitleId()).toUpperCase(l);
-		}
-
 	}
 
 	@Override
@@ -693,16 +616,38 @@ public abstract class Adventure extends BaseFragmentActivity {
 		return currentSkill;
 	}
 
+	public void setCurrentSkill(Integer currentSkill) {
+		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
+		this.currentSkill = currentSkill;
+		adventureVitalStatsFragment.refreshScreensFromResume();
+	}
+
 	public Integer getCurrentLuck() {
 		return currentLuck;
+	}
+
+	public void setCurrentLuck(Integer currentLuck) {
+		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
+		this.currentLuck = currentLuck;
+		adventureVitalStatsFragment.refreshScreensFromResume();
 	}
 
 	public Integer getCurrentStamina() {
 		return currentStamina;
 	}
 
+	public void setCurrentStamina(Integer currentStamina) {
+		AdventureVitalStatsFragment adventureVitalStatsFragment = getVitalStatsFragment();
+		this.currentStamina = currentStamina;
+		adventureVitalStatsFragment.refreshScreensFromResume();
+	}
+
 	public Integer getCurrentReference() {
 		return currentReference;
+	}
+
+	public void setCurrentReference(Integer currentReference) {
+		this.currentReference = currentReference;
 	}
 
 	public synchronized Integer getProvisionsValue() {
@@ -790,18 +735,6 @@ public abstract class Adventure extends BaseFragmentActivity {
 		}
 	}
 
-	public static String arrayToString(Collection<? extends Object> elements) {
-		String _string = "";
-
-		if (!elements.isEmpty()) {
-			for (Object value : elements) {
-				_string += value.toString() + "#";
-			}
-			_string = _string.substring(0, _string.length() - 1);
-		}
-		return _string;
-	}
-
 	protected List<String> stringToArray(String _string) {
 
 		List<String> elements = new ArrayList<String>();
@@ -862,6 +795,69 @@ public abstract class Adventure extends BaseFragmentActivity {
 
 	public void setFragments(Map<Integer, Fragment> fragments) {
 		this.fragments = fragments;
+	}
+
+	public void closeKeyboard(View view) {
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+		view.clearFocus();
+	}
+
+	public static class AdventureFragmentRunner {
+		int titleId;
+		String className;
+
+		public AdventureFragmentRunner(int titleId, String className) {
+			super();
+			this.titleId = titleId;
+			this.className = className;
+		}
+
+		public int getTitleId() {
+			return titleId;
+		}
+
+		public String getClassName() {
+			return className;
+		}
+
+	}
+
+	/**
+	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+	 * one of the sections/tabs/pages.
+	 */
+	public class StandardSectionsPagerAdapter extends FragmentPagerAdapter {
+
+		public StandardSectionsPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+
+			try {
+				Fragment o = (Fragment) Class.forName(fragmentConfiguration.get(position).getClassName()).newInstance();
+				fragments.put(position, o);
+				return o;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+
+		@Override
+		public int getCount() {
+			return fragmentConfiguration.size();
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			Locale l = Locale.getDefault();
+
+			return getString(fragmentConfiguration.get(position).getTitleId()).toUpperCase(l);
+		}
+
 	}
 
 }

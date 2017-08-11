@@ -90,8 +90,9 @@
     <string name="eotd">Eye of the Dragon</string>
     <string name="bb">Bloodbones</string>
     <string name="hotw">Howl of the Werewolf</string>
+    <string name="tpop">The Port of Peril</string>
 
-    <string-array name="gamebook_list_names">
+    <string-array name="gamebook_list_names" translatable="false">
         <item>@string/twofm</item>
         <item>@string/tcoc</item>
         <item>@string/tfod</item>
@@ -154,8 +155,9 @@
         <item>@string/eotd</item>
         <item>@string/bb</item>
         <item>@string/hotw</item>
+        <item>@string/tpop</item>
     </string-array>
-    <string-array name="gamebook_list_urls">
+    <string-array name="gamebook_list_urls" translatable="false">
         <item>http://fightingfantasy.wikia.com/wiki/The_Warlock_of_Firetop_Mountain_(book)</item>
         <item>http://fightingfantasy.wikia.com/wiki/The_Citadel_of_Chaos_(book)</item>
         <item>http://fightingfantasy.wikia.com/wiki/The_Forest_of_Doom_(book)</item>
@@ -215,6 +217,10 @@
         <item>http://fightingfantasy.wikia.com/wiki/Magehunter</item>
         <item>http://fightingfantasy.wikia.com/wiki/Revenge_of_the_Vampire</item>
         <item>http://fightingfantasy.wikia.com/wiki/Curse_of_the_Mummy</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Eye_of_the_Dragon_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Bloodbones_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/Howl_of_the_Werewolf_(book)</item>
+        <item>http://fightingfantasy.wikia.com/wiki/The_Port_of_Peril_(book)</item>
     </string-array>
 
     <string name="title_activity_gamebook_selection">Select Gamebook</string>
@@ -1033,6 +1039,10 @@
     <string name="rcAddRobot">Add Robot</string>
     <string name="rcNameArmorBonusMandatory">At least the name, armor and bonus values must be filled.</string>
     <string name="rcRobot">Robot</string>
+    <string name="rcLuckyCombatInflicted">You\'re lucky! (+1DP)</string>
+    <string name="rcUnluckyCombatInflicted">You\'re unlucky... (-1DP)</string>
+    <string name="rcLuckyCombatSuffered">You\'re lucky! (-1DP)</string>
+    <string name="rcUnluckyCombatSuffered">You\'re unlucky... (+1DP)</string>
     <string name="saGrenade">Grenade</string>
     <string name="saCombatText1">The enemy (SK: %1$d ST: %2$d) has been hit. (-%3$d ST)</string>
     <string name="saCombatText2">An enemy (SK: %1$d ST: %2$d) has hit you. (-%3$d ST)</string>
