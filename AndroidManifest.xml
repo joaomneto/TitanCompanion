@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
-    android:versionCode="22"
-    android:versionName="0.22-beta">
+    android:versionCode="23"
+    android:versionName="0.23-beta">
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -29,387 +29,387 @@
         </activity>
         <activity
             android:name="pt.joaomneto.titancompanion.TCPreferenceActivity"
-            android:label="Preferences"></activity>
+            android:label="Preferences"/>
         <activity
             android:name="pt.joaomneto.titancompanion.GamebookListActivity"
-            android:label="@string/title_activity_gamebook_list"></activity>
+            android:label="@string/title_activity_gamebook_list"/>
         <activity
             android:name="pt.joaomneto.titancompanion.GamebookSelectionActivity"
-            android:label="@string/title_activity_gamebook_selection"></activity>
+            android:label="@string/title_activity_gamebook_selection"/>
         <activity
             android:name="pt.joaomneto.titancompanion.GamebookWikiaActivity"
-            android:label="@string/title_activity_gamebook_wikia"></activity>
+            android:label="@string/title_activity_gamebook_wikia"/>
         <activity
             android:name="pt.joaomneto.titancompanion.GamebookFullImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_gamebook_full_image"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme"/>
         <activity
             android:name="pt.joaomneto.titancompanion.LoadAdventureActivity"
-            android:label="@string/title_activity_load_adventure"></activity>
+            android:label="@string/title_activity_load_adventure"/>
         <activity
             android:name="pt.joaomneto.titancompanion.ErrorActivity"
-            android:label="@string/title_activity_error"></activity>
+            android:label="@string/title_activity_error"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TWOFMAdventureCreation"
             android:label="@string/twofm"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TWOFMAdventure"
             android:label="@string/twofm"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TCOCAdventureCreation"
-            android:label="@string/tcoc"></activity>
+            android:label="@string/tcoc"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TCOCAdventure"
             android:label="@string/tcoc"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TFODAdventureCreation"
             android:label="@string/tfod"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TFODAdventure"
             android:label="@string/tfod"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.STAdventureCreation"
             android:label="@string/st"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.STAdventure"
             android:label="@string/st"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.COTAdventureCreation"
             android:label="@string/cot"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.COTAdventure"
             android:label="@string/cot"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.DDAdventureCreation"
             android:label="@string/dd"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.DDAdventure"
             android:label="@string/dd"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.IOTLKAdventureCreation"
             android:label="@string/iotlk"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.IOTLKAdventure"
             android:label="@string/iotlk"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SSAdventureCreation"
             android:label="@string/ss"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.SSAdventure"
             android:label="@string/ss"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.COTSWAdventureCreation"
             android:label="@string/cotsw"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.COTSWAdventure"
             android:label="@string/cotsw"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.HOHAdventureCreation"
             android:label="@string/hoh"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.HOHAdventure"
             android:label="@string/hoh"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TODAdventureCreation"
             android:label="@string/tod"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TODAdventure"
             android:label="@string/tod"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SAAdventureCreation"
             android:label="@string/sa"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.SAAdventure"
             android:label="@string/sa"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.FFAdventureCreation"
             android:label="@string/ff"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.FFAdventure"
             android:label="@string/ff"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TOTAdventureCreation"
             android:label="@string/tot"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TOTAdventure"
             android:label="@string/tot"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TROKAdventureCreation"
             android:label="@string/trok"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TROKAdventure"
             android:label="@string/trok"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SOBAdventureCreation"
             android:label="@string/sob"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.SOBAdventure"
             android:label="@string/sob"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AWFAdventureCreation"
             android:label="@string/awf"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.AWFAdventure"
             android:label="@string/awf"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.RPAdventureCreation"
             android:label="@string/rp"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.RPAdventure"
             android:label="@string/rp"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.DOTDAdventureCreation"
             android:label="@string/dotd"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.DOTDAdventure"
             android:label="@string/dotd"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SOTSAdventureCreation"
             android:label="@string/sots"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.SOTSAdventure"
             android:label="@string/sots"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TOCAdventureCreation"
             android:label="@string/toc"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TOCAdventure"
             android:label="@string/toc"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.RCAdventureCreation"
             android:label="@string/rc"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.RCAdventure"
             android:label="@string/rc"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.MOMAdventureCreation"
             android:label="@string/mom"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.MOMAdventure"
             android:label="@string/mom"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.COHAdventureCreation"
             android:label="@string/coh"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.COHAdventure"
             android:label="@string/coh"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.BNCAdventureCreation"
             android:label="@string/bnc"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.BNCAdventure"
             android:label="@string/bnc"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.COTSAdventureCreation"
             android:label="@string/cots"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.COTSAdventure"
             android:label="@string/cots"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.STRIDERAdventureCreation"
             android:label="@string/strider"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.STRIDERAdventure"
             android:label="@string/strider"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.POFAdventureCreation"
             android:label="@string/pof"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.POFAdventure"
             android:label="@string/pof"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AODAdventureCreation"
             android:label="@string/aod"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.AODAdventure"
             android:label="@string/aod"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.EOTDAdventureCreation"
             android:label="@string/eotd"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.EOTDAdventure"
             android:label="@string/eotd"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.HOTWAdventureCreation"
             android:label="@string/hotw"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.HOTWAdventure"
             android:label="@string/hotw"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.TPOPAdventureCreation"
             android:label="@string/tpop"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TPOPAdventure"
             android:label="@string/tpop"
 
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>
