@@ -3,8 +3,6 @@ package pt.joaomneto.titancompanion.adventure.impl.fragments.tot;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Consumer;
 
 import pt.joaomneto.titancompanion.R;
@@ -70,7 +68,7 @@ public enum TOTSpell implements Spell {
     }
 
 
-    public int getName() {
+    public int getLabelId() {
         return name;
     }
 

@@ -15,20 +15,11 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.RobotSpeed;
 
 public class RCAdventure extends TFODAdventure {
 
+	public static final int FRAGMENT_ROBOTS = 1;
+	public static final int FRAGMENT_ROBOTCOMBAT = 2;
 	protected Robot currentRobot = null;
 	protected List<Robot> robots = new ArrayList<Robot>();
 
-	public List<Robot> getRobots() {
-		return robots;
-	}
-
-	public void setRobots(List<Robot> robots) {
-		this.robots = robots;
-	}
-
-
-	public static final int FRAGMENT_ROBOTS = 1;
-	public static final int FRAGMENT_ROBOTCOMBAT = 2;
 
 	public RCAdventure() {
 		super();
@@ -48,9 +39,18 @@ public class RCAdventure extends TFODAdventure {
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
 	}
 
+	public List<Robot> getRobots() {
+		return robots;
+	}
+
+	public void setRobots(List<Robot> robots) {
+		this.robots = robots;
+	}
+
 	public Robot getCurrentRobot() {
 		return currentRobot;
 	}
+
 
 	public void setCurrentRobot(Robot currentRobot) {
 		this.currentRobot = currentRobot;
@@ -126,5 +126,6 @@ public class RCAdventure extends TFODAdventure {
 		fullRefresh();
 		
 	}
+
 
 }

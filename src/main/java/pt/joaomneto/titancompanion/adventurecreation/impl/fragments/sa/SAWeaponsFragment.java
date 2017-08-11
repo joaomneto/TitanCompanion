@@ -66,7 +66,7 @@ public class SAWeaponsFragment extends Fragment {
                             public void onClick(DialogInterface dialog,
                                                 int which) {
                                 adv.getWeapons().remove(position);
-                                ((SAWeaponSpinnerAdapter) weaponList.getAdapter())
+                                ((TranslatableEnumAdapter) weaponList.getAdapter())
                                         .notifyDataSetChanged();
                             }
                         });
@@ -88,7 +88,7 @@ public class SAWeaponsFragment extends Fragment {
 
                 // Set an EditText view to get user input
                 final Spinner input = new Spinner(adv);
-                SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv,
+                TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv,
                         adv.getWeapons().isEmpty() ? SAWeapon.INITIALWEAPONS : SAWeapon.values());
                 input.setAdapter(adapter);
                 InputMethodManager imm = (InputMethodManager) adv
@@ -108,7 +108,7 @@ public class SAWeaponsFragment extends Fragment {
                                     return;
                                 }
                                 adv.getWeapons().add(selectedWeapon);
-                                ((SAWeaponSpinnerAdapter) weaponList
+                                ((TranslatableEnumAdapter) weaponList
                                         .getAdapter()).notifyDataSetChanged();
                             }
                         });
@@ -127,7 +127,7 @@ public class SAWeaponsFragment extends Fragment {
         });
 
 
-        SAWeaponSpinnerAdapter adapter = new SAWeaponSpinnerAdapter(adv,
+        TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv,
                adv.getWeapons());
 
         weaponList.setAdapter(adapter);

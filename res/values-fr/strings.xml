@@ -87,70 +87,6 @@
     <string name="botz">Le Sang des Zombies</string>
 -->
 
-
-
-    <string-array name="gamebook_list_urls">
-        <item>http://fightingfantasy.wikia.com/wiki/The_Warlock_of_Firetop_Mountain_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Citadel_of_Chaos_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Forest_of_Doom_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Starship_Traveller</item>
-        <item>http://fightingfantasy.wikia.com/wiki/City_of_Thieves_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Deathtrap_Dungeon_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Island_of_the_Lizard_King_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Scorpion_Swamp_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Caverns_of_the_Snow_Witch_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/House_of_Hell_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Talisman_of_Death_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Space_Assassin</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Freeway_Fighter</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Temple_of_Terror_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Rings_of_Kether</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Seas_of_Blood_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Appointment_with_F.E.A.R._(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Rebel_Planet_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Demons_of_the_Deep_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Sword_of_the_Samurai_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Trial_of_Champions_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Robot_Commando</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Masks_of_Mayhem</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Creature_of_Havoc_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Beneath_Nightmare_Castle</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Crypt_of_the_Sorcerer</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Star_Strider</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Phantoms_of_Fear</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Midnight_Rogue</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Chasms_of_Malice</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Battleblade_Warrior</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Slaves_of_the_Abyss</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Sky_Lord</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Stealer_of_Souls</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Daggers_of_Darkness</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Armies_of_Death</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Portal_of_Evil_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Vault_of_the_Vampire</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Fangs_of_Fury_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Dead_of_Night</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Master_of_Chaos</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Black_Vein_Prophecy</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Keep_of_the_Lich-Lord</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Legend_of_the_Shadow_Warriors</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Spectral_Stalkers_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Tower_of_Destruction_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Crimson_Tide</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Moonrunner</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Siege_of_Sardath</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Return_to_Firetop_Mountain</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Island_of_the_Undead</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Night_Dragon_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Spellbreaker</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Legend_of_Zagor_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Deathmoor_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Knights_of_Doom</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Magehunter</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Revenge_of_the_Vampire</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Curse_of_the_Mummy</item>
-    </string-array>
-
     <string name="title_activity_gamebook_selection">Choisir un livre</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -544,14 +480,13 @@
     <string name="rcWaspSpecial">Le Frelon inflige 4 dommages.</string>
     <string name="rcSupertankSpecila">Le Supertank inflige 1 dommage supplémentaire.</string>
     <string name="rcSerpentVIISpecial2">Le Serpent inflige 1 dommage supplémentaire.</string>
-    <string name="rcSonicShot">Utilisation du canon sonique (%1$d DP)</string>
-    <string name="rcShovel">Utilisation dde la pelle mécanique (6 DP)</string>
+    <string name="rcSonicShot">Utilisation du canon sonique (%1$d PD)</string>
+    <string name="rcShovel">Utilisation dde la pelle mécanique (6 PD)</string>
     <string name="rcLostRobot">Vous avez perdu votre robot !</string>
-    <!--STOP HERE-->
     <string name="rcDefeatedEnemy">Vous avez vaincu votre adversaire !</string>
     <string name="rcParryAttack">Vous avez paré l\'attaque ennemie.</string>
-    <string name="rcHitEnemy">Vous avez atteint votre adversaire ! (%1$d DP)</string>
-    <string name="rcEnemyHitYou">Votre adversaire vous a touché ! (%1$d DP)</string>
+    <string name="rcHitEnemy">Vous avez atteint votre adversaire ! (%1$d PD)</string>
+    <string name="rcEnemyHitYou">Votre adversaire vous a touché ! (%1$d PD)</string>
     <string name="rcAnkylosaurusKO">L\'Ankylosaure  vous a étourdi !</string>
     <string name="rcBothMissed">Votre adversaire et vous avez manqué votre coup.</string>
     <string name="remove">Enlever</string>
@@ -561,8 +496,12 @@
     <string name="rcAddRobot">Ajouter un Robot</string>
     <string name="rcNameArmorBonusMandatory">Les champs Nom, Armure et Bonus doivent être remplis.</string>
     <string name="rcRobot">Robot</string>
-	
-<!-- Beneath Nightmare Castle -->
+    <string name="rcLuckyCombatInflicted">Vous êtes chanceux ! (+1PD)</string>
+    <string name="rcUnluckyCombatInflicted">Vous êtes malchanceux... (-1PD)</string>
+    <string name="rcLuckyCombatSuffered">Vous êtes chanceux ! (-1PD)</string>
+    <string name="rcUnluckyCombatSuffered">Vous êtes malchanceux...  (+1PD)</string>
+
+    <!-- Beneath Nightmare Castle -->
     <string name="bncWillpower">Volonté</string>
     <string name="willpower">Volonté: </string>
     <string name="setInitialWillpower">Modifier Volonté initiale</string>

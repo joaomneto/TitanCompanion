@@ -8,9 +8,8 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
  * Created by Joao Neto on 23-05-2017.
  */
 
-public interface    Spell {
+public interface Spell extends TranslatableEnum {
 
-    int getName();
     Consumer<Adventure> getAction();
     String name();
 }

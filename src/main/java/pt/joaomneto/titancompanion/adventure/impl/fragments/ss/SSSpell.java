@@ -54,7 +54,7 @@ public enum SSSpell implements Spell {
     }
 
 
-    public int getName() {
+    public int getLabelId() {
         return name;
     }
 

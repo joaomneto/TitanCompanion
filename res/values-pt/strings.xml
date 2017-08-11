@@ -539,14 +539,14 @@
     <string name="rcWaspSpecial">O Guerreiro Vespa aplica 4 PD.</string>
     <string name="rcSupertankSpecila">O Supertanque aplica 1 PD.</string>
     <string name="rcSerpentVIISpecial2">O Serpent VII aplica 1 DP.</string>
-    <string name="rcSonicShot">A usar o disparo sónico (%1$d DP)</string>
-    <string name="rcShovel">A usar a pá (6 DP)</string>
+    <string name="rcSonicShot">A usar o disparo sónico (%1$d PD)</string>
+    <string name="rcShovel">A usar a pá (6 PD)</string>
     <string name="rcLostRobot">Perdeste o teu robot!</string>
     <!--STOP HERE-->
     <string name="rcDefeatedEnemy">Derrotaste o teu inimigo!</string>
     <string name="rcParryAttack">Bloqueaste o ataque inimigo.</string>
-    <string name="rcHitEnemy">Atingiste o teu inimigo! (%1$d DP)</string>
-    <string name="rcEnemyHitYou">O inimigo atingiu-te! (%1$d DP)</string>
+    <string name="rcHitEnemy">Atingiste o teu inimigo! (%1$d PD)</string>
+    <string name="rcEnemyHitYou">O inimigo atingiu-te! (%1$d PD)</string>
     <string name="rcAnkylosaurusKO">O Anquilossauro atordoou-te!</string>
     <string name="rcBothMissed">Tanto tu como o teu inimigo falharam.</string>
     <string name="remove">Remover</string>
@@ -556,6 +556,10 @@
     <string name="rcAddRobot">Adicionar Robot</string>
     <string name="rcNameArmorBonusMandatory">Pelo menos o nome, armadura e valor de bonus têm que ser preenchidos.</string>
     <string name="rcRobot">Robot</string>
+    <string name="rcLuckyCombatInflicted">Tens sorte! (+1PD)</string>
+    <string name="rcUnluckyCombatInflicted">Tens azar... (-1PD)</string>
+    <string name="rcLuckyCombatSuffered">Tens sorte! (-1PD)</string>
+    <string name="rcUnluckyCombatSuffered">Tens azar...  (+1PD)</string>
     <string name="saGrenade">Granada</string>
     <string name="saCombatText1">O inimigo (SK: %1$d ST: %2$d) foi atingido. (-%3$d ST)</string>
     <string name="saCombatText2">Um inimigo (SK: %1$d ST: %2$d) atingiu-te. (-%3$d ST)</string>

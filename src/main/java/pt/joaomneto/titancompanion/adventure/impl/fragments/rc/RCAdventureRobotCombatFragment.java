@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -24,6 +23,8 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter;
+import pt.joaomneto.titancompanion.consts.CombatTurnresult;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
 import static pt.joaomneto.titancompanion.adventure.impl.RCAdventure.FRAGMENT_ROBOTS;
@@ -36,6 +37,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
     protected Button resetRobotCombatButton = null;
     protected Button resetRobotCombatButton2 = null;
     protected Button resetRobotCombatButton3 = null;
+    protected Button testLuckButton = null;
+    protected Button testLuckButton2 = null;
     protected Button robotCombatTurn = null;
     protected Button robotCombatTurn2 = null;
     protected Button robotCombatTurn3 = null;
@@ -95,16 +98,15 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
     protected RadioButton enemyRobot1Selected = null;
     protected RadioButton enemyRobot2Selected = null;
-
+    protected View rootView = null;
     boolean serpentVIIPermDamage = false;
     boolean enemyRoboTankPermDamage = false;
     boolean parryOnlyNextTurn = false;
     boolean parryOnlyNextTurnCombat = false;
     boolean combatStarted = false;
-
     boolean simultaneousCombat = false;
 
-    protected View rootView = null;
+    private CombatTurnresult combatTurnResult = null;
 
     public RCAdventureRobotCombatFragment() {
 
@@ -125,49 +127,63 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         final RCAdventure adv = (RCAdventure) this.getActivity();
 
 
-        addRobotButton = (Button) rootView.findViewById(R.id.addEnemyRobotButton);
-        combatRobots = (RelativeLayout) rootView.findViewById(R.id.combatRobots);
-        enemyRobotLayout = (RelativeLayout) rootView.findViewById(R.id.enemyRobot);
-        enemyRobotDualLayout = (LinearLayout) rootView.findViewById(R.id.enemyRobotDual);
+        addRobotButton = rootView.findViewById(R.id.addEnemyRobotButton);
+        combatRobots = rootView.findViewById(R.id.combatRobots);
+        enemyRobotLayout = rootView.findViewById(R.id.enemyRobot);
+        enemyRobotDualLayout = rootView.findViewById(R.id.enemyRobotDual);
 
-        nameValue = (TextView) rootView.findViewById(R.id.nameCombatValue);
-        armorValue = (TextView) rootView.findViewById(R.id.armorCombatValue);
-        bonusValue = (TextView) rootView.findViewById(R.id.bonusCombatValue);
-        skillValue = (TextView) rootView.findViewById(R.id.skillCombatValue);
+        nameValue = rootView.findViewById(R.id.nameCombatValue);
+        armorValue = rootView.findViewById(R.id.armorCombatValue);
+        bonusValue = rootView.findViewById(R.id.bonusCombatValue);
+        skillValue = rootView.findViewById(R.id.skillCombatValue);
 
-        armorEnemyValue = (TextView) rootView.findViewById(R.id.enemyArmorValue);
-        skillEnemyValue = (TextView) rootView.findViewById(R.id.enemySkillValue);
-        armorEnemyValue2 = (TextView) rootView.findViewById(R.id.enemyArmorValue2);
-        skillEnemyValue2 = (TextView) rootView.findViewById(R.id.enemySkillValue2);
+        armorEnemyValue = rootView.findViewById(R.id.enemyArmorValue);
+        skillEnemyValue = rootView.findViewById(R.id.enemySkillValue);
+        armorEnemyValue2 = rootView.findViewById(R.id.enemyArmorValue2);
+        skillEnemyValue2 = rootView.findViewById(R.id.enemySkillValue2);
 
 
-        armorEnemy2Value = (TextView) rootView.findViewById(R.id.enemy2ArmorValue);
-        skillEnemy2Value = (TextView) rootView.findViewById(R.id.enemy2SkillValue);
+        armorEnemy2Value = rootView.findViewById(R.id.enemy2ArmorValue);
+        skillEnemy2Value = rootView.findViewById(R.id.enemy2SkillValue);
 
-        minusArmorButton = (Button) rootView.findViewById(R.id.minusArmorButton);
-        plusArmorButton = (Button) rootView.findViewById(R.id.plusArmorButton);
-        minusEnemyArmorButton = (Button) rootView.findViewById(R.id.minusEnemyArmorButton);
-        plusEnemyArmorButton = (Button) rootView.findViewById(R.id.plusEnemyArmorButton);
-        minusEnemy2ArmorButton = (Button) rootView.findViewById(R.id.minusEnemy2ArmorButton);
-        plusEnemy2ArmorButton = (Button) rootView.findViewById(R.id.plusEnemy2ArmorButton);
-        minusEnemyArmorButton2 = (Button) rootView.findViewById(R.id.minusEnemyArmorButton2);
-        plusEnemyArmorButton2 = (Button) rootView.findViewById(R.id.plusEnemyArmorButton2);
+        minusArmorButton = rootView.findViewById(R.id.minusArmorButton);
+        plusArmorButton = rootView.findViewById(R.id.plusArmorButton);
+        minusEnemyArmorButton = rootView.findViewById(R.id.minusEnemyArmorButton);
+        plusEnemyArmorButton = rootView.findViewById(R.id.plusEnemyArmorButton);
+        minusEnemy2ArmorButton = rootView.findViewById(R.id.minusEnemy2ArmorButton);
+        plusEnemy2ArmorButton = rootView.findViewById(R.id.plusEnemy2ArmorButton);
+        minusEnemyArmorButton2 = rootView.findViewById(R.id.minusEnemyArmorButton2);
+        plusEnemyArmorButton2 = rootView.findViewById(R.id.plusEnemyArmorButton2);
 
-        enemyRobot1Selected = (RadioButton) rootView.findViewById(R.id.enemyRobot1Selected);
-        enemyRobot2Selected = (RadioButton) rootView.findViewById(R.id.enemyRobot2Selected);
+        enemyRobot1Selected = rootView.findViewById(R.id.enemyRobot1Selected);
+        enemyRobot2Selected = rootView.findViewById(R.id.enemyRobot2Selected);
 
-        resetRobotCombatButton = (Button) rootView.findViewById(R.id.resetRobotCombatButton);
-        resetRobotCombatButton2 = (Button) rootView.findViewById(R.id.resetRobotCombatButton2);
-        resetRobotCombatButton3 = (Button) rootView.findViewById(R.id.resetRobotCombatButton3);
-        changeRobotForm = (Button) rootView.findViewById(R.id.changeRobotForm);
+        resetRobotCombatButton = rootView.findViewById(R.id.resetRobotCombatButton);
+        resetRobotCombatButton2 = rootView.findViewById(R.id.resetRobotCombatButton2);
+        resetRobotCombatButton3 = rootView.findViewById(R.id.resetRobotCombatButton3);
+        changeRobotForm = rootView.findViewById(R.id.changeRobotForm);
+        testLuckButton = rootView.findViewById(R.id.useLuck);
+        testLuckButton2 = rootView.findViewById(R.id.useLuck2);
 
-        combatResult = (TextView) rootView.findViewById(R.id.combatResult);
+        combatResult = rootView.findViewById(R.id.combatResult);
 
-        robotCombatTurn = (Button) rootView.findViewById(R.id.robotCombatTurn);
-        robotCombatTurn2 = (Button) rootView.findViewById(R.id.robotCombatTurn2);
-        robotCombatTurn3 = (Button) rootView.findViewById(R.id.robotCombatTurn3);
-        robotCombatTurnShovel = (Button) rootView.findViewById(R.id.robotCombatTurnShovel);
-        robotCombatTurnSonicShot = (Button) rootView.findViewById(R.id.robotCombatTurnSonicShot);
+        robotCombatTurn = rootView.findViewById(R.id.robotCombatTurn);
+        robotCombatTurn2 = rootView.findViewById(R.id.robotCombatTurn2);
+        robotCombatTurn3 = rootView.findViewById(R.id.robotCombatTurn3);
+        robotCombatTurnShovel = rootView.findViewById(R.id.robotCombatTurnShovel);
+        robotCombatTurnSonicShot = rootView.findViewById(R.id.robotCombatTurnSonicShot);
+
+        robotCombatPrepareRow = rootView.findViewById(R.id.robotCombatPrepareRow);
+        robotCombatButtonUpperRow = rootView.findViewById(R.id.robotCombatButtonUpperRow);
+        robotCombatButtonUpperRowTransformer = rootView.findViewById(R.id.robotCombatButtonUpperRowTransformer);
+        robotCombatButtonLowerRow = rootView.findViewById(R.id.robotCombatButtonLowerRow);
+        robotCombatButtonLowerRowDigger = rootView.findViewById(R.id.robotCombatButtonLowerRowDigger);
+        robotCombatButtonLowerRowSupertank = rootView.findViewById(R.id.robotCombatButtonLowerRowSuperTank);
+        enemyRobotDual1 = rootView.findViewById(R.id.enemyRobotDual1);
+        enemyRobotDual2 = rootView.findViewById(R.id.enemyRobotDual2);
+
+        robotSpecialAbilityValue = rootView.findViewById(R.id.robotSpecialAbilityValue);
+        enemySpecialAbilityValue = rootView.findViewById(R.id.enemySpecialAbilityValue);
 
         OnClickListener onClickListener = new OnClickListener() {
 
@@ -278,17 +294,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             }
         });
 
-        robotCombatPrepareRow = (LinearLayout) rootView.findViewById(R.id.robotCombatPrepareRow);
-        robotCombatButtonUpperRow = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonUpperRow);
-        robotCombatButtonUpperRowTransformer = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonUpperRowTransformer);
-        robotCombatButtonLowerRow = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRow);
-        robotCombatButtonLowerRowDigger = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRowDigger);
-        robotCombatButtonLowerRowSupertank = (LinearLayout) rootView.findViewById(R.id.robotCombatButtonLowerRowSuperTank);
-        enemyRobotDual1 = (RelativeLayout) rootView.findViewById(R.id.enemyRobotDual1);
-        enemyRobotDual2 = (RelativeLayout) rootView.findViewById(R.id.enemyRobotDual2);
 
-        robotSpecialAbilityValue = (TextView) rootView.findViewById(R.id.robotSpecialAbilityValue);
-        enemySpecialAbilityValue = (TextView) rootView.findViewById(R.id.enemySpecialAbilityValue);
 
         robotSpecialAbilityValue.setOnClickListener(new OnClickListener() {
 
@@ -318,6 +324,37 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             }
 
         });
+
+        OnClickListener testLuckListener = view -> {
+
+            boolean lucky = adv.testLuckInternal();
+
+            switch (combatTurnResult) {
+                case INFLICTED_DAMAGE:
+                    if (lucky) {
+                        getOtherEnemy().subtractFromArmor(1);
+                        combatResult.append(getString(R.string.rcLuckyCombatInflicted));
+                    } else {
+                        getOtherEnemy().addToArmor(1);
+                        combatResult.append(getString(R.string.rcUnluckyCombatInflicted));
+                    }
+                    break;
+                case SUFFERED_DAMAGE:
+                    if (lucky) {
+                        adv.getCurrentRobot().addToArmor(1);
+                        combatResult.append(getString(R.string.rcLuckyCombatSuffered));
+                    } else {
+                        adv.getCurrentRobot().subtractFromArmor(1);
+                        combatResult.append(getString(R.string.rcUnluckyCombatSuffered));
+                    }
+                    break;
+                default:
+            }
+            refreshScreensFromResume();
+        };
+
+        testLuckButton.setOnClickListener(testLuckListener);
+        testLuckButton2.setOnClickListener(testLuckListener);
 
         refreshScreensFromResume();
     }
@@ -357,8 +394,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        final CheckBox secondEnemy = (CheckBox) addRobotView.findViewById(R.id.addEnemyRobot_secondEnemyValue);
-        final View secondEnemyLayout = (View) addRobotView.findViewById(R.id.addEnemyRobot_adventureVitalStats2);
+        final CheckBox secondEnemy = addRobotView.findViewById(R.id.addEnemyRobot_secondEnemyValue);
+        final View secondEnemyLayout = addRobotView.findViewById(R.id.addEnemyRobot_adventureVitalStats2);
 
         secondEnemy.setOnClickListener(new OnClickListener() {
             @Override
@@ -383,7 +420,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
-                EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.addEnemyRobot_specialAbilityValue);
+                EditText specialAbilityValue = addRobotView.findViewById(R.id.addEnemyRobot_specialAbilityValue);
 
                 if (specialAbilityValue.getText().toString().equals("400")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(adv);
@@ -420,22 +457,23 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             private void addRobotClickOk(final RCAdventure adv, final View addRobotView, final InputMethodManager mgr) {
                 mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 
-                EditText armorValue = (EditText) addRobotView.findViewById(R.id.addEnemyRobot_armorValue);
-                CheckBox airborneValue = (CheckBox) addRobotView.findViewById(R.id.addEnemyRobot_airborneValue);
-                EditText skillValue = (EditText) addRobotView.findViewById(R.id.addEnemyRobot_skillValue);
-                Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot_speedValue);
-                Spinner typeValue = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot_typeValue);
-                EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.addEnemyRobot_specialAbilityValue);
+                EditText armorValue = addRobotView.findViewById(R.id.addEnemyRobot_armorValue);
+                CheckBox airborneValue = addRobotView.findViewById(R.id.addEnemyRobot_airborneValue);
+                EditText skillValue = addRobotView.findViewById(R.id.addEnemyRobot_skillValue);
+                Spinner speedValue = addRobotView.findViewById(R.id.addEnemyRobot_speedValue);
+                Spinner typeValue = addRobotView.findViewById(R.id.addEnemyRobot_typeValue);
+                EditText specialAbilityValue = addRobotView.findViewById(R.id.addEnemyRobot_specialAbilityValue);
 
-                EditText armorValue2 = (EditText) addRobotView.findViewById(R.id.addEnemyRobot2_armorValue);
-                CheckBox airborneValue2 = (CheckBox) addRobotView.findViewById(R.id.addEnemyRobot2_airborneValue);
-                EditText skillValue2 = (EditText) addRobotView.findViewById(R.id.addEnemyRobot2_skillValue);
-                Spinner speedValue2 = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot2_speedValue);
-                Spinner typeValue2 = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot2_typeValue);
-                CheckBox simulCombatValue = (CheckBox) addRobotView.findViewById(R.id.addEnemyRobot2_simulCombatValue);
+                EditText armorValue2 = addRobotView.findViewById(R.id.addEnemyRobot2_armorValue);
+                CheckBox airborneValue2 = addRobotView.findViewById(R.id.addEnemyRobot2_airborneValue);
+                EditText skillValue2 = addRobotView.findViewById(R.id.addEnemyRobot2_skillValue);
+                Spinner speedValue2 = addRobotView.findViewById(R.id.addEnemyRobot2_speedValue);
+                Spinner typeValue2 = addRobotView.findViewById(R.id.addEnemyRobot2_typeValue);
+                CheckBox simulCombatValue = addRobotView.findViewById(R.id.addEnemyRobot2_simulCombatValue);
 
-                speedValue.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
-                speedValue2.setAdapter(new ArrayAdapter<RobotSpeed>(adv, android.R.layout.simple_spinner_item, RobotSpeed.values()));
+                final TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(getContext(), RobotSpeed.values());
+                speedValue.setAdapter(adapter);
+                speedValue2.setAdapter(adapter);
 
                 String armor = armorValue.getText().toString();
                 String skill = skillValue.getText().toString();
@@ -469,7 +507,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         AlertDialog alert = builder.create();
 
-        Spinner speed = (Spinner) addRobotView.findViewById(R.id.addEnemyRobot_speedValue);
+        Spinner speed = addRobotView.findViewById(R.id.addEnemyRobot_speedValue);
 
         alert.setView(addRobotView);
 
@@ -598,8 +636,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         int enemyCombatScore = enemyRoll.getSum() + getCurrentEnemy().getSkill();
 
 
-        rolls.append("("+playerRoll.getSum() + "+"+adv.getCurrentSkill() +"+"+ currentRobot.getBonus());
-        enemyRolls.append("("+enemyRoll.getSum() + "+"+ getCurrentEnemy().getSkill());
+        rolls.append("(" + playerRoll.getSum() + "+" + adv.getCurrentSkill() + "+" + currentRobot.getBonus());
+        enemyRolls.append("(" + enemyRoll.getSum() + "+" + getCurrentEnemy().getSkill());
 
         if (currentRobot.fasterThan(getCurrentEnemy())) {
             playerCombatScore++;
@@ -724,16 +762,19 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             }
         }
 
-        rolls.append("="+playerCombatScore+")");
-        enemyRolls.append("="+enemyCombatScore+")");
+        rolls.append("=" + playerCombatScore + ")");
+        enemyRolls.append("=" + enemyCombatScore + ")");
 
         if (getCurrentEnemy().getArmor() > 0 && adv.getCurrentRobot().getArmor() > 0 && playerCombatScore > enemyCombatScore) {
             if (parryOnlyNextTurn) {
+                combatTurnResult = CombatTurnresult.PARRY;
                 combatStatus.append(getString(R.string.rcParryAttack));
                 parryOnlyNextTurn = false;
             } else if (parryOnlyNextTurnCombat) {
+                combatTurnResult = CombatTurnresult.PARRY;
                 combatStatus.append(getString(R.string.rcParryAttack));
             } else {
+                combatTurnResult = CombatTurnresult.INFLICTED_DAMAGE;
                 combatStatus.append(getString(R.string.rcHitEnemy, enemyDamage));
                 getCurrentEnemy().setArmor(Math.max(getCurrentEnemy().getArmor() - enemyDamage, 0));
                 if (getCurrentEnemy().getArmor() == 0) {
@@ -744,6 +785,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
             }
         } else if (playerCombatScore < enemyCombatScore) {
+            combatTurnResult = CombatTurnresult.SUFFERED_DAMAGE;
             combatStatus.append(getString(R.string.rcEnemyHitYou, playerDamage));
             adv.getCurrentRobot().setArmor(Math.max(adv.getCurrentRobot().getArmor() - playerDamage, 0));
             if (adv.getCurrentRobot().getArmor() == 0) {
@@ -757,6 +799,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                 }
             }
         } else if (playerCombatScore == enemyCombatScore) {
+            combatTurnResult = CombatTurnresult.BOTH_MISSED;
             combatStatus.append(getString(R.string.rcBothMissed));
         }
 
@@ -770,9 +813,11 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             }
         }
 
+        combatStatus.append(" ");
         combatStatus.append(rolls);
         combatStatus.append(" vs ");
         combatStatus.append(enemyRolls);
+        combatStatus.append(". ");
 
         combatResult.setText(combatStatus.toString());
         changeRobotForm.setEnabled(true);
@@ -849,6 +894,11 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
     private Robot getCurrentEnemy() {
         return enemies[getAndModifyCurrentEnemyIndex()];
+    }
+
+    public Robot getOtherEnemy() {
+        int current = getAndModifyCurrentEnemyIndex();
+        return enemies[enemies.length > 1 ? (current == 0 ? 1 : 0) : 0];
     }
 
 

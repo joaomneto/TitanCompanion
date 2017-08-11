@@ -15,12 +15,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adapter.SpellSpinnerAdapter;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.SpellAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
-import pt.joaomneto.titancompanion.adventure.impl.util.SpellListAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter;
 
 public class AdventureSpellsFragment extends AdventureFragment {
 
@@ -43,14 +42,13 @@ public class AdventureSpellsFragment extends AdventureFragment {
         View rootView = inflater.inflate(
                 R.layout.fragment_08ss_adventure_spells, container, false);
 
-        spellList = (ListView) rootView.findViewById(R.id.spellList);
-        chooseSpellSpinner = (Spinner) rootView
+        spellList = rootView.findViewById(R.id.spellList);
+        chooseSpellSpinner = rootView
                 .findViewById(R.id.chooseSpellSpinner);
-        addSpellButton = (Button) rootView.findViewById(R.id.addSpellButton);
+        addSpellButton = rootView.findViewById(R.id.addSpellButton);
 
 
-        SpellListAdapter adapter = new SpellListAdapter(adv,
-                android.R.layout.simple_list_item_1, android.R.id.text1,
+        TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv,
                 adv.getSpells());
         spellList.setAdapter(adapter);
 
@@ -130,11 +128,9 @@ public class AdventureSpellsFragment extends AdventureFragment {
 
     }
 
-    private ArrayAdapter<Spell> getSpellAdapter() {
+    private TranslatableEnumAdapter getSpellAdapter() {
 
-        SpellSpinnerAdapter dataAdapter = new SpellSpinnerAdapter(getActivity(), ((SpellAdventure) getActivity()).getSpellList());
-        dataAdapter
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        TranslatableEnumAdapter dataAdapter = new TranslatableEnumAdapter(getActivity(), ((SpellAdventure) getActivity()).getSpellList());
 
         return dataAdapter;
     }
