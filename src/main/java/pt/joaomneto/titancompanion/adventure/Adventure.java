@@ -3,6 +3,8 @@ package pt.joaomneto.titancompanion.adventure;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -24,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -46,6 +49,7 @@ import java.util.Set;
 import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureDrawingFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
@@ -55,7 +59,8 @@ public abstract class Adventure extends BaseFragmentActivity {
 	protected static final int FRAGMENT_COMBAT = 1;
 	protected static final int FRAGMENT_EQUIPMENT = 2;
 	protected static final int FRAGMENT_NOTES = 3;
-	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
+    protected static final int FRAGMENT_DRAWING = 4;
+    protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -101,6 +106,9 @@ public abstract class Adventure extends BaseFragmentActivity {
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
+        fragmentConfiguration.put(FRAGMENT_DRAWING, new AdventureFragmentRunner(R.string.map,
+                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureDrawingFragment"));
+
 
 	}
 
@@ -224,8 +232,16 @@ public abstract class Adventure extends BaseFragmentActivity {
 		String provisionsValueS = getSavedGame().getProperty("provisionsValue");
 		provisionsValue = provisionsValueS != null && !provisionsValueS.equals("null") ? Integer.valueOf(provisionsValueS) : null;
 
-		loadAdventureSpecificValuesFromFile();
-	}
+        AdventureDrawingFragment fragment = (AdventureDrawingFragment) getFragments().get(FRAGMENT_DRAWING);
+        String pathName = dir.getAbsolutePath() + "/" + fileName.replace(".xml", ".png");
+
+        if (new File(pathName).exists()) {
+            Bitmap imageToLoad = BitmapFactory.decodeFile(pathName);
+            fragment.setDrawingBitmap(imageToLoad);
+        }
+
+        loadAdventureSpecificValuesFromFile();
+    }
 
 	protected abstract void loadAdventureSpecificValuesFromFile();
 
@@ -352,15 +368,20 @@ public abstract class Adventure extends BaseFragmentActivity {
 		input.requestFocus();
 		alert.setView(input);
 
-		alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+
+        alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 
 				try {
 					imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
 					String ref = input.getText().toString();
 					File file = new File(dir, ref + ".xml");
+                    File drawingFile = new File(dir, ref + ".png");
 
 					BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
+
+                    AdventureDrawingFragment fragment = (AdventureDrawingFragment) getFragments().get(FRAGMENT_DRAWING);
+                    storeImage(fragment.getDrawingBitmap(), new FileOutputStream(drawingFile));
 
 					storeValuesInFile(ref, bw);
 					storeNotesForRestart(dir);
@@ -802,6 +823,17 @@ public abstract class Adventure extends BaseFragmentActivity {
 		imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 		view.clearFocus();
 	}
+
+    private void storeImage(Bitmap image, FileOutputStream fos) {
+        try {
+            image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.close();
+        } catch (FileNotFoundException e) {
+            throw new IllegalStateException("File not found: " + e.getMessage(), e);
+        } catch (IOException e) {
+            throw new IllegalStateException("Error accessing file: " + e.getMessage(), e);
+        }
+    }
 
 	public static class AdventureFragmentRunner {
 		int titleId;
