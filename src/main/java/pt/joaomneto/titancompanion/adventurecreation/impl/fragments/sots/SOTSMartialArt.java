@@ -17,25 +17,12 @@ public enum SOTSMartialArt {
     KARUMIJUTSU(R.string.karumijutsu),
     NITOKENJUTSU(R.string.nitoKenjutsu);
 
-    int nameId;
+    private int nameId;
 
     SOTSMartialArt(int nameId) {
         this.nameId = nameId;
     }
 
-    public static boolean isIdValid(int id) {
-        for (SOTSMartialArt art : SOTSMartialArt.values()) {
-            if (id == art.nameId) return true;
-        }
-        return false;
-    }
-
-    public static SOTSMartialArt getArtFromId(int id) {
-        for (SOTSMartialArt art : SOTSMartialArt.values()) {
-            if (id == art.nameId) return art;
-        }
-        return null;
-    }
 
     public int getNameId() {
         return this.nameId;

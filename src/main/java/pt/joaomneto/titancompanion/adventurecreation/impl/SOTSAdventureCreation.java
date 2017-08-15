@@ -33,7 +33,7 @@ public class SOTSAdventureCreation extends AdventureCreation {
 	@Override
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 		bw.write("honour=3\n");
-		bw.write("skill=" + skill.getNameId() + "\n");
+		bw.write("skill=" + skill.name() + "\n");
 		bw.write("provisions=10\n");
 		bw.write("provisionsValue=4\n");
 		bw.write("gold=0\n");
