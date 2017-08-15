@@ -34,7 +34,7 @@ public class SOTSAdventureCreationSkillFragment extends Fragment {
 
 		List<String> stringArray = new ArrayList<String>();
 		for (SOTSMartialArt art : SOTSMartialArt.values()) {
-			stringArray.add(getResources().getString(art.nameId));
+			stringArray.add(getResources().getString(art.getNameId()));
 		}
 
 		for (String string : stringArray) {
@@ -63,7 +63,7 @@ public class SOTSAdventureCreationSkillFragment extends Fragment {
 
 	SOTSMartialArt getArtFromString(String nameString) {
 		for (SOTSMartialArt art : SOTSMartialArt.values()) {
-			if (nameString.equals(getResources().getString(art.nameId)))
+			if (nameString.equals(getResources().getString(art.getNameId())))
 				return art;
 		}
 		return null;
