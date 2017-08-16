@@ -1,18 +1,5 @@
 package pt.joaomneto.titancompanion;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FilenameFilter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Date;
-
-import pt.joaomneto.titancompanion.adapter.Savegame;
-import pt.joaomneto.titancompanion.adapter.SavegameListAdapter;
-import pt.joaomneto.titancompanion.consts.Constants;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,16 +14,43 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Date;
+
+import pt.joaomneto.titancompanion.adapter.Savegame;
+import pt.joaomneto.titancompanion.adapter.SavegameListAdapter;
+import pt.joaomneto.titancompanion.consts.Constants;
+
 public class LoadAdventureActivity extends BaseActivity{
 
 	public static final String ADVENTURE_FILE = "ADVENTURE_FILE";
 	public static final String ADVENTURE_DIR = "ADVENTURE_DIR";
 
+	static public boolean deleteDirectory(File path) {
+		if (path.exists()) {
+			File[] files = path.listFiles();
+			for (int i = 0; i < files.length; i++) {
+				if (files[i].isDirectory()) {
+					deleteDirectory(files[i]);
+				} else {
+					files[i].delete();
+				}
+			}
+		}
+		return (path.delete());
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_load_adventure);
-		final ListView listview = (ListView) findViewById(R.id.adventureListView);
+		final ListView listview = findViewById(R.id.adventureListView);
 
 		final File baseDir = new File(Environment.getExternalStorageDirectory()
 				.getPath() + "/ffgbutil/");
@@ -69,19 +83,17 @@ public class LoadAdventureActivity extends BaseActivity{
 				final String dir_ = files.get(position).getFilename();
 
 				final File dir = new File(baseDir, dir_);
-				
+
 
 				File f = new File(dir, "temp.xml");
 				if(f.exists())
 					f.delete();
-				
+
 				final File[] savepointFiles = dir.listFiles(new FilenameFilter() {
-					
+
 					@Override
 					public boolean accept(File dir, String filename) {
-						if(filename.startsWith("exception"))
-							return false;
-						return true;
+						return !filename.startsWith("exception") && filename.endsWith(".xml");
 					}
 				});
 
@@ -178,20 +190,6 @@ public class LoadAdventureActivity extends BaseActivity{
 			}
 		});
 	}
-	
-	static public boolean deleteDirectory(File path) {
-	    if( path.exists() ) {
-	      File[] files = path.listFiles();
-	      for(int i=0; i<files.length; i++) {
-	         if(files[i].isDirectory()) {
-	           deleteDirectory(files[i]);
-				} else {
-	           files[i].delete();
-	         }
-	      }
-	    }
-	    return( path.delete() );
-	  }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

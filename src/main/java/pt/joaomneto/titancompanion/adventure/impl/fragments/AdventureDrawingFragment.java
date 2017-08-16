@@ -23,6 +23,7 @@ public class AdventureDrawingFragment extends AdventureFragment {
     private Bitmap imageToLoad = null;
 
 
+
     public AdventureDrawingFragment() {
         setBaseLayout(R.layout.fragment_adventure_drawing);
     }
@@ -34,6 +35,7 @@ public class AdventureDrawingFragment extends AdventureFragment {
             super.onCreate(savedInstanceState);
             View rootView = inflater.inflate(getBaseLayout(),
                     container, false);
+
 
             smallBrush = getResources().getInteger(R.integer.small_size);
             mediumBrush = getResources().getInteger(R.integer.medium_size);
@@ -137,7 +139,7 @@ public class AdventureDrawingFragment extends AdventureFragment {
     }
 
     public Bitmap getDrawingBitmap() {
-        return drawView.getDrawingCache();
+        return drawView.getCanvasBitmap();
     }
 
     public void setDrawingBitmap(Bitmap imageToLoad) {

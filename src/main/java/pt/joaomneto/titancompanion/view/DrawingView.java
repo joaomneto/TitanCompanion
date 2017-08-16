@@ -63,6 +63,7 @@ public class DrawingView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        canvasBitmap.setHasAlpha(false);
         drawCanvas = new Canvas(canvasBitmap);
     }
 
@@ -128,5 +129,13 @@ public class DrawingView extends View {
 
     public void loadImage(Bitmap imageToLoad) {
         drawCanvas.setBitmap(imageToLoad);
+    }
+
+    public Bitmap getCanvasBitmap() {
+        return canvasBitmap;
+    }
+
+    public void setCanvasBitmap(Bitmap canvasBitmap) {
+        this.canvasBitmap = canvasBitmap;
     }
 }

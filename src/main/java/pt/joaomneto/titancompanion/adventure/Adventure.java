@@ -59,8 +59,8 @@ public abstract class Adventure extends BaseFragmentActivity {
 	protected static final int FRAGMENT_COMBAT = 1;
 	protected static final int FRAGMENT_EQUIPMENT = 2;
 	protected static final int FRAGMENT_NOTES = 3;
-    protected static final int FRAGMENT_DRAWING = 4;
-    protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
+	protected static final int FRAGMENT_DRAWING = 4;
+	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -106,8 +106,8 @@ public abstract class Adventure extends BaseFragmentActivity {
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
-        fragmentConfiguration.put(FRAGMENT_DRAWING, new AdventureFragmentRunner(R.string.map,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureDrawingFragment"));
+		fragmentConfiguration.put(FRAGMENT_DRAWING, new AdventureFragmentRunner(R.string.map,
+				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureDrawingFragment"));
 
 
 	}
@@ -232,8 +232,8 @@ public abstract class Adventure extends BaseFragmentActivity {
 		String provisionsValueS = getSavedGame().getProperty("provisionsValue");
 		provisionsValue = provisionsValueS != null && !provisionsValueS.equals("null") ? Integer.valueOf(provisionsValueS) : null;
 
-        AdventureDrawingFragment fragment = (AdventureDrawingFragment) getFragments().get(FRAGMENT_DRAWING);
-        String pathName = dir.getAbsolutePath() + "/" + fileName.replace(".xml", ".png");
+		AdventureDrawingFragment fragment = (AdventureDrawingFragment) getFragments().get(FRAGMENT_DRAWING);
+		String pathName = dir.getAbsolutePath() + "/" + fileName.replace(".xml", ".png");
 
         if (new File(pathName).exists()) {
             Bitmap imageToLoad = BitmapFactory.decodeFile(pathName);
@@ -241,7 +241,7 @@ public abstract class Adventure extends BaseFragmentActivity {
         }
 
         loadAdventureSpecificValuesFromFile();
-    }
+	}
 
 	protected abstract void loadAdventureSpecificValuesFromFile();
 
@@ -369,7 +369,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 		alert.setView(input);
 
 
-        alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+		alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 
 				try {
@@ -824,16 +824,16 @@ public abstract class Adventure extends BaseFragmentActivity {
 		view.clearFocus();
 	}
 
-    private void storeImage(Bitmap image, FileOutputStream fos) {
-        try {
-            image.compress(Bitmap.CompressFormat.PNG, 90, fos);
-            fos.close();
-        } catch (FileNotFoundException e) {
-            throw new IllegalStateException("File not found: " + e.getMessage(), e);
-        } catch (IOException e) {
-            throw new IllegalStateException("Error accessing file: " + e.getMessage(), e);
-        }
-    }
+	private void storeImage(Bitmap image, FileOutputStream fos) {
+		try {
+			image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+			fos.close();
+		} catch (FileNotFoundException e) {
+			throw new IllegalStateException("File not found: " + e.getMessage(), e);
+		} catch (IOException e) {
+			throw new IllegalStateException("Error accessing file: " + e.getMessage(), e);
+		}
+	}
 
 	public static class AdventureFragmentRunner {
 		int titleId;
