@@ -105,15 +105,30 @@ public abstract class Adventure extends BaseFragmentActivity {
 	}
 
 	public static void showAlert(int title, int message, Context context) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				dialog.cancel();
-			}
-		});
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
+        showAlert(title, context.getString(message), context);
+    }
+
+    public static void showAlert(int title, String message, Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public static void showAlert(View view, Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
 	public static String arrayToString(Collection<? extends Object> elements) {
 		String _string = "";
@@ -126,6 +141,14 @@ public abstract class Adventure extends BaseFragmentActivity {
 		}
 		return _string;
 	}
+
+    public static void showAlert(int message, Context context) {
+        showAlert(-1, message, context);
+    }
+
+    public static void showAlert(String message, Context context) {
+        showAlert(-1, message, context);
+    }
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -226,48 +249,6 @@ public abstract class Adventure extends BaseFragmentActivity {
 
 		setCurrentLuck(--currentLuck);
 		return result;
-	}
-
-	public static void showAlert(int message, Context context) {
-		showAlert(-1, message, context);
-	}
-
-	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 */
-	public class StandardSectionsPagerAdapter extends FragmentPagerAdapter {
-
-		public StandardSectionsPagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-
-			try {
-				Fragment o = (Fragment) Class.forName(fragmentConfiguration.get(position).getClassName()).newInstance();
-				getVitalStatsFragment().setRetainInstance(true);
-				fragments.put(position, o);
-				return o;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return null;
-		}
-
-		@Override
-		public int getCount() {
-			return fragmentConfiguration.size();
-		}
-
-		@Override
-		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
-
-			return getString(fragmentConfiguration.get(position).getTitleId()).toUpperCase(l);
-		}
-
 	}
 
 	@Override
@@ -502,22 +483,6 @@ public abstract class Adventure extends BaseFragmentActivity {
 				setCurrentStamina(getInitialStamina());
 			showAlert(getResources().getString(R.string.provisionsStaminaGain, provisionsValue), this);
 		}
-	}
-
-	public StandardSectionsPagerAdapter getmSectionsPagerAdapter() {
-		return mSectionsPagerAdapter;
-	}
-
-	public void setmSectionsPagerAdapter(StandardSectionsPagerAdapter mSectionsPagerAdapter) {
-		this.mSectionsPagerAdapter = mSectionsPagerAdapter;
-	}
-
-	public ViewPager getmViewPager() {
-		return mViewPager;
-	}
-
-	public void setmViewPager(ViewPager mViewPager) {
-		this.mViewPager = mViewPager;
 	}
 
 	public Integer getInitialSkill() {
@@ -871,5 +836,6 @@ public abstract class Adventure extends BaseFragmentActivity {
 		}
 
 	}
+
 
 }

@@ -1129,7 +1129,7 @@
     <string name="locale">Regional Preferences</string>
     <string name="time">Time:</string>
     <string name="oxygen">Oxygen:</string>
-    <string translatable="false" name="empty">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</string>
+    <string name="empty" translatable="false">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</string>
     <string name="testFear">Test Fear</string>
     <string name="timeAndOxygen">Time and Oxygen</string>
     <string name="power">Power:</string>
@@ -1143,7 +1143,6 @@
     <string name="change">Change</string>
     <string name="addKeyword">Add Keyword</string>
     <string name="specialSkills">Special Skills</string>
-    <string name="chosenSkills">Chosen Skills</string>
     <string name="skillList">Skills:</string>
     <string name="selectedSkills">Selected Skills:</string>
 
