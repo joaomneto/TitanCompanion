@@ -1,19 +1,15 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.Spinner
-
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
@@ -31,7 +27,7 @@ open class AdventureSpellsFragment : AdventureFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val adv = activity as SpellAdventure
+        val adv = activity as SpellAdventure<Spell>
         super.onCreate(savedInstanceState)
         val rootView = inflater!!.inflate(
                 R.layout.fragment_08ss_adventure_spells, container, false)
@@ -43,7 +39,7 @@ open class AdventureSpellsFragment : AdventureFragment() {
 
 
         val adapter = TranslatableEnumAdapter(adv,
-                adv.spells)
+                adv.chosenSpells)
         spellList!!.adapter = adapter
 
         spellList!!.onItemClickListener = OnItemClickListener { arg0, arg1, arg2, arg3 ->
@@ -55,10 +51,10 @@ open class AdventureSpellsFragment : AdventureFragment() {
                     ) { dialog, id -> dialog.cancel() }
             builder.setPositiveButton(R.string.ok
             ) { dialog, which ->
-                val spell = adv.spells[position]
+                val spell = adv.chosenSpells[position]
                 specificSpellActivation(adv, spell)
                 if (adv.isSpellSingleUse) {
-                    adv.spells.removeAt(position)
+                    adv.chosenSpells.removeAt(position)
                     (spellList!!
                             .adapter as ArrayAdapter<String>)
                             .notifyDataSetChanged()
@@ -71,8 +67,8 @@ open class AdventureSpellsFragment : AdventureFragment() {
 
         addSpellButton!!.setOnClickListener {
             val spell = chooseSpellSpinner!!.selectedItem as Spell
-            if (adv.isSpellSingleUse || !adv.spells.contains(spell)) {
-                adv.spells.add(
+            if (adv.isSpellSingleUse || !adv.chosenSpells.contains(spell)) {
+                adv.chosenSpells.add(
                         spell)
             } else {
                 Adventure.showAlert(R.string.spellAlreadyChosen, adv)
@@ -101,7 +97,7 @@ open class AdventureSpellsFragment : AdventureFragment() {
     private val spellAdapter: TranslatableEnumAdapter
         get() {
 
-            val dataAdapter = TranslatableEnumAdapter(activity, (activity as SpellAdventure).spellList)
+            val dataAdapter = TranslatableEnumAdapter(activity, (activity as SpellAdventure<*>).spellList)
 
             return dataAdapter
         }
