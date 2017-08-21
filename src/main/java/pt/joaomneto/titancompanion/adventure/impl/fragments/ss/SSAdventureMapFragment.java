@@ -154,7 +154,7 @@ public class SSAdventureMapFragment extends AdventureFragment {
 
     private void revealField(String field) throws NoSuchFieldException, IllegalAccessException {
 
-        SSClearing clearing = SSClearing.valueOf("CLEARING_" + field);
+        SSClearing clearing = SSClearing.getIfExists("CLEARING_"+field);
         if (clearing != null) {
             TextView currcell = rootView.findViewById(clearing.getResource());
             currcell.setVisibility(View.VISIBLE);

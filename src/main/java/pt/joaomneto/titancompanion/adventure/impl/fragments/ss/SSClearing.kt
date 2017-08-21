@@ -39,4 +39,11 @@ enum class SSClearing(val resource: Int) {
     CLEARING_7(R.id.clearing_7),
     CLEARING_8(R.id.clearing_8),
     CLEARING_9(R.id.clearing_9);
+
+    companion object {
+        @JvmStatic
+        fun getIfExists(value: String): SSClearing? {
+            return SSClearing.values().filter { ssClearing -> ssClearing.name.equals(value) }.firstOrNull()
+        }
+    }
 }
