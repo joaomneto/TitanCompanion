@@ -232,6 +232,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 	private AdventureVitalStatsFragment getVitalStatsFragment() {
 		AdventureVitalStatsFragment adventureVitalStatsFragment = (AdventureVitalStatsFragment) getFragments().get(
 				FRAGMENT_VITAL_STATS);
+
 		return adventureVitalStatsFragment;
 	}
 

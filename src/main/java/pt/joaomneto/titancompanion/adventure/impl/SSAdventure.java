@@ -1,8 +1,10 @@
 package pt.joaomneto.titancompanion.adventure.impl;
 
+import android.os.Bundle;
+import android.view.Menu;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -11,20 +13,16 @@ import java.util.Set;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.SpellAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.ss.SSSpell;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.tot.TOTSpell;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 
-import android.os.Bundle;
-import android.view.Menu;
-
 public class SSAdventure extends SpellAdventure {
-
-	Set<String> visitedClearings = new HashSet<String>();
 
 	protected static final int FRAGMENT_SPELLS = 2;
 	protected static final int FRAGMENT_EQUIPMENT = 3;
 	protected static final int FRAGMENT_MAP = 4;
 	protected static final int FRAGMENT_NOTES = 5;
+	Set<String> visitedClearings = new HashSet<String>();
+
 
 
 

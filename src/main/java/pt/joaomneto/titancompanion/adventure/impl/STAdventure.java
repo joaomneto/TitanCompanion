@@ -1,5 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl;
 
+import android.os.Bundle;
+import android.view.Menu;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,21 +14,13 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.st.STCrewStatsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
-import android.os.Bundle;
-import android.view.Menu;
 
 public class STAdventure extends Adventure {
 
-	public enum STCrewman {
-		CAPTAIN, SCIENCE_OFFICER, MEDICAL_OFFICER, ENGINEERING_OFFICER, SECURITY_OFFICER, SECURITY_GUARD1, SECURITY_GUARD2
-	}
-
-	protected static final int FRAGMENT_VITAL_STATS = 0;
 	protected static final int FRAGMENT_CREW_STATS = 1;
 	protected static final int FRAGMENT_PHASER_COMBAT = 2;
 	protected static final int FRAGMENT_SHIP_COMBAT = 3;
 	protected static final int FRAGMENT_NOTES = 4;
-
 	private int initialScienceOfficerSkill = -1;
 	private int initialMedicalOfficerSkill = -1;
 	private int initialEngineeringOfficerSkill = -1;
@@ -33,7 +28,6 @@ public class STAdventure extends Adventure {
 	private int initialSecurityGuard1Skill = -1;
 	private int initialSecurityGuard2Skill = -1;
 	private int initialShipWeapons = -1;
-
 	private int initialScienceOfficerStamina = -1;
 	private int initialMedicalOfficerStamina = -1;
 	private int initialEngineeringOfficerStamina = -1;
@@ -41,7 +35,6 @@ public class STAdventure extends Adventure {
 	private int initialSecurityGuard1Stamina = -1;
 	private int initialSecurityGuard2Stamina = -1;
 	private int initialShipShields = -1;
-
 	private int currentScienceOfficerSkill = -1;
 	private int currentMedicalOfficerSkill = -1;
 	private int currentEngineeringOfficerSkill = -1;
@@ -49,7 +42,6 @@ public class STAdventure extends Adventure {
 	private int currentSecurityGuard1Skill = -1;
 	private int currentSecurityGuard2Skill = -1;
 	private int currentShipWeapons = -1;
-
 	private int currentScienceOfficerStamina = -1;
 	private int currentMedicalOfficerStamina = -1;
 	private int currentEngineeringOfficerStamina = -1;
@@ -57,24 +49,20 @@ public class STAdventure extends Adventure {
 	private int currentSecurityGuard1Stamina = -1;
 	private int currentSecurityGuard2Stamina = -1;
 	private int currentShipShields = -1;
-
 	private boolean landingPartyScienceOfficer = false;
 	private boolean landingPartyMedicalOfficer = false;
 	private boolean landingPartyEngineeringOfficer = false;
 	private boolean landingPartySecurityOfficer = false;
 	private boolean landingPartySecurityGuard1 = false;
 	private boolean landingPartySecurityGuard2 = false;
-
 	private boolean deadScienceOfficer = false;
 	private boolean deadMedicalOfficer = false;
 	private boolean deadEngineeringOfficer = false;
 	private boolean deadSecurityOfficer = false;
 	private boolean deadSecurityGuard1 = false;
 	private boolean deadSecurityGuard2 = false;
-
 	private Map<String, STCrewman> stringToCrewmanMap;
 	private Map<STCrewman, String> crewmanToStringMap;
-
 	public STAdventure() {
 		super();
 		fragmentConfiguration.clear();
@@ -88,14 +76,14 @@ public class STAdventure extends Adventure {
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.st.STStarshipCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
 				"pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
-		
+
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {
 			super.onCreate(savedInstanceState);
-			
+
 			stringToCrewmanMap = new HashMap<String, STAdventure.STCrewman>();
 			stringToCrewmanMap.put(getResources().getString(R.string.captain), STCrewman.CAPTAIN);
 			stringToCrewmanMap.put(getResources().getString(R.string.medicalOfficer), STCrewman.MEDICAL_OFFICER);
@@ -179,220 +167,220 @@ public class STAdventure extends Adventure {
 		return initialScienceOfficerSkill;
 	}
 
-	public int getInitialMedicalOfficerSkill() {
-		return initialMedicalOfficerSkill;
-	}
-
-	public int getInitialEngineeringOfficerSkill() {
-		return initialEngineeringOfficerSkill;
-	}
-
-	public int getInitialSecurityOfficerSkill() {
-		return initialSecurityOfficerSkill;
-	}
-
-	public int getInitialSecurityGuard1Skill() {
-		return initialSecurityGuard1Skill;
-	}
-
-	public int getInitialSecurityGuard2Skill() {
-		return initialSecurityGuard2Skill;
-	}
-
-	public int getInitialShipWeapons() {
-		return initialShipWeapons;
-	}
-
-	public int getInitialScienceOfficerStamina() {
-		return initialScienceOfficerStamina;
-	}
-
-	public int getInitialMedicalOfficerStamina() {
-		return initialMedicalOfficerStamina;
-	}
-
-	public int getInitialEngineeringOfficerStamina() {
-		return initialEngineeringOfficerStamina;
-	}
-
-	public int getInitialSecurityOfficerStamina() {
-		return initialSecurityOfficerStamina;
-	}
-
-	public int getInitialSecurityGuard1Stamina() {
-		return initialSecurityGuard1Stamina;
-	}
-
-	public int getInitialSecurityGuard2Stamina() {
-		return initialSecurityGuard2Stamina;
-	}
-
-	public int getInitialShipShields() {
-		return initialShipShields;
-	}
-
-	public int getCurrentScienceOfficerSkill() {
-		return currentScienceOfficerSkill;
-	}
-
-	public int getCurrentMedicalOfficerSkill() {
-		return currentMedicalOfficerSkill;
-	}
-
-	public int getCurrentEngineeringOfficerSkill() {
-		return currentEngineeringOfficerSkill;
-	}
-
-	public int getCurrentSecurityOfficerSkill() {
-		return currentSecurityOfficerSkill;
-	}
-
-	public int getCurrentSecurityGuard1Skill() {
-		return currentSecurityGuard1Skill;
-	}
-
-	public int getCurrentSecurityGuard2Skill() {
-		return currentSecurityGuard2Skill;
-	}
-
-	public int getCurrentShipWeapons() {
-		return currentShipWeapons;
-	}
-
-	public int getCurrentScienceOfficerStamina() {
-		return currentScienceOfficerStamina;
-	}
-
-	public int getCurrentMedicalOfficerStamina() {
-		return currentMedicalOfficerStamina;
-	}
-
-	public int getCurrentEngineeringOfficerStamina() {
-		return currentEngineeringOfficerStamina;
-	}
-
-	public int getCurrentSecurityOfficerStamina() {
-		return currentSecurityOfficerStamina;
-	}
-
-	public int getCurrentSecurityGuard1Stamina() {
-		return currentSecurityGuard1Stamina;
-	}
-
-	public int getCurrentSecurityGuard2Stamina() {
-		return currentSecurityGuard2Stamina;
-	}
-
-	public int getCurrentShipShields() {
-		return currentShipShields;
-	}
-
 	public void setInitialScienceOfficerSkill(int initialScienceOfficerSkill) {
 		this.initialScienceOfficerSkill = initialScienceOfficerSkill;
+	}
+
+	public int getInitialMedicalOfficerSkill() {
+		return initialMedicalOfficerSkill;
 	}
 
 	public void setInitialMedicalOfficerSkill(int initialMedicalOfficerSkill) {
 		this.initialMedicalOfficerSkill = initialMedicalOfficerSkill;
 	}
 
+	public int getInitialEngineeringOfficerSkill() {
+		return initialEngineeringOfficerSkill;
+	}
+
 	public void setInitialEngineeringOfficerSkill(int initialEngineeringOfficerSkill) {
 		this.initialEngineeringOfficerSkill = initialEngineeringOfficerSkill;
+	}
+
+	public int getInitialSecurityOfficerSkill() {
+		return initialSecurityOfficerSkill;
 	}
 
 	public void setInitialSecurityOfficerSkill(int initialSecurityOfficerSkill) {
 		this.initialSecurityOfficerSkill = initialSecurityOfficerSkill;
 	}
 
+	public int getInitialSecurityGuard1Skill() {
+		return initialSecurityGuard1Skill;
+	}
+
 	public void setInitialSecurityGuard1Skill(int initialSecurityGuard1Skill) {
 		this.initialSecurityGuard1Skill = initialSecurityGuard1Skill;
+	}
+
+	public int getInitialSecurityGuard2Skill() {
+		return initialSecurityGuard2Skill;
 	}
 
 	public void setInitialSecurityGuard2Skill(int initialSecurityGuard2Skill) {
 		this.initialSecurityGuard2Skill = initialSecurityGuard2Skill;
 	}
 
+	public int getInitialShipWeapons() {
+		return initialShipWeapons;
+	}
+
 	public void setInitialShipWeapons(int initialShipWeapons) {
 		this.initialShipWeapons = initialShipWeapons;
+	}
+
+	public int getInitialScienceOfficerStamina() {
+		return initialScienceOfficerStamina;
 	}
 
 	public void setInitialScienceOfficerStamina(int initialScienceOfficerStamina) {
 		this.initialScienceOfficerStamina = initialScienceOfficerStamina;
 	}
 
+	public int getInitialMedicalOfficerStamina() {
+		return initialMedicalOfficerStamina;
+	}
+
 	public void setInitialMedicalOfficerStamina(int initialMedicalOfficerStamina) {
 		this.initialMedicalOfficerStamina = initialMedicalOfficerStamina;
+	}
+
+	public int getInitialEngineeringOfficerStamina() {
+		return initialEngineeringOfficerStamina;
 	}
 
 	public void setInitialEngineeringOfficerStamina(int initialEngineeringOfficerStamina) {
 		this.initialEngineeringOfficerStamina = initialEngineeringOfficerStamina;
 	}
 
+	public int getInitialSecurityOfficerStamina() {
+		return initialSecurityOfficerStamina;
+	}
+
 	public void setInitialSecurityOfficerStamina(int initialSecurityOfficerStamina) {
 		this.initialSecurityOfficerStamina = initialSecurityOfficerStamina;
+	}
+
+	public int getInitialSecurityGuard1Stamina() {
+		return initialSecurityGuard1Stamina;
 	}
 
 	public void setInitialSecurityGuard1Stamina(int initialSecurityGuard1Stamina) {
 		this.initialSecurityGuard1Stamina = initialSecurityGuard1Stamina;
 	}
 
+	public int getInitialSecurityGuard2Stamina() {
+		return initialSecurityGuard2Stamina;
+	}
+
 	public void setInitialSecurityGuard2Stamina(int initialSecurityGuard2Stamina) {
 		this.initialSecurityGuard2Stamina = initialSecurityGuard2Stamina;
+	}
+
+	public int getInitialShipShields() {
+		return initialShipShields;
 	}
 
 	public void setInitialShipShields(int initialShipShields) {
 		this.initialShipShields = initialShipShields;
 	}
 
+	public int getCurrentScienceOfficerSkill() {
+		return currentScienceOfficerSkill;
+	}
+
 	public void setCurrentScienceOfficerSkill(int currentScienceOfficerSkill) {
 		this.currentScienceOfficerSkill = currentScienceOfficerSkill;
+	}
+
+	public int getCurrentMedicalOfficerSkill() {
+		return currentMedicalOfficerSkill;
 	}
 
 	public void setCurrentMedicalOfficerSkill(int currentMedicalOfficerSkill) {
 		this.currentMedicalOfficerSkill = currentMedicalOfficerSkill;
 	}
 
+	public int getCurrentEngineeringOfficerSkill() {
+		return currentEngineeringOfficerSkill;
+	}
+
 	public void setCurrentEngineeringOfficerSkill(int currentEngineeringOfficerSkill) {
 		this.currentEngineeringOfficerSkill = currentEngineeringOfficerSkill;
+	}
+
+	public int getCurrentSecurityOfficerSkill() {
+		return currentSecurityOfficerSkill;
 	}
 
 	public void setCurrentSecurityOfficerSkill(int currentSecurityOfficerSkill) {
 		this.currentSecurityOfficerSkill = currentSecurityOfficerSkill;
 	}
 
+	public int getCurrentSecurityGuard1Skill() {
+		return currentSecurityGuard1Skill;
+	}
+
 	public void setCurrentSecurityGuard1Skill(int currentSecurityGuard1Skill) {
 		this.currentSecurityGuard1Skill = currentSecurityGuard1Skill;
+	}
+
+	public int getCurrentSecurityGuard2Skill() {
+		return currentSecurityGuard2Skill;
 	}
 
 	public void setCurrentSecurityGuard2Skill(int currentSecurityGuard2Skill) {
 		this.currentSecurityGuard2Skill = currentSecurityGuard2Skill;
 	}
 
+	public int getCurrentShipWeapons() {
+		return currentShipWeapons;
+	}
+
 	public void setCurrentShipWeapons(int currentShipWeapons) {
 		this.currentShipWeapons = currentShipWeapons;
+	}
+
+	public int getCurrentScienceOfficerStamina() {
+		return currentScienceOfficerStamina;
 	}
 
 	public void setCurrentScienceOfficerStamina(int currentScienceOfficerStamina) {
 		this.currentScienceOfficerStamina = currentScienceOfficerStamina;
 	}
 
+	public int getCurrentMedicalOfficerStamina() {
+		return currentMedicalOfficerStamina;
+	}
+
 	public void setCurrentMedicalOfficerStamina(int currentMedicalOfficerStamina) {
 		this.currentMedicalOfficerStamina = currentMedicalOfficerStamina;
+	}
+
+	public int getCurrentEngineeringOfficerStamina() {
+		return currentEngineeringOfficerStamina;
 	}
 
 	public void setCurrentEngineeringOfficerStamina(int currentEngineeringOfficerStamina) {
 		this.currentEngineeringOfficerStamina = currentEngineeringOfficerStamina;
 	}
 
+	public int getCurrentSecurityOfficerStamina() {
+		return currentSecurityOfficerStamina;
+	}
+
 	public void setCurrentSecurityOfficerStamina(int currentSecurityOfficerStamina) {
 		this.currentSecurityOfficerStamina = currentSecurityOfficerStamina;
+	}
+
+	public int getCurrentSecurityGuard1Stamina() {
+		return currentSecurityGuard1Stamina;
 	}
 
 	public void setCurrentSecurityGuard1Stamina(int currentSecurityGuard1Stamina) {
 		this.currentSecurityGuard1Stamina = currentSecurityGuard1Stamina;
 	}
 
+	public int getCurrentSecurityGuard2Stamina() {
+		return currentSecurityGuard2Stamina;
+	}
+
 	public void setCurrentSecurityGuard2Stamina(int currentSecurityGuard2Stamina) {
 		this.currentSecurityGuard2Stamina = currentSecurityGuard2Stamina;
+	}
+
+	public int getCurrentShipShields() {
+		return currentShipShields;
 	}
 
 	public void setCurrentShipShields(int currentShipShields) {
@@ -452,92 +440,92 @@ public class STAdventure extends Adventure {
 		return landingPartyScienceOfficer;
 	}
 
-	public  boolean isLandingPartyMedicalOfficer() {
-		return landingPartyMedicalOfficer;
-	}
-
-	public  boolean isLandingPartyEngineeringOfficer() {
-		return landingPartyEngineeringOfficer;
-	}
-
-	public  boolean isLandingPartySecurityOfficer() {
-		return landingPartySecurityOfficer;
-	}
-
-	public  boolean isLandingPartySecurityGuard1() {
-		return landingPartySecurityGuard1;
-	}
-
-	public  boolean isLandingPartySecurityGuard2() {
-		return landingPartySecurityGuard2;
-	}
-
-	public  boolean isDeadScienceOfficer() {
-		return deadScienceOfficer;
-	}
-
-	public  boolean isDeadMedicalOfficer() {
-		return deadMedicalOfficer;
-	}
-
-	public  boolean isDeadEngineeringOfficer() {
-		return deadEngineeringOfficer;
-	}
-
-	public  boolean isDeadSecurityOfficer() {
-		return deadSecurityOfficer;
-	}
-
-	public  boolean isDeadSecurityGuard1() {
-		return deadSecurityGuard1;
-	}
-
-	public  boolean isDeadSecurityGuard2() {
-		return deadSecurityGuard2;
-	}
-
 	public  void setLandingPartyScienceOfficer(boolean landingPartyScienceOfficer) {
 		this.landingPartyScienceOfficer = landingPartyScienceOfficer;
+	}
+
+	public boolean isLandingPartyMedicalOfficer() {
+		return landingPartyMedicalOfficer;
 	}
 
 	public  void setLandingPartyMedicalOfficer(boolean landingPartyMedicalOfficer) {
 		this.landingPartyMedicalOfficer = landingPartyMedicalOfficer;
 	}
 
+	public boolean isLandingPartyEngineeringOfficer() {
+		return landingPartyEngineeringOfficer;
+	}
+
 	public  void setLandingPartyEngineeringOfficer(boolean landingPartyEngineeringOfficer) {
 		this.landingPartyEngineeringOfficer = landingPartyEngineeringOfficer;
+	}
+
+	public boolean isLandingPartySecurityOfficer() {
+		return landingPartySecurityOfficer;
 	}
 
 	public  void setLandingPartySecurityOfficer(boolean landingPartySecurityOfficer) {
 		this.landingPartySecurityOfficer = landingPartySecurityOfficer;
 	}
 
+	public boolean isLandingPartySecurityGuard1() {
+		return landingPartySecurityGuard1;
+	}
+
 	public  void setLandingPartySecurityGuard1(boolean landingPartySecurityGuard1) {
 		this.landingPartySecurityGuard1 = landingPartySecurityGuard1;
+	}
+
+	public boolean isLandingPartySecurityGuard2() {
+		return landingPartySecurityGuard2;
 	}
 
 	public  void setLandingPartySecurityGuard2(boolean landingPartySecurityGuard2) {
 		this.landingPartySecurityGuard2 = landingPartySecurityGuard2;
 	}
 
+	public boolean isDeadScienceOfficer() {
+		return deadScienceOfficer;
+	}
+
 	public  void setDeadScienceOfficer(boolean deadScienceOfficer) {
 		this.deadScienceOfficer = deadScienceOfficer;
+	}
+
+	public boolean isDeadMedicalOfficer() {
+		return deadMedicalOfficer;
 	}
 
 	public  void setDeadMedicalOfficer(boolean deadMedicalOfficer) {
 		this.deadMedicalOfficer = deadMedicalOfficer;
 	}
 
+	public boolean isDeadEngineeringOfficer() {
+		return deadEngineeringOfficer;
+	}
+
 	public  void setDeadEngineeringOfficer(boolean deadEngineeringOfficer) {
 		this.deadEngineeringOfficer = deadEngineeringOfficer;
+	}
+
+	public boolean isDeadSecurityOfficer() {
+		return deadSecurityOfficer;
 	}
 
 	public  void setDeadSecurityOfficer(boolean deadSecurityOfficer) {
 		this.deadSecurityOfficer = deadSecurityOfficer;
 	}
 
+	public boolean isDeadSecurityGuard1() {
+		return deadSecurityGuard1;
+	}
+
 	public  void setDeadSecurityGuard1(boolean deadSecurityGuard1) {
 		this.deadSecurityGuard1 = deadSecurityGuard1;
+	}
+
+	public boolean isDeadSecurityGuard2() {
+		return deadSecurityGuard2;
 	}
 
 	public  void setDeadSecurityGuard2(boolean deadSecurityGuard2) {
@@ -631,7 +619,7 @@ public class STAdventure extends Adventure {
 		default:
 			break;
 		}
-		
+
 		getSTCrewStatsFragment().refreshScreensFromResume();
 
 	}
@@ -684,7 +672,7 @@ public class STAdventure extends Adventure {
 		default:
 			break;
 		}
-		
+
 		getSTCrewStatsFragment().refreshScreensFromResume();
 
 	}
@@ -702,7 +690,7 @@ public class STAdventure extends Adventure {
 				FRAGMENT_CREW_STATS);
 		return stcrewStatsFragment;
 	}
-	
+
 	public Set<STCrewman> getLandingParty(){
 		Set<STCrewman> landingParty = new HashSet<STAdventure.STCrewman>();
 		if(landingPartyEngineeringOfficer)
@@ -719,6 +707,10 @@ public class STAdventure extends Adventure {
 			landingParty.add(STCrewman.SECURITY_OFFICER);
 		landingParty.add(STCrewman.CAPTAIN);
 		return landingParty;
+	}
+
+	public enum STCrewman {
+		CAPTAIN, SCIENCE_OFFICER, MEDICAL_OFFICER, ENGINEERING_OFFICER, SECURITY_OFFICER, SECURITY_GUARD1, SECURITY_GUARD2
 	}
 
 }

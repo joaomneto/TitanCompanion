@@ -74,9 +74,8 @@
         android:id="@+id/enemyDamageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/handicapText"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/enemyDamage"
         android:text="@string/damage"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -87,6 +86,8 @@
         android:layout_alignLeft="@+id/handicapValue"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/handicapValue"
+        android:layout_marginTop="10dp"
+        android:digits="0123456789"
         android:ems="10"
         android:inputType="text"
         android:text="1" />

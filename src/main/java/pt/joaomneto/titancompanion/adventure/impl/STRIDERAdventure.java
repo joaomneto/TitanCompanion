@@ -14,17 +14,13 @@ import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class STRIDERAdventure extends Adventure {
 
+	private final static int FRAGMENT_VITAL_TIME_OXYGEN = 1;
+	private final static int FRAGMENT_COMBAT = 2;
+	private final static int FRAGMENT_EQUIPMENT = 3;
+	private final static int FRAGMENT_NOTES = 4;
 	Integer currentFear;
 	Integer time;
 	Integer oxygen;
-
-	private static int fragmentIdx = 0;
-
-	private final static int FRAGMENT_VITAL_STATS = fragmentIdx++;
-	private final static int FRAGMENT_VITAL_TIME_OXYGEN = fragmentIdx++;
-	private final static int FRAGMENT_COMBAT = fragmentIdx++;
-	private final static int FRAGMENT_EQUIPMENT = fragmentIdx++;
-	private final static int FRAGMENT_NOTES = fragmentIdx++;
 
 
 	public STRIDERAdventure() {

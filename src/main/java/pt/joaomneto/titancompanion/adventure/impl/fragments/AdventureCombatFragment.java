@@ -90,6 +90,11 @@ public class AdventureCombatFragment extends AdventureFragment {
 		} else {
 			standardCombatTurn();
 		}
+
+
+		if (combatPositions.isEmpty()) {
+			resetCombat();
+		}
 	}
 
 	protected void switchLayoutCombatStarted() {
@@ -223,9 +228,6 @@ public class AdventureCombatFragment extends AdventureFragment {
 					if (adv.getCurrentStamina() == 0) {
 						Adventure.showAlert(getString(R.string.youreDead), adv);
 					}
-				}
-				if (combatPositions.isEmpty()) {
-					resetCombat();
 				}
 				refreshScreensFromResume();
 			}

@@ -1,15 +1,9 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.ff;
 
-import java.util.Arrays;
-import java.util.List;
-
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
-import pt.joaomneto.titancompanion.util.DiceRoller;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,20 +13,25 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.Arrays;
+import java.util.List;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
+import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class FFAdventureCombatFragment extends AdventureCombatFragment{
 
 	public static final String FF13_GUNFIGHT = "FF13_GUNFIGHT";
-
+	String overrideDamage = null;
 	private Spinner damageSpinner = null;
 	private TextView damageText = null;
-
-	private List<String> damageList = Arrays.asList(new String[] { "1", "2",
-			"3", "4", "1D6" });
+	private List<String> damageList = Arrays.asList("1", "2",
+			"3", "4", "1D6");
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,8 +40,8 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 		rootView = inflater.inflate(R.layout.fragment_13ff_adventure_combat,
 				container, false);
 
-		damageSpinner = (Spinner) rootView.findViewById(R.id.damageSpinner);
-		damageText = (TextView) rootView.findViewById(R.id.damageText);
+		damageSpinner = rootView.findViewById(R.id.damageSpinner);
+		damageText = rootView.findViewById(R.id.damageText);
 
 		if (damageSpinner != null) {
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -78,8 +77,6 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 		return rootView;
 	}
 
-	String overrideDamage = null;
-
 	protected void combatTurn() {
 		if (combatPositions.size() == 0)
 			return;
@@ -94,6 +91,10 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 			sequenceCombatTurn();
 		}
 
+
+		if (combatPositions.isEmpty()) {
+			resetCombat();
+		}
 	}
 
 	@Override
@@ -161,8 +162,12 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 						combatMode == null || combatMode.equals(FF13_GUNFIGHT) ? R.layout.component_add_combatant
 								: R.layout.component_add_combatant_damage, null);
 
-		final EditText damageValue = (EditText) addCombatantView
+		final EditText damageValue = addCombatantView
 				.findViewById(R.id.enemyDamage);
+
+		if (damageValue != null) {
+			damageValue.setRawInputType(Configuration.KEYBOARD_12KEY);
+		}
 
 		builder.setTitle(R.string.addEnemy)
 				.setCancelable(false)
@@ -182,11 +187,11 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 				mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(),
 						0);
 
-				EditText enemySkillValue = (EditText) addCombatantView
+				EditText enemySkillValue = addCombatantView
 						.findViewById(R.id.enemySkillValue);
-				EditText enemyStaminaValue = (EditText) addCombatantView
+				EditText enemyStaminaValue = addCombatantView
 						.findViewById(R.id.enemyStaminaValue);
-				EditText handicapValue = (EditText) addCombatantView
+				EditText handicapValue = addCombatantView
 						.findViewById(R.id.handicapValue);
 
 				Integer skill = Integer.valueOf(enemySkillValue.getText()
@@ -206,7 +211,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 
 		AlertDialog alert = builder.create();
 
-		EditText skillValue = (EditText) addCombatantView
+		EditText skillValue = addCombatantView
 				.findViewById(R.id.enemySkillValue);
 
 		alert.setView(addCombatantView);
