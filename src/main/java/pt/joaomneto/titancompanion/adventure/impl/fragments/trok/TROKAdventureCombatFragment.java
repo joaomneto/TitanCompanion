@@ -1,17 +1,9 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.trok;
 
-import java.util.Arrays;
-import java.util.List;
-
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
-import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
-import pt.joaomneto.titancompanion.util.DiceRoller;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,22 +16,30 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Arrays;
+import java.util.List;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
+import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
+import pt.joaomneto.titancompanion.util.DiceRoller;
+
 public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
     public static final String TROK15_GUNFIGHT = "TROK15_GUNFIGHT";
-
+    String overrideDamage = null;
     private Spinner damageSpinner = null;
     private TextView damageText = null;
-
-    private List<String> damageList = Arrays.asList(new String[]{"4", "5", "6", "1D6"});
+    private List<String> damageList = Arrays.asList("4", "5", "6", "1D6");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_15trok_adventure_combat, container, false);
 
-        damageSpinner = (Spinner) rootView.findViewById(R.id.damageSpinner);
-        damageText = (TextView) rootView.findViewById(R.id.damageText);
+        damageSpinner = rootView.findViewById(R.id.damageSpinner);
+        damageText = rootView.findViewById(R.id.damageText);
 
         if (damageSpinner != null) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, damageList);
@@ -71,8 +71,6 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
         return rootView;
     }
-
-    String overrideDamage = null;
 
     protected void combatTurn() {
         if (combatPositions.size() == 0)
@@ -148,9 +146,11 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
         final View addCombatantView = adv.getLayoutInflater().inflate(
                 combatMode == null || combatMode.equals(NORMAL) ? R.layout.component_add_combatant : R.layout.component_add_combatant_damage, null);
 
-        final EditText damageValue = (EditText) addCombatantView.findViewById(R.id.enemyDamage);
-        if (damageValue != null)
+        final EditText damageValue = addCombatantView.findViewById(R.id.enemyDamage);
+        if (damageValue != null) {
             damageValue.setText(getDefaultEnemyDamage());
+            damageValue.setRawInputType(Configuration.KEYBOARD_12KEY);
+        }
 
         builder.setTitle(R.string.addEnemy).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -165,9 +165,9 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
                 mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
 
-                EditText enemySkillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
-                EditText enemyStaminaValue = (EditText) addCombatantView.findViewById(R.id.enemyStaminaValue);
-                EditText handicapValue = (EditText) addCombatantView.findViewById(R.id.handicapValue);
+                EditText enemySkillValue = addCombatantView.findViewById(R.id.enemySkillValue);
+                EditText enemyStaminaValue = addCombatantView.findViewById(R.id.enemyStaminaValue);
+                EditText handicapValue = addCombatantView.findViewById(R.id.handicapValue);
 
                 Integer skill = Integer.valueOf(enemySkillValue.getText().toString());
                 Integer stamina = Integer.valueOf(enemyStaminaValue.getText().toString());
@@ -181,7 +181,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
         AlertDialog alert = builder.create();
 
-        EditText skillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
+        EditText skillValue = addCombatantView.findViewById(R.id.enemySkillValue);
 
         alert.setView(addCombatantView);
 

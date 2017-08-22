@@ -22,7 +22,7 @@ TBA
 * Write access to external storage
 
 ## License 
-* see [LICENSE](https://gitlab.com/joao.m.neto/FFCompanion/raw/master/LICENSE) file
+* see [LICENSE](https://raw.githubusercontent.com/joaomneto/TitanCompanion/master/LICENSE) file
 
 ## Version 
 * Version 0.1

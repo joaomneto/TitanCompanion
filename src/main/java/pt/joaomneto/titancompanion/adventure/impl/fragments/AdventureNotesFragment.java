@@ -1,130 +1,116 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments;
 
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.AdventureFragment;
+
 public class AdventureNotesFragment extends AdventureFragment {
 
-	ListView noteList = null;
+    ListView noteList = null;
 
-	public AdventureNotesFragment() {
-		setBaseLayout(R.layout.fragment_adventure_notes);
-	}
+    public AdventureNotesFragment() {
+        setBaseLayout(R.layout.fragment_adventure_notes);
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(getBaseLayout(),
-				container, false);
-
-
-		final Adventure adv = (Adventure) getActivity();
-
-		noteList = (ListView) rootView.findViewById(R.id.noteList);
-		Button buttonAddNote = (Button) rootView
-				.findViewById(R.id.buttonAddNote);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        View rootView = inflater.inflate(getBaseLayout(),
+                container, false);
 
 
-		buttonAddNote.setOnClickListener(new OnClickListener() {
+        final Adventure adv = (Adventure) getActivity();
 
-			@Override
-			public void onClick(View v) {
-				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
+        noteList = rootView.findViewById(R.id.noteList);
+        Button buttonAddNote = rootView
+                .findViewById(R.id.buttonAddNote);
 
-				alert.setTitle(R.string.note);
 
-				// Set an EditText view to get user input
-				final EditText input = new EditText(adv);
-				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
-				input.requestFocus();
-				alert.setView(input);
+        buttonAddNote.setOnClickListener(new OnClickListener() {
 
-				alert.setPositiveButton(R.string.ok,
-						new DialogInterface.OnClickListener() {
-							@SuppressWarnings("unchecked")
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								String value = input.getText().toString();
-								if(value.isEmpty())
-									return;
-								adv.getNotes().add(value.trim());
-								((ArrayAdapter<String>)noteList.getAdapter()).notifyDataSetChanged();
-							}
-						});
+            @Override
+            public void onClick(View v) {
+                synchronized (adv.getNotes()) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setNegativeButton(R.string.cancel,
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								// Canceled.
-							}
-						});
+                    alert.setTitle(R.string.note);
 
-				alert.show();
-			}
+                    // Set an EditText view to get user input
+                    final EditText input = new EditText(adv);
+                    InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+                    input.requestFocus();
+                    alert.setView(input);
 
-		});
+                    alert.setPositiveButton(R.string.ok,
+                            (dialog, whichButton) -> {
+                                synchronized (adv.getNotes()) {
+                                    String value = input.getText().toString();
+                                    if (value.isEmpty())
+                                        return;
+                                    adv.getNotes().add(value.trim());
+                                    ((ArrayAdapter<String>) noteList.getAdapter()).notifyDataSetChanged();
+                                }
+                            });
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv,
-	            android.R.layout.simple_list_item_1, android.R.id.text1, adv.getNotes());
-		noteList.setAdapter(adapter);
+                    alert.setNegativeButton(R.string.cancel,
+                            (dialog, whichButton) -> {
+                                // Canceled.
+                            });
 
-		noteList.setOnItemLongClickListener(new OnItemLongClickListener() {
+                    alert.show();
+                }
+            }
 
-			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				final int position = arg2;
-				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle(R.string.deleteNote)
-						.setCancelable(false)
-						.setNegativeButton(R.string.close,
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog, int id) {
-										dialog.cancel();
-									}
-								});
-						builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-							@SuppressWarnings("unchecked")
-							public void onClick(DialogInterface dialog, int which) {
-								adv.getNotes().remove(position);
-								((ArrayAdapter<String>)noteList.getAdapter()).notifyDataSetChanged();
-							}
-						});
+        });
 
-				AlertDialog alert = builder.create();
-				alert.show();
-				return true;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv,
+                android.R.layout.simple_list_item_1, android.R.id.text1, adv.getNotes());
+        noteList.setAdapter(adapter);
 
-			}
-		});
+        noteList.setOnItemLongClickListener((arg0, arg1, position, arg3) -> {
+            synchronized (adv.getNotes()) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(adv);
+                builder.setTitle(R.string.deleteNote)
+                        .setCancelable(false)
+                        .setNegativeButton(R.string.close,
+                                (dialog, id) -> dialog.cancel());
+                builder.setPositiveButton(R.string.ok, (dialog, which) -> {
+                    if (adv.getNotes().size() > position) {
+                        adv.getNotes().remove(position);
+                    }
+                    ((ArrayAdapter<String>) noteList.getAdapter()).notifyDataSetChanged();
+                });
 
-		return rootView;
-	}
+                AlertDialog alert = builder.create();
+                alert.show();
+                return true;
+            }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void refreshScreensFromResume() {
+        });
 
-		((ArrayAdapter<String>) noteList.getAdapter()).notifyDataSetChanged();
-		
-	}
+        return rootView;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void refreshScreensFromResume() {
+
+        ((ArrayAdapter<String>) noteList.getAdapter()).notifyDataSetChanged();
+
+    }
 }

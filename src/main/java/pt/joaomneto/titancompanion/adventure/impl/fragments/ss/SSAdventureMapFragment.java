@@ -1,13 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.ss;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.AdventureFragment;
-import pt.joaomneto.titancompanion.adventure.impl.SSAdventure;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,19 +14,21 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.AdventureFragment;
+import pt.joaomneto.titancompanion.adventure.impl.SSAdventure;
 
 public class SSAdventureMapFragment extends AdventureFragment {
 
     static List<String> elements = new ArrayList<String>();
-    private SSAdventure adv;
-    View rootView;
 
     static {
         Class<R.id> clazz = R.id.class;
@@ -50,7 +44,9 @@ public class SSAdventureMapFragment extends AdventureFragment {
         }
     }
 
+    View rootView;
     Button addClearingButton;
+    private SSAdventure adv;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -70,7 +66,7 @@ public class SSAdventureMapFragment extends AdventureFragment {
 
         final SSAdventure adv = (SSAdventure) getActivity();
 
-        addClearingButton = (Button) rootView.findViewById(R.id.addClearingButton);
+        addClearingButton = rootView.findViewById(R.id.addClearingButton);
 
         addClearingButton.setOnClickListener(new OnClickListener() {
 
@@ -116,10 +112,9 @@ public class SSAdventureMapFragment extends AdventureFragment {
 
         SSAdventure adv = (SSAdventure) getActivity();
 
-        Class<R.id> clazz = R.id.class;
         for (String number : adv.getVisitedClearings()) {
             try {
-                revealField(clazz, "clearing_" + number);
+                revealField(number);
 
             } catch (Exception e) {
                 throw (new RuntimeException(e));
@@ -147,21 +142,23 @@ public class SSAdventureMapFragment extends AdventureFragment {
 
         int visibles = 0;
 
-        visibles+=rootView.findViewById(R.id.clearing_7).getVisibility() == View.VISIBLE?1:0;
-        visibles+=rootView.findViewById(R.id.clearing_15).getVisibility() == View.VISIBLE?1:0;
-        visibles+=rootView.findViewById(R.id.clearing_19).getVisibility() == View.VISIBLE?1:0;
-        visibles+=rootView.findViewById(R.id.clearing_32).getVisibility() == View.VISIBLE?1:0;
+        visibles += rootView.findViewById(R.id.clearing_7).getVisibility() == View.VISIBLE ? 1 : 0;
+        visibles += rootView.findViewById(R.id.clearing_15).getVisibility() == View.VISIBLE ? 1 : 0;
+        visibles += rootView.findViewById(R.id.clearing_19).getVisibility() == View.VISIBLE ? 1 : 0;
+        visibles += rootView.findViewById(R.id.clearing_32).getVisibility() == View.VISIBLE ? 1 : 0;
 
-        if(visibles>1){
+        if (visibles > 1) {
             rootView.findViewById(R.id.clearing_7_15_19_32).setVisibility(View.VISIBLE);
         }
     }
 
-    private void revealField(Class<R.id> clazz, String field) throws NoSuchFieldException, IllegalAccessException {
-        Field f = clazz.getField(field);
-        int id = f.getInt(null);
-        TextView currcell = (TextView) rootView.findViewById(id);
-        currcell.setVisibility(View.VISIBLE);
+    private void revealField(String field) throws NoSuchFieldException, IllegalAccessException {
+
+        SSClearing clearing = SSClearing.getIfExists("CLEARING_"+field);
+        if (clearing != null) {
+            TextView currcell = rootView.findViewById(clearing.getResource());
+            currcell.setVisibility(View.VISIBLE);
+        }
     }
 
     public void setClearingLayoutSizes(View rootView, Context context) {
@@ -178,7 +175,7 @@ public class SSAdventureMapFragment extends AdventureFragment {
 
         int finalValue = (int) Math.min(dpHeight, dpWidth);
 
-        TableLayout table = (TableLayout) rootView.findViewById(R.id.clearingGrid);
+        TableLayout table = rootView.findViewById(R.id.clearingGrid);
         final int childcount = table.getChildCount();
         for (int i = 0; i < childcount; i++) {
             TableRow row = (TableRow) table.getChildAt(i);

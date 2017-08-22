@@ -23,8 +23,6 @@ public class SSAdventure extends SpellAdventure {
 	protected static final int FRAGMENT_NOTES = 5;
 	Set<String> visitedClearings = new HashSet<String>();
 
-
-
 	public SSAdventure() {
 		super();
 		fragmentConfiguration.clear();

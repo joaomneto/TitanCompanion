@@ -90,6 +90,11 @@ public class AdventureCombatFragment extends AdventureFragment {
 		} else {
 			standardCombatTurn();
 		}
+
+
+		if (combatPositions.isEmpty()) {
+			resetCombat();
+		}
 	}
 
 	protected void switchLayoutCombatStarted() {
@@ -294,7 +299,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 	}
 
-	protected void advanceCombat(Combatant combatant) {
+	protected Combatant advanceCombat(Combatant combatant) {
 		int index = combatPositions.indexOf(combatant);
 		Combatant currentEnemy = null;
 
@@ -304,27 +309,27 @@ public class AdventureCombatFragment extends AdventureFragment {
 			} else {
 				currentEnemy = combatPositions.get(0);
 			}
-			combatantListAdapter.setCurrentEnemy(currentEnemy);
+			changeActiveCombatant(currentEnemy);
 		} else {
 			resetCombat();
 		}
+
+		return currentEnemy;
 	}
 
-	protected void removeAndAdvanceCombat(Combatant combatant) {
-		int index = combatPositions.indexOf(combatant);
-		combatPositions.remove(index);
-		Combatant currentEnemy = null;
+	private void changeActiveCombatant(Combatant currentEnemy) {
+		for (Combatant combatant : combatPositions) {
+			combatant.setActive(false);
+		}
+		currentEnemy.setActive(true);
+	}
 
+
+	protected void removeAndAdvanceCombat(Combatant combatant) {
+		combatPositions.remove(combatant);
 		if (!combatPositions.isEmpty()) {
-			if (index <= combatPositions.size() - 1) {
-				currentEnemy = combatPositions.get(index);
-			} else {
-				currentEnemy = combatPositions.get(0);
-			}
-			combatantListAdapter.setCurrentEnemy(currentEnemy);
+			Combatant currentEnemy = advanceCombat(combatant);
 			currentEnemy.setDefenseOnly(false);
-		} else {
-			resetCombat();
 		}
 	}
 
@@ -461,11 +466,10 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 	protected void addCombatant(final View rootView, Integer skill, Integer stamina, Integer handicap, String damage) {
 
-		Combatant combatPosition = new Combatant(stamina, skill, handicap, combatPositions.size() > 0, damage);
+		Combatant combatPosition = new Combatant(stamina, skill, handicap, combatPositions.size() > 0, damage, combatPositions.size() == 0);
 		if(!combatPositions.isEmpty())
 			combatPosition.setDefenseOnly(true);
 		combatPositions.add(combatPosition);
-		combatantListAdapter.setCurrentEnemy(combatPositions.get(0));
 		refreshScreensFromResume();
 
 	}
@@ -486,9 +490,9 @@ public class AdventureCombatFragment extends AdventureFragment {
 		staminaLoss = 0;
 
 		combatPositions.clear();
+		combatantListAdapter.notifyDataSetChanged();
 		combatMode = NORMAL;
 		combatStarted = false;
-		combatantListAdapter.setCurrentEnemy(null);
 		combatResult.setText("");
 
 		combatTypeSwitch.setClickable(true);
@@ -529,7 +533,12 @@ public class AdventureCombatFragment extends AdventureFragment {
 	}
 
 	protected Combatant getCurrentEnemy() {
-		return combatantListAdapter.getCurrentEnemy();
+		for (Combatant combatant : combatPositions) {
+			if (combatant.isActive()) {
+				return combatant;
+			}
+		}
+		throw new IllegalStateException("No active enemy combatant found.");
 	}
 
 	public class Combatant {
@@ -540,21 +549,23 @@ public class AdventureCombatFragment extends AdventureFragment {
 		String damage;
 		boolean defenseOnly;
 		Integer staminaLoss = 0;
+		boolean active;
 
-		public Combatant(Integer stamina, Integer skill, Integer handicap, boolean defenseOnly, String damage) {
+		public Combatant(Integer stamina, Integer skill, Integer handicap, boolean defenseOnly, String damage, boolean active) {
 			this.currentStamina = stamina;
 			this.currentSkill = skill;
 			this.handicap = handicap;
 			this.defenseOnly = defenseOnly;
 			this.damage = damage;
+			this.active = active;
 		}
 
-		public Combatant(Integer stamina, Integer skill, Integer handicap, boolean defenseOnly) {
-			this(stamina, skill, handicap, defenseOnly, "2");
+		public boolean isActive() {
+			return active;
 		}
 
-		public CharSequence toGridString() {
-			return (getString(R.string.skill) + currentSkill + " "+ getString(R.string.stamina) + currentStamina);
+		public void setActive(boolean active) {
+			this.active = active;
 		}
 
 		public Integer getCurrentStamina() {
@@ -609,7 +620,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 	private class CombatTypeSwitchChangeListener implements OnCheckedChangeListener {
 
-		// @Override
+		@Override
 		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 			combatTypeSwitchBehaviour(isChecked);
 
