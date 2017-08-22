@@ -1,4 +1,4 @@
-package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa;
+package pt.joaomneto.titancompanion.adventurecreation.impl;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

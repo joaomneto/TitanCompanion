@@ -20,6 +20,7 @@ import android.widget.TextView;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventurecreation.impl.SAAdventureCreation;
+import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter;
 
 public class SAWeaponsFragment extends Fragment {
 

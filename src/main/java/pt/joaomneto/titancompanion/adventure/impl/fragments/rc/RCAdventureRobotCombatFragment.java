@@ -23,7 +23,7 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter;
 import pt.joaomneto.titancompanion.consts.CombatTurnresult;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 

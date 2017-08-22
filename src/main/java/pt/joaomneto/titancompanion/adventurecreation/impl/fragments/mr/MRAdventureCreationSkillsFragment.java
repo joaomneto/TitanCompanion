@@ -17,7 +17,7 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill;
 import pt.joaomneto.titancompanion.adventurecreation.impl.MRAdventureCreation;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter;
 
 import static android.view.View.GONE;
 

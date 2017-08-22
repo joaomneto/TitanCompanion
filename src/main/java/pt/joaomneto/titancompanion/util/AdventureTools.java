@@ -1,6 +1,7 @@
 package pt.joaomneto.titancompanion.util;
 
 import android.text.Editable;
+import android.widget.EditText;
 
 import java.util.regex.Pattern;
 
@@ -12,11 +13,11 @@ public class AdventureTools {
 
     private final static Pattern signedInteger = Pattern.compile("-?[0-9]\\d*|0");
 
-    public static boolean validateSignedInteger(Editable textSk) {
-        return validateNotEmpty(textSk) && signedInteger.matcher(textSk.toString()).matches();
+    public static boolean validateSignedInteger(EditText textField) {
+        return validateNotEmpty(textField) && signedInteger.matcher(textField.getText().toString()).matches();
     }
 
-    public static boolean validateNotEmpty(Editable textSk) {
-        return textSk != null && !textSk.toString().isEmpty();
+    public static boolean validateNotEmpty(EditText textField) {
+        return textField != null && textField.getText()!=null && !textField.getText().toString().isEmpty();
     }
 }

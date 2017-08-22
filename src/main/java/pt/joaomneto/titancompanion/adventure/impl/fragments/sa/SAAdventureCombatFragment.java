@@ -19,7 +19,7 @@ import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
 import static android.view.View.GONE;

@@ -15,7 +15,7 @@ import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.SpellAdventure
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter
+import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter
 
 open class AdventureSpellsFragment : AdventureFragment() {
 

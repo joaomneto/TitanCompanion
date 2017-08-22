@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -158,7 +159,6 @@ public class STCombatFragment extends AdventureFragment {
                 combatResult.setText(getString(R.string.stCrewmanHit, crewmanString, crewmanDiceRoll.getSum(), crewmanSkill, enemyDiceRoll.getSum(), position.getCurrentSkill()));
             } else {
                 combatResult.setText(getString(R.string.stCombatBothMissed, crewmanString));
-//				combatResult.setText("Both the " + crewmanString + " and his enemy have missed");
             }
             if (position.getCurrentStamina() == 0 || adv.getCrewmanStamina(position.getCrewman()) == 0) {
                 removeCombatant(row);
@@ -323,19 +323,22 @@ public class STCombatFragment extends AdventureFragment {
             Button ok = alert.getButton(AlertDialog.BUTTON_POSITIVE);
             ok.setOnClickListener(view -> {
 
-                int currentRow = getNextRow();
-
-                mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
 
                 EditText enemySkillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
                 EditText enemyStaminaValue = (EditText) addCombatantView.findViewById(R.id.enemyStaminaValue);
                 Spinner crewmanSpinner = (Spinner) addCombatantView.findViewById(R.id.crewmanSpinner);
 
+                if (AdventureTools.validateSignedInteger(enemySkillValue) && AdventureTools.validateSignedInteger(enemyStaminaValue)) {
 
-                Editable textSk = enemySkillValue.getText();
-                Editable textSt = enemyStaminaValue.getText();
+                    int currentRow = getNextRow();
 
-                if (AdventureTools.validateSignedInteger(textSk) &&  AdventureTools.validateSignedInteger(textSt)) {
+                    mgr.hideSoftInputFromWindow(addCombatantView.getWindowToken(), 0);
+
+
+                    Editable textSk = enemySkillValue.getText();
+                    Editable textSt = enemyStaminaValue.getText();
+
+
                     Integer skill = Integer.valueOf(textSk.toString());
                     Integer stamina = Integer.valueOf(textSt.toString());
 
@@ -388,8 +391,8 @@ public class STCombatFragment extends AdventureFragment {
         if (adv.isLandingPartySecurityGuard2() && (!inAttackCombat.contains(STCrewman.SECURITY_GUARD2) || defenseOnly))
             list.add(getResources().getString(R.string.securityGuard2));
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(adv, android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(adv, android.R.layout.simple_list_item_1, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         return dataAdapter;
     }
 

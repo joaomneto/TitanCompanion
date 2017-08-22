@@ -19,7 +19,7 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter;
 
 public class SAAdventureWeaponsFragment extends AdventureFragment {
 
