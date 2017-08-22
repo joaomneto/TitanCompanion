@@ -5,14 +5,12 @@ import android.view.View;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill;
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
-import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.mr.MRAdventureCreationSkillsFragment;
 
 public class MRAdventureCreation extends TWOFMAdventureCreation {
@@ -54,10 +52,9 @@ public class MRAdventureCreation extends TWOFMAdventureCreation {
             chosenSkillsS = chosenSkillsS.substring(0, chosenSkillsS.length() - 1);
         }
 
-        bw.write("standardPotion=" + potion + "\n");
-        bw.write("standardPotionValue=1\n");
+        bw.write("skills=" + chosenSkillsS + "\n");
         bw.write("provisionsValue=4\n");
-        bw.write("provisions=0\n");
+        bw.write("provisions=10\n");
         bw.write("gold=0\n");
     }
 

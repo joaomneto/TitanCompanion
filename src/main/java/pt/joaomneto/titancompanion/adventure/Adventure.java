@@ -173,8 +173,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 
 			loadGameFromFile(dir, fileName);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new IllegalStateException("Unable to create adventure", e);
 		}
 	}
 

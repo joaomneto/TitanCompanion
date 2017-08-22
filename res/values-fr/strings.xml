@@ -86,6 +86,7 @@
     <string name="notn">La Nuit du Nécromancien</string>
     <string name="botz">Le Sang des Zombies</string>
 -->
+    <string name="tpop">The Port of Peril</string>
 
     <string name="title_activity_gamebook_selection">Choisir un livre</string>
     <string name="dummy_button">Dummy Button</string>
@@ -623,5 +624,18 @@
     <string name="addKeyword">Ajouter Mot Clé</string>
     <string name="weapons">"Armes: "</string>
     <string name="setInitialPower">Modifier Pouvoir initial</string>
-    <string name="tpop">The Port of Peril</string>
+
+    <!-- Midnight Rogue -->
+    <string name="chosenSkills">Habilités</string>
+    <string name="specialSkills">Habilités</string>
+    <string name="skillList">Habilités:</string>
+    <string name="selectedSkills">Habilités choisies:</string>
+    <string name="skill_climb">Escalade</string>
+    <string name="skill_hide">Cacher</string>
+    <string name="skill_picklock">Crochetage</string>
+    <string name="skill_pickpocket">Pickpocket</string>
+    <string name="skill_secretsigns">Signes Secrets</string>
+    <string name="skill_sneak">Furtif</string>
+    <string name="skill_spot_hidden">Perception</string>
+    <string name="deleteSkillQuestion">Supprimer habilité?</string>
 </resources>

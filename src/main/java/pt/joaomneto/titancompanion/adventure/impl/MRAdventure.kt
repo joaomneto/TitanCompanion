@@ -14,7 +14,8 @@ class MRAdventure : SpellAdventure<MRSkill>() {
 
     internal var skills: MutableList<MRSkill> = ArrayList()
 
-    val FRAGMENT_SPELLS = 2
+    val FRAGMENT_SPELLS = 1
+    val FRAGMENT_COMBAT = 2
     val FRAGMENT_EQUIPMENT = 3
     val FRAGMENT_NOTES = 4
 
@@ -22,10 +23,10 @@ class MRAdventure : SpellAdventure<MRSkill>() {
         Adventure.fragmentConfiguration.clear()
         Adventure.fragmentConfiguration.put(Adventure.FRAGMENT_VITAL_STATS, Adventure.AdventureFragmentRunner(R.string.vitalStats,
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"))
+        Adventure.fragmentConfiguration.put(FRAGMENT_SPELLS, Adventure.AdventureFragmentRunner(R.string.chosenSkills,
+                "pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRAdventureSpellsFragment"))
         Adventure.fragmentConfiguration.put(Adventure.FRAGMENT_COMBAT, Adventure.AdventureFragmentRunner(R.string.fights,
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_SPELLS, Adventure.AdventureFragmentRunner(R.string.chosenSkills,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureSpellsFragment"))
         Adventure.fragmentConfiguration.put(FRAGMENT_EQUIPMENT, Adventure.AdventureFragmentRunner(R.string.goldEquipment,
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"))
         Adventure.fragmentConfiguration.put(FRAGMENT_NOTES, Adventure.AdventureFragmentRunner(R.string.notes,
@@ -63,7 +64,7 @@ class MRAdventure : SpellAdventure<MRSkill>() {
 
     override fun loadAdventureSpecificValuesFromFile() {
         gold = Integer.valueOf(savedGame.getProperty("gold"))
-        chosenSpells = stringToArraySpells(String(savedGame.getProperty("skills").toByteArray(java.nio.charset.Charset.forName("ISO-8859-1"))), MRSkill::class.java)
+        chosenSpells = stringToArraySpells(savedGame.getProperty("skills"), MRSkill::class.java)
 
     }
 

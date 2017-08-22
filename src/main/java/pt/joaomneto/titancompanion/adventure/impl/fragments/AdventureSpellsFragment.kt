@@ -30,7 +30,7 @@ open class AdventureSpellsFragment : AdventureFragment() {
         val adv = activity as SpellAdventure<Spell>
         super.onCreate(savedInstanceState)
         val rootView = inflater!!.inflate(
-                R.layout.fragment_08ss_adventure_spells, container, false)
+                R.layout.fragment_adventure_spells_chooser, container, false)
 
         spellList = rootView.findViewById<ListView>(R.id.spellList)
         chooseSpellSpinner = rootView
