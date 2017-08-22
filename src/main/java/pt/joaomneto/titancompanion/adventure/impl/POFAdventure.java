@@ -76,7 +76,7 @@ public class POFAdventure extends SpellAdventure {
         setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
         setCurrentPower(Integer.valueOf(getSavedGame().getProperty("currentPower")));
         setInitialPower(Integer.valueOf(getSavedGame().getProperty("initialPower")));
-        setSpells(getSpellList());
+        setChosenSpells(getSpellList());
 
     }
 

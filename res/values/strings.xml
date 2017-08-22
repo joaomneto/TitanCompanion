@@ -1073,6 +1073,7 @@
     <string name="weaponsArmorMandatory">Weapons and Armor</string>
     <string name="spellCount">Spell Count</string>
     <string name="chosenSpells">Chosen Spells</string>
+    <string name="chosenSkills">Chosen Skills</string>
     <string name="deleteSpellQuestion">Delete spell?</string>
 
     <string name="trokDirectHit">Direct hit!. (-%1$d Shields)</string>
@@ -1141,5 +1142,17 @@
     <string name="pofSpellFire">Fire</string>
     <string name="change">Change</string>
     <string name="addKeyword">Add Keyword</string>
+    <string name="specialSkills">Special Skills</string>
+    <string name="skillList">Skills:</string>
+    <string name="selectedSkills">Selected Skills:</string>
+
+    <string name="skill_climb">Climb</string>
+    <string name="skill_hide">Hide</string>
+    <string name="skill_picklock">Pick Lock</string>
+    <string name="skill_pickpocket">Pick Pocket</string>
+    <string name="skill_secretsigns">Secret Signs</string>
+    <string name="skill_sneak">Sneak</string>
+    <string name="skill_spot_hidden">Spot Hidden</string>
+    <string name="deleteSkillQuestion">Delete Skill?</string>
 
 </resources>

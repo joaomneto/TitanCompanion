@@ -17,7 +17,6 @@ import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
 public class TOTAdventure extends SpellAdventure {
 
     protected static final int FRAGMENT_SPELLS = 2;
-    ;
     protected static final int FRAGMENT_EQUIPMENT = 3;
     protected static final int FRAGMENT_NOTES = 4;
     List<Spell> spells = new ArrayList<Spell>();
@@ -74,7 +73,7 @@ public class TOTAdventure extends SpellAdventure {
     protected void loadAdventureSpecificValuesFromFile() {
         setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
 
-        setSpells(stringToArraySpells(new String(getSavedGame().getProperty("spells").getBytes(java.nio.charset.Charset.forName("ISO-8859-1")))));
+        setChosenSpells(stringToArraySpells(new String(getSavedGame().getProperty("spells").getBytes(java.nio.charset.Charset.forName("ISO-8859-1"))), TOTSpell.class));
 
     }
 

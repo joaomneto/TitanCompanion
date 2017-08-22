@@ -363,6 +363,16 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
         <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.MRAdventureCreation"
+            android:label="@string/mr"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.MRAdventure"
+            android:label="@string/mr"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AODAdventureCreation"
             android:label="@string/aod"
 

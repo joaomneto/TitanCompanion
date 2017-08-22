@@ -578,7 +578,7 @@
     <string name="testFear">Testar Medo</string>
     <string name="timeAndOxygen">Tempo e Oxigénio</string>
     <string name="usePotion">Usar poção de %1$s</string>
-    <string name="power">Poder: </string>
+    <string name="power">Poder:</string>
     <string name="setInitialPower">Definir Poder inicialr</string>
     <string name="pofSpellProtect">Proteger</string>
     <string name="pofSpellFinding">Procurar</string>
@@ -586,6 +586,8 @@
     <string name="pofSpellIllusion">Ilusão</string>
     <string name="pofSpellLevitation">Levitação</string>
     <string name="pofSpellWeaken">Enfraquecer</string>
+    <string name="specialSkills">Habilidades Especiais</string>
+    <string name="chosenSkills">Habilidades</string>
     <string name="change">Mudança</string>
     <string name="deleteKeyword">Apagar Palavra Chave?</string>
     <string name="addKeyword">Adicionar Palavra Chave</string>
@@ -593,6 +595,16 @@
     <string name="setInitialStamina">Definir Força inicial</string>
     <string name="setInitialSkill">Definir Perícia inicial</string>
     <string name="setInitialLuck">Definir Sorte inicial</string>
+    <string name="selectedSkills">Habilidades escolhidas:</string>
+    <string name="skillList">Habilidades:</string>
+    <string name="skill_climb">Escalar</string>
+    <string name="skill_hide">Esconder-se</string>
+    <string name="skill_picklock">Abrir Fechaduras</string>
+    <string name="skill_pickpocket">Roubar Carteiras</string>
+    <string name="skill_secretsigns">Sinais Secretos</string>
+    <string name="skill_sneak">Andar em silêncio</string>
+    <string name="skill_spot_hidden">Percepção</string>
+    <string name="deleteSkillQuestion">Remover Habilidade?</string>
 
 
 </resources>
