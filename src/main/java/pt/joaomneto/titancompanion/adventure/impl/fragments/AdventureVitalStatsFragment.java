@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -256,11 +257,13 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
         // Set an EditText view to get user input
         final EditText input = new EditText(getContext());
         input.setId(R.id.alert_editText_field);
+
         final InputMethodManager imm = (InputMethodManager) getContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
                 InputMethodManager.HIDE_IMPLICIT_ONLY);
-        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input.setInputType(InputType.TYPE_CLASS_PHONE);
+        input.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
         input.requestFocus();
         alert.setView(input);
 

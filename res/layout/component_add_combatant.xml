@@ -25,7 +25,8 @@
         android:layout_alignTop="@+id/enemySkillText"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="phone" />
+        android:digits="1234567890"
+        android:inputType="phone"/>
 
     <TextView
         android:id="@+id/enemyStaminaText"
@@ -46,6 +47,7 @@
         android:layout_alignRight="@+id/enemySkillValue"
         android:layout_alignTop="@+id/enemyStaminaText"
         android:ems="10"
+        android:digits="1234567890"
         android:inputType="phone" />
     
     <TextView
@@ -67,7 +69,8 @@
         android:layout_alignRight="@+id/enemyStaminaValue"
         android:layout_alignTop="@+id/handicapText"
         android:ems="10"
-        android:inputType="number"
+        android:digits="1234567890"
+        android:inputType="phone"
         android:text="0" />
 
 </RelativeLayout>

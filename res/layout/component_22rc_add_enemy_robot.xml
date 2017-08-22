@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/addEnemyRobot_adventureVitalStats"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
@@ -13,8 +12,8 @@
         android:layout_marginStart="10dp"
         android:gravity="center_vertical"
         android:text="@string/enemyRobot"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
 
 
     <TextView
@@ -22,8 +21,8 @@
         android:layout_width="75dp"
         android:layout_height="35dp"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"
         android:layout_below="@id/addEnemyRobot_enemyRobotText"
+        android:layout_marginStart="10dp"
         android:gravity="center_vertical"
         android:text="@string/armor"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -35,6 +34,7 @@
         android:layout_alignBottom="@id/addEnemyRobot_armorText"
         android:layout_alignTop="@id/addEnemyRobot_armorText"
         android:layout_toEndOf="@+id/addEnemyRobot_armorText"
+        android:digits="1234567890"
         android:inputType="phone" />
 
 
@@ -46,7 +46,8 @@
         android:layout_alignTop="@id/addEnemyRobot_armorText"
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/addEnemyRobot_skillText"
-        android:inputType="numberSigned" />
+        android:digits="1234567890"
+        android:inputType="phone" />
 
     <TextView
         android:id="@+id/addEnemyRobot_skillText"
@@ -89,7 +90,7 @@
         android:layout_alignBottom="@+id/addEnemyRobot_typeText"
         android:layout_alignTop="@id/addEnemyRobot_speedText"
         android:layout_toEndOf="@+id/addEnemyRobot_typeText"
-        android:entries="@array/robotTypes"/>
+        android:entries="@array/robotTypes" />
 
     <TextView
         android:id="@+id/addEnemyRobot_typeText"
@@ -108,7 +109,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/addEnemyRobot_specialAbilityText"
         android:layout_toEndOf="@+id/addEnemyRobot_specialAbilityText"
-        android:inputType="phone"/>
+        android:digits="1234567890"
+        android:inputType="phone" />
 
     <TextView
         android:id="@+id/addEnemyRobot_specialAbilityText"
@@ -129,7 +131,7 @@
         android:layout_alignBottom="@+id/addEnemyRobot_airborneText"
         android:layout_alignTop="@id/addEnemyRobot_airborneText"
         android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/addEnemyRobot_airborneText"/>
+        android:layout_toEndOf="@+id/addEnemyRobot_airborneText" />
 
     <TextView
         android:id="@+id/addEnemyRobot_airborneText"
@@ -150,8 +152,7 @@
         android:layout_alignBottom="@+id/addEnemyRobot_secondEnemyText"
         android:layout_alignTop="@id/addEnemyRobot_airborneText"
         android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/addEnemyRobot_secondEnemyText"
-        />
+        android:layout_toEndOf="@+id/addEnemyRobot_secondEnemyText" />
 
     <TextView
         android:id="@+id/addEnemyRobot_secondEnemyText"
@@ -166,7 +167,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/addEnemyRobot_adventureVitalStats2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -205,6 +205,7 @@
             android:layout_alignBottom="@id/addEnemyRobot2_armorText"
             android:layout_alignTop="@id/addEnemyRobot2_armorText"
             android:layout_toEndOf="@+id/addEnemyRobot2_armorText"
+            android:digits="1234567890"
             android:inputType="phone" />
 
 
@@ -216,7 +217,8 @@
             android:layout_alignTop="@id/addEnemyRobot2_armorText"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/addEnemyRobot2_skillText"
-            android:inputType="numberSigned" />
+            android:digits="1234567890"
+            android:inputType="phone" />
 
         <TextView
             android:id="@+id/addEnemyRobot2_skillText"
@@ -273,7 +275,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
-
         <CheckBox
             android:id="@+id/addEnemyRobot2_airborneValue"
             android:layout_width="wrap_content"
@@ -300,16 +301,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/addEnemyRobot2_simulCombatText"
+            android:layout_alignTop="@+id/addEnemyRobot2_simulCombatText"
             android:layout_marginStart="5dp"
-            android:layout_toEndOf="@+id/addEnemyRobot2_simulCombatText"
-            android:layout_alignTop="@+id/addEnemyRobot2_simulCombatText" />
+            android:layout_toEndOf="@+id/addEnemyRobot2_simulCombatText" />
 
         <TextView
             android:id="@+id/addEnemyRobot2_simulCombatText"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_marginStart="10dp"
             android:layout_below="@+id/addEnemyRobot2_airborneValue"
+            android:layout_marginStart="10dp"
             android:gravity="center_vertical"
             android:text="@string/simulCombat"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -318,6 +319,4 @@
     </RelativeLayout>
 
 
-
-
-    </RelativeLayout>
+</RelativeLayout>
