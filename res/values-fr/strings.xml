@@ -212,7 +212,7 @@
     <string name="captain">Commandant</string>
     <string name="reset">Réinitialiser</string>
     <string name="map">Carte</string>
-	
+
     <string name="starshipCrewStatsMandatory">Statistiques du vaisseau et de l\'équipage</string>
     <string name="starshipStatsMandatory">Force de Frappe et Bouclier du vaisseau</string>
 
@@ -278,7 +278,7 @@
     <string name="totSpellJump">Saut</string>
     <string name="totSpellDetectTrap">Détection de Pièges</string>
     <string name="totSpellWater">Création d\'Eau</string>
-	
+
 <!-- Freeway Fighter -->
     <string name="armor">Blindage: </string>
     <string name="armor2">Blindage</string>
@@ -350,7 +350,7 @@
     <string name="enemyDestroyedShip">Votre adversaire a détruit votre vaisseau...</string>
     <string name="enemyHitYourShip">Votre adversaire a touché votre vaisseau.</string>
     <string name="enemyShipMissed">Le vaisseau adverse a manqué son coup.</string>
-	
+
 <!-- Seas of Blood -->
     <string name="crewStrength">Force d\'équipage: </string>
     <string name="crewStrike">Combativité d\'équipage: </string>
@@ -359,7 +359,7 @@
     <string name="booty">Butin</string>
     <string name="addBooty">Ajouter un butin</string>
     <string name="shipCombat">Combat Naval</string>
-    <string name="testCrewStrength">Tester la combativité</string> 
+    <string name="testCrewStrength">Tester la combativité</string>
     <string name="deleteBooty">Effacer le butin ?</string>
     <string name="crewParamsMandatory">Attaque et Combativité</string>
     <string name="sobDirectHit">Coup au but! (-%1$d Force d\'équipage)</string>
@@ -389,8 +389,8 @@
     <string name="armourP">Perforantes:</string>
     <string name="humming">Hurleuses:</string>
     <string name="iaijutsuFastDraw">Vous avez atteint votre ennemi en utilisant le Iaijutsu (-3 En)</string>
-	
-<!-- Robot Commando -->	
+
+<!-- Robot Commando -->
     <string name="robotFights">Combat de Robots</string>
     <string name="medikits">Pilules de vigueur: </string>
     <string name="useMedikit">Utiliser une pilule</string>
@@ -549,7 +549,7 @@
     <string name="aod_removeAllSoldiers">Voulez-vous retirer tous les %1$s soldats de votre armée ?</string>
     <string name="addSoldiers">Ajouter des soldats</string>
     <string name="soldiersKilledQuestion">Soldat perdus ?</string>
-	
+
     <string name="crew">Equipage:</string>
     <string name="date">Date:</string>
     <string name="name2">Nom:</string>
@@ -600,7 +600,7 @@
     <string name="youveRolled">Vous avez obtenu un %1$s.</string>
     <string name="chooseSavePoint">Choisir le paragraphe:</string>
     <string name="deleteSavegame">Effacer la sauvegarde ?</string>
- 
+
     <string name="spellCount">Nombre de sorts</string>
     <string name="chosenSpells">Sorts choisis</string>
     <string name="deleteSpellQuestion">Effacer le sort ?</string>
@@ -626,16 +626,16 @@
     <string name="setInitialPower">Modifier Pouvoir initial</string>
 
     <!-- Midnight Rogue -->
-    <string name="chosenSkills">Habilités</string>
-    <string name="specialSkills">Habilités</string>
-    <string name="skillList">Habilités:</string>
-    <string name="selectedSkills">Habilités choisies:</string>
-    <string name="skill_climb">Escalade</string>
-    <string name="skill_hide">Cacher</string>
-    <string name="skill_picklock">Crochetage</string>
-    <string name="skill_pickpocket">Pickpocket</string>
-    <string name="skill_secretsigns">Signes Secrets</string>
-    <string name="skill_sneak">Furtif</string>
-    <string name="skill_spot_hidden">Perception</string>
-    <string name="deleteSkillQuestion">Supprimer habilité?</string>
+    <string name="chosenSkills">Talents inavouables</string>
+    <string name="specialSkills">Talents inavouables</string>
+    <string name="skillList">Talents inavouables:</string>
+    <string name="selectedSkills">Talents choisis:</string>
+    <string name="skill_secretsigns">Décrypteur</string>
+    <string name="skill_climb">Monte-en-l\'Air</string>
+    <string name="skill_picklock">Crocheteur</string>
+    <string name="skill_pickpocket">Vide-Gousset</string>
+    <string name="skill_sneak">Pas de Loup</string>
+    <string name="skill_hide">Passe-Murailles</string>
+    <string name="skill_spot_hidden">Cache-Tampon</string>
+    <string name="deleteSkillQuestion">Supprimer ce Talent?</string>
 </resources>
