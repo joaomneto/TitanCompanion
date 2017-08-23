@@ -91,8 +91,7 @@
             android:id="@+id/speedValue"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:entries="@array/robotSpeeds" />
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/speedText"
@@ -243,8 +242,7 @@
                 android:id="@+id/speedAltValue"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:entries="@array/robotSpeeds" />
+                android:layout_alignParentRight="true" />
 
             <TextView
                 android:id="@+id/speedAltText"

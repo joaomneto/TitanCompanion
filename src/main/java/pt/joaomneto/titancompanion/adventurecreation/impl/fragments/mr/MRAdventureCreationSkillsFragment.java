@@ -17,7 +17,7 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill;
 import pt.joaomneto.titancompanion.adventurecreation.impl.MRAdventureCreation;
-import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEnumAdapter;
 
 import static android.view.View.GONE;
 
@@ -38,26 +38,26 @@ public class MRAdventureCreationSkillsFragment extends AdventureFragment {
 		super.onCreate(savedInstanceState);
 		View rootView = inflater.inflate(R.layout.fragment_29mr_adventurecreation_skills, container, false);
 
-		spellScoreValue = (TextView) rootView.findViewById(R.id.spellScoreValue);
-		spellPointsText = (TextView) rootView.findViewById(R.id.spellPointsText);
+        spellScoreValue = rootView.findViewById(R.id.spellScoreValue);
+        spellPointsText = rootView.findViewById(R.id.spellPointsText);
 
 		spellScoreValue.setVisibility(GONE);
 		spellPointsText.setVisibility(GONE);
 
 		skillList = getResources().getStringArray(R.array.tcoc_spells);
 
-		final ListView listview = (ListView) rootView.findViewById(R.id.spellListView);
+        final ListView listview = rootView.findViewById(R.id.spellListView);
 
 		activity = (MRAdventureCreation) getActivity();
 
-		TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(activity, Arrays.asList(getSkills()));
+        TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(activity, android.R.layout.simple_list_item_1, Arrays.asList(getSkills()));
 
 		listview.setAdapter(adapter);
 
-		final ListView selectedSpellsListView = (ListView) rootView.findViewById(R.id.selectedSpellListView);
+        final ListView selectedSpellsListView = rootView.findViewById(R.id.selectedSpellListView);
 
 
-		selectedSkillsAdapter = new TranslatableEnumAdapter(activity, activity.getSkills());
+        selectedSkillsAdapter = new TranslatableEnumAdapter(activity, android.R.layout.simple_list_item_1, activity.getSkills());
 
 		selectedSpellsListView.setAdapter(selectedSkillsAdapter);
 

@@ -68,8 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/addEnemyRobot_speedText"
         android:layout_alignTop="@id/addEnemyRobot_speedText"
-        android:layout_toEndOf="@+id/addEnemyRobot_speedText"
-        android:entries="@array/robotSpeeds" />
+        android:layout_toEndOf="@+id/addEnemyRobot_speedText" />
 
     <TextView
         android:id="@+id/addEnemyRobot_speedText"
@@ -89,8 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/addEnemyRobot_typeText"
         android:layout_alignTop="@id/addEnemyRobot_speedText"
-        android:layout_toEndOf="@+id/addEnemyRobot_typeText"
-        android:entries="@array/robotTypes" />
+        android:layout_toEndOf="@+id/addEnemyRobot_typeText" />
 
     <TextView
         android:id="@+id/addEnemyRobot_typeText"
@@ -239,8 +237,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/addEnemyRobot2_speedText"
             android:layout_alignTop="@id/addEnemyRobot2_speedText"
-            android:layout_toEndOf="@+id/addEnemyRobot2_speedText"
-            android:entries="@array/robotSpeeds" />
+            android:layout_toEndOf="@+id/addEnemyRobot2_speedText" />
 
         <TextView
             android:id="@+id/addEnemyRobot2_speedText"
@@ -260,8 +257,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/addEnemyRobot2_typeText"
             android:layout_alignTop="@id/addEnemyRobot2_speedText"
-            android:layout_toEndOf="@+id/addEnemyRobot2_typeText"
-            android:entries="@array/robotTypes" />
+            android:layout_toEndOf="@+id/addEnemyRobot2_typeText" />
 
         <TextView
             android:id="@+id/addEnemyRobot2_typeText"

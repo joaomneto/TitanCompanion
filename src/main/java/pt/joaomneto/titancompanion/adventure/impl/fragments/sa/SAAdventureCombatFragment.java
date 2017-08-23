@@ -18,8 +18,8 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEnumAdapter;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
-import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
 import static android.view.View.GONE;
@@ -174,8 +174,8 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
 		final Spinner weaponSpinner = addCombatantView.findViewById(R.id.weaponSpinner);
 		if (weaponSpinner != null) {
-			TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv, allWeapons);
-			weaponSpinner.setAdapter(adapter);
+            TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv, android.R.layout.simple_list_item_1, allWeapons);
+            weaponSpinner.setAdapter(adapter);
 		}
 
 		builder.setTitle(R.string.addEnemy).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {

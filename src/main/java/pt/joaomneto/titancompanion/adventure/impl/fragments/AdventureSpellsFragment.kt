@@ -15,7 +15,7 @@ import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.SpellAdventure
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell
-import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEnumAdapter
 
 open class AdventureSpellsFragment : AdventureFragment() {
 
@@ -38,7 +38,7 @@ open class AdventureSpellsFragment : AdventureFragment() {
         addSpellButton = rootView.findViewById<Button>(R.id.addSpellButton)
 
 
-        val adapter = TranslatableEnumAdapter(adv,
+        val adapter = TranslatableEnumAdapter(adv, android.R.layout.simple_list_item_1,
                 adv.chosenSpells)
         spellList!!.adapter = adapter
 
@@ -97,7 +97,7 @@ open class AdventureSpellsFragment : AdventureFragment() {
     private val spellAdapter: TranslatableEnumAdapter
         get() {
 
-            val dataAdapter = TranslatableEnumAdapter(activity, (activity as SpellAdventure<*>).spellList)
+            val dataAdapter = TranslatableEnumAdapter(activity, android.R.layout.simple_list_item_1, (activity as SpellAdventure<*>).spellList)
 
             return dataAdapter
         }

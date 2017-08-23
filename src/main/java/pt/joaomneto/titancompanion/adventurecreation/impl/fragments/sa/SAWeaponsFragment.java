@@ -20,7 +20,7 @@ import android.widget.TextView;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventurecreation.impl.SAAdventureCreation;
-import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEnumAdapter;
 
 public class SAWeaponsFragment extends Fragment {
 
@@ -89,7 +89,7 @@ public class SAWeaponsFragment extends Fragment {
 
                 // Set an EditText view to get user input
                 final Spinner input = new Spinner(adv);
-                TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv,
+                TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv, android.R.layout.simple_list_item_1,
                         adv.getWeapons().isEmpty() ? SAWeapon.INITIALWEAPONS : SAWeapon.values());
                 input.setAdapter(adapter);
                 InputMethodManager imm = (InputMethodManager) adv
@@ -128,8 +128,8 @@ public class SAWeaponsFragment extends Fragment {
         });
 
 
-        TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv,
-               adv.getWeapons());
+        TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv, android.R.layout.simple_list_item_1,
+                adv.getWeapons());
 
         weaponList.setAdapter(adapter);
         adapter.notifyDataSetChanged();

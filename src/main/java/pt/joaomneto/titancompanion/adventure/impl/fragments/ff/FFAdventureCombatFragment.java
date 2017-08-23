@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,6 +21,7 @@ import java.util.List;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.DropdownStringAdapter;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class FFAdventureCombatFragment extends AdventureCombatFragment{
@@ -44,9 +44,8 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 		damageText = rootView.findViewById(R.id.damageText);
 
 		if (damageSpinner != null) {
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-					getActivity(), android.R.layout.simple_list_item_1,
-					android.R.id.text1, damageList);
+			DropdownStringAdapter adapter = new DropdownStringAdapter(
+					getActivity(), android.R.layout.simple_list_item_1, damageList);
 			damageSpinner.setAdapter(adapter);
 		}
 

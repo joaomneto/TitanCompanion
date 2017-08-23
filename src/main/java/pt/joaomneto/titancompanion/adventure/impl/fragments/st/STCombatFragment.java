@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -19,7 +18,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -35,6 +33,7 @@ import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.STAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.STAdventure.STCrewman;
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.DropdownStringAdapter;
 import pt.joaomneto.titancompanion.util.AdventureTools;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
@@ -72,11 +71,11 @@ public class STCombatFragment extends AdventureFragment {
         super.onCreate(savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_04st_adventure_combat, container, false);
 
-        combatResult = (TextView) rootView.findViewById(R.id.combatResult);
-        combatTurnButton = (Button) rootView.findViewById(R.id.attackButton);
-        addCombatButton = (Button) rootView.findViewById(R.id.addCombatButton);
-        combatTypeSwitch = (Switch) rootView.findViewById(R.id.combatType);
-        resetButton = (Button) rootView.findViewById(R.id.resetCombat);
+        combatResult = rootView.findViewById(R.id.combatResult);
+        combatTurnButton = rootView.findViewById(R.id.attackButton);
+        addCombatButton = rootView.findViewById(R.id.addCombatButton);
+        combatTypeSwitch = rootView.findViewById(R.id.combatType);
+        resetButton = rootView.findViewById(R.id.resetCombat);
 
         combatTypeSwitch.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -144,7 +143,7 @@ public class STCombatFragment extends AdventureFragment {
             int crewmanAttackStrength = crewmanDiceRoll.getSum() + crewmanSkill;
             DiceRoll enemyDiceRoll = DiceRoller.roll2D6();
             int enemyAttackStrength = enemyDiceRoll.getSum() + position.getCurrentSkill();
-            LinearLayout row = (LinearLayout) rootView.findViewById(gridRows[currentCombat]);
+            LinearLayout row = rootView.findViewById(gridRows[currentCombat]);
             String crewmanString = adv.getStringForCrewman(position.getCrewman());
             if (crewmanAttackStrength > enemyAttackStrength) {
                 if (!position.isDefenseOnly()) {
@@ -228,7 +227,7 @@ public class STCombatFragment extends AdventureFragment {
                 crewmanHandicap = -3;
             }
 
-            LinearLayout row = (LinearLayout) rootView.findViewById(gridRows[currentCombat]);
+            LinearLayout row = rootView.findViewById(gridRows[currentCombat]);
             String crewmanString = adv.getStringForCrewman(position.getCrewman());
 
             if (crewmanDiceRoll.getSum() < (crewmanSkill + crewmanHandicap + handicap)) {
@@ -264,7 +263,7 @@ public class STCombatFragment extends AdventureFragment {
                         for (int i = 0; i < maxRows; i++) {
                             CombatPosition combat = combatPositions.get(i);
                             if (combat != null && combat.getCrewman().equals(killedCrewmanObj)) {
-                                LinearLayout toClear = (LinearLayout) rootView.findViewById(gridRows[i]);
+                                LinearLayout toClear = rootView.findViewById(gridRows[i]);
                                 removeCombatant(toClear, i);
                             }
                         }
@@ -324,9 +323,9 @@ public class STCombatFragment extends AdventureFragment {
             ok.setOnClickListener(view -> {
 
 
-                EditText enemySkillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
-                EditText enemyStaminaValue = (EditText) addCombatantView.findViewById(R.id.enemyStaminaValue);
-                Spinner crewmanSpinner = (Spinner) addCombatantView.findViewById(R.id.crewmanSpinner);
+                EditText enemySkillValue = addCombatantView.findViewById(R.id.enemySkillValue);
+                EditText enemyStaminaValue = addCombatantView.findViewById(R.id.enemyStaminaValue);
+                Spinner crewmanSpinner = addCombatantView.findViewById(R.id.crewmanSpinner);
 
                 if (AdventureTools.validateSignedInteger(enemySkillValue) && AdventureTools.validateSignedInteger(enemyStaminaValue)) {
 
@@ -352,12 +351,12 @@ public class STCombatFragment extends AdventureFragment {
             });
         });
 
-        ArrayAdapter<String> dataAdapter = getCrewmanSpinnerAdapter();
+        DropdownStringAdapter dataAdapter = getCrewmanSpinnerAdapter();
 
-        Spinner spinner = (Spinner) addCombatantView.findViewById(R.id.crewmanSpinner);
+        Spinner spinner = addCombatantView.findViewById(R.id.crewmanSpinner);
         spinner.setAdapter(dataAdapter);
 
-        EditText skillValue = (EditText) addCombatantView.findViewById(R.id.enemySkillValue);
+        EditText skillValue = addCombatantView.findViewById(R.id.enemySkillValue);
 
         alert.setView(addCombatantView);
 
@@ -367,7 +366,7 @@ public class STCombatFragment extends AdventureFragment {
         alert.show();
     }
 
-    private ArrayAdapter<String> getCrewmanSpinnerAdapter() {
+    private DropdownStringAdapter getCrewmanSpinnerAdapter() {
 
         STAdventure adv = (STAdventure) getActivity();
 
@@ -391,7 +390,7 @@ public class STCombatFragment extends AdventureFragment {
         if (adv.isLandingPartySecurityGuard2() && (!inAttackCombat.contains(STCrewman.SECURITY_GUARD2) || defenseOnly))
             list.add(getResources().getString(R.string.securityGuard2));
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(adv, android.R.layout.simple_list_item_1, list);
+        DropdownStringAdapter dataAdapter = new DropdownStringAdapter(adv, android.R.layout.simple_list_item_1, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         return dataAdapter;
     }
@@ -402,15 +401,15 @@ public class STCombatFragment extends AdventureFragment {
 
         final View combatantView = adv.getLayoutInflater().inflate(R.layout.component_04st_combatant, null);
 
-        TextView tv = (TextView) combatantView.getRootView().findViewById(R.id.combatText);
+        TextView tv = combatantView.getRootView().findViewById(R.id.combatText);
 
         if (combatPositions.size() == 0) {
 
-            RadioButton radio = (RadioButton) combatantView.getRootView().findViewById(R.id.combatSelected);
+            RadioButton radio = combatantView.getRootView().findViewById(R.id.combatSelected);
             radio.setChecked(true);
         }
 
-        LinearLayout grid = (LinearLayout) rootView.findViewById(gridRows[currentRow]);
+        LinearLayout grid = rootView.findViewById(gridRows[currentRow]);
 
         CombatPosition combatPosition = new CombatPosition(adv.getCrewmanForString(crewmanSpinner.getSelectedItem()
                 .toString()), stamina, skill, defenseOnly);
@@ -430,9 +429,9 @@ public class STCombatFragment extends AdventureFragment {
     @Override
     public void refreshScreensFromResume() {
         for (int i = 0; i < maxRows; i++) {
-            LinearLayout ll = (LinearLayout) rootView.findViewById(gridRows[i]);
-            RadioButton combatSelected = (RadioButton) ll.findViewById(R.id.combatSelected);
-            TextView combatText = (TextView) ll.findViewById(R.id.combatText);
+            LinearLayout ll = rootView.findViewById(gridRows[i]);
+            RadioButton combatSelected = ll.findViewById(R.id.combatSelected);
+            TextView combatText = ll.findViewById(R.id.combatText);
 
             if (combatSelected != null)
                 combatSelected.setChecked(i == currentCombat);
@@ -459,7 +458,7 @@ public class STCombatFragment extends AdventureFragment {
         combatTypeSwitch.setClickable(true);
 
         for (Integer rowId : gridRows) {
-            LinearLayout gridRow = (LinearLayout) rootView.findViewById(rowId);
+            LinearLayout gridRow = rootView.findViewById(rowId);
             gridRow.removeAllViews();
         }
         refreshScreensFromResume();

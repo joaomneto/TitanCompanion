@@ -96,7 +96,8 @@ public class RobotListAdapter extends ArrayAdapter<Robot> implements View.OnCrea
 				robotTextArmor.setText("" + robotPosition.getArmor());
 			}
 		});
-		plusCombatArmor.setOnClickListener(new OnClickListener() {
+
+        plusCombatArmor.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
@@ -105,9 +106,6 @@ public class RobotListAdapter extends ArrayAdapter<Robot> implements View.OnCrea
 			}
 		});
 
-		
-
-		
 		robotView.setOnLongClickListener(new OnLongClickListener() {
 			
 			@Override
@@ -119,7 +117,8 @@ public class RobotListAdapter extends ArrayAdapter<Robot> implements View.OnCrea
 		return robotView;
 	}
 
-	public Robot getCurrentRobot() {
+
+    public Robot getCurrentRobot() {
 		return adv.getCurrentRobot();
 	}
 

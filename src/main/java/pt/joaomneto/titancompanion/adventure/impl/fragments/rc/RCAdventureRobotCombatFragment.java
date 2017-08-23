@@ -23,7 +23,8 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
-import pt.joaomneto.titancompanion.adventurecreation.impl.TranslatableEnumAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.DropdownStringAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEnumAdapter;
 import pt.joaomneto.titancompanion.consts.CombatTurnresult;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
@@ -471,7 +472,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                 Spinner typeValue2 = addRobotView.findViewById(R.id.addEnemyRobot2_typeValue);
                 CheckBox simulCombatValue = addRobotView.findViewById(R.id.addEnemyRobot2_simulCombatValue);
 
-                final TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(getContext(), RobotSpeed.values());
+                final TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(getContext(), android.R.layout.simple_list_item_1, RobotSpeed.values());
                 speedValue.setAdapter(adapter);
                 speedValue2.setAdapter(adapter);
 
@@ -507,12 +508,24 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         AlertDialog alert = builder.create();
 
-        Spinner speed = addRobotView.findViewById(R.id.addEnemyRobot_speedValue);
+
+        Spinner speedValue = addRobotView.findViewById(R.id.addEnemyRobot_speedValue);
+        Spinner speed2Value = addRobotView.findViewById(R.id.addEnemyRobot2_speedValue);
+        Spinner typeValue = addRobotView.findViewById(R.id.addEnemyRobot_typeValue);
+        Spinner typeValue2 = addRobotView.findViewById(R.id.addEnemyRobot2_typeValue);
+
+        DropdownStringAdapter adapter = new DropdownStringAdapter(adv, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.robotSpeeds));
+        DropdownStringAdapter adapterType = new DropdownStringAdapter(adv, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.robotTypes));
+
+        speedValue.setAdapter(adapter);
+        speed2Value.setAdapter(adapter);
+        typeValue.setAdapter(adapterType);
+        typeValue2.setAdapter(adapterType);
 
         alert.setView(addRobotView);
 
         mgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-        speed.requestFocus();
+        speedValue.requestFocus();
 
         alert.show();
     }

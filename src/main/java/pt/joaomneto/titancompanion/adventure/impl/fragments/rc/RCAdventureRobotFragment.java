@@ -1,10 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.rc;
 
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.AdventureFragment;
-import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.adapter.RobotListAdapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -28,6 +23,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.AdventureFragment;
+import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.adapter.RobotListAdapter;
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.DropdownStringAdapter;
 
 public class RCAdventureRobotFragment extends AdventureFragment {
 
@@ -57,8 +59,8 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 		final RCAdventure adv = (RCAdventure) this.getActivity();
 
-		addRobotButton = (Button) rootView.findViewById(R.id.addRobotButton);
-		robotListView = (ListView) rootView.findViewById(R.id.robotList);
+		addRobotButton = rootView.findViewById(R.id.addRobotButton);
+		robotListView = rootView.findViewById(R.id.robotList);
 		robotListView.setAdapter(new RobotListAdapter(adv, adv.getRobots()));
 		
 		robotListView.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -193,9 +195,9 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 		final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-		CheckBox alternateForm = (CheckBox) addRobotView.findViewById(R.id.alternateFormValue);
+		CheckBox alternateForm = addRobotView.findViewById(R.id.alternateFormValue);
 
-		final RelativeLayout alternateStatsGroup = (RelativeLayout) addRobotView.findViewById(R.id.alternateStatsGroup);
+		final RelativeLayout alternateStatsGroup = addRobotView.findViewById(R.id.alternateStatsGroup);
 
 		alternateForm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
@@ -218,18 +220,18 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 				mgr.hideSoftInputFromWindow(addRobotView.getWindowToken(), 0);
 
-				EditText nameAltValue = (EditText) addRobotView.findViewById(R.id.nameAltValue);
-				EditText armorAltValue = (EditText) addRobotView.findViewById(R.id.armorAltValue);
-				EditText combatBonusAltValue = (EditText) addRobotView.findViewById(R.id.bonusAltValue);
-				Spinner speedAltValue = (Spinner) addRobotView.findViewById(R.id.speedAltValue);
+				EditText nameAltValue = addRobotView.findViewById(R.id.nameAltValue);
+				EditText armorAltValue = addRobotView.findViewById(R.id.armorAltValue);
+				EditText combatBonusAltValue = addRobotView.findViewById(R.id.bonusAltValue);
+				Spinner speedAltValue = addRobotView.findViewById(R.id.speedAltValue);
 
 
-				EditText nameValue = (EditText) addRobotView.findViewById(R.id.nameValue);
-				EditText armorValue = (EditText) addRobotView.findViewById(R.id.armorValue);
-				EditText combatBonusValue = (EditText) addRobotView.findViewById(R.id.bonusValue);
-				Spinner speedValue = (Spinner) addRobotView.findViewById(R.id.speedValue);
-				EditText specialAbilityValue = (EditText) addRobotView.findViewById(R.id.specialAbilityValue);
-				CheckBox alternateForm = (CheckBox) addRobotView.findViewById(R.id.alternateFormValue);
+				EditText nameValue = addRobotView.findViewById(R.id.nameValue);
+				EditText armorValue = addRobotView.findViewById(R.id.armorValue);
+				EditText combatBonusValue = addRobotView.findViewById(R.id.bonusValue);
+				Spinner speedValue = addRobotView.findViewById(R.id.speedValue);
+				EditText specialAbilityValue = addRobotView.findViewById(R.id.specialAbilityValue);
+				CheckBox alternateForm = addRobotView.findViewById(R.id.alternateFormValue);
 
 
 				String armor = armorValue.getText().toString();
@@ -260,12 +262,18 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 
 		AlertDialog alert = builder.create();
 
-		Spinner speed = (Spinner) addRobotView.findViewById(R.id.speedValue);
+		Spinner speedValue = addRobotView.findViewById(R.id.speedValue);
+		Spinner speedAltValue = addRobotView.findViewById(R.id.speedAltValue);
+
+		DropdownStringAdapter adapter = new DropdownStringAdapter(adv, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.robotSpeeds));
+
+		speedValue.setAdapter(adapter);
+		speedAltValue.setAdapter(adapter);
 
 		alert.setView(addRobotView);
 
 		mgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-		speed.requestFocus();
+		speedValue.requestFocus();
 
 		alert.show();
 	}
