@@ -47,7 +47,7 @@
         android:id="@+id/plusSkillButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignRight="@+id/buttonsBar"
         android:layout_alignTop="@+id/textField1"
         android:text="@string/plus" />
 
@@ -85,7 +85,7 @@
         android:id="@+id/plusStaminaButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignRight="@+id/buttonsBar"
         android:layout_alignTop="@+id/textField2"
         android:text="@string/plus" />
 
@@ -123,7 +123,7 @@
         android:id="@+id/plusLuckButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignRight="@+id/buttonsBar"
         android:layout_alignTop="@+id/textView3"
         android:text="@string/plus" />
 
@@ -161,11 +161,21 @@
         android:id="@+id/plusHonourButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignRight="@+id/buttonsBar"
         android:layout_alignTop="@+id/textView4"
         android:text="@string/plus" />
 
-        <Button
+    <TextView
+        android:id="@+id/provisionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_above="@+id/buttonConsumeProvisions"
+        android:layout_alignLeft="@+id/buttonConsumeProvisions"
+        android:gravity="center"
+        android:text="@string/provisions"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
         android:id="@+id/minusProvisionsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -188,54 +198,55 @@
         android:id="@+id/plusProvisionsButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonTestSkill"
+        android:layout_alignRight="@+id/buttonsBar"
         android:layout_alignTop="@+id/provisionsText"
         android:text="@string/plus" />
-
-    <Button
-        android:id="@+id/buttonSavePoint"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonTestLuck"
-        android:layout_alignParentBottom="true"
-        android:onClick="savepoint"
-        android:text="@string/saveAdventure" />
-
-    <Button
-        android:id="@+id/buttonTestLuck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonSavePoint"
-        android:layout_alignParentLeft="true"
-        android:onClick="testLuck"
-        android:text="@string/testLuck" />
-
-    <Button
-        android:id="@+id/buttonTestSkill"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/buttonTestLuck"
-        android:layout_above="@+id/buttonSavePoint"
-        android:onClick="testSkill"
-        android:text="@string/testSkill" />
 
     <Button
         android:id="@+id/buttonConsumeProvisions"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonTestLuck"
+        android:layout_above="@+id/buttonsBar"
         android:layout_alignParentLeft="true"
         android:text="@string/consumeProvisions"
         android:onClick="consumeProvision"/>
 
-    <TextView
-        android:id="@+id/provisionsText"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_above="@+id/buttonConsumeProvisions"
-        android:layout_alignLeft="@+id/buttonConsumeProvisions"
-        android:gravity="center"
-        android:text="@string/provisions"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <LinearLayout
+        android:id="@+id/buttonsBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/testButtonsBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/buttonTestLuck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="testLuck"
+                android:text="@string/testLuck" />
+
+            <Button
+                android:id="@+id/buttonTestSkill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="testSkill"
+                android:text="@string/testSkill" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonSavePoint"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="savepoint"
+            android:text="@string/saveAdventure" />
+    </LinearLayout>
 
 </RelativeLayout>
