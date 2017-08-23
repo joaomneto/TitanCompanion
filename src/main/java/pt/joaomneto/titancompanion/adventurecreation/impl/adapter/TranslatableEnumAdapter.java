@@ -1,4 +1,4 @@
-package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa;
+package pt.joaomneto.titancompanion.adventurecreation.impl.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -21,21 +21,22 @@ import pt.joaomneto.titancompanion.adventure.impl.util.TranslatableEnum;
 public class TranslatableEnumAdapter extends ArrayAdapter<TranslatableEnum> {
 
     private List<? extends TranslatableEnum> values = null;
+    private int listItemResource;
 
-    public TranslatableEnumAdapter(Context context, List<? extends TranslatableEnum> values) {
-        super(context, android.R.layout.simple_list_item_1, android.R.id.text1, (List<TranslatableEnum>) values);
+    public TranslatableEnumAdapter(Context context, int listItemResource, List<? extends TranslatableEnum> values) {
+        super(context, listItemResource, android.R.id.text1, (List<TranslatableEnum>) values);
         this.values = values;
     }
 
-    public TranslatableEnumAdapter(Context context, TranslatableEnum[] values) {
-        this(context, Arrays.asList(values));
+    public TranslatableEnumAdapter(Context context, int listItemResource, TranslatableEnum[] values) {
+        this(context, listItemResource, Arrays.asList(values));
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        TextView view = (TextView) inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+        TextView view = (TextView) inflater.inflate(listItemResource, parent, false);
 
         view.setText(values.get(position).getLabelId());
 
@@ -46,7 +47,7 @@ public class TranslatableEnumAdapter extends ArrayAdapter<TranslatableEnum> {
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        TextView view = (TextView) inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+        TextView view = (TextView) inflater.inflate(listItemResource, parent, false);
 
         view.setText(values.get(position).getLabelId());
 

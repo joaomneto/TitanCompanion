@@ -18,8 +18,8 @@ import android.widget.Spinner;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
+import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEnumAdapter;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.TranslatableEnumAdapter;
 
 public class SAAdventureWeaponsFragment extends AdventureFragment {
 
@@ -52,7 +52,7 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 
 				// Set an EditText view to get user input
 				final Spinner input = new Spinner(adv);
-				TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv,
+				TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv, android.R.layout.simple_list_item_1,
 						SAWeapon.values());
 				input.setAdapter(adapter);
 				InputMethodManager imm = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -81,7 +81,7 @@ public class SAAdventureWeaponsFragment extends AdventureFragment {
 		});
 
 
-		TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv, adv.getWeapons());
+		TranslatableEnumAdapter adapter = new TranslatableEnumAdapter(adv, android.R.layout.simple_list_item_1, adv.getWeapons());
 		weaponsList.setAdapter(adapter);
 
 		weaponsList.setOnItemLongClickListener(new OnItemLongClickListener() {

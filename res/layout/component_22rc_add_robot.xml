@@ -42,6 +42,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:digits="1234567890"
             android:inputType="phone" />
 
         <TextView
@@ -66,7 +67,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:inputType="numberSigned" />
+            android:digits="-+1234567890"
+            android:inputType="phone" />
 
         <TextView
             android:id="@+id/bonusText"
@@ -89,8 +91,7 @@
             android:id="@+id/speedValue"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:entries="@array/robotSpeeds" />
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/speedText"
@@ -114,6 +115,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:digits="1234567890"
             android:inputType="phone" />
 
         <TextView
@@ -191,7 +193,8 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:inputType="numberSigned" />
+                android:digits="1234567890"
+                android:inputType="phone" />
 
             <TextView
                 android:id="@+id/armorAltText"
@@ -215,7 +218,8 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:inputType="numberSigned" />
+                android:digits="-+1234567890"
+                android:inputType="phone" />
 
             <TextView
                 android:id="@+id/bonusAltText"
@@ -238,8 +242,7 @@
                 android:id="@+id/speedAltValue"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:entries="@array/robotSpeeds" />
+                android:layout_alignParentRight="true" />
 
             <TextView
                 android:id="@+id/speedAltText"

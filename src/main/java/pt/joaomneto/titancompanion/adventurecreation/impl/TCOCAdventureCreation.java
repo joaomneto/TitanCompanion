@@ -1,5 +1,7 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl;
 
+import android.view.View;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,15 +15,13 @@ import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.tcoc.TCOCAdventureCreationSpellsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
-import android.view.View;
 
 public class TCOCAdventureCreation extends AdventureCreation {
 
     private final static int FRAGMENT_TCOC_SPELLS = 1;
-
-    private int spellValue = -1;
     Map<String, Integer> spells = new HashMap<>();
     List<String> spellList = new ArrayList<>();
+    private int spellValue = -1;
 
     public TCOCAdventureCreation() {
         super();
@@ -109,6 +109,7 @@ public class TCOCAdventureCreation extends AdventureCreation {
         int value = spells.get(spell) - 1;
         if(value == 0){
             spells.remove(spell);
+            getSpellList().remove(position);
         }else {
             spells.put(spell, value);
         }

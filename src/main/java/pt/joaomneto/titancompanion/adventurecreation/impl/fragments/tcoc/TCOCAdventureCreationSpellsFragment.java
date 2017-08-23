@@ -35,10 +35,10 @@ public class TCOCAdventureCreationSpellsFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		View rootView = inflater.inflate(R.layout.fragment_02tcoc_adventurecreation_spells, container, false);
 
-		spellScoreValue = (TextView) rootView.findViewById(R.id.spellScoreValue);
+		spellScoreValue = rootView.findViewById(R.id.spellScoreValue);
 		spellList = getResources().getStringArray(R.array.tcoc_spells);
 
-		final ListView listview = (ListView) rootView.findViewById(R.id.spellListView);
+		final ListView listview = rootView.findViewById(R.id.spellListView);
 
 		activity = (TCOCAdventureCreation) getActivity();
 
@@ -47,7 +47,7 @@ public class TCOCAdventureCreationSpellsFragment extends Fragment {
 
 		listview.setAdapter(adapter);
 
-		final ListView selectedSpellsListView = (ListView) rootView.findViewById(R.id.selectedSpellListView);
+		final ListView selectedSpellsListView = rootView.findViewById(R.id.selectedSpellListView);
 
 		final ArrayAdapter<String> selectedSpellsAdapter = new SpellListAdapter(activity, activity.getSpellList());
 
@@ -85,6 +85,7 @@ public class TCOCAdventureCreationSpellsFragment extends Fragment {
 						activity.removeSpell(position);
 						selectedSpellsAdapter.notifyDataSetChanged();
 						spellScoreValue.setText((activity.getSpellValue() - activity.getSpellListSize()) + "");
+
 					}
 				});
 
@@ -100,7 +101,6 @@ public class TCOCAdventureCreationSpellsFragment extends Fragment {
 	public TextView getSpellScoreValue() {
 		return spellScoreValue;
 	}
-
 
 
 }
