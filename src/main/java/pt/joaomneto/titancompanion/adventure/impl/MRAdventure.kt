@@ -14,6 +14,7 @@ class MRAdventure : SpellAdventure<MRSkill>() {
 
     internal var skills: MutableList<MRSkill> = ArrayList()
 
+    val FRAGMENT_VITAL_STATS = 0
     val FRAGMENT_SPELLS = 1
     val FRAGMENT_COMBAT = 2
     val FRAGMENT_EQUIPMENT = 3
@@ -21,11 +22,11 @@ class MRAdventure : SpellAdventure<MRSkill>() {
 
     init {
         Adventure.fragmentConfiguration.clear()
-        Adventure.fragmentConfiguration.put(Adventure.FRAGMENT_VITAL_STATS, Adventure.AdventureFragmentRunner(R.string.vitalStats,
+        Adventure.fragmentConfiguration.put(FRAGMENT_VITAL_STATS, Adventure.AdventureFragmentRunner(R.string.vitalStats,
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"))
         Adventure.fragmentConfiguration.put(FRAGMENT_SPELLS, Adventure.AdventureFragmentRunner(R.string.chosenSkills,
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRAdventureSpellsFragment"))
-        Adventure.fragmentConfiguration.put(Adventure.FRAGMENT_COMBAT, Adventure.AdventureFragmentRunner(R.string.fights,
+        Adventure.fragmentConfiguration.put(FRAGMENT_COMBAT, Adventure.AdventureFragmentRunner(R.string.fights,
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
         Adventure.fragmentConfiguration.put(FRAGMENT_EQUIPMENT, Adventure.AdventureFragmentRunner(R.string.goldEquipment,
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"))

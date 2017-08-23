@@ -55,6 +55,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 	protected static final int FRAGMENT_COMBAT = 1;
 	protected static final int FRAGMENT_EQUIPMENT = 2;
 	protected static final int FRAGMENT_NOTES = 3;
+
 	protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
