@@ -25,7 +25,7 @@ public class POFAdventureSpellsFragment extends AdventureSpellsFragment {
         Button addSpellButton = rootView.findViewById(R.id.addSpellButton);
         Spinner chooseSpellSpinner = rootView
                 .findViewById(R.id.chooseSpellSpinner);
-        View separator = rootView.findViewById(R.id.separator);
+        View separator = rootView.findViewById(R.id.spellChooserSeparator);
 
         chooseSpellSpinner.setVisibility(View.INVISIBLE);
         addSpellButton.setVisibility(View.INVISIBLE);

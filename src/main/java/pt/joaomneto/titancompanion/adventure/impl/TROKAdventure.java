@@ -1,24 +1,24 @@
 package pt.joaomneto.titancompanion.adventure.impl;
 
+import android.os.Bundle;
+import android.view.Menu;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
-import android.os.Bundle;
-import android.view.Menu;
 
 public class TROKAdventure extends Adventure {
 
+	protected static final int FRAGMENT_VEHICLE_COMBAT = 2;
+	protected static final int FRAGMENT_EQUIPMENT = 3;
+	protected static final int FRAGMENT_NOTES = 4;
 	private int currentWeapons = -1;
 	private int currentShields = -1;
 	private int initialWeapons = -1;
 	private int initialShields = -1;
 	private int missiles = -1;
-
-	protected static final int FRAGMENT_VEHICLE_COMBAT = 2;
-	protected static final int FRAGMENT_EQUIPMENT = 3;
-	protected static final int FRAGMENT_NOTES = 4;
 
 	public TROKAdventure() {
 		super();
@@ -102,6 +102,8 @@ public class TROKAdventure extends Adventure {
 		setMissiles(Integer.valueOf(getSavedGame().getProperty("missiles")));
 		setProvisions(Integer.valueOf(getSavedGame().getProperty("provisions")));
 		setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
+		setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
+
 	}
 
 	public int getMissiles() {

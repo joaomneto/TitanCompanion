@@ -26,6 +26,7 @@ public class TranslatableEnumAdapter extends ArrayAdapter<TranslatableEnum> {
     public TranslatableEnumAdapter(Context context, int listItemResource, List<? extends TranslatableEnum> values) {
         super(context, listItemResource, android.R.id.text1, (List<TranslatableEnum>) values);
         this.values = values;
+        this.listItemResource = listItemResource;
     }
 
     public TranslatableEnumAdapter(Context context, int listItemResource, TranslatableEnum[] values) {

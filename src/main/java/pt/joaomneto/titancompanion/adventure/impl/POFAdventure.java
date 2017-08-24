@@ -5,22 +5,14 @@ import android.view.Menu;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.SpellAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.pof.POFSpell;
-import pt.joaomneto.titancompanion.adventure.impl.util.Spell;
+import pt.joaomneto.titancompanion.adventure.Adventure;
 
-public class POFAdventure extends SpellAdventure {
+public class POFAdventure extends Adventure {
 
-    protected static final int FRAGMENT_SPELLS = 2;
-    protected static final int FRAGMENT_EQUIPMENT = 3;
-    protected static final int FRAGMENT_NOTES = 4;
-    Set<String> visitedClearings = new HashSet<String>();
+    protected static final int FRAGMENT_EQUIPMENT = 2;
+    protected static final int FRAGMENT_NOTES = 3;
     private int currentPower = -1;
     private int initialPower = -1;
 
@@ -30,7 +22,6 @@ public class POFAdventure extends SpellAdventure {
         fragmentConfiguration.clear();
         fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.pof.POFAdventureVitalStatsFragment"));
         fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"));
-        fragmentConfiguration.put(FRAGMENT_SPELLS, new AdventureFragmentRunner(R.string.spells, "pt.joaomneto.titancompanion.adventure.impl.fragments.pof.POFAdventureSpellsFragment"));
         fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"));
         fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
     }
@@ -63,8 +54,6 @@ public class POFAdventure extends SpellAdventure {
         bw.write("provisions=0\n");
         bw.write("provisionsValue=4\n");
         bw.write("gold=" + getGold() + "\n");
-        bw.write("currentPower=" + getGold() + "\n");
-        bw.write("initialPower=" + getGold() + "\n");
     }
 
     @Override
@@ -76,18 +65,9 @@ public class POFAdventure extends SpellAdventure {
         setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
         setCurrentPower(Integer.valueOf(getSavedGame().getProperty("currentPower")));
         setInitialPower(Integer.valueOf(getSavedGame().getProperty("initialPower")));
-        setChosenSpells(getSpellList());
 
     }
 
-
-    public boolean isSpellSingleUse() {
-        return false;
-    }
-
-    public List<Spell> getSpellList() {
-        return Arrays.asList(POFSpell.values());
-    }
 
     public int getCurrentPower() {
         return currentPower;
