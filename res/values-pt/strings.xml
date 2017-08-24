@@ -250,7 +250,9 @@
     <string name="oil">Óleo: </string>
     <string name="spareWheels">Rodas Sobressalentes: </string>
     <string name="vehicleSpecs">Especificações do Carro</string>
+    <string name="enhancement">Modificação</string>
     <string name="addEnhancement">Adicionar Modificação</string>
+    <string name="deleteEnhancement">Eliminar Modificação?</string>
     <string name="starship">Nave Espacial: </string>
     <string name="missiles">Mísseis: </string>
     <string name="enemyShips">Naves Inimigas: </string>

@@ -297,10 +297,15 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
         provisionsValue.setText("" + adv.getProvisions());
 
         if (buttonConsumePotion != null) {
-            if (adv.getStandardPotionValue() <= 0) {
+            if (adv.getStandardPotion() <= 0) {
                 buttonConsumePotion.setVisibility(View.GONE);
             } else {
                 buttonConsumePotion.setVisibility(View.VISIBLE);
+                if (adv.getStandardPotionValue() <= 0) {
+                    buttonConsumePotion.setEnabled(false);
+                } else {
+                    buttonConsumePotion.setEnabled(true);
+                }
             }
         }
 

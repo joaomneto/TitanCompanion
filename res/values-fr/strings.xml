@@ -300,7 +300,9 @@
     <string name="oil">Huile: </string>
     <string name="spareWheels">Roues de secours: </string>
     <string name="vehicleSpecs">Caractéristiques de l\'Interceptor</string>
+    <string name="enhancement">Modification</string>
     <string name="addEnhancement">Ajouter une modification</string>
+    <string name="deleteEnhancement">Supprimer modification?</string>
     <string name="useMedKit">Utiliser la trousse de secours</string>
     <string name="medKits">Trousse de secours: </string>
     <string name="credits">Crédits: </string>

@@ -1,5 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl;
 
+import android.os.Bundle;
+import android.view.Menu;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,11 +10,14 @@ import java.util.List;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
-import android.os.Bundle;
-import android.view.Menu;
 
 public class FFAdventure extends Adventure {
 
+	protected static final int FRAGMENT_VEHICLE_COMBAT = 2;
+	protected static final int FRAGMENT_VEHICLE_EQUIPMENT = 3;
+	protected static final int FRAGMENT_EQUIPMENT = 4;
+	protected static final int FRAGMENT_NOTES = 5;
+	List<String> carEnhancements = new ArrayList<String>();
 	private int currentFirepower = -1;
 	private int currentArmour = -1;
 	private int initialFirepower = -1;
@@ -21,20 +27,13 @@ public class FFAdventure extends Adventure {
 	private int oilCannisters = -1;
 	private int spareWheels = -1;
 
-	List<String> carEnhancements = new ArrayList<String>();
-
-	protected static final int FRAGMENT_VEHICLE_COMBAT = 2;
-	protected static final int FRAGMENT_VEHICLE_EQUIPMENT = 3;
-	protected static final int FRAGMENT_EQUIPMENT = 4;
-	protected static final int FRAGMENT_NOTES = 5;
-
 	public FFAdventure() {
 		super();
 		fragmentConfiguration.clear();
 		fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFAdventureCombatFragment"));
 		fragmentConfiguration.put(FRAGMENT_VEHICLE_COMBAT, new AdventureFragmentRunner(R.string.vehicleCombat, "pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFVehicleCombatFragment"));
-		fragmentConfiguration.put(FRAGMENT_VEHICLE_EQUIPMENT, new AdventureFragmentRunner(R.string.vehicleCombat, "pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFVehicleStatsFragment"));
+		fragmentConfiguration.put(FRAGMENT_VEHICLE_EQUIPMENT, new AdventureFragmentRunner(R.string.vehicleSpecs, "pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFVehicleStatsFragment"));
 		fragmentConfiguration.put(FRAGMENT_EQUIPMENT, new AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"));
 		fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
 	}
@@ -88,7 +87,7 @@ public class FFAdventure extends Adventure {
 		setProvisions(Integer.valueOf(getSavedGame().getProperty("provisions")));
 		setProvisionsValue(Integer.valueOf(getSavedGame().getProperty("provisionsValue")));
 		setSpareWheels(Integer.valueOf(getSavedGame().getProperty("spareWheels")));
-		setCarEnhancements(stringToArray(getSavedGame().getProperty("provisionsValue")));
+		setCarEnhancements(stringToArray(getSavedGame().getProperty("carEnhancements")));
 	}
 
 	public int getCurrentFirepower() {

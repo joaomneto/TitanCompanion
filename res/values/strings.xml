@@ -793,7 +793,9 @@
     <string name="oil">Oil: </string>
     <string name="spareWheels">Spare Wheels: </string>
     <string name="vehicleSpecs">Car Specs</string>
+    <string name="enhancement">Enhancement</string>
     <string name="addEnhancement">Add Enhancement</string>
+    <string name="deleteEnhancement">Delete Enhancement?</string>
     <string name="starship">Starship: </string>
     <string name="missiles">Missiles: </string>
     <string name="enemyShips">Enemy Ships: </string>

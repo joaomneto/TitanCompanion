@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_adventure_spells_chooser.*
+import android.widget.LinearLayout
+import android.widget.ListView
+import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureSpellsFragment
 
 /**
@@ -16,9 +18,9 @@ class MRAdventureSpellsFragment : AdventureSpellsFragment() {
                               savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-        spellChooserLayout?.visibility = View.GONE
-        spellChooserSeparator?.visibility = View.GONE
-        spellList?.onItemClickListener = null
+        view?.findViewById<LinearLayout>(R.id.spellChooserLayout)?.visibility = View.GONE
+        view?.findViewById<View>(R.id.spellChooserSeparator)?.visibility = View.GONE
+        view?.findViewById<ListView>(R.id.spellList)?.onItemClickListener = null
 
         return view
     }

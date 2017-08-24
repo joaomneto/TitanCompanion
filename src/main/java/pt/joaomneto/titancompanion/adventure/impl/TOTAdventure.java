@@ -56,7 +56,7 @@ public class TOTAdventure extends SpellAdventure {
     @Override
     public void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 
-        bw.write("spells=" + arrayToStringSpells(spells) + "\n");
+        bw.write("spells=" + arrayToStringSpells(getChosenSpells()) + "\n");
         bw.write("gold=" + getGold() + "\n");
     }
 

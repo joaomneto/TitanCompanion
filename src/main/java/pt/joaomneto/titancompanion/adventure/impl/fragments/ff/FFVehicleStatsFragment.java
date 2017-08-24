@@ -1,8 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.ff;
 
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.AdventureFragment;
-import pt.joaomneto.titancompanion.adventure.impl.FFAdventure;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,6 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.AdventureFragment;
+import pt.joaomneto.titancompanion.adventure.impl.FFAdventure;
 
 public class FFVehicleStatsFragment extends AdventureFragment {
 
@@ -49,28 +50,28 @@ public class FFVehicleStatsFragment extends AdventureFragment {
 
 		final FFAdventure adv = (FFAdventure) getActivity();
 
-		rocketsValue = (TextView) rootView.findViewById(R.id.statsRocketsValue);
-		ironSpikesValue = (TextView) rootView.findViewById(R.id.statsIronSpikesValue);
-		oilValue = (TextView) rootView.findViewById(R.id.statsOilValue);
-		spareWheelsValue = (TextView) rootView.findViewById(R.id.spareWheelsValue);
+		rocketsValue = rootView.findViewById(R.id.statsRocketsValue);
+		ironSpikesValue = rootView.findViewById(R.id.statsIronSpikesValue);
+		oilValue = rootView.findViewById(R.id.statsOilValue);
+		spareWheelsValue = rootView.findViewById(R.id.spareWheelsValue);
 
 		rocketsValue.setText(""+adv.getRockets());
 		ironSpikesValue.setText(""+adv.getIronSpikes());
 		oilValue.setText(""+adv.getOilCannisters());
 		oilValue.setText(""+adv.getSpareWheels());
 
-		minusRocketsButton = (Button) rootView.findViewById(R.id.minusRocketsButton);
-		minusIronSpikesButton = (Button) rootView.findViewById(R.id.minusIronSpikesButton);
-		plusRocketsButton = (Button) rootView.findViewById(R.id.plusRocketsButton);
-		plusIronSpikesButton = (Button) rootView.findViewById(R.id.plusIronSpikesButton);
+		minusRocketsButton = rootView.findViewById(R.id.minusRocketsButton);
+		minusIronSpikesButton = rootView.findViewById(R.id.minusIronSpikesButton);
+		plusRocketsButton = rootView.findViewById(R.id.plusRocketsButton);
+		plusIronSpikesButton = rootView.findViewById(R.id.plusIronSpikesButton);
 
-		minusOilButton = (Button) rootView.findViewById(R.id.minusOilButton);
-		minusSpareWheelsButton = (Button) rootView.findViewById(R.id.minusSpareWheelsButton);
-		plusOilButton = (Button) rootView.findViewById(R.id.plusOilButton);
-		plusSpareWheelsButton = (Button) rootView.findViewById(R.id.plusSpareWheelsButton);
-		
-		enhancementList = (ListView) rootView.findViewById(R.id.carEnhancementList);
-		addEnhancement = (Button) rootView.findViewById(R.id.buttonAddEnhancement);
+		minusOilButton = rootView.findViewById(R.id.minusOilButton);
+		minusSpareWheelsButton = rootView.findViewById(R.id.minusSpareWheelsButton);
+		plusOilButton = rootView.findViewById(R.id.plusOilButton);
+		plusSpareWheelsButton = rootView.findViewById(R.id.plusSpareWheelsButton);
+
+		enhancementList = rootView.findViewById(R.id.carEnhancementList);
+		addEnhancement = rootView.findViewById(R.id.buttonAddEnhancement);
 		
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(adv,
@@ -83,7 +84,7 @@ public class FFVehicleStatsFragment extends AdventureFragment {
 			public void onClick(View v) {
 				AlertDialog.Builder alert = new AlertDialog.Builder(adv);
 
-				alert.setTitle(R.string.note);
+				alert.setTitle(R.string.enhancement);
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(adv);
@@ -123,7 +124,7 @@ public class FFVehicleStatsFragment extends AdventureFragment {
 					int arg2, long arg3) {
 				final int position = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(adv);
-				builder.setTitle(R.string.deleteNote)
+				builder.setTitle(R.string.deleteEnhancement)
 						.setCancelable(false)
 						.setNegativeButton(R.string.close,
 								new DialogInterface.OnClickListener() {
