@@ -959,7 +959,7 @@
     <string name="knockedOut">You\'ve been knocked out...</string>
     <string name="youreDead">You\'re dead...</string>
     <string name="hitEnemy">You have hit the enemy!</string>
-    <string name="staminaInitials">ST</string>
+    <string name="staminaInitials">St</string>
     <string name="defeatSuddenDeath">You\'ve defeated an enemy by sudden death!</string>
     <string name="blockedAttack">You have blocked the enemy attack!</string>
     <string name="youWereHit">You\'ve been hit...</string>
@@ -1156,5 +1156,6 @@
     <string name="skill_sneak">Sneak</string>
     <string name="skill_spot_hidden">Spot Hidden</string>
     <string name="deleteSkillQuestion">Delete Skill?</string>
+    <string name="skillInitials">Sk</string>
 
 </resources>

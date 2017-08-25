@@ -35,12 +35,12 @@
     <string name="trok">Les Trafiquants de Kelter</string>
     <string name="sob">Défis Sanglants sur l\'Océan</string>
     <string name="awf">Rendez-vous avec la M.O.R.T.</string>
-    <string name="rp">La planète Rebelle</string>
-    <string name="dotd">Les démons des profondeurs</string>
+    <string name="rp">La Planète Rebelle</string>
+    <string name="dotd">Les Démons des Profondeurs</string>
     <string name="sots">L\'Epée du Samouraï</string>
     <string name="toc">L\'Epreuve des Champions</string>
     <string name="rc">La Grande Menace des Robots</string>
-    <string name="mom">Les Screaux de la Destruction</string>
+    <string name="mom">Les Sceaux de la Destruction</string>
     <string name="coh">La Créature venue du Chaos</string>
     <string name="bnc">La Forteresse du Cauchemar</string>
     <string name="cots">La Crypte du Sorcier</string>
@@ -145,7 +145,7 @@
     <string name="addNote">Ajouter une note</string>
     <string name="gold">Or:</string>
     <string name="copper">Cuivre:</string>
-    <string name="editGold">Editer</string>
+    <string name="editGold">Modifier</string>
     <string name="equipment">Equipement:</string>
     <string name="equipment2">Equipement</string>
     <string name="addEquipment">Ajouter un équipement</string>
@@ -224,7 +224,7 @@
     <string name="stCrewmanDied">Le %1$s a été vaincu...</string>
     <string name="stShields">Boucliers</string>
 
-    <string name="number_0_word">zero</string>
+    <string name="number_0_word">zéro</string>
     <string name="number_1_word">un</string>
     <string name="number_2_word">deux</string>
     <string name="number_3_word">trois</string>
@@ -316,7 +316,7 @@
     <string name="ffavoidedSecondAttack">Vous avez évité l\'attaque de votre second adversaire.</string>
     <string name="ffDirectHit">Coup au but ! (-%1$d Blindage)</string>
 
-<!-- Space Assassin + Rings of Kelter -->
+<!-- Space Assassin + Rings of Kether -->
     <string name="starship">Vaisseau: </string>
     <string name="missiles">Missiles: </string>
     <string name="enemyShips">"Vaisseaux ennemis: "</string>
@@ -324,23 +324,7 @@
     <string name="usePepPill">Utiliser une pilule de vigueur</string>
     <string name="pepPills">Pilules de vigueur: </string>
     <string name="consumeProvisions">Manger une ration</string>
-    <string name="kopecks">Kopecks: </string>
-    <string name="saGrenade">Grenade</string>
-    <string name="saCombatText1">Votre adversaire (HA: %1$d EN: %2$d) a été touché. (-%3$d EN)</string>
-    <string name="saCombatText2">Un adversaire (HA: %1$d EN: %2$d) vous a touché. (-%3$d EN)</string>
-    <string name="saCombatText3">Un adversaire (HA: %1$d EN: %2$d) vous a manqué.</string>
-    <string name="saAssaultBlaster">Explosif</string>
     <string name="missedTheEnemy">Vous avez manqué votre adversaire...</string>
-    <string name="saHitEnemy">Vous avez touché votre adversaire! (%1$d ST)</string>
-    <string name="saElectricLash">Fouet électrique</string>
-    <string name="saWeapons">Armes</string>
-    <string name="saWeapon">Arme</string>
-    <string name="saDeleteWeapon">Enlever une arme?</string>
-    <string name="saGravityBomb">Charge d\'antimatière</string>
-    <string name="sa2xArmor">2x Armure</string>
-    <string name="saNoWeaponPoints">Vous n\'avez pas assez de point pour ajouter le/la %1$s</string>
-    <string name="weaponsArmorMandatory">Armement et Défense</string>
-    <string name="trokDirectHit">Coup au but ! (-%1$d Défense)</string>
     <string name="directHitDefeatSecondEnemy">Coup au but ! Vous avez détruit votre second adversaire !</string>
     <string name="trokPlayerStarshipDestroyed">Votre adversaire a détruit votre vaisseau...</string>
     <string name="enemyMissed">Votre adversaire vous a manqué !</string>
@@ -352,6 +336,26 @@
     <string name="enemyDestroyedShip">Votre adversaire a détruit votre vaisseau...</string>
     <string name="enemyHitYourShip">Votre adversaire a touché votre vaisseau.</string>
     <string name="enemyShipMissed">Le vaisseau adverse a manqué son coup.</string>
+
+<!-- Space Assassin -->
+    <string name="saHitEnemy">Vous avez touché votre adversaire! (%1$d ST)</string>
+    <string name="saElectricLash">Pistolet-Laser</string>
+    <string name="saAssaultBlaster">Désintégrateur</string>
+    <string name="saGravityBomb">Charge d\'antimatière</string>
+    <string name="saGrenade">Grenade</string>
+    <string name="sa2xArmor">2x Armure</string>
+    <string name="saWeapons">Armes</string>
+    <string name="saWeapon">Arme</string>
+    <string name="saDeleteWeapon">Effacer cette arme?</string>
+    <string name="saNoWeaponPoints">Vous n\'avez pas assez de point pour ajouter le/la %1$s</string>
+    <string name="saCombatText1">Votre adversaire (HA: %1$d EN: %2$d) a été touché. (-%3$d EN)</string>
+    <string name="saCombatText2">Un adversaire (HA: %1$d EN: %2$d) vous a touché. (-%3$d EN)</string>
+    <string name="saCombatText3">Un adversaire (HA: %1$d EN: %2$d) vous a manqué.</string>
+
+<!-- Rings of Kether -->
+    <string name="kopecks">"Crédits: "</string>
+    <string name="weaponsArmorMandatory">Armement et Défense</string>
+    <string name="trokDirectHit">Coup au but ! (-%1$d Défense)</string>
 
 <!-- Seas of Blood -->
     <string name="crewStrength">Force d\'équipage: </string>
@@ -376,7 +380,7 @@
         <item>Accessoires Miniaturisés d\'Intervention</item>
         <item>Souffle d\'Energie</item>
     </string-array>
-    <string name="heroPoints">Points de Réussite: </string>
+    <string name="heroPoints">Réussite: </string>
     <string name="awfSuperStrength">Super Force</string>
 
 <!-- Rebel Planet -->
@@ -640,4 +644,5 @@
     <string name="skill_hide">Passe-Murailles</string>
     <string name="skill_spot_hidden">Cache-Tampon</string>
     <string name="deleteSkillQuestion">Supprimer ce Talent?</string>
+    <string name="skillInitials">Ha</string>
 </resources>

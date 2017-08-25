@@ -607,6 +607,7 @@
     <string name="skill_sneak">Andar em silêncio</string>
     <string name="skill_spot_hidden">Percepção</string>
     <string name="deleteSkillQuestion">Remover Habilidade?</string>
+    <string name="skillInitials">Pe</string>
 
 
 </resources>

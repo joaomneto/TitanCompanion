@@ -479,8 +479,9 @@ public class STCombatFragment extends AdventureFragment {
         }
 
         public CharSequence toGridString() {
-            return ((STAdventure) getActivity()).getStringForCrewman(crewman) + " vs. Sk:" + currentSkill + " St:"
-                    + currentStamina;
+            return ((STAdventure) getActivity()).getStringForCrewman(crewman) + " vs. " +
+                    getResources().getString(R.string.skillInitials) + ":" + currentSkill + " " +
+                    getResources().getString(R.string.staminaInitials)+":" + currentStamina;
         }
 
         public STAdventure.STCrewman getCrewman() {
