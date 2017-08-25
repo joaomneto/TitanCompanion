@@ -504,7 +504,7 @@
     <string name="saAssaultBlaster">Explosivo de Ataque</string>
     <string name="missedTheEnemy">FAlhaste o inimigo...</string>
     <string name="saHitEnemy">Acertaste no inimigo! (%1$d ST)</string>
-    <string name="saElectricLash">Ouro &amp; Tesouro</string>
+    <string name="saElectricLash">Chicote Eléctrico</string>
     <string name="saWeapons">Armas</string>
     <string name="saWeapon">Arma</string>
     <string name="saDeleteWeapon">Apagar arma?</string>
