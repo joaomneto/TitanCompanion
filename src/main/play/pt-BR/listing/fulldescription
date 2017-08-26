@@ -1,0 +1,24 @@
+O Titan Companion é uma app que combina a folah de aventura habitua dos livros das Aventuras Fantásticas com funcionalidades para combates, testes de sorte, perícia e todas as regras específicas de cada livro das Aventuras Fantásticas. 
+
+Conteúdo:
+
+&#8226;&#8195; Folha de aventura para todos os livros das Aventuras Fantásticas
+&#8226;&#8195; Lançamento de dados 
+&#8226;&#8195; Testes de sorte, perícia, etc
+&#8226;&#8195; Motor de combates standard e combates específicos de cada livro (Robots, naves espaciais, navios, veículos etc)
+&#8226;&#8195; Lista de notas e de equipamento
+&#8226;&#8195; Funcionalidade de save e load com o parágrafro actual
+
+O principal objectivo da app é de permitir ao leitor que se deixe absover completamente pela história sem passar muito tempo de volta de dados e papel e lápis. Além disso permite dar alguma portabilidade aos livros permitindo o leitor de disfrutar deles no café, nos transportes públicos ou na praia. Quando necessário basta gravar o progresso e continuar mais tarde.
+
+Esta app e o seu developer não estão afiliados com a Puffin Books, Wizard Books ou a marca Fighting Fantasy. Isto é um trabalho feito com amor por esta série de livros e que começou como um projecto pessoal para meu uso apenas. Por fim acabei por querer partilhar isto com a restante comunidade de leitores.
+
+<b>Não existe nenhum conteúdo dos livros na app.</b> Continua a precisar dos mesmos para utilizar a app devidamente. Não tenciono infringir o copyright do material em questão.
+
+Esta app está ainda em fase beta pois ainda não consegui terminar a implementação de todos os livros.
+
+<b>Neste momento apenas os primeiros 24 livros da série original são suportados pela app.</b> Pode na mesma utilizar esta app para outros livros com as óbvias limitações.
+
+Pode reportar qualquer bug ou problema com a app por mail ou preferencialmente no site do projecto: https://gitlab.com/joao.m.neto/FFCompanion/.
+
+Obrigado a Sebastien Haezebrouck por fornecer a tradução francesa desta app.

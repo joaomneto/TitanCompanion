@@ -1,0 +1,24 @@
+The Titan Companion is an app that combines stat sheet and rules engine for all Fighting Fantasy gamebooks. 
+
+Features:
+
+&#8226;&#8195; Stat sheets for all Fighting Fantasy gamebooks
+&#8226;&#8195; Generic dice rolls 
+&#8226;&#8195; Skill, Luck and other gamebook specific tests
+&#8226;&#8195; Combat engine for standard and gamebook specific rules
+&#8226;&#8195; Equipment and Note list
+&#8226;&#8195; Save and Load feature with current gamebook paragraph
+
+The main objective of this app is to allow the reader to fully immerse himself into the story and even to give some portability to the gamebooks. You can read in the coffee shop, in the bus or at the beach, and save your progress at any moment to resume later on.
+
+This app and it's developer are not affiliated with Puffin Books, Wizard Books or the Fighting Fantasy brand. This is a labor of love that began as a personal project for my use only and that I decided to share with the community. 
+
+<b>There is absolutely no content of the books themselves in the app.</b> You need the books to use it properly. I intend no copyright infringement whatsoever.
+
+This is still in beta phase as I wasn't able to implement the rules/sheets for all the books. 
+
+<b>As of now, only the first 24 books are supported by the app.</b> You can still use it for other gamebooks but with the obvious limits.
+
+You can report any bug issue here in the store comments or preferably in the project website https://gitlab.com/joao.m.neto/FFCompanion/.
+
+Thanks to Sebastien Haezebrouck for providing the french translation for this app.

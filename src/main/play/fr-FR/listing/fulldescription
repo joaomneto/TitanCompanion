@@ -1,0 +1,24 @@
+Titan Companion est une aide de jeu pour les livres dont vous êtes le héro de la série Défis Fantastiques. Elle permet de gérer la feuille d'aventure ainsi que la plupart des règles de ces livres-jeux.
+
+Fonctionnalités
+
+&#8226;&#8195; Feuille d'aventure pour tous les livres dont vous êtes le héros de la série Défis Fantastiques
+&#8226;&#8195; Lancers de dés 
+&#8226;&#8195; Tests d'Habileté, de Chance, ou d'autres caractéristiques spécifiques à certains livres
+&#8226;&#8195; Combat suivant les règles standard, et spécifiques à certains livres
+&#8226;&#8195; Liste d'équipement et prise de notes
+&#8226;&#8195; Sauvegarde et chargement d'une partie, associée au paragraphe actuel.
+
+Le but principal de cette application est de permettre au lecteur de s'immerger complètement dans l'histoire et de rendre la progression dans le jeu plus simple. Vous pouvez lire dans un bar, le bus, ou à la plage, et sauvegarder votre progression quand vous le désirer pour continuer plus tard.
+
+Cette application et son développeur n'ont aucun lien avec Puffin Books, Wizard Books, Gallimard, ou la marque Défis Fantastiques. Il s'agit un travail de passionné, à l'origine un projet personnel, que j'ai décidé de partager avec la communauté.
+
+<b>L'application ne contient absolument aucun contenu emprunté aux livres.</b> Vous avez besoin des livres pour l'utiliser. Il n'est pas dans mon intention de violer le moindre copyright.
+
+Cette application est toujours en version beta: les livres de la série ne sont pas encore tous supportés et il est possible que vous rencontriez des bugs.
+
+<b>Actuellement l'application ne supporte que les 24 premiers livres.</b> Il est possible de l'utiliser pour les autres livres de la série, sans le support de leurs règles spécifiques.
+
+Vous pouvez remonter les bugs ou problèmes que vous avez rencontrés en commentaire, ou de préférence sur le site du projet https://gitlab.com/joao.m.neto/FFCompanion/.
+
+Merci a Sebastien Haezebrouck pour la version française de cette application.

@@ -8,11 +8,13 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0-beta1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.triplet.gradle:play-publisher:1.1.5'
     }
 }
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.triplet.play'
 
 dependencies {
     repositories {
@@ -75,6 +77,13 @@ android {
         release.setRoot('build-types/release')
     }
 }
+
+play {
+    track = 'production'
+    serviceAccountEmail = 'titancompanion@api-6802195518378680914-945939.iam.gserviceaccount.com'
+    pk12File = file('/Users/joao/Google Drive/Google Play Android Developer-5ff2e81594fd.p12')
+}
+
 repositories {
     mavenCentral()
 }
