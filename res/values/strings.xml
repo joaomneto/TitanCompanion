@@ -1157,5 +1157,7 @@
     <string name="skill_spot_hidden">Spot Hidden</string>
     <string name="deleteSkillQuestion">Delete Skill?</string>
     <string name="skillInitials">Sk</string>
+    <string name="saArmor">Armour:</string>
+    <string name="sobEnemyShip">Enemy ship: </string>
 
 </resources>

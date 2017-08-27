@@ -338,12 +338,13 @@
     <string name="enemyShipMissed">Le vaisseau adverse a manqué son coup.</string>
 
 <!-- Space Assassin -->
+    <string name="saArmor">Protection:</string>
     <string name="saHitEnemy">Vous avez touché votre adversaire! (%1$d ST)</string>
     <string name="saElectricLash">Pistolet-Laser</string>
     <string name="saAssaultBlaster">Désintégrateur</string>
     <string name="saGravityBomb">Charge d\'antimatière</string>
     <string name="saGrenade">Grenade</string>
-    <string name="sa2xArmor">2x Armure</string>
+    <string name="sa2xArmor">2x Protection</string>
     <string name="saWeapons">Armes</string>
     <string name="saWeapon">Arme</string>
     <string name="saDeleteWeapon">Effacer cette arme?</string>
@@ -361,7 +362,7 @@
     <string name="crewStrength">Force d\'équipage: </string>
     <string name="crewStrike">Combativité d\'équipage: </string>
     <string name="log">Livre de bord: </string>
-    <string name="shipC">Navire: </string>
+    <string name="shipC">Votre navire: </string>
     <string name="booty">Butin</string>
     <string name="addBooty">Ajouter un butin</string>
     <string name="shipCombat">Combat Naval</string>
@@ -371,6 +372,7 @@
     <string name="sobDirectHit">Coup au but! (-%1$d Force d\'équipage)</string>
     <string name="sobEnemyHitYourShip">Le navire adverse vous a atteint. (-%1$d Force d\'équipage)</string>
     <string name="bothShipsMissed">Les deux navires ont manqué leur coup.</string>
+    <string name="sobEnemyShip">Navire ennemi: </string>
 
 <!-- Appointment with F.E.A.R -->
     <string name="title_adventure_creation_superpower">Super Pouvoir</string>
@@ -645,4 +647,5 @@
     <string name="skill_spot_hidden">Cache-Tampon</string>
     <string name="deleteSkillQuestion">Supprimer ce Talent?</string>
     <string name="skillInitials">Ha</string>
+
 </resources>

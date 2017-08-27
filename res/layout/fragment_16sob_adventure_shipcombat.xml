@@ -212,7 +212,7 @@
         android:layout_alignLeft="@+id/textField5"
         android:layout_below="@+id/textField2"
         android:gravity="center"
-        android:text="@string/enemyShip"
+        android:text="@string/sobEnemyShip"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
