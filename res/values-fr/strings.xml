@@ -339,7 +339,7 @@
 
 <!-- Space Assassin -->
     <string name="saArmor">Protection:</string>
-    <string name="saHitEnemy">Vous avez touché votre adversaire! (%1$d ST)</string>
+    <string name="saHitEnemy">Vous avez touché votre adversaire! (%1$d En)</string>
     <string name="saElectricLash">Pistolet-Laser</string>
     <string name="saAssaultBlaster">Désintégrateur</string>
     <string name="saGravityBomb">Charge d\'antimatière</string>
