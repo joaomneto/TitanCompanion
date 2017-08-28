@@ -34,23 +34,23 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
 
-    signingConfigs {
-        release {
-            storeFile file(RELEASE_STORE_FILE)
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile file(RELEASE_STORE_FILE)
+//            storePassword RELEASE_STORE_PASSWORD
+//            keyAlias RELEASE_KEY_ALIAS
+//            keyPassword RELEASE_KEY_PASSWORD
+//        }
+//    }
 
     buildTypes {
         debug {
             debuggable true
             applicationIdSuffix ".debug"
         }
-        release {
-            signingConfig signingConfigs.release
-        }
+//        release {
+//            signingConfig signingConfigs.release
+//        }
     }
 
     defaultConfig {
