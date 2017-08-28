@@ -3,8 +3,8 @@
 /.gradle/
 /gen/
 /build/
-gradle*
 local.properties
+gradle.properties
 FFCompanion.iml
 FFGBUtil.iml
 lint.xml
