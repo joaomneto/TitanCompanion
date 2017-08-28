@@ -382,6 +382,7 @@
         <item>Accessoires Miniaturisés d\'Intervention</item>
         <item>Souffle d\'Energie</item>
     </string-array>
+    <string name="aodSuperpower">Super Pouvoir</string>
     <string name="heroPoints">Réussite: </string>
     <string name="awfSuperStrength">Super Force</string>
 
@@ -549,11 +550,10 @@
     <string name="aodDestroyEnemy">Vous avez vaincu l\'armée ennemie !</string>
     <string name="aodKillEnemyTroops"> et vous détruisez %1$d troupes ennemies.</string>
     <string name="aodMustFillTypeAndQuantity">Vous devez remplir les champs type et quantité !</string>
-    <string name="aodSituationEven">Vous êtes en situation égale par rapport à votre ennemi (%1$d vs %2$d).</string>
-    <string name="aodSituationInferior">Vous êtes en infériorité par rapport à votre ennemi (%1$d vs %2$d).</string>
-    <string name="aodSituationSuperior">Vous êtes en supériorité par rapport à votre ennemi (%1$d vs %2$d).</string>
+    <string name="aodSituationEven">Vous êtes en situation égale par rapport à votre ennemi (%1$d vs %2$d)</string>
+    <string name="aodSituationInferior">Vous êtes en infériorité par rapport à votre ennemi (%1$d vs %2$d)</string>
+    <string name="aodSituationSuperior">Vous êtes en supériorité par rapport à votre ennemi (%1$d vs %2$d)</string>
     <string name="aodSufferLossTropps"> et vous perdez %1$d soldats.</string>
-    <string name="aodSuperpower">Super Pouvoir</string>
     <string name="aod_removeAllSoldiers">Voulez-vous retirer tous les %1$s soldats de votre armée ?</string>
     <string name="addSoldiers">Ajouter des soldats</string>
     <string name="soldiersKilledQuestion">Soldat perdus ?</string>
