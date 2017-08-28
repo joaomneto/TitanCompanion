@@ -10,13 +10,13 @@
 
     <ListView
         android:id="@+id/noteList"
-        android:background="@drawable/border_back"
-        android:layout_marginTop="5dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonAddNote"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/border_back">
 
     </ListView>
 
@@ -25,7 +25,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:onClick="addNote"
         android:text="@string/addNote" />
 
 
