@@ -367,7 +367,7 @@
     <string name="addBooty">Ajouter un butin</string>
     <string name="shipCombat">Combat Naval</string>
     <string name="testCrewStrength">Tester la combativité</string>
-    <string name="deleteBooty">Effacer le butin ?</string>
+    <string name="deleteBooty">Effacer ce butin ?</string>
     <string name="crewParamsMandatory">Attaque et Combativité</string>
     <string name="sobDirectHit">Coup au but! (-%1$d Force d\'équipage)</string>
     <string name="sobEnemyHitYourShip">Le navire adverse vous a atteint. (-%1$d Force d\'équipage)</string>
@@ -584,7 +584,7 @@
     <string name="youreUnlucky">Vous êtes malchanceux...</string>
     <string name="knockedOut">Vous êtes étourdi.</string>
     <string name="youreDead">Vous êtes mort...</string>
-    <string name="hitEnemy">Vous avez atteint l\'adversaire</string>
+    <string name="hitEnemy">Vous avez atteint votre adversaire</string>
     <string name="staminaInitials">En</string>
     <string name="defeatSuddenDeath">Vous avez vaincu votre adversaire par Mort Subite !</string>
     <string name="blockedAttack">Vous avez paré l\'attaque adverse !</string>
@@ -596,9 +596,9 @@
     <string name="someParametersMIssing">Il manque des paramètres (</string>
     <string name="adventureName">Nom de l\'aventure</string>
     <string name="setValue">Définir la valeur</string>
-    <string name="deleteEquipmentQuestion">Effacer un équipement ?</string>
+    <string name="deleteEquipmentQuestion">Effacer cet équipement ?</string>
     <string name="note">Note</string>
-    <string name="deleteNote">Effacer la note ?</string>
+    <string name="deleteNote">Effacer cette note ?</string>
     <string name="useSpellQuestion">Utiliser un sort ?</string>
     <string name="use">Utiliser</string>
     <string name="potion">Potion</string>
@@ -607,11 +607,11 @@
     <string name="mustDistributeLosses">Vous devez distribuer les pertes à votre armée.</string>
     <string name="youveRolled">Vous avez obtenu un %1$s.</string>
     <string name="chooseSavePoint">Choisir le paragraphe:</string>
-    <string name="deleteSavegame">Effacer la sauvegarde ?</string>
+    <string name="deleteSavegame">Effacer cette sauvegarde ?</string>
 
     <string name="spellCount">Nombre de sorts</string>
     <string name="chosenSpells">Sorts choisis</string>
-    <string name="deleteSpellQuestion">Effacer le sort ?</string>
+    <string name="deleteSpellQuestion">Effacer ce sort ?</string>
 
 	<string name="exit">Quitter</string>
     <string name="quit">Quitter</string>
