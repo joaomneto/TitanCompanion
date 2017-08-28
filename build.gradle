@@ -3,9 +3,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-		maven {
-			url uri('c:/apps/ic/repository')
-		}
         jcenter()
     }
     dependencies {
@@ -23,9 +20,6 @@ dependencies {
     repositories {
        google()
        mavenCentral()
-		maven {
-			url uri('c:/apps/ic/repository')
-		}
        jcenter()
     }
     implementation fileTree(include: '*.jar', dir: 'libs')
