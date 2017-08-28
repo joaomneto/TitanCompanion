@@ -329,7 +329,7 @@
     <string name="trokPlayerStarshipDestroyed">Votre adversaire a détruit votre vaisseau...</string>
     <string name="enemyMissed">Votre adversaire vous a manqué !</string>
     <string name="trokEnemyHitPlayerStarship">Votre adversaire a touché votre vaisseau (-%1$d Défense).</string>
-    <string name="trokSecondEnemyHitPlayerStarship">Votre second adversaire a touché votre vaisseau. (-%1 Défense).</string>
+    <string name="trokSecondEnemyHitPlayerStarship">Votre second adversaire a touché votre vaisseau. (-%1$d Défense).</string>
     <string name="secondEnemyMissed">Votre second adversaire vous a manqué !</string>
     <string name="hitEnemyDamage">Vous avez atteint votre adversaire ! (-%1$d En)</string>
     <string name="directHit">Coup au but!</string>
