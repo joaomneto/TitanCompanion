@@ -3,7 +3,7 @@ jobs:
    build:
      working_directory: ~/code
      docker:
-       - image: thyrlian/android-sdk
+       - image: circleci/android:api-26-alpha
      environment:
        JVM_OPTS: -Xmx3200m
      steps:
@@ -18,8 +18,15 @@ jobs:
              - ~/.gradle
            key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
        - run:
+           name: Setup emulator
+           command: sdkmanager "system-images;android-22;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
+       - run:
+           name: Launch emulator
+           command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
+           background: true
+       - run:
            name: Run Tests
-           command: ./gradlew lint test
+           command: ./gradlew lint :demo:connectedAndroidTest
        - store_artifacts:
            path: build/reports
            destination: reports
