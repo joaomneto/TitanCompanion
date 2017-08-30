@@ -1,7 +1,10 @@
 package pt.joaomneto.titancompanion;
 
 
+import android.app.Activity;
 import android.support.test.espresso.DataInteraction;
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -16,6 +19,8 @@ import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import pt.joaomneto.titancompanion.adventure.Adventure;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
@@ -35,7 +40,7 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestTWOFMCreation {
+public class TestTWOFMCreation extends TCBaseTest{
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -103,14 +108,16 @@ public class TestTWOFMCreation {
                         isDisplayed()));
         button4.perform(click());
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new IllegalStateException(e);
-        }
+        // wait for view to become visible
+
+        AdventureVisibilityIdlingResource idlingResource = new AdventureVisibilityIdlingResource((Adventure) getActivityInstance());
+        IdlingRegistry.getInstance().register(idlingResource);
+
 
         ViewInteraction button5 = onView(allOf(withId(R.id.buttonSavePoint), isDisplayed()));
         button5.check(matches(isDisplayed()));
+
+        IdlingRegistry.getInstance().unregister(idlingResource);
 
     }
 
