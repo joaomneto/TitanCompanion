@@ -108,6 +108,15 @@ public class TestTWOFMCreation extends TCBaseTest{
                         isDisplayed()));
         button4.perform(click());
 
+        while(true){
+            if(getActivityInstance() instanceof Adventure) break;
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new IllegalStateException(e);
+            }
+        }
+
         // wait for view to become visible
 
         AdventureVisibilityIdlingResource idlingResource = new AdventureVisibilityIdlingResource((Adventure) getActivityInstance());

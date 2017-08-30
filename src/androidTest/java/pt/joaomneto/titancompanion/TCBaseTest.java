@@ -29,7 +29,7 @@ public abstract class TCBaseTest{
         return targetContext.getPackageName();
     }
 
-    protected Activity getActivityInstance(){
+    protected static Activity getActivityInstance(){
         final Activity[] currentActivity = {null};
 
         getInstrumentation().runOnMainSync(new Runnable(){
