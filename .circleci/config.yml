@@ -16,6 +16,16 @@ jobs:
            command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
            background: true
        - run:
+           name: Wait for emulator
+           command: circle-android wait-for-boot
+       - run:
+           name: Disable emulator animations
+           command: |
+              adb shell settings put global window_animation_scale 0.0 
+              adb shell settings put global transition_animation_scale 0.0
+              adb shell settings put global animator_duration_scale 0.0
+              adb shell settings put secure show_ime_with_hard_keyboard 0
+       - run:
            name: Run Tests
            command: ./gradlew lint connectedAndroidTest
        - store_artifacts:
