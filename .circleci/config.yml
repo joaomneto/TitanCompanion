@@ -26,6 +26,14 @@ jobs:
               adb shell settings put global animator_duration_scale 0.0
               adb shell settings put secure show_ime_with_hard_keyboard 0
        - run:
+           name: Compile App
+           command: ./gradlew assembleDebug
+           no_output_timeout: 20m
+      - run:
+          name: Install App
+          command: adb install -g build/outputs/apk/debug/FFCompanion-debug.apk
+          no_output_timeout: 20m
+       - run:
            name: Run Tests
            command: ./gradlew lint connectedAndroidTest
            no_output_timeout: 20m
