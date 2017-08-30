@@ -2,6 +2,7 @@ package pt.joaomneto.titancompanion;
 
 
 import android.app.Activity;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.IdlingRegistry;
@@ -16,6 +17,7 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +46,11 @@ public class TestTWOFMCreation extends TCBaseTest{
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+
+    @Before
+    public void setup(){
+        InstrumentationRegistry.getTargetContext().getExternalFilesDir(null);
+    }
 
     @Test
     public void testTWOFM() {
@@ -107,19 +114,6 @@ public class TestTWOFMCreation extends TCBaseTest{
                                 2),
                         isDisplayed()));
         button4.perform(click());
-
-        while(true){
-            Activity activityInstance = getActivityInstance();
-            if(activityInstance instanceof Adventure) break;
-            try {
-                System.out.println("activityInstance = " + activityInstance);
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
-        }
-
-        // wait for view to become visible
 
         AdventureVisibilityIdlingResource idlingResource = new AdventureVisibilityIdlingResource((Adventure) getActivityInstance());
         IdlingRegistry.getInstance().register(idlingResource);

@@ -209,7 +209,7 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 			startActivity(intent);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new IllegalStateException(e);
 		}
 	}
 
