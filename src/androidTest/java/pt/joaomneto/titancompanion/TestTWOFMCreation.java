@@ -103,7 +103,11 @@ public class TestTWOFMCreation {
                         isDisplayed()));
         button4.perform(click());
 
-        Thread.sleep(2000);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new IllegalStateException(e);
+        }
 
         ViewInteraction button5 = onView(allOf(withId(R.id.buttonSavePoint), isDisplayed()));
         button5.check(matches(isDisplayed()));
