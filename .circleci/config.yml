@@ -28,6 +28,7 @@ jobs:
        - run:
            name: Run Tests
            command: ./gradlew lint connectedAndroidTest
+           no_output_timeout: 20m
        - store_artifacts:
            path: build/reports
            destination: reports

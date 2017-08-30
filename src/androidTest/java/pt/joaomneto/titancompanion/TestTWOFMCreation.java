@@ -109,9 +109,11 @@ public class TestTWOFMCreation extends TCBaseTest{
         button4.perform(click());
 
         while(true){
-            if(getActivityInstance() instanceof Adventure) break;
+            Activity activityInstance = getActivityInstance();
+            if(activityInstance instanceof Adventure) break;
             try {
-                Thread.sleep(500);
+                System.out.println("activityInstance = " + activityInstance);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 throw new IllegalStateException(e);
             }
