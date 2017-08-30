@@ -103,6 +103,8 @@ public class TestTWOFMCreation {
                         isDisplayed()));
         button4.perform(click());
 
+        Thread.sleep(2000);
+
         ViewInteraction button5 = onView(allOf(withId(R.id.buttonSavePoint), isDisplayed()));
         button5.check(matches(isDisplayed()));
 
