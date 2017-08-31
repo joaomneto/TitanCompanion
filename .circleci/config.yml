@@ -30,7 +30,7 @@ jobs:
            command: ./gradlew --info --debug --stacktrace assembleDebug
        - run:
            name: Install App
-           command: adb install -g /home/circleci/code/build/outputs/apk/debug/FFCompanion-debug.apk
+           command: find /home/circle -name "*.apk"
        - run:
            name: Run Tests
            command: ./gradlew --info --debug --stacktrace lint connectedAndroidTest
