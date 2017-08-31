@@ -27,13 +27,13 @@ jobs:
               adb shell settings put secure show_ime_with_hard_keyboard 0
        - run:
            name: Compile App
-           command: ./gradlew assembleDebug
+           command: ./gradlew --info --debug --stacktrace assembleDebug
        - run:
            name: Install App
            command: adb install -g /home/circleci/code/build/outputs/apk/debug/FFCompanion-debug.apk
        - run:
            name: Run Tests
-           command: ./gradlew lint connectedAndroidTest
+           command: ./gradlew --info --debug --stacktrace lint connectedAndroidTest
        - store_artifacts:
            path: build/reports
            destination: reports
