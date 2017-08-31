@@ -3,26 +3,42 @@ jobs:
    build:
      working_directory: ~/code
      docker:
-       - image: thyrlian/android-sdk
+       - image: circleci/android:api-26-alpha
      environment:
        JVM_OPTS: -Xmx3200m
      steps:
        - checkout
-       - restore_cache:
-           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
        - run:
-           name: Download Dependencies
-           command: ./gradlew androidDependencies
-       - save_cache:
-           paths:
-             - ~/.gradle
-           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+           name: Setup emulator
+           command: sdkmanager "system-images;android-24;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-24;default;armeabi-v7a"
+       - run:
+           name: Launch emulator
+           command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
+           background: true
+       - run:
+           name: Wait for emulator
+           command: circle-android wait-for-boot
+       - run:
+           name: Disable emulator animations
+           command: |
+              adb shell settings put global window_animation_scale 0.0 
+              adb shell settings put global transition_animation_scale 0.0
+              adb shell settings put global animator_duration_scale 0.0
+              adb shell settings put secure show_ime_with_hard_keyboard 0
+       - run:
+           name: Compile App
+           command: ./gradlew --info --debug --stacktrace assembleDebug
+       - run:
+           name: Install App
+           command: adb install -g /home/circleci/code/build/outputs/apk/debug/code-debug.apk
        - run:
            name: Run Tests
-           command: ./gradlew lint test
+           command: ./gradlew --info --debug --stacktrace lint connectedAndroidTest
        - store_artifacts:
            path: build/reports
            destination: reports
        - store_test_results:
-           path: build/test-results
+           path: /build/reports/androidTests
+       - store_test_results:
+           path: /build/reports/tests
 

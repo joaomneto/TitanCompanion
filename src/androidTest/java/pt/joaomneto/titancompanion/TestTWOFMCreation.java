@@ -2,6 +2,7 @@ package pt.joaomneto.titancompanion;
 
 
 import android.support.test.espresso.DataInteraction;
+import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -17,12 +18,15 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import pt.joaomneto.titancompanion.adventure.Adventure;
+
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -34,13 +38,27 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestSA {
+public class TestTWOFMCreation extends TCBaseTest{
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
+//    @Before
+//    public void setup(){
+//        if (Build.VERSION.SDK_INT >= 23) {
+//            UiDevice device = UiDevice.getInstance(getInstrumentation());
+//            UiObject allowPermissions = device.findObject(new UiSelector().text("ALLOW"));
+//            if (allowPermissions.exists()) {
+//                try {
+//                    allowPermissions.click();
+//                } catch (UiObjectNotFoundException e) {
+//                }
+//            }
+//        }
+//    }
+
     @Test
-    public void testSA() {
+    public void testTWOFM() {
         ViewInteraction button = onView(
                 allOf(withId(R.id.plusSkillButton), withText("Start New Adventure"),
                         childAtPosition(
@@ -56,7 +74,7 @@ public class TestSA {
                         childAtPosition(
                                 withClassName(is("android.widget.RelativeLayout")),
                                 0)))
-                .atPosition(11);
+                .atPosition(0);
         textView.perform(click());
 
         ViewInteraction button2 = onView(
@@ -71,43 +89,45 @@ public class TestSA {
                 allOf(withId(R.id.adventureNameInput),
                         childAtPosition(
                                 withParent(withId(R.id.pager)),
-                                11),
+                                10),
                         isDisplayed()));
-        editText.perform(replaceText("ffs"), closeSoftKeyboard());
-
-        ViewInteraction editText3 = onView(
-                allOf(withId(R.id.adventureNameInput), withText("ffs"),
-                        childAtPosition(
-                                withParent(withId(R.id.pager)),
-                                11),
-                        isDisplayed()));
-        editText3.perform(closeSoftKeyboard());
+        editText.perform(replaceText("espresso"), closeSoftKeyboard());
 
         ViewInteraction button3 = onView(
                 allOf(withId(R.id.buttonRollStats), withText("Reroll Statistics"),
                         childAtPosition(
                                 withParent(withId(R.id.pager)),
-                                9),
+                                8),
                         isDisplayed()));
         button3.perform(click());
 
+
+        onView(withId(R.id.pager)).perform(swipeLeft());
+
+        DataInteraction linearLayout = onData(anything())
+                .inAdapterView(allOf(withId(R.id.potionList),
+                        childAtPosition(
+                                withClassName(is("android.widget.RelativeLayout")),
+                                1)))
+                .atPosition(0);
+        linearLayout.perform(click());
+
         ViewInteraction button4 = onView(
-                allOf(withId(R.id.buttonAddweapon), withText("Add Weapon"),
+                allOf(withId(R.id.buttonSaveAdventure), withText("Save Adventure"),
                         childAtPosition(
                                 withParent(withId(R.id.pager)),
-                                1),
+                                2),
                         isDisplayed()));
         button4.perform(click());
 
-        ViewInteraction spinner = onView(
-                allOf(childAtPosition(
-                        allOf(withId(android.R.id.custom),
-                                childAtPosition(
-                                        withClassName(is("android.widget.FrameLayout")),
-                                        0)),
-                        0),
-                        isDisplayed()));
-        spinner.perform(click());
+        AdventureVisibilityIdlingResource idlingResource = new AdventureVisibilityIdlingResource((Adventure) getActivityInstance());
+        IdlingRegistry.getInstance().register(idlingResource);
+
+
+        ViewInteraction button5 = onView(allOf(withId(R.id.buttonSavePoint), isDisplayed()));
+        button5.check(matches(isDisplayed()));
+
+        IdlingRegistry.getInstance().unregister(idlingResource);
 
     }
 
