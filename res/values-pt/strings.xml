@@ -608,6 +608,8 @@
     <string name="skill_spot_hidden">Percepção</string>
     <string name="deleteSkillQuestion">Remover Habilidade?</string>
     <string name="skillInitials">Pe</string>
+    <string name="saArmor">Armadura:</string>
+    <string name="sobEnemyShip">Nave Inimiga: </string>
 
 
 </resources>

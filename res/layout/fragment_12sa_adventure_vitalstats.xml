@@ -135,7 +135,7 @@
         android:layout_below="@+id/textView3"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="@string/armor"
+        android:text="@string/saArmor"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button

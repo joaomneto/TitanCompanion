@@ -76,7 +76,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/luckCount"
         android:layout_marginTop="10dp"
-        android:text="@string/armor"
+        android:text="@string/saArmor"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <TextView
