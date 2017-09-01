@@ -147,8 +147,15 @@ public abstract class TCBaseTest {
         ViewInteraction button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()));
         button.perform(click());
 
-        button = onView(allOf(withText(getString(getGamebook().getNameResourceId())), isDisplayed()));
-        button.perform(click());
+
+        //Clicks over the proper book using the property order of the GamebookEnum
+        DataInteraction textView = onData(anything())
+                .inAdapterView(allOf(withId(R.id.gamebookListView),
+                        childAtPosition(
+                                withClassName(is("android.widget.RelativeLayout")),
+                                0)))
+                .atPosition(getGamebook().getOrder()-1);
+        textView.perform(click());
 
         button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()));
         button.perform(click());
