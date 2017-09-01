@@ -51,6 +51,8 @@ public abstract class TCBaseTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
+    protected abstract FightingFantasyGamebook getGamebook();
+
     protected static Activity getActivityInstance() {
         final Activity[] currentActivity = {null};
 
@@ -141,11 +143,11 @@ public abstract class TCBaseTest {
         editText.perform(replaceText("espresso"), closeSoftKeyboard());
     }
 
-    protected void performStartAdventure(FightingFantasyGamebook gamebook) {
+    protected void performStartAdventure() {
         ViewInteraction button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()));
         button.perform(click());
 
-        button = onView(allOf(withText(getString(gamebook.getNameResourceId())), isDisplayed()));
+        button = onView(allOf(withText(getString(getGamebook().getNameResourceId())), isDisplayed()));
         button.perform(click());
 
         button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()));

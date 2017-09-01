@@ -1,52 +1,44 @@
 package pt.joaomneto.titancompanion;
 
 
-import android.support.test.runner.AndroidJUnit4;
 import android.support.test.filters.LargeTest;
+import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
+
+import static pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.STARSHIP_TRAVELLER;
+import static pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_FOREST_OF_DOOM;
 import static pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_WARLOCK_OF_FIRETOP_MOUNTAIN;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestTWOFMCreation extends TCBaseTest{
+public class TestST extends TCBaseTest{
 
-
+    @Override
+    protected FightingFantasyGamebook getGamebook(){
+        return STARSHIP_TRAVELLER;
+    }
 
     @Test
     public void testSuccessfulCreation() {
 
-        performStartAdventure(THE_WARLOCK_OF_FIRETOP_MOUNTAIN);
+        performStartAdventure();
         performFillSavegameName();
         performVitalStatisticsRoll();
-        performSwipeLeft();
-        performChoosePotion();
         performSaveAdventureFromCreationScreen();
         assertAdventureLoaded();
 
     }
 
-    @Test
-    public void testCreationWithoutPotion() {
-
-        performStartAdventure(THE_WARLOCK_OF_FIRETOP_MOUNTAIN);
-        performFillSavegameName();
-        performVitalStatisticsRoll();
-        performSwipeLeft();
-        performSaveAdventureFromCreationScreen();
-        assertInvalidAdventureCreation();
-
-    }
 
     @Test
     public void testCreationWithoutRoll() {
 
-        performStartAdventure(THE_WARLOCK_OF_FIRETOP_MOUNTAIN);
+        performStartAdventure();
         performFillSavegameName();
-        performSwipeLeft();
-        performChoosePotion();
         performSaveAdventureFromCreationScreen();
         assertInvalidAdventureCreation();
 
@@ -55,16 +47,11 @@ public class TestTWOFMCreation extends TCBaseTest{
     @Test
     public void testCreationWithoutSavegame() {
 
-        performStartAdventure(THE_WARLOCK_OF_FIRETOP_MOUNTAIN);
+        performStartAdventure();
         performVitalStatisticsRoll();
-        performSwipeLeft();
-        performChoosePotion();
         performSaveAdventureFromCreationScreen();
         assertInvalidAdventureCreation();
 
     }
-
-
-
 
 }
