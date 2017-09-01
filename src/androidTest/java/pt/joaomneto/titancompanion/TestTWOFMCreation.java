@@ -2,7 +2,7 @@ package pt.joaomneto.titancompanion;
 
 
 import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.LargeTest;
+import android.support.test.filters.LargeTest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,25 +16,55 @@ public class TestTWOFMCreation extends TCBaseTest{
 
 
     @Test
-    public void testTWOFM() {
-
+    public void testSuccessfulCreation() {
 
         performStartAdventure(THE_WARLOCK_OF_FIRETOP_MOUNTAIN);
-        performVitalStatisticsRollAndSavegameName();
+        performFillSavegameName();
+        performVitalStatisticsRoll();
         performSwipeLeft();
         performChoosePotion();
         performSaveAdventureFromCreationScreen();
-
-
-//        AdventureVisibilityIdlingResource idlingResource = new AdventureVisibilityIdlingResource((Adventure) getActivityInstance());
-//        IdlingRegistry.getInstance().register(idlingResource);
-
-
         assertAdventureLoaded();
 
-//        IdlingRegistry.getInstance().unregister(idlingResource);
+    }
+
+    @Test
+    public void testCreationWithoutPotion() {
+
+        performStartAdventure(THE_WARLOCK_OF_FIRETOP_MOUNTAIN);
+        performFillSavegameName();
+        performVitalStatisticsRoll();
+        performSwipeLeft();
+        performSaveAdventureFromCreationScreen();
+        assertInvalidAdventureCreation();
 
     }
+
+    @Test
+    public void testCreationWithoutRoll() {
+
+        performStartAdventure(THE_WARLOCK_OF_FIRETOP_MOUNTAIN);
+        performFillSavegameName();
+        performSwipeLeft();
+        performChoosePotion();
+        performSaveAdventureFromCreationScreen();
+        assertInvalidAdventureCreation();
+
+    }
+
+    @Test
+    public void testCreationWithoutSavegame() {
+
+        performStartAdventure(THE_WARLOCK_OF_FIRETOP_MOUNTAIN);
+        performVitalStatisticsRoll();
+        performSwipeLeft();
+        performChoosePotion();
+        performSaveAdventureFromCreationScreen();
+        assertInvalidAdventureCreation();
+
+    }
+
+
 
 
 }

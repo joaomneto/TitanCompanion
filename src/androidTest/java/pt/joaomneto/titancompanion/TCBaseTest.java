@@ -39,6 +39,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.startsWith;
 
 /**
  * Created by Joao Neto on 03-08-2017.
@@ -102,9 +103,14 @@ public abstract class TCBaseTest {
         button5.check(matches(isDisplayed()));
     }
 
+    protected void assertInvalidAdventureCreation() {
+        ViewInteraction button5 = onView(allOf(withText(startsWith(getString(R.string.someParametersMIssing))), isDisplayed()));
+        button5.check(matches(isDisplayed()));
+    }
+
     protected void performSaveAdventureFromCreationScreen() {
         ViewInteraction button;
-        button = onView(allOf(withText("Save Adventure"), isDisplayed()));
+        button = onView(allOf(withText(getString(R.string.saveAdventure)), isDisplayed()));
         button.perform(click());
     }
 
@@ -118,7 +124,13 @@ public abstract class TCBaseTest {
         linearLayout.perform(click());
     }
 
-    protected void performVitalStatisticsRollAndSavegameName() {
+    protected void performVitalStatisticsRoll() {
+        ViewInteraction button;
+        button = onView(allOf(withText(getString(R.string.rollStats)), isDisplayed()));
+        button.perform(click());
+    }
+
+    protected void performFillSavegameName() {
         ViewInteraction button;
         ViewInteraction editText = onView(
                 allOf(withId(R.id.adventureNameInput),
@@ -127,20 +139,21 @@ public abstract class TCBaseTest {
                                 10),
                         isDisplayed()));
         editText.perform(replaceText("espresso"), closeSoftKeyboard());
-
-        button = onView(allOf(withText("Reroll Statistics"), isDisplayed()));
-        button.perform(click());
     }
 
     protected void performStartAdventure(FightingFantasyGamebook gamebook) {
-        ViewInteraction button = onView(allOf(withText("Start New Adventure"), isDisplayed()));
+        ViewInteraction button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()));
         button.perform(click());
 
-        button = onView(allOf(withText(mActivityTestRule.getActivity().getString(gamebook.getNameResourceId())), isDisplayed()));
+        button = onView(allOf(withText(getString(gamebook.getNameResourceId())), isDisplayed()));
         button.perform(click());
 
-        button = onView(allOf(withText("Start New Adventure"), isDisplayed()));
+        button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()));
         button.perform(click());
+    }
+
+    protected String getString(int resourceId){
+        return mActivityTestRule.getActivity().getString(resourceId);
     }
 
 }
