@@ -34,7 +34,6 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
@@ -133,13 +132,8 @@ public abstract class TCBaseTest {
     }
 
     protected void performFillSavegameName() {
-        ViewInteraction button;
         ViewInteraction editText = onView(
-                allOf(withId(R.id.adventureNameInput),
-                        childAtPosition(
-                                withParent(withId(R.id.pager)),
-                                10),
-                        isDisplayed()));
+                allOf(withId(R.id.adventureNameInput), isDisplayed()));
         editText.perform(replaceText("espresso"), closeSoftKeyboard());
     }
 
