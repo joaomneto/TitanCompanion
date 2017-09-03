@@ -26,10 +26,7 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.replaceText;
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.action.ViewActions.*;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
@@ -99,6 +96,10 @@ public abstract class TCBaseTest {
         onView(withId(R.id.pager)).perform(swipeLeft());
     }
 
+    protected void performSwipeUp() {
+        onView(withId(R.id.pager)).perform(swipeUp());
+    }
+
     protected void assertAdventureLoaded() {
         ViewInteraction button5 = onView(allOf(withId(R.id.buttonSavePoint), isDisplayed()));
         button5.check(matches(isDisplayed()));
@@ -126,8 +127,9 @@ public abstract class TCBaseTest {
     }
 
     protected void performVitalStatisticsRoll() {
+        performSwipeUp();
         ViewInteraction button;
-        button = onView(withText(getString(R.string.rollStats)));
+        button = onView(allOf(withText(getString(R.string.rollStats)), isDisplayed()));
         button.perform(click());
     }
 
