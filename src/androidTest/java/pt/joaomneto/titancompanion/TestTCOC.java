@@ -2,6 +2,7 @@ package pt.joaomneto.titancompanion;
 
 
 import android.support.test.espresso.DataInteraction;
+import android.support.test.espresso.Espresso;
 import android.support.test.filters.LargeTest;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -23,15 +24,15 @@ import static pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_WAR
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestTCOC extends TCBaseTest{
+public class TestTCOC extends TCBaseTest {
 
     @Override
-    protected FightingFantasyGamebook getGamebook(){
+    protected FightingFantasyGamebook getGamebook() {
         return THE_CITADEL_OF_CHAOS;
     }
 
 
-    public void performChooseSpells(){
+    public void performChooseSpells() {
         DataInteraction textView2 = onData(anything())
                 .inAdapterView(allOf(withId(R.id.spellListView),
                         childAtPosition(

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.DataInteraction;
+import android.support.test.espresso.Espresso;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
@@ -144,6 +145,7 @@ public abstract class TCBaseTest {
         ViewInteraction editText = onView(
                 allOf(withId(R.id.adventureNameInput), isDisplayed()));
         editText.perform(replaceText("espresso"), closeSoftKeyboard());
+
     }
 
     protected void performStartAdventure() {
@@ -162,6 +164,8 @@ public abstract class TCBaseTest {
 
         button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()));
         button.perform(click());
+
+        Espresso.closeSoftKeyboard();
     }
 
     protected String getString(int resourceId){
