@@ -32,11 +32,11 @@ jobs:
            name: Install App
            command: adb install -g /home/circleci/code/build/outputs/apk/debug/code-debug.apk
        - run:
-           name: Run Lint
-           command: ./gradlew lint
-       - run:
            name: Run Tests
            command: ./gradlew connectedAndroidTest
+       - run:
+           name: Run Lint
+           command: ./gradlew lint
        - store_artifacts:
            path: build/reports
            destination: reports

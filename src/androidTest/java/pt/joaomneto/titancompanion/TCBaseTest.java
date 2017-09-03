@@ -127,7 +127,7 @@ public abstract class TCBaseTest {
 
     protected void performVitalStatisticsRoll() {
         ViewInteraction button;
-        button = onView(allOf(withText(getString(R.string.rollStats)), isDisplayed()));
+        button = onView(withText(getString(R.string.rollStats)));
         button.perform(click());
     }
 
