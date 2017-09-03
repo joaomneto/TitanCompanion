@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.DataInteraction;
+import android.support.test.espresso.Espresso;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
@@ -26,10 +27,7 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.replaceText;
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.action.ViewActions.*;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
@@ -99,6 +97,18 @@ public abstract class TCBaseTest {
         onView(withId(R.id.pager)).perform(swipeLeft());
     }
 
+    protected void performSwipeUp() {
+        onView(withId(R.id.pager)).perform(swipeUp());
+    }
+
+    protected void performSwipeRight() {
+        onView(withId(R.id.pager)).perform(swipeRight());
+    }
+
+    protected void performSwipeDown() {
+        onView(withId(R.id.pager)).perform(swipeDown());
+    }
+
     protected void assertAdventureLoaded() {
         ViewInteraction button5 = onView(allOf(withId(R.id.buttonSavePoint), isDisplayed()));
         button5.check(matches(isDisplayed()));
@@ -135,6 +145,7 @@ public abstract class TCBaseTest {
         ViewInteraction editText = onView(
                 allOf(withId(R.id.adventureNameInput), isDisplayed()));
         editText.perform(replaceText("espresso"), closeSoftKeyboard());
+
     }
 
     protected void performStartAdventure() {
@@ -153,6 +164,8 @@ public abstract class TCBaseTest {
 
         button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()));
         button.perform(click());
+
+        Espresso.closeSoftKeyboard();
     }
 
     protected String getString(int resourceId){
