@@ -33,7 +33,7 @@ jobs:
            command: adb install -g /home/circleci/code/build/outputs/apk/debug/code-debug.apk
        - run:
            name: Run Tests
-           command: ./gradlew connectedAndroidTest
+           command: ./gradlew --stacktrace connectedAndroidTest
        - run:
            name: Run Lint
            command: ./gradlew lint

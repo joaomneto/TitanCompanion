@@ -100,6 +100,14 @@ public abstract class TCBaseTest {
         onView(withId(R.id.pager)).perform(swipeUp());
     }
 
+    protected void performSwipeRight() {
+        onView(withId(R.id.pager)).perform(swipeRight());
+    }
+
+    protected void performSwipeDown() {
+        onView(withId(R.id.pager)).perform(swipeDown());
+    }
+
     protected void assertAdventureLoaded() {
         ViewInteraction button5 = onView(allOf(withId(R.id.buttonSavePoint), isDisplayed()));
         button5.check(matches(isDisplayed()));
@@ -127,7 +135,6 @@ public abstract class TCBaseTest {
     }
 
     protected void performVitalStatisticsRoll() {
-        performSwipeUp();
         ViewInteraction button;
         button = onView(allOf(withText(getString(R.string.rollStats)), isDisplayed()));
         button.perform(click());
