@@ -66,7 +66,11 @@ public enum FightingFantasyGamebook {
     KNIGHTS_OF_DOOM(R.string.kod, 56),
     MAGEHUNTER(R.string.m, 57),
     REVENGE_OF_THE_VAMPIRE(R.string.rotv, 58),
-    CURSE_OF_THE_MUMMY(R.string.cotm, 59);
+    CURSE_OF_THE_MUMMY(R.string.cotm, 59),
+    EYE_OF_THE_DRAGON(R.string.eotd, 60),
+    BLOODBONES(R.string.bb, 61),
+    HOWL_OF_THE_WEREWOLF(R.string.hotw, 62),
+    THE_PORT_OF_PERIL(R.string.tpop, 63);
 
 
 
