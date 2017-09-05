@@ -1,8 +1,11 @@
 /.project
+/.settings/
+/.vscode/
 /.idea/
 /.gradle/
 /gen/
 /build/
+/bin/
 local.properties
 gradle.properties
 FFCompanion.iml
