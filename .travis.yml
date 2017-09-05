@@ -1,36 +1,43 @@
 language: android
+sudo: required
+jdk: oraclejdk8
+before_cache:
+ - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+ - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
+env:
+ global:
+  - ANDROID_API=26
+  - EMULATOR_API=25
+  - ANDROID_BUILD_TOOLS=26.0.1
+  - ADB_INSTALL_TIMEOUT=5 # minutes
+  - ANDROID_ABI=google_apis/armeabi-v7a
+  - ANDROID_TAG=google_apis
 android:
   components:
     - tools
-    - platform-tools
+    - platform-ools
     - tools
-    # Uncomment the lines below if you want to
-    # use the latest revision of Android SDK Tools
-    # - tools
-    # - platform-tools
-
-    # The BuildTools version used by your project
-    - build-tools-26.0.2
-
-    # The SDK version used to compile your project
-    - android-26
-
-    # Additional components
+    - build-tools-$ANDROID_BUILD_TOOLS
+    - android-$ANDROID_API
     - extra-google-m2repository
     - extra-android-m2repository
+    - extra-android-support
+    - sys-img-armeabi-v7a-google_apis-$EMULATOR_API
 
-    # Specify at least one system image,
-    # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-android-24
-    
-  before_script:
-    - echo no | android create avd --force -n test -t android-24 --abi armeabi-v7a 
+before_script:
+    - echo no | android create avd --force -n test -t "android-$EMULATOR_API" --abi armeabi-v7a --tag $ANDROID_TAG
     - emulator -avd test -no-audio -no-window -accel off &
-    - android-wait-for-emulator
+    - travis_wait android-wait-for-emulator
     - adb shell input keyevent 82 &
     - adb shell settings put global window_animation_scale 0.0
     - adb shell settings put global transition_animation_scale 0.0
     - adb shell settings put global animator_duration_scale 0.0
     - adb shell settings put secure show_ime_with_hard_keyboard 0
-    - ./gradlew assembleDebug
+    - travis_wait ./gradlew assembleDebug
     - adb install -g /home/circleci/code/build/outputs/apk/debug/code-debug.apk
+script:
+    - "travis_wait ./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
