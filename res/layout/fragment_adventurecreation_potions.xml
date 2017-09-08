@@ -27,12 +27,26 @@
 
     </ListView>
 
-    <pt.joaomneto.titancompanion.component.EditableIntegerStat
+    <TextView
         android:id="@+id/potionDoses"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
         android:layout_above="@id/buttonSaveAdventure"
-        labelValue:label="@string/doses" />
+        android:layout_alignTop="@id/potionDosesSwitch"
+        android:layout_alignBottom="@id/potionDosesSwitch"
+        android:text="@string/doses"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+
+    <Switch
+        android:id="@+id/potionDosesSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/buttonSaveAdventure" />
 
     <Button
         android:id="@+id/buttonSaveAdventure"
