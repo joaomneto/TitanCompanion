@@ -1,4 +1,6 @@
 /.project
+/.settings/
+/.vscode/
 /.idea/
 /.gradle/
 /gen/
