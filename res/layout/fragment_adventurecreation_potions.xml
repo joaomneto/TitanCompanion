@@ -46,6 +46,9 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:textOn="@string/number_2_word"
+        android:textOff="@string/number_1_word"
         android:layout_above="@id/buttonSaveAdventure" />
 
     <Button

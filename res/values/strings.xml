@@ -345,6 +345,7 @@
     <string name="captain">Captain</string>
     <string name="reset">Reset</string>
     <string name="map">Map</string>
+
     <string name="number_1" translatable="false">1</string>
     <string name="number_2" translatable="false">2</string>
     <string name="number_3" translatable="false">3</string>
