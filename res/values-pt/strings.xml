@@ -97,6 +97,7 @@
     <string name="title_activity_adventure_creation">Nova Aventura</string>
     <string name="title_adventure_creation_vitalstats">Dados Vitais</string>
     <string name="title_adventure_creation_potions">Poções</string>
+    <string name="doses">Doses</string>
 
     <string-array name="standard_potion_list">
         <item>Perícia</item>
@@ -610,6 +611,7 @@
     <string name="skillInitials">Pe</string>
     <string name="saArmor">Armadura:</string>
     <string name="sobEnemyShip">Nave Inimiga: </string>
+    <string name="comingSoon">Em breve</string>
 
 
 </resources>

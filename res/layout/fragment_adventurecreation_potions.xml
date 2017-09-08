@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:labelValue="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".adventurecreation.impl.fragments.PotionsFragment" >
+    tools:context=".adventurecreation.impl.fragments.PotionsFragment">
 
     <TextView
         android:id="@+id/section_label"
@@ -17,14 +18,21 @@
         android:id="@+id/potionList"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/buttonSaveAdventure"
+        android:layout_above="@+id/potionDoses"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:choiceMode="singleChoice"
         android:divider="@null"
-        android:dividerHeight="0dp" >
+        android:dividerHeight="0dp">
 
     </ListView>
+
+    <pt.joaomneto.titancompanion.component.EditableIntegerStat
+        android:id="@+id/potionDoses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttonSaveAdventure"
+        labelValue:label="@string/doses" />
 
     <Button
         android:id="@+id/buttonSaveAdventure"
@@ -33,7 +41,6 @@
         android:layout_alignLeft="@+id/potionList"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/saveAdventure" 
-        android:onClick="saveAdventure"/>
+        android:text="@string/saveAdventure" />
 
 </RelativeLayout>

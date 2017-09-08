@@ -1159,5 +1159,7 @@
     <string name="skillInitials">Sk</string>
     <string name="saArmor">Armour:</string>
     <string name="sobEnemyShip">Enemy ship: </string>
+    <string name="comingSoon">Coming Soon</string>
+    <string name="doses">Doses</string>
 
 </resources>

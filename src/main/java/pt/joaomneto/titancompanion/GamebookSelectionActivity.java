@@ -4,7 +4,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -58,7 +57,7 @@ public class GamebookSelectionActivity extends BaseFragmentActivity {
 		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
 		// Set up the ViewPager with the sections adapter.
-		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager = findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
 		intent = getIntent();
@@ -71,6 +70,86 @@ public class GamebookSelectionActivity extends BaseFragmentActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.swipe, menu);
 		return true;
+	}
+
+	public static class GamebookSelectionFragment extends Fragment {
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		public static final String ARG_SECTION_NUMBER = "section_number";
+
+		private int imageLink = 0;
+		private int position = 0;
+
+		public GamebookSelectionFragment() {
+
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			View rootView = inflater.inflate(R.layout.fragment_gamebook_selection_gamebook_selection, container, false);
+
+			ImageView img = rootView.findViewById(R.id.gamebookCoverImg);
+			Button detailsButton = rootView.findViewById(R.id.buttonSite);
+			Button createButton = rootView.findViewById(R.id.buttonCreate);
+
+			position = getArguments().getInt(ARG_SECTION_NUMBER);
+
+			imageLink = Constants.getGameBookCoverAddress(position);
+			img.setImageResource(imageLink);
+
+
+			img.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent(getActivity().getBaseContext(), GamebookFullImageActivity.class);
+					intent.putExtra(GAMEBOOK_COVER, Constants.getGameBookCoverAddress(position));
+					startActivity(intent);
+
+				}
+			});
+
+			detailsButton.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent(getActivity().getBaseContext(), GamebookWikiaActivity.class);
+					intent.putExtra(GAMEBOOK_URL, urls[position]);
+					startActivity(intent);
+
+				}
+			});
+
+			Class<? extends AdventureCreation> creationActivity = Constants.getCreationActivity(getActivity(), position);
+
+			boolean bookSupported = creationActivity != null;
+
+			createButton.setEnabled(bookSupported);
+
+
+			if (bookSupported) {
+				createButton.setOnClickListener(view -> {
+
+					Intent intent = new Intent(getActivity().getBaseContext(), creationActivity);
+					intent.putExtra(GAMEBOOK_ID, position);
+					try {
+						startActivity(intent);
+					} catch (ActivityNotFoundException e) {
+						Adventure.showAlert(R.string.gamebookNotImplemented, GamebookSelectionFragment.this.getActivity());
+						e.printStackTrace();
+					}
+
+				});
+			} else {
+				createButton.setText(R.string.comingSoon);
+			}
+
+			return rootView;
+		}
+
 	}
 
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -96,83 +175,6 @@ public class GamebookSelectionActivity extends BaseFragmentActivity {
 		@Override
 		public CharSequence getPageTitle(int position) {
 			return values[position];
-		}
-
-	}
-
-	public static class GamebookSelectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
-
-		private int imageLink = 0;
-		private int position = 0;
-
-		public GamebookSelectionFragment() {
-
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			View rootView = inflater.inflate(R.layout.fragment_gamebook_selection_gamebook_selection, container, false);
-
-			ImageView img = (ImageView) rootView.findViewById(R.id.gamebookCoverImg);
-			Button detailsButton = (Button) rootView.findViewById(R.id.buttonSite);
-			Button createButton = (Button) rootView.findViewById(R.id.buttonCreate);
-
-			position = getArguments().getInt(ARG_SECTION_NUMBER);
-
-			imageLink = Constants.getGameBookCoverAddress(position);
-			img.setImageResource(imageLink);
-
-			
-			img.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View view) {
-					Intent intent = new Intent(getActivity().getBaseContext(), GamebookFullImageActivity.class);
-					intent.putExtra(GAMEBOOK_COVER, Constants.getGameBookCoverAddress(position));
-					startActivity(intent);
-
-				}
-			});
-
-			detailsButton.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View view) {
-					Intent intent = new Intent(getActivity().getBaseContext(), GamebookWikiaActivity.class);
-					intent.putExtra(GAMEBOOK_URL, urls[position]);
-					startActivity(intent);
-
-				}
-			});
-
-			createButton.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View view) {
-					Class<? extends AdventureCreation> creationActivity = Constants.getCreationActivity(getActivity(), position);
-					if(creationActivity == null){
-						Adventure.showAlert(R.string.gamebookNotImplemented, GamebookSelectionFragment.this.getActivity());
-						return;
-					}
-					Intent intent = new Intent(getActivity().getBaseContext(), creationActivity);
-					intent.putExtra(GAMEBOOK_ID, position);
-					try {
-						startActivity(intent);
-					} catch (ActivityNotFoundException e) {
-						Adventure.showAlert(R.string.gamebookNotImplemented, GamebookSelectionFragment.this.getActivity());
-						e.printStackTrace();
-					}
-
-				}
-			});
-
-			return rootView;
 		}
 
 	}
