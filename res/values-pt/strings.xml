@@ -105,6 +105,11 @@
         <item>Sorte</item>
     </string-array>
 
+    <string-array name="potion_doses">
+        <item>Uma dose</item>
+        <item>Duas doses</item>
+    </string-array>
+
     <string name="skill">Perícia: </string>
     <string name="stamina">Força: </string>
     <string name="skill2">Perícia</string>

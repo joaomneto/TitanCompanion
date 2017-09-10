@@ -17,13 +17,14 @@
     <ListView
         android:id="@+id/potionList"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/potionDoses"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:choiceMode="singleChoice"
+        android:padding="10dp"
         android:divider="@null"
-        android:dividerHeight="0dp">
+        android:dividerHeight="0dp"
+        android:background="@drawable/border_back">
 
     </ListView>
 
@@ -34,33 +35,31 @@
         android:layout_alignParentLeft="true"
         android:gravity="center"
         android:layout_above="@id/buttonSaveAdventure"
-        android:layout_alignTop="@id/potionDosesSwitch"
-        android:layout_alignBottom="@id/potionDosesSwitch"
+        android:layout_alignTop="@id/potionDosesSpinner"
+        android:layout_alignBottom="@id/potionDosesSpinner"
         android:text="@string/doses"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
 
-    <Switch
-        android:id="@+id/potionDosesSwitch"
+    <Spinner
+        android:id="@+id/potionDosesSpinner"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="20dp"
-        android:textOn="@string/number_2_word"
-        android:textOff="@string/number_1_word"
-        android:theme="@style/SwitchTheme"
-        android:checked="true"
-        android:layout_above="@id/buttonSaveAdventure" />
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_above="@id/buttonSaveAdventure"
+        android:entries="@array/potion_doses"/>
 
 
     <Button
         android:id="@+id/buttonSaveAdventure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/potionList"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:text="@string/saveAdventure" />
 
 </RelativeLayout>

@@ -111,6 +111,12 @@
         <item>de Bonne fortune</item>
     </string-array>
 
+
+    <string-array name="potion_doses">
+        <item>Une dose</item>
+        <item>Deux doses</item>
+    </string-array>
+
     <string name="skill">Habileté: </string>
     <string name="stamina">Endurance: </string>
     <string name="luck">Chance: </string>

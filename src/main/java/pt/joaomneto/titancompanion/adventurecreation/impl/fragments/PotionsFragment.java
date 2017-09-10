@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 
 public class PotionsFragment extends Fragment {
 
@@ -56,6 +57,8 @@ public class PotionsFragment extends Fragment {
 			}
 
 		});
+
+
 
 		return rootView;
 	}

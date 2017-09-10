@@ -244,6 +244,12 @@
         <item>Fortune</item>
     </string-array>
 
+
+    <string-array name="potion_doses">
+        <item>One dose</item>
+        <item>Two doses</item>
+    </string-array>
+
     <string name="skill">Skill: </string>
     <string name="stamina">Stamina: </string>
     <string name="skill2">Skill</string>
