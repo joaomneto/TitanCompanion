@@ -47,6 +47,7 @@ import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
+import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public abstract class Adventure extends BaseFragmentActivity {
@@ -86,7 +87,7 @@ public abstract class Adventure extends BaseFragmentActivity {
     Integer provisionsValue = -1;
     Integer standardPotionValue = -1;
     File dir = null;
-    int gamebook = -1;
+    FightingFantasyGamebook gamebook = null;
     String name = null;
     Properties savedGame;
     Map<Integer, Fragment> fragments = new HashMap<Integer, Fragment>();
@@ -182,7 +183,7 @@ public abstract class Adventure extends BaseFragmentActivity {
         savedGame = new Properties();
         savedGame.load(new InputStreamReader(new FileInputStream(new File(dir, fileName)), "UTF-8"));
 
-        gamebook = Integer.valueOf(savedGame.getProperty("gamebook"));
+        gamebook = FightingFantasyGamebook.valueOf(savedGame.getProperty("gamebook"));
         initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"));
         initialLuck = Integer.valueOf(savedGame.getProperty("initialLuck"));
         initialStamina = Integer.valueOf(savedGame.getProperty("initialStamina"));
@@ -566,13 +567,10 @@ public abstract class Adventure extends BaseFragmentActivity {
         this.dir = dir;
     }
 
-    public int getGamebook() {
+    public FightingFantasyGamebook getGamebook() {
         return gamebook;
     }
 
-    public void setGamebook(int gamebook) {
-        this.gamebook = gamebook;
-    }
 
     public String getName() {
         return name;

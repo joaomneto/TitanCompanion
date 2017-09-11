@@ -12,7 +12,7 @@ import static pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.DEMONS_
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestDOTD extends TestTWOFM {
+public class TestDOTD extends TestTFOD {
 
     @Override
     protected FightingFantasyGamebook getGamebook() {

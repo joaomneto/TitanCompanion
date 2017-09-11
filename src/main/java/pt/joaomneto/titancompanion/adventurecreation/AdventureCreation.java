@@ -16,6 +16,7 @@ import pt.joaomneto.titancompanion.TechnicalException;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.consts.Constants;
+import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -53,8 +54,8 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 	protected int skill = -1;
 	protected int luck = -1;
 	protected int stamina = -1;
-	protected int gamebook = -1;
 	protected String adventureName;
+	private FightingFantasyGamebook gamebook;
 
 	protected static final String NO_PARAMETERS_TO_VALIDATE = "";
 
@@ -69,6 +70,10 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 
 	}
 
+	public FightingFantasyGamebook getGamebook() {
+		return gamebook;
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -79,8 +84,8 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 
-		gamebook = getIntent().getIntExtra(
-				GamebookSelectionActivity.GAMEBOOK_ID, -1);
+		gamebook = FightingFantasyGamebook.values()[getIntent().getIntExtra(
+				GamebookSelectionActivity.GAMEBOOK_ID, -1)];
 
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = findViewById(R.id.pager);
@@ -172,7 +177,7 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 				return;
 			}
 
-			String relDir = "save_"+Constants.getActivityPrefix(this, gamebook)+"_"
+			String relDir = "save_"+gamebook.getInitials()+"_"
 								+ adventureName.replace(' ', '-');
 			String dirName = Environment.getExternalStorageDirectory()
 					.getPath() + "/ffgbutil/" + relDir;

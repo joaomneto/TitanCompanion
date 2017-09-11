@@ -12,7 +12,7 @@ import static pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.MASKS_O
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestMOM extends TestTWOFM {
+public class TestMOM extends TestTFOD {
 
     @Override
     protected FightingFantasyGamebook getGamebook() {

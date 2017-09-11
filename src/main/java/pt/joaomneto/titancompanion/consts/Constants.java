@@ -89,12 +89,12 @@ public abstract class Constants {
 
     @SuppressWarnings("unchecked")
     public static Class<? extends Adventure> getRunActivity(Context context,
-                                                            int position) {
+                                                            FightingFantasyGamebook gamebook) {
         Class<? extends Adventure> intentClass = null;
         try {
             intentClass = (Class<? extends Adventure>) Class
                     .forName("pt.joaomneto.titancompanion.adventure.impl."
-                            + getActivityPrefix(context, position)
+                            + gamebook.getInitials().toUpperCase()
                             + "Adventure");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

@@ -50,7 +50,7 @@ public abstract class TCBaseTest {
 
     protected abstract FightingFantasyGamebook getGamebook();
 
-    protected static Activity getActivityInstance() {
+    protected Activity getActivityInstance() {
         final Activity[] currentActivity = {null};
 
         getInstrumentation().runOnMainSync(new Runnable() {
@@ -129,11 +129,12 @@ public abstract class TCBaseTest {
         DataInteraction linearLayout = onData(anything())
                 .inAdapterView(allOf(withId(R.id.potionList),
                         childAtPosition(
-                                withClassName(is("android.widget.RelativeLayout")),
-                                1)))
+                                withClassName(is("android.widget.LinearLayout")),
+                                0)))
                 .atPosition(0);
         linearLayout.perform(click());
     }
+
 
     protected void performVitalStatisticsRoll() {
         ViewInteraction button;
@@ -159,7 +160,7 @@ public abstract class TCBaseTest {
                         childAtPosition(
                                 withClassName(is("android.widget.RelativeLayout")),
                                 0)))
-                .atPosition(getGamebook().getOrder()-1);
+                .atPosition(getGamebook().getOrder() - 1);
         textView.perform(click());
 
         button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()));
@@ -168,7 +169,7 @@ public abstract class TCBaseTest {
         Espresso.closeSoftKeyboard();
     }
 
-    protected String getString(int resourceId){
+    protected String getString(int resourceId) {
         return mActivityTestRule.getActivity().getString(resourceId);
     }
 

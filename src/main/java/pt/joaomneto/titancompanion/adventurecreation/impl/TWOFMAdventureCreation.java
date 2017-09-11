@@ -11,6 +11,7 @@ import android.view.View;
 public class TWOFMAdventureCreation extends AdventureCreation {
 
 	protected int potion = -1;
+	protected int potionDoses = -1;
 
 	public TWOFMAdventureCreation() {
 		super();
@@ -24,7 +25,7 @@ public class TWOFMAdventureCreation extends AdventureCreation {
 	@Override
 	protected void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException {
 		bw.write("standardPotion=" + potion + "\n");
-		bw.write("standardPotionValue=2\n");
+		bw.write("standardPotionValue=" + potionDoses + "\n");
 		bw.write("provisions=10\n");
 		bw.write("provisionsValue=4\n");
 		bw.write("gold=0\n");
@@ -45,13 +46,12 @@ public class TWOFMAdventureCreation extends AdventureCreation {
 
 	}
 
-	public int getPotion() {
-		return potion;
-	}
 
 	public void setPotion(int potion) {
 		this.potion = potion;
 	}
 
-
+	public void setPotionDoses(int potionDoses) {
+		this.potionDoses = potionDoses;
+	}
 }

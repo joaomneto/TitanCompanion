@@ -112,10 +112,8 @@
     </string-array>
 
 
-    <string-array name="potion_doses">
-        <item>Une dose</item>
-        <item>Deux doses</item>
-    </string-array>
+    <string name="potionOneDose">Une dose</string>
+    <string name="potionTwoDoses">Deux doses</string>
 
     <string name="skill">Habileté: </string>
     <string name="stamina">Endurance: </string>

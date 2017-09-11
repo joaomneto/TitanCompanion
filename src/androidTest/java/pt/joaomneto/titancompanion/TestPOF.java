@@ -12,7 +12,7 @@ import static pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.PHANTOM
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestPOF extends TestTWOFM {
+public class TestPOF extends TestTFOD {
 
     @Override
     protected FightingFantasyGamebook getGamebook() {

@@ -238,16 +238,20 @@
     <string name="title_adventure_creation_vitalstats">Vital Statistics</string>
     <string name="title_adventure_creation_potions">Potions</string>
 
+
+
     <string-array name="standard_potion_list">
         <item>Skill</item>
         <item>Strength</item>
         <item>Fortune</item>
     </string-array>
 
+    <string name="potionOneDose">One dose</string>
+    <string name="potionTwoDoses">Two doses</string>
 
-    <string-array name="potion_doses">
-        <item>One dose</item>
-        <item>Two doses</item>
+    <string-array name="potion_doses" translateable="false">
+        <item>@string/potionOneDose</item>
+        <item>@string/potionTwoDoses</item>
     </string-array>
 
     <string name="skill">Skill: </string>
