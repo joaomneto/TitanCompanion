@@ -59,7 +59,7 @@ public class AODAdventure extends Adventure {
     @Override
     protected void loadAdventureSpecificValuesFromFile() {
         setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
-        setSoldiers(Army.getInstanceFromSavedString(getSavedGame().getProperty("soldiers")));
+        setSoldiers(Army.Companion.getInstanceFromSavedString(getSavedGame().getProperty("soldiers")));
 
     }
 

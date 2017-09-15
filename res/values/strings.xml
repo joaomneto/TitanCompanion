@@ -909,6 +909,9 @@
     <string name="plusFive" translatable="false">+5</string>
     <string name="minusFive" translatable="false">-5</string>
     <string name="warriors">Warriors</string>
+    <string name="knights">Knights</string>
+    <string name="dwarves">Dwarves</string>
+    <string name="elves">Elves</string>
     <string name="enemyForces">Enemy Forces</string>
     <string name="soldiersType">Soldiers Type: </string>
     <string name="quantity">Quantity:</string>

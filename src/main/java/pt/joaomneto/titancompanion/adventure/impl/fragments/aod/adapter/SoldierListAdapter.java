@@ -2,9 +2,7 @@ package pt.joaomneto.titancompanion.adventure.impl.fragments.aod.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
-import android.text.Editable;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
@@ -25,14 +22,14 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.SoldiersDivision
 
 import static android.view.View.GONE;
 
-public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
+public class SoldierListAdapter<T extends SoldiersDivision> extends ArrayAdapter<T> {
 
     private final Context context;
-    private final List<SoldiersDivision> values;
+    private final List<T> values;
     private AODAdventure adv;
     private AODAdventureSoldiersFragment fragment;
 
-    public SoldierListAdapter(Context context, List<SoldiersDivision> values) {
+    public SoldierListAdapter(Context context, List<T> values) {
         super(context, -1, values);
         this.context = context;
         this.values = values;
@@ -56,16 +53,16 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
 
         final View soldiersView = inflater.inflate(R.layout.component_36aod_division, parent, false);
 
-        final TextView divisionName = (TextView) soldiersView.getRootView().findViewById(R.id.aod_division_name);
-        final TextView divisionTotal = (TextView) soldiersView.getRootView().findViewById(R.id.aod_division_totalValue);
+        final TextView divisionName = soldiersView.getRootView().findViewById(R.id.aod_division_name);
+        final TextView divisionTotal = soldiersView.getRootView().findViewById(R.id.aod_division_totalValue);
 
         final SoldiersDivision division = values.get(position);
 
-        divisionName.setText(division.getType());
+        divisionName.setText(division.getLabel(adv));
         divisionTotal.setText("" + division.getQuantity());
 
-        Button minusDivisionTotal = (Button) soldiersView.findViewById(R.id.aod_division_minusDivisionTotalTotal);
-        Button plusDivisionTotal = (Button) soldiersView.findViewById(R.id.aod_division_plusDivisionTotalButton);
+        Button minusDivisionTotal = soldiersView.findViewById(R.id.aod_division_minusDivisionTotalTotal);
+        Button plusDivisionTotal = soldiersView.findViewById(R.id.aod_division_plusDivisionTotalButton);
 
         final SoldierListAdapter adapter = this;
 
@@ -100,21 +97,21 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
 
         final View soldiersView = inflater.inflate(R.layout.component_36aod_division_battle, parent, false);
 
-        final TextView divisionName = (TextView) soldiersView.getRootView().findViewById(R.id.aod_division_name);
-        final TextView divisionTotal = (TextView) soldiersView.getRootView().findViewById(R.id.aod_division_totalValue);
+        final TextView divisionName = soldiersView.getRootView().findViewById(R.id.aod_division_name);
+        final TextView divisionTotal = soldiersView.getRootView().findViewById(R.id.aod_division_totalValue);
 
-        final String type = values.get(position).getType();
-        final int divisionQuantity = fragment.getSkirmishValueForDivision(type);
+        final SoldiersDivision division = values.get(position);
+        final int divisionQuantity = fragment.getSkirmishValueForDivision(division.getCategory());
 
         if (divisionQuantity == 0) {
             soldiersView.setVisibility(GONE);
             return soldiersView;
         }
 
-        divisionName.setText(type);
+        divisionName.setText(division.getLabel(adv));
         divisionTotal.setText("" + divisionQuantity);
 
-        final Button minusDivisionTotal = (Button) soldiersView.findViewById(R.id.aod_division_minusDivisionTotalTotal);
+        final Button minusDivisionTotal = soldiersView.findViewById(R.id.aod_division_minusDivisionTotalTotal);
 
 
         minusDivisionTotal.setOnClickListener(new OnClickListener() {
@@ -122,7 +119,7 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
             @Override
             public void onClick(View arg0) {
                 synchronized (this) {
-                    int currentQuantity = fragment.getSkirmishValueForDivision(type);
+                    int currentQuantity = fragment.getSkirmishValueForDivision(division.getCategory());
                     if (currentQuantity > 0 && (fragment.getTargetLosses() >= fragment.getTurnArmyLosses())) {
                         fragment.incrementTurnArmyLosses();
                         if (fragment.getTargetLosses() == fragment.getTurnArmyLosses()) {
@@ -130,7 +127,7 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
                             fragment.refreshScreensFromResume();
                         }
                         int newQuantity = Math.max(0, currentQuantity - 5);
-                        fragment.setSkirmishValueForDivision(type, newQuantity);
+                        fragment.setSkirmishValueForDivision(division.getCategory(), newQuantity);
                         divisionTotal.setText("" + newQuantity);
                     }
                 }
@@ -148,16 +145,16 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
 
         final View soldiersView = inflater.inflate(R.layout.component_36aod_division_staging, parent, false);
 
-        final TextView divisionName = (TextView) soldiersView.getRootView().findViewById(R.id.aod_division_name);
-        final TextView divisionTotal = (TextView) soldiersView.getRootView().findViewById(R.id.aod_division_totalValue);
-        final TextView divisionBattleTotal = (TextView) soldiersView.getRootView().findViewById(R.id.aod_division_battleValue);
+        final TextView divisionName = soldiersView.getRootView().findViewById(R.id.aod_division_name);
+        final TextView divisionTotal = soldiersView.getRootView().findViewById(R.id.aod_division_totalValue);
+        final TextView divisionBattleTotal = soldiersView.getRootView().findViewById(R.id.aod_division_battleValue);
 
 
         final SoldiersDivision division = values.get(position);
 
-        divisionName.setText(division.getType());
+        divisionName.setText(division.getLabel(adv));
         divisionTotal.setText("" + division.getQuantity());
-        divisionBattleTotal.setText("" + fragment.getSkirmishValueForDivision(division.getType()));
+        divisionBattleTotal.setText("" + fragment.getSkirmishValueForDivision(division.getLabel(adv)));
 
         divisionBattleTotal.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -187,8 +184,8 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
         });
 
 
-        Button removeFromBattleButton = (Button) soldiersView.findViewById(R.id.aod_division_removeFromBattle);
-        Button addToBattleButton = (Button) soldiersView.findViewById(R.id.aod_division_addToBattle);
+        Button removeFromBattleButton = soldiersView.findViewById(R.id.aod_division_removeFromBattle);
+        Button addToBattleButton = soldiersView.findViewById(R.id.aod_division_addToBattle);
 
         final SoldierListAdapter adapter = this;
 
@@ -198,7 +195,7 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
             public void onClick(View arg0) {
                 if (division.getQuantity() > 0) {
                     division.setQuantity(Math.max(0, division.getQuantity() - 5));
-                    fragment.setSkirmishValueForDivision(division.getType(), fragment.getSkirmishValueForDivision(division.getType()) + 5);
+                    fragment.setSkirmishValueForDivision(division.getCategory(), fragment.getSkirmishValueForDivision(division.getCategory()) + 5);
                     fragment.refreshScreensFromResume();
                 }
             }
@@ -208,10 +205,10 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
 
             @Override
             public void onClick(View arg0) {
-                Integer skirmishValueForDivision = fragment.getSkirmishValueForDivision(division.getType());
+                Integer skirmishValueForDivision = fragment.getSkirmishValueForDivision(division.getCategory());
                 if (skirmishValueForDivision > 0) {
                     division.setQuantity(division.getQuantity() + 5);
-                    fragment.setSkirmishValueForDivision(division.getType(), Math.max(0, skirmishValueForDivision - 5));
+                    fragment.setSkirmishValueForDivision(division.getCategory(), Math.max(0, skirmishValueForDivision - 5));
                     fragment.refreshScreensFromResume();
                 }
             }
@@ -226,24 +223,19 @@ public class SoldierListAdapter extends ArrayAdapter<SoldiersDivision> {
         final SoldiersDivision division = values.get(position);
 
         AlertDialog.Builder alertbox = new AlertDialog.Builder(view.getRootView().getContext());
-        alertbox.setMessage(context.getString(R.string.aod_removeAllSoldiers, division.getType()));
+        alertbox.setMessage(context.getString(R.string.aod_removeAllSoldiers, division.getLabel(adv)));
         alertbox.setTitle(R.string.soldiersKilledQuestion);
 
 
-        alertbox.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                division.setQuantity(5);
-                dialog.cancel();
-            }
+        alertbox.setNegativeButton(R.string.no, (dialog, id) -> {
+            division.setQuantity(5);
+            dialog.cancel();
         });
 
-        alertbox.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                values.remove(position);
-                adapter.notifyDataSetChanged();
-                dialog.dismiss();
-            }
+        alertbox.setPositiveButton(R.string.yes, (dialog, which) -> {
+            values.remove(position);
+            adapter.notifyDataSetChanged();
+            dialog.dismiss();
         });
         alertbox.show();
     }
