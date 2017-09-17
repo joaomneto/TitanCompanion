@@ -653,5 +653,8 @@
     <string name="skill_spot_hidden">Cache-Tampon</string>
     <string name="deleteSkillQuestion">Supprimer ce Talent?</string>
     <string name="skillInitials">Ha</string>
+    <string name="knights">Chevaliers</string>
+    <string name="dwarves">Nains</string>
+    <string name="elves">Elfes</string>
 
 </resources>

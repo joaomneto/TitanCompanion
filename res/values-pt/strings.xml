@@ -617,6 +617,9 @@
     <string name="saArmor">Armadura:</string>
     <string name="sobEnemyShip">Nave Inimiga: </string>
     <string name="comingSoon">Em breve</string>
+    <string name="knights">Cavaleiros</string>
+    <string name="dwarves">Anões</string>
+    <string name="elves">Elfos</string>
 
 
 </resources>
