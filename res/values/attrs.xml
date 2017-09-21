@@ -11,4 +11,8 @@
         <attr name="buttonBarButtonStyle" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="labelValue">
+        <attr name="label" format="string" />
+    </declare-styleable>
+
 </resources>

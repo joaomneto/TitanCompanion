@@ -15,7 +15,7 @@ import static pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_WAR
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestDD extends TestTWOFM{
+public class TestDD extends TestTFOD{
 
     @Override
     protected FightingFantasyGamebook getGamebook(){

@@ -42,21 +42,21 @@ open class AdventureSpellsFragment : AdventureFragment() {
                 adv.chosenSpells)
         spellList!!.adapter = adapter
 
-        spellList!!.onItemClickListener = OnItemClickListener { arg0, arg1, arg2, arg3 ->
+        spellList!!.onItemClickListener = OnItemClickListener { _, _, arg2, _ ->
             val position = arg2
             val builder = AlertDialog.Builder(adv)
             builder.setTitle(R.string.useSpellQuestion)
                     .setCancelable(false)
                     .setNegativeButton(R.string.close
-                    ) { dialog, id -> dialog.cancel() }
+                    ) { dialog, _ -> dialog.cancel() }
             builder.setPositiveButton(R.string.ok
-            ) { dialog, which ->
+            ) { _, _ ->
                 val spell = adv.chosenSpells[position]
                 specificSpellActivation(adv, spell)
                 if (adv.isSpellSingleUse) {
                     adv.chosenSpells.removeAt(position)
                     (spellList!!
-                            .adapter as ArrayAdapter<String>)
+                            .adapter as ArrayAdapter<*>)
                             .notifyDataSetChanged()
                 }
             }
@@ -90,7 +90,7 @@ open class AdventureSpellsFragment : AdventureFragment() {
 
 
     override fun refreshScreensFromResume() {
-        (spellList!!.adapter as ArrayAdapter<String>).notifyDataSetChanged()
+        (spellList!!.adapter as ArrayAdapter<*>).notifyDataSetChanged()
 
     }
 

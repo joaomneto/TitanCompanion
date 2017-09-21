@@ -238,10 +238,20 @@
     <string name="title_adventure_creation_vitalstats">Vital Statistics</string>
     <string name="title_adventure_creation_potions">Potions</string>
 
+
+
     <string-array name="standard_potion_list">
         <item>Skill</item>
         <item>Strength</item>
         <item>Fortune</item>
+    </string-array>
+
+    <string name="potionOneDose">One dose</string>
+    <string name="potionTwoDoses">Two doses</string>
+
+    <string-array name="potion_doses" translateable="false">
+        <item>@string/potionOneDose</item>
+        <item>@string/potionTwoDoses</item>
     </string-array>
 
     <string name="skill">Skill: </string>
@@ -345,6 +355,7 @@
     <string name="captain">Captain</string>
     <string name="reset">Reset</string>
     <string name="map">Map</string>
+
     <string name="number_1" translatable="false">1</string>
     <string name="number_2" translatable="false">2</string>
     <string name="number_3" translatable="false">3</string>
@@ -898,6 +909,9 @@
     <string name="plusFive" translatable="false">+5</string>
     <string name="minusFive" translatable="false">-5</string>
     <string name="warriors">Warriors</string>
+    <string name="knights">Knights</string>
+    <string name="dwarves">Dwarves</string>
+    <string name="elves">Elves</string>
     <string name="enemyForces">Enemy Forces</string>
     <string name="soldiersType">Soldiers Type: </string>
     <string name="quantity">Quantity:</string>
@@ -1159,5 +1173,7 @@
     <string name="skillInitials">Sk</string>
     <string name="saArmor">Armour:</string>
     <string name="sobEnemyShip">Enemy ship: </string>
+    <string name="comingSoon">Coming Soon</string>
+    <string name="doses">Doses</string>
 
 </resources>

@@ -97,12 +97,16 @@
     <string name="title_activity_adventure_creation">Nova Aventura</string>
     <string name="title_adventure_creation_vitalstats">Dados Vitais</string>
     <string name="title_adventure_creation_potions">Poções</string>
+    <string name="doses">Doses</string>
 
     <string-array name="standard_potion_list">
         <item>Perícia</item>
         <item>Força</item>
         <item>Sorte</item>
     </string-array>
+
+    <string name="potionOneDose">Uma dose</string>
+    <string name="potionTwoDoses">Duas doses</string>
 
     <string name="skill">Perícia: </string>
     <string name="stamina">Força: </string>
@@ -203,6 +207,8 @@
     <string name="captain">Capitão</string>
     <string name="reset">Reiniciar</string>
     <string name="map">Mapa</string>
+
+
 
 
     <string name="number_0_word">zero</string>
@@ -610,6 +616,10 @@
     <string name="skillInitials">Pe</string>
     <string name="saArmor">Armadura:</string>
     <string name="sobEnemyShip">Nave Inimiga: </string>
+    <string name="comingSoon">Em breve</string>
+    <string name="knights">Cavaleiros</string>
+    <string name="dwarves">Anões</string>
+    <string name="elves">Elfos</string>
 
 
 </resources>

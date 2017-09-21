@@ -40,13 +40,7 @@ public class STRIDERAdventure extends Adventure {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		try {
 			super.onCreate(savedInstanceState);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	@Override

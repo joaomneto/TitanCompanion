@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <Button
-        android:id="@+id/plusSkillButton"
+        android:id="@+id/plusValueButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="createNewAdventure"
@@ -17,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/plusSkillButton"
+        android:layout_below="@+id/plusValueButton"
         android:onClick="loadAdventure"
         android:text="@string/load_adventure" />
 
@@ -25,8 +24,8 @@
         android:id="@+id/buttonExit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:onClick="quit"
         android:text="@string/quit" />
 
@@ -35,10 +34,10 @@
         android:id="@+id/buttonRate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="rate"
-        android:text="@string/rateApp"
         android:layout_above="@+id/buttonExit"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="rate"
+        android:text="@string/rateApp" />
 
     <Button
         android:id="@+id/buttonSettings"

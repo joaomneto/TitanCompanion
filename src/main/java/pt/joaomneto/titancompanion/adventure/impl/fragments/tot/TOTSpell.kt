@@ -22,12 +22,12 @@ enum class TOTSpell constructor(internal var labelIdInner: Int, internal var act
         builder.setTitle(R.string.totSpellStaminaCost)
                 .setCancelable(false)
                 .setNegativeButton(R.string.number_2
-                ) { dialog, id ->
+                ) { dialog, _ ->
                     adv.changeStamina(-2)
                     dialog.cancel()
                 }
         builder.setPositiveButton(R.string.number_1
-        ) { dialog, which ->
+        ) { dialog, _ ->
             adv.changeStamina(-1)
             dialog.cancel()
         }
