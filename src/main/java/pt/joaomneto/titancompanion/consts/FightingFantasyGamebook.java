@@ -68,8 +68,6 @@ public enum FightingFantasyGamebook {
     REVENGE_OF_THE_VAMPIRE(R.string.rotv,"rotv", 58),
     CURSE_OF_THE_MUMMY(R.string.cotm, "cotm", 59);
 
-
-
     private final int nameResourceId;
     private final int order;
     private final String initials;
