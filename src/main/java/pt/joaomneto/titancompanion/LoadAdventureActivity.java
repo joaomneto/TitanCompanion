@@ -12,6 +12,8 @@ import java.util.Date;
 import pt.joaomneto.titancompanion.adapter.Savegame;
 import pt.joaomneto.titancompanion.adapter.SavegameListAdapter;
 import pt.joaomneto.titancompanion.consts.Constants;
+import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -120,7 +122,7 @@ public class LoadAdventureActivity extends BaseActivity{
 							bufferedReader.close();
 
 							Intent intent = new Intent(_this, Constants
-									.getRunActivity(_this, gamebook));
+									.getRunActivity(_this, FightingFantasyGamebook.values()[gamebook]));
 
 							intent.putExtra(ADVENTURE_FILE,
 									savepointFiles[which].getName());

@@ -28,8 +28,8 @@
         android:id="@+id/minusSkillButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusSkillButton"
-        android:layout_alignTop="@+id/plusSkillButton"
+        android:layout_alignBottom="@+id/plusValueButton"
+        android:layout_alignTop="@+id/plusValueButton"
         android:layout_toLeftOf="@+id/statsSkillValue"
         android:text="@string/minus" />
 
@@ -37,14 +37,14 @@
         android:id="@+id/statsSkillValue"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusSkillButton"
-        android:layout_alignTop="@+id/plusSkillButton"
-        android:layout_toLeftOf="@+id/plusSkillButton"
+        android:layout_alignBottom="@+id/plusValueButton"
+        android:layout_alignTop="@+id/plusValueButton"
+        android:layout_toLeftOf="@+id/plusValueButton"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/plusSkillButton"
+        android:id="@+id/plusValueButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignRight="@+id/buttonsBar"
@@ -208,8 +208,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonsBar"
         android:layout_alignParentLeft="true"
-        android:text="@string/consumeProvisions"
-        android:onClick="consumeProvision"/>
+        android:onClick="consumeProvision"
+        android:text="@string/consumeProvisions" />
 
     <LinearLayout
         android:id="@+id/buttonsBar"

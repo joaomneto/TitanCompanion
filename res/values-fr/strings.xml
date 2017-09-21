@@ -15,6 +15,7 @@
     <string name="load_adventure">Charger une aventure</string>
     <string name="title_activity_gamebook_list">Liste des livres</string>
     <string name="viewSite">Voir la description</string>
+    <string name="comingSoon">Prochainement</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
 
@@ -102,12 +103,17 @@
     <string name="title_activity_adventure_creation">Nouvelle aventure</string>
     <string name="title_adventure_creation_vitalstats">Caractéristiques</string>
     <string name="title_adventure_creation_potions">Potions</string>
+    <string name="doses">Doses</string>
 
     <string-array name="standard_potion_list">
         <item>d\'Adresse</item>
         <item>de Vigueur</item>
         <item>de Bonne fortune</item>
     </string-array>
+
+
+    <string name="potionOneDose">Une dose</string>
+    <string name="potionTwoDoses">Deux doses</string>
 
     <string name="skill">Habileté: </string>
     <string name="stamina">Endurance: </string>
@@ -647,5 +653,8 @@
     <string name="skill_spot_hidden">Cache-Tampon</string>
     <string name="deleteSkillQuestion">Supprimer ce Talent?</string>
     <string name="skillInitials">Ha</string>
+    <string name="knights">Chevaliers</string>
+    <string name="dwarves">Nains</string>
+    <string name="elves">Elfes</string>
 
 </resources>

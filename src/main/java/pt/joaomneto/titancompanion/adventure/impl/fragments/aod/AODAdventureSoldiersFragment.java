@@ -25,8 +25,8 @@ import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.AODAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.adapter.SoldierListAdapter;
-import pt.joaomneto.titancompanion.util.DiceRoller;
 import pt.joaomneto.titancompanion.util.DiceNumberToWords;
+import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class AODAdventureSoldiersFragment extends AdventureFragment {
 
@@ -35,6 +35,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
     private static final String ARMY = "ARMY";
     private static final String ENEMY = "ENEMY";
+    protected static Integer[] gridRows;
 
     static {
         battleResults.put(AODAdventureBattleBalance.EVEN, new HashMap<Integer, AODAdventureBattleResults>());
@@ -63,42 +64,31 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         battleResults.get(AODAdventureBattleBalance.INFERIOR).put(6, AODAdventureBattleResults.E5);
     }
 
-    protected static Integer[] gridRows;
-
     protected ListView soldiersList = null;
     protected Button buttonStartSkirmish = null;
+    protected View rootView = null;
+    AODAdventure adv = null;
     private Button buttonCommitForces = null;
     private Button buttonCombatReset = null;
     private Button buttonAddSoldiers = null;
     private Button buttonCancelBattle = null;
     private Button buttonCombatTurn = null;
-
     private Button buttonPlusEnemyTroops = null;
     private Button buttonMinusEnemyTroops = null;
     private TextView enemyForcesQuantity = null;
     private TextView enemyForcesQuantityBattle = null;
     private TextView enemyForcesLabelBattle = null;
-
     private TextView combatResult = null;
     private TextView armyTitle = null;
-
     private LinearLayout buttonsNormal = null;
     private LinearLayout buttonsStaging = null;
     private LinearLayout buttonsBattle = null;
-
-    protected View rootView = null;
-
     private AODAdventureBattleState battleState = AODAdventureBattleState.NORMAL;
     private AODAdventureBattleBalance battleBalance = AODAdventureBattleBalance.EVEN;
-
     private Map<String, Integer> skirmishArmy = new HashMap<>();
     private int enemyForces = 0;
     private int turnArmyLosses = 0;
     private int targetLosses;
-
-
-    AODAdventure adv = null;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -118,24 +108,24 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
         adv = (AODAdventure) this.getActivity();
 
-        buttonStartSkirmish = (Button) rootView.findViewById(R.id.aod_soldiers_buttonStartSkirmish);
-        buttonCombatReset = (Button) rootView.findViewById(R.id.aod_soldiers_buttonResetBattle);
-        buttonCommitForces = (Button) rootView.findViewById(R.id.aod_soldiers_buttonCommitForces);
-        buttonAddSoldiers = (Button) rootView.findViewById(R.id.aod_soldiers_buttonAddNewSoldiers);
-        buttonCombatTurn = (Button) rootView.findViewById(R.id.aod_soldiers_buttonCombatTurn);
-        soldiersList = (ListView) rootView.findViewById(R.id.aod_soldiers_soldiersList);
-        buttonsBattle = (LinearLayout) rootView.findViewById(R.id.aod_soldiers_ButtonsBattle);
-        buttonsStaging = (LinearLayout) rootView.findViewById(R.id.aod_soldiers_ButtonsStaging);
-        buttonsNormal = (LinearLayout) rootView.findViewById(R.id.aod_soldiers_ButtonsNormal);
-        buttonCancelBattle = (Button) rootView.findViewById(R.id.aod_soldiers_buttonCancelBattle);
-        buttonPlusEnemyTroops = (Button) rootView.findViewById(R.id.aod_division_plusEnemyForcesButton);
-        buttonMinusEnemyTroops = (Button) rootView.findViewById(R.id.aod_division_minusEnemyForcesButton);
-        enemyForcesQuantity = (TextView) rootView.findViewById(R.id.aod_division_enemyForcesValue);
-        enemyForcesQuantityBattle = (TextView) rootView.findViewById(R.id.aod_soldiers_enemyTroopsValue);
-        enemyForcesLabelBattle = (TextView) rootView.findViewById(R.id.aod_soldiers_enemyTroopsLabel);
-        armyTitle = (TextView) rootView.findViewById((R.id.aod_soldiers_armyTitle));
+        buttonStartSkirmish = rootView.findViewById(R.id.aod_soldiers_buttonStartSkirmish);
+        buttonCombatReset = rootView.findViewById(R.id.aod_soldiers_buttonResetBattle);
+        buttonCommitForces = rootView.findViewById(R.id.aod_soldiers_buttonCommitForces);
+        buttonAddSoldiers = rootView.findViewById(R.id.aod_soldiers_buttonAddNewSoldiers);
+        buttonCombatTurn = rootView.findViewById(R.id.aod_soldiers_buttonCombatTurn);
+        soldiersList = rootView.findViewById(R.id.aod_soldiers_soldiersList);
+        buttonsBattle = rootView.findViewById(R.id.aod_soldiers_ButtonsBattle);
+        buttonsStaging = rootView.findViewById(R.id.aod_soldiers_ButtonsStaging);
+        buttonsNormal = rootView.findViewById(R.id.aod_soldiers_ButtonsNormal);
+        buttonCancelBattle = rootView.findViewById(R.id.aod_soldiers_buttonCancelBattle);
+        buttonPlusEnemyTroops = rootView.findViewById(R.id.aod_division_plusEnemyForcesButton);
+        buttonMinusEnemyTroops = rootView.findViewById(R.id.aod_division_minusEnemyForcesButton);
+        enemyForcesQuantity = rootView.findViewById(R.id.aod_division_enemyForcesValue);
+        enemyForcesQuantityBattle = rootView.findViewById(R.id.aod_soldiers_enemyTroopsValue);
+        enemyForcesLabelBattle = rootView.findViewById(R.id.aod_soldiers_enemyTroopsLabel);
+        armyTitle = rootView.findViewById((R.id.aod_soldiers_armyTitle));
 
-        combatResult = (TextView) rootView.findViewById(R.id.aod_soldiers_combatResultText);
+        combatResult = rootView.findViewById(R.id.aod_soldiers_combatResultText);
 
         buttonPlusEnemyTroops.setOnClickListener(new OnClickListener() {
             @Override
@@ -354,8 +344,8 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
                 mgr.hideSoftInputFromWindow(addSoldiersView.getWindowToken(), 0);
 
-                EditText soldiersType = (EditText) addSoldiersView.findViewById(R.id.aod_soldiers_type);
-                EditText soldiersQuantity = (EditText) addSoldiersView.findViewById(R.id.aod_soldiers_quantity);
+                EditText soldiersType = addSoldiersView.findViewById(R.id.aod_soldiers_type);
+                EditText soldiersQuantity = addSoldiersView.findViewById(R.id.aod_soldiers_quantity);
 
                 String type = soldiersType.getText().toString();
                 String quantityS = soldiersQuantity.getText().toString();
@@ -367,7 +357,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
                     return;
                 }
 
-                SoldiersDivision sd = new SoldiersDivision(type, quantity);
+                CustomSoldiersDivision sd = new CustomSoldiersDivision(type, quantity);
 
                 adv.getSoldiers().add(sd);
 
@@ -378,7 +368,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
         AlertDialog alert = builder.create();
 
-        EditText typeValue = (EditText) addSoldiersView.findViewById(R.id.aod_soldiers_type);
+        EditText typeValue = addSoldiersView.findViewById(R.id.aod_soldiers_type);
 
         alert.setView(addSoldiersView);
 
@@ -467,14 +457,26 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
     }
 
-    private List<SoldiersDivision> getBattleSoldiers() {
-        List<SoldiersDivision> battleSoldiers = new ArrayList<>();
+    private List<CustomSoldiersDivision> getBattleSoldiers() {
+        List<CustomSoldiersDivision> battleSoldiers = new ArrayList<>();
         for (String type : skirmishArmy.keySet()) {
             if(skirmishArmy.get(type) > 0) {
-                battleSoldiers.add(new SoldiersDivision(type, 0));
+                battleSoldiers.add(new CustomSoldiersDivision(type, 0));
             }
         }
         return battleSoldiers;
+    }
+
+    public void incrementTurnArmyLosses() {
+        this.turnArmyLosses += 5;
+    }
+
+    public int getTurnArmyLosses() {
+        return turnArmyLosses;
+    }
+
+    public int getTargetLosses() {
+        return targetLosses;
     }
 
     public enum AODAdventureBattleState {
@@ -494,15 +496,15 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
         int textToDisplay;
 
+        AODAdventureBattleBalance(int textToDisplay) {
+            this.textToDisplay = textToDisplay;
+        }
+
         public int getTextToDisplay() {
             return textToDisplay;
         }
 
         public void setTextToDisplay(int textToDisplay) {
-            this.textToDisplay = textToDisplay;
-        }
-
-        AODAdventureBattleBalance(int textToDisplay) {
             this.textToDisplay = textToDisplay;
         }
     }
@@ -537,17 +539,5 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         public void setArmyOrEnemy(String armyOrEnemy) {
             this.armtOrEnemy = armyOrEnemy;
         }
-    }
-
-    public void incrementTurnArmyLosses() {
-        this.turnArmyLosses += 5;
-    }
-
-    public int getTurnArmyLosses() {
-        return turnArmyLosses;
-    }
-
-    public int getTargetLosses() {
-        return targetLosses;
     }
 }

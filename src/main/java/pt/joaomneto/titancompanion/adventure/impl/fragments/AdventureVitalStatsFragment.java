@@ -70,7 +70,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
         increaseStaminaButton = rootView
                 .findViewById(R.id.plusStaminaButton);
         increaseSkillButton = rootView
-                .findViewById(R.id.plusSkillButton);
+                .findViewById(R.id.plusValueButton);
         increaseLuckButton = rootView
                 .findViewById(R.id.plusLuckButton);
         increaseProvisionsButton = rootView

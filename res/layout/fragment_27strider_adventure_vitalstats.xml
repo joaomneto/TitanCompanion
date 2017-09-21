@@ -28,8 +28,8 @@
         android:id="@+id/minusSkillButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusSkillButton"
-        android:layout_alignTop="@+id/plusSkillButton"
+        android:layout_alignBottom="@+id/plusValueButton"
+        android:layout_alignTop="@+id/plusValueButton"
         android:layout_toLeftOf="@+id/statsSkillValue"
         android:text="@string/minus" />
 
@@ -37,14 +37,14 @@
         android:id="@+id/statsSkillValue"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusSkillButton"
-        android:layout_alignTop="@+id/plusSkillButton"
-        android:layout_toLeftOf="@+id/plusSkillButton"
+        android:layout_alignBottom="@+id/plusValueButton"
+        android:layout_alignTop="@+id/plusValueButton"
+        android:layout_toLeftOf="@+id/plusValueButton"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/plusSkillButton"
+        android:id="@+id/plusValueButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignRight="@+id/skillLuck_buttons"
@@ -145,8 +145,8 @@
         android:layout_alignBottom="@+id/plusFearButton"
         android:layout_alignTop="@+id/plusFearButton"
         android:layout_toLeftOf="@+id/statsFearValue"
-        android:visibility="invisible"
-        android:text="@string/minus" />
+        android:text="@string/minus"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/statsFearValue"
@@ -198,8 +198,8 @@
         android:id="@+id/skillLuck_buttons"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_above="@id/buttonTestFear"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <Button
@@ -245,8 +245,8 @@
         android:layout_height="40dp"
         android:layout_alignTop="@+id/textView5"
         android:layout_toRightOf="@+id/statsLuckValue"
-        android:visibility="invisible"
-        android:text="@string/plus" />
+        android:text="@string/plus"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/minusProvisionsButton"

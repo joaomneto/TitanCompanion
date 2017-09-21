@@ -33,15 +33,15 @@ enum class SSSpell constructor(private val labelIdInner : Int, private val actio
                 .initialLuck)
             adv.currentLuck = adv.initialLuck
     }),
-    FIRE(R.string.ssSpellFire, { adv -> }),
-    ICE(R.string.ssSpellIce, { adv -> }),
-    ILLUSION(R.string.ssSpellIllusion, { adv -> }),
-    FRIENDSHIP(R.string.ssSpellFriendship, { adv -> }),
-    GROWTH(R.string.ssSpellGrowth, { adv -> }),
-    BLESS(R.string.ssSpellBless, { adv -> }),
-    FEAR(R.string.ssSpellFear, { adv -> }),
-    WITHERING(R.string.ssSpellWithering, { adv -> }),
-    CURSE(R.string.ssSpellCurse, { adv -> });
+    FIRE(R.string.ssSpellFire, { _ -> }),
+    ICE(R.string.ssSpellIce, { _ -> }),
+    ILLUSION(R.string.ssSpellIllusion, { _ -> }),
+    FRIENDSHIP(R.string.ssSpellFriendship, { _ -> }),
+    GROWTH(R.string.ssSpellGrowth, { _ -> }),
+    BLESS(R.string.ssSpellBless, { _ -> }),
+    FEAR(R.string.ssSpellFear, { _ -> }),
+    WITHERING(R.string.ssSpellWithering, { _ -> }),
+    CURSE(R.string.ssSpellCurse, { _ -> });
 
     override fun getLabelId(): Int{
         return labelIdInner
