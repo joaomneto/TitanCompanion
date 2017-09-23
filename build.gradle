@@ -6,7 +6,7 @@
             jcenter()
         }
         dependencies {
-            classpath 'com.android.tools.build:gradle:3.0.0-beta1'
+            classpath 'com.android.tools.build:gradle:3.0.0-beta6'
             classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
             classpath 'com.github.triplet.gradle:play-publisher:1.1.5'
         }
