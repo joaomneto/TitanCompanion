@@ -68,8 +68,9 @@ public enum FightingFantasyGamebook {
     REVENGE_OF_THE_VAMPIRE(R.string.rotv,"rotv", 58),
     CURSE_OF_THE_MUMMY(R.string.cotm, "cotm", 59),
     EYE_OF_THE_DRAGON(R.string.eotd, "eotd", 60),
-    HOWL_OF_THE_WEREWOLF(R.string.cotm, "cotm", 62),
-    THE_PORT_OF_PERIL(R.string.cotm, "cotm", 63);
+    BLOODBONES(R.string.bb, "bb", 61),
+    HOWL_OF_THE_WEREWOLF(R.string.hotw, "hotw", 62),
+    THE_PORT_OF_PERIL(R.string.tpop, "tpop", 63);
 
     private final int nameResourceId;
     private final int order;

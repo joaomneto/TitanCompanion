@@ -94,6 +94,6 @@ public class PotionsFragment extends Fragment {
     }
 
     private int getDefaultPotionDosage() {
-        return "fr".equals(LocaleHelper.getLanguage(this.getActivity())) || ((AdventureCreation)this.getActivity()).getGamebook().equals(FightingFantasyGamebook.THE_WARLOCK_OF_FIRETOP_MOUNTAIN) ? 2 : 1;
+        return ("fr".equals(LocaleHelper.getLanguage(this.getActivity())) || ((AdventureCreation)this.getActivity()).getGamebook().equals(FightingFantasyGamebook.THE_WARLOCK_OF_FIRETOP_MOUNTAIN)) ? 2 : 1;
     }
 }
