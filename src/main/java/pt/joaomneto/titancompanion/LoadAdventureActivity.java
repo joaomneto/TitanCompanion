@@ -29,6 +29,19 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Date;
+
+import pt.joaomneto.titancompanion.adapter.Savegame;
+import pt.joaomneto.titancompanion.adapter.SavegameListAdapter;
+import pt.joaomneto.titancompanion.consts.Constants;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class LoadAdventureActivity extends BaseActivity{
@@ -36,11 +49,25 @@ public class LoadAdventureActivity extends BaseActivity{
 	public static final String ADVENTURE_FILE = "ADVENTURE_FILE";
 	public static final String ADVENTURE_DIR = "ADVENTURE_DIR";
 
+	static public boolean deleteDirectory(File path) {
+		if (path.exists()) {
+			File[] files = path.listFiles();
+			for (int i = 0; i < files.length; i++) {
+				if (files[i].isDirectory()) {
+					deleteDirectory(files[i]);
+				} else {
+					files[i].delete();
+				}
+			}
+		}
+		return (path.delete());
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_load_adventure);
-		final ListView listview = (ListView) findViewById(R.id.adventureListView);
+		final ListView listview = findViewById(R.id.adventureListView);
 
 		final File baseDir = new File(getFilesDir(), "ffgbutil");
 
@@ -187,19 +214,6 @@ public class LoadAdventureActivity extends BaseActivity{
 		});
 	}
 	
-	static public boolean deleteDirectory(File path) {
-	    if( path.exists() ) {
-	      File[] files = path.listFiles();
-	      for(int i=0; i<files.length; i++) {
-	         if(files[i].isDirectory()) {
-	           deleteDirectory(files[i]);
-				} else {
-	           files[i].delete();
-	         }
-	      }
-	    }
-	    return( path.delete() );
-	  }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

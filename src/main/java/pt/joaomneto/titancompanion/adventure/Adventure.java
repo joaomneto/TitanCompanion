@@ -3,6 +3,8 @@ package pt.joaomneto.titancompanion.adventure;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -47,6 +49,7 @@ import java.util.Set;
 import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureDrawingFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
 import pt.joaomneto.titancompanion.util.DiceRoller;
@@ -57,7 +60,7 @@ public abstract class Adventure extends BaseFragmentActivity {
     protected static final int FRAGMENT_COMBAT = 1;
     protected static final int FRAGMENT_EQUIPMENT = 2;
     protected static final int FRAGMENT_NOTES = 3;
-
+    protected static final int FRAGMENT_DRAWING = 4;
     protected static SparseArray<Adventure.AdventureFragmentRunner> fragmentConfiguration = new SparseArray<Adventure.AdventureFragmentRunner>();
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -104,7 +107,8 @@ public abstract class Adventure extends BaseFragmentActivity {
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"));
         fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes,
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
-
+        fragmentConfiguration.put(FRAGMENT_DRAWING, new AdventureFragmentRunner(R.string.map,
+                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureDrawingFragment"));
     }
 
     public static void showAlert(int title, int message, Context context) {
@@ -233,6 +237,14 @@ public abstract class Adventure extends BaseFragmentActivity {
         provisions = provisionsS != null && !provisionsS.equals("null") ? Integer.valueOf(provisionsS) : null;
         String provisionsValueS = getSavedGame().getProperty("provisionsValue");
         provisionsValue = provisionsValueS != null && !provisionsValueS.equals("null") ? Integer.valueOf(provisionsValueS) : null;
+
+        AdventureDrawingFragment fragment = (AdventureDrawingFragment) getFragments().get(FRAGMENT_DRAWING);
+        String pathName = dir.getAbsolutePath() + "/" + fileName.replace(".xml", ".png");
+
+        if (new File(pathName).exists()) {
+            Bitmap imageToLoad = BitmapFactory.decodeFile(pathName);
+            fragment.setDrawingBitmap(imageToLoad);
+        }
 
         loadAdventureSpecificValuesFromFile();
     }
@@ -531,6 +543,22 @@ public abstract class Adventure extends BaseFragmentActivity {
             setCurrentStamina(Math.min(getCurrentStamina() + provisionsValue, initialStamina));
             showAlert(getResources().getString(R.string.provisionsStaminaGain, staminaGain), this);
         }
+    }
+
+    public StandardSectionsPagerAdapter getmSectionsPagerAdapter() {
+        return mSectionsPagerAdapter;
+    }
+
+    public void setmSectionsPagerAdapter(StandardSectionsPagerAdapter mSectionsPagerAdapter) {
+        this.mSectionsPagerAdapter = mSectionsPagerAdapter;
+    }
+
+    public ViewPager getmViewPager() {
+        return mViewPager;
+    }
+
+    public void setmViewPager(ViewPager mViewPager) {
+        this.mViewPager = mViewPager;
     }
 
     public Integer getInitialSkill() {
