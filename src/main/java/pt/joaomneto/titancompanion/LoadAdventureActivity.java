@@ -29,6 +29,8 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class LoadAdventureActivity extends BaseActivity{
 
 	public static final String ADVENTURE_FILE = "ADVENTURE_FILE";
@@ -106,7 +108,7 @@ public class LoadAdventureActivity extends BaseActivity{
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						int gamebook = -1;
+						FightingFantasyGamebook gamebook = null;
 
 						try {
 							BufferedReader bufferedReader = new BufferedReader(
@@ -115,14 +117,19 @@ public class LoadAdventureActivity extends BaseActivity{
 							while (bufferedReader.ready()) {
 								String line = bufferedReader.readLine();
 								if (line.startsWith("gamebook=")) {
-									gamebook = Integer.parseInt(line.split("=")[1]);
+									String gbs = line.split("=")[1];
+									if (StringUtils.isNumeric(gbs))
+										gamebook = FightingFantasyGamebook.values()[Integer.parseInt(gbs)-1];
+									else
+										gamebook = FightingFantasyGamebook.valueOf(gbs);
+									break;
 								}
 							}
 
 							bufferedReader.close();
 
 							Intent intent = new Intent(_this, Constants
-									.getRunActivity(_this, FightingFantasyGamebook.values()[gamebook]));
+									.getRunActivity(_this, gamebook));
 
 							intent.putExtra(ADVENTURE_FILE,
 									savepointFiles[which].getName());

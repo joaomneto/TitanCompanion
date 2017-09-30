@@ -3,6 +3,7 @@ package pt.joaomneto.titancompanion;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Environment;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.Espresso;
@@ -17,8 +18,13 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -49,6 +55,20 @@ public abstract class TCBaseTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     protected abstract FightingFantasyGamebook getGamebook();
+
+//    @BeforeClass
+//    public static void setup(){
+//        Path path = Paths.get(Environment.getExternalStorageDirectory()
+//                .getPath(), "ffgbutil");
+//        if(Files.exists(path)) {
+//            try {
+//                Files.delete(path);
+//            } catch (IOException e) {
+//                throw new IllegalStateException("Unable to delete savegames", e);
+//            }
+//        }
+//    }
+
 
     protected Activity getActivityInstance() {
         final Activity[] currentActivity = {null};

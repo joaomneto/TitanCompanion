@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -183,7 +185,11 @@ public abstract class Adventure extends BaseFragmentActivity {
         savedGame = new Properties();
         savedGame.load(new InputStreamReader(new FileInputStream(new File(dir, fileName)), "UTF-8"));
 
-        gamebook = FightingFantasyGamebook.valueOf(savedGame.getProperty("gamebook"));
+        String gamebook = savedGame.getProperty("gamebook");
+        if (StringUtils.isNumeric(gamebook))
+            this.gamebook = FightingFantasyGamebook.values()[Integer.parseInt(gamebook)-1];
+        else
+            this.gamebook = FightingFantasyGamebook.valueOf(gamebook);
         initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"));
         initialLuck = Integer.valueOf(savedGame.getProperty("initialLuck"));
         initialStamina = Integer.valueOf(savedGame.getProperty("initialStamina"));

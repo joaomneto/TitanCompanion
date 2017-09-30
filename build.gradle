@@ -22,6 +22,7 @@
            mavenCentral()
            jcenter()
         }
+        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
         implementation fileTree(include: '*.jar', dir: 'libs')
         implementation 'com.android.support:support-v4:25.4.0'
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -35,23 +36,23 @@
         compileSdkVersion 26
         buildToolsVersion "26.0.1"
     
-    //    signingConfigs {
-    //        release {
-    //            storeFile file(RELEASE_STORE_FILE)
-    //            storePassword RELEASE_STORE_PASSWORD
-    //            keyAlias RELEASE_KEY_ALIAS
-    //            keyPassword RELEASE_KEY_PASSWORD
-    //        }
-    //    }
+        signingConfigs {
+            release {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        }
     
         buildTypes {
             debug {
                 debuggable true
                 applicationIdSuffix ".debug"
             }
-    //        release {
-    //            signingConfig signingConfigs.release
-    //        }
+            release {
+                signingConfig signingConfigs.release
+            }
         }
     
         defaultConfig {
