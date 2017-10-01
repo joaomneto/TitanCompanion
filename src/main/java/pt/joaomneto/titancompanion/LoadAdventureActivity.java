@@ -42,8 +42,7 @@ public class LoadAdventureActivity extends BaseActivity{
 		setContentView(R.layout.activity_load_adventure);
 		final ListView listview = (ListView) findViewById(R.id.adventureListView);
 
-		final File baseDir = new File(Environment.getExternalStorageDirectory()
-				.getPath() + "/ffgbutil/");
+		final File baseDir = new File(getFilesDir(), "ffgbutil");
 
 		String[] fileList = baseDir.list();
 

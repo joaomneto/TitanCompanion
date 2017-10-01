@@ -76,20 +76,17 @@ public class RCAdventure extends TFODAdventure {
 			robotsS = robotsS.substring(0, robotsS.length() - 1);
 		}
 
-		bw.write("standardPotion=" + getStandardPotion() + "\n");
 		bw.write("robots=" + robotsS + "\n");
 	}
 
 	@Override
 	protected void loadAdventureSpecificValuesFromFile() {
-		super.loadAdventureSpecificValuesFromFile();
-
 		String robotsS = new String(getSavedGame().getProperty("robots").getBytes(java.nio.charset.Charset.forName("UTF-8")));
 
 		Map<String, Robot> robotCache = new HashMap<String, Robot>();
 		Map<Robot, String> robotAltCache = new HashMap<Robot, String>();
 
-		if (robotsS != null) {
+		if (robotsS != null && !robotsS.isEmpty()) {
 			robots = new ArrayList<Robot>();
 			List<String> list = Arrays.asList(robotsS.split("#", -1));
 			for (String string : list) {
