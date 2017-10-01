@@ -1,6 +1,6 @@
 package pt.joaomneto.titancompanion.adventure.impl;
 
 
-public class DDAdventure extends TWOFMAdventure {
+public class DDAdventure extends TFODAdventure {
 
 }
