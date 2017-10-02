@@ -51,9 +51,9 @@
                 debuggable true
                 applicationIdSuffix ".debug"
             }
-            release {
+            // release {
 //                signingConfig signingConfigs.release
-            }
+            // }
         }
     
         defaultConfig {
