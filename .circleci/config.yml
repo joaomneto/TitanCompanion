@@ -7,44 +7,47 @@ jobs:
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
        - checkout
        - run:
-           name: Setup emulator
-           command: sdkmanager "system-images;android-24;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-24;default;armeabi-v7a"
-       - run:
-           name: Launch emulator
-           command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -skin "768x1280" -noaudio -no-boot-anim -no-window -accel off -logcat *:e
-           background: true
-           parallel: true
-       - run:
-           name: Wait for emulator
-           command: circle-android wait-for-boot && sleep 70
-       - run:
-           name: Disable emulator animations
+           name: Install tools
            command: |
-              adb shell settings put global window_animation_scale 0.0
-              adb shell settings put global transition_animation_scale 0.0
-              adb shell settings put global animator_duration_scale 0.0
-              adb shell settings put secure show_ime_with_hard_keyboard 0
-              adb shell input keyevent 82
+              sudo apt-get install -y gcc python-dev python-setuptools
+              sudo easy_install -U pip
+              sudo pip uninstall -y crcmod
+              sudo pip install -U crcmod
+              pip install awscli --upgrade --user
+              cat /proc/sys/kernel/random/uuid > ${HOME}/uuid
+              mkdir ${HOME}/testResults
        - run:
-           name: Compile App
-           command: ./gradlew assembleDebug
+           name: Install GCloud
+           command: |
+              echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+              curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+              sudo apt-get update && sudo apt-get install -y google-cloud-sdk
+              sudo apt-get update && sudo apt-get --only-upgrade install -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
        - run:
-           name: Install App
-           command: adb install -g /home/circleci/code/build/outputs/apk/debug/code-debug.apk
+           name: Configure Google Cloud Access
+           command: 
+              ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
-           name: Run Tests
-           command: ./gradlew connectedAndroidTest -PdisablePreDex  --stacktrace 
-           no_output_timeout: 3600
-       - run:
-           name: Run Lint
+           name: Lint
            command: ./gradlew lint
+       - run:
+           name: Generate Debug APK
+           command: ./gradlew assembleDebug -PdisablePreDex
+       - run:
+           name: Generate Debug Testing APK
+           command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
+       - run:
+           name: Run Firebase Testing
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR}
+       - run:
+           name: Recover Test Results
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/hammerhead-21-en-portrait/*.xml ${HOME}/testResults/
        - store_artifacts:
            path: build/reports
            destination: reports
        - store_test_results:
-           path: build/reports/androidTests
-       - store_test_results:
-           path: build/reports/tests
+           path: ~/testResults

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "386401397909",
+    "firebase_url": "https://titan-companion.firebaseio.com",
+    "project_id": "titan-companion",
+    "storage_bucket": "titan-companion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386401397909:android:f0379c4248efad3d",
+        "android_client_info": {
+          "package_name": "pt.joaomneto.titancompanion.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386401397909-ld7lvcsoakaih53motbsgu7d5gkrc1jk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pt.joaomneto.titancompanion.debug",
+            "certificate_hash": "b44ee9d957b88ddef2a7251c6ef5594053648297"
+          }
+        },
+        {
+          "client_id": "386401397909-vpiobno647s6cucanno4hf7s35pfa6jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCllXiBIJZOHYbD1uf6v_OeEPVX_YS9FOI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386401397909-vpiobno647s6cucanno4hf7s35pfa6jr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
