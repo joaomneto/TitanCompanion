@@ -29,21 +29,21 @@ public class MainActivity extends BaseActivity{
 //		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(
 //				MainActivity.this));
 		// Here, thisActivity is the current activity
-		if (ContextCompat.checkSelfPermission(this,
-				Manifest.permission.WRITE_EXTERNAL_STORAGE)
-				!= PackageManager.PERMISSION_GRANTED) {
-
-
-
-				ActivityCompat.requestPermissions(this,
-						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-						MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
-
-				// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-				// app-defined int constant. The callback method gets the
-				// result of the request.
-
-		}
+//		if (ContextCompat.checkSelfPermission(this,
+//				Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//				!= PackageManager.PERMISSION_GRANTED) {
+//
+//
+//
+//				ActivityCompat.requestPermissions(this,
+//						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+//						MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+//
+//				// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+//				// app-defined int constant. The callback method gets the
+//				// result of the request.
+//
+//		}
 	}
 
     @Override

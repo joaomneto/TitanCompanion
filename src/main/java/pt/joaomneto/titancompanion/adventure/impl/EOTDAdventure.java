@@ -18,4 +18,10 @@ public class EOTDAdventure extends TFODAdventure {
         fragmentConfiguration.put(FRAGMENT_NOTES, new AdventureFragmentRunner(R.string.notes, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"));
     }
 
+
+    @Override
+    protected void loadAdventureSpecificValuesFromFile() {
+        setGold(Integer.valueOf(getSavedGame().getProperty("gold")));
+    }
+
 }

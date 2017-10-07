@@ -179,9 +179,8 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 
 			String relDir = "save_"+gamebook.getInitials()+"_"
 								+ adventureName.replace(' ', '-');
-			String dirName = Environment.getExternalStorageDirectory()
-					.getPath() + "/ffgbutil/" + relDir;
-			File dir = new File(dirName);
+			File dir = new File(getFilesDir(), "ffgbutil");
+			dir = new File(dir, relDir);
 			if (!dir.exists()) {
 				dir.mkdirs();
 			}

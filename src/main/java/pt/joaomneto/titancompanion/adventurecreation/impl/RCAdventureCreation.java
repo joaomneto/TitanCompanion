@@ -37,10 +37,7 @@ public class RCAdventureCreation extends AdventureCreation {
     protected void storeAdventureSpecificValuesInFile(BufferedWriter bw)
             throws IOException {
         bw.write("gold=0\n");
-        bw.write("robotArmor=0\n");
-        bw.write("robotSpeed=0\n");
-        bw.write("robotCombat=0\n");
-        bw.write("robotBonus=0\n");
+        bw.write("robots=\n");
         bw.write("provisions=5\n");
         bw.write("provisionsValue=1\n");
 

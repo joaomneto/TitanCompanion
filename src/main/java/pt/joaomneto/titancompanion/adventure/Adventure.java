@@ -173,7 +173,8 @@ public abstract class Adventure extends BaseFragmentActivity {
             String fileName = getIntent().getStringExtra(LoadAdventureActivity.ADVENTURE_FILE);
             String relDir = getIntent().getStringExtra(LoadAdventureActivity.ADVENTURE_DIR);
             name = relDir;
-            dir = new File(Environment.getExternalStorageDirectory().getPath() + "/ffgbutil/" + relDir);
+            dir = new File(getFilesDir(), "ffgbutil");
+            dir = new File(dir, relDir);
 
             loadGameFromFile(dir, fileName);
         } catch (Exception e) {
