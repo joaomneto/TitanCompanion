@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -203,21 +202,11 @@ public abstract class Adventure extends BaseFragmentActivity {
         currentReference = Integer.valueOf(savedGame.getProperty("currentReference"));
 
         if (equipmentS != null) {
-            equipment = new ArrayList<String>();
-            List<String> list = Arrays.asList(equipmentS.split("#"));
-            for (String string : list) {
-                if (!string.isEmpty())
-                    equipment.add(string);
-            }
+            equipment = stringToStringList(equipmentS);
         }
 
         if (notesS != null) {
-            notes = new ArrayList<String>();
-            List<String> list = Arrays.asList(notesS.split("#"));
-            for (String string : list) {
-                if (!string.isEmpty())
-                    notes.add(string);
-            }
+            notes = stringToStringList(notesS);
         }
 
         String provisionsS = getSavedGame().getProperty("provisions");
@@ -226,6 +215,26 @@ public abstract class Adventure extends BaseFragmentActivity {
         provisionsValue = provisionsValueS != null && !provisionsValueS.equals("null") ? Integer.valueOf(provisionsValueS) : null;
 
         loadAdventureSpecificValuesFromFile();
+    }
+
+    protected List<String> stringToStringList(String equipmentS) {
+        List<String> finalList = new ArrayList<String>();
+        List<String> list = Arrays.asList(equipmentS.split("#"));
+        for (String string : list) {
+            if (!string.isEmpty())
+                finalList.add(string);
+        }
+        return finalList;
+    }
+
+    protected <Y extends Enum<Y>> List<Y> stringToEnumList(String equipmentS, Class<Y> type) {
+        List<Y> finalList = new ArrayList();
+        List<String> list = Arrays.asList(equipmentS.split("#"));
+        for (String string : list) {
+            if (!string.isEmpty())
+                finalList.add(Enum.valueOf(type,string));
+        }
+        return finalList;
     }
 
     protected abstract void loadAdventureSpecificValuesFromFile();

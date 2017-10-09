@@ -38,11 +38,10 @@ abstract class SpellAdventure<S : Spell> : Adventure() {
         return elements
     }
 
-    private fun getSpellForString(string: String, type: Class<S>): S {
+    private fun <S> getSpellForString(string: String, type: Class<S>): S {
         try {
             val method = type.getMethod("valueOf", String::class.java)
-            val spell = method.invoke(null, string) as S
-            return spell
+            return method.invoke(null, string) as S
         } catch (e: Exception) {
             throw IllegalArgumentException("Unable to instantiate Spell enum for class" + this.javaClass, e)
         }

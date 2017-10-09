@@ -42,7 +42,8 @@ jobs:
            command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
        - run:
            name: Run Firebase Testing
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR}
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR}
+           no_output_timeout: 2400
        - run:
            name: Recover Test Results
            command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/hammerhead-21-en-portrait/*.xml ${HOME}/testResults/

@@ -239,7 +239,6 @@
     <string name="title_adventure_creation_potions">Potions</string>
 
 
-
     <string-array name="standard_potion_list">
         <item>Skill</item>
         <item>Strength</item>
@@ -1175,5 +1174,16 @@
     <string name="sobEnemyShip">Enemy ship: </string>
     <string name="comingSoon">Coming Soon</string>
     <string name="doses">Doses</string>
+
+    <!--Chasms of Malice-->
+
+    <string name="geshrak" translatable="false">Geshrak</string>
+    <string name="gurskut" translatable="false">Gurskut</string>
+    <string name="friankara" translatable="false">Friankara</string>
+    <string name="barkek" translatable="false">Barkek</string>
+    <string name="griffkek" translatable="false">Griffkek</string>
+    <string name="churka" translatable="false">Churka</string>
+    <string name="kahhrac" translatable="false">Kahhrac</string>
+    <string name="kuddams" translatable="false">Kuddams</string>
 
 </resources>
