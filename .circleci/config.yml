@@ -1,6 +1,6 @@
 version: 2
 jobs:
-   build:
+  test:
      working_directory: ~/code
      docker:
        - image: circleci/android:api-26-alpha
@@ -11,15 +11,15 @@ jobs:
      steps:
        - checkout
        - run:
-           name: Install tools
-           command: |
-              sudo apt-get install -y gcc python-dev python-setuptools
-              sudo easy_install -U pip
-              sudo pip uninstall -y crcmod
-              sudo pip install -U crcmod
-              pip install awscli --upgrade --user
-              cat /proc/sys/kernel/random/uuid > ${HOME}/uuid
-              mkdir ${HOME}/testResults
+          name: Install tools
+          command: |
+             sudo apt-get install -y gcc python-dev python-setuptools
+             sudo easy_install -U pip
+             sudo pip uninstall -y crcmod
+             sudo pip install -U crcmod
+             pip install awscli --upgrade --user
+             cat /proc/sys/kernel/random/uuid > ${HOME}/uuid
+             mkdir ${HOME}/testResults
        - run:
            name: Install GCloud
            command: |
@@ -29,11 +29,8 @@ jobs:
               sudo apt-get update && sudo apt-get --only-upgrade install -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
        - run:
            name: Configure Google Cloud Access
-           command: 
+           command:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
-       - run:
-           name: Lint
-           command: ./gradlew lint
        - run:
            name: Generate Debug APK
            command: ./gradlew assembleDebug -PdisablePreDex
@@ -41,13 +38,41 @@ jobs:
            name: Generate Debug Testing APK
            command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
        - run:
-           name: Run Firebase Testing
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR}
-       - run:
-           name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/hammerhead-21-en-portrait/*.xml ${HOME}/testResults/
+           name: Lint
+           command: ./gradlew lint
+#       - run:
+#           name: Run Firebase Testing
+#           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR}
+#           no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
            destination: reports
+       - run:
+           name: Recover Test Results
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/hammerhead-21-en-portrait/*.xml ${HOME}/testResults/
        - store_test_results:
            path: ~/testResults
+  deploy:
+     working_directory: ~/code
+     docker:
+       - image: circleci/android:api-26-alpha
+     environment:
+       JVM_OPTS: -Xmx2048m
+       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+     steps:
+       - checkout
+       - run:
+           name: Deploy To Play Store
+           command: ./gradlew lint
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - test:
+        filters:
+           branches:
+             ignore: master-production
+      - deploy:
+         filters:
+           branches:
+             only: master-production

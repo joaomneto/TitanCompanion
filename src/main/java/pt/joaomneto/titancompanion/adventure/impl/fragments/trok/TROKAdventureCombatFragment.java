@@ -223,7 +223,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
             int damage = getDamage();
             position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
             hit = true;
-            combatResult.setText(R.string.hitEnemyDamage);
+            combatResult.setText(getString(R.string.hitEnemyDamage, damage));
         } else {
             draw = true;
             combatResult.setText(R.string.missedTheEnemy);
@@ -231,11 +231,11 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
         if (position.getCurrentStamina() == 0) {
             removeAndAdvanceCombat(position);
-            combatResult.setText(combatResult.getText() + "\n+" + getString(R.string.defeatedEnemy));
+            combatResult.setText(combatResult.getText() + "\n" + getString(R.string.defeatedEnemy));
 
         }
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < combatPositions.size(); i++) {
             Combatant enemy = combatPositions.get(i);
             if (enemy != null && enemy.getCurrentStamina() > 0) {
                 if (DiceRoller.roll2D6().getSum() <= enemy.getCurrentSkill()) {
@@ -253,6 +253,12 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
         }
 
         refreshScreensFromResume();
+    }
+
+    @Override
+    public void refreshScreensFromResume() {
+        combatantListAdapter.notifyDataSetChanged();
+        combatTypeSwitch.setEnabled(combatPositions.isEmpty());
     }
 
 }
