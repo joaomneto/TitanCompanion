@@ -2,35 +2,38 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.com.Kuddam
-
+import java.io.BufferedWriter
+import java.io.IOException
 
 class COMAdventure : TWOFMAdventure() {
 
     companion object {
-//        const val FRAGMENT_KUDDAM = 2
-//        const val FRAGMENT_EQUIPMENT = 3
-//        const val FRAGMENT_NOTES = 4
+
+        const val FRAGMENT_VITAL_STATS = 0
+        const val FRAGMENT_COMBAT = 1
+        const val FRAGMENT_KUDDAM = 2
+        const val FRAGMENT_EQUIPMENT = 3
+        const val FRAGMENT_NOTES = 4
     }
 
     var tabasha: Int = 0
-    var kuddamKilled: List<Kuddam> = emptyList()
+    var kuddamKilled: MutableList<Kuddam> = mutableListOf()
     var gold: Int = 0
     var fuel: Int = 0
-    var cyphers: List<String> = emptyList()
+    var cyphers: MutableList<String> = mutableListOf()
 
     init {
         fragmentConfiguration.put(FRAGMENT_VITAL_STATS, AdventureFragmentRunner(R.string.vitalStats,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"))
+            "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"))
         fragmentConfiguration.put(FRAGMENT_COMBAT, AdventureFragmentRunner(R.string.fights,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
-//        fragmentConfiguration.put(FRAGMENT_KUDDAM, AdventureFragmentRunner(R.string.kuddams,
-//                "pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureKuddamFragment"))
+            "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
+        fragmentConfiguration.put(FRAGMENT_KUDDAM, AdventureFragmentRunner(R.string.kuddams,
+            "pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureKuddamFragment"))
         fragmentConfiguration.put(FRAGMENT_EQUIPMENT, AdventureFragmentRunner(R.string.goldEquipment,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"))
+            "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"))
         fragmentConfiguration.put(FRAGMENT_NOTES, AdventureFragmentRunner(R.string.notes,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"))
+            "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"))
     }
-
 
     override fun loadAdventureSpecificValuesFromFile() {
         tabasha = Integer.valueOf(savedGame.getProperty("tabasha"))
@@ -46,9 +49,17 @@ class COMAdventure : TWOFMAdventure() {
         val kuddamKilledS = savedGame.getProperty("kuddamKilled")
 
         if (kuddamKilledS != null) {
-            kuddamKilled = stringToEnumList(cyphersS, Kuddam::class.java)
+            kuddamKilled = stringToEnumList(kuddamKilledS, Kuddam::class.java)
         }
+    }
 
+    @Throws(IOException::class)
+    override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
+        bw.write("tabasha=" + tabasha + "\n")
+        bw.write("gold=" + gold + "\n")
+        bw.write("fuel=" + fuel + "\n")
+        bw.write("cyphers=" + stringListToText(cyphers)+"\n")
+        bw.write("kuddamKilled=" + enumListToText(kuddamKilled)+"\n")
     }
 
 

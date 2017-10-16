@@ -18,38 +18,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.apache.commons.lang3.StringUtils;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
 import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
 import pt.joaomneto.titancompanion.util.DiceRoller;
+
+import java.io.*;
+import java.util.*;
 
 public abstract class Adventure extends BaseFragmentActivity {
 
@@ -187,7 +165,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 
         String gamebook = savedGame.getProperty("gamebook");
         if (StringUtils.isNumeric(gamebook))
-            this.gamebook = FightingFantasyGamebook.values()[Integer.parseInt(gamebook)-1];
+            this.gamebook = FightingFantasyGamebook.values()[Integer.parseInt(gamebook) - 1];
         else
             this.gamebook = FightingFantasyGamebook.valueOf(gamebook);
         initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"));
@@ -227,12 +205,24 @@ public abstract class Adventure extends BaseFragmentActivity {
         return finalList;
     }
 
+    protected static <Y extends Enum<Y>> String enumListToText(List<Y> list) {
+        String text = "";
+
+        if (!list.isEmpty()) {
+            for (Y note : list) {
+                text += note.name() + "#";
+            }
+            text = text.substring(0, text.length() - 1);
+        }
+        return text;
+    }
+
     protected <Y extends Enum<Y>> List<Y> stringToEnumList(String equipmentS, Class<Y> type) {
         List<Y> finalList = new ArrayList();
         List<String> list = Arrays.asList(equipmentS.split("#"));
         for (String string : list) {
             if (!string.isEmpty())
-                finalList.add(Enum.valueOf(type,string));
+                finalList.add(Enum.valueOf(type, string));
         }
         return finalList;
     }
@@ -409,14 +399,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 
     private void storeNotesForRestart(File dir) throws IOException {
 
-        String notesS = "";
-
-        if (!notes.isEmpty()) {
-            for (String note : notes) {
-                notesS += note + "#";
-            }
-            notesS = notesS.substring(0, notesS.length() - 1);
-        }
+        String notesS = stringListToText(notes);
 
         String initialContent = readFile(new File(dir, "initial.xml"));
         initialContent = initialContent.replace("notes=", "notes=" + notesS);
@@ -432,14 +415,8 @@ public abstract class Adventure extends BaseFragmentActivity {
 
     public void storeValuesInFile(String ref, BufferedWriter bw) throws IOException {
         String equipmentS = "";
-        String notesS = "";
+        String notesS = stringListToText(notes);
 
-        if (!notes.isEmpty()) {
-            for (String note : notes) {
-                notesS += note + "#";
-            }
-            notesS = notesS.substring(0, notesS.length() - 1);
-        }
 
         if (!equipment.isEmpty()) {
             for (String eq : equipment) {
@@ -461,6 +438,18 @@ public abstract class Adventure extends BaseFragmentActivity {
         bw.write("provisions=" + getProvisions() + "\n");
         bw.write("provisionsValue=" + getProvisionsValue() + "\n");
         storeAdventureSpecificValuesInFile(bw);
+    }
+
+    protected static String stringListToText(List<String> list) {
+        String text = "";
+
+        if (!list.isEmpty()) {
+            for (String note : list) {
+                text += note + "#";
+            }
+            text = text.substring(0, text.length() - 1);
+        }
+        return text;
     }
 
     public abstract void storeAdventureSpecificValuesInFile(BufferedWriter bw) throws IOException;
