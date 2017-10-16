@@ -657,4 +657,10 @@
     <string name="dwarves">Nains</string>
     <string name="elves">Elfes</string>
 
+
+    <!--Chasms of Malice-->
+
+    <string name="fuel">Combustible</string>
+    <string name="useTabasha">Utilizer Tabasha</string>
+
 </resources>

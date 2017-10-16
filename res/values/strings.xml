@@ -1185,5 +1185,8 @@
     <string name="churka" translatable="false">Churka</string>
     <string name="kahhrac" translatable="false">Kahhrac</string>
     <string name="kuddams" translatable="false">Kuddams</string>
+    <string name="fuel">Fuel</string>
+    <string name="useTabasha">Call Tabasha</string>
+    <string name="tabasha" translatable="false">Tabasha</string>
 
 </resources>

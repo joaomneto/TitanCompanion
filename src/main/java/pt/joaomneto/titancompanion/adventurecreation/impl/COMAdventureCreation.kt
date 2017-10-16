@@ -19,10 +19,12 @@ class COMAdventureCreation : TWOFMAdventureCreation() {
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("tabasha=0\n")
+        super.storeAdventureSpecificValuesInFile(bw);
+        bw.write("tabasha=9\n")
         bw.write("kuddamKilled=\n")
         bw.write("gold=0\n")
         bw.write("fuel=0\n")
+        bw.write("provisions=0\n")
         bw.write("cyphers=\n")
 
     }

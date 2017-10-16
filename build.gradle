@@ -1,97 +1,106 @@
-    buildscript {
-        ext.kotlin_version = '1.1.50'
-        repositories {
-            google()
-            mavenCentral()
-            jcenter()
-        }
-        dependencies {
-            classpath 'com.android.tools.build:gradle:3.0.0-beta6'
-            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-            classpath 'com.github.triplet.gradle:play-publisher:1.1.5'
-            classpath 'com.amazonaws:aws-devicefarm-gradle-plugin:1.2'
-        }
+buildscript {
+    ext.kotlin_version = '1.1.50'
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
     }
-    apply plugin: 'com.android.application'
-    apply plugin: 'kotlin-android'
-    apply plugin: 'kotlin-android-extensions'
-    apply plugin: 'com.github.triplet.play'
-    
     dependencies {
-        repositories {
-           google()
-           mavenCentral()
-           jcenter()
-        }
-        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
-        implementation fileTree(include: '*.jar', dir: 'libs')
-        implementation 'com.android.support:support-v4:25.4.0'
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-        androidTestImplementation 'junit:junit:4.12'
-        androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-        androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    
+        classpath 'com.android.tools.build:gradle:3.0.0-beta6'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.triplet.gradle:play-publisher:1.1.5'
+        classpath 'com.amazonaws:aws-devicefarm-gradle-plugin:1.2'
     }
-    
-    android {
-        compileSdkVersion 26
-        buildToolsVersion "26.0.1"
-    
-//        signingConfigs {
-//            release {
-//                storeFile file(RELEASE_STORE_FILE)
-//                storePassword RELEASE_STORE_PASSWORD
-//                keyAlias RELEASE_KEY_ALIAS
-//                keyPassword RELEASE_KEY_PASSWORD
-//            }
-//        }
-    
-        buildTypes {
-            debug {
-                debuggable true
-                applicationIdSuffix ".debug"
+}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.triplet.play'
+
+dependencies {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+    implementation fileTree(include: '*.jar', dir: 'libs')
+    implementation 'com.android.support:support-v4:25.4.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    dataBinding {
+        enabled = true
+    }
+
+    if (project.hasProperty('RELEASE_STORE_FILE')) {
+        signingConfigs {
+            release {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
             }
-            // release {
-//                signingConfig signingConfigs.release
-            // }
-        }
-    
-        defaultConfig {
-            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-        }
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
-        }
-    
-        testOptions {
-            animationsDisabled = true
-        }
-    
-        sourceSets {
-            main {
-                manifest.srcFile 'AndroidManifest.xml'
-                java.srcDirs = ['src/main/java']
-                resources.srcDirs = ['src/main/java']
-                aidl.srcDirs = ['src/main/java']
-                renderscript.srcDirs = ['src/main/java']
-                res.srcDirs = ['res']
-                assets.srcDirs = ['assets']
-            }
-    
-            androidTest.java.srcDir 'src/androidTest/java'
-            debug.setRoot('build-types/debug')
-            release.setRoot('build-types/release')
         }
     }
-    
+
+    buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix ".debug"
+        }
+        if (project.hasProperty('RELEASE_STORE_FILE')) {
+            release {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    defaultConfig {
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        animationsDisabled = true
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/java']
+            aidl.srcDirs = ['src/main/java']
+            renderscript.srcDirs = ['src/main/java']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        androidTest.java.srcDir 'src/androidTest/java'
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+}
+
+if (project.hasProperty('RELEASE_STORE_FILE')) {
     play {
         track = 'production'
-        serviceAccountEmail = 'titancompanion@api-6802195518378680914-945939.iam.gserviceaccount.com'
-        pk12File = file('/Users/joao/Google Drive/Google Play Android Developer-5ff2e81594fd.p12')
+        serviceAccountEmail = SERVICE_ACCOUNT_EMAIL
+        pk12File = file(SERVICE_ACCOUNT_SECRET_FILE)
     }
-    
-    repositories {
-        mavenCentral()
-    }
+}
+
+repositories {
+    mavenCentral()
+}
     

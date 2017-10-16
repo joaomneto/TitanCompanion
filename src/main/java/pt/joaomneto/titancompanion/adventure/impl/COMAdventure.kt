@@ -24,7 +24,7 @@ class COMAdventure : TWOFMAdventure() {
 
     init {
         fragmentConfiguration.put(FRAGMENT_VITAL_STATS, AdventureFragmentRunner(R.string.vitalStats,
-            "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"))
+            "pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureVitalStatsFragment"))
         fragmentConfiguration.put(FRAGMENT_COMBAT, AdventureFragmentRunner(R.string.fights,
             "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
         fragmentConfiguration.put(FRAGMENT_KUDDAM, AdventureFragmentRunner(R.string.kuddams,
@@ -39,6 +39,7 @@ class COMAdventure : TWOFMAdventure() {
         tabasha = Integer.valueOf(savedGame.getProperty("tabasha"))
         gold = Integer.valueOf(savedGame.getProperty("gold"))
         fuel = Integer.valueOf(savedGame.getProperty("fuel"))
+        provisions = Integer.valueOf(savedGame.getProperty("provisions"))
 
         val cyphersS = savedGame.getProperty("cyphers")
 
@@ -58,9 +59,12 @@ class COMAdventure : TWOFMAdventure() {
         bw.write("tabasha=" + tabasha + "\n")
         bw.write("gold=" + gold + "\n")
         bw.write("fuel=" + fuel + "\n")
+        bw.write("provisions=" + provisions + "\n")
         bw.write("cyphers=" + stringListToText(cyphers)+"\n")
         bw.write("kuddamKilled=" + enumListToText(kuddamKilled)+"\n")
     }
+
+
 
 
 }
