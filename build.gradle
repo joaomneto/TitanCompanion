@@ -92,7 +92,7 @@ android {
     }
 }
 
-if (project.hasProperty('RELEASE_STORE_FILE')) {
+if (project.hasProperty('SERVICE_ACCOUNT_EMAIL')) {
     play {
         track = 'production'
         serviceAccountEmail = SERVICE_ACCOUNT_EMAIL

@@ -10,7 +10,7 @@ import java.io.IOException
 class COMAdventureCreation : TWOFMAdventureCreation() {
 
     init {
-
+        fragmentConfiguration.clear()
         fragmentConfiguration.put(0, Adventure.AdventureFragmentRunner(
                 R.string.title_adventure_creation_vitalstats,
                 "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"))
@@ -19,8 +19,9 @@ class COMAdventureCreation : TWOFMAdventureCreation() {
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        super.storeAdventureSpecificValuesInFile(bw);
+        super.storeAdventureSpecificValuesInFile(bw)
         bw.write("tabasha=9\n")
+        bw.write("tabashaSpecialSkill=9\n")
         bw.write("kuddamKilled=\n")
         bw.write("gold=0\n")
         bw.write("fuel=0\n")

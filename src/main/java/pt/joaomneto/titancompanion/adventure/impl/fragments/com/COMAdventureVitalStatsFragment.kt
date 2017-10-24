@@ -52,6 +52,8 @@ class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
             adv.tabasha = Math.max(0, adv.tabasha - 1)
             refreshScreensFromResume()
         }
+
+
     }
 
     override fun refreshScreensFromResume() {
@@ -59,8 +61,14 @@ class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
         val adv = this.context as COMAdventure
 
+        if (adv.tabashaSpecialSkill)
+            useTabashaButton.setOnClickListener({ v -> adv.useTabashaStandardAction(v) })
+        else
+            useTabashaButton.setOnClickListener({ v -> adv.useTabashaInitialAction(v) })
+
         fuelValue.text = "${adv.fuel}"
         tabashaValue.text = "${adv.tabasha}"
+        useTabashaButton.isEnabled = adv.tabasha > 0
 
     }
 

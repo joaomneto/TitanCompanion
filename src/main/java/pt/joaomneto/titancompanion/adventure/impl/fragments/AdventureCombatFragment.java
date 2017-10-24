@@ -476,9 +476,8 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 	@Override
 	public void refreshScreensFromResume() {
-		combatantListAdapter.notifyDataSetChanged();
-
-
+		if(combatantListAdapter!=null)
+			combatantListAdapter.notifyDataSetChanged();
     }
 
 	protected int getDamage() {

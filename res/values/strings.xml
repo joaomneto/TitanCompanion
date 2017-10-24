@@ -1188,5 +1188,12 @@
     <string name="fuel">Fuel</string>
     <string name="useTabasha">Call Tabasha</string>
     <string name="tabasha" translatable="false">Tabasha</string>
+    <string name="other">Other</string>
+    <string name="replenishLuck">Replenish Luck</string>
+    <string name="replenishSkill">Replenish Skill</string>
+    <string name="oneStrikeCombat">One Strike Combat</string>
+    <string name="oneStrikeCombatVictory">You have won the strike (%1$d vs %2$d)</string>
+    <string name="oneStrikeCombatLoss">You have lost the strike (%1$d vs %2$d)</string>
+    <string name="oneStrikeCombatTie">The strike was a tie (%1$d vs %2$d)</string>
 
 </resources>
