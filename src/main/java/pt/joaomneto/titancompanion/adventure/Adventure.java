@@ -18,7 +18,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.apache.commons.lang3.StringUtils;
+
 import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
@@ -96,6 +98,20 @@ public abstract class Adventure extends BaseFragmentActivity {
                 dialog.cancel();
             }
         });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public static void showErrorAlert(int message, Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.error).setMessage(message).setCancelable(false).setIcon(R.drawable.error_icon).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel());
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public static void showSuccessAlert(int message, Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.done).setMessage(message).setCancelable(false).setIcon(R.drawable.success_icon).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel());
         AlertDialog alert = builder.create();
         alert.show();
     }

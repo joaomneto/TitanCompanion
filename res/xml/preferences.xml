@@ -16,4 +16,14 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/saved_games">
+
+        <Preference
+            android:title="@string/importSavegames"
+            android:key="@string/savegameImportButton"
+            android:summary="@string/importSavegamesDesc"/>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

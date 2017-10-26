@@ -27,8 +27,6 @@ class COMAdventureKuddamFragment : AdventureFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adv: COMAdventure = this.context as COMAdventure
-
         com_kuddam_geshrak.setOnClickListener { addOrRemoveToKuddamList(Kuddam.GESHRAK) }
         com_kuddam_barkek.setOnClickListener { addOrRemoveToKuddamList(Kuddam.BARKEK) }
         com_kuddam_churka.setOnClickListener { addOrRemoveToKuddamList(Kuddam.CHURKA) }
