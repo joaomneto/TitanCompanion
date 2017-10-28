@@ -662,5 +662,22 @@
 
     <string name="fuel">Combustible</string>
     <string name="useTabasha">Utilizer Tabasha</string>
+    <string name="other">Autre</string>
+    <string name="error">Erreur</string>
+    <string name="done">Terminé</string>
+    <string name="info">Information</string>
+    <string name="replenishLuck">Rétablir Chance</string>
+    <string name="replenishSkill">Rétablir Habilité</string>
+    <string name="importSavegames">Importer Parties Sauvegardées</string>
+    <string name="importSavegamesDesc">Importer Parties Sauvegardées dans le format précedent vers le nouveau</string>
+    <string name="oneStrikeCombatVictory">Vous avez gagné le coup (%1$d vs %2$d)</string>
+    <string name="oneStrikeCombatLoss">Vous avez perdu le coup (%1$d vs %2$d)</string>
+    <string name="oneStrikeCombatTie">Le coup a été nul  (%1$d vs %2$d)</string>
+    <string name="oneStrikeCombat">Combat à Un Coup</string>
+    <string name="savegameConfirmMessage">Les parties sauvées doivent être maintenant disponibles dans l\'écran de chargement.</string>
+    <string name="savegameImportNotExecuted">L\'importation de parties sauvées ne peut pas continues sans les droits de lecture de stockage externe</string>
+    <string name="noSavegamesToImport">Il n\'y a pas de parties sauvées à importer…</string>
+    <string name="savegameImportInfo">Le format des parties sauvées de cette application a changé a partir de la version 0.38-beta. Cette application essaye de importer automatiquement les fichiers existants vers le nouveau format. Si par hazard vou ne voyez pas les parties sauvées dans la list de chargement, veuillez utiliser l\'option \"Importer Parties Sauvées\" dans l\'écran de \"Préférences\" pour le faire manuellement.</string>
+    <string name="addCypher">Ajouter code secret</string>
 
 </resources>

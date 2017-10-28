@@ -1,15 +1,18 @@
 package pt.joaomneto.titancompanion;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.preference.PreferenceActivity;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import pt.joaomneto.titancompanion.adventure.Adventure;
@@ -56,9 +59,22 @@ public class TCPreferenceActivity extends PreferenceActivity implements SharedPr
     }
 
 
-    private void runSavegameImport() {
-
+    public static boolean runSavegameImport(Context context) {
+        try {
+                File oldDir = new File(Environment.getExternalStorageDirectory()
+                        .getPath(), "ffgbutil");
+            if (oldDir.exists()) {
+                FileUtils.copyDirectory(oldDir, new File(context.getFilesDir(), "ffgbutil"));
+                return true;
+            } else {
+                return false;
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Error importing old savegames", e);
+        }
     }
+
+
 
 
     @Override
@@ -69,8 +85,10 @@ public class TCPreferenceActivity extends PreferenceActivity implements SharedPr
                 Manifest.permission.READ_EXTERNAL_STORAGE) == PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED) {
 
-            runSavegameImport();
-            Adventure.showSuccessAlert(R.string.savegameConfirmMessage, this);
+            if(runSavegameImport(this))
+                Adventure.showSuccessAlert(R.string.savegameConfirmMessage, this);
+            else
+                Adventure.showAlert(R.string.noSavegamesToImport, this);
         } else {
             Adventure.showErrorAlert(R.string.savegameImportNotExecuted, this);
         }

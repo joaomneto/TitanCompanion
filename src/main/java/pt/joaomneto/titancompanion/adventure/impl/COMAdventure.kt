@@ -36,7 +36,7 @@ class COMAdventure : TWOFMAdventure() {
         fragmentConfiguration.put(FRAGMENT_EQUIPMENT, AdventureFragmentRunner(R.string.goldEquipment,
             "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"))
         fragmentConfiguration.put(FRAGMENT_NOTES, AdventureFragmentRunner(R.string.notes,
-            "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"))
+            "pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureNotesFragment"))
     }
 
     override fun loadAdventureSpecificValuesFromFile() {

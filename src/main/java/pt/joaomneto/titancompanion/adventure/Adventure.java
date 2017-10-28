@@ -109,6 +109,13 @@ public abstract class Adventure extends BaseFragmentActivity {
         alert.show();
     }
 
+    public static void showInfoAlert(int message, Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.info).setMessage(message).setCancelable(false).setIcon(R.drawable.info_icon).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel());
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
     public static void showSuccessAlert(int message, Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.done).setMessage(message).setCancelable(false).setIcon(R.drawable.success_icon).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel());
@@ -181,7 +188,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 
         String gamebook = savedGame.getProperty("gamebook");
         if (StringUtils.isNumeric(gamebook))
-            this.gamebook = FightingFantasyGamebook.values()[Integer.parseInt(gamebook) - 1];
+            this.gamebook = FightingFantasyGamebook.values()[Integer.parseInt(gamebook)];
         else
             this.gamebook = FightingFantasyGamebook.valueOf(gamebook);
         initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"));

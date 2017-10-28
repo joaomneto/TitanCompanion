@@ -625,5 +625,22 @@
 
     <string name="fuel">Combustível</string>
     <string name="useTabasha">Chamar Tabasha</string>
+    <string name="other">Outro</string>
+    <string name="error">Erro</string>
+    <string name="done">Terminado</string>
+    <string name="info">Informação</string>
+    <string name="replenishLuck">Reinicializar Sorte</string>
+    <string name="replenishSkill">Reinicializar Perícia</string>
+    <string name="importSavegames">Importar Jogos Gravados</string>
+    <string name="oneStrikeCombatVictory">Ganhaste o ataque  (%1$d vs %2$d)</string>
+    <string name="oneStrikeCombatLoss">Perdeste o combate  (%1$d vs %2$d)</string>
+    <string name="oneStrikeCombatTie">O combate empatou  (%1$d vs %2$d)</string>
+    <string name="importSavegamesDesc">Importar jogos guardados no formato anterior para o novo.</string>
+    <string name="savegameConfirmMessage">Os jogos gravados devem estar agora disponíveis no ecrã de carregamento.</string>
+    <string name="noSavegamesToImport">Não existem jogos gravados para importar…</string>
+    <string name="savegameImportNotExecuted">A importação de jogos gravados necessita de permissões de leitura sobre o armazenamento externo para funcionar</string>
+    <string name="savegameImportInfo">O formato de jogos gravados nesta aplicação mudou na version 0.38-beta. Esta aplicação tenta importar os ficheiros existentes para o novo formato. Se porventura os jogos não estiverem disponívels no ecrã de carregamento por favor utilize a opção \"Importar Jogos Gravados\" no ecrã de \"Preferências\" para o fazer manualmente.</string>
+    <string name="oneStrikeCombat">Combate Único</string>
+    <string name="addCypher">Adicionar cifra</string>
 
 </resources>

@@ -29,8 +29,8 @@
         android:id="@+id/minusSkillButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusValueButton"
-        android:layout_alignTop="@+id/plusValueButton"
+        android:layout_alignBottom="@+id/plusSkillButton"
+        android:layout_alignTop="@+id/plusSkillButton"
         android:layout_toLeftOf="@+id/statsSkillValue"
         android:text="@string/minus" />
 
@@ -38,14 +38,14 @@
         android:id="@+id/statsSkillValue"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusValueButton"
-        android:layout_alignTop="@+id/plusValueButton"
-        android:layout_toLeftOf="@+id/plusValueButton"
+        android:layout_alignBottom="@+id/plusSkillButton"
+        android:layout_alignTop="@+id/plusSkillButton"
+        android:layout_toLeftOf="@+id/plusSkillButton"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/plusValueButton"
+        android:id="@+id/plusSkillButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignRight="@+id/buttonsBar"

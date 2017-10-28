@@ -1198,10 +1198,14 @@
     <string name="importSavegames">Import Savegames</string>
     <string name="importSavegamesDesc">Import savegames from the previous format to the new one.</string>
     <string name="savegameImportButton" translatable="false">savegameImport</string>
-    <string name="savegameImportConfirmationText">The saved games should now be available to you in the loading screen.</string>
     <string name="savegameConfirmMessage">The saved games should now be available to you in the loading screen.</string>
     <string name="savegameImportNotExecuted">The savegame import cannot run without read permissions to the external storage</string>
     <string name="error">Error</string>
     <string name="done">Done</string>
+    <string name="noSavegamesToImport">There are no savegames to import…</string>
+    <string name="currentVersion" translatable="false">currentVersion</string>
+    <string name="savegameImportInfo">The savegame format of this app has changed in version 0.38-beta. This app attempts to auto import the exiting files to the new format. If by any chance you should have saved games in the Load Game list and they are not available, please use the option \"Import Savegames\" in the \"Settings\" screen to do it manually.</string>
+    <string name="info">Information</string>
+    <string name="addCypher">Add Cypher</string>
 
 </resources>
