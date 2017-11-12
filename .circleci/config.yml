@@ -32,6 +32,9 @@ jobs:
            command:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
+           name: Lint
+           command: ./gradlew lint
+       - run:
            name: Generate Debug APK
            command: ./gradlew assembleDebug -PdisablePreDex
        - run:
@@ -83,4 +86,3 @@ workflows:
           filters:
             branches:
               only: master_production
-

@@ -104,4 +104,3 @@ if (project.hasProperty('SERVICE_ACCOUNT_EMAIL')) {
 repositories {
     mavenCentral()
 }
-    
