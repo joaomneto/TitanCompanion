@@ -239,7 +239,6 @@
     <string name="title_adventure_creation_potions">Potions</string>
 
 
-
     <string-array name="standard_potion_list">
         <item>Skill</item>
         <item>Strength</item>
@@ -1175,5 +1174,38 @@
     <string name="sobEnemyShip">Enemy ship: </string>
     <string name="comingSoon">Coming Soon</string>
     <string name="doses">Doses</string>
+
+    <!--Chasms of Malice-->
+
+    <string name="geshrak" translatable="false">Geshrak</string>
+    <string name="gurskut" translatable="false">Gurskut</string>
+    <string name="friankara" translatable="false">Friankara</string>
+    <string name="barkek" translatable="false">Barkek</string>
+    <string name="griffkek" translatable="false">Griffkek</string>
+    <string name="churka" translatable="false">Churka</string>
+    <string name="kahhrac" translatable="false">Kahhrac</string>
+    <string name="kuddams" translatable="false">Kuddams</string>
+    <string name="fuel">Fuel</string>
+    <string name="useTabasha">Call Tabasha</string>
+    <string name="tabasha" translatable="false">Tabasha</string>
+    <string name="other">Other</string>
+    <string name="replenishLuck">Replenish Luck</string>
+    <string name="replenishSkill">Replenish Skill</string>
+    <string name="oneStrikeCombat">One Strike Combat</string>
+    <string name="oneStrikeCombatVictory">You have won the strike (%1$d vs %2$d)</string>
+    <string name="oneStrikeCombatLoss">You have lost the strike (%1$d vs %2$d)</string>
+    <string name="oneStrikeCombatTie">The strike was a tie (%1$d vs %2$d)</string>
+    <string name="importSavegames">Import Savegames</string>
+    <string name="importSavegamesDesc">Import savegames from the previous format to the new one.</string>
+    <string name="savegameImportButton" translatable="false">savegameImport</string>
+    <string name="savegameConfirmMessage">The saved games should now be available to you in the loading screen.</string>
+    <string name="savegameImportNotExecuted">The savegame import cannot run without read permissions to the external storage</string>
+    <string name="error">Error</string>
+    <string name="done">Done</string>
+    <string name="noSavegamesToImport">There are no savegames to import…</string>
+    <string name="currentVersion" translatable="false">currentVersion</string>
+    <string name="savegameImportInfo">The savegame format of this app has changed in version 0.38-beta. This app attempts to auto import the exiting files to the new format. If by any chance you should have saved games in the Load Game list and they are not available, please use the option \"Import Savegames\" in the \"Settings\" screen to do it manually.</string>
+    <string name="info">Information</string>
+    <string name="addCypher">Add Cypher</string>
 
 </resources>

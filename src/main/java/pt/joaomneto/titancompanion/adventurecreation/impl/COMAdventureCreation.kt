@@ -8,6 +8,7 @@ import java.io.BufferedWriter
 import java.io.IOException
 
 class COMAdventureCreation : TWOFMAdventureCreation() {
+
     init {
         fragmentConfiguration.clear()
         fragmentConfiguration.put(0, Adventure.AdventureFragmentRunner(
@@ -18,12 +19,14 @@ class COMAdventureCreation : TWOFMAdventureCreation() {
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("spells=\n")
-        bw.write("tabasha=\n")
+        super.storeAdventureSpecificValuesInFile(bw)
+        bw.write("tabasha=9\n")
+        bw.write("tabashaSpecialSkill=9\n")
         bw.write("kuddamKilled=\n")
         bw.write("gold=0\n")
         bw.write("fuel=0\n")
-        bw.write("cyphers=0\n")
+        bw.write("provisions=0\n")
+        bw.write("cyphers=\n")
 
     }
 

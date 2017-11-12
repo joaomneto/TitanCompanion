@@ -118,7 +118,7 @@ public class LoadAdventureActivity extends BaseActivity{
 								if (line.startsWith("gamebook=")) {
 									String gbs = line.split("=")[1];
 									if (StringUtils.isNumeric(gbs))
-										gamebook = FightingFantasyGamebook.values()[Integer.parseInt(gbs)-1];
+										gamebook = FightingFantasyGamebook.values()[Integer.parseInt(gbs)];
 									else
 										gamebook = FightingFantasyGamebook.valueOf(gbs);
 									break;

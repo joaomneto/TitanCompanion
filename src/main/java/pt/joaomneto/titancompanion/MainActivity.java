@@ -6,86 +6,48 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 
+import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.fragment.TCPreferenceFragment;
 
-public class MainActivity extends BaseActivity{
+import static android.support.v4.content.PermissionChecker.PERMISSION_GRANTED;
 
-	public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
-
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-//		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(
-//				MainActivity.this));
-		// Here, thisActivity is the current activity
-//		if (ContextCompat.checkSelfPermission(this,
-//				Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//				!= PackageManager.PERMISSION_GRANTED) {
-//
-//
-//
-//				ActivityCompat.requestPermissions(this,
-//						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//						MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
-//
-//				// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-//				// app-defined int constant. The callback method gets the
-//				// result of the request.
-//
-//		}
-	}
+public class MainActivity extends BaseActivity {
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED) {
 
-                } else {
-
-                    showAlert(R.string.storagePermissionsRequired);
-                    finish();
-                    android.os.Process.killProcess(android.os.Process.myPid());
-                    super.onDestroy();
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
+            TCPreferenceActivity.runSavegameImport(this);
         }
     }
 
-	
-	
+    public void createNewAdventure(View view) {
+        Intent intent = new Intent(this, GamebookListActivity.class);
+        startActivity(intent);
+    }
 
-
-	public void createNewAdventure(View view) {
-		Intent intent = new Intent(this, GamebookListActivity.class);
-		startActivity(intent);
-	}
-
-	public void loadAdventure(View view) {
-		Intent intent = new Intent(this, LoadAdventureActivity.class);
-		startActivity(intent);
-	}
+    public void loadAdventure(View view) {
+        Intent intent = new Intent(this, LoadAdventureActivity.class);
+        startActivity(intent);
+    }
 
     public void showAlert(int messageId) {
         AlertDialog.Builder builder = getBuilder();
@@ -107,50 +69,73 @@ public class MainActivity extends BaseActivity{
                         });
         return builder;
     }
-	public void quit(View view) {
-		android.os.Process.killProcess(android.os.Process.myPid());
-		System.exit(0);
-	}
 
-	public void settings(View view) {
-		Intent intent = new Intent(this, TCPreferenceActivity.class);
-		intent.putExtra( PreferenceActivity.EXTRA_SHOW_FRAGMENT, TCPreferenceFragment.class.getName() );
-		intent.putExtra( PreferenceActivity.EXTRA_NO_HEADERS, true );
-		startActivity(intent);
-	}
+    public void quit(View view) {
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);
+    }
 
-	public void rate(View view) {
-		Uri uri = Uri.parse("market://details?id=" + this.getPackageName().replace(".debug", ""));
-		Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-		// To count with Play market backstack, After pressing back button,
-		// to taken back to our application, we need to add following flags to intent.
-		goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-				Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-				Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-		try {
-			startActivity(goToMarket);
-		} catch (ActivityNotFoundException e) {
-			startActivity(new Intent(Intent.ACTION_VIEW,
-					Uri.parse("http://play.google.com/store/apps/details?id=" + this.getPackageName())));
-		}
+    public void settings(View view) {
+        Intent intent = new Intent(this, TCPreferenceActivity.class);
+        intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, TCPreferenceFragment.class.getName());
+        intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
+        startActivity(intent);
+    }
 
-	}
+    public void rate(View view) {
+        Uri uri = Uri.parse("market://details?id=" + this.getPackageName().replace(".debug", ""));
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        // To count with Play market backstack, After pressing back button,
+        // to taken back to our application, we need to add following flags to intent.
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        try {
+            startActivity(goToMarket);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + this.getPackageName())));
+        }
 
-	public void showAlert(String message){
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Result")
-				.setMessage(message)
-				.setCancelable(false)
-				.setNegativeButton("Close",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
-								dialog.cancel();
-							}
-						});
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
+    }
 
+    public void showAlert(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Result")
+                .setMessage(message)
+                .setCancelable(false)
+                .setNegativeButton("Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        try {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+            Integer previouslyStarted = prefs.getInt(getString(R.string.currentVersion), 0);
+            PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+            Integer version = pInfo.versionCode;
+            if (previouslyStarted!=version) {
+                SharedPreferences.Editor edit = prefs.edit();
+                edit.putInt(getString(R.string.currentVersion), version);
+                edit.commit();
+                showHelp();
+            }
+        } catch (Throwable e) {
+            Log.e(MainActivity.class.getSimpleName(), "Error trying to determine if it's the first launch after install/update");
+            e.printStackTrace();
+        }
+    }
+
+    private void showHelp() {
+        Adventure.showInfoAlert(R.string.savegameImportInfo, this);
+    }
 }

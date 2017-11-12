@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
@@ -58,6 +59,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
         return rootView;
     }
 
+
     protected void initialize(View rootView) {
         skillValue = rootView.findViewById(R.id.statsSkillValue);
         staminaValue = rootView.findViewById(R.id.statsStaminaValue);
@@ -70,7 +72,7 @@ public class AdventureVitalStatsFragment extends AdventureFragment {
         increaseStaminaButton = rootView
                 .findViewById(R.id.plusStaminaButton);
         increaseSkillButton = rootView
-                .findViewById(R.id.plusValueButton);
+                .findViewById(R.id.plusSkillButton);
         increaseLuckButton = rootView
                 .findViewById(R.id.plusLuckButton);
         increaseProvisionsButton = rootView

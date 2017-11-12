@@ -27,6 +27,7 @@ dependencies {
     implementation fileTree(include: '*.jar', dir: 'libs')
     implementation 'com.android.support:support-v4:25.4.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'commons-io:commons-io:2.6'
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -36,8 +37,11 @@ dependencies {
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
+    dataBinding {
+        enabled = true
+    }
 
-    if (project.hasProperty('RELEASE_STORE_FILE')){
+    if (project.hasProperty('RELEASE_STORE_FILE')) {
         signingConfigs {
             release {
                 storeFile file(RELEASE_STORE_FILE)
@@ -53,7 +57,7 @@ android {
             debuggable true
             applicationIdSuffix ".debug"
         }
-        if (project.hasProperty('RELEASE_STORE_FILE')){
+        if (project.hasProperty('RELEASE_STORE_FILE')) {
             release {
                 signingConfig signingConfigs.release
             }
@@ -89,15 +93,14 @@ android {
     }
 }
 
-if (project.hasProperty('PLAY_STORE_SECRET_FILE')){
+if (project.hasProperty('SERVICE_ACCOUNT_EMAIL')) {
     play {
         track = 'production'
-        serviceAccountEmail = 'titan-companion@appspot.gserviceaccount.com'
-        pk12File = file(PLAY_STORE_SECRET_FILE)
+        serviceAccountEmail = SERVICE_ACCOUNT_EMAIL
+        pk12File = file(SERVICE_ACCOUNT_SECRET_FILE)
     }
 }
 
 repositories {
     mavenCentral()
 }
-    
