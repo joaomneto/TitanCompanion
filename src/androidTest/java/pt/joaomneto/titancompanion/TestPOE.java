@@ -11,10 +11,10 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestEOTD extends TestST {
+public class TestPOE extends TestST {
 
     @Override
     protected FightingFantasyGamebook getGamebook() {
-        return FightingFantasyGamebook.EYE_OF_THE_DRAGON;
+        return FightingFantasyGamebook.PORTAL_OF_EVIL;
     }
 }
