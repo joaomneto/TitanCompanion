@@ -1174,16 +1174,6 @@
     <string name="sobEnemyShip">Enemy ship: </string>
     <string name="comingSoon">Coming Soon</string>
     <string name="doses">Doses</string>
-    <string name="start_new">New Image</string>
-    <string name="brush">Brush</string>
-    <string name="erase">Eraser</string>
-    <string name="save">Save</string>
-    <string name="paint">Paint</string>
-    <string name="small">Small</string>
-    <string name="medium">Medium</string>
-    <string name="large">Large</string>
-    <string name="newDrawing">New drawing</string>
-    <string name="startNewDrawing">Start new drawing (you will lose the current drawing)?</string>
 
     <!--Chasms of Malice-->
 
