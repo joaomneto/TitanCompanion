@@ -93,11 +93,14 @@ public abstract class Adventure extends BaseFragmentActivity {
 
     public static void showAlert(int title, String message, Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
+        builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel());
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public static void showConfirmation(int title, int message, Context context, DialogInterface.OnClickListener confirmOnClickListener) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel()).setPositiveButton(R.string.ok, confirmOnClickListener);
         AlertDialog alert = builder.create();
         alert.show();
     }
@@ -125,11 +128,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 
     public static void showAlert(View view, Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
+        builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel());
         AlertDialog alert = builder.create();
         alert.show();
     }
@@ -862,6 +861,14 @@ public abstract class Adventure extends BaseFragmentActivity {
             return getString(fragmentConfiguration.get(position).getTitleId()).toUpperCase(l);
         }
 
+    }
+
+    public static int getResId(Context context, String resName, String type) {
+        return context.getResources().getIdentifier(resName, type, context.getPackageName());
+    }
+
+    public void notifyPagerAdapterChanged() {
+        mViewPager.getAdapter().notifyDataSetChanged();
     }
 
 

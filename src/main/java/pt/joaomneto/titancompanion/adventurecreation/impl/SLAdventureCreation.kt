@@ -26,13 +26,12 @@ class SLAdventureCreation : AdventureCreation() {
         bw.write("currentOxygen=10\n")
         bw.write("initialOxygen=10\n")
         bw.write("currentLasers=4\n")
-        bw.write("initialLasers=4\n")
         bw.write("currentShields=12\n")
-        bw.write("initialShields=12\n")
         bw.write("provisions=10\n")
         bw.write("rating=$rating\n")
         bw.write("provisionsValue=4\n")
         bw.write("gold=0\n")
+        bw.write("starspray=true")
     }
 
     override fun rollGamebookSpecificStats(view: View) {

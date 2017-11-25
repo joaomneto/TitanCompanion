@@ -1,6 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
-
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import java.io.BufferedWriter
@@ -8,48 +7,46 @@ import java.io.IOException
 
 class SLAdventure : Adventure() {
 
-    var currentLasers= 0
-    var currentShields= 0
-    var initialLasers= 0
-    var initialShields= 0
+    var currentLasers = 0
+    var currentShields = 0
     var rating = 0
+    var starspray = false
 
     companion object {
         private val FRAGMENT_VITAL_STATS = 0
         private val FRAGMENT_SHIP_STATS = 1
-        private val FRAGMENT_COMBAT = 2
-        private val FRAGMENT_VEHICLE_COMBAT = 3
-        private val FRAGMENT_EQUIPMENT = 4
-        private val FRAGMENT_NOTES = 5
+        private var FRAGMENT_COMBAT = 2
+        private var FRAGMENT_VEHICLE_COMBAT = 3
+        private var FRAGMENT_EQUIPMENT = 4
+        private var FRAGMENT_NOTES = 5
     }
 
     init {
+
         Adventure.fragmentConfiguration.clear()
-        Adventure.fragmentConfiguration.put(FRAGMENT_VITAL_STATS, Adventure.AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_SHIP_STATS, Adventure.AdventureFragmentRunner(R.string.starship2, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLStarshipStatsFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_COMBAT, Adventure.AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_VEHICLE_COMBAT, Adventure.AdventureFragmentRunner(R.string.combatWeaponClashes, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLWeaponCombatFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_EQUIPMENT, Adventure.AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_NOTES, Adventure.AdventureFragmentRunner(R.string.notes, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"))
+        Adventure.fragmentConfiguration.put(FRAGMENT_VITAL_STATS, AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"))
+        Adventure.fragmentConfiguration.put(FRAGMENT_SHIP_STATS, AdventureFragmentRunner(R.string.shipAndWeapons, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLStarshipStatsFragment"))
+        Adventure.fragmentConfiguration.put(FRAGMENT_COMBAT, AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
+        Adventure.fragmentConfiguration.put(FRAGMENT_VEHICLE_COMBAT, AdventureFragmentRunner(R.string.combatWeaponClashes, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLWeaponCombatFragment"))
+        Adventure.fragmentConfiguration.put(FRAGMENT_EQUIPMENT, AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"))
+        Adventure.fragmentConfiguration.put(FRAGMENT_NOTES, AdventureFragmentRunner(R.string.notes, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"))
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
-        gold = Integer.valueOf(savedGame.getProperty("gold"))
-        rating = Integer.valueOf(savedGame.getProperty("rating"))
-        initialLasers = Integer.valueOf(savedGame.getProperty("initialLasers"))
-        currentLasers = Integer.valueOf(savedGame.getProperty("currentLasers"))
-        initialShields = Integer.valueOf(savedGame.getProperty("initialShields"))
-        currentShields = Integer.valueOf(savedGame.getProperty("currentShields"))
+        gold = savedGame.getProperty("gold").toInt()
+        rating = savedGame.getProperty("rating").toInt()
+        currentLasers = savedGame.getProperty("currentLasers").toInt()
+        currentShields = savedGame.getProperty("currentShields").toInt()
+        starspray = savedGame.getProperty("starspray").toBoolean()
     }
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
         bw.write("gold=$gold\n")
         bw.write("rating=$rating\n")
-        bw.write("initialLasers=$initialLasers\n")
         bw.write("currentLasers=$currentLasers\n")
-        bw.write("initialShields=$initialShields\n")
         bw.write("currentShields=$currentShields\n")
+        bw.write("starspray=$starspray\n")
     }
 
     override fun getConsumeProvisionText(): String {
