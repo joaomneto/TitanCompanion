@@ -403,6 +403,16 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SLAdventureCreation"
+            android:label="@string/sl"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.SLAdventure"
+            android:label="@string/sl"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AODAdventureCreation"
             android:label="@string/aod"
 
