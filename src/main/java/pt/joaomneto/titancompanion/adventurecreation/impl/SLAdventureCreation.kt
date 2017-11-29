@@ -4,6 +4,7 @@ import android.view.View
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sl.SLVitalStatisticsFragment
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
@@ -15,8 +16,8 @@ class SLAdventureCreation : AdventureCreation() {
     init {
         AdventureCreation.fragmentConfiguration.clear()
         AdventureCreation.fragmentConfiguration.put(0, AdventureFragmentRunner(
-                R.string.title_adventure_creation_vitalstats,
-                "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"))
+            R.string.title_adventure_creation_vitalstats,
+            "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sl.SLVitalStatisticsFragment"))
 
     }
 
@@ -34,8 +35,13 @@ class SLAdventureCreation : AdventureCreation() {
         bw.write("starspray=true")
     }
 
+    private fun getSLVitalStatisticsFragment(): SLVitalStatisticsFragment {
+        return getFragments()[0] as SLVitalStatisticsFragment
+    }
+
     override fun rollGamebookSpecificStats(view: View) {
         rating = DiceRoller.rollD6()
+        getSLVitalStatisticsFragment().getRatingValue()?.text = rating.toString()
     }
 
     override fun validateCreationSpecificParameters(): String? {
