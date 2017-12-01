@@ -22,7 +22,7 @@ public class RCAdventureVitalStatsFragment extends AdventureVitalStatsFragment {
 		View rootView = inflater.inflate(
 				R.layout.fragment_22rc_adventure_vitalstats, container, false);
 
-		initialize(rootView);
+		//CHECKTHIS	initialize(rootView);
 
 
 		final RCAdventure adv = (RCAdventure) getActivity();

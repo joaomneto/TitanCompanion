@@ -53,7 +53,7 @@ class SLAdventure : Adventure() {
         return resources.getString(R.string.useProvisionTablet)
     }
 
-    fun getProvisionsText(): String {
+    override fun getProvisionsText(): String {
         return resources.getString(R.string.provisionTablets)
     }
 

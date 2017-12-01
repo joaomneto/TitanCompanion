@@ -47,10 +47,10 @@ class COMAdventureNotesFragment : AdventureNotesFragment() {
             alert.setPositiveButton(R.string.ok,
                 DialogInterface.OnClickListener { _, _ ->
                     val value = input.text.toString()
-                    if (value.isEmpty())
-                        return@OnClickListener
-                    adv.cyphers.add(value.trim { it <= ' ' })
-                    (cypherList!!.adapter as ArrayAdapter<String>).notifyDataSetChanged()
+                    if (value.isNotBlank()){
+                        adv.cyphers.add(value.trim { it <= ' ' })
+                        (cypherList!!.adapter as ArrayAdapter<String>).notifyDataSetChanged()
+                    }
                 })
 
             alert.setNegativeButton(R.string.cancel

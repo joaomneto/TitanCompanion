@@ -26,7 +26,7 @@ public class SOBAdventureVitalStatsFragment extends AdventureVitalStatsFragment 
 		super.onCreate(savedInstanceState);
 		View rootView = inflater.inflate(R.layout.fragment_16sob_adventure_vitalstats, container, false);
 
-		initialize(rootView);
+	//CHECKTHIS	initialize(rootView);
 		final SOBAdventure adv = (SOBAdventure) getActivity();
 
 		Runnable incTrigger = new Runnable() {

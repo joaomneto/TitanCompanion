@@ -31,7 +31,7 @@ public class HOHAdventureVitalStatsFragment extends AdventureVitalStatsFragment 
 		View rootView = inflater.inflate(
 				R.layout.fragment_10hoh_adventure_vitalstats, container, false);
 
-		initialize(rootView);
+		//CHECKTHIS	initialize(rootView);
 
 		decreaseFearButton = (Button) rootView
 				.findViewById(R.id.minusFearButton);

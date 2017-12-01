@@ -142,8 +142,7 @@
         android:text="@string/minus" />
 
     <TextView
-        android:id="@+id/provisionsValue"
-        android:layout_width="40dp"
+        android:id="@+id/provisionsValue"        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/plusProvisionsButton"
         android:layout_alignTop="@+id/plusProvisionsButton"

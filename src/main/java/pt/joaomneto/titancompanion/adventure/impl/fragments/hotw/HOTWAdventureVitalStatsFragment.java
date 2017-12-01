@@ -31,7 +31,7 @@ public class HOTWAdventureVitalStatsFragment extends AdventureVitalStatsFragment
         View rootView = inflater.inflate(
                 R.layout.fragment_62hotw_adventure_vitalstats, container, false);
 
-        initialize(rootView);
+        //CHECKTHIS initialize(rootView);
 
         decreaseChangeButton = (Button) rootView
                 .findViewById(R.id.minusChangeButton);
