@@ -643,4 +643,23 @@
     <string name="oneStrikeCombat">Combate Único</string>
     <string name="addCypher">Adicionar cifra</string>
 
+    <!--Sky Lord-->
+
+    <string name="jangmistral">Jang Mistral</string>
+    <string name="lasers">Lasers:</string>
+    <string name="starship2">Nave</string>
+    <string name="abandonStarspray">Abandonar Starspray</string>
+    <string name="confirmAbandonStarspray">Deseja abandonar a Starspray?</string>
+    <string name="provisionTablets">Rações:</string>
+    <string name="useProvisionTablet">Comer Ração</string>
+    <string name="combatWeaponClashes">Combate de Choque-Armado</string>
+    <string name="rating">Nível</string>
+    <string name="rating2">Nível:</string>
+    <string name="slEnemyHitPlayer">O inimigo atingiu-te! (-%1$d Escudos).</string>
+    <string name="slDirectHit">Impacto directo! (-%1$d Escudos)</string>
+    <string name="slEnemyVictory">O inimigo destruiu-te...</string>
+    <string name="slPlayerVictory">Venceste o teu inimigo!</string>
+    <string name="shipAndWeapons"><![CDATA[Nave & Armas]]></string>
+
+
 </resources>

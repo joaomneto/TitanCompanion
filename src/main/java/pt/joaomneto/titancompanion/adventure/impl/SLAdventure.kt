@@ -11,6 +11,7 @@ class SLAdventure : Adventure() {
     var currentShields = 0
     var rating = 0
     var starspray = false
+    var oxygen = 0
 
     companion object {
         private val FRAGMENT_VITAL_STATS = 0
@@ -24,7 +25,7 @@ class SLAdventure : Adventure() {
     init {
 
         Adventure.fragmentConfiguration.clear()
-        Adventure.fragmentConfiguration.put(FRAGMENT_VITAL_STATS, AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"))
+        Adventure.fragmentConfiguration.put(FRAGMENT_VITAL_STATS, AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLAdventureVitalStatsFragment"))
         Adventure.fragmentConfiguration.put(FRAGMENT_SHIP_STATS, AdventureFragmentRunner(R.string.shipAndWeapons, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLStarshipStatsFragment"))
         Adventure.fragmentConfiguration.put(FRAGMENT_COMBAT, AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
         Adventure.fragmentConfiguration.put(FRAGMENT_VEHICLE_COMBAT, AdventureFragmentRunner(R.string.combatWeaponClashes, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLWeaponCombatFragment"))
@@ -38,6 +39,7 @@ class SLAdventure : Adventure() {
         currentLasers = savedGame.getProperty("currentLasers").toInt()
         currentShields = savedGame.getProperty("currentShields").toInt()
         starspray = savedGame.getProperty("starspray").toBoolean()
+        oxygen = savedGame.getProperty("oxygen").toInt()
     }
 
     @Throws(IOException::class)
@@ -47,6 +49,7 @@ class SLAdventure : Adventure() {
         bw.write("currentLasers=$currentLasers\n")
         bw.write("currentShields=$currentShields\n")
         bw.write("starspray=$starspray\n")
+        bw.write("oxygen=$oxygen\n")
     }
 
     override fun getConsumeProvisionText(): String {

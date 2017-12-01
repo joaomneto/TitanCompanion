@@ -24,8 +24,7 @@ class SLAdventureCreation : AdventureCreation() {
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
 
-        bw.write("currentOxygen=10\n")
-        bw.write("initialOxygen=10\n")
+        bw.write("oxygen=10\n")
         bw.write("currentLasers=4\n")
         bw.write("currentShields=12\n")
         bw.write("provisions=10\n")

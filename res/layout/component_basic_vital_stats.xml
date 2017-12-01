@@ -1,0 +1,144 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/basicVitalStats"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment">
+
+        <TextView
+            android:id="@+id/skillText"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/skill"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/minusSkillButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/skillText"
+            android:layout_alignTop="@+id/skillText"
+            android:layout_toStartOf="@+id/statsSkillValue"
+            android:text="@string/minus" />
+
+        <Button
+            android:id="@+id/statsSkillValue"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/skillText"
+            android:layout_alignTop="@+id/skillText"
+            android:layout_toStartOf="@+id/plusSkillButton"
+            android:gravity="center"
+            android:text="12"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/plusSkillButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/skillText"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/skillText"
+            android:text="@string/plus" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment">
+
+        <TextView
+            android:id="@+id/staminaText"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/stamina"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/minusStaminaButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/staminaText"
+            android:layout_alignTop="@+id/staminaText"
+            android:layout_toStartOf="@+id/statsStaminaValue"
+            android:text="@string/minus" />
+
+        <Button
+            android:id="@+id/statsStaminaValue"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/staminaText"
+            android:layout_alignTop="@+id/staminaText"
+            android:layout_toStartOf="@+id/plusStaminaButton"
+            android:gravity="center"
+            android:text="24"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/plusStaminaButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/staminaText"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/staminaText"
+            android:text="@string/plus" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment">
+
+        <TextView
+            android:id="@+id/luckText"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/luck"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/minusLuckButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/luckText"
+            android:layout_alignTop="@+id/luckText"
+            android:layout_toStartOf="@+id/statsLuckValue"
+            android:text="@string/minus" />
+
+        <Button
+            android:id="@+id/statsLuckValue"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/luckText"
+            android:layout_alignTop="@+id/luckText"
+            android:layout_toStartOf="@+id/plusLuckButton"
+            android:gravity="center"
+            android:text="24"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/plusLuckButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/luckText"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/luckText"
+            android:text="@string/plus" />
+    </RelativeLayout>
+</LinearLayout>

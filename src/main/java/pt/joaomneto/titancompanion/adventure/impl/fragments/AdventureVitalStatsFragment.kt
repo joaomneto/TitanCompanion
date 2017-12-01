@@ -12,6 +12,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import kotlinx.android.synthetic.main.component_basic_buttons_bar.*
+import kotlinx.android.synthetic.main.component_basic_provisions_stats.*
+import kotlinx.android.synthetic.main.component_basic_vital_stats.*
 import kotlinx.android.synthetic.main.fragment_adventure_vitalstats.*
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
