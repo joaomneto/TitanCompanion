@@ -39,7 +39,7 @@ public class SOTSAdventureVitalStatsFragment extends AdventureVitalStatsFragment
 	}
 
 	protected void initialize(View rootView) {
-		super.initialize(rootView);
+		//CHECKTHIS super.initialize(rootView);
 		honorValue = (TextView) rootView.findViewById(R.id.statsHonourValue);
 
 

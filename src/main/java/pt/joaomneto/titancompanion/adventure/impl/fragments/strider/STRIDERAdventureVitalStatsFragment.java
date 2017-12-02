@@ -32,7 +32,7 @@ public class STRIDERAdventureVitalStatsFragment extends AdventureVitalStatsFragm
 		View rootView = inflater.inflate(
 				R.layout.fragment_27strider_adventure_vitalstats, container, false);
 
-		initialize(rootView);
+		//CHECKTHIS	initialize(rootView);
 
 
 		fearValue = (TextView) rootView.findViewById(R.id.statsFearValue);

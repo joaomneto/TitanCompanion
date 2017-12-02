@@ -1208,4 +1208,20 @@
     <string name="info">Information</string>
     <string name="addCypher">Add Cypher</string>
 
+    <!--Sky Lord-->
+    <string name="lasers">Lasers:</string>
+    <string name="starship2">Starship</string>
+    <string name="provisionTablets">Tablets: </string>
+    <string name="useProvisionTablet">Use Tablet</string>
+    <string name="combatWeaponClashes">Combat-Weapon Clashes</string>
+    <string name="jangmistral">Jang Mistral</string>
+    <string name="rating">Rating</string>
+    <string name="rating2">Rating:</string>
+    <string name="slEnemyHitPlayer">The enemy has hit you. (-%1$d Shields)</string>
+    <string name="slDirectHit">Direct hit!. (-%1$d Shields)</string>
+    <string name="slEnemyVictory">The enemy has destroyed you...</string>
+    <string name="slPlayerVictory">You have destroyed your enemy</string>
+    <string name="abandonStarspray">Abandon Starspray</string>
+    <string name="confirmAbandonStarspray">Do you wish to abandon the Starspray?</string>
+    <string name="shipAndWeapons"><![CDATA[Ship & Weapons]]></string>
 </resources>

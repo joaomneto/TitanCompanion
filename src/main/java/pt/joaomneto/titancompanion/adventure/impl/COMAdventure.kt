@@ -1,6 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
-import android.view.View
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.com.Kuddam
 import java.io.BufferedWriter
@@ -70,7 +69,7 @@ class COMAdventure : TWOFMAdventure() {
         bw.write("kuddamKilled=" + enumListToText(kuddamKilled) + "\n")
     }
 
-    fun useTabashaInitialAction(v: View?) {
+    fun useTabashaInitialAction() {
 
         val alert = AlertDialog.Builder(this).create()
 
@@ -87,18 +86,18 @@ class COMAdventure : TWOFMAdventure() {
 
         tabashaReplenishSkillButton.setOnClickListener({
             currentSkill = initialSkill
-            useTabashaStandardAction(v)
+            useTabashaStandardAction()
             alert.cancel()
         })
 
         tabashaReplenishLuckButton.setOnClickListener({
             currentLuck = initialLuck
-            useTabashaStandardAction(v)
+            useTabashaStandardAction()
             alert.cancel()
         })
 
         tabashaOtherSkillButton.setOnClickListener({
-            useTabashaStandardAction(v)
+            useTabashaStandardAction()
             alert.cancel()
         })
 
@@ -108,7 +107,7 @@ class COMAdventure : TWOFMAdventure() {
 
     }
 
-    fun useTabashaStandardAction(v: View?) {
+    fun useTabashaStandardAction() {
         tabashaSpecialSkill = true
         tabasha--
         refreshScreens()

@@ -679,5 +679,20 @@
     <string name="noSavegamesToImport">Il n\'y a pas de parties sauvées à importer…</string>
     <string name="savegameImportInfo">Le format des parties sauvées de cette application a changé a partir de la version 0.38-beta. Cette application essaye de importer automatiquement les fichiers existants vers le nouveau format. Si par hazard vou ne voyez pas les parties sauvées dans la list de chargement, veuillez utiliser l\'option \"Importer Parties Sauvées\" dans l\'écran de \"Préférences\" pour le faire manuellement.</string>
     <string name="addCypher">Ajouter code secret</string>
+    <string name="jangmistral">Yang Mistral</string>
+    <string name="rating">Niveau</string>
+    <string name="rating2">Niveau:</string>
+    <string name="provisionTablets">Cachets-Repas:</string>
+    <string name="useProvisionTablet">Manger Repas</string>
+    <string name="combatWeaponClashes">Combat Spatial</string>
+    <string name="starship2">Vaisseau</string>
+    <string name="lasers">Lasers:</string>
+    <string name="abandonStarspray">Abandoner Météore</string>
+    <string name="confirmAbandonStarspray">Voulez vous abandoner le Météore?</string>
+    <string name="slEnemyVictory">Votre adversaire vous a détruit ...</string>
+    <string name="slPlayerVictory">Vous avez vaincu votre adversaire !</string>
+    <string name="slDirectHit">Coup au but! (-%1$d Écrans)</string>
+    <string name="slEnemyHitPlayer">Votre adversaire vous a touché (-%1$d Écrans).</string>
+    <string name="shipAndWeapons"><![CDATA[Vaisseau & Armes]]></string>
 
 </resources>

@@ -31,7 +31,7 @@ public class SAAdventureVitalStatsFragment extends AdventureVitalStatsFragment {
 		View rootView = inflater.inflate(
 				R.layout.fragment_12sa_adventure_vitalstats, container, false);
 
-		initialize(rootView);
+		//CHECKTHIS	initialize(rootView);
 
 		decreasearmorButton = rootView
 				.findViewById(R.id.minusarmorButton);

@@ -21,15 +21,35 @@ import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
 import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
 import pt.joaomneto.titancompanion.util.DiceRoller;
-
-import java.io.*;
-import java.util.*;
 
 public abstract class Adventure extends BaseFragmentActivity {
 
@@ -93,11 +113,14 @@ public abstract class Adventure extends BaseFragmentActivity {
 
     public static void showAlert(int title, String message, Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
+        builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel());
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public static void showConfirmation(int title, int message, Context context, DialogInterface.OnClickListener confirmOnClickListener) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title > 0 ? title : R.string.result).setMessage(message).setCancelable(false).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel()).setPositiveButton(R.string.ok, confirmOnClickListener);
         AlertDialog alert = builder.create();
         alert.show();
     }
@@ -125,11 +148,7 @@ public abstract class Adventure extends BaseFragmentActivity {
 
     public static void showAlert(View view, Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
+        builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close, (dialog, id) -> dialog.cancel());
         AlertDialog alert = builder.create();
         alert.show();
     }
@@ -508,10 +527,9 @@ public abstract class Adventure extends BaseFragmentActivity {
         } else {
             AdventureVitalStatsFragment vitalstats = getVitalStatsFragment();
             vitalstats.setProvisionsValue(--provisions);
-            setCurrentStamina(getCurrentStamina() + provisionsValue);
-            if (getCurrentStamina() > getInitialStamina())
-                setCurrentStamina(getInitialStamina());
-            showAlert(getResources().getString(R.string.provisionsStaminaGain, provisionsValue), this);
+            int staminaGain = Math.min(provisionsValue, initialStamina-currentStamina);
+            setCurrentStamina(Math.min(getCurrentStamina() + provisionsValue, initialStamina));
+            showAlert(getResources().getString(R.string.provisionsStaminaGain, staminaGain), this);
         }
     }
 
@@ -777,6 +795,11 @@ public abstract class Adventure extends BaseFragmentActivity {
         return getResources().getString(R.string.consumeProvisions);
     }
 
+
+    public String getProvisionsText() {
+        return getResources().getString(R.string.provisions);
+    }
+
     public String getCurrencyName() {
         return getResources().getString(R.string.gold);
     }
@@ -862,6 +885,14 @@ public abstract class Adventure extends BaseFragmentActivity {
             return getString(fragmentConfiguration.get(position).getTitleId()).toUpperCase(l);
         }
 
+    }
+
+    public static int getResId(Context context, String resName, String type) {
+        return context.getResources().getIdentifier(resName, type, context.getPackageName());
+    }
+
+    public void notifyPagerAdapterChanged() {
+        mViewPager.getAdapter().notifyDataSetChanged();
     }
 
 

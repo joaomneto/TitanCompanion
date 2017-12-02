@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import kotlinx.android.synthetic.main.fragment_30com_adventure_vitalstats.*
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.COMAdventure
@@ -19,16 +18,13 @@ class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(
+
+        return inflater!!.inflate(
             R.layout.fragment_30com_adventure_vitalstats, container, false)
-
-        initialize(rootView)
-
-        return rootView
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onViewCreated(rootView: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(rootView, savedInstanceState)
 
         val adv = this.context as COMAdventure
 
@@ -62,9 +58,9 @@ class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         val adv = this.context as COMAdventure
 
         if (adv.tabashaSpecialSkill)
-            useTabashaButton.setOnClickListener({ v -> adv.useTabashaStandardAction(v) })
+            useTabashaButton.setOnClickListener({ adv.useTabashaStandardAction() })
         else
-            useTabashaButton.setOnClickListener({ v -> adv.useTabashaInitialAction(v) })
+            useTabashaButton.setOnClickListener({ adv.useTabashaInitialAction() })
 
         fuelValue.text = "${adv.fuel}"
         tabashaValue.text = "${adv.tabasha}"

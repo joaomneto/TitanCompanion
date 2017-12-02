@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/adventureVitalStats"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:columnCount="3"
+                android:columnOrderPreserved="false"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:rowCount="6"
+                android:rowOrderPreserved="false"
+                android:useDefaultMargins="true"
+                tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment">
+
+    <TextView
+        android:id="@+id/textField1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/shields"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <Button
+        android:id="@+id/minusShieldsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/plusShieldsButton"
+        android:layout_alignTop="@+id/plusShieldsButton"
+        android:layout_toLeftOf="@+id/statsShieldsValue"
+        android:text="@string/minus"/>
+
+    <Button        android:id="@+id/statsShieldsValue"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/plusShieldsButton"
+        android:layout_toLeftOf="@+id/plusShieldsButton"
+        android:gravity="center"
+        android:text="12"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignBottom="@+id/minusShieldsButton"/>
+
+    <Button
+        android:id="@+id/plusShieldsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/plus"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/textField2"/>
+
+    <TextView
+        android:id="@+id/textField2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/textField1"
+        android:layout_below="@+id/textField1"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/lasers"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <Button
+        android:id="@+id/minusLasersButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minus"
+        android:layout_alignBottom="@+id/statsLasersValue"
+        android:layout_toStartOf="@+id/statsLasersValue"
+        android:layout_alignTop="@+id/statsLasersValue"/>
+
+    <Button        android:id="@+id/statsLasersValue"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textField2"
+        android:layout_toStartOf="@+id/plusLasersButton"
+        android:gravity="center"
+        android:text="24"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignTop="@+id/textField2"/>
+
+    <Button
+        android:id="@+id/plusLasersButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/plus"
+        android:layout_alignTop="@+id/textField2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/statsLasersValue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:weightSum="1"
+        android:layout_below="@id/plusLasersButton">
+
+        <ImageView
+            android:id="@+id/starshipLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/img_33sl_ship_l0"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/abandonStarsprayButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/abandonStarspray"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</RelativeLayout>

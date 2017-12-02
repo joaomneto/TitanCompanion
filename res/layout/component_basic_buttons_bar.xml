@@ -1,0 +1,50 @@
+<LinearLayout android:id="@+id/buttonsBar"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        android:id="@+id/buttonConsumeProvisions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="consumeProvision"
+        android:text="@string/consumeProvisions" />
+
+    <Button
+        android:id="@+id/usePotionButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="consumePotion" />
+
+    <LinearLayout
+        android:id="@+id/testButtonsBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonTestLuck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="testLuck"
+            android:text="@string/testLuck" />
+
+        <Button
+            android:id="@+id/buttonTestSkill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="testSkill"
+            android:text="@string/testSkill" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonSavePoint"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="savepoint"
+        android:text="@string/saveAdventure" />
+</LinearLayout>

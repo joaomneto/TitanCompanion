@@ -24,7 +24,7 @@ public class AWFAdventureVitalStatsFragment extends AdventureVitalStatsFragment 
 		View rootView = inflater.inflate(
 				R.layout.fragment_17awf_adventure_vitalstats, container, false);
 
-		initialize(rootView);
+		//CHECKTHIS	initialize(rootView);
 
 	
 		heroPoints = (TextView) rootView.findViewById(R.id.statsHeroPointsValue);
