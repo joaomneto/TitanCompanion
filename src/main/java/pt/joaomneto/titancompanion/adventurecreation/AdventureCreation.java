@@ -4,10 +4,12 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import pt.joaomneto.titancompanion.BaseFragmentActivity;
 import pt.joaomneto.titancompanion.GamebookSelectionActivity;
 import pt.joaomneto.titancompanion.LoadAdventureActivity;
@@ -183,6 +185,8 @@ public abstract class AdventureCreation extends BaseFragmentActivity {
 			dir = new File(dir, relDir);
 			if (!dir.exists()) {
 				dir.mkdirs();
+			}else{
+				FileUtils.deleteDirectory(dir);
 			}
 
 			File file = new File(dir, "initial.xml");
