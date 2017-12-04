@@ -19,11 +19,11 @@ import pt.joaomneto.titancompanion.adventure.impl.SLAdventure
 class SLStarshipStatsFragment : AdventureFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
 
         return inflater!!.inflate(R.layout.fragment_33sl_adventure_starshipstats,
-            container, false)
+                container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -48,8 +48,8 @@ class SLStarshipStatsFragment : AdventureFragment() {
             refreshScreensFromResume()
         })
         abandonStarsprayButton.setOnClickListener({
-            Adventure.showConfirmation(R.string.abandonStarspray, R.string.confirmAbandonStarspray, adv, { _, _ ->
-                adv.starspray = false
+            Adventure.showConfirmation(if (adv.starspray) R.string.abandonStarspray else R.string.recoverStarspray, if (adv.starspray) R.string.confirmAbandonStarspray else R.string.confirmRecoverStarspray, adv, { _, _ ->
+                adv.starspray = !adv.starspray
                 refreshScreensFromResume()
             })
         })
@@ -62,20 +62,21 @@ class SLStarshipStatsFragment : AdventureFragment() {
         statsLasersValue.text = adv.currentLasers.toString()
         statsShieldsValue.text = adv.currentShields.toString()
 
-        if(adv.starspray) {
+        if (adv.starspray) {
             starshipLayout.setImageBitmap(generateStarshipLayout(adv))
-        }else{
+        } else {
             starshipLayout.setImageResource(R.drawable.blaster)
-            abandonStarsprayButton.visibility = INVISIBLE
         }
+
+        abandonStarsprayButton.text = getString(if (adv.starspray) R.string.abandonStarspray else R.string.recoverStarspray)
 
 
     }
 
     private fun generateStarshipLayout(adv: SLAdventure): Bitmap {
         return overlay(
-            getResId(adv, "img_33sl_ship_s${12 - minOf(12, adv.currentShields)}", "drawable"),
-            getResId(adv, "img_33sl_ship_l${4 - minOf(4, adv.currentLasers)}", "drawable")
+                getResId(adv, "img_33sl_ship_s${12 - minOf(12, adv.currentShields)}", "drawable"),
+                getResId(adv, "img_33sl_ship_l${4 - minOf(4, adv.currentLasers)}", "drawable")
         )
     }
 
