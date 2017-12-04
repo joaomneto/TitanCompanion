@@ -4,11 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_33sl_adventure_vitalstats.*
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.adventure.impl.BNCAdventure
 import pt.joaomneto.titancompanion.adventure.impl.SLAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 
@@ -43,7 +40,7 @@ class SLAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
     override fun refreshScreensFromResume() {
         super.refreshScreensFromResume()
         val adv = activity as SLAdventure
-        statsOxygenValue.text = adv.oxygen.toString()
+        statsOxygenValue?.text = adv.oxygen.toString()
 
     }
 

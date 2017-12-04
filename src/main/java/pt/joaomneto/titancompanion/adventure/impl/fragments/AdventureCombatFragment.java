@@ -449,16 +449,18 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 		String skillS = enemySkillValue.getText().toString();
 		String staminaS = enemyStaminaValue.getText().toString();
-		Integer skill = null;
-		Integer stamina = null;
+		Integer skill;
+		Integer stamina;
+		Integer handicap;
 		try {
 			skill = Integer.valueOf(skillS);
 			stamina = Integer.valueOf(staminaS);
+			handicap = Integer.valueOf(handicapValue.getText().toString());
 		} catch (NumberFormatException e) {
 			Adventure.showAlert(getString(R.string.youMustFillSkillAndStamina), AdventureCombatFragment.this.getActivity());
 			return;
 		}
-		Integer handicap = Integer.valueOf(handicapValue.getText().toString());
+
 
 
 		addCombatant(rootView, skill, stamina, handicap, getDefaultEnemyDamage());

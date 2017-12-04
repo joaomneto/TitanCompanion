@@ -649,7 +649,9 @@
     <string name="lasers">Lasers:</string>
     <string name="starship2">Nave</string>
     <string name="abandonStarspray">Abandonar Starspray</string>
-    <string name="confirmAbandonStarspray">Deseja abandonar a Starspray?</string>
+    <string name="confirmAbandonStarspray">Desejas abandonar a Starspray?</string>
+    <string name="recoverStarspray">Recuperar Starspray</string>
+    <string name="confirmRecoverStarspray">Desejas recuperar a Starspray?</string>
     <string name="provisionTablets">Rações:</string>
     <string name="useProvisionTablet">Comer Ração</string>
     <string name="combatWeaponClashes">Combate de Choque-Armado</string>

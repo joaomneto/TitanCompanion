@@ -689,6 +689,8 @@
     <string name="lasers">Lasers:</string>
     <string name="abandonStarspray">Abandoner Météore</string>
     <string name="confirmAbandonStarspray">Voulez vous abandoner le Météore?</string>
+    <string name="recoverStarspray">Recupérér Météore</string>
+    <string name="confirmRecoverStarspray">Voulez vous récupérer Starspray?</string>
     <string name="slEnemyVictory">Votre adversaire vous a détruit ...</string>
     <string name="slPlayerVictory">Vous avez vaincu votre adversaire !</string>
     <string name="slDirectHit">Coup au but! (-%1$d Écrans)</string>

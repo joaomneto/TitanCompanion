@@ -1222,6 +1222,8 @@
     <string name="slEnemyVictory">The enemy has destroyed you...</string>
     <string name="slPlayerVictory">You have destroyed your enemy</string>
     <string name="abandonStarspray">Abandon Starspray</string>
+    <string name="recoverStarspray">Recover Starspray</string>
     <string name="confirmAbandonStarspray">Do you wish to abandon the Starspray?</string>
+    <string name="confirmRecoverStarspray">Do you wish to recover the Starspray?</string>
     <string name="shipAndWeapons"><![CDATA[Ship & Weapons]]></string>
 </resources>
