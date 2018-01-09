@@ -69,6 +69,7 @@
         android:layout_alignRight="@+id/enemyStaminaValue"
         android:layout_alignTop="@+id/handicapText"
         android:ems="10"
+        android:text="0"
         android:digits="1234567890"
         android:inputType="phone"/>
 

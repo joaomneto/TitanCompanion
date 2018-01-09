@@ -17,7 +17,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppBaseTheme">
+        android:theme="@style/AppBaseTheme"
+        android:configChanges="fontScale">
         <activity
             android:name="pt.joaomneto.titancompanion.MainActivity"
             android:label="@string/title_activity_main">
