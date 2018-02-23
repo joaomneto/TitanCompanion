@@ -86,8 +86,7 @@
         android:layout_above="@+id/buttonSaveAdventure"
         android:layout_alignLeft="@+id/luckCount"
         android:layout_alignParentRight="true"
-        android:text="@string/rollStats"
-        android:onClick="rollStats" />
+        android:text="@string/rollStats" />
 
     <Button
         android:id="@+id/buttonSaveAdventure"
@@ -96,8 +95,7 @@
         android:layout_alignLeft="@+id/buttonRollStats"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/saveAdventure" 
-        android:onClick="saveAdventure"/>
+        android:text="@string/saveAdventure"/>
 
     <EditText
         android:id="@+id/adventureNameInput"

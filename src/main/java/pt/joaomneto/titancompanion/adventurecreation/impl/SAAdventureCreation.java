@@ -25,11 +25,11 @@ public class SAAdventureCreation extends AdventureCreation {
 
 	public SAAdventureCreation() {
 		super();
-		Companion.getFragmentConfiguration().clear();
-		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
+		getFragmentConfiguration().clear();
+		getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAVitalStatisticsFragment"));
-		Companion.getFragmentConfiguration().put(1, new AdventureFragmentRunner(
+		getFragmentConfiguration().put(1, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_weapons,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponsFragment"));
 		

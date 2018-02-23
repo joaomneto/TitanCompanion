@@ -16,8 +16,8 @@ public class EOTDAdventureCreation extends AdventureCreation {
 
     public EOTDAdventureCreation() {
         super();
-        Companion.getFragmentConfiguration().clear();
-        Companion.getFragmentConfiguration().put(0, new Adventure.AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats,
+        getFragmentConfiguration().clear();
+        getFragmentConfiguration().put(0, new Adventure.AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats,
                 "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
 
     }

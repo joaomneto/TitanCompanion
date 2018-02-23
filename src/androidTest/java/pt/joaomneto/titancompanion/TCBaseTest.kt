@@ -51,22 +51,22 @@ import java.io.IOException
 
 abstract class TCBaseTest {
 
-    @Rule
+    @get:Rule
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
-    protected abstract val gamebook: FightingFantasyGamebook
+    open protected abstract val gamebook: FightingFantasyGamebook
 
-    protected val activityInstance: Activity
+    private val activityInstance: Activity
         get() {
-            val currentActivity = emptyArray<Activity>()
+            var currentActivity: Activity? = null
 
             getInstrumentation().runOnMainSync {
                 val resumedActivity = ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED)
                 val it = resumedActivity.iterator()
-                currentActivity[0] = it.next()
+                currentActivity = it.next() as Activity
             }
 
-            return currentActivity[0]
+            return currentActivity ?: throw IllegalStateException("No activity found.")
         }
 
     protected val resources: Resources
@@ -80,6 +80,19 @@ abstract class TCBaseTest {
             val targetContext = InstrumentationRegistry.getTargetContext()
             return targetContext.packageName
         }
+
+    protected fun performSwipeOverAllScreens() {
+        performSwipeLeft()
+        performSwipeLeft()
+        performSwipeLeft()
+        performSwipeLeft()
+        performSwipeLeft()
+        performSwipeLeft()
+        performSwipeLeft()
+        performSwipeLeft()
+        performSwipeLeft()
+        performSwipeLeft()
+    }
 
     protected fun performSwipeLeft() {
         onView(withId(R.id.pager)).perform(swipeLeft())
@@ -108,8 +121,7 @@ abstract class TCBaseTest {
     }
 
     protected fun performSaveAdventureFromCreationScreen() {
-        val button: ViewInteraction
-        button = onView(allOf(withText(getString(R.string.saveAdventure)), isDisplayed()))
+        val button: ViewInteraction = onView(allOf(withText(getString(R.string.saveAdventure)), isDisplayed()))
         button.perform(click())
     }
 
@@ -124,8 +136,7 @@ abstract class TCBaseTest {
     }
 
     protected fun performVitalStatisticsRoll() {
-        val button: ViewInteraction
-        button = onView(allOf(withText(getString(R.string.rollStats)), isDisplayed()))
+        val button: ViewInteraction = onView(allOf(withText(getString(R.string.rollStats)), isDisplayed()))
         button.perform(click())
     }
 
@@ -183,7 +194,7 @@ abstract class TCBaseTest {
 
     companion object {
 
-        protected fun childAtPosition(
+        public fun childAtPosition(
             parentMatcher: Matcher<View>, position: Int): Matcher<View> {
 
             return object : TypeSafeMatcher<View>() {

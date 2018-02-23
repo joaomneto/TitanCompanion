@@ -25,11 +25,11 @@ public class TCOCAdventureCreation extends AdventureCreation {
 
     public TCOCAdventureCreation() {
         super();
-        Companion.getFragmentConfiguration().clear();
-        Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
+        getFragmentConfiguration().clear();
+        getFragmentConfiguration().put(0, new AdventureFragmentRunner(
                 R.string.title_adventure_creation_vitalstats,
                 "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-        Companion.getFragmentConfiguration().put(FRAGMENT_TCOC_SPELLS, new AdventureFragmentRunner(
+        getFragmentConfiguration().put(FRAGMENT_TCOC_SPELLS, new AdventureFragmentRunner(
                 R.string.spells,
                 "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.tcoc.TCOCAdventureCreationSpellsFragment"));
 

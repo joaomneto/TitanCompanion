@@ -35,7 +35,7 @@ class SLAdventureCreation : AdventureCreation() {
     }
 
     private fun getSLVitalStatisticsFragment(): SLVitalStatisticsFragment {
-        return getFragments()[0] as SLVitalStatisticsFragment
+        return fragments[0] as SLVitalStatisticsFragment
     }
 
     override fun rollGamebookSpecificStats(view: View) {

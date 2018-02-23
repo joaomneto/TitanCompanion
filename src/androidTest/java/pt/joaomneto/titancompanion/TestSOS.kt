@@ -10,9 +10,5 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.CITY_OF_THIEVE
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class TestSOS : TestTFOD() {
-
-    override fun getGamebook(): FightingFantasyGamebook {
-        return CITY_OF_THIEVES
-    }
-
+    override val gamebook = FightingFantasyGamebook.STEALER_OF_SOULS
 }

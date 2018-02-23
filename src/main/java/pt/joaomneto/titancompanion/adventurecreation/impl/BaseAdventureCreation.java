@@ -16,8 +16,8 @@ public abstract class BaseAdventureCreation extends AdventureCreation {
 
 	public BaseAdventureCreation() {
 		super();
-		Companion.getFragmentConfiguration().clear();
-		Companion.getFragmentConfiguration()
+		getFragmentConfiguration().clear();
+		getFragmentConfiguration()
 				.put(0, new AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
 	}
 

@@ -8,21 +8,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment;
 
-public class STRIDERVitalStatisticsFragment extends Fragment {
+public class STRIDERVitalStatisticsFragment extends VitalStatisticsFragment {
 
 
 	public STRIDERVitalStatisticsFragment(){
 		
 	}
 	
-	View rootView;
 	TextView fearValue;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		rootView = inflater.inflate(R.layout.fragment_27strider_adventurecreation_vital_statistics, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_27strider_adventurecreation_vital_statistics, container, false);
 		fearValue = (TextView) rootView.findViewById(R.id.fearValue);
 
 		return rootView;

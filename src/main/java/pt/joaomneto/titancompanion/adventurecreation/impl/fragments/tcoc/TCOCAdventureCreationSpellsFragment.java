@@ -3,6 +3,7 @@ package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.tcoc;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.TCOCAdventureCreation;
 
 public class TCOCAdventureCreationSpellsFragment extends Fragment {
@@ -96,6 +98,15 @@ public class TCOCAdventureCreationSpellsFragment extends Fragment {
 		});
 
 		return rootView;
+	}
+
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+
+		view.findViewById(R.id.buttonSaveAdventure).setOnClickListener((View v) -> {
+			((AdventureCreation) this.getActivity()).saveAdventure(v);
+		});
 	}
 
 	public TextView getSpellScoreValue() {

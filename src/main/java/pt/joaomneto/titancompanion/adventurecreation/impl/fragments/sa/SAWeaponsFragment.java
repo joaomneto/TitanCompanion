@@ -24,7 +24,6 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEn
 
 public class SAWeaponsFragment extends Fragment {
 
-    View rootView;
     TextView weaponsValue;
     ListView weaponList = null;
     Button buttonAddWeapon = null;
@@ -38,7 +37,7 @@ public class SAWeaponsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         final SAAdventureCreation adv = (SAAdventureCreation) getActivity();
 
-        rootView = inflater.inflate(
+        View rootView = inflater.inflate(
                 R.layout.fragment_12sa_adventurecreation_weapons, container,
                 false);
         weaponsValue = rootView.findViewById(R.id.weaponsValue);

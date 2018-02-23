@@ -1,5 +1,7 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl;
 
+import android.view.View;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 
@@ -8,7 +10,6 @@ import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.ff.FFVitalStatisticsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
-import android.view.View;
 
 public class FFAdventureCreation extends AdventureCreation {
 
@@ -19,8 +20,8 @@ public class FFAdventureCreation extends AdventureCreation {
 
 	public FFAdventureCreation() {
 		super();
-		Companion.getFragmentConfiguration().clear();
-		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
+		getFragmentConfiguration().clear();
+		getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.ff.FFVitalStatisticsFragment"));
 		

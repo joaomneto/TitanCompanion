@@ -9,7 +9,6 @@ import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.bnc.BNCVitalStatisticsFragment;
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.hoh.HOHVitalStatisticsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
 public class BNCAdventureCreation extends AdventureCreation {
@@ -19,8 +18,8 @@ public class BNCAdventureCreation extends AdventureCreation {
 
 	public BNCAdventureCreation() {
 		super();
-		Companion.getFragmentConfiguration().clear();
-		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
+		getFragmentConfiguration().clear();
+		getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.bnc.BNCVitalStatisticsFragment"));
 

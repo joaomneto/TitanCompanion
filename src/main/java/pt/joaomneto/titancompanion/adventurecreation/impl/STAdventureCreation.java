@@ -1,5 +1,7 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl;
 
+import android.view.View;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 
@@ -8,7 +10,6 @@ import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment;
 import pt.joaomneto.titancompanion.util.DiceRoller;
-import android.view.View;
 
 public class STAdventureCreation extends AdventureCreation {
 
@@ -32,11 +33,11 @@ public class STAdventureCreation extends AdventureCreation {
 	
 	public STAdventureCreation() {
 		super();
-		Companion.getFragmentConfiguration().clear();
-		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
+		getFragmentConfiguration().clear();
+		getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		Companion.getFragmentConfiguration().put(FRAGMENT_ST_SHIPCREW, new AdventureFragmentRunner(
+		getFragmentConfiguration().put(FRAGMENT_ST_SHIPCREW, new AdventureFragmentRunner(
 				R.string.shipCrewStats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment"));
 

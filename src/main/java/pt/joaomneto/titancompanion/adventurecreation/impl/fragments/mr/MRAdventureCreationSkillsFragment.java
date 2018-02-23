@@ -3,6 +3,7 @@ package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.mr;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill;
+import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.MRAdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEnumAdapter;
 
@@ -101,6 +103,15 @@ public class MRAdventureCreationSkillsFragment extends AdventureFragment {
 		});
 
 		return rootView;
+	}
+
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+
+		view.findViewById(R.id.buttonSaveAdventure).setOnClickListener((View v) -> {
+			((AdventureCreation) this.getActivity()).saveAdventure(v);
+		});
 	}
 
 

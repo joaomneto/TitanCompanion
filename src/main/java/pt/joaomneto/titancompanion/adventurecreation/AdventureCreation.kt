@@ -12,11 +12,7 @@ import android.view.Menu
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import pt.joaomneto.titancompanion.BaseFragmentActivity
-import pt.joaomneto.titancompanion.GamebookSelectionActivity
-import pt.joaomneto.titancompanion.LoadAdventureActivity
-import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.TechnicalException
+import pt.joaomneto.titancompanion.*
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.consts.Constants
@@ -26,8 +22,7 @@ import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
-import java.util.HashMap
-import java.util.Locale
+import java.util.*
 
 abstract class AdventureCreation : BaseFragmentActivity() {
 
@@ -131,7 +126,6 @@ abstract class AdventureCreation : BaseFragmentActivity() {
         skillValue.text = "" + skill
         staminaValue.text = "" + stamina
         luckValue.text = "" + luck
-
     }
 
     protected abstract fun rollGamebookSpecificStats(view: View)
@@ -207,7 +201,7 @@ abstract class AdventureCreation : BaseFragmentActivity() {
     abstract fun validateCreationSpecificParameters(): String?
 
     @Throws(IllegalArgumentException::class)
-    fun validateCreationParameters() {
+    private fun validateCreationParameters() {
         val sb = StringBuilder()
         var error = false
         sb.append(getString(R.string.someParametersMIssing))
@@ -217,14 +211,14 @@ abstract class AdventureCreation : BaseFragmentActivity() {
             error = true
         }
         sb.append(if (error) "; " else "")
-        if (this.adventureName == null || this.adventureName!!.trim { it <= ' ' }.length == 0) {
+        if (this.adventureName == null || this.adventureName!!.trim { it <= ' ' }.isEmpty()) {
             sb.append(getString(R.string.adventureName))
             error = true
         }
 
         val specificParameters = validateCreationSpecificParameters()
 
-        if (specificParameters != null && specificParameters.length > 0) {
+        if (specificParameters != null && specificParameters.isNotEmpty()) {
             sb.append(if (error) "; " else "")
             error = true
             sb.append(specificParameters)
@@ -238,14 +232,14 @@ abstract class AdventureCreation : BaseFragmentActivity() {
 
     companion object {
 
-        protected val NO_PARAMETERS_TO_VALIDATE = ""
+        @JvmStatic
+        val NO_PARAMETERS_TO_VALIDATE = ""
 
-        protected var fragmentConfiguration = SparseArray<Adventure.AdventureFragmentRunner>()
-        private val fragments = HashMap<Int, Fragment>()
+        @JvmStatic
+        var fragmentConfiguration = SparseArray<Adventure.AdventureFragmentRunner>()
 
-        fun getFragments(): Map<Int, Fragment> {
-            return fragments
-        }
+        @JvmStatic
+        val fragments = HashMap<Int, Fragment>()
     }
 
 }

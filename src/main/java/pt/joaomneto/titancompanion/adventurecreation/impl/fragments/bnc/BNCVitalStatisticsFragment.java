@@ -8,30 +8,29 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment;
 
-public class BNCVitalStatisticsFragment extends Fragment {
+public class BNCVitalStatisticsFragment extends VitalStatisticsFragment {
 
 
-	public BNCVitalStatisticsFragment(){
-		
-	}
-	
-	View rootView;
-	TextView willpowerValue;
+    public BNCVitalStatisticsFragment() {
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		rootView = inflater.inflate(R.layout.fragment_25bnc_adventurecreation_vital_statistics, container, false);
-		willpowerValue = (TextView) rootView.findViewById(R.id.willpowerValue);
+    }
 
-		return rootView;
-	}
+    TextView willpowerValue;
 
-	public TextView getWillpowerValue() {
-		return willpowerValue;
-	}
-	
-	
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        View rootView = inflater.inflate(R.layout.fragment_25bnc_adventurecreation_vital_statistics, container, false);
+        willpowerValue = (TextView) rootView.findViewById(R.id.willpowerValue);
+
+        return rootView;
+    }
+
+    public TextView getWillpowerValue() {
+        return willpowerValue;
+    }
+
 
 }

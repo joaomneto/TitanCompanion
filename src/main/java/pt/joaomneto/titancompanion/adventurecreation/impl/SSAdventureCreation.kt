@@ -20,6 +20,8 @@ class SSAdventureCreation : AdventureCreation() {
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
         bw.write("spells=\n")
+        bw.write("clearings=\n")
+        bw.write("gold=0")
     }
 
     override fun rollGamebookSpecificStats(view: View) {}

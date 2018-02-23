@@ -1,12 +1,13 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl;
 
+import android.view.View;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
-import android.view.View;
 
 public class AWFAdventureCreation extends AdventureCreation {
 
@@ -14,10 +15,10 @@ public class AWFAdventureCreation extends AdventureCreation {
 
 	public AWFAdventureCreation() {
 		super();
-		Companion.getFragmentConfiguration().clear();
-		Companion.getFragmentConfiguration()
+		getFragmentConfiguration().clear();
+		getFragmentConfiguration()
 				.put(0, new AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		Companion.getFragmentConfiguration()
+		getFragmentConfiguration()
 				.put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_superpower, "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.awf.AWFAdventureCreationSuperpowerFragment"));
 
 	}

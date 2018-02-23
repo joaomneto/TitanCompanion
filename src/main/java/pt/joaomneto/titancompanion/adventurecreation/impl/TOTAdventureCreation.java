@@ -12,8 +12,8 @@ import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 public class TOTAdventureCreation extends AdventureCreation {
     public TOTAdventureCreation() {
         super();
-        Companion.getFragmentConfiguration().clear();
-        Companion.getFragmentConfiguration()
+        getFragmentConfiguration().clear();
+        getFragmentConfiguration()
                 .put(0,
                         new AdventureFragmentRunner(
                                 R.string.title_adventure_creation_vitalstats,

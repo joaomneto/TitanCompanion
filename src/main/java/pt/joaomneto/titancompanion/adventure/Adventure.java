@@ -91,10 +91,11 @@ public abstract class Adventure extends BaseFragmentActivity {
     FightingFantasyGamebook gamebook = null;
     String name = null;
     Properties savedGame;
-    Map<Integer, Fragment> fragments = new HashMap<Integer, Fragment>();
+    Map<Integer, Fragment> fragments = new HashMap<>();
 
     public Adventure() {
         super();
+        fragmentConfiguration.clear();
         fragmentConfiguration.put(FRAGMENT_VITAL_STATS, new AdventureFragmentRunner(R.string.vitalStats,
                 "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"));
         fragmentConfiguration.put(FRAGMENT_COMBAT, new AdventureFragmentRunner(R.string.fights,
@@ -864,7 +865,8 @@ public abstract class Adventure extends BaseFragmentActivity {
 
             try {
                 Fragment o = (Fragment) Class.forName(fragmentConfiguration.get(position).getClassName()).newInstance();
-                fragments.put(position, o);
+                if(!o.isAdded())
+                    fragments.put(position, o);
                 return o;
             } catch (Exception e) {
                 e.printStackTrace();

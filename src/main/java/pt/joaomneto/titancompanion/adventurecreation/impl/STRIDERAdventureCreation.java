@@ -17,8 +17,8 @@ public class STRIDERAdventureCreation extends BaseAdventureCreation {
 
 	public STRIDERAdventureCreation() {
 		super();
-		Companion.getFragmentConfiguration().clear();
-		Companion.getFragmentConfiguration().put(0, new Adventure.AdventureFragmentRunner(
+		getFragmentConfiguration().clear();
+		getFragmentConfiguration().put(0, new Adventure.AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.strider.STRIDERVitalStatisticsFragment"));
 

@@ -67,7 +67,7 @@
         android:id="@+id/buttonSaveAdventure"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="saveAdventure"
+
         android:text="@string/saveAdventure" />
 
 </LinearLayout>

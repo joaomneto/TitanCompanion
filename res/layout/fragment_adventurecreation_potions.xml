@@ -70,7 +70,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:onClick="saveAdventure"
+
         android:text="@string/saveAdventure" />
 
 </RelativeLayout>

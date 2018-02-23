@@ -6,10 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.SOTSAdventureCreation;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +61,15 @@ public class SOTSAdventureCreationSkillFragment extends Fragment {
 		});
 
 		return rootView;
+	}
+
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+
+		view.findViewById(R.id.buttonSaveAdventure).setOnClickListener((View v) -> {
+			((AdventureCreation) this.getActivity()).saveAdventure(v);
+		});
 	}
 
 	SOTSMartialArt getArtFromString(String nameString) {

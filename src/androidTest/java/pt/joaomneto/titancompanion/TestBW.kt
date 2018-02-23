@@ -8,10 +8,5 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class TestBW : TestST() {
-
-    override fun getGamebook(): FightingFantasyGamebook {
-        return FightingFantasyGamebook.EYE_OF_THE_DRAGON
-    }
-
-
+    override val gamebook = FightingFantasyGamebook.BATTLEBLADE_WARRIOR
 }
