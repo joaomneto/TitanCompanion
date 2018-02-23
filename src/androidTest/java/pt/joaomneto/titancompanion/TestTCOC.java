@@ -35,7 +35,7 @@ public class TestTCOC extends TCBaseTest {
     public void performChooseSpells() {
         DataInteraction textView2 = onData(anything())
                 .inAdapterView(allOf(withId(R.id.spellListView),
-                        childAtPosition(
+                        Companion.childAtPosition(
                                 withClassName(is("android.widget.LinearLayout")),
                                 1)))
                 .atPosition(0);
@@ -43,7 +43,7 @@ public class TestTCOC extends TCBaseTest {
 
         DataInteraction textView3 = onData(anything())
                 .inAdapterView(allOf(withId(R.id.spellListView),
-                        childAtPosition(
+                        Companion.childAtPosition(
                                 withClassName(is("android.widget.LinearLayout")),
                                 1)))
                 .atPosition(0);
@@ -51,7 +51,7 @@ public class TestTCOC extends TCBaseTest {
 
         DataInteraction textView4 = onData(anything())
                 .inAdapterView(allOf(withId(R.id.spellListView),
-                        childAtPosition(
+                        Companion.childAtPosition(
                                 withClassName(is("android.widget.LinearLayout")),
                                 1)))
                 .atPosition(1);
@@ -59,7 +59,7 @@ public class TestTCOC extends TCBaseTest {
 
         DataInteraction textView5 = onData(anything())
                 .inAdapterView(allOf(withId(R.id.spellListView),
-                        childAtPosition(
+                        Companion.childAtPosition(
                                 withClassName(is("android.widget.LinearLayout")),
                                 1)))
                 .atPosition(1);

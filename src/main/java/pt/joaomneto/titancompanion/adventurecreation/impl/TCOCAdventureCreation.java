@@ -25,11 +25,11 @@ public class TCOCAdventureCreation extends AdventureCreation {
 
     public TCOCAdventureCreation() {
         super();
-        fragmentConfiguration.clear();
-        fragmentConfiguration.put(0, new AdventureFragmentRunner(
+        Companion.getFragmentConfiguration().clear();
+        Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
                 R.string.title_adventure_creation_vitalstats,
                 "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-        fragmentConfiguration.put(FRAGMENT_TCOC_SPELLS, new AdventureFragmentRunner(
+        Companion.getFragmentConfiguration().put(FRAGMENT_TCOC_SPELLS, new AdventureFragmentRunner(
                 R.string.spells,
                 "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.tcoc.TCOCAdventureCreationSpellsFragment"));
 
@@ -70,7 +70,7 @@ public class TCOCAdventureCreation extends AdventureCreation {
     }
 
     private TCOCAdventureCreationSpellsFragment getTCOCSpellsFragment() {
-        TCOCAdventureCreationSpellsFragment tcocSpellsFragment = (TCOCAdventureCreationSpellsFragment) getFragments().get(FRAGMENT_TCOC_SPELLS);
+        TCOCAdventureCreationSpellsFragment tcocSpellsFragment = (TCOCAdventureCreationSpellsFragment) Companion.getFragments().get(FRAGMENT_TCOC_SPELLS);
         return tcocSpellsFragment;
     }
 

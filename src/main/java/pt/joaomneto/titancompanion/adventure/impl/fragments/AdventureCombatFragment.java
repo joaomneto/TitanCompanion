@@ -76,7 +76,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		return rootView;
 	}
 
-	protected void combatTurn() {
+	protected synchronized void combatTurn() {
 		if (combatPositions.size() == 0)
 			return;
 
@@ -93,7 +93,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 
 		if (combatPositions.isEmpty()) {
-			resetCombat();
+			resetCombat(false);
 		}
 	}
 
@@ -149,7 +149,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 			@Override
 			public void onClick(View v) {
-				resetCombat();
+				resetCombat(true);
 				refreshScreensFromResume();
 			}
 		});
@@ -158,7 +158,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
 			@Override
 			public void onClick(View v) {
-				resetCombat();
+				resetCombat(true);
 				refreshScreensFromResume();
 			}
 		});
@@ -253,6 +253,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		int attackStrength = diceRoll.getSum() +  skill + position.getHandicap();
 		DiceRoll enemyDiceRoll = DiceRoller.roll2D6();
 		int enemyAttackStrength = enemyDiceRoll.getSum() +  position.getCurrentSkill();
+		String combatResultText = "";
 		if (attackStrength > enemyAttackStrength) {
 			if (!position.isDefenseOnly()) {
 				Boolean suddenDeath = suddenDeath(diceRoll, enemyDiceRoll);
@@ -260,7 +261,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 					int damage = getDamage();
 					position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
 					hit = true;
-					combatResult.setText(getString(R.string.hitEnemy)+ " (" + diceRoll.getSum() +  " + " + skill
+                    combatResultText += (getString(R.string.hitEnemy)+ " (" + diceRoll.getSum() +  " + " + skill
 							+ (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "") + ") vs (" + enemyDiceRoll.getSum() +  " + "
 							+ position.getCurrentSkill() + "). (-" + damage + getString(R.string.staminaInitials)+")");
 				} else {
@@ -269,31 +270,36 @@ public class AdventureCombatFragment extends AdventureFragment {
 				}
 			} else {
 				draw = true;
-				combatResult.setText(getString(R.string.blockedAttack)+" (" + diceRoll.getSum() +  " + " + skill
+                combatResultText += (getString(R.string.blockedAttack)+" (" + diceRoll.getSum() +  " + " + skill
 						+ (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "") + ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill()
 						+ ")");
 			}
 		} else if (attackStrength < enemyAttackStrength) {
 			int damage = convertDamageStringToInteger(position.getDamage());
 			adv.setCurrentStamina((Math.max(0, adv.getCurrentStamina() - damage)));
-			combatResult.setText(getString(R.string.youWereHit)+" (" + diceRoll.getSum() +  " + " + skill + (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "")
+            combatResultText += (getString(R.string.youWereHit)+" (" + diceRoll.getSum() +  " + " + skill + (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "")
 					+ ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill() + "). (-" + damage + R.string.staminaInitials+")");
 		} else {
 
-			combatResult.setText(R.string.bothMissed);
+            combatResultText += (R.string.bothMissed);
 			draw = true;
 		}
 
 		if (position.getCurrentStamina() == 0) {
 			removeAndAdvanceCombat(position);
-			combatResult.setText(R.string.defeatedEnemy);
+            combatResultText += "\n";
+            combatResultText += getString(R.string.defeatedEnemy);
 		} else {
 			advanceCombat(position);
 		}
 
 		if (adv.getCurrentStamina() == 0) {
-			combatResult.setText(R.string.youveDied);
+            removeAndAdvanceCombat(position);
+            combatResultText += "\n";
+            combatResultText += getString(R.string.youveDied);
 		}
+
+		combatResult.setText(combatResultText);
 
 		refreshScreensFromResume();
 
@@ -311,7 +317,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 			}
 			changeActiveCombatant(currentEnemy);
 		} else {
-			resetCombat();
+			resetCombat(false);
 		}
 
 		return currentEnemy;
@@ -346,6 +352,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		int attackStrength = diceRoll.getSum() +  skill + position.getHandicap();
 		DiceRoll enemyDiceRoll = DiceRoller.roll2D6();
 		int enemyAttackStrength = enemyDiceRoll.getSum() +  position.getCurrentSkill();
+		String combatResultText = "";
 		if (attackStrength > enemyAttackStrength) {
 			Boolean suddenDeath = suddenDeath(diceRoll, enemyDiceRoll);
 			if (suddenDeath == null || !suddenDeath) {
@@ -354,7 +361,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 				position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - getDamage()));
 				position.setStaminaLoss(position.getStaminaLoss() + damage);
 				hit = true;
-				combatResult.setText(getString(R.string.hitEnemy)+" (" + diceRoll.getSum() +  " + " + skill
+                combatResultText += (getString(R.string.hitEnemy)+" (" + diceRoll.getSum() +  " + " + skill
 						+ (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "") + ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill()
 						+ ")");
 			} else {
@@ -366,7 +373,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 			int damage = convertDamageStringToInteger(position.getDamage());
 			staminaLoss += damage;
 			adv.setCurrentStamina((Math.max(0, adv.getCurrentStamina() - damage)));
-			combatResult.setText(getString(R.string.youWereHit)+" (" + diceRoll.getSum() +  " + " + skill + (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "")
+            combatResultText += (getString(R.string.youWereHit)+" (" + diceRoll.getSum() +  " + " + skill + (position.getHandicap() >= 0 ? (" + " + position.getHandicap()) : "")
 					+ ") vs (" + enemyDiceRoll.getSum() +  " + " + position.getCurrentSkill() + ")");
 		} else {
 
@@ -375,19 +382,22 @@ public class AdventureCombatFragment extends AdventureFragment {
 		}
 
 		if (position.getCurrentStamina() == 0 || (getKnockoutStamina() != null && position.getStaminaLoss() >= getKnockoutStamina())) {
-			combatResult.setText(R.string.defeatedEnemy);
-			removeAndAdvanceCombat(position);
-
+            removeAndAdvanceCombat(position);
+            combatResultText += "\n";
+            combatResultText += getString(R.string.defeatedEnemy);
 		}
 
 		if (getKnockoutStamina() != null && staminaLoss >= getKnockoutStamina()) {
-			Adventure.showAlert(R.string.knockedOut, adv);
-		}
+            removeAndAdvanceCombat(position);
+            Adventure.showAlert(R.string.knockedOut, adv);
+        }
 
 		if (adv.getCurrentStamina() == 0) {
-			Adventure.showAlert(R.string.youreDead, adv);
-		}
-		// }
+            removeAndAdvanceCombat(position);
+            Adventure.showAlert(R.string.youreDead, adv);
+        }
+
+		combatResult.setText(combatResultText);
 
 		refreshScreensFromResume();
 
@@ -455,7 +465,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		try {
 			skill = Integer.valueOf(skillS);
 			stamina = Integer.valueOf(staminaS);
-			handicap = Integer.valueOf(handicapValue.getText().toString());
+			handicap = handicapValue.getText()!=null && handicapValue.getText().length() > 0 ? Integer.valueOf(handicapValue.getText().toString()) : 0;
 		} catch (NumberFormatException e) {
 			Adventure.showAlert(getString(R.string.youMustFillSkillAndStamina), AdventureCombatFragment.this.getActivity());
 			return;
@@ -486,7 +496,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 		return 2;
 	}
 
-	protected void resetCombat() {
+	protected void resetCombat(boolean clearResult) {
 
 		staminaLoss = 0;
 
@@ -494,21 +504,23 @@ public class AdventureCombatFragment extends AdventureFragment {
 		combatantListAdapter.notifyDataSetChanged();
 		combatMode = NORMAL;
 		combatStarted = false;
-		combatResult.setText("");
+		if(clearResult) {
+			combatResult.setText("");
+		}
 
 		combatTypeSwitch.setClickable(true);
 		combatTypeSwitch.setChecked(false);
 
-		switchLayoutReset();
+		switchLayoutReset(clearResult);
 
 		refreshScreensFromResume();
 	}
 
-	protected void switchLayoutReset() {
+	protected void switchLayoutReset(boolean clearResult) {
 		addCombatButton.setVisibility(View.VISIBLE);
 		combatTypeSwitch.setVisibility(View.VISIBLE);
 		startCombatButton.setVisibility(View.VISIBLE);
-		resetButton.setVisibility(View.VISIBLE);
+		resetButton.setVisibility(clearResult?View.GONE:View.VISIBLE);
 
 		testLuckButton.setVisibility(View.GONE);
 		combatTurnButton.setVisibility(View.GONE);
@@ -520,9 +532,11 @@ public class AdventureCombatFragment extends AdventureFragment {
 	}
 
 	protected void startCombat() {
-		combatTurn();
+	    if(!combatPositions.isEmpty()) {
+            combatTurn();
 
-		switchLayoutCombatStarted();
+            switchLayoutCombatStarted();
+        }
 	}
 
 	protected String getDefaultEnemyDamage() {

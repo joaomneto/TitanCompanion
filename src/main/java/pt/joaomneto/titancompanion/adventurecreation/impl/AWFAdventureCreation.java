@@ -14,10 +14,10 @@ public class AWFAdventureCreation extends AdventureCreation {
 
 	public AWFAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration()
 				.put(0, new AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		fragmentConfiguration
+		Companion.getFragmentConfiguration()
 				.put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_superpower, "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.awf.AWFAdventureCreationSuperpowerFragment"));
 
 	}

@@ -41,7 +41,7 @@ public class TestAWF extends TCBaseTest {
 
         DataInteraction linearLayout = onData(anything())
                 .inAdapterView(allOf(withId(R.id.superpowerList),
-                        childAtPosition(
+                        Companion.childAtPosition(
                                 withClassName(is("android.widget.RelativeLayout")),
                                 1)))
                 .atPosition(0);

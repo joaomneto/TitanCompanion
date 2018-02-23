@@ -150,7 +150,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 		}
 
 		if (combatPositions.size() == 0) {
-			resetCombat();
+			resetCombat(false);
 		}
 
 		refreshScreensFromResume();
@@ -229,9 +229,9 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
 	}
 
-	protected void switchLayoutReset() {
+	protected void switchLayoutReset(boolean clearResult) {
 		grenadeButton.setVisibility(GONE);
-		super.switchLayoutReset();
+		super.switchLayoutReset(clearResult);
 	}
 
 	public String getOntext() {

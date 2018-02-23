@@ -19,8 +19,8 @@ public class TROKAdventureCreation extends AdventureCreation {
 
 	public TROKAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.trok.TROKVitalStatisticsFragment"));
 		
@@ -41,7 +41,7 @@ public class TROKAdventureCreation extends AdventureCreation {
 	}
 	
 	private TROKVitalStatisticsFragment getTROKVitalStatisticsFragment() {
-		TROKVitalStatisticsFragment trokVitalStatsFragment = (TROKVitalStatisticsFragment) getFragments().get(0);
+		TROKVitalStatisticsFragment trokVitalStatsFragment = (TROKVitalStatisticsFragment) Companion.getFragments().get(0);
 		return trokVitalStatsFragment;
 	}
 

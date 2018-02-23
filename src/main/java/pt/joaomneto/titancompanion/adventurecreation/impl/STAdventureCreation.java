@@ -32,11 +32,11 @@ public class STAdventureCreation extends AdventureCreation {
 	
 	public STAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		fragmentConfiguration.put(FRAGMENT_ST_SHIPCREW, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().put(FRAGMENT_ST_SHIPCREW, new AdventureFragmentRunner(
 				R.string.shipCrewStats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment"));
 
@@ -79,7 +79,7 @@ public class STAdventureCreation extends AdventureCreation {
 	}
 	
 	private STCrewAndShipVitalStatisticsFragment getSTCrewAndShipVitalStatisticsFragment() {
-		STCrewAndShipVitalStatisticsFragment stCrewAndShipVitalStatisticsFragment = (STCrewAndShipVitalStatisticsFragment) getFragments().get(FRAGMENT_ST_SHIPCREW);
+		STCrewAndShipVitalStatisticsFragment stCrewAndShipVitalStatisticsFragment = (STCrewAndShipVitalStatisticsFragment) Companion.getFragments().get(FRAGMENT_ST_SHIPCREW);
 		return stCrewAndShipVitalStatisticsFragment;
 	}
 

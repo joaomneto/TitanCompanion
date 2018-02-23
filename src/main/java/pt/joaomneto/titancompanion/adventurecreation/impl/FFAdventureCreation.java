@@ -19,8 +19,8 @@ public class FFAdventureCreation extends AdventureCreation {
 
 	public FFAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.ff.FFVitalStatisticsFragment"));
 		
@@ -54,7 +54,7 @@ public class FFAdventureCreation extends AdventureCreation {
 	}
 
 	private FFVitalStatisticsFragment getFFVitalStatsFragment() {
-		FFVitalStatisticsFragment ffVitalStatsFragment = (FFVitalStatisticsFragment) getFragments().get(0);
+		FFVitalStatisticsFragment ffVitalStatsFragment = (FFVitalStatisticsFragment) Companion.getFragments().get(0);
 		return ffVitalStatsFragment;
 	}
 	
@@ -63,7 +63,7 @@ public class FFAdventureCreation extends AdventureCreation {
 	protected void rollGamebookSpecificStats(View view) {
 		currentFirepower = DiceRoller.rollD6()+6;
 		currentArmour = DiceRoller.roll2D6().getSum()+24;
-		stamina = DiceRoller.roll2D6().getSum()+24;
+		setStamina(DiceRoller.roll2D6().getSum() + 24);
 		getFFVitalStatsFragment().getFirepowerValue().setText(""+currentFirepower);
 		getFFVitalStatsFragment().getArmorValue().setText(""+currentArmour);
 		

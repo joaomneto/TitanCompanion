@@ -25,11 +25,11 @@ public class SAAdventureCreation extends AdventureCreation {
 
 	public SAAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAVitalStatisticsFragment"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().put(1, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_weapons,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponsFragment"));
 		
@@ -47,12 +47,12 @@ public class SAAdventureCreation extends AdventureCreation {
 	}
 	
 	private SAVitalStatisticsFragment getSAVitalStatisticsFragmentt() {
-		SAVitalStatisticsFragment saVitalStatisticsFragment = (SAVitalStatisticsFragment) getFragments().get(0);
+		SAVitalStatisticsFragment saVitalStatisticsFragment = (SAVitalStatisticsFragment) Companion.getFragments().get(0);
 		return saVitalStatisticsFragment;
 	}
 	
 	private SAWeaponsFragment getSAWeaponsFragment() {
-		SAWeaponsFragment saWeaponsFragment = (SAWeaponsFragment) getFragments().get(1);
+		SAWeaponsFragment saWeaponsFragment = (SAWeaponsFragment) Companion.getFragments().get(1);
 		return saWeaponsFragment;
 	}
 

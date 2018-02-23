@@ -16,8 +16,8 @@ public abstract class BaseAdventureCreation extends AdventureCreation {
 
 	public BaseAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration()
 				.put(0, new AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
 	}
 
@@ -33,7 +33,7 @@ public abstract class BaseAdventureCreation extends AdventureCreation {
 
 	@Override
 	public String validateCreationSpecificParameters() {
-		return NO_PARAMETERS_TO_VALIDATE;
+		return Companion.getNO_PARAMETERS_TO_VALIDATE();
 	}
 
 }

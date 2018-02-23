@@ -22,14 +22,14 @@ public class MRAdventureCreation extends TWOFMAdventureCreation {
 
     public MRAdventureCreation() {
         super();
-        fragmentConfiguration.clear();
-        fragmentConfiguration.put(0, new AdventureFragmentRunner(
+        Companion.getFragmentConfiguration().clear();
+        Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
                 R.string.title_adventure_creation_vitalstats,
                 "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-        fragmentConfiguration.put(FRAGMENT_MR_SPELLS, new AdventureFragmentRunner(
+        Companion.getFragmentConfiguration().put(FRAGMENT_MR_SPELLS, new AdventureFragmentRunner(
                 R.string.specialSkills,
                 "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.mr.MRAdventureCreationSkillsFragment"));
-        fragmentConfiguration.put(FRAGMENT_MR_POTION, new AdventureFragmentRunner(R.string.title_adventure_creation_potions,
+        Companion.getFragmentConfiguration().put(FRAGMENT_MR_POTION, new AdventureFragmentRunner(R.string.title_adventure_creation_potions,
                 "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragment"));
 
     }
@@ -70,7 +70,7 @@ public class MRAdventureCreation extends TWOFMAdventureCreation {
     }
 
     private MRAdventureCreationSkillsFragment getMRSkillFragment() {
-        MRAdventureCreationSkillsFragment mrSkillFragment = (MRAdventureCreationSkillsFragment) getFragments().get(FRAGMENT_MR_SPELLS);
+        MRAdventureCreationSkillsFragment mrSkillFragment = (MRAdventureCreationSkillsFragment) Companion.getFragments().get(FRAGMENT_MR_SPELLS);
         return mrSkillFragment;
     }
 

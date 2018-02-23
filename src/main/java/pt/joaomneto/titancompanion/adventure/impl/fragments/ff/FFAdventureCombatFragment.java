@@ -92,7 +92,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 
 
 		if (combatPositions.isEmpty()) {
-			resetCombat();
+			resetCombat(false);
 		}
 	}
 
@@ -119,8 +119,8 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 	}
 
 	@Override
-	protected void resetCombat() {
-		super.resetCombat();
+	protected void resetCombat(boolean clearResults) {
+		super.resetCombat(clearResults);
 	}
 
 	protected void switchLayoutCombatStarted() {
@@ -131,11 +131,11 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment{
 		super.switchLayoutCombatStarted();
 	}
 
-	protected void switchLayoutReset() {
+	protected void switchLayoutReset(boolean clearResult) {
 		damageSpinner.setVisibility(View.VISIBLE);
 		damageText.setVisibility(View.VISIBLE);
 
-		super.switchLayoutReset();
+		super.switchLayoutReset(clearResult);
 	}
 
 	protected Integer getKnockoutStamina() {

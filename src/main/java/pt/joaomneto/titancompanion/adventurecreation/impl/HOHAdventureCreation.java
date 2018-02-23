@@ -17,8 +17,8 @@ public class HOHAdventureCreation extends AdventureCreation {
 	
 	public HOHAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.hoh.HOHVitalStatisticsFragment"));
 
@@ -33,7 +33,7 @@ public class HOHAdventureCreation extends AdventureCreation {
 	}
 	
 	private HOHVitalStatisticsFragment getHOHVitalStatisticsFragment() {
-		HOHVitalStatisticsFragment hohvitalStatisticsFragment = (HOHVitalStatisticsFragment) getFragments().get(0);
+		HOHVitalStatisticsFragment hohvitalStatisticsFragment = (HOHVitalStatisticsFragment) Companion.getFragments().get(0);
 		return hohvitalStatisticsFragment;
 	}
 

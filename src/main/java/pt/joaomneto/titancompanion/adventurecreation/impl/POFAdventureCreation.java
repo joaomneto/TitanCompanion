@@ -17,11 +17,11 @@ public class POFAdventureCreation extends TFODAdventureCreation {
 
 	public POFAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.pof.POFVitalStatisticsFragment"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_potions,
+		Companion.getFragmentConfiguration().put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_potions,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragment"));
 
 	}
@@ -39,7 +39,7 @@ public class POFAdventureCreation extends TFODAdventureCreation {
 	}
 	
 	private POFVitalStatisticsFragment getPOFVitalStatisticsFragment() {
-		POFVitalStatisticsFragment bncVitalStatisticsFragment = (POFVitalStatisticsFragment) getFragments().get(0);
+		POFVitalStatisticsFragment bncVitalStatisticsFragment = (POFVitalStatisticsFragment) Companion.getFragments().get(0);
 		return bncVitalStatisticsFragment;
 	}
 

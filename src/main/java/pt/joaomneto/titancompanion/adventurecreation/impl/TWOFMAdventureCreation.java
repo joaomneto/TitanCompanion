@@ -15,9 +15,9 @@ public class TWOFMAdventureCreation extends AdventureCreation {
 
 	public TWOFMAdventureCreation() {
 		super();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats,
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_potions,
+		Companion.getFragmentConfiguration().put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_potions,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragment"));
 
 	}

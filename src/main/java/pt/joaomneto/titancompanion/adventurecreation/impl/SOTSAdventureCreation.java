@@ -16,9 +16,9 @@ public class SOTSAdventureCreation extends AdventureCreation {
 
 	public SOTSAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
-		fragmentConfiguration.put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_skill,
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"));
+		Companion.getFragmentConfiguration().put(1, new AdventureFragmentRunner(R.string.title_adventure_creation_skill,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSAdventureCreationSkillFragment"));
 
 	}

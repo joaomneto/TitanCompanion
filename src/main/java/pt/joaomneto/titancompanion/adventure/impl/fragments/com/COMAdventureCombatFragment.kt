@@ -51,8 +51,8 @@ class COMAdventureCombatFragment : AdventureCombatFragment() {
         oneStrikeCombatButton.visibility = View.GONE
     }
 
-    override fun switchLayoutReset() {
-        super.switchLayoutReset()
+    override fun switchLayoutReset(clearResult: Boolean) {
+        super.switchLayoutReset(clearResult)
         oneStrikeCombatButton.visibility = View.VISIBLE
 
     }

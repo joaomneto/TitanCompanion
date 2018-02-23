@@ -56,8 +56,8 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 	}
 
 	@Override
-	protected void resetCombat() {
-		super.resetCombat();
+	protected void resetCombat(boolean clearResults) {
+		super.resetCombat(clearResults);
 		firstRound = true;
 		enemyDiceRoll = null;
 	}

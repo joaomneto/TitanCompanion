@@ -19,8 +19,8 @@ public class SOBAdventureCreation extends AdventureCreation {
 
 	public SOBAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sob.SOBVitalStatisticsFragment"));
 		
@@ -40,7 +40,7 @@ public class SOBAdventureCreation extends AdventureCreation {
 	}
 	
 	private SOBVitalStatisticsFragment getSOBVitalStatisticsFragment() {
-		SOBVitalStatisticsFragment sobVitalStatisticsFragment = (SOBVitalStatisticsFragment) getFragments().get(0);
+		SOBVitalStatisticsFragment sobVitalStatisticsFragment = (SOBVitalStatisticsFragment) Companion.getFragments().get(0);
 		return sobVitalStatisticsFragment;
 	}
 	

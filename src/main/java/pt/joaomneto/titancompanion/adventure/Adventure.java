@@ -92,7 +92,6 @@ public abstract class Adventure extends BaseFragmentActivity {
     String name = null;
     Properties savedGame;
     Map<Integer, Fragment> fragments = new HashMap<Integer, Fragment>();
-    Toast lastToast = null;
 
     public Adventure() {
         super();

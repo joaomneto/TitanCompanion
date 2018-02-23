@@ -28,7 +28,7 @@ public class TestTFOD extends TestTWOFM{
 
     @Override
     protected void assertCorrectPotionDosage() {
-        String language = LocaleHelper.getLanguage(mActivityTestRule.getActivity());
+        String language = LocaleHelper.getLanguage(getMActivityTestRule().getActivity());
         String string = getString("fr".equals(language)?R.string.potionTwoDoses:R.string.potionOneDose);
         onView(withId(R.id.potionDosesSpinner)).check(matches(withSpinnerText(containsString(string))));
     }

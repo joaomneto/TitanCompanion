@@ -37,7 +37,7 @@ public class TestSA extends TCBaseTest {
 
         ViewInteraction button4 = onView(
                 allOf(withId(R.id.buttonAddweapon), withText("Add Weapon"),
-                        childAtPosition(
+                        Companion.childAtPosition(
                                 withParent(withId(R.id.pager)),
                                 1),
                         isDisplayed()));
@@ -45,8 +45,8 @@ public class TestSA extends TCBaseTest {
 
         ViewInteraction button5 = onView(
                 allOf(withId(android.R.id.button1), withText("Ok"),
-                        childAtPosition(
-                                childAtPosition(
+                        Companion.childAtPosition(
+                                Companion.childAtPosition(
                                         withClassName(is("android.widget.LinearLayout")),
                                         0),
                                 2),

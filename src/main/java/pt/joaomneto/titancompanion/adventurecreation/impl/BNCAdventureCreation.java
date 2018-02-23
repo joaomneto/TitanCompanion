@@ -19,8 +19,8 @@ public class BNCAdventureCreation extends AdventureCreation {
 
 	public BNCAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.bnc.BNCVitalStatisticsFragment"));
 
@@ -38,7 +38,7 @@ public class BNCAdventureCreation extends AdventureCreation {
 	}
 	
 	private BNCVitalStatisticsFragment getBNCVitalStatisticsFragment() {
-		BNCVitalStatisticsFragment bncVitalStatisticsFragment = (BNCVitalStatisticsFragment) getFragments().get(0);
+		BNCVitalStatisticsFragment bncVitalStatisticsFragment = (BNCVitalStatisticsFragment) Companion.getFragments().get(0);
 		return bncVitalStatisticsFragment;
 	}
 

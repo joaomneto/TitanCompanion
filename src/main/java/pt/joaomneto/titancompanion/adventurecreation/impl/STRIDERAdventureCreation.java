@@ -17,8 +17,8 @@ public class STRIDERAdventureCreation extends BaseAdventureCreation {
 
 	public STRIDERAdventureCreation() {
 		super();
-		fragmentConfiguration.clear();
-		fragmentConfiguration.put(0, new Adventure.AdventureFragmentRunner(
+		Companion.getFragmentConfiguration().clear();
+		Companion.getFragmentConfiguration().put(0, new Adventure.AdventureFragmentRunner(
 				R.string.title_adventure_creation_vitalstats,
 				"pt.joaomneto.titancompanion.adventurecreation.impl.fragments.strider.STRIDERVitalStatisticsFragment"));
 
@@ -34,7 +34,7 @@ public class STRIDERAdventureCreation extends BaseAdventureCreation {
 	}
 
 	private STRIDERVitalStatisticsFragment getSTRIDERVitalStatisticsFragment() {
-		STRIDERVitalStatisticsFragment striderVitalStatisticsFragment = (STRIDERVitalStatisticsFragment) getFragments().get(0);
+		STRIDERVitalStatisticsFragment striderVitalStatisticsFragment = (STRIDERVitalStatisticsFragment) Companion.getFragments().get(0);
 		return striderVitalStatisticsFragment;
 	}
 
