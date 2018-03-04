@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.ss
 
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell
 
@@ -13,7 +15,7 @@ enum class SSSpell constructor(private val labelIdInner : Int, private val actio
 
     STAMINA(R.string.ssSpellStamina, { adv ->
         adv.currentStamina = adv
-                .currentStamina!! + adv.initialStamina!! / 2
+            .currentStamina + adv.initialStamina / 2
         if (adv.currentStamina > adv
                 .initialStamina)
             adv.currentStamina = adv
@@ -21,14 +23,14 @@ enum class SSSpell constructor(private val labelIdInner : Int, private val actio
 
     }),
     SKILL(R.string.ssSpellSkill, { adv ->
-        adv.currentSkill = adv.currentSkill!! + adv.initialSkill!! / 2
+        adv.currentSkill = adv.currentSkill + adv.initialSkill / 2
         if (adv.currentSkill > adv
                 .initialSkill)
             adv.currentSkill = adv
                     .initialSkill
     }),
     LUCK(R.string.ssSpellLuck, { adv ->
-        adv.currentLuck = adv.currentLuck!! + adv.initialLuck!! / 2
+        adv.currentLuck = adv.currentLuck + adv.initialLuck / 2
         if (adv.currentLuck > adv
                 .initialLuck)
             adv.currentLuck = adv.initialLuck

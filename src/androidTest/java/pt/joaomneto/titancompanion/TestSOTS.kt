@@ -1,22 +1,17 @@
 package pt.joaomneto.titancompanion
 
-import android.support.test.espresso.DataInteraction
-import android.support.test.filters.LargeTest
-import android.support.test.runner.AndroidJUnit4
-
-import org.junit.Test
-import org.junit.runner.RunWith
-
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
-
 import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.matcher.ViewMatchers.withClassName
 import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.filters.LargeTest
+import android.support.test.runner.AndroidJUnit4
 import android.view.View
+import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anything
-import org.hamcrest.Matchers.`is`
+import org.junit.Test
+import org.junit.runner.RunWith
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.SWORD_OF_THE_SAMURAI
 
 @LargeTest
@@ -47,7 +42,7 @@ class TestSOTS : TCBaseTest() {
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
-        performSwipeOverAllScreens()
+
     }
 
     @Test

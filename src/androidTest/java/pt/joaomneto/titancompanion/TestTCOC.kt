@@ -1,26 +1,18 @@
 package pt.joaomneto.titancompanion
 
-import android.support.test.espresso.DataInteraction
-import android.support.test.espresso.Espresso
-import android.support.test.filters.LargeTest
-import android.support.test.runner.AndroidJUnit4
-
-import org.junit.Test
-import org.junit.runner.RunWith
-
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
-
 import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.matcher.ViewMatchers.withClassName
 import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.filters.LargeTest
+import android.support.test.runner.AndroidJUnit4
 import android.view.View
+import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anything
-import org.hamcrest.Matchers.`is`
+import org.junit.Test
+import org.junit.runner.RunWith
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_CITADEL_OF_CHAOS
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_FOREST_OF_DOOM
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_WARLOCK_OF_FIRETOP_MOUNTAIN
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
@@ -72,7 +64,7 @@ class TestTCOC : TCBaseTest() {
         performChooseSpells()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
-        performSwipeOverAllScreens()
+
     }
 
     @Test

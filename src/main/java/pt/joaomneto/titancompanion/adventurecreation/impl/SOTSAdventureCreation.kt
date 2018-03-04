@@ -1,28 +1,24 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
+import android.view.View
+import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
+import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSAdventureCreationSkillFragment
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt
 import java.io.BufferedWriter
 import java.io.IOException
 
-import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner
-import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
-import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt
+class SOTSAdventureCreation : AdventureCreation( arrayOf(
+        AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, VitalStatisticsFragment::class),
+        AdventureFragmentRunner(R.string.title_adventure_creation_skill,
+                SOTSAdventureCreationSkillFragment::class))) {
 
-import android.view.View
+    private var martialArt: SOTSMartialArt? = null
 
-class SOTSAdventureCreation : AdventureCreation() {
-
-    var martialArt: SOTSMartialArt? = null
-        internal set
-
-    init {
-        AdventureCreation.Companion.fragmentConfiguration.clear()
-        AdventureCreation.Companion.fragmentConfiguration.put(0, AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"))
-        AdventureCreation.Companion.fragmentConfiguration.put(1, AdventureFragmentRunner(R.string.title_adventure_creation_skill,
-            "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSAdventureCreationSkillFragment"))
-    }
-
-    override fun rollGamebookSpecificStats(view: View) { }
+    override fun rollGamebookSpecificStats(view: View) {}
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {

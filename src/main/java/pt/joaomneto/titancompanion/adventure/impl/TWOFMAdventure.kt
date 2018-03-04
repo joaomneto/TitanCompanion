@@ -1,22 +1,31 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
+import android.os.Bundle
+import android.view.Menu
+import pt.joaomneto.titancompanion.R
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
+import pt.joaomneto.titancompanion.adventure.Adventure
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 import java.io.BufferedWriter
 import java.io.IOException
 
-import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.adventure.Adventure
-import android.os.Bundle
-import android.view.Menu
+open class TWOFMAdventure(
+    override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS
+) : Adventure(fragmentConfiguration) {
 
-open class TWOFMAdventure : Adventure() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        try {
-            super.onCreate(savedInstanceState)
-        } catch (e: Exception) {
-            throw IllegalStateException(e)
-        }
-
+    companion object {
+        val DEFAULT_FRAGMENTS = arrayOf(
+                AdventureFragmentRunner(R.string.vitalStats,
+                        AdventureVitalStatsFragment::class),
+                AdventureFragmentRunner(R.string.fights,
+                        AdventureCombatFragment::class),
+                AdventureFragmentRunner(R.string.goldEquipment,
+                        AdventureEquipmentFragment::class),
+                AdventureFragmentRunner(R.string.notes,
+                        AdventureNotesFragment::class))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -39,7 +48,6 @@ open class TWOFMAdventure : Adventure() {
         standardPotionValue = Integer.valueOf(savedGame
                 .getProperty("standardPotionValue"))
         gold = Integer.valueOf(savedGame.getProperty("gold"))
-
     }
 
 

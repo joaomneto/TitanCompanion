@@ -3,43 +3,34 @@ package pt.joaomneto.titancompanion.adventurecreation
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
-import android.util.SparseArray
 import android.view.Menu
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import pt.joaomneto.titancompanion.*
-import pt.joaomneto.titancompanion.adventure.Adventure
-import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner
+import pt.joaomneto.titancompanion.BaseFragmentActivity
+import pt.joaomneto.titancompanion.GamebookSelectionActivity
+import pt.joaomneto.titancompanion.LoadAdventureActivity
+import pt.joaomneto.titancompanion.R
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
 import pt.joaomneto.titancompanion.consts.Constants
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
-import java.util.*
 
-abstract class AdventureCreation : BaseFragmentActivity() {
+abstract class AdventureCreation(
+        override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS) : BaseFragmentActivity(fragmentConfiguration, R.layout.activity_adventure_creation) {
 
-    /**
-     * The [android.support.v4.view.PagerAdapter] that will provide
-     * fragments for each of the sections. We use a
-     * [android.support.v4.app.FragmentPagerAdapter] derivative, which
-     * will keep every loaded fragment in memory. If this becomes too memory
-     * intensive, it may be best to switch to a
-     * [android.support.v4.app.FragmentStatePagerAdapter].
-     */
-    protected var mSectionsPagerAdapter: SectionsPagerAdapter? = null
+    companion object {
+        const val NO_PARAMETERS_TO_VALIDATE = ""
 
-    /**
-     * The [ViewPager] that will host the section contents.
-     */
-    protected var mViewPager: ViewPager? = null
+        val DEFAULT_FRAGMENTS = arrayOf(
+                AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, VitalStatisticsFragment::class)
+        )
+    }
 
     protected var skill = -1
     protected var luck = -1
@@ -48,28 +39,11 @@ abstract class AdventureCreation : BaseFragmentActivity() {
     var gamebook: FightingFantasyGamebook? = null
         private set
 
-    init {
-        fragmentConfiguration.put(0, AdventureFragmentRunner(
-            R.string.title_adventure_creation_vitalstats,
-            "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"))
-
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_adventure_creation)
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the app.
-        mSectionsPagerAdapter = SectionsPagerAdapter(
-            supportFragmentManager)
-
         gamebook = FightingFantasyGamebook.values()[intent.getIntExtra(
-            GamebookSelectionActivity.GAMEBOOK_ID, -1)]
+                GamebookSelectionActivity.GAMEBOOK_ID, -1)]
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = findViewById(R.id.pager)
-        mViewPager?.adapter = mSectionsPagerAdapter
+        super.onCreate(savedInstanceState)
 
     }
 
@@ -79,41 +53,10 @@ abstract class AdventureCreation : BaseFragmentActivity() {
         return true
     }
 
-    /**
-     * A [FragmentPagerAdapter] that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-
-        override fun getItem(position: Int): Fragment {
-            try {
-                val fragmentClass: Class<Fragment>
-                fragmentClass = Class.forName(fragmentConfiguration.get(position).className) as Class<Fragment>
-                val fragment = fragmentClass.newInstance()
-
-                fragments.put(position, fragment)
-
-                return fragment
-            } catch (e: Exception) {
-                throw TechnicalException(e)
-            }
-
-        }
-
-        override fun getCount(): Int {
-            return fragmentConfiguration.size()
-        }
-
-        override fun getPageTitle(position: Int): CharSequence {
-            val l = Locale.getDefault()
-            return getString(fragmentConfiguration.get(position).titleId).toUpperCase(l)
-        }
-    }
-
     fun rollStats(view: View) {
         skill = DiceRoller.rollD6() + 6
         luck = DiceRoller.rollD6() + 6
-        stamina = DiceRoller.roll2D6().sum!! + 12
+        stamina = DiceRoller.roll2D6().sum + 12
 
 
 
@@ -123,14 +66,12 @@ abstract class AdventureCreation : BaseFragmentActivity() {
         val staminaValue = findViewById<TextView>(R.id.staminaValue)
         val luckValue = findViewById<TextView>(R.id.luckValue)
 
-        skillValue.text = "" + skill
-        staminaValue.text = "" + stamina
-        luckValue.text = "" + luck
+        skillValue.text = skill.toString()
+        staminaValue.text = stamina.toString()
+        luckValue.text = luck.toString()
     }
 
-    protected abstract fun rollGamebookSpecificStats(view: View)
-
-    fun saveAdventure(view: View) {
+    fun saveAdventure() {
         try {
 
             val et = findViewById<EditText>(R.id.adventureNameInput)
@@ -145,7 +86,7 @@ abstract class AdventureCreation : BaseFragmentActivity() {
             }
 
             val relDir = ("save_" + gamebook!!.initials + "_"
-                + adventureName!!.replace(' ', '-'))
+                    + adventureName!!.replace(' ', '-'))
             var dir = File(filesDir, "ffgbutil")
             dir = File(dir, relDir)
             if (!dir.exists()) {
@@ -169,15 +110,16 @@ abstract class AdventureCreation : BaseFragmentActivity() {
             bw.write("currentReference=1\n")
             bw.write("equipment=\n")
             bw.write("notes=\n")
+            bw.write("gold=\n")
             storeAdventureSpecificValuesInFile(bw)
 
             bw.close()
 
             val intent = Intent(this, Constants
-                .getRunActivity(this, gamebook))
+                    .getRunActivity(this, gamebook))
 
             intent.putExtra(LoadAdventureActivity.ADVENTURE_FILE,
-                "initial.xml")
+                    "initial.xml")
             intent.putExtra(LoadAdventureActivity.ADVENTURE_DIR, relDir)
             startActivity(intent)
 
@@ -187,18 +129,13 @@ abstract class AdventureCreation : BaseFragmentActivity() {
 
     }
 
-    @Throws(IOException::class)
-    protected abstract fun storeAdventureSpecificValuesInFile(bw: BufferedWriter)
-
     fun showAlert(message: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.result).setMessage(message).setCancelable(false)
-            .setNegativeButton(R.string.close) { dialog, id -> dialog.cancel() }
+                .setNegativeButton(R.string.close) { dialog, _ -> dialog.cancel() }
         val alert = builder.create()
         alert.show()
     }
-
-    abstract fun validateCreationSpecificParameters(): String?
 
     @Throws(IllegalArgumentException::class)
     private fun validateCreationParameters() {
@@ -230,16 +167,14 @@ abstract class AdventureCreation : BaseFragmentActivity() {
         }
     }
 
-    companion object {
+    @Throws(IOException::class)
+    open fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
 
-        @JvmStatic
-        val NO_PARAMETERS_TO_VALIDATE = ""
-
-        @JvmStatic
-        var fragmentConfiguration = SparseArray<Adventure.AdventureFragmentRunner>()
-
-        @JvmStatic
-        val fragments = HashMap<Int, Fragment>()
     }
 
+    open fun rollGamebookSpecificStats(view: View) {}
+
+    open fun validateCreationSpecificParameters(): String? {
+        return AdventureCreation.Companion.NO_PARAMETERS_TO_VALIDATE
+    }
 }

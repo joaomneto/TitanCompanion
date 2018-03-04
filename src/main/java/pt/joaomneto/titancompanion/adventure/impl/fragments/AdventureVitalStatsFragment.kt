@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.component_basic_provisions_stats.*
 import kotlinx.android.synthetic.main.component_basic_vital_stats.*
 import kotlinx.android.synthetic.main.fragment_adventure_vitalstats.*
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 
@@ -28,8 +30,7 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
     private var statsSkillValue: TextView? = null
     private var statsLuckValue: TextView? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
         val rootView = inflater?.inflate(
                 R.layout.fragment_adventure_vitalstats, container, false)
@@ -41,7 +42,7 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
         return rootView
     }
 
-    override fun onViewCreated(rootView: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val adv = activity as Adventure
 
         val stringArray = resources.getStringArray(R.array.standard_potion_list)
@@ -63,9 +64,9 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
             refreshScreensFromResume()
         }
 
-        statsStaminaValue = rootView?.findViewById(R.id.statsStaminaValue)
-        statsSkillValue = rootView?.findViewById(R.id.statsSkillValue)
-        statsLuckValue = rootView?.findViewById(R.id.statsLuckValue)
+        statsStaminaValue = view.findViewById(R.id.statsStaminaValue)
+        statsSkillValue = view.findViewById(R.id.statsSkillValue)
+        statsLuckValue = view.findViewById(R.id.statsLuckValue)
 
         statsStaminaValue?.setOnClickListener(setInitialStamina(adv))
         statsSkillValue?.setOnClickListener(setIntialSkill(adv))
@@ -106,11 +107,11 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
             refreshScreensFromResume()
         }
 
-        buttonConsumeProvisions.text = adv.consumeProvisionText
-        provisionsText.text = adv.provisionsText
+        buttonConsumeProvisions.setText(adv.consumeProvisionText)
+        provisionsText.setText(adv.provisionsText)
 
 
-        if (adv.provisionsValue == null || adv.provisionsValue < 0) {
+        if (adv.provisionsValue < 0) {
             plusProvisionsButton?.visibility = View.INVISIBLE
             minusProvisionsButton?.visibility = View.INVISIBLE
             provisionsValue?.visibility = View.INVISIBLE
@@ -190,8 +191,7 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
         val input = EditText(context)
         input.id = R.id.alert_editText_field
 
-        val imm = context
-                .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
                 InputMethodManager.HIDE_IMPLICIT_ONLY)
         input.inputType = InputType.TYPE_CLASS_PHONE
@@ -205,9 +205,9 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
         alert.setPositiveButton(R.string.ok, positiveButtonListener)
 
         alert.setOnDismissListener {
-            val view = activity.currentFocus
+            val view = activity?.currentFocus
             if (view != null) {
-                val inputManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
             }
         }
@@ -224,7 +224,7 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
             statsSkillValue?.text = adv.currentSkill.toString()
             statsStaminaValue?.text = adv.currentStamina.toString()
             statsLuckValue?.text = adv.currentLuck.toString()
-            provisionsValue?.text = adv.provisions?.toString()
+            provisionsValue?.text = adv.provisions.toString()
 
             if (usePotionButton != null) {
                 if (adv.standardPotion < 0) {

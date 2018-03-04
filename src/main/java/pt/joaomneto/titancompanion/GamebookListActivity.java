@@ -22,7 +22,7 @@ public class GamebookListActivity extends BaseActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gamebook_list);
-		final ListView listview = (ListView) findViewById(R.id.gamebookListView);
+		final ListView listview = findViewById(R.id.gamebookListView);
 		String[] values = getResources().getStringArray(R.array.gamebook_list_names);
 
 		final ArrayList<String> list = new ArrayList<String>();

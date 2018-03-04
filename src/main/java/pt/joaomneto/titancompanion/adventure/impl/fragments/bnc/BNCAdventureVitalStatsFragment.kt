@@ -11,6 +11,8 @@ import android.widget.EditText
 import android.widget.TextView
 
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.impl.BNCAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 
@@ -22,7 +24,7 @@ class BNCAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
     private var decreaseWillpowerButton: Button? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
         val rootView = inflater!!.inflate(
@@ -54,13 +56,13 @@ class BNCAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
         decreaseWillpowerButton!!.setOnClickListener {
             if (adv.currentWillpower > 0)
-                adv.currentWillpower = adv.currentWillpower!! - 1
+                adv.currentWillpower = adv.currentWillpower - 1
             refreshScreensFromResume()
         }
 
         increaseWillpowerButton!!.setOnClickListener {
             if (adv.currentWillpower < adv.initialWillpower)
-                adv.currentWillpower = adv.currentWillpower!! + 1
+                adv.currentWillpower = adv.currentWillpower + 1
             refreshScreensFromResume()
         }
 

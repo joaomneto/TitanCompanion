@@ -18,12 +18,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventurecreation.impl.SAAdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEnumAdapter;
 
 public class SAWeaponsFragment extends Fragment {
 
+    View rootView;
     TextView weaponsValue;
     ListView weaponList = null;
     Button buttonAddWeapon = null;
@@ -37,7 +40,7 @@ public class SAWeaponsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         final SAAdventureCreation adv = (SAAdventureCreation) getActivity();
 
-        View rootView = inflater.inflate(
+        rootView = inflater.inflate(
                 R.layout.fragment_12sa_adventurecreation_weapons, container,
                 false);
         weaponsValue = rootView.findViewById(R.id.weaponsValue);
@@ -104,7 +107,7 @@ public class SAWeaponsFragment extends Fragment {
                                                 int whichButton) {
                                 SAWeapon selectedWeapon = SAWeapon.values()[input.getSelectedItemPosition()];
                                 if (getCurrentWeaponsCount(adv) + selectedWeapon.getWeaponPoints() > adv.getCurrentWeapons()) {
-                                    Adventure.showAlert(getString(R.string.saNoWeaponPoints, getString(selectedWeapon.getLabelId())), adv);
+                                    Adventure.Companion.showAlert(getString(R.string.saNoWeaponPoints, getString(selectedWeapon.getLabelId())), adv);
                                     return;
                                 }
                                 adv.getWeapons().add(selectedWeapon);

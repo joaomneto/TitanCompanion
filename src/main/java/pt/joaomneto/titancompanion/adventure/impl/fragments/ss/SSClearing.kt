@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.ss
 
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 
 /**
  * Created by 962633 on 21-08-2017.

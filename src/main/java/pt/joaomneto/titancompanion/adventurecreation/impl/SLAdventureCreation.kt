@@ -2,24 +2,23 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.adventure.Adventure.AdventureFragmentRunner
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sl.SLVitalStatisticsFragment
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
 
-class SLAdventureCreation : AdventureCreation() {
+class SLAdventureCreation : AdventureCreation(
+        arrayOf(AdventureFragmentRunner(
+                R.string.title_adventure_creation_vitalstats,
+                SLVitalStatisticsFragment::class))
+) {
 
     var rating = 0
 
-    init {
-        AdventureCreation.fragmentConfiguration.clear()
-        AdventureCreation.fragmentConfiguration.put(0, AdventureFragmentRunner(
-            R.string.title_adventure_creation_vitalstats,
-            "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sl.SLVitalStatisticsFragment"))
-
-    }
+    private val slVitalStatisticsFragment: SLVitalStatisticsFragment
+        get() = getFragment(SLVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
@@ -34,13 +33,9 @@ class SLAdventureCreation : AdventureCreation() {
         bw.write("starspray=true")
     }
 
-    private fun getSLVitalStatisticsFragment(): SLVitalStatisticsFragment {
-        return fragments[0] as SLVitalStatisticsFragment
-    }
-
     override fun rollGamebookSpecificStats(view: View) {
         rating = DiceRoller.rollD6()
-        getSLVitalStatisticsFragment().getRatingValue()?.text = rating.toString()
+        slVitalStatisticsFragment.getRatingValue()?.text = rating.toString()
     }
 
     override fun validateCreationSpecificParameters(): String? {

@@ -11,6 +11,8 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.Spinner
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.SpellAdventure
@@ -20,12 +22,11 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEn
 open class AdventureSpellsFragment : AdventureFragment() {
 
     internal var spellList: ListView? = null
-    internal var chooseSpellSpinner: Spinner? = null
-    internal var addSpellButton: Button? = null
+    private var chooseSpellSpinner: Spinner? = null
+    private var addSpellButton: Button? = null
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val adv = activity as SpellAdventure<Spell>
         super.onCreate(savedInstanceState)
@@ -54,7 +55,7 @@ open class AdventureSpellsFragment : AdventureFragment() {
                 val spell = adv.chosenSpells[position]
                 specificSpellActivation(adv, spell)
                 if (adv.isSpellSingleUse) {
-                    adv.chosenSpells.removeAt(position)
+                    adv.chosenSpells = adv.chosenSpells.minus(adv.chosenSpells[position])
                     (spellList!!
                             .adapter as ArrayAdapter<*>)
                             .notifyDataSetChanged()
@@ -68,8 +69,7 @@ open class AdventureSpellsFragment : AdventureFragment() {
         addSpellButton!!.setOnClickListener {
             val spell = chooseSpellSpinner!!.selectedItem as Spell
             if (adv.isSpellSingleUse || !adv.chosenSpells.contains(spell)) {
-                adv.chosenSpells.add(
-                        spell)
+                adv.chosenSpells = adv.chosenSpells.plus(spell)
             } else {
                 Adventure.showAlert(R.string.spellAlreadyChosen, adv)
             }

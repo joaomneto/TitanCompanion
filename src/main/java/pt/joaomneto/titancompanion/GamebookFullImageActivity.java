@@ -18,7 +18,7 @@ public class GamebookFullImageActivity extends BaseActivity{
 		setContentView(R.layout.activity_gamebook_full_image);
 
 	
-		ImageView img = (ImageView) findViewById(R.id.fullGamebookCoverImg);
+		ImageView img = findViewById(R.id.fullGamebookCoverImg);
 
 		img.setScaleType(ScaleType.FIT_XY);
 		Intent intent = getIntent();

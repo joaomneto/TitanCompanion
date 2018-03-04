@@ -1,20 +1,15 @@
 package pt.joaomneto.titancompanion
 
-import android.support.test.filters.LargeTest
-import android.support.test.runner.AndroidJUnit4
-
-import org.junit.Test
-import org.junit.runner.RunWith
-
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
-import pt.joaomneto.titancompanion.util.LocaleHelper
-
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.withSpinnerText
+import android.support.test.filters.LargeTest
+import android.support.test.runner.AndroidJUnit4
 import org.hamcrest.Matchers.containsString
+import org.junit.runner.RunWith
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_FOREST_OF_DOOM
+import pt.joaomneto.titancompanion.util.LocaleHelper
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)

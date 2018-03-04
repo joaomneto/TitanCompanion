@@ -1,10 +1,8 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots;
 
-import android.content.Context;
-
-import java.util.Objects;
-
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 
 /**
  * Created by Joao Neto on 24-05-2017.

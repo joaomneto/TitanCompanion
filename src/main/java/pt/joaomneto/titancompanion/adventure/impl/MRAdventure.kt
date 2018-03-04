@@ -3,14 +3,32 @@ package pt.joaomneto.titancompanion.adventure.impl
 import android.os.Bundle
 import android.view.Menu
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.SpellAdventure
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRAdventureSpellsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill
 import java.io.BufferedWriter
 import java.io.IOException
 import java.util.*
 
-class MRAdventure : SpellAdventure<MRSkill>() {
+class MRAdventure : SpellAdventure<MRSkill>(
+        arrayOf(
+                AdventureFragmentRunner(R.string.vitalStats,
+                        AdventureVitalStatsFragment::class),
+                AdventureFragmentRunner(R.string.chosenSkills,
+                        MRAdventureSpellsFragment::class),
+                AdventureFragmentRunner(R.string.fights,
+                        AdventureCombatFragment::class),
+                AdventureFragmentRunner(R.string.goldEquipment,
+                        AdventureEquipmentFragment::class),
+                AdventureFragmentRunner(R.string.notes,
+                        AdventureNotesFragment::class))) {
 
     internal var skills: MutableList<MRSkill> = ArrayList()
 
@@ -20,19 +38,6 @@ class MRAdventure : SpellAdventure<MRSkill>() {
     val FRAGMENT_EQUIPMENT = 3
     val FRAGMENT_NOTES = 4
 
-    init {
-        Adventure.fragmentConfiguration.clear()
-        Adventure.fragmentConfiguration.put(FRAGMENT_VITAL_STATS, Adventure.AdventureFragmentRunner(R.string.vitalStats,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_SPELLS, Adventure.AdventureFragmentRunner(R.string.chosenSkills,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRAdventureSpellsFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_COMBAT, Adventure.AdventureFragmentRunner(R.string.fights,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_EQUIPMENT, Adventure.AdventureFragmentRunner(R.string.goldEquipment,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_NOTES, Adventure.AdventureFragmentRunner(R.string.notes,
-                "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         try {

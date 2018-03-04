@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import android.app.AlertDialog;
@@ -45,17 +47,17 @@ public class AdventureEquipmentFragment extends AdventureFragment {
 	}
 
 	protected void initialize(View rootView, final Adventure adv) {
-		equipmentList = (ListView) rootView.findViewById(R.id.equipmentList);
-		minusGoldButton = (Button) rootView.findViewById(R.id.minusGoldButton);
-		plusGoldButton = (Button) rootView.findViewById(R.id.plusGoldButton);
+		equipmentList = rootView.findViewById(R.id.equipmentList);
+		minusGoldButton = rootView.findViewById(R.id.minusGoldButton);
+		plusGoldButton = rootView.findViewById(R.id.plusGoldButton);
 
-		Button buttonAddNote = (Button) rootView.findViewById(R.id.buttonAddEquipment);
+		Button buttonAddNote = rootView.findViewById(R.id.buttonAddEquipment);
 
-		TextView goldLabel = (TextView) rootView.findViewById(R.id.goldLabel);
+		TextView goldLabel = rootView.findViewById(R.id.goldLabel);
 		goldLabel.setText(adv.getCurrencyName());
 
-		goldValue = (TextView) rootView.findViewById(R.id.goldValue);
-		goldValue.setText(adv.getGold().toString());
+		goldValue = rootView.findViewById(R.id.goldValue);
+		goldValue.setText(adv.getGold()+"");
 
 		goldValue.setOnClickListener(new OnClickListener() {
 

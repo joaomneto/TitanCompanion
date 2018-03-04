@@ -28,6 +28,8 @@ import java.util.Random;
 import java.util.Set;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.STAdventure;
@@ -169,7 +171,7 @@ public class STCombatFragment extends AdventureFragment {
                     combatResult.setText(getString(R.string.stCrewmanDied, crewmanString));
                     adv.setCrewmanDead(position.getCrewman());
                     if (position.getCrewman().equals(STCrewman.CAPTAIN)) {
-                        Adventure.showAlert(R.string.youreDead, adv);
+                        Adventure.Companion.showAlert(R.string.youreDead, adv);
                     }
                 }
             }
@@ -344,7 +346,7 @@ public class STCombatFragment extends AdventureFragment {
                     addCombatant(rootView, currentRow, crewmanSpinner, skill, stamina, defenseOnly);
                     alert.cancel();
                 } else {
-                    Adventure.showAlert(R.string.youMustFillSkillAndStamina, getContext());
+                    Adventure.Companion.showAlert(R.string.youMustFillSkillAndStamina, getContext());
                 }
 
 

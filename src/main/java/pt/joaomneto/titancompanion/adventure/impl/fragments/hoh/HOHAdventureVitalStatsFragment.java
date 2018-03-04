@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.HOHAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 
@@ -33,11 +35,11 @@ public class HOHAdventureVitalStatsFragment extends AdventureVitalStatsFragment 
 
 		//CHECKTHIS	initialize(rootView);
 
-		decreaseFearButton = (Button) rootView
+		decreaseFearButton = rootView
 				.findViewById(R.id.minusFearButton);
-		increaseFearButton = (Button) rootView
+		increaseFearButton = rootView
 				.findViewById(R.id.plusFearButton);
-		fearValue = (TextView) rootView.findViewById(R.id.statsFearValue);
+		fearValue = rootView.findViewById(R.id.statsFearValue);
 		final HOHAdventure adv = (HOHAdventure) getActivity();
 
 		decreaseFearButton.setOnClickListener(new OnClickListener() {

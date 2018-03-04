@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sots;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.SOTSAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 import android.os.Bundle;
@@ -40,13 +42,13 @@ public class SOTSAdventureVitalStatsFragment extends AdventureVitalStatsFragment
 
 	protected void initialize(View rootView) {
 		//CHECKTHIS super.initialize(rootView);
-		honorValue = (TextView) rootView.findViewById(R.id.statsHonourValue);
+		honorValue = rootView.findViewById(R.id.statsHonourValue);
 
 
-		increaseHonorButton = (Button) rootView
+		increaseHonorButton = rootView
 				.findViewById(R.id.plusHonourButton);
 
-		decreaseHonorButton = (Button) rootView
+		decreaseHonorButton = rootView
 				.findViewById(R.id.minusHonourButton);
 
 		final SOTSAdventure adv = (SOTSAdventure) getActivity();

@@ -13,7 +13,7 @@ public class ErrorActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_error);
 
-		TextView errorText = (TextView) findViewById(R.id.errorText);
+		TextView errorText = findViewById(R.id.errorText);
 		Intent intent = getIntent();
 		errorText.setText(intent.getStringExtra("error"));
 	}

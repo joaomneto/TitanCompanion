@@ -2,20 +2,25 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
-import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragment
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
+import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.mr.MRAdventureCreationSkillsFragment
 import java.io.BufferedWriter
 import java.io.IOException
 
-class COMAdventureCreation : TWOFMAdventureCreation() {
-
-    init {
-        fragmentConfiguration.clear()
-        fragmentConfiguration.put(0, Adventure.AdventureFragmentRunner(
+class COMAdventureCreation : TWOFMAdventureCreation(
+        arrayOf(AdventureFragmentRunner(
                 R.string.title_adventure_creation_vitalstats,
-                "pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment"))
+                VitalStatisticsFragment::class),
+                AdventureFragmentRunner(
+                        R.string.specialSkills,
+                        MRAdventureCreationSkillsFragment::class),
+                AdventureFragmentRunner(R.string.title_adventure_creation_potions,
+                        PotionsFragment::class))) {
 
-    }
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {

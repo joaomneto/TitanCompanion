@@ -1,11 +1,25 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
 import pt.joaomneto.titancompanion.R
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLAdventureVitalStatsFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLStarshipStatsFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLWeaponCombatFragment
 import java.io.BufferedWriter
 import java.io.IOException
 
-class SLAdventure : Adventure() {
+class SLAdventure : Adventure(
+        arrayOf(
+                AdventureFragmentRunner(R.string.vitalStats, SLAdventureVitalStatsFragment::class),
+                AdventureFragmentRunner(R.string.shipAndWeapons, SLStarshipStatsFragment::class),
+                AdventureFragmentRunner(R.string.fights, AdventureCombatFragment::class),
+                AdventureFragmentRunner(R.string.combatWeaponClashes, SLWeaponCombatFragment::class),
+                AdventureFragmentRunner(R.string.goldEquipment, AdventureEquipmentFragment::class),
+                AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class))) {
 
     var currentLasers = 0
     var currentShields = 0
@@ -22,16 +36,6 @@ class SLAdventure : Adventure() {
         private var FRAGMENT_NOTES = 5
     }
 
-    init {
-
-        Adventure.fragmentConfiguration.clear()
-        Adventure.fragmentConfiguration.put(FRAGMENT_VITAL_STATS, AdventureFragmentRunner(R.string.vitalStats, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLAdventureVitalStatsFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_SHIP_STATS, AdventureFragmentRunner(R.string.shipAndWeapons, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLStarshipStatsFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_COMBAT, AdventureFragmentRunner(R.string.fights, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_VEHICLE_COMBAT, AdventureFragmentRunner(R.string.combatWeaponClashes, "pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLWeaponCombatFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_EQUIPMENT, AdventureFragmentRunner(R.string.goldEquipment, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment"))
-        Adventure.fragmentConfiguration.put(FRAGMENT_NOTES, AdventureFragmentRunner(R.string.notes, "pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment"))
-    }
 
     override fun loadAdventureSpecificValuesFromFile() {
         gold = savedGame.getProperty("gold").toInt()
@@ -52,15 +56,9 @@ class SLAdventure : Adventure() {
         bw.write("oxygen=$oxygen\n")
     }
 
-    override fun getConsumeProvisionText(): String {
-        return resources.getString(R.string.useProvisionTablet)
-    }
+    override val consumeProvisionText= R.string.useProvisionTablet
 
-    override fun getProvisionsText(): String {
-        return resources.getString(R.string.provisionTablets)
-    }
+    override val provisionsText = R.string.provisionTablets
 
-    override fun getCurrencyName(): String {
-        return resources.getString(R.string.credits)
-    }
+    override val currencyName = R.string.credits
 }

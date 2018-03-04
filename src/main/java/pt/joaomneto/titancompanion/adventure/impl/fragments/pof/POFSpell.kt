@@ -3,6 +3,8 @@ package pt.joaomneto.titancompanion.adventure.impl.fragments.pof
 import java.util.function.Consumer
 
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.POFAdventure
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell

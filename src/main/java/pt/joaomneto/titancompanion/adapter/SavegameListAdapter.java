@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import pt.joaomneto.titancompanion.LoadAdventureActivity;
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.consts.Constants;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,10 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
-import pt.joaomneto.titancompanion.LoadAdventureActivity;
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.consts.Constants;
 
 public class SavegameListAdapter extends ArrayAdapter<Savegame> implements View.OnCreateContextMenuListener {
 
@@ -83,10 +82,10 @@ public class SavegameListAdapter extends ArrayAdapter<Savegame> implements View.
 
         View robotView = inflater.inflate(R.layout.component_load_dventure, parent, false);
 
-        final TextView nameValue = (TextView) robotView.getRootView().findViewById(R.id.nameValue);
-        final TextView gamebookValue = (TextView) robotView.getRootView().findViewById(R.id.gamebookValue);
-        final TextView dateValue = (TextView) robotView.getRootView().findViewById(R.id.dateValue);
-        final ImageView gamebookIcon = (ImageView) robotView.getRootView().findViewById(R.id.gamebookIcon);
+        final TextView nameValue = robotView.getRootView().findViewById(R.id.nameValue);
+        final TextView gamebookValue = robotView.getRootView().findViewById(R.id.gamebookValue);
+        final TextView dateValue = robotView.getRootView().findViewById(R.id.dateValue);
+        final ImageView gamebookIcon = robotView.getRootView().findViewById(R.id.gamebookIcon);
 
         final String value = values.get(position).getFilename();
 

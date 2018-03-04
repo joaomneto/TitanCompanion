@@ -25,6 +25,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
@@ -104,7 +106,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 				
 				@Override
 				public boolean onMenuItemClick(MenuItem arg0) {
-					Adventure.showAlert(robot.getRobotSpecialAbility().getName(), robot.getRobotSpecialAbility()
+					Adventure.Companion.showAlert(robot.getRobotSpecialAbility().getName(), robot.getRobotSpecialAbility()
 							.getDescription(), adv);
 					return true;
 				}
@@ -253,7 +255,7 @@ public class RCAdventureRobotFragment extends AdventureFragment {
 						addRobot(name, Integer.parseInt(armor), Integer.parseInt(bonus), RobotSpeed.getSpeedForId((int)speedValue.getSelectedItemId()),
 								specialAbility.length() > 0 ? Integer.parseInt(specialAbility) : null);
 				} else {
-					Adventure.showAlert(getString(R.string.rcNameArmorBonusMandatory), adv);
+					Adventure.Companion.showAlert(getString(R.string.rcNameArmorBonusMandatory), adv);
 				}
 
 			}

@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sob;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.SOBAdventure;
 import android.app.AlertDialog;
@@ -34,8 +36,8 @@ public class SOBAdventureBootyFragment extends AdventureFragment {
 		View rootView = inflater.inflate(R.layout.fragment_16sob_adventure_booty,
 				container, false);
 
-		bootyList = (ListView) rootView.findViewById(R.id.bootyList);
-		Button buttonAddBooty = (Button) rootView
+		bootyList = rootView.findViewById(R.id.bootyList);
+		Button buttonAddBooty = rootView
 				.findViewById(R.id.buttonAddBooty);
 
 		final SOBAdventure adv = (SOBAdventure) getActivity();

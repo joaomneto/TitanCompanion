@@ -1,10 +1,5 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.tpop;
 
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
-import pt.joaomneto.titancompanion.adventure.impl.TPOPAdventure;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +13,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
+import pt.joaomneto.titancompanion.adventure.Adventure;
+import pt.joaomneto.titancompanion.adventure.impl.TPOPAdventure;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment;
 
 public class TPOPAdventureEquipmentFragment extends AdventureEquipmentFragment {
 
@@ -46,11 +48,11 @@ public class TPOPAdventureEquipmentFragment extends AdventureEquipmentFragment {
 
         TPOPAdventure adv = (TPOPAdventure) advParam;
 
-        minusCopperButton = (Button) rootView.findViewById(R.id.minusCopperButton);
-        plusCopperButton = (Button) rootView.findViewById(R.id.plusCopperButton);
+        minusCopperButton = rootView.findViewById(R.id.minusCopperButton);
+        plusCopperButton = rootView.findViewById(R.id.plusCopperButton);
 
 
-        copperValue = (TextView) rootView.findViewById(R.id.copperValue);
+        copperValue = rootView.findViewById(R.id.copperValue);
         copperValue.setText(String.valueOf(adv.getCopper()));
 
         copperValue.setOnClickListener(new OnClickListener() {

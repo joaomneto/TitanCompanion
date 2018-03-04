@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_30com_adventure_combat.*
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.COMAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -17,19 +19,19 @@ import pt.joaomneto.titancompanion.util.DiceRoller
 
 class COMAdventureCombatFragment : AdventureCombatFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
 
         rootView =  inflater!!.inflate(
-            R.layout.fragment_30com_adventure_combat, container, false);
+            R.layout.fragment_30com_adventure_combat, container, false)
 
         init()
 
         return rootView
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val adv = this.context as COMAdventure

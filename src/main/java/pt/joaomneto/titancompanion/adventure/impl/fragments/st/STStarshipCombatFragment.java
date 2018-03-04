@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.st;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.STAdventure;
@@ -48,25 +50,25 @@ public class STStarshipCombatFragment extends AdventureFragment {
 
 		final STAdventure adv = (STAdventure) getActivity();
 
-		shipWeaponsValue = (TextView) rootView.findViewById(R.id.shipWeaponsValue);
-		shipShieldsValue = (TextView) rootView.findViewById(R.id.shipShieldsValue);
-		enemyWeaponsValue = (TextView) rootView.findViewById(R.id.enemyWeaponsValue);
-		enemyShieldsValue = (TextView) rootView.findViewById(R.id.enemyShieldsValue);
+		shipWeaponsValue = rootView.findViewById(R.id.shipWeaponsValue);
+		shipShieldsValue = rootView.findViewById(R.id.shipShieldsValue);
+		enemyWeaponsValue = rootView.findViewById(R.id.enemyWeaponsValue);
+		enemyShieldsValue = rootView.findViewById(R.id.enemyShieldsValue);
 
 		shipWeaponsValue.setText(""+adv.getCurrentShipWeapons());
 		shipShieldsValue.setText(""+adv.getCurrentShipShields());
 
-		combatResult = (TextView) rootView.findViewById(R.id.combatResult);
+		combatResult = rootView.findViewById(R.id.combatResult);
 
-		minusWeaponsButton = (Button) rootView.findViewById(R.id.minusWeaponsButton);
-		minusShieldsButton = (Button) rootView.findViewById(R.id.minusShieldsButton);
-		plusWeaponsButton = (Button) rootView.findViewById(R.id.plusWeaponsButton);
-		plusShieldsButton = (Button) rootView.findViewById(R.id.plusShieldsButton);
+		minusWeaponsButton = rootView.findViewById(R.id.minusWeaponsButton);
+		minusShieldsButton = rootView.findViewById(R.id.minusShieldsButton);
+		plusWeaponsButton = rootView.findViewById(R.id.plusWeaponsButton);
+		plusShieldsButton = rootView.findViewById(R.id.plusShieldsButton);
 
-		minusEnemyWeaponsButton = (Button) rootView.findViewById(R.id.minusEnemyWeaponsButton);
-		minusEnemyShieldsButton = (Button) rootView.findViewById(R.id.minusEnemyShieldsButton);
-		plusEnemyWeaponsButton = (Button) rootView.findViewById(R.id.plusEnemyWeaponsButton);
-		plusEnemyShieldsButton = (Button) rootView.findViewById(R.id.plusEnemyShieldsButton);
+		minusEnemyWeaponsButton = rootView.findViewById(R.id.minusEnemyWeaponsButton);
+		minusEnemyShieldsButton = rootView.findViewById(R.id.minusEnemyShieldsButton);
+		plusEnemyWeaponsButton = rootView.findViewById(R.id.plusEnemyWeaponsButton);
+		plusEnemyShieldsButton = rootView.findViewById(R.id.plusEnemyShieldsButton);
 
 		minusWeaponsButton.setOnClickListener(new OnClickListener() {
 
@@ -145,7 +147,7 @@ public class STStarshipCombatFragment extends AdventureFragment {
 			}
 		});
 
-		attackButton = (Button) rootView.findViewById(R.id.buttonAttack);
+		attackButton = rootView.findViewById(R.id.buttonAttack);
 
 		attackButton.setOnClickListener(new OnClickListener() {
 
@@ -163,7 +165,7 @@ public class STStarshipCombatFragment extends AdventureFragment {
 					enemyShields -= 2;
 					if (enemyShields <= 0) {
 						enemyShields = 0;
-						Adventure.showAlert(R.string.ffDirectHitDefeat,adv);
+						Adventure.Companion.showAlert(R.string.ffDirectHitDefeat,adv);
 					} else {
 						combatResult.setText(R.string.directHit);
 					}
@@ -175,7 +177,7 @@ public class STStarshipCombatFragment extends AdventureFragment {
 					adv.setCurrentShipShields(adv.getCurrentShipShields()-2);
 					if (adv.getCurrentShipShields() <= 0) {
 						adv.setCurrentShipShields(0);
-						Adventure.showAlert(getString(R.string.enemyDestroyedShip),adv);
+						Adventure.Companion.showAlert(getString(R.string.enemyDestroyedShip),adv);
 					} else {
 						combatResult.setText(combatResult.getText().toString()+"\n"+getString(R.string.enemyHitYourShip));
 					}

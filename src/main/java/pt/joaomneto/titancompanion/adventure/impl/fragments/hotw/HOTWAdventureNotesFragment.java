@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.HOTWAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment;
 
@@ -38,8 +40,8 @@ public class HOTWAdventureNotesFragment extends AdventureNotesFragment {
 
         HOTWAdventure adv = (HOTWAdventure) getActivity();
 
-        keywordList = (ListView) rootView.findViewById(R.id.keywordList);
-        Button buttonAddKeyword = (Button) rootView
+        keywordList = rootView.findViewById(R.id.keywordList);
+        Button buttonAddKeyword = rootView
                 .findViewById(R.id.buttonAddKeyword);
 
 

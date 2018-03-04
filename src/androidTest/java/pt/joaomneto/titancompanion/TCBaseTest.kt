@@ -54,7 +54,7 @@ abstract class TCBaseTest {
     @get:Rule
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
-    open protected abstract val gamebook: FightingFantasyGamebook
+    protected abstract val gamebook: FightingFantasyGamebook
 
     private val activityInstance: Activity
         get() {
@@ -80,19 +80,6 @@ abstract class TCBaseTest {
             val targetContext = InstrumentationRegistry.getTargetContext()
             return targetContext.packageName
         }
-
-    protected fun performSwipeOverAllScreens() {
-        performSwipeLeft()
-        performSwipeLeft()
-        performSwipeLeft()
-        performSwipeLeft()
-        performSwipeLeft()
-        performSwipeLeft()
-        performSwipeLeft()
-        performSwipeLeft()
-        performSwipeLeft()
-        performSwipeLeft()
-    }
 
     protected fun performSwipeLeft() {
         onView(withId(R.id.pager)).perform(swipeLeft())
@@ -121,7 +108,8 @@ abstract class TCBaseTest {
     }
 
     protected fun performSaveAdventureFromCreationScreen() {
-        val button: ViewInteraction = onView(allOf(withText(getString(R.string.saveAdventure)), isDisplayed()))
+        val button: ViewInteraction
+        button = onView(allOf(withText(getString(R.string.saveAdventure)), isDisplayed()))
         button.perform(click())
     }
 
@@ -136,7 +124,8 @@ abstract class TCBaseTest {
     }
 
     protected fun performVitalStatisticsRoll() {
-        val button: ViewInteraction = onView(allOf(withText(getString(R.string.rollStats)), isDisplayed()))
+        val button: ViewInteraction
+        button = onView(allOf(withText(getString(R.string.rollStats)), isDisplayed()))
         button.perform(click())
     }
 
@@ -194,7 +183,7 @@ abstract class TCBaseTest {
 
     companion object {
 
-        public fun childAtPosition(
+        fun childAtPosition(
             parentMatcher: Matcher<View>, position: Int): Matcher<View> {
 
             return object : TypeSafeMatcher<View>() {

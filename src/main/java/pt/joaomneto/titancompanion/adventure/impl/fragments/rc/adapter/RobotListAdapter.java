@@ -17,6 +17,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.RCAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.Robot;
 

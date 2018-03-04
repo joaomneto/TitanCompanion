@@ -29,7 +29,7 @@ public class SpellListAdapter extends ArrayAdapter<String> {
 
 			final View view = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
 
-			final TextView text1 = (TextView) view.getRootView().findViewById(android.R.id.text1);
+			final TextView text1 = view.getRootView().findViewById(android.R.id.text1);
 
 			String text = adv.getSpellList().get(position);
 

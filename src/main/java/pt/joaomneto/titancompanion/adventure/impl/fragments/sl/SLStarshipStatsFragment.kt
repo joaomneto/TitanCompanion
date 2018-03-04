@@ -1,5 +1,6 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sl
 
+import android.content.DialogInterface
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
@@ -7,18 +8,19 @@ import android.graphics.Matrix
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_33sl_adventure_starshipstats.*
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
-import pt.joaomneto.titancompanion.adventure.Adventure.getResId
+import pt.joaomneto.titancompanion.adventure.Adventure.Companion.getResId
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.SLAdventure
 
 class SLStarshipStatsFragment : AdventureFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
 
@@ -26,7 +28,7 @@ class SLStarshipStatsFragment : AdventureFragment() {
                 container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val adv = this.context as SLAdventure
@@ -48,10 +50,14 @@ class SLStarshipStatsFragment : AdventureFragment() {
             refreshScreensFromResume()
         })
         abandonStarsprayButton.setOnClickListener({
-            Adventure.showConfirmation(if (adv.starspray) R.string.abandonStarspray else R.string.recoverStarspray, if (adv.starspray) R.string.confirmAbandonStarspray else R.string.confirmRecoverStarspray, adv, { _, _ ->
-                adv.starspray = !adv.starspray
-                refreshScreensFromResume()
-            })
+            Adventure.showConfirmation(
+                    if (adv.starspray) R.string.abandonStarspray else R.string.recoverStarspray,
+                    if (adv.starspray) R.string.confirmAbandonStarspray else R.string.confirmRecoverStarspray,
+                    adv,
+                    DialogInterface.OnClickListener { _, _ ->
+                        adv.starspray = !adv.starspray
+                        refreshScreensFromResume()
+                    })
         })
 
     }
@@ -80,7 +86,7 @@ class SLStarshipStatsFragment : AdventureFragment() {
         )
     }
 
-    fun overlay(id1: Int, id2: Int): Bitmap {
+    private fun overlay(id1: Int, id2: Int): Bitmap {
         val bmp1 = BitmapFactory.decodeResource(resources, id1)
         val bmp2 = BitmapFactory.decodeResource(resources, id2)
         val bmOverlay = Bitmap.createBitmap(bmp1.width, bmp1.height, bmp1.config)

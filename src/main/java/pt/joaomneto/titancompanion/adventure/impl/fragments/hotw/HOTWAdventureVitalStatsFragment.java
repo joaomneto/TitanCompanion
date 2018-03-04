@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.HOTWAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 
@@ -33,11 +35,11 @@ public class HOTWAdventureVitalStatsFragment extends AdventureVitalStatsFragment
 
         //CHECKTHIS initialize(rootView);
 
-        decreaseChangeButton = (Button) rootView
+        decreaseChangeButton = rootView
                 .findViewById(R.id.minusChangeButton);
-        increaseChangeButton = (Button) rootView
+        increaseChangeButton = rootView
                 .findViewById(R.id.plusChangeButton);
-        changeValue = (TextView) rootView.findViewById(R.id.statsChangeValue);
+        changeValue = rootView.findViewById(R.id.statsChangeValue);
         final HOTWAdventure adv = (HOTWAdventure) getActivity();
 
         decreaseChangeButton.setOnClickListener(new OnClickListener() {

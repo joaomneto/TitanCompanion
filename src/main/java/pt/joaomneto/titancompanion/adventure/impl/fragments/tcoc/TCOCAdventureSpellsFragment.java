@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.tcoc;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.TCOCAdventure;
 
@@ -28,7 +30,7 @@ public class TCOCAdventureSpellsFragment extends AdventureFragment {
 		super.onCreate(savedInstanceState);
 		View rootView = inflater.inflate(R.layout.fragment_02tcoc_adventure_spells, container, false);
 
-		spellList = (ListView) rootView.findViewById(R.id.spellList);
+		spellList = rootView.findViewById(R.id.spellList);
 
 		final TCOCAdventure adv = (TCOCAdventure) getActivity();
 

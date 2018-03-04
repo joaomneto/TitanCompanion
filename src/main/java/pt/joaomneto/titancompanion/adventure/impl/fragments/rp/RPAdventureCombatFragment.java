@@ -5,6 +5,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
 import pt.joaomneto.titancompanion.util.DiceRoller;

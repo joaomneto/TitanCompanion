@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_33sl_adventure_weaponcombat.*
 import pt.joaomneto.titancompanion.R
+import android.support.v4.app.Fragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.SLAdventure
 import pt.joaomneto.titancompanion.util.DiceRoller
@@ -17,7 +19,7 @@ class SLWeaponCombatFragment : AdventureFragment() {
     private var enemyShields = 0
     private var enemyRating = 0
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
 
@@ -26,7 +28,7 @@ class SLWeaponCombatFragment : AdventureFragment() {
                 false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val adv = context as SLAdventure

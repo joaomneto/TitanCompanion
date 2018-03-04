@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sots;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.SOTSAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment;
@@ -56,27 +58,27 @@ public class SOTSAdventureEquipmentFragment extends AdventureEquipmentFragment {
 	protected void initialize(View rootView, Adventure adv_) {
 		super.initialize(rootView, adv_);
 
-		hummingValue = (TextView) rootView.findViewById(R.id.hummingValue);
-		armourPValue = (TextView) rootView.findViewById(R.id.armourPValue);
-		willowValue = (TextView) rootView.findViewById(R.id.willowValue);
-		bowelValue = (TextView) rootView.findViewById(R.id.bowelValue);
+		hummingValue = rootView.findViewById(R.id.hummingValue);
+		armourPValue = rootView.findViewById(R.id.armourPValue);
+		willowValue = rootView.findViewById(R.id.willowValue);
+		bowelValue = rootView.findViewById(R.id.bowelValue);
 
-		hummingLabel = (TextView) rootView.findViewById(R.id.hummingLabel);
-		armourPLabel = (TextView) rootView.findViewById(R.id.armourPLabel);
-		willowLabel = (TextView) rootView.findViewById(R.id.willowLabel);
-		bowelLabel = (TextView) rootView.findViewById(R.id.bowelLabel);
+		hummingLabel = rootView.findViewById(R.id.hummingLabel);
+		armourPLabel = rootView.findViewById(R.id.armourPLabel);
+		willowLabel = rootView.findViewById(R.id.willowLabel);
+		bowelLabel = rootView.findViewById(R.id.bowelLabel);
 
-		minusHummingButton = (Button) rootView.findViewById(R.id.minusHummingButton);
-		plusHummingButton = (Button) rootView.findViewById(R.id.plusHummingButton);
+		minusHummingButton = rootView.findViewById(R.id.minusHummingButton);
+		plusHummingButton = rootView.findViewById(R.id.plusHummingButton);
 
-		minusArmourPButton = (Button) rootView.findViewById(R.id.minusArmourPButton);
-		plusArmourPButton = (Button) rootView.findViewById(R.id.plusArmourPButton);
+		minusArmourPButton = rootView.findViewById(R.id.minusArmourPButton);
+		plusArmourPButton = rootView.findViewById(R.id.plusArmourPButton);
 
-		minusWillowButton = (Button) rootView.findViewById(R.id.minusWillowButton);
-		plusWillowButton = (Button) rootView.findViewById(R.id.plusWillowButton);
+		minusWillowButton = rootView.findViewById(R.id.minusWillowButton);
+		plusWillowButton = rootView.findViewById(R.id.plusWillowButton);
 
-		minusBowelButton = (Button) rootView.findViewById(R.id.minusBowelButton);
-		plusBowelButton = (Button) rootView.findViewById(R.id.plusBowelButton);
+		minusBowelButton = rootView.findViewById(R.id.minusBowelButton);
+		plusBowelButton = rootView.findViewById(R.id.plusBowelButton);
 
 		final SOTSAdventure adv = (SOTSAdventure) adv_;
 

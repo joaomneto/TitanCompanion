@@ -11,6 +11,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.STRIDERAdventure;
 
@@ -46,14 +48,14 @@ public class STRIDERAdventureTimeOxygenFragment extends AdventureFragment {
 
 
 
-        oxygenValue = (TextView) rootView.findViewById(R.id.statsOxygenValue);
-        increaseOxygenButton = (Button) rootView.findViewById(R.id.plusOxygenButton);
-        decreaseOxygenButton = (Button) rootView.findViewById(R.id.minusOxygenButton);
-        timeValue = (TextView) rootView.findViewById(R.id.statsTimeValue);
-        increaseTimeButton = (Button) rootView.findViewById(R.id.plusTimeButton);
-        decreaseTimeButton = (Button) rootView.findViewById(R.id.minusTimeButton);
-        timeBar = (TableLayout) rootView.findViewById(R.id.strider_timeBar);
-        oxygenBar = (TableLayout) rootView.findViewById(R.id.strider_oxygenBar);
+        oxygenValue = rootView.findViewById(R.id.statsOxygenValue);
+        increaseOxygenButton = rootView.findViewById(R.id.plusOxygenButton);
+        decreaseOxygenButton = rootView.findViewById(R.id.minusOxygenButton);
+        timeValue = rootView.findViewById(R.id.statsTimeValue);
+        increaseTimeButton = rootView.findViewById(R.id.plusTimeButton);
+        decreaseTimeButton = rootView.findViewById(R.id.minusTimeButton);
+        timeBar = rootView.findViewById(R.id.strider_timeBar);
+        oxygenBar = rootView.findViewById(R.id.strider_oxygenBar);
 
         increaseOxygenButton.setOnClickListener((View v) -> {
             adventure.increaseOxygen();

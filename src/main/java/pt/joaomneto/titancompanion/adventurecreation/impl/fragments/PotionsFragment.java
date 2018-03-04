@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.adventurecreation.impl.TWOFMAdventureCreation;
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook;
@@ -52,7 +54,7 @@ public class PotionsFragment extends Fragment {
 
         SimpleAdapter mAdapter = new SimpleAdapter(getActivity(), potionList, R.layout.potions_item, new String[]{"potion"}, new int[]{R.id.potion_name});
 
-        ListView lView = (ListView) rootView.findViewById(R.id.potionList);
+        ListView lView = rootView.findViewById(R.id.potionList);
         lView.setAdapter(mAdapter);
         lView.setSelector(R.drawable.row_selector);
 
@@ -88,7 +90,7 @@ public class PotionsFragment extends Fragment {
 
 
 //        1 dose == position 0 of the spinner
-            spinner.setSelection(getDefaultPotionDosage() - 1);
+        spinner.setSelection(getDefaultPotionDosage() - 1);
 
 
         return rootView;
@@ -98,11 +100,11 @@ public class PotionsFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.buttonSaveAdventure).setOnClickListener((View v) -> {
-            ((AdventureCreation) this.getActivity()).saveAdventure(v);
+            ((AdventureCreation) this.getActivity()).saveAdventure();
         });
     }
 
     private int getDefaultPotionDosage() {
-        return ("fr".equals(LocaleHelper.getLanguage(this.getActivity())) || ((AdventureCreation)this.getActivity()).getGamebook().equals(FightingFantasyGamebook.THE_WARLOCK_OF_FIRETOP_MOUNTAIN)) ? 2 : 1;
+        return ("fr".equals(LocaleHelper.getLanguage(this.getActivity())) || ((AdventureCreation) this.getActivity()).getGamebook().equals(FightingFantasyGamebook.THE_WARLOCK_OF_FIRETOP_MOUNTAIN)) ? 2 : 1;
     }
 }

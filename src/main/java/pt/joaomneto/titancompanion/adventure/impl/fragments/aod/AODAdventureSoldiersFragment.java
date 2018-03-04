@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Map;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.AODAdventure;
@@ -199,7 +201,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         combatResult.setText("");
 
         if (enemyForces == 0) {
-            Adventure.showAlert(getString(R.string.mustSetEnemyForces), adv);
+            Adventure.Companion.showAlert(getString(R.string.mustSetEnemyForces), adv);
             return;
         }
 
@@ -210,7 +212,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         }
 
         if (totalForces == 0) {
-            Adventure.showAlert(getString(R.string.mustCommitTroops), adv);
+            Adventure.Companion.showAlert(getString(R.string.mustCommitTroops), adv);
             return;
         }
 
@@ -238,7 +240,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         }
 
         if (battleState.equals(AODAdventureBattleState.DAMAGE)) {
-            Adventure.showAlert(getString(R.string.mustDistributeLosses), adv);
+            Adventure.Companion.showAlert(getString(R.string.mustDistributeLosses), adv);
             return;
         }
 
@@ -353,7 +355,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
                 try {
                     quantity = Integer.valueOf(quantityS);
                 } catch (NumberFormatException e) {
-                    Adventure.showAlert(getString(R.string.aodMustFillTypeAndQuantity), AODAdventureSoldiersFragment.this.getActivity());
+                    Adventure.Companion.showAlert(getString(R.string.aodMustFillTypeAndQuantity), AODAdventureSoldiersFragment.this.getActivity());
                     return;
                 }
 

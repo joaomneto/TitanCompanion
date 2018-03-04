@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 
 
 /**

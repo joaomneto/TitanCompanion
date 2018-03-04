@@ -136,6 +136,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void showHelp() {
-        Adventure.showInfoAlert(R.string.savegameImportInfo, this);
+        Adventure.Companion.showInfoAlert(R.string.savegameImportInfo, this);
     }
 }

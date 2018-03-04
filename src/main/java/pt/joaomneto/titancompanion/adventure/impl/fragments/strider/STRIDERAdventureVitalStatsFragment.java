@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import pt.joaomneto.titancompanion.R;
+import android.support.v4.app.Fragment;
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.HOHAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.STRIDERAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
@@ -35,7 +37,7 @@ public class STRIDERAdventureVitalStatsFragment extends AdventureVitalStatsFragm
 		//CHECKTHIS	initialize(rootView);
 
 
-		fearValue = (TextView) rootView.findViewById(R.id.statsFearValue);
+		fearValue = rootView.findViewById(R.id.statsFearValue);
 
 		refreshScreensFromResume();
 

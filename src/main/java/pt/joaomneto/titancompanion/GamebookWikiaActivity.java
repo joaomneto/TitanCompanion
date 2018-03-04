@@ -12,7 +12,7 @@ public class GamebookWikiaActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gamebook_wikia);
 		
-		WebView myWebView = (WebView) findViewById(R.id.webview);
+		WebView myWebView = findViewById(R.id.webview);
 		
 		Intent intent = getIntent();
 		String url = intent.getStringExtra(GamebookListActivity.GAMEBOOK_URL);

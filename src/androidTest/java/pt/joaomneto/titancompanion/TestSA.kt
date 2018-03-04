@@ -1,14 +1,5 @@
 package pt.joaomneto.titancompanion
 
-import android.support.test.espresso.ViewInteraction
-import android.support.test.filters.LargeTest
-import android.support.test.runner.AndroidJUnit4
-
-import org.junit.Test
-import org.junit.runner.RunWith
-
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
-
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
@@ -17,10 +8,14 @@ import android.support.test.espresso.matcher.ViewMatchers.withClassName
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.withParent
 import android.support.test.espresso.matcher.ViewMatchers.withText
+import android.support.test.filters.LargeTest
+import android.support.test.runner.AndroidJUnit4
 import android.view.View
-import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.startsWith
+import org.junit.Test
+import org.junit.runner.RunWith
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.SPACE_ASSASSIN
 
 @LargeTest
@@ -61,7 +56,7 @@ class TestSA : TCBaseTest() {
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
-        performSwipeOverAllScreens()
+
     }
 
     protected fun assertImpossibleToAddWeapons() {
