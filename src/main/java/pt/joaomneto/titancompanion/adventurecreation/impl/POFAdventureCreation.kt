@@ -2,9 +2,9 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.pof.POFVitalStatisticsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
@@ -25,7 +25,7 @@ class POFAdventureCreation : TFODAdventureCreation(
     private var powerValue = -1
 
     private val pofVitalStatisticsFragment: POFVitalStatisticsFragment
-        get() = getFragment(pofVitalStatisticsFragment::class)
+        get() = getFragment(POFVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {

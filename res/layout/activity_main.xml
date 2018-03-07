@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
     <Button
-        android:id="@+id/plusValueButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="createNewAdventure"
-        android:text="@string/create_new_adventure" />
+            android:id="@+id/plusValueButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="createNewAdventure"
+            android:text="@string/create_new_adventure"/>
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/plusValueButton"
-        android:onClick="loadAdventure"
-        android:text="@string/load_adventure" />
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/plusValueButton"
+            android:onClick="loadAdventure"
+            android:text="@string/load_adventure"/>
 
     <Button
-        android:id="@+id/buttonExit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:onClick="quit"
-        android:text="@string/quit" />
+            android:id="@+id/buttonExit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:onClick="quit"
+            android:text="@string/quit"/>
 
 
     <Button
-        android:id="@+id/buttonRate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonExit"
-        android:layout_alignParentStart="true"
-        android:onClick="rate"
-        android:text="@string/rateApp" />
+            android:id="@+id/buttonRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonExit"
+            android:layout_alignParentStart="true"
+            android:onClick="rate"
+            android:text="@string/rateApp"/>
 
     <Button
-        android:id="@+id/buttonSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonRate"
-        android:layout_alignParentStart="true"
-        android:onClick="settings"
-        android:text="@string/action_settings"
-        android:visibility="visible" />
+            android:id="@+id/buttonSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonRate"
+            android:layout_alignParentStart="true"
+            android:onClick="settings"
+            android:text="@string/action_settings"
+            android:visibility="visible"/>
 
 </RelativeLayout>

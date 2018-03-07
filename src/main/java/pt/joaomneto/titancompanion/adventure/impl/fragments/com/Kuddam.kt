@@ -1,8 +1,6 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.com
 
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 
 enum class Kuddam(val viewId: Int) {
     GESHRAK(R.id.com_kuddam_geshrak),

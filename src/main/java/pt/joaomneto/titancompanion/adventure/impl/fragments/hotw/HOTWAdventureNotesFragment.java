@@ -9,16 +9,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-
 import pt.joaomneto.titancompanion.R;
-import android.support.v4.app.Fragment;
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.HOTWAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment;
 
@@ -66,10 +59,10 @@ public class HOTWAdventureNotesFragment extends AdventureNotesFragment {
                             public void onClick(DialogInterface dialog,
                                                 int whichButton) {
                                 String value = input.getText().toString();
-                                if(value.isEmpty())
+                                if (value.isEmpty())
                                     return;
                                 adv.getKeywords().add(value.trim());
-                                ((ArrayAdapter<String>)keywordList.getAdapter()).notifyDataSetChanged();
+                                ((ArrayAdapter<String>) keywordList.getAdapter()).notifyDataSetChanged();
                             }
                         });
 
@@ -109,7 +102,7 @@ public class HOTWAdventureNotesFragment extends AdventureNotesFragment {
                     @SuppressWarnings("unchecked")
                     public void onClick(DialogInterface dialog, int which) {
                         adv.getKeywords().remove(position);
-                        ((ArrayAdapter<String>)keywordList.getAdapter()).notifyDataSetChanged();
+                        ((ArrayAdapter<String>) keywordList.getAdapter()).notifyDataSetChanged();
                     }
                 });
 

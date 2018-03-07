@@ -1,252 +1,252 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin">
 
     <ListView
-        android:id="@+id/equipmentList"
-        android:layout_width="fill_parent"
-        android:layout_marginTop="5dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonAddEquipment"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/border_back"
-        android:layout_below="@+id/equipmentLabel" >
+            android:id="@+id/equipmentList"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonAddEquipment"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/border_back"
+            android:layout_below="@+id/equipmentLabel">
 
     </ListView>
 
     <Button
-        android:id="@+id/buttonAddEquipment"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/addEquipment" />
+            android:id="@+id/buttonAddEquipment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/addEquipment"/>
 
     <TextView
-        android:id="@+id/equipmentLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="@string/equipment"
-        android:layout_below="@+id/goldLabel" 
-        android:layout_marginTop="5dp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/equipmentLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/equipment"
+            android:layout_below="@+id/goldLabel"
+            android:layout_marginTop="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
-        android:id="@+id/goldLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="@string/gold"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_alignBottom="@+id/minusGoldButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            android:id="@+id/goldLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/gold"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignBottom="@+id/minusGoldButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
 
     <Button
-        android:id="@+id/minusGoldButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusGoldButton"
-        android:layout_alignTop="@+id/plusGoldButton"
-        android:layout_toLeftOf="@+id/goldValue"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/minus" />
+            android:id="@+id/minusGoldButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusGoldButton"
+            android:layout_alignTop="@+id/plusGoldButton"
+            android:layout_toLeftOf="@+id/goldValue"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/goldValue"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusGoldButton"
-        android:layout_alignTop="@+id/plusGoldButton"
-        android:layout_toLeftOf="@+id/plusGoldButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/goldValue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusGoldButton"
+            android:layout_alignTop="@+id/plusGoldButton"
+            android:layout_toLeftOf="@+id/plusGoldButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusGoldButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/plus"
-        android:layout_below="@+id/plusWillowButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            android:id="@+id/plusGoldButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/plus"
+            android:layout_below="@+id/plusWillowButton"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
 
     <TextView
-        android:id="@+id/willowLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="@string/willow"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_above="@+id/minusWillowButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            android:id="@+id/willowLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/willow"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_above="@+id/minusWillowButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
 
     <Button
-        android:id="@+id/minusWillowButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusWillowButton"
-        android:layout_alignTop="@+id/plusWillowButton"
-        android:layout_toLeftOf="@+id/willowValue"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/minus" />
+            android:id="@+id/minusWillowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusWillowButton"
+            android:layout_alignTop="@+id/plusWillowButton"
+            android:layout_toLeftOf="@+id/willowValue"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/willowValue"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusWillowButton"
-        android:layout_alignTop="@+id/plusWillowButton"
-        android:layout_toLeftOf="@+id/plusWillowButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/willowValue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusWillowButton"
+            android:layout_alignTop="@+id/plusWillowButton"
+            android:layout_toLeftOf="@+id/plusWillowButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusWillowButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/plus"
-        android:layout_below="@+id/plusBowelButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            android:id="@+id/plusWillowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/plus"
+            android:layout_below="@+id/plusBowelButton"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
 
     <TextView
-        android:id="@+id/bowelLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="@string/bowel"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_above="@+id/minusGoldButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            android:id="@+id/bowelLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/bowel"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_above="@+id/minusGoldButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
 
     <Button
-        android:id="@+id/minusBowelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusBowelButton"
-        android:layout_alignTop="@+id/plusBowelButton"
-        android:layout_toLeftOf="@+id/bowelValue"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/minus" />
+            android:id="@+id/minusBowelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusBowelButton"
+            android:layout_alignTop="@+id/plusBowelButton"
+            android:layout_toLeftOf="@+id/bowelValue"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/bowelValue"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusBowelButton"
-        android:layout_alignTop="@+id/plusBowelButton"
-        android:layout_toLeftOf="@+id/plusBowelButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/bowelValue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusBowelButton"
+            android:layout_alignTop="@+id/plusBowelButton"
+            android:layout_toLeftOf="@+id/plusBowelButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusBowelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/plus"
-        android:layout_below="@+id/plusArmourPButton"
-        android:layout_alignLeft="@+id/plusArmourPButton"
-        android:layout_alignStart="@+id/plusArmourPButton" />
+            android:id="@+id/plusBowelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/plus"
+            android:layout_below="@+id/plusArmourPButton"
+            android:layout_alignLeft="@+id/plusArmourPButton"
+            android:layout_alignStart="@+id/plusArmourPButton"/>
 
     <TextView
-        android:id="@+id/armourPLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="@string/armourP"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_above="@+id/minusBowelButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            android:id="@+id/armourPLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/armourP"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_above="@+id/minusBowelButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
 
     <Button
-        android:id="@+id/minusArmourPButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusArmourPButton"
-        android:layout_alignTop="@+id/plusArmourPButton"
-        android:layout_toLeftOf="@+id/armourPValue"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/minus" />
+            android:id="@+id/minusArmourPButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusArmourPButton"
+            android:layout_alignTop="@+id/plusArmourPButton"
+            android:layout_toLeftOf="@+id/armourPValue"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/armourPValue"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusArmourPButton"
-        android:layout_alignTop="@+id/plusArmourPButton"
-        android:layout_toLeftOf="@+id/plusArmourPButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/armourPValue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusArmourPButton"
+            android:layout_alignTop="@+id/plusArmourPButton"
+            android:layout_toLeftOf="@+id/plusArmourPButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusArmourPButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/plus"
-        android:layout_below="@+id/plusHummingButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            android:id="@+id/plusArmourPButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/plus"
+            android:layout_below="@+id/plusHummingButton"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
 
     <TextView
-        android:id="@+id/hummingLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="@string/humming"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_alignBottom="@+id/minusHummingButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            android:id="@+id/hummingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/humming"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignBottom="@+id/minusHummingButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
 
     <Button
-        android:id="@+id/minusHummingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusHummingButton"
-        android:layout_alignTop="@+id/plusHummingButton"
-        android:layout_toLeftOf="@+id/hummingValue"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/minus" />
+            android:id="@+id/minusHummingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusHummingButton"
+            android:layout_alignTop="@+id/plusHummingButton"
+            android:layout_toLeftOf="@+id/hummingValue"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/hummingValue"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusHummingButton"
-        android:layout_alignTop="@+id/plusHummingButton"
-        android:layout_toLeftOf="@+id/plusHummingButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/hummingValue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusHummingButton"
+            android:layout_alignTop="@+id/plusHummingButton"
+            android:layout_toLeftOf="@+id/plusHummingButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusHummingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:padding="0dp"
-        android:gravity="center"
-        android:text="@string/plus" />
+            android:id="@+id/plusHummingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:padding="0dp"
+            android:gravity="center"
+            android:text="@string/plus"/>
 
 </RelativeLayout>

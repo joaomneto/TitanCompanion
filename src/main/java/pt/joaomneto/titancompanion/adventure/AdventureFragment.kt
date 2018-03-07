@@ -17,7 +17,13 @@ abstract class AdventureFragment : DialogFragment() {
         refreshScreensFromResume()
     }
 
-    fun setupIncDecButton(rootView: View, incButtonId: Int, decButtonId: Int, property: KMutableProperty0<Int>, maxValue: Int) {
+    fun setupIncDecButton(
+        rootView: View,
+        incButtonId: Int,
+        decButtonId: Int,
+        property: KMutableProperty0<Int>,
+        maxValue: Int
+    ) {
         val incButton = rootView.findViewById<Button>(incButtonId)
         val decButton = rootView.findViewById<Button>(decButtonId)
 
@@ -32,8 +38,10 @@ abstract class AdventureFragment : DialogFragment() {
         }
     }
 
-    fun <A : Adventure> setupIncDecButton(rootView: View, incButtonId: Int, decButtonId: Int, adv: A, property: KMutableProperty1<A, Int>,
-        maxValue: Int, incTrigger: Runnable? = null, decTrigger: Runnable? = null) {
+    fun <A : Adventure> setupIncDecButton(
+        rootView: View, incButtonId: Int, decButtonId: Int, adv: A, property: KMutableProperty1<A, Int>,
+        maxValue: Int, incTrigger: Runnable? = null, decTrigger: Runnable? = null
+    ) {
 
         val incButton = rootView.findViewById<Button>(incButtonId)
         val decButton = rootView.findViewById<Button>(decButtonId)
@@ -49,7 +57,6 @@ abstract class AdventureFragment : DialogFragment() {
             decTrigger?.run()
             refreshScreensFromResume()
         }
-
     }
 
     private fun <A : Adventure> incDec(adv: A, property: KMutableProperty1<A, Int>, maxValue: Int, increase: Boolean) {

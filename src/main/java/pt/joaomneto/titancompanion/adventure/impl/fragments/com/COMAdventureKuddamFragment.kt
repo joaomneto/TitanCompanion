@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_30com_adventure_kuddam.*
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.COMAdventure
 
@@ -17,11 +15,14 @@ class COMAdventureKuddamFragment : AdventureFragment() {
 
     var rootView: View? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
-        rootView = inflater!!.inflate(
-            R.layout.fragment_30com_adventure_kuddam, container, false)
+        rootView = inflater.inflate(
+            R.layout.fragment_30com_adventure_kuddam, container, false
+        )
 
         return rootView
     }
@@ -66,6 +67,4 @@ class COMAdventureKuddamFragment : AdventureFragment() {
 
         refreshScreensFromResume()
     }
-
-
 }

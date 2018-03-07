@@ -15,10 +15,7 @@ class AODAdventureCreation : AdventureCreation() {
 
     override fun rollGamebookSpecificStats(view: View) {}
 
-
     override fun validateCreationSpecificParameters(): String? {
         return AdventureCreation.Companion.NO_PARAMETERS_TO_VALIDATE
     }
-
-
 }

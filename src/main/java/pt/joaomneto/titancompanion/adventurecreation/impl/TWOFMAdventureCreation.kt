@@ -1,21 +1,28 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
 
-open class TWOFMAdventureCreation(override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS) : AdventureCreation(fragmentConfiguration) {
+open class TWOFMAdventureCreation(override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS) : AdventureCreation(
+    fragmentConfiguration
+) {
 
     companion object {
         val DEFAULT_FRAGMENTS = arrayOf(
-                AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats,
-                        VitalStatisticsFragment::class),
-                AdventureFragmentRunner(R.string.title_adventure_creation_potions,
-                        PotionsFragment::class))
+            AdventureFragmentRunner(
+                R.string.title_adventure_creation_vitalstats,
+                VitalStatisticsFragment::class
+            ),
+            AdventureFragmentRunner(
+                R.string.title_adventure_creation_potions,
+                PotionsFragment::class
+            )
+        )
     }
 
     var potion = -1

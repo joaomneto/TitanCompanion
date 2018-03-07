@@ -10,5 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.MASKS_OF_MAYHE
 class TestMOM : TestTFOD() {
 
     override val gamebook = MASKS_OF_MAYHEM
-
 }

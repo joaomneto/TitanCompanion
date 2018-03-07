@@ -9,13 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment.Combatant;
 
 import java.util.List;
-
-import pt.joaomneto.titancompanion.R;
-import android.support.v4.app.Fragment;
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
-import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment.Combatant;
 
 public class CombatantListAdapter extends ArrayAdapter<Combatant> {
 

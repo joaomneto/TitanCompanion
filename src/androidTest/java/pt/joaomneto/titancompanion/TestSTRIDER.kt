@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.STAR_STRIDER
 class TestSTRIDER : TestST() {
 
     override val gamebook = STAR_STRIDER
-
-
 }

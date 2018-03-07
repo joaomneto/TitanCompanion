@@ -22,14 +22,11 @@ import java.util.Map;
 
 public class SavegameListAdapter extends ArrayAdapter<Savegame> implements View.OnCreateContextMenuListener {
 
+    private final static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     private final Context context;
     private final List<Savegame> values;
-    private LoadAdventureActivity adv;
-
-
     private final Map<String, Integer> gamebookNameToNumber = new HashMap<>();
-
-    private final static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    private LoadAdventureActivity adv;
 
     public SavegameListAdapter(Context context, List<Savegame> values) {
         super(context, -1, values);
@@ -46,23 +43,22 @@ public class SavegameListAdapter extends ArrayAdapter<Savegame> implements View.
 
 
         //TODO refactor this
-        for (String name: gamebookNames) {
+        for (String name : gamebookNames) {
             number++;
 
             String prefix = null;
 
-            if(name.equals(enResources.getString(R.string.spectral))){
+            if (name.equals(enResources.getString(R.string.spectral))) {
                 prefix = "spectral";
-            }else if (name.equals(enResources.getString(R.string.tower))){
+            } else if (name.equals(enResources.getString(R.string.tower))) {
                 prefix = "tower";
-            }else if (name.equals(enResources.getString(R.string.siege))){
+            } else if (name.equals(enResources.getString(R.string.siege))) {
                 prefix = "siege";
-            }else if (name.equals(enResources.getString(R.string.moon))){
+            } else if (name.equals(enResources.getString(R.string.moon))) {
                 prefix = "moon";
-            }else if (name.equals(enResources.getString(R.string.strider))){
+            } else if (name.equals(enResources.getString(R.string.strider))) {
                 prefix = "strider";
-            }
-            else {
+            } else {
                 String[] tokens = name.split("\\ ");
 
                 prefix = "";
@@ -94,7 +90,7 @@ public class SavegameListAdapter extends ArrayAdapter<Savegame> implements View.
         nameValue.setText(tokens[2]);
 
         int gamebookNameId = adv.getResources().getIdentifier(tokens[1].toLowerCase(), "string", adv.getApplicationContext().getPackageName());
-        int gamebookCoverId = adv.getResources().getIdentifier("ff"+ gamebookNameToNumber.get(tokens[1].toLowerCase()), "drawable", adv.getApplicationContext().getPackageName());
+        int gamebookCoverId = adv.getResources().getIdentifier("ff" + gamebookNameToNumber.get(tokens[1].toLowerCase()), "drawable", adv.getApplicationContext().getPackageName());
 
         gamebookValue.setText(gamebookNameId);
         dateValue.setText(df.format(values.get(position).getLastUpdated()));

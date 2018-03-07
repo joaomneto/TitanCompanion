@@ -4,10 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import pt.joaomneto.titancompanion.R;
-import android.support.v4.app.Fragment;
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment;
 
 /**

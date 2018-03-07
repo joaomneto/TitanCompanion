@@ -3,16 +3,19 @@ package pt.joaomneto.titancompanion.adventure.impl
 import android.os.Bundle
 import android.view.Menu
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.tcoc.TCOCAdventureSpellsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
-import java.util.*
+import java.util.ArrayList
+import java.util.Arrays
+import java.util.Collections
+import java.util.HashMap
 
 class TCOCAdventure : Adventure(
     arrayOf(

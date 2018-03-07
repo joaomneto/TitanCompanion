@@ -3,25 +3,40 @@ package pt.joaomneto.titancompanion.adventure.impl
 import android.app.AlertDialog
 import android.widget.Button
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
-import pt.joaomneto.titancompanion.adventure.impl.fragments.com.*
+import pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureCombatFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureKuddamFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureNotesFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureVitalStatsFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.com.Kuddam
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
 
 class COMAdventure : TWOFMAdventure(
-        arrayOf(
-        AdventureFragmentRunner(R.string.vitalStats,
-                COMAdventureVitalStatsFragment::class),
-        AdventureFragmentRunner(R.string.fights,
-                COMAdventureCombatFragment::class),
-        AdventureFragmentRunner(R.string.kuddams,
-                COMAdventureKuddamFragment::class),
-        AdventureFragmentRunner(R.string.goldEquipment,
-                AdventureEquipmentFragment::class),
-        AdventureFragmentRunner(R.string.notes,
-                COMAdventureNotesFragment::class))) {
+    arrayOf(
+        AdventureFragmentRunner(
+            R.string.vitalStats,
+            COMAdventureVitalStatsFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.fights,
+            COMAdventureCombatFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.kuddams,
+            COMAdventureKuddamFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.goldEquipment,
+            AdventureEquipmentFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.notes,
+            COMAdventureNotesFragment::class
+        )
+    )
+) {
 
     companion object {
 
@@ -38,7 +53,6 @@ class COMAdventure : TWOFMAdventure(
     var fuel: Int = 0
     var cyphers: List<String> = emptyList()
     var tabashaSpecialSkill = false
-
 
     override fun loadAdventureSpecificValuesFromFile() {
         tabasha = savedGame.getProperty("tabasha").toInt()
@@ -106,7 +120,6 @@ class COMAdventure : TWOFMAdventure(
         alert.setView(useTabashaPanel)
 
         alert.show()
-
     }
 
     fun useTabashaStandardAction() {
@@ -114,6 +127,4 @@ class COMAdventure : TWOFMAdventure(
         tabasha--
         refreshScreens()
     }
-
-
 }

@@ -1,12 +1,10 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.rc;
 
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.impl.util.TranslatableEnum;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import pt.joaomneto.titancompanion.R;
-import android.support.v4.app.Fragment;
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
-import pt.joaomneto.titancompanion.adventure.impl.util.TranslatableEnum;
 
 public enum RobotSpeed implements TranslatableEnum {
 

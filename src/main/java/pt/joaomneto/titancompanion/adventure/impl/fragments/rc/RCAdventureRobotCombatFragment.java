@@ -289,7 +289,6 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         });
 
 
-
         robotSpecialAbilityValue.setOnClickListener(new OnClickListener() {
 
             @Override

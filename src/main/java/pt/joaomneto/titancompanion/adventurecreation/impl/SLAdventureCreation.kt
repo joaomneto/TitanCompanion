@@ -2,17 +2,20 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sl.SLVitalStatisticsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
 
 class SLAdventureCreation : AdventureCreation(
-        arrayOf(AdventureFragmentRunner(
-                R.string.title_adventure_creation_vitalstats,
-                SLVitalStatisticsFragment::class))
+    arrayOf(
+        AdventureFragmentRunner(
+            R.string.title_adventure_creation_vitalstats,
+            SLVitalStatisticsFragment::class
+        )
+    )
 ) {
 
     var rating = 0

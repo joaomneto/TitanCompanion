@@ -2,18 +2,22 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.awf.AWFAdventureCreationSuperpowerFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
 
 class AWFAdventureCreation : AdventureCreation(
-        arrayOf(
-                AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, VitalStatisticsFragment::class),
-                AdventureFragmentRunner(R.string.title_adventure_creation_superpower, AWFAdventureCreationSuperpowerFragment::class))) {
+    arrayOf(
+        AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, VitalStatisticsFragment::class),
+        AdventureFragmentRunner(
+            R.string.title_adventure_creation_superpower,
+            AWFAdventureCreationSuperpowerFragment::class
+        )
+    )
+) {
 
     var superPower: String? = null
 
@@ -32,5 +36,4 @@ class AWFAdventureCreation : AdventureCreation(
     }
 
     override fun rollGamebookSpecificStats(view: View) {}
-
 }

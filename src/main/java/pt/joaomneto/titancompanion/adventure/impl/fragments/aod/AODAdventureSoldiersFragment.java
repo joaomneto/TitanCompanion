@@ -9,26 +9,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import android.widget.*;
 import pt.joaomneto.titancompanion.R;
-import android.support.v4.app.Fragment;
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.AODAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.adapter.SoldierListAdapter;
 import pt.joaomneto.titancompanion.util.DiceNumberToWords;
 import pt.joaomneto.titancompanion.util.DiceRoller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AODAdventureSoldiersFragment extends AdventureFragment {
 
@@ -233,7 +226,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
     private void combatTurn() {
 
-        if(targetLosses == turnArmyLosses){
+        if (targetLosses == turnArmyLosses) {
             battleState = AODAdventureBattleState.STARTED;
             targetLosses = 0;
             turnArmyLosses = 0;
@@ -253,7 +246,6 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         }
 
 
-
         if (totalForces > enemyForces) {
             battleBalance = AODAdventureBattleBalance.SUPERIOR;
         } else if (totalForces < enemyForces) {
@@ -263,8 +255,6 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         }
 
         int diceRoll = DiceRoller.rollD6();
-
-
 
 
         AODAdventureBattleResults result = battleResults.get(battleBalance).get(diceRoll);
@@ -284,15 +274,14 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         }
 
 
-
-        if(enemyForces==0){
+        if (enemyForces == 0) {
             adv.getSoldiers().recalculate(skirmishArmy);
             combatResult.append(getString(R.string.aodDestroyEnemy));
             buttonCombatTurn.setVisibility(View.GONE);
             buttonCombatReset.setText(R.string.closeCombat);
         }
 
-        if(battleState.equals(AODAdventureBattleState.DAMAGE) && totalForces <= result.getQuantity()){
+        if (battleState.equals(AODAdventureBattleState.DAMAGE) && totalForces <= result.getQuantity()) {
             skirmishArmy.clear();
             adv.getSoldiers().recalculate(skirmishArmy);
             combatResult.append(getString(R.string.aodArmyDestroyed));
@@ -431,7 +420,6 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
     public void refreshScreensFromResume() {
 
 
-
         AODAdventure adv = (AODAdventure) this.getActivity();
         SoldierListAdapter adapter = (SoldierListAdapter) soldiersList.getAdapter();
 
@@ -462,7 +450,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
     private List<CustomSoldiersDivision> getBattleSoldiers() {
         List<CustomSoldiersDivision> battleSoldiers = new ArrayList<>();
         for (String type : skirmishArmy.keySet()) {
-            if(skirmishArmy.get(type) > 0) {
+            if (skirmishArmy.get(type) > 0) {
                 battleSoldiers.add(new CustomSoldiersDivision(type, 0));
             }
         }

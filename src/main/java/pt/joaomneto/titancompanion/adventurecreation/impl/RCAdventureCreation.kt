@@ -1,6 +1,5 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
-import android.view.View
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import java.io.BufferedWriter
 import java.io.IOException
@@ -16,6 +15,5 @@ class RCAdventureCreation : AdventureCreation() {
         bw.write("robots=\n")
         bw.write("provisions=5\n")
         bw.write("provisionsValue=1\n")
-
     }
 }

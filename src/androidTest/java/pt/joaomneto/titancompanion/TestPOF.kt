@@ -10,5 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.PHANTOMS_OF_FE
 class TestPOF : TestTFOD() {
 
     override val gamebook = PHANTOMS_OF_FEAR
-
 }

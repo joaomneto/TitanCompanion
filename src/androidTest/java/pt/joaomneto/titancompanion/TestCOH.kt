@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.CREATURE_OF_HA
 class TestCOH : TestST() {
 
     override val gamebook = CREATURE_OF_HAVOC
-
-
 }

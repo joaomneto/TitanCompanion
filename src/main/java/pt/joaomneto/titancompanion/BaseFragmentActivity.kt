@@ -7,12 +7,12 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import pt.joaomneto.titancompanion.util.LocaleHelper
-import java.util.Locale
 import android.util.SparseArray
 import android.view.ViewGroup
 import androidx.util.forEach
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
+import pt.joaomneto.titancompanion.util.LocaleHelper
+import java.util.Locale
 import kotlin.reflect.KClass
 
 /**

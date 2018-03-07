@@ -2,29 +2,41 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.view.Menu
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureTimeOxygenFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureVitalStatsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
 
 class STRIDERAdventure : Adventure(
-        arrayOf(
-                AdventureFragmentRunner(R.string.vitalStats,
-                        STRIDERAdventureVitalStatsFragment::class),
-                AdventureFragmentRunner(R.string.timeAndOxygen,
-                        STRIDERAdventureTimeOxygenFragment::class),
-                AdventureFragmentRunner(R.string.fights,
-                        AdventureCombatFragment::class),
-                AdventureFragmentRunner(R.string.equipment2,
-                        STRIDERAdventureEquipmentFragment::class),
-                AdventureFragmentRunner(R.string.notes,
-                        AdventureNotesFragment::class))) {
+    arrayOf(
+        AdventureFragmentRunner(
+            R.string.vitalStats,
+            STRIDERAdventureVitalStatsFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.timeAndOxygen,
+            STRIDERAdventureTimeOxygenFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.fights,
+            AdventureCombatFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.equipment2,
+            STRIDERAdventureEquipmentFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.notes,
+            AdventureNotesFragment::class
+        )
+    )
+) {
 
     var currentFear: Int = -1
     var time: Int = -1
@@ -42,7 +54,6 @@ class STRIDERAdventure : Adventure(
         bw.write("time=" + time + "\n")
         bw.write("oxygen=" + oxygen + "\n")
     }
-
 
     override fun loadAdventureSpecificValuesFromFile() {
         currentFear = Integer.valueOf(savedGame.getProperty("fear"))
@@ -83,6 +94,4 @@ class STRIDERAdventure : Adventure(
         private val FRAGMENT_EQUIPMENT = 3
         private val FRAGMENT_NOTES = 4
     }
-
-
 }

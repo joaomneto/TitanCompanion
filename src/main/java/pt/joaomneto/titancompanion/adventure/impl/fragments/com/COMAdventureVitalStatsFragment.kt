@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_30com_adventure_vitalstats.*
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.impl.COMAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 
@@ -17,12 +15,15 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 
 class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
 
-        return inflater!!.inflate(
-            R.layout.fragment_30com_adventure_vitalstats, container, false)
+        return inflater.inflate(
+            R.layout.fragment_30com_adventure_vitalstats, container, false
+        )
     }
 
     override fun onViewCreated(rootView: View, savedInstanceState: Bundle?) {
@@ -50,8 +51,6 @@ class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
             adv.tabasha = Math.max(0, adv.tabasha - 1)
             refreshScreensFromResume()
         }
-
-
     }
 
     override fun refreshScreensFromResume() {
@@ -67,7 +66,5 @@ class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         fuelValue.text = "${adv.fuel}"
         tabashaValue.text = "${adv.tabasha}"
         useTabashaButton.isEnabled = adv.tabasha > 0
-
     }
-
 }

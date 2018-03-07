@@ -10,5 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.CAVERNS_OF_THE
 class TestCOTSW : TestTFOD() {
 
     override val gamebook = CAVERNS_OF_THE_SNOW_WITCH
-
 }

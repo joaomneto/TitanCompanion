@@ -16,7 +16,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
 import pt.joaomneto.titancompanion.consts.Constants;
@@ -73,6 +72,11 @@ public class GamebookSelectionActivity extends FragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.swipe, menu);
         return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
     }
 
     public static class GamebookSelectionFragment extends Fragment {
@@ -180,11 +184,6 @@ public class GamebookSelectionActivity extends FragmentActivity {
             return values[position];
         }
 
-    }
-
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(LocaleHelper.onAttach(base));
     }
 
 

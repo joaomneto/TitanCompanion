@@ -1,658 +1,658 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment" >
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context=".adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment">
 
     <TextView
-        android:id="@+id/textField1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/landingParty"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/textField1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/landingParty"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:text="@string/scienceOfficer"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/scienceOfficer"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/textField2"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textField1"
-        android:gravity="center"
-        android:text="@string/skill"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/textField2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textField1"
+            android:gravity="center"
+            android:text="@string/skill"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/scienceOfficerMinusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/textField2"
-        android:layout_alignTop="@id/textField2"
-        android:layout_toRightOf="@+id/textField2"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/scienceOfficerMinusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textField2"
+            android:layout_alignTop="@id/textField2"
+            android:layout_toRightOf="@+id/textField2"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/scienceOfficerSkillValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/textField2"
-        android:layout_alignTop="@id/textField2"
-        android:layout_toRightOf="@+id/scienceOfficerMinusSkillButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/scienceOfficerSkillValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textField2"
+            android:layout_alignTop="@id/textField2"
+            android:layout_toRightOf="@+id/scienceOfficerMinusSkillButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/scienceOfficerPlusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/textField2"
-        android:layout_alignTop="@id/textField2"
-        android:layout_toRightOf="@+id/scienceOfficerSkillValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/scienceOfficerPlusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textField2"
+            android:layout_alignTop="@id/textField2"
+            android:layout_toRightOf="@+id/scienceOfficerSkillValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/scienceOfficerStamina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/textField2"
-        android:layout_alignTop="@id/textField2"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/scienceOfficerPlusSkillButton"
-        android:gravity="center"
-        android:text="@string/stamina"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/scienceOfficerStamina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textField2"
+            android:layout_alignTop="@id/textField2"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/scienceOfficerPlusSkillButton"
+            android:gravity="center"
+            android:text="@string/stamina"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/scienceOfficerMinusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/textField2"
-        android:layout_alignTop="@id/textField2"
-        android:layout_toRightOf="@+id/scienceOfficerStamina"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/scienceOfficerMinusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textField2"
+            android:layout_alignTop="@id/textField2"
+            android:layout_toRightOf="@+id/scienceOfficerStamina"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/scienceOfficerStaminaValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/textField2"
-        android:layout_alignTop="@id/textField2"
-        android:layout_toRightOf="@+id/scienceOfficerMinusStaminaButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/scienceOfficerStaminaValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textField2"
+            android:layout_alignTop="@id/textField2"
+            android:layout_toRightOf="@+id/scienceOfficerMinusStaminaButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/scienceOfficerPlusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/textField2"
-        android:layout_alignTop="@id/textField2"
-        android:layout_toRightOf="@+id/scienceOfficerStaminaValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/scienceOfficerPlusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textField2"
+            android:layout_alignTop="@id/textField2"
+            android:layout_toRightOf="@+id/scienceOfficerStaminaValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/medicalOfficer"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/textField2"
-        android:gravity="center"
-        android:text="@string/medicalOfficer"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/medicalOfficer"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/textField2"
+            android:gravity="center"
+            android:text="@string/medicalOfficer"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/medicalOfficerSkill"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/medicalOfficer"
-        android:gravity="center"
-        android:text="@string/skill"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/medicalOfficerSkill"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/medicalOfficer"
+            android:gravity="center"
+            android:text="@string/skill"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/medicalOfficerMinusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/medicalOfficerSkill"
-        android:layout_alignTop="@id/medicalOfficerSkill"
-        android:layout_toRightOf="@+id/medicalOfficerSkill"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/medicalOfficerMinusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/medicalOfficerSkill"
+            android:layout_alignTop="@id/medicalOfficerSkill"
+            android:layout_toRightOf="@+id/medicalOfficerSkill"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/medicalOfficerSkillValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/medicalOfficerSkill"
-        android:layout_alignTop="@id/medicalOfficerSkill"
-        android:layout_toRightOf="@+id/medicalOfficerMinusSkillButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/medicalOfficerSkillValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/medicalOfficerSkill"
+            android:layout_alignTop="@id/medicalOfficerSkill"
+            android:layout_toRightOf="@+id/medicalOfficerMinusSkillButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/medicalOfficerPlusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/medicalOfficerSkill"
-        android:layout_alignTop="@id/medicalOfficerSkill"
-        android:layout_toRightOf="@+id/medicalOfficerSkillValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/medicalOfficerPlusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/medicalOfficerSkill"
+            android:layout_alignTop="@id/medicalOfficerSkill"
+            android:layout_toRightOf="@+id/medicalOfficerSkillValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/medicalOfficerStamina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/medicalOfficerSkill"
-        android:layout_alignTop="@id/medicalOfficerSkill"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/medicalOfficerPlusSkillButton"
-        android:gravity="center"
-        android:text="@string/stamina"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/medicalOfficerStamina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/medicalOfficerSkill"
+            android:layout_alignTop="@id/medicalOfficerSkill"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/medicalOfficerPlusSkillButton"
+            android:gravity="center"
+            android:text="@string/stamina"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/medicalOfficerMinusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/medicalOfficerSkill"
-        android:layout_alignTop="@id/medicalOfficerSkill"
-        android:layout_toRightOf="@+id/medicalOfficerStamina"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/medicalOfficerMinusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/medicalOfficerSkill"
+            android:layout_alignTop="@id/medicalOfficerSkill"
+            android:layout_toRightOf="@+id/medicalOfficerStamina"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/medicalOfficerStaminaValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/medicalOfficerSkill"
-        android:layout_alignTop="@id/medicalOfficerSkill"
-        android:layout_toRightOf="@+id/medicalOfficerMinusStaminaButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/medicalOfficerStaminaValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/medicalOfficerSkill"
+            android:layout_alignTop="@id/medicalOfficerSkill"
+            android:layout_toRightOf="@+id/medicalOfficerMinusStaminaButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/medicalOfficerPlusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/medicalOfficerSkill"
-        android:layout_alignTop="@id/medicalOfficerSkill"
-        android:layout_toRightOf="@+id/medicalOfficerStaminaValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/medicalOfficerPlusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/medicalOfficerSkill"
+            android:layout_alignTop="@id/medicalOfficerSkill"
+            android:layout_toRightOf="@+id/medicalOfficerStaminaValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/engineeringOfficer"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/medicalOfficerSkill"
-        android:gravity="center"
-        android:text="@string/engineeringOfficer"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/engineeringOfficer"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/medicalOfficerSkill"
+            android:gravity="center"
+            android:text="@string/engineeringOfficer"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/engineeringOfficerSkill"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/engineeringOfficer"
-        android:gravity="center"
-        android:text="@string/skill"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/engineeringOfficerSkill"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/engineeringOfficer"
+            android:gravity="center"
+            android:text="@string/skill"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/engineeringOfficerMinusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/engineeringOfficerSkill"
-        android:layout_alignTop="@id/engineeringOfficerSkill"
-        android:layout_toRightOf="@+id/engineeringOfficerSkill"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/engineeringOfficerMinusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/engineeringOfficerSkill"
+            android:layout_alignTop="@id/engineeringOfficerSkill"
+            android:layout_toRightOf="@+id/engineeringOfficerSkill"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/engineeringOfficerSkillValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/engineeringOfficerSkill"
-        android:layout_alignTop="@id/engineeringOfficerSkill"
-        android:layout_toRightOf="@+id/engineeringOfficerMinusSkillButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/engineeringOfficerSkillValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/engineeringOfficerSkill"
+            android:layout_alignTop="@id/engineeringOfficerSkill"
+            android:layout_toRightOf="@+id/engineeringOfficerMinusSkillButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/engineeringOfficerPlusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/engineeringOfficerSkill"
-        android:layout_alignTop="@id/engineeringOfficerSkill"
-        android:layout_toRightOf="@+id/engineeringOfficerSkillValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/engineeringOfficerPlusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/engineeringOfficerSkill"
+            android:layout_alignTop="@id/engineeringOfficerSkill"
+            android:layout_toRightOf="@+id/engineeringOfficerSkillValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/engineeringOfficerStamina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/engineeringOfficerSkill"
-        android:layout_alignTop="@id/engineeringOfficerSkill"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/engineeringOfficerPlusSkillButton"
-        android:gravity="center"
-        android:text="@string/stamina"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/engineeringOfficerStamina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/engineeringOfficerSkill"
+            android:layout_alignTop="@id/engineeringOfficerSkill"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/engineeringOfficerPlusSkillButton"
+            android:gravity="center"
+            android:text="@string/stamina"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/engineeringOfficerMinusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/engineeringOfficerSkill"
-        android:layout_alignTop="@id/engineeringOfficerSkill"
-        android:layout_toRightOf="@+id/engineeringOfficerStamina"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/engineeringOfficerMinusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/engineeringOfficerSkill"
+            android:layout_alignTop="@id/engineeringOfficerSkill"
+            android:layout_toRightOf="@+id/engineeringOfficerStamina"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/engineeringOfficerStaminaValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/engineeringOfficerSkill"
-        android:layout_alignTop="@id/engineeringOfficerSkill"
-        android:layout_toRightOf="@+id/engineeringOfficerMinusStaminaButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/engineeringOfficerStaminaValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/engineeringOfficerSkill"
+            android:layout_alignTop="@id/engineeringOfficerSkill"
+            android:layout_toRightOf="@+id/engineeringOfficerMinusStaminaButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/engineeringOfficerPlusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/engineeringOfficerSkill"
-        android:layout_alignTop="@id/engineeringOfficerSkill"
-        android:layout_toRightOf="@+id/engineeringOfficerStaminaValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/engineeringOfficerPlusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/engineeringOfficerSkill"
+            android:layout_alignTop="@id/engineeringOfficerSkill"
+            android:layout_toRightOf="@+id/engineeringOfficerStaminaValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/securityOfficer"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/engineeringOfficerSkill"
-        android:gravity="center"
-        android:text="@string/securityOfficer"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/securityOfficer"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/engineeringOfficerSkill"
+            android:gravity="center"
+            android:text="@string/securityOfficer"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/securityOfficerSkill"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/securityOfficer"
-        android:gravity="center"
-        android:text="@string/skill"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityOfficerSkill"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/securityOfficer"
+            android:gravity="center"
+            android:text="@string/skill"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityOfficerMinusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityOfficerSkill"
-        android:layout_alignTop="@id/securityOfficerSkill"
-        android:layout_toRightOf="@+id/securityOfficerSkill"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/securityOfficerMinusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityOfficerSkill"
+            android:layout_alignTop="@id/securityOfficerSkill"
+            android:layout_toRightOf="@+id/securityOfficerSkill"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/securityOfficerSkillValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityOfficerSkill"
-        android:layout_alignTop="@id/securityOfficerSkill"
-        android:layout_toRightOf="@+id/securityOfficerMinusSkillButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityOfficerSkillValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityOfficerSkill"
+            android:layout_alignTop="@id/securityOfficerSkill"
+            android:layout_toRightOf="@+id/securityOfficerMinusSkillButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityOfficerPlusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityOfficerSkill"
-        android:layout_alignTop="@id/securityOfficerSkill"
-        android:layout_toRightOf="@+id/securityOfficerSkillValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/securityOfficerPlusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityOfficerSkill"
+            android:layout_alignTop="@id/securityOfficerSkill"
+            android:layout_toRightOf="@+id/securityOfficerSkillValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/securityOfficerStamina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityOfficerSkill"
-        android:layout_alignTop="@id/securityOfficerSkill"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/securityOfficerPlusSkillButton"
-        android:gravity="center"
-        android:text="@string/stamina"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityOfficerStamina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityOfficerSkill"
+            android:layout_alignTop="@id/securityOfficerSkill"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/securityOfficerPlusSkillButton"
+            android:gravity="center"
+            android:text="@string/stamina"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityOfficerMinusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityOfficerSkill"
-        android:layout_alignTop="@id/securityOfficerSkill"
-        android:layout_toRightOf="@+id/securityOfficerStamina"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/securityOfficerMinusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityOfficerSkill"
+            android:layout_alignTop="@id/securityOfficerSkill"
+            android:layout_toRightOf="@+id/securityOfficerStamina"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/securityOfficerStaminaValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityOfficerSkill"
-        android:layout_alignTop="@id/securityOfficerSkill"
-        android:layout_toRightOf="@+id/securityOfficerMinusStaminaButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityOfficerStaminaValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityOfficerSkill"
+            android:layout_alignTop="@id/securityOfficerSkill"
+            android:layout_toRightOf="@+id/securityOfficerMinusStaminaButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityOfficerPlusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityOfficerSkill"
-        android:layout_alignTop="@id/securityOfficerSkill"
-        android:layout_toRightOf="@+id/securityOfficerStaminaValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/securityOfficerPlusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityOfficerSkill"
+            android:layout_alignTop="@id/securityOfficerSkill"
+            android:layout_toRightOf="@+id/securityOfficerStaminaValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/securityGuard1"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/securityOfficerSkill"
-        android:gravity="center"
-        android:text="@string/securityGuard1"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/securityGuard1"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/securityOfficerSkill"
+            android:gravity="center"
+            android:text="@string/securityGuard1"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/securityGuard1Skill"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/securityGuard1"
-        android:gravity="center"
-        android:text="@string/skill"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityGuard1Skill"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/securityGuard1"
+            android:gravity="center"
+            android:text="@string/skill"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityGuard1MinusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard1Skill"
-        android:layout_alignTop="@id/securityGuard1Skill"
-        android:layout_toRightOf="@+id/securityGuard1Skill"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/securityGuard1MinusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard1Skill"
+            android:layout_alignTop="@id/securityGuard1Skill"
+            android:layout_toRightOf="@+id/securityGuard1Skill"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/securityGuard1SkillValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard1Skill"
-        android:layout_alignTop="@id/securityGuard1Skill"
-        android:layout_toRightOf="@+id/securityGuard1MinusSkillButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityGuard1SkillValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard1Skill"
+            android:layout_alignTop="@id/securityGuard1Skill"
+            android:layout_toRightOf="@+id/securityGuard1MinusSkillButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityGuard1PlusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard1Skill"
-        android:layout_alignTop="@id/securityGuard1Skill"
-        android:layout_toRightOf="@+id/securityGuard1SkillValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/securityGuard1PlusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard1Skill"
+            android:layout_alignTop="@id/securityGuard1Skill"
+            android:layout_toRightOf="@+id/securityGuard1SkillValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/securityGuard1Stamina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard1Skill"
-        android:layout_alignTop="@id/securityGuard1Skill"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/securityGuard1PlusSkillButton"
-        android:gravity="center"
-        android:text="@string/stamina"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityGuard1Stamina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard1Skill"
+            android:layout_alignTop="@id/securityGuard1Skill"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/securityGuard1PlusSkillButton"
+            android:gravity="center"
+            android:text="@string/stamina"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityGuard1MinusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard1Skill"
-        android:layout_alignTop="@id/securityGuard1Skill"
-        android:layout_toRightOf="@+id/securityGuard1Stamina"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/securityGuard1MinusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard1Skill"
+            android:layout_alignTop="@id/securityGuard1Skill"
+            android:layout_toRightOf="@+id/securityGuard1Stamina"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/securityGuard1StaminaValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard1Skill"
-        android:layout_alignTop="@id/securityGuard1Skill"
-        android:layout_toRightOf="@+id/securityGuard1MinusStaminaButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityGuard1StaminaValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard1Skill"
+            android:layout_alignTop="@id/securityGuard1Skill"
+            android:layout_toRightOf="@+id/securityGuard1MinusStaminaButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityGuard1PlusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard1Skill"
-        android:layout_alignTop="@id/securityGuard1Skill"
-        android:layout_toRightOf="@+id/securityGuard1StaminaValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/securityGuard1PlusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard1Skill"
+            android:layout_alignTop="@id/securityGuard1Skill"
+            android:layout_toRightOf="@+id/securityGuard1StaminaValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/securityGuard2"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/securityGuard1Skill"
-        android:gravity="center"
-        android:text="@string/securityGuard2"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/securityGuard2"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/securityGuard1Skill"
+            android:gravity="center"
+            android:text="@string/securityGuard2"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/securityGuard2Skill"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/securityGuard2"
-        android:gravity="center"
-        android:text="@string/skill"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityGuard2Skill"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/securityGuard2"
+            android:gravity="center"
+            android:text="@string/skill"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityGuard2MinusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard2Skill"
-        android:layout_alignTop="@id/securityGuard2Skill"
-        android:layout_toRightOf="@+id/securityGuard2Skill"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/securityGuard2MinusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard2Skill"
+            android:layout_alignTop="@id/securityGuard2Skill"
+            android:layout_toRightOf="@+id/securityGuard2Skill"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/securityGuard2SkillValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard2Skill"
-        android:layout_alignTop="@id/securityGuard2Skill"
-        android:layout_toRightOf="@+id/securityGuard2MinusSkillButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityGuard2SkillValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard2Skill"
+            android:layout_alignTop="@id/securityGuard2Skill"
+            android:layout_toRightOf="@+id/securityGuard2MinusSkillButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityGuard2PlusSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard2Skill"
-        android:layout_alignTop="@id/securityGuard2Skill"
-        android:layout_toRightOf="@+id/securityGuard2SkillValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/securityGuard2PlusSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard2Skill"
+            android:layout_alignTop="@id/securityGuard2Skill"
+            android:layout_toRightOf="@+id/securityGuard2SkillValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/securityGuard2Stamina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard2Skill"
-        android:layout_alignTop="@id/securityGuard2Skill"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/securityGuard2PlusSkillButton"
-        android:gravity="center"
-        android:text="@string/stamina"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityGuard2Stamina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard2Skill"
+            android:layout_alignTop="@id/securityGuard2Skill"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/securityGuard2PlusSkillButton"
+            android:gravity="center"
+            android:text="@string/stamina"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityGuard2MinusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard2Skill"
-        android:layout_alignTop="@id/securityGuard2Skill"
-        android:layout_toRightOf="@+id/securityGuard2Stamina"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/securityGuard2MinusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard2Skill"
+            android:layout_alignTop="@id/securityGuard2Skill"
+            android:layout_toRightOf="@+id/securityGuard2Stamina"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/securityGuard2StaminaValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard2Skill"
-        android:layout_alignTop="@id/securityGuard2Skill"
-        android:layout_toRightOf="@+id/securityGuard2MinusStaminaButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/securityGuard2StaminaValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard2Skill"
+            android:layout_alignTop="@id/securityGuard2Skill"
+            android:layout_toRightOf="@+id/securityGuard2MinusStaminaButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/securityGuard2PlusStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard2Skill"
-        android:layout_alignTop="@id/securityGuard2Skill"
-        android:layout_toRightOf="@+id/securityGuard2StaminaValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/securityGuard2PlusStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard2Skill"
+            android:layout_alignTop="@id/securityGuard2Skill"
+            android:layout_toRightOf="@+id/securityGuard2StaminaValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <CheckBox
-        android:id="@+id/scienceOfficerLandingParty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/textField2"
-        android:layout_alignTop="@id/textField2"
-        android:layout_margin="0dp"
-        android:layout_alignParentRight="true" />
+            android:id="@+id/scienceOfficerLandingParty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textField2"
+            android:layout_alignTop="@id/textField2"
+            android:layout_margin="0dp"
+            android:layout_alignParentRight="true"/>
 
     <CheckBox
-        android:id="@+id/medicalOfficerLandingParty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/medicalOfficerSkill"
-        android:layout_alignTop="@id/medicalOfficerSkill"
-        android:layout_margin="0dp"
-        android:layout_alignParentRight="true"/>
+            android:id="@+id/medicalOfficerLandingParty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/medicalOfficerSkill"
+            android:layout_alignTop="@id/medicalOfficerSkill"
+            android:layout_margin="0dp"
+            android:layout_alignParentRight="true"/>
 
     <CheckBox
-        android:id="@+id/engineeringOfficerLandingParty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/engineeringOfficerSkill"
-        android:layout_alignTop="@id/engineeringOfficerSkill"
-        android:layout_margin="0dp"
-        android:layout_alignParentRight="true"/>
+            android:id="@+id/engineeringOfficerLandingParty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/engineeringOfficerSkill"
+            android:layout_alignTop="@id/engineeringOfficerSkill"
+            android:layout_margin="0dp"
+            android:layout_alignParentRight="true"/>
 
     <CheckBox
-        android:id="@+id/securityOfficerLandingParty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityOfficerSkill"
-        android:layout_alignTop="@id/securityOfficerSkill"
-        android:layout_margin="0dp"
-        android:layout_alignParentRight="true" />
+            android:id="@+id/securityOfficerLandingParty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityOfficerSkill"
+            android:layout_alignTop="@id/securityOfficerSkill"
+            android:layout_margin="0dp"
+            android:layout_alignParentRight="true"/>
 
     <CheckBox
-        android:id="@+id/securityGuard1LandingParty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard1Skill"
-        android:layout_alignTop="@id/securityGuard1Skill"
-        android:layout_margin="0dp"
-        android:layout_alignParentRight="true" />
+            android:id="@+id/securityGuard1LandingParty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard1Skill"
+            android:layout_alignTop="@id/securityGuard1Skill"
+            android:layout_margin="0dp"
+            android:layout_alignParentRight="true"/>
 
     <CheckBox
-        android:id="@+id/securityGuard2LandingParty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/securityGuard2Skill"
-        android:layout_alignTop="@id/securityGuard2Skill"
-        android:layout_alignParentRight="true"
-        android:layout_margin="0dp"/>
+            android:id="@+id/securityGuard2LandingParty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/securityGuard2Skill"
+            android:layout_alignTop="@id/securityGuard2Skill"
+            android:layout_alignParentRight="true"
+            android:layout_margin="0dp"/>
 
     <Button
-        android:id="@+id/restoreStaminaLandingPartyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/securityGuard2LandingParty"
-        android:text="@string/restoreStaminaLandingParty" />
+            android:id="@+id/restoreStaminaLandingPartyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/securityGuard2LandingParty"
+            android:text="@string/restoreStaminaLandingParty"/>
 
 </RelativeLayout>

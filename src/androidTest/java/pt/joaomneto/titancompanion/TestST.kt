@@ -20,7 +20,6 @@ open class TestST : TCBaseTest() {
         performVitalStatisticsRoll()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
-
     }
 
     @Test
@@ -30,7 +29,6 @@ open class TestST : TCBaseTest() {
         performFillSavegameName()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
 
     @Test
@@ -40,7 +38,5 @@ open class TestST : TCBaseTest() {
         performVitalStatisticsRoll()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
-
 }

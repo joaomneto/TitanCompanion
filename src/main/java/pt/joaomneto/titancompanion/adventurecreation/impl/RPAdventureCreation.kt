@@ -6,10 +6,8 @@ import java.io.IOException
 
 class RPAdventureCreation : AdventureCreation() {
 
-
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
         bw.write("gold=2000\n")
     }
-
 }

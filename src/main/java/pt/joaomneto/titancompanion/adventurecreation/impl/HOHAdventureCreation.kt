@@ -2,18 +2,21 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.hoh.HOHVitalStatisticsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
 
 class HOHAdventureCreation : AdventureCreation(
-        arrayOf(AdventureFragmentRunner(
-                R.string.title_adventure_creation_vitalstats,
-                HOHVitalStatisticsFragment::class))) {
-
+    arrayOf(
+        AdventureFragmentRunner(
+            R.string.title_adventure_creation_vitalstats,
+            HOHVitalStatisticsFragment::class
+        )
+    )
+) {
 
     var fearValue = -1
 
@@ -23,14 +26,13 @@ class HOHAdventureCreation : AdventureCreation(
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
 
-        bw.write("currentFear=" + fearValue + "\n")
-        bw.write("maximumFear=" + fearValue + "\n")
+        bw.write("currentFear=$fearValue\n")
+        bw.write("maximumFear=$fearValue\n")
     }
 
     override fun rollGamebookSpecificStats(view: View) {
         fearValue = DiceRoller.rollD6() + 6
-        hohVitalStatisticsFragment.fearValue.text = "" + fearValue
-
+        hohVitalStatisticsFragment.fearValue.text = fearValue.toString()
     }
 
     override fun validateCreationSpecificParameters(): String? {
@@ -40,6 +42,4 @@ class HOHAdventureCreation : AdventureCreation(
         }
         return sb.toString()
     }
-
-
 }

@@ -1,12 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sob
 
-import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import pt.joaomneto.titancompanion.adventure.Adventure
-import pt.joaomneto.titancompanion.adventure.AdventureFragment
-import pt.joaomneto.titancompanion.adventure.impl.SOBAdventure
-import pt.joaomneto.titancompanion.util.DiceRoller
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +7,11 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import pt.joaomneto.titancompanion.R
+import pt.joaomneto.titancompanion.adventure.Adventure
+import pt.joaomneto.titancompanion.adventure.AdventureFragment
+import pt.joaomneto.titancompanion.adventure.impl.SOBAdventure
+import pt.joaomneto.titancompanion.util.DiceRoller
 
 class SOBShipCombatFragment : AdventureFragment() {
 
@@ -46,11 +44,37 @@ class SOBShipCombatFragment : AdventureFragment() {
 
         combatResult = rootView.findViewById<View>(R.id.combatResult) as TextView
 
-        setupIncDecButton(rootView, R.id.plusCrewStrikeButton, R.id.minusCrewStrikeButton, adv, SOBAdventure::currentCrewStrike, adv.initialCrewStrike)
-        setupIncDecButton(rootView, R.id.plusCrewStrengthButton, R.id.minusCrewStrengthButton, adv, SOBAdventure::currentCrewStrength, adv.initialCrewStrength)
+        setupIncDecButton(
+            rootView,
+            R.id.plusCrewStrikeButton,
+            R.id.minusCrewStrikeButton,
+            adv,
+            SOBAdventure::currentCrewStrike,
+            adv.initialCrewStrike
+        )
+        setupIncDecButton(
+            rootView,
+            R.id.plusCrewStrengthButton,
+            R.id.minusCrewStrengthButton,
+            adv,
+            SOBAdventure::currentCrewStrength,
+            adv.initialCrewStrength
+        )
 
-        setupIncDecButton(rootView, R.id.plusEnemyCrewStrikeButton, R.id.minusEnemyCrewStrikeButton, ::enemyCrewStrike, 99)
-        setupIncDecButton(rootView, R.id.plusEnemyCrewStrengthButton, R.id.minusEnemyCrewStrengthButton, ::enemyCrewStrength, 99)
+        setupIncDecButton(
+            rootView,
+            R.id.plusEnemyCrewStrikeButton,
+            R.id.minusEnemyCrewStrikeButton,
+            ::enemyCrewStrike,
+            99
+        )
+        setupIncDecButton(
+            rootView,
+            R.id.plusEnemyCrewStrengthButton,
+            R.id.minusEnemyCrewStrengthButton,
+            ::enemyCrewStrength,
+            99
+        )
 
 
         attackButton = rootView.findViewById<View>(R.id.buttonAttack) as Button
@@ -107,6 +131,4 @@ class SOBShipCombatFragment : AdventureFragment() {
         starshipCrewStrengthValue!!.text = "" + adv.currentCrewStrength
         starshipCrewStrikeValue!!.text = "" + adv.currentCrewStrike
     }
-
-
 }

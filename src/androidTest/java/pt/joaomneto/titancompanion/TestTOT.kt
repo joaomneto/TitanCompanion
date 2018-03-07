@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.TEMPLE_OF_TERR
 class TestTOT : TestST() {
 
     override val gamebook = TEMPLE_OF_TERROR
-
-
 }

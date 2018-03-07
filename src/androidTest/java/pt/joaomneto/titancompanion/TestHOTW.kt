@@ -12,6 +12,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 class TestHOTW : TestST() {
 
     override val gamebook = FightingFantasyGamebook.HOWL_OF_THE_WEREWOLF
-
-
 }

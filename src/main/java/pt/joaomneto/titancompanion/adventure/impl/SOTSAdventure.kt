@@ -3,23 +3,23 @@ package pt.joaomneto.titancompanion.adventure.impl
 import android.os.Bundle
 import android.view.Menu
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sots.SOTSAdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sots.SOTSAdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sots.SOTSAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
 
 class SOTSAdventure : TFODAdventure(
-        arrayOf(
-                AdventureFragmentRunner(R.string.vitalStats, SOTSAdventureVitalStatsFragment::class),
-                AdventureFragmentRunner(R.string.fights, SOTSAdventureCombatFragment::class),
-                AdventureFragmentRunner(R.string.goldEquipment, SOTSAdventureEquipmentFragment::class),
-                AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class))) {
+    arrayOf(
+        AdventureFragmentRunner(R.string.vitalStats, SOTSAdventureVitalStatsFragment::class),
+        AdventureFragmentRunner(R.string.fights, SOTSAdventureCombatFragment::class),
+        AdventureFragmentRunner(R.string.goldEquipment, SOTSAdventureEquipmentFragment::class),
+        AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class)
+    )
+) {
 
     var currentHonour = -1
     var willowLeafArrows = -1
@@ -28,15 +28,12 @@ class SOTSAdventure : TFODAdventure(
     var hummingBulbArrows = -1
     var skill: SOTSMartialArt? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
             super.onCreate(savedInstanceState)
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -72,5 +69,4 @@ class SOTSAdventure : TFODAdventure(
         internal var FRAGMENT_EQUIPMENT: Int? = 2
         internal var FRAGMENT_NOTES: Int? = 3
     }
-
 }

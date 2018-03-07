@@ -4,15 +4,12 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-
+import kotlinx.android.synthetic.main.fragment_25bnc_adventure_vitalstats.*
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.impl.BNCAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 
@@ -24,18 +21,21 @@ class BNCAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
     private var decreaseWillpowerButton: Button? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(
-                R.layout.fragment_25bnc_adventure_vitalstats, container, false)
+        val rootView = inflater.inflate(
+            R.layout.fragment_25bnc_adventure_vitalstats, container, false
+        )
 
         //CHECKTHIS	initialize(rootView);
 
         decreaseWillpowerButton = rootView
-                .findViewById(R.id.minusWillpowerButton)
+            .findViewById(R.id.minusWillpowerButton)
         increaseWillpowerButton = rootView
-                .findViewById(R.id.plusWillpowerButton)
+            .findViewById(R.id.plusWillpowerButton)
         willpowerValue = rootView.findViewById(R.id.statsWillpowerValue)
         val adv = activity as BNCAdventure
 
@@ -71,11 +71,17 @@ class BNCAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         return rootView
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        buttonTestWillpower.setOnClickListener({
+            (this.activity as BNCAdventure).testWillpower()
+        })
+    }
+
     override fun refreshScreensFromResume() {
         super.refreshScreensFromResume()
         val adv = activity as BNCAdventure
         willpowerValue?.text = adv.currentWillpower.toString()
-
     }
-
 }

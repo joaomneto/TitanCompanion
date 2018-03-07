@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ListView
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureSpellsFragment
 
 /**
@@ -16,8 +14,10 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureSpellsFragm
  */
 class MRAdventureSpellsFragment : AdventureSpellsFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         view?.findViewById<LinearLayout>(R.id.spellChooserLayout)?.visibility = View.GONE

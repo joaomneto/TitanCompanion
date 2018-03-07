@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 class TestTPOP : TestTFOD() {
 
     override val gamebook = FightingFantasyGamebook.THE_PORT_OF_PERIL
-
-
 }

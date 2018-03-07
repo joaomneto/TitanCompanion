@@ -3,7 +3,6 @@ package pt.joaomneto.titancompanion.adventure.impl
 import android.os.Bundle
 import android.view.Menu
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
@@ -11,18 +10,21 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragme
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sob.SOBAdventureBootyFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sob.SOBAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sob.SOBShipCombatFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
-import java.util.*
+import java.util.ArrayList
 
 class SOBAdventure : Adventure(
-        arrayOf(
-                AdventureFragmentRunner(R.string.vitalStats, SOBAdventureVitalStatsFragment::class),
-                AdventureFragmentRunner(R.string.fights, AdventureCombatFragment::class),
-                AdventureFragmentRunner(R.string.shipCombat, SOBShipCombatFragment::class),
-                AdventureFragmentRunner(R.string.goldEquipment, AdventureEquipmentFragment::class),
-                AdventureFragmentRunner(R.string.booty, SOBAdventureBootyFragment::class),
-                AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class))) {
+    arrayOf(
+        AdventureFragmentRunner(R.string.vitalStats, SOBAdventureVitalStatsFragment::class),
+        AdventureFragmentRunner(R.string.fights, AdventureCombatFragment::class),
+        AdventureFragmentRunner(R.string.shipCombat, SOBShipCombatFragment::class),
+        AdventureFragmentRunner(R.string.goldEquipment, AdventureEquipmentFragment::class),
+        AdventureFragmentRunner(R.string.booty, SOBAdventureBootyFragment::class),
+        AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class)
+    )
+) {
 
     var currentCrewStrength = -1
     var currentCrewStrike = -1
@@ -31,15 +33,12 @@ class SOBAdventure : Adventure(
     var log = -1
     var booty: List<String> = ArrayList()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
             super.onCreate(savedInstanceState)
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -77,6 +76,4 @@ class SOBAdventure : Adventure(
         protected val FRAGMENT_BOOTY = 4
         protected val FRAGMENT_NOTES = 5
     }
-
-
 }

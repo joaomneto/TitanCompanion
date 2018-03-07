@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_RINGS_OF_K
 class TestTROK : TestST() {
 
     override val gamebook = THE_RINGS_OF_KETHER
-
-
 }

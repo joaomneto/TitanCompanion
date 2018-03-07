@@ -2,9 +2,9 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.bnc.BNCVitalStatisticsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException

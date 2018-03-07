@@ -46,9 +46,13 @@ class TCPreferenceActivity : PreferenceActivity(), SharedPreferences.OnSharedPre
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (ContextCompat.checkSelfPermission(this,
-            Manifest.permission.READ_EXTERNAL_STORAGE) == PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) == PERMISSION_GRANTED) {
 
             if (runSavegameImport(this))
                 Adventure.showSuccessAlert(R.string.savegameConfirmMessage, this)
@@ -63,8 +67,10 @@ class TCPreferenceActivity : PreferenceActivity(), SharedPreferences.OnSharedPre
 
         fun runSavegameImport(context: Context): Boolean {
             try {
-                val oldDir = File(Environment.getExternalStorageDirectory()
-                    .path, "ffgbutil")
+                val oldDir = File(
+                    Environment.getExternalStorageDirectory()
+                        .path, "ffgbutil"
+                )
                 return if (oldDir.exists()) {
                     oldDir.copyRecursively(File(context.filesDir, "ffgbutil"), overwrite = true)
                     true
@@ -74,9 +80,6 @@ class TCPreferenceActivity : PreferenceActivity(), SharedPreferences.OnSharedPre
             } catch (e: IOException) {
                 throw IllegalStateException("Error importing old savegames", e)
             }
-
         }
     }
-
-
 }

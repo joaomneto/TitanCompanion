@@ -11,8 +11,6 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.Spinner
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.SpellAdventure
@@ -25,40 +23,43 @@ open class AdventureSpellsFragment : AdventureFragment() {
     private var chooseSpellSpinner: Spinner? = null
     private var addSpellButton: Button? = null
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val adv = activity as SpellAdventure<Spell>
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(
-                R.layout.fragment_adventure_spells_chooser, container, false)
+        val rootView = inflater.inflate(
+            R.layout.fragment_adventure_spells_chooser, container, false
+        )
 
         spellList = rootView.findViewById<ListView>(R.id.spellList)
         chooseSpellSpinner = rootView
-                .findViewById<Spinner>(R.id.chooseSpellSpinner)
+            .findViewById<Spinner>(R.id.chooseSpellSpinner)
         addSpellButton = rootView.findViewById<Button>(R.id.addSpellButton)
 
-
-        val adapter = TranslatableEnumAdapter(adv, android.R.layout.simple_list_item_1,
-                adv.chosenSpells)
+        val adapter = TranslatableEnumAdapter(
+            adv, android.R.layout.simple_list_item_1,
+            adv.chosenSpells
+        )
         spellList!!.adapter = adapter
 
         spellList!!.onItemClickListener = OnItemClickListener { _, _, arg2, _ ->
             val position = arg2
             val builder = AlertDialog.Builder(adv)
             builder.setTitle(R.string.useSpellQuestion)
-                    .setCancelable(false)
-                    .setNegativeButton(R.string.close
-                    ) { dialog, _ -> dialog.cancel() }
-            builder.setPositiveButton(R.string.ok
+                .setCancelable(false)
+                .setNegativeButton(
+                    R.string.close
+                ) { dialog, _ -> dialog.cancel() }
+            builder.setPositiveButton(
+                R.string.ok
             ) { _, _ ->
                 val spell = adv.chosenSpells[position]
                 specificSpellActivation(adv, spell)
                 if (adv.isSpellSingleUse) {
                     adv.chosenSpells = adv.chosenSpells.minus(adv.chosenSpells[position])
                     (spellList!!
-                            .adapter as ArrayAdapter<*>)
-                            .notifyDataSetChanged()
+                        .adapter as ArrayAdapter<*>)
+                        .notifyDataSetChanged()
                 }
             }
 
@@ -83,24 +84,23 @@ open class AdventureSpellsFragment : AdventureFragment() {
         return rootView
     }
 
-
     protected fun specificSpellActivation(adv: Adventure, spell: Spell) {
         spell.getAction().invoke(adv)
     }
 
-
     override fun refreshScreensFromResume() {
         (spellList!!.adapter as ArrayAdapter<*>).notifyDataSetChanged()
-
     }
 
     private val spellAdapter: TranslatableEnumAdapter
         get() {
 
-            val dataAdapter = TranslatableEnumAdapter(activity, android.R.layout.simple_list_item_1, (activity as SpellAdventure<*>).spellList)
+            val dataAdapter = TranslatableEnumAdapter(
+                activity,
+                android.R.layout.simple_list_item_1,
+                (activity as SpellAdventure<*>).spellList
+            )
 
             return dataAdapter
         }
-
-
 }

@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.FREEWAY_FIGHTE
 class TestFF : TestST() {
 
     override val gamebook = FREEWAY_FIGHTER
-
-
 }

@@ -22,13 +22,14 @@ import java.io.FileWriter
 import java.io.IOException
 
 abstract class AdventureCreation(
-        override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS) : BaseFragmentActivity(fragmentConfiguration, R.layout.activity_adventure_creation) {
+    override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS
+) : BaseFragmentActivity(fragmentConfiguration, R.layout.activity_adventure_creation) {
 
     companion object {
         const val NO_PARAMETERS_TO_VALIDATE = ""
 
         val DEFAULT_FRAGMENTS = arrayOf(
-                AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, VitalStatisticsFragment::class)
+            AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, VitalStatisticsFragment::class)
         )
     }
 
@@ -41,10 +42,10 @@ abstract class AdventureCreation(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         gamebook = FightingFantasyGamebook.values()[intent.getIntExtra(
-                GamebookSelectionActivity.GAMEBOOK_ID, -1)]
+            GamebookSelectionActivity.GAMEBOOK_ID, -1
+        )]
 
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -86,7 +87,7 @@ abstract class AdventureCreation(
             }
 
             val relDir = ("save_" + gamebook!!.initials + "_"
-                    + adventureName!!.replace(' ', '-'))
+                + adventureName!!.replace(' ', '-'))
             var dir = File(filesDir, "ffgbutil")
             dir = File(dir, relDir)
             if (!dir.exists()) {
@@ -110,29 +111,31 @@ abstract class AdventureCreation(
             bw.write("currentReference=1\n")
             bw.write("equipment=\n")
             bw.write("notes=\n")
-            bw.write("gold=\n")
+            bw.write("gold=0\n")
             storeAdventureSpecificValuesInFile(bw)
 
             bw.close()
 
-            val intent = Intent(this, Constants
-                    .getRunActivity(this, gamebook))
+            val intent = Intent(
+                this, Constants
+                .getRunActivity(this, gamebook)
+            )
 
-            intent.putExtra(LoadAdventureActivity.ADVENTURE_FILE,
-                    "initial.xml")
+            intent.putExtra(
+                LoadAdventureActivity.ADVENTURE_FILE,
+                "initial.xml"
+            )
             intent.putExtra(LoadAdventureActivity.ADVENTURE_DIR, relDir)
             startActivity(intent)
-
         } catch (e: Exception) {
             throw IllegalStateException(e)
         }
-
     }
 
     fun showAlert(message: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.result).setMessage(message).setCancelable(false)
-                .setNegativeButton(R.string.close) { dialog, _ -> dialog.cancel() }
+            .setNegativeButton(R.string.close) { dialog, _ -> dialog.cancel() }
         val alert = builder.create()
         alert.show()
     }
@@ -169,7 +172,6 @@ abstract class AdventureCreation(
 
     @Throws(IOException::class)
     open fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
     }
 
     open fun rollGamebookSpecificStats(view: View) {}

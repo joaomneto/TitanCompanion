@@ -1,123 +1,121 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin">
 
     <ListView
-        android:id="@+id/equipmentList"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonAddEquipment"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/equipmentLabel"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/border_back">
+            android:id="@+id/equipmentList"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonAddEquipment"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/equipmentLabel"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border_back">
 
     </ListView>
 
     <Button
-        android:id="@+id/buttonAddEquipment"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/addEquipment" />
+            android:id="@+id/buttonAddEquipment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/addEquipment"/>
 
     <Button
-        android:id="@+id/minusGoldButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusGoldButton"
-        android:layout_alignTop="@+id/plusGoldButton"
-        android:layout_toLeftOf="@+id/goldValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/minusGoldButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusGoldButton"
+            android:layout_alignTop="@+id/plusGoldButton"
+            android:layout_toLeftOf="@+id/goldValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/goldValue"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusGoldButton"
-        android:layout_alignTop="@+id/plusGoldButton"
-        android:layout_toLeftOf="@+id/plusGoldButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/goldValue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusGoldButton"
+            android:layout_alignTop="@+id/plusGoldButton"
+            android:layout_toLeftOf="@+id/plusGoldButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusGoldButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/plusGoldButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/goldLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:text="@string/gold"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/goldLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/gold"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/minusCopperButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusCopperButton"
-        android:layout_alignTop="@+id/plusCopperButton"
-        android:layout_toLeftOf="@+id/copperValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/minusCopperButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusCopperButton"
+            android:layout_alignTop="@+id/plusCopperButton"
+            android:layout_toLeftOf="@+id/copperValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/copperValue"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusCopperButton"
-        android:layout_alignTop="@+id/plusCopperButton"
-        android:layout_toLeftOf="@+id/plusCopperButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/copperValue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusCopperButton"
+            android:layout_alignTop="@+id/plusCopperButton"
+            android:layout_toLeftOf="@+id/plusCopperButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusCopperButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/plusGoldButton"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/plusCopperButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/plusGoldButton"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/copperLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/minusCopperButton"
-        android:layout_alignParentStart="true"
-        android:gravity="center"
-        android:text="@string/copper"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/copperLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/minusCopperButton"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:text="@string/copper"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
-        android:id="@+id/equipmentLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/copperLabel"
-        android:layout_marginTop="5dp"
-        android:text="@string/equipment"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-
+            android:id="@+id/equipmentLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/copperLabel"
+            android:layout_marginTop="5dp"
+            android:text="@string/equipment"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 
 </RelativeLayout>

@@ -1,8 +1,6 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.ss
 
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell
 
@@ -10,8 +8,7 @@ import pt.joaomneto.titancompanion.adventure.impl.util.Spell
  * Created by Joao Neto on 23-05-2017.
  */
 
-enum class SSSpell constructor(private val labelIdInner : Int, private val actionInner: (Adventure) -> Unit) : Spell{
-
+enum class SSSpell constructor(private val labelIdInner: Int, private val actionInner: (Adventure) -> Unit) : Spell {
 
     STAMINA(R.string.ssSpellStamina, { adv ->
         adv.currentStamina = adv
@@ -19,7 +16,7 @@ enum class SSSpell constructor(private val labelIdInner : Int, private val actio
         if (adv.currentStamina > adv
                 .initialStamina)
             adv.currentStamina = adv
-                    .initialStamina
+                .initialStamina
 
     }),
     SKILL(R.string.ssSpellSkill, { adv ->
@@ -27,7 +24,7 @@ enum class SSSpell constructor(private val labelIdInner : Int, private val actio
         if (adv.currentSkill > adv
                 .initialSkill)
             adv.currentSkill = adv
-                    .initialSkill
+                .initialSkill
     }),
     LUCK(R.string.ssSpellLuck, { adv ->
         adv.currentLuck = adv.currentLuck + adv.initialLuck / 2
@@ -45,13 +42,11 @@ enum class SSSpell constructor(private val labelIdInner : Int, private val actio
     WITHERING(R.string.ssSpellWithering, { _ -> }),
     CURSE(R.string.ssSpellCurse, { _ -> });
 
-    override fun getLabelId(): Int{
+    override fun getLabelId(): Int {
         return labelIdInner
     }
 
-    override fun getAction(): (Adventure) -> Unit{
+    override fun getAction(): (Adventure) -> Unit {
         return actionInner
     }
-
-
 }

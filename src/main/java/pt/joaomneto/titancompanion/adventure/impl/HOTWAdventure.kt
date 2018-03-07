@@ -3,15 +3,16 @@ package pt.joaomneto.titancompanion.adventure.impl
 import android.os.Bundle
 import android.view.Menu
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.hotw.HOTWAdventureNotesFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.hotw.HOTWAdventureVitalStatsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
-import java.util.*
+import java.util.ArrayList
+import java.util.Arrays
 
 class HOTWAdventure : Adventure(
     arrayOf(

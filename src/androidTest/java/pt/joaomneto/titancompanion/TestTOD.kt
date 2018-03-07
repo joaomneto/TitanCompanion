@@ -10,5 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.TALISMAN_OF_DE
 class TestTOD : TestTFOD() {
 
     override val gamebook = TALISMAN_OF_DEATH
-
 }

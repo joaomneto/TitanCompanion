@@ -1,19 +1,16 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sob
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.SOBAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.util.DiceRoller
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.View.OnClickListener
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 
 class SOBAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
@@ -28,7 +25,16 @@ class SOBAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
         val incTrigger = Runnable { adv.setCurrentStamina(Math.min(adv.initialStamina, adv.getCurrentStamina() + 1)) }
 
-        setupIncDecButton(rootView, R.id.plusLogButton, R.id.minusLogButton, adv, SOBAdventure::log, 50, incTrigger, null)
+        setupIncDecButton(
+            rootView,
+            R.id.plusLogButton,
+            R.id.minusLogButton,
+            adv,
+            SOBAdventure::log,
+            50,
+            incTrigger,
+            null
+        )
 
         logValue = rootView.findViewById<View>(R.id.statsLogValue) as TextView
 
@@ -50,7 +56,5 @@ class SOBAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         super.refreshScreensFromResume()
         val adv = activity as SOBAdventure
         logValue!!.text = "" + adv.log
-
     }
-
 }

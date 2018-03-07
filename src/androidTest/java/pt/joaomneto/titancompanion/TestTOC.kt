@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.TRIAL_OF_CHAMP
 class TestTOC : TestST() {
 
     override val gamebook = TRIAL_OF_CHAMPIONS
-
-
 }

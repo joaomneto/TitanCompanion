@@ -2,21 +2,25 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.st.STCrewAndShipVitalStatisticsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
 
 class STAdventureCreation : AdventureCreation(
-        arrayOf(AdventureFragmentRunner(
-                        R.string.title_adventure_creation_vitalstats,
-                        VitalStatisticsFragment::class),
-                AdventureFragmentRunner(
-                        R.string.shipCrewStats,
-                        STCrewAndShipVitalStatisticsFragment::class))
+    arrayOf(
+        AdventureFragmentRunner(
+            R.string.title_adventure_creation_vitalstats,
+            VitalStatisticsFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.shipCrewStats,
+            STCrewAndShipVitalStatisticsFragment::class
+        )
+    )
 ) {
 
     var scienceOfficerSkill = -1
@@ -40,7 +44,6 @@ class STAdventureCreation : AdventureCreation(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
 
         bw.write("scienceOfficerSkill=" + scienceOfficerSkill + "\n")
         bw.write("scienceOfficerStamina=" + scienceOfficerStamina + "\n")

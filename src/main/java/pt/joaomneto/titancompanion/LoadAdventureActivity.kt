@@ -84,7 +84,7 @@ class LoadAdventureActivity : BaseActivity() {
                         if (line.startsWith("gamebook=")) {
                             val gbs = line.split("=".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
                             val numbericGbs = gbs.toIntOrNull()
-                            gamebook = if ( numbericGbs != null)
+                            gamebook = if (numbericGbs != null)
                                 FightingFantasyGamebook.values()[numbericGbs]
                             else
                                 FightingFantasyGamebook.valueOf(gbs)

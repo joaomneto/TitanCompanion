@@ -28,7 +28,6 @@ open class TestTWOFM : TCBaseTest() {
         assertCorrectPotionDosage()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
-
     }
 
     protected open fun assertCorrectPotionDosage() {
@@ -45,7 +44,6 @@ open class TestTWOFM : TCBaseTest() {
         assertCorrectPotionDosage()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
 
     @Test
@@ -58,7 +56,6 @@ open class TestTWOFM : TCBaseTest() {
         assertCorrectPotionDosage()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
 
     @Test
@@ -71,8 +68,5 @@ open class TestTWOFM : TCBaseTest() {
         assertCorrectPotionDosage()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
-
-
 }

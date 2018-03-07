@@ -23,10 +23,15 @@ class TestSOTS : TCBaseTest() {
     fun performChoosemartialArt() {
 
         val linearLayout = onData(anything())
-            .inAdapterView(allOf<View>(withId(R.id.skillList),
-                TCBaseTest.Companion.childAtPosition(
-                    withClassName(`is`("android.widget.RelativeLayout")),
-                    1)))
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.skillList),
+                    TCBaseTest.Companion.childAtPosition(
+                        withClassName(`is`("android.widget.RelativeLayout")),
+                        1
+                    )
+                )
+            )
             .atPosition(0)
         linearLayout.perform(click())
     }
@@ -42,7 +47,6 @@ class TestSOTS : TCBaseTest() {
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
-
     }
 
     @Test
@@ -55,7 +59,6 @@ class TestSOTS : TCBaseTest() {
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
 
     @Test
@@ -68,7 +71,6 @@ class TestSOTS : TCBaseTest() {
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
 
     @Test
@@ -79,7 +81,5 @@ class TestSOTS : TCBaseTest() {
         performVitalStatisticsRoll()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
-
 }

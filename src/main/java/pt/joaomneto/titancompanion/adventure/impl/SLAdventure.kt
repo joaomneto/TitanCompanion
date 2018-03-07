@@ -1,7 +1,6 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
@@ -9,17 +8,20 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragme
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLStarshipStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLWeaponCombatFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
 
 class SLAdventure : Adventure(
-        arrayOf(
-                AdventureFragmentRunner(R.string.vitalStats, SLAdventureVitalStatsFragment::class),
-                AdventureFragmentRunner(R.string.shipAndWeapons, SLStarshipStatsFragment::class),
-                AdventureFragmentRunner(R.string.fights, AdventureCombatFragment::class),
-                AdventureFragmentRunner(R.string.combatWeaponClashes, SLWeaponCombatFragment::class),
-                AdventureFragmentRunner(R.string.goldEquipment, AdventureEquipmentFragment::class),
-                AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class))) {
+    arrayOf(
+        AdventureFragmentRunner(R.string.vitalStats, SLAdventureVitalStatsFragment::class),
+        AdventureFragmentRunner(R.string.shipAndWeapons, SLStarshipStatsFragment::class),
+        AdventureFragmentRunner(R.string.fights, AdventureCombatFragment::class),
+        AdventureFragmentRunner(R.string.combatWeaponClashes, SLWeaponCombatFragment::class),
+        AdventureFragmentRunner(R.string.goldEquipment, AdventureEquipmentFragment::class),
+        AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class)
+    )
+) {
 
     var currentLasers = 0
     var currentShields = 0
@@ -35,7 +37,6 @@ class SLAdventure : Adventure(
         private var FRAGMENT_EQUIPMENT = 4
         private var FRAGMENT_NOTES = 5
     }
-
 
     override fun loadAdventureSpecificValuesFromFile() {
         gold = savedGame.getProperty("gold").toInt()
@@ -56,7 +57,7 @@ class SLAdventure : Adventure(
         bw.write("oxygen=$oxygen\n")
     }
 
-    override val consumeProvisionText= R.string.useProvisionTablet
+    override val consumeProvisionText = R.string.useProvisionTablet
 
     override val provisionsText = R.string.provisionTablets
 

@@ -19,7 +19,5 @@ class BWAdventureCreation : AdventureCreation() {
     }
 
     override fun rollGamebookSpecificStats(view: View) {
-
     }
-
 }

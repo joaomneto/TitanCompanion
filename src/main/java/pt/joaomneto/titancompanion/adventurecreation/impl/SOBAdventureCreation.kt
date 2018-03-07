@@ -2,19 +2,21 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sob.SOBVitalStatisticsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
 
 class SOBAdventureCreation : AdventureCreation(
-        arrayOf(AdventureFragmentRunner(
-                R.string.title_adventure_creation_vitalstats,
-                SOBVitalStatisticsFragment::class))
+    arrayOf(
+        AdventureFragmentRunner(
+            R.string.title_adventure_creation_vitalstats,
+            SOBVitalStatisticsFragment::class
+        )
+    )
 ) {
-
 
     private var currentCrewStrength = -1
     private var currentCrewStrike = -1
@@ -34,15 +36,12 @@ class SOBAdventureCreation : AdventureCreation(
         bw.write("booty=\n")
     }
 
-
     override fun rollGamebookSpecificStats(view: View) {
         currentCrewStrike = DiceRoller.rollD6() + 6
         currentCrewStrength = DiceRoller.roll2D6().sum + 6
         sobVitalStatisticsFragment.crewStrikeValue.text = "" + currentCrewStrike
         sobVitalStatisticsFragment.crewStrengthValue.text = "" + currentCrewStrength
-
     }
-
 
     override fun validateCreationSpecificParameters(): String? {
         val sb = StringBuilder()
@@ -51,5 +50,4 @@ class SOBAdventureCreation : AdventureCreation(
         }
         return sb.toString()
     }
-
 }

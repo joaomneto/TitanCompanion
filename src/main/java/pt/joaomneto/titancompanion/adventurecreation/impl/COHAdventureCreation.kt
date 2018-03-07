@@ -11,9 +11,7 @@ import java.io.IOException
 class COHAdventureCreation : AdventureCreation() {
 
     override fun rollGamebookSpecificStats(view: View) {
-
     }
-
 
     override fun validateCreationSpecificParameters(): String? {
         return null
@@ -23,6 +21,4 @@ class COHAdventureCreation : AdventureCreation() {
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
         bw.write("gold=0\n")
     }
-
-
 }

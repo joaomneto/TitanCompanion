@@ -1,11 +1,9 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.rc;
 
+import pt.joaomneto.titancompanion.R;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import pt.joaomneto.titancompanion.R;
-import android.support.v4.app.Fragment;
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 
 
 /**
@@ -14,13 +12,12 @@ import pt.joaomneto.titancompanion.util.AdventureFragmentRunner;
 public enum RobotSpecialAbility {
 
 
-
     SUPER_COWBOY_ROBOT_SONIC_SCREAM(9, R.string.robotSpecialAbilitySonicScream, R.string.robotSpecialAbilitySonicScreamDesc),
-    DIGGER_ROBOT_SHOVEL(13, R.string.robotSpecialAbilityShovel,R.string.robotSpecialAbilityShovelDesc),
-    WASP_FIGHTER_SPECIAL_ATTACK(41, R.string.robotSpecialAbilityFlyCircles,R.string.robotSpecialAbilityFlyCirclesDesc),
-    DRAGONFLY_MODEL_D_EVADE(47, R.string.robotSpecialAbilityUltraFast,R.string.robotSpecialAbilityUltraFastDesc),
-    TROOPER_XI_HUMAN_SHIELD(167, R.string.robotSpecialAbilityShield,R.string.robotSpecialAbilityShieldDEsc),
-    SERPENT_VII_COIL(208, R.string.robotSpecialAbilitySerpentCoil,R.string.robotSpecialAbilitySerpentCoilDesc),
+    DIGGER_ROBOT_SHOVEL(13, R.string.robotSpecialAbilityShovel, R.string.robotSpecialAbilityShovelDesc),
+    WASP_FIGHTER_SPECIAL_ATTACK(41, R.string.robotSpecialAbilityFlyCircles, R.string.robotSpecialAbilityFlyCirclesDesc),
+    DRAGONFLY_MODEL_D_EVADE(47, R.string.robotSpecialAbilityUltraFast, R.string.robotSpecialAbilityUltraFastDesc),
+    TROOPER_XI_HUMAN_SHIELD(167, R.string.robotSpecialAbilityShield, R.string.robotSpecialAbilityShieldDEsc),
+    SERPENT_VII_COIL(208, R.string.robotSpecialAbilitySerpentCoil, R.string.robotSpecialAbilitySerpentCoilDesc),
     ROBOTANK_SONIC_SHOT(247, R.string.robotSpecialAbilitySonicShot, R.string.robotSpecialAbilitySonicShotDesc),
     HEDGEHOG_ANTI_AIR(261, R.string.robotSpecialAbilityAirDefense, R.string.robotSpecialAbilityAirDefenseDesc),
     ENEMY_CRUSHER_DOUBLE_ATTACK(27, R.string.robotSpecialAbilityDoubleDamage, R.string.robotSpecialAbilityDoubleDamageDesc),
@@ -32,7 +29,7 @@ public enum RobotSpecialAbility {
 
     protected static Map<Integer, RobotSpecialAbility> specialAbilities;
 
-    static{
+    static {
         specialAbilities = new HashMap<Integer, RobotSpecialAbility>();
         specialAbilities.put(9, SUPER_COWBOY_ROBOT_SONIC_SCREAM);
         specialAbilities.put(13, DIGGER_ROBOT_SHOVEL);
@@ -59,6 +56,10 @@ public enum RobotSpecialAbility {
         this.description = description;
     }
 
+    public static RobotSpecialAbility getAbiliyByReference(Integer reference) {
+        return specialAbilities.get(reference);
+    }
+
     public Integer getReference() {
         return reference;
     }
@@ -81,9 +82,5 @@ public enum RobotSpecialAbility {
 
     public void setDescription(Integer description) {
         this.description = description;
-    }
-
-    public static RobotSpecialAbility getAbiliyByReference(Integer reference){
-        return specialAbilities.get(reference);
     }
 }

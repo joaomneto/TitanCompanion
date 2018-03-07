@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.SEAS_OF_BLOOD
 class TestSOB : TestST() {
 
     override val gamebook = SEAS_OF_BLOOD
-
-
 }

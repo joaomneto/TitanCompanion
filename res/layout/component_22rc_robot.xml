@@ -1,186 +1,185 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/adventureVitalStats"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="3dp" >
+                android:id="@+id/adventureVitalStats"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="3dp">
 
     <RadioButton
-        android:id="@+id/robotSelected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:focusable="false"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:clickable="true" />
+            android:id="@+id/robotSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:clickable="true"/>
 
     <TextView
-        android:id="@+id/robotTextName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@id/robotSelected"
-        android:text="@string/name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/robotSelected"
+            android:text="@string/name"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/robotTextNameValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/robotTextName"
-        android:layout_alignBottom="@+id/robotTextName"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/robotTextName"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextNameValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/robotTextName"
+            android:layout_alignBottom="@+id/robotTextName"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/robotTextName"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/robotTextArmor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/robotTextName"
-        android:textStyle="bold"
-        android:layout_alignStart="@+id/robotTextName"
-        android:layout_below="@+id/robotTextName"
-        android:gravity="center"
-        android:text="@string/robotArmor"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextArmor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/robotTextName"
+            android:textStyle="bold"
+            android:layout_alignStart="@+id/robotTextName"
+            android:layout_below="@+id/robotTextName"
+            android:gravity="center"
+            android:text="@string/robotArmor"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <Button
-        android:id="@+id/minusRobotArmorButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/robotTextArmor"
-        android:layout_alignTop="@+id/robotTextArmor"
-        android:layout_toRightOf="@id/robotTextArmor"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/minusRobotArmorButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/robotTextArmor"
+            android:layout_alignTop="@+id/robotTextArmor"
+            android:layout_toRightOf="@id/robotTextArmor"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/robotTextArmorValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/minusRobotArmorButton"
-        android:layout_alignBottom="@+id/minusRobotArmorButton"
-        android:layout_toRightOf="@+id/minusRobotArmorButton"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextArmorValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/minusRobotArmorButton"
+            android:layout_alignBottom="@+id/minusRobotArmorButton"
+            android:layout_toRightOf="@+id/minusRobotArmorButton"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <Button
-        android:id="@+id/plusRobotArmorButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/robotTextArmorValue"
-        android:layout_alignTop="@+id/robotTextArmorValue"
-        android:layout_toRightOf="@id/robotTextArmorValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/plusRobotArmorButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/robotTextArmorValue"
+            android:layout_alignTop="@+id/robotTextArmorValue"
+            android:layout_toRightOf="@id/robotTextArmorValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/robotTextSpeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/robotTextArmor"
-        android:layout_alignBottom="@+id/robotTextArmor"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/plusRobotArmorButton"
-        android:text="@string/robotSpeed"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/robotTextArmor"
+            android:layout_alignBottom="@+id/robotTextArmor"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/plusRobotArmorButton"
+            android:text="@string/robotSpeed"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/robotTextSpeedValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/robotTextSpeed"
-        android:layout_alignBottom="@+id/robotTextSpeed"
-        android:layout_alignRight="@+id/robotTextNameValue"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/robotTextSpeed"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextSpeedValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/robotTextSpeed"
+            android:layout_alignBottom="@+id/robotTextSpeed"
+            android:layout_alignRight="@+id/robotTextNameValue"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/robotTextSpeed"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/robotTextBonus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/robotTextArmor"
-        android:layout_below="@id/robotTextArmor"
-        android:textStyle="bold"
-        android:layout_marginTop="3dp"
-        android:text="@string/robotBonus"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextBonus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/robotTextArmor"
+            android:layout_below="@id/robotTextArmor"
+            android:textStyle="bold"
+            android:layout_marginTop="3dp"
+            android:text="@string/robotBonus"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/robotTextBonusValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/robotTextBonus"
-        android:layout_alignBottom="@+id/robotTextBonus"
-        android:layout_alignRight="@+id/robotTextSpeedValue"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/robotTextBonus"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextBonusValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/robotTextBonus"
+            android:layout_alignBottom="@+id/robotTextBonus"
+            android:layout_alignRight="@+id/robotTextSpeedValue"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/robotTextBonus"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/robotTextSpecialAbility"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/robotTextBonus"
-        android:layout_below="@id/robotTextBonus"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        android:text="@string/robotSpecialAbility"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextSpecialAbility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/robotTextBonus"
+            android:layout_below="@id/robotTextBonus"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:text="@string/robotSpecialAbility"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/robotTextSpecialAbilityValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/robotTextSpecialAbility"
-        android:layout_alignBottom="@+id/robotTextSpecialAbility"
-        android:layout_alignRight="@+id/robotTextBonusValue"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/robotTextSpecialAbility"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextSpecialAbilityValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/robotTextSpecialAbility"
+            android:layout_alignBottom="@+id/robotTextSpecialAbility"
+            android:layout_alignRight="@+id/robotTextBonusValue"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/robotTextSpecialAbility"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/robotTextLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/robotTextSpecialAbility"
-        android:layout_below="@id/robotTextSpecialAbility"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        android:text="@string/robotLocation"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/robotTextLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/robotTextSpecialAbility"
+            android:layout_below="@id/robotTextSpecialAbility"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:text="@string/robotLocation"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/robotTextLocationValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/robotTextLocation"
-        android:layout_alignBottom="@+id/robotTextLocation"
-        android:layout_alignRight="@+id/robotTextSpecialAbilityValue"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/robotTextLocation"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-<!--      <Button -->
-<!--         android:id="@+id/removeRobotButton" -->
-<!--         android:layout_width="fill_parent" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:text="@string/removeRobot" -->
-<!--         android:layout_below="@id/robotTextLocation" /> -->
+            android:id="@+id/robotTextLocationValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/robotTextLocation"
+            android:layout_alignBottom="@+id/robotTextLocation"
+            android:layout_alignRight="@+id/robotTextSpecialAbilityValue"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/robotTextLocation"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-<!--     <View -->
-<!--         android:id="@+id/separator" -->
-<!--         android:layout_width="fill_parent" -->
-<!--         android:layout_height="1dp" -->
-<!--         android:layout_below="@+id/robotTextLocation" -->
-<!--         android:layout_marginTop="1dp" -->
-<!--         android:background="@android:color/darker_gray" /> -->
+    <!--      <Button -->
+    <!--         android:id="@+id/removeRobotButton" -->
+    <!--         android:layout_width="fill_parent" -->
+    <!--         android:layout_height="wrap_content" -->
+    <!--         android:text="@string/removeRobot" -->
+    <!--         android:layout_below="@id/robotTextLocation" /> -->
+
+    <!--     <View -->
+    <!--         android:id="@+id/separator" -->
+    <!--         android:layout_width="fill_parent" -->
+    <!--         android:layout_height="1dp" -->
+    <!--         android:layout_below="@+id/robotTextLocation" -->
+    <!--         android:layout_marginTop="1dp" -->
+    <!--         android:background="@android:color/darker_gray" /> -->
 
 </RelativeLayout>

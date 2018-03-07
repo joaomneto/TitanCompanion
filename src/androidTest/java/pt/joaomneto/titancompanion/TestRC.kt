@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.ROBOT_COMMANDO
 class TestRC : TestST() {
 
     override val gamebook = ROBOT_COMMANDO
-
-
 }

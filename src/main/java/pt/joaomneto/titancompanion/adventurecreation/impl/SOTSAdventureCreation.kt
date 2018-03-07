@@ -2,19 +2,23 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSAdventureCreationSkillFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
 
-class SOTSAdventureCreation : AdventureCreation( arrayOf(
+class SOTSAdventureCreation : AdventureCreation(
+    arrayOf(
         AdventureFragmentRunner(R.string.title_adventure_creation_vitalstats, VitalStatisticsFragment::class),
-        AdventureFragmentRunner(R.string.title_adventure_creation_skill,
-                SOTSAdventureCreationSkillFragment::class))) {
+        AdventureFragmentRunner(
+            R.string.title_adventure_creation_skill,
+            SOTSAdventureCreationSkillFragment::class
+        )
+    )
+) {
 
     private var martialArt: SOTSMartialArt? = null
 
@@ -46,5 +50,4 @@ class SOTSAdventureCreation : AdventureCreation( arrayOf(
         }
         return sb.toString()
     }
-
 }

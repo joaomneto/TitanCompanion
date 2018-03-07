@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_28pof_adventure_vitalstats.*
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.impl.POFAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 
@@ -22,18 +21,21 @@ class POFAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
     private var decreasePowerButton: Button? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         val rootView = inflater!!.inflate(
-                R.layout.fragment_28pof_adventure_vitalstats, container, false)
+            R.layout.fragment_28pof_adventure_vitalstats, container, false
+        )
 
         //CHECKTHIS	initialize(rootView);
 
         decreasePowerButton = rootView
-                .findViewById(R.id.minusPowerButton)
+            .findViewById(R.id.minusPowerButton)
         increasePowerButton = rootView
-                .findViewById(R.id.plusPowerButton)
+            .findViewById(R.id.plusPowerButton)
         powerValue = rootView.findViewById(R.id.statsPowerValue)
         val adv = activity as POFAdventure
 
@@ -72,7 +74,5 @@ class POFAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         super.refreshScreensFromResume()
         val adv = activity as POFAdventure
         powerValue?.text = adv.currentPower.toString()
-
     }
-
 }

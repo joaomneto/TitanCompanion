@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.REBEL_PLANET
 class TestRP : TestST() {
 
     override val gamebook = REBEL_PLANET
-
-
 }

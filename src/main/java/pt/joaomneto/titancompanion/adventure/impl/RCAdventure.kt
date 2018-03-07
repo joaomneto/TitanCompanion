@@ -1,35 +1,53 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
-import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.*
+import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.RCAdventureRobotCombatFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.RCAdventureRobotFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.RCAdventureVitalStatsFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.Robot
+import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.RobotSpecialAbility
+import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.RobotSpeed
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
-import java.util.*
+import java.util.ArrayList
+import java.util.Arrays
+import java.util.HashMap
 
 class RCAdventure : TFODAdventure(
-        arrayOf(
-                AdventureFragmentRunner(R.string.vitalStats,
-                        RCAdventureVitalStatsFragment::class),
-                AdventureFragmentRunner(R.string.robots,
-                        RCAdventureRobotFragment::class),
-                AdventureFragmentRunner(R.string.robotFights,
-                        RCAdventureRobotCombatFragment::class),
-                AdventureFragmentRunner(R.string.fights,
-                        AdventureCombatFragment::class),
-                AdventureFragmentRunner(R.string.goldEquipment,
-                        AdventureEquipmentFragment::class),
-                AdventureFragmentRunner(R.string.notes,
-                        AdventureNotesFragment::class))) {
+    arrayOf(
+        AdventureFragmentRunner(
+            R.string.vitalStats,
+            RCAdventureVitalStatsFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.robots,
+            RCAdventureRobotFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.robotFights,
+            RCAdventureRobotCombatFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.fights,
+            AdventureCombatFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.goldEquipment,
+            AdventureEquipmentFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.notes,
+            AdventureNotesFragment::class
+        )
+    )
+) {
 
     var currentRobot: Robot? = null
     var robots: List<Robot> = emptyList()
-
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
@@ -45,7 +63,7 @@ class RCAdventure : TFODAdventure(
             val ability = if (r.robotSpecialAbility != null) r.robotSpecialAbility.reference!!.toString() + "" else ""
             val alternateName = if (r.alternateForm != null) r.alternateForm.name else ""
             robotsS += (name + "§" + location + "§" + speed.name + "§" + armor + "§" + ability + "§" + r.bonus + "§" + alternateName + "§" + r.isActive
-                    + "#")
+                + "#")
         }
         if (robots.isNotEmpty()) {
             robotsS = robotsS.substring(0, robotsS.length - 1)
@@ -69,8 +87,14 @@ class RCAdventure : TFODAdventure(
                     val specialAbility = split[4]
                     val alternateFormName = split[6]
                     val active = java.lang.Boolean.parseBoolean(split[7])
-                    val robot = Robot(split[0], Integer.parseInt(split[3]), RobotSpeed.valueOf(split[2]), Integer.parseInt(split[5]),
-                            RobotSpecialAbility.getAbiliyByReference(if (specialAbility.isEmpty()) null else Integer.parseInt(specialAbility)))
+                    val robot = Robot(
+                        split[0], Integer.parseInt(split[3]), RobotSpeed.valueOf(split[2]), Integer.parseInt(split[5]),
+                        RobotSpecialAbility.getAbiliyByReference(
+                            if (specialAbility.isEmpty()) null else Integer.parseInt(
+                                specialAbility
+                            )
+                        )
+                    )
                     robot.location = split[1]
                     robot.isActive = active
                     currentRobot = robot
@@ -83,9 +107,8 @@ class RCAdventure : TFODAdventure(
         }
 
         robots
-                .filter { robotAltCache.containsKey(it) }
-                .forEach { it.alternateForm = robotCache[robotAltCache[it]] }
-
+            .filter { robotAltCache.containsKey(it) }
+            .forEach { it.alternateForm = robotCache[robotAltCache[it]] }
     }
 
     fun destroyCurrentRobot() {

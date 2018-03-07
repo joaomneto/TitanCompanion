@@ -115,10 +115,15 @@ abstract class TCBaseTest {
 
     protected fun performChoosePotion() {
         val linearLayout = onData(anything())
-            .inAdapterView(allOf(withId(R.id.potionList),
-                childAtPosition(
-                    withClassName(`is`("android.widget.LinearLayout")),
-                    0)))
+            .inAdapterView(
+                allOf(
+                    withId(R.id.potionList),
+                    childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        0
+                    )
+                )
+            )
             .atPosition(0)
         linearLayout.perform(click())
     }
@@ -131,9 +136,9 @@ abstract class TCBaseTest {
 
     protected fun performFillSavegameName() {
         val editText = onView(
-            allOf(withId(R.id.adventureNameInput), isDisplayed()))
+            allOf(withId(R.id.adventureNameInput), isDisplayed())
+        )
         editText.perform(replaceText("espresso"), closeSoftKeyboard())
-
     }
 
     protected fun performStartAdventure() {
@@ -142,10 +147,15 @@ abstract class TCBaseTest {
 
         //Clicks over the proper book using the property order of the GamebookEnum
         val textView = onData(anything())
-            .inAdapterView(allOf(withId(R.id.gamebookListView),
-                childAtPosition(
-                    withClassName(`is`("android.widget.RelativeLayout")),
-                    0)))
+            .inAdapterView(
+                allOf(
+                    withId(R.id.gamebookListView),
+                    childAtPosition(
+                        withClassName(`is`("android.widget.RelativeLayout")),
+                        0
+                    )
+                )
+            )
             .atPosition(gamebook.order - 1)
         textView.perform(click())
 
@@ -162,13 +172,18 @@ abstract class TCBaseTest {
     @Before
     fun dismissStartupDialog() {
         val button = onView(
-            allOf(withId(android.R.id.button2), withText("Close"),
+            allOf(
+                withId(android.R.id.button2), withText("Close"),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
-                        0),
-                    0),
-                isDisplayed()))
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
 
         if (exists(button))
             button.perform(click())
@@ -184,7 +199,8 @@ abstract class TCBaseTest {
     companion object {
 
         fun childAtPosition(
-            parentMatcher: Matcher<View>, position: Int): Matcher<View> {
+            parentMatcher: Matcher<View>, position: Int
+        ): Matcher<View> {
 
             return object : TypeSafeMatcher<View>() {
                 override fun describeTo(description: Description) {
@@ -226,8 +242,6 @@ abstract class TCBaseTest {
                 // optional depending on what you think "exists" means
                 return false
             }
-
         }
     }
-
 }

@@ -3,30 +3,43 @@ package pt.joaomneto.titancompanion.adventure.impl
 import android.os.Bundle
 import android.view.Menu
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.st.STCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.st.STCrewStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.st.STStarshipCombatFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
-import java.util.*
+import java.util.HashMap
+import java.util.HashSet
 
 class STAdventure : Adventure(
-        arrayOf(
-                AdventureFragmentRunner(R.string.vitalStats,
-                        AdventureVitalStatsFragment::class),
-                AdventureFragmentRunner(R.string.shipCrewStats,
-                        STCrewStatsFragment::class),
-                AdventureFragmentRunner(R.string.combat,
-                        STCombatFragment::class),
-                AdventureFragmentRunner(R.string.starshipCombat,
-                        STStarshipCombatFragment::class),
-                AdventureFragmentRunner(R.string.notes,
-                        AdventureNotesFragment::class))) {
+    arrayOf(
+        AdventureFragmentRunner(
+            R.string.vitalStats,
+            AdventureVitalStatsFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.shipCrewStats,
+            STCrewStatsFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.combat,
+            STCombatFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.starshipCombat,
+            STStarshipCombatFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.notes,
+            AdventureNotesFragment::class
+        )
+    )
+) {
 
     var initialScienceOfficerSkill = -1
     var initialMedicalOfficerSkill = -1
@@ -94,7 +107,6 @@ class STAdventure : Adventure(
             return landingParty
         }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
             super.onCreate(savedInstanceState)
@@ -116,11 +128,9 @@ class STAdventure : Adventure(
             crewmanToStringMap.put(STCrewman.SECURITY_OFFICER, resources.getString(R.string.securityOfficer))
             crewmanToStringMap.put(STCrewman.SECURITY_GUARD1, resources.getString(R.string.securityGuard1))
             crewmanToStringMap.put(STCrewman.SECURITY_GUARD2, resources.getString(R.string.securityGuard2))
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -174,7 +184,6 @@ class STAdventure : Adventure(
         bw.write("deadSecurityOfficer=" + isDeadSecurityOfficer + "\n")
         bw.write("deadSecurityGuard1=" + isDeadSecurityGuard1 + "\n")
         bw.write("deadSecurityGuard2=" + isDeadSecurityGuard2 + "\n")
-
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
@@ -198,8 +207,11 @@ class STAdventure : Adventure(
         initialMedicalOfficerSkill = Integer.valueOf(savedGame.getProperty("medicalOfficerInitialSkill"))
         initialMedicalOfficerStamina = Integer.valueOf(savedGame.getProperty("medicalOfficerInitialStamina"))
         initialEngineeringOfficerSkill = Integer.valueOf(savedGame.getProperty("engineeringOfficerInitialSkill"))
-        initialEngineeringOfficerStamina = Integer.valueOf(savedGame.getProperty(
-                "engineeringOfficerInitialStamina"))
+        initialEngineeringOfficerStamina = Integer.valueOf(
+            savedGame.getProperty(
+                "engineeringOfficerInitialStamina"
+            )
+        )
         initialSecurityOfficerSkill = Integer.valueOf(savedGame.getProperty("securityOfficerInitialSkill"))
         initialSecurityOfficerStamina = Integer.valueOf(savedGame.getProperty("securityOfficerInitialStamina"))
         initialSecurityGuard1Skill = Integer.valueOf(savedGame.getProperty("securityGuard1InitialSkill"))
@@ -222,7 +234,6 @@ class STAdventure : Adventure(
         isDeadSecurityOfficer = java.lang.Boolean.valueOf(savedGame.getProperty("deadSecurityOfficer"))
         isDeadSecurityGuard1 = java.lang.Boolean.valueOf(savedGame.getProperty("deadSecurityGuard1"))
         isDeadSecurityGuard2 = java.lang.Boolean.valueOf(savedGame.getProperty("deadSecurityGuard2"))
-
     }
 
     fun getCrewmanStamina(crewman: STCrewman): Int {
@@ -244,7 +255,6 @@ class STAdventure : Adventure(
 
             else -> return 0
         }
-
     }
 
     fun getCrewmanSkill(crewman: STCrewman): Int {
@@ -266,7 +276,6 @@ class STAdventure : Adventure(
 
             else -> return 0
         }
-
     }
 
     fun setCrewmanStamina(crewman: STCrewman, value: Int) {
@@ -282,7 +291,6 @@ class STAdventure : Adventure(
         }
 
         stCrewStatsFragment.refreshScreensFromResume()
-
     }
 
     fun setCrewmanDead(crewman: STCrewman) {
@@ -335,7 +343,6 @@ class STAdventure : Adventure(
         }
 
         stCrewStatsFragment.refreshScreensFromResume()
-
     }
 
     fun getCrewmanForString(value: String): STCrewman {
@@ -357,5 +364,4 @@ class STAdventure : Adventure(
         protected val FRAGMENT_SHIP_COMBAT = 3
         protected val FRAGMENT_NOTES = 4
     }
-
 }

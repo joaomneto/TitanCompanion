@@ -10,5 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.ISLAND_OF_THE_
 class TestIOTLK : TestTFOD() {
 
     override val gamebook = ISLAND_OF_THE_LIZARD_KING
-
 }

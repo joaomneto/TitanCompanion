@@ -22,5 +22,4 @@ open class TestTFOD : TestTWOFM() {
         val string = getString(if ("fr" == language) R.string.potionTwoDoses else R.string.potionOneDose)
         onView(withId(R.id.potionDosesSpinner)).check(matches(withSpinnerText(containsString(string))))
     }
-
 }

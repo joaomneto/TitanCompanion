@@ -3,7 +3,6 @@ package pt.joaomneto.titancompanion.adventure.impl
 import android.os.Bundle
 import android.view.Menu
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
@@ -11,17 +10,21 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 import pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFAdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFVehicleCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFVehicleStatsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
-import java.util.*
+import java.util.ArrayList
 
-class FFAdventure : Adventure(arrayOf(
+class FFAdventure : Adventure(
+    arrayOf(
         AdventureFragmentRunner(R.string.vitalStats, AdventureVitalStatsFragment::class),
         AdventureFragmentRunner(R.string.fights, FFAdventureCombatFragment::class),
         AdventureFragmentRunner(R.string.vehicleCombat, FFVehicleCombatFragment::class),
         AdventureFragmentRunner(R.string.vehicleSpecs, FFVehicleStatsFragment::class),
         AdventureFragmentRunner(R.string.goldEquipment, AdventureEquipmentFragment::class),
-        AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class))) {
+        AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class)
+    )
+) {
 
     var carEnhancements: List<String> = ArrayList()
     var currentFirepower = -1
@@ -33,22 +36,18 @@ class FFAdventure : Adventure(arrayOf(
     var oilCannisters = -1
     var spareWheels = -1
 
-    override val consumeProvisionText= R.string.useMedKit
-
+    override val consumeProvisionText = R.string.useMedKit
 
     override val provisionsText = R.string.medKits
 
     override val currencyName = R.string.credits
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
             super.onCreate(savedInstanceState)
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -97,5 +96,4 @@ class FFAdventure : Adventure(arrayOf(
         protected val FRAGMENT_EQUIPMENT = 4
         protected val FRAGMENT_NOTES = 5
     }
-
 }

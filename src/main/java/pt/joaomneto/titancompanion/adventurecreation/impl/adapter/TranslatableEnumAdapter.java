@@ -8,11 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import pt.joaomneto.titancompanion.adventure.impl.util.TranslatableEnum;
 
 import java.util.Arrays;
 import java.util.List;
-
-import pt.joaomneto.titancompanion.adventure.impl.util.TranslatableEnum;
 
 /**
  * Created by Joao Neto on 19-06-2017.

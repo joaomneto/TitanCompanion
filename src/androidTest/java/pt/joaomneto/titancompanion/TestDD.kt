@@ -10,5 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.DEATHTRAP_DUNG
 class TestDD : TestTFOD() {
 
     override val gamebook = DEATHTRAP_DUNGEON
-
 }

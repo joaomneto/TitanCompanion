@@ -1,101 +1,100 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/adventureVitalStats"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="3dp">
+                android:id="@+id/adventureVitalStats"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="3dp">
 
-    <RadioButton 
-        android:id="@+id/combatSelected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:clickable="false"/>
-
-    <TextView
-        android:id="@+id/combatTextSkill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/combatSelected"
-        android:layout_alignBottom="@+id/combatSelected"
-        android:layout_marginRight="5dp"
-        android:layout_toRightOf="@+id/combatSelected"
-        android:gravity="center"
-        android:text="@string/skillAbr"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/minusCombatantSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/combatSelected"
-        android:layout_alignTop="@+id/combatSelected"
-        android:layout_toRightOf="@id/combatTextSkill"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+    <RadioButton
+            android:id="@+id/combatSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:clickable="false"/>
 
     <TextView
-        android:id="@+id/combatTextSkillValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/minusCombatantSkillButton"
-        android:layout_alignBottom="@+id/minusCombatantSkillButton"
-        android:layout_toRightOf="@+id/minusCombatantSkillButton"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-    <Button
-        android:id="@+id/plusCombatantSkillButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/combatSelected"
-        android:layout_alignTop="@+id/combatSelected"
-        android:layout_toRightOf="@id/combatTextSkillValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/combatTextSkill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/combatSelected"
+            android:layout_alignBottom="@+id/combatSelected"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/combatSelected"
+            android:gravity="center"
+            android:text="@string/skillAbr"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-   <TextView
-        android:id="@+id/combatTextStamina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/combatTextSkill"
-        android:layout_alignBottom="@+id/combatTextSkill"
-        android:layout_toRightOf="@+id/plusCombatantSkillButton"
-       android:text="@string/staminaAbr"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
     <Button
-        android:id="@+id/minusCombatantStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/combatSelected"
-        android:layout_alignTop="@+id/combatSelected"
-        android:layout_toRightOf="@id/combatTextStamina"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/minusCombatantSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/combatSelected"
+            android:layout_alignTop="@+id/combatSelected"
+            android:layout_toRightOf="@id/combatTextSkill"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/combatTextStaminaValue"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/minusCombatantStaminaButton"
-        android:layout_alignBottom="@+id/minusCombatantStaminaButton"
-        android:layout_toRightOf="@+id/minusCombatantStaminaButton"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-    <Button
-        android:id="@+id/plusCombatantStaminaButton"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/combatSelected"
-        android:layout_alignTop="@+id/combatSelected"
-        android:layout_toRightOf="@id/combatTextStaminaValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/combatTextSkillValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/minusCombatantSkillButton"
+            android:layout_alignBottom="@+id/minusCombatantSkillButton"
+            android:layout_toRightOf="@+id/minusCombatantSkillButton"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-    
+    <Button
+            android:id="@+id/plusCombatantSkillButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/combatSelected"
+            android:layout_alignTop="@+id/combatSelected"
+            android:layout_toRightOf="@id/combatTextSkillValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
+
+    <TextView
+            android:id="@+id/combatTextStamina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/combatTextSkill"
+            android:layout_alignBottom="@+id/combatTextSkill"
+            android:layout_toRightOf="@+id/plusCombatantSkillButton"
+            android:text="@string/staminaAbr"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <Button
+            android:id="@+id/minusCombatantStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/combatSelected"
+            android:layout_alignTop="@+id/combatSelected"
+            android:layout_toRightOf="@id/combatTextStamina"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
+
+    <TextView
+            android:id="@+id/combatTextStaminaValue"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/minusCombatantStaminaButton"
+            android:layout_alignBottom="@+id/minusCombatantStaminaButton"
+            android:layout_toRightOf="@+id/minusCombatantStaminaButton"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <Button
+            android:id="@+id/plusCombatantStaminaButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/combatSelected"
+            android:layout_alignTop="@+id/combatSelected"
+            android:layout_toRightOf="@id/combatTextStaminaValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
+
 
 </RelativeLayout>

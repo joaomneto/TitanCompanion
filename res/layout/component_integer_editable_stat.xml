@@ -1,40 +1,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/textField"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/textField"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/minusButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusValueButton"
-        android:layout_alignTop="@+id/plusValueButton"
-        android:layout_toLeftOf="@+id/statsValue"
-        android:text="@string/minus" />
+            android:id="@+id/minusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusValueButton"
+            android:layout_alignTop="@+id/plusValueButton"
+            android:layout_toLeftOf="@+id/statsValue"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/statsValue"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusValueButton"
-        android:layout_alignTop="@+id/plusValueButton"
-        android:layout_toLeftOf="@+id/plusValueButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/statsValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusValueButton"
+            android:layout_alignTop="@+id/plusValueButton"
+            android:layout_toLeftOf="@+id/plusValueButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusValueButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:text="@string/plus" />
+            android:id="@+id/plusValueButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:text="@string/plus"/>
 
 </RelativeLayout>

@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.CRYPT_OF_THE_S
 class TestCOTS : TestST() {
 
     override val gamebook = CRYPT_OF_THE_SORCERER
-
-
 }

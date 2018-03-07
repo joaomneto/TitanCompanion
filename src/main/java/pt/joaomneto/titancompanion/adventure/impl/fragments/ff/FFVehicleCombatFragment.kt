@@ -1,12 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.ff
 
-import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import pt.joaomneto.titancompanion.adventure.Adventure
-import pt.joaomneto.titancompanion.adventure.AdventureFragment
-import pt.joaomneto.titancompanion.adventure.impl.FFAdventure
-import pt.joaomneto.titancompanion.util.DiceRoller
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +7,11 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import pt.joaomneto.titancompanion.R
+import pt.joaomneto.titancompanion.adventure.Adventure
+import pt.joaomneto.titancompanion.adventure.AdventureFragment
+import pt.joaomneto.titancompanion.adventure.impl.FFAdventure
+import pt.joaomneto.titancompanion.util.DiceRoller
 
 class FFVehicleCombatFragment : AdventureFragment() {
 
@@ -33,12 +31,15 @@ class FFVehicleCombatFragment : AdventureFragment() {
     var enemy2Armour = 0
     internal var combatResult: TextView? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         val rootView = inflater!!.inflate(
             R.layout.fragment_13ff_adventure_vehiclecombat, container,
-            false)
+            false
+        )
 
         val adv = activity as FFAdventure
 
@@ -60,22 +61,34 @@ class FFVehicleCombatFragment : AdventureFragment() {
 
         combatResult = rootView.findViewById<View>(R.id.combatResult) as TextView
 
-        setupIncDecButton(rootView, R.id.plusfirepowerButton,
+        setupIncDecButton(
+            rootView, R.id.plusfirepowerButton,
             R.id.minusfirepowerButton, adv, FFAdventure::currentFirepower,
-            adv.initialFirepower)
-        setupIncDecButton(rootView, R.id.plusarmorButton,
-            R.id.minusarmorButton, adv, FFAdventure::currentArmour, adv.initialArmour)
+            adv.initialFirepower
+        )
+        setupIncDecButton(
+            rootView, R.id.plusarmorButton,
+            R.id.minusarmorButton, adv, FFAdventure::currentArmour, adv.initialArmour
+        )
 
-        setupIncDecButton(rootView, R.id.plusEnemyfirepowerButton,
-            R.id.minusEnemyfirepowerButton, ::enemyFirepower, 100)
-        setupIncDecButton(rootView, R.id.plusEnemyarmorButton,
+        setupIncDecButton(
+            rootView, R.id.plusEnemyfirepowerButton,
+            R.id.minusEnemyfirepowerButton, ::enemyFirepower, 100
+        )
+        setupIncDecButton(
+            rootView, R.id.plusEnemyarmorButton,
             R.id.minusEnemyarmorButton, ::enemyArmour,
-            100)
+            100
+        )
 
-        setupIncDecButton(rootView, R.id.plusEnemy2firepowerButton,
-            R.id.minusEnemy2firepowerButton, ::enemy2Firepower, 100)
-        setupIncDecButton(rootView, R.id.plusEnemy2armorButton,
-            R.id.minusEnemy2armorButton, ::enemy2Armour, 100)
+        setupIncDecButton(
+            rootView, R.id.plusEnemy2firepowerButton,
+            R.id.minusEnemy2firepowerButton, ::enemy2Firepower, 100
+        )
+        setupIncDecButton(
+            rootView, R.id.plusEnemy2armorButton,
+            R.id.minusEnemy2armorButton, ::enemy2Armour, 100
+        )
 
         attackButton = rootView.findViewById<View>(R.id.buttonAttack) as Button
 
@@ -128,7 +141,6 @@ class FFVehicleCombatFragment : AdventureFragment() {
                             combatResult!!.text = getString(R.string.ffDirectHit, damage)
                         }
                     }
-
                 } else if (enemyAttack > enemyFirepower) {
                     val damage = DiceRoller.rollD6()
                     adv.currentArmour = adv.currentArmour - damage
@@ -168,5 +180,4 @@ class FFVehicleCombatFragment : AdventureFragment() {
         vehicleArmourValue!!.text = "" + adv.currentArmour
         vehicleFirepowerValue!!.text = "" + adv.currentFirepower
     }
-
 }

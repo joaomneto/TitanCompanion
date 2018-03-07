@@ -27,21 +27,30 @@ class TestSA : TCBaseTest() {
     fun performChooseWeapons() {
 
         val button4 = onView(
-            allOf<View>(withId(R.id.buttonAddweapon), withText("Add Weapon"),
+            allOf<View>(
+                withId(R.id.buttonAddweapon), withText("Add Weapon"),
                 TCBaseTest.Companion.childAtPosition(
                     withParent(withId(R.id.pager)),
-                    1),
-                isDisplayed()))
+                    1
+                ),
+                isDisplayed()
+            )
+        )
         button4.perform(click())
 
         val button5 = onView(
-            allOf<View>(withId(android.R.id.button1), withText("Ok"),
+            allOf<View>(
+                withId(android.R.id.button1), withText("Ok"),
                 TCBaseTest.Companion.childAtPosition(
                     TCBaseTest.Companion.childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
-                        0),
-                    2),
-                isDisplayed()))
+                        0
+                    ),
+                    2
+                ),
+                isDisplayed()
+            )
+        )
         button5.perform(click())
     }
 
@@ -56,7 +65,6 @@ class TestSA : TCBaseTest() {
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
-
     }
 
     protected fun assertImpossibleToAddWeapons() {
@@ -73,7 +81,6 @@ class TestSA : TCBaseTest() {
         performSwipeLeft()
         performChooseWeapons()
         assertImpossibleToAddWeapons()
-
     }
 
     @Test
@@ -86,7 +93,6 @@ class TestSA : TCBaseTest() {
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
 
     @Test
@@ -97,7 +103,5 @@ class TestSA : TCBaseTest() {
         performVitalStatisticsRoll()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
-
 }

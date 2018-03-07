@@ -2,17 +2,21 @@ package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.ff.FFVitalStatisticsFragment
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedWriter
 import java.io.IOException
 
 class FFAdventureCreation : AdventureCreation(
-        arrayOf(AdventureFragmentRunner(
+    arrayOf(
+        AdventureFragmentRunner(
             R.string.title_adventure_creation_vitalstats,
-            FFVitalStatisticsFragment::class))) {
+            FFVitalStatisticsFragment::class
+        )
+    )
+) {
 
     private var currentFirepower = -1
     private var currentArmour = -1
@@ -37,7 +41,6 @@ class FFAdventureCreation : AdventureCreation(
         bw.write("carEnhancements=\n")
     }
 
-
     override fun validateCreationSpecificParameters(): String? {
         val sb = StringBuilder()
         if (this.currentFirepower < 0) {
@@ -52,7 +55,5 @@ class FFAdventureCreation : AdventureCreation(
         stamina = DiceRoller.roll2D6().sum + 24
         ffVitalStatsFragment.firepowerValue.text = currentFirepower.toString()
         ffVitalStatsFragment.armorValue.text = currentArmour.toString()
-
     }
-
 }

@@ -1,257 +1,257 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/adventureVitalStats"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+                android:id="@+id/adventureVitalStats"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin">
 
     <RelativeLayout
-        android:id="@+id/nameGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" >
-
-        <EditText
-            android:id="@+id/nameValue"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:inputType="text" />
-
-        <TextView
-            android:id="@+id/nameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="@string/name"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/armorGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nameGroup"
-        android:layout_marginTop="5dp" >
-
-        <EditText
-            android:id="@+id/armorValue"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:digits="1234567890"
-            android:inputType="phone" />
-
-        <TextView
-            android:id="@+id/armorText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="@string/armor"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/bonusGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/armorGroup"
-        android:layout_marginTop="5dp" >
-
-        <EditText
-            android:id="@+id/bonusValue"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:digits="-+1234567890"
-            android:inputType="phone" />
-
-        <TextView
-            android:id="@+id/bonusText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="@string/robotBonus"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/speedGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bonusGroup"
-        android:layout_marginTop="5dp" >
-
-        <Spinner
-            android:id="@+id/speedValue"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true" />
-
-        <TextView
-            android:id="@+id/speedText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="@string/robotSpeed"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/specialAbilityGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/speedGroup"
-        android:layout_marginTop="5dp" >
-
-        <EditText
-            android:id="@+id/specialAbilityValue"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:digits="1234567890"
-            android:inputType="phone" />
-
-        <TextView
-            android:id="@+id/specialAbilityText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="@string/robotSpecialAbility"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/alternateGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/specialAbilityGroup"
-        android:layout_marginTop="5dp" >
-
-        <CheckBox
-            android:id="@+id/alternateFormValue"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true" />
-
-        <TextView
-            android:id="@+id/alternateFormText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="@string/robotAlternateForm"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/alternateStatsGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/alternateGroup"
-        android:padding="0dp"
-        android:visibility="gone" >
-
-        <RelativeLayout
-            android:id="@+id/nameAltGroup"
+            android:id="@+id/nameGroup"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
 
-            <EditText
-                android:id="@+id/nameAltValue"
+        <EditText
+                android:id="@+id/nameValue"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:inputType="text" />
+                android:inputType="text"/>
 
-            <TextView
-                android:id="@+id/nameAltText"
+        <TextView
+                android:id="@+id/nameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:text="@string/name"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </RelativeLayout>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+    </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/armorAltGroup"
+    <RelativeLayout
+            android:id="@+id/armorGroup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/nameAltGroup"
-            android:layout_marginTop="5dp" >
+            android:layout_below="@id/nameGroup"
+            android:layout_marginTop="5dp">
 
-            <EditText
-                android:id="@+id/armorAltValue"
+        <EditText
+                android:id="@+id/armorValue"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:digits="1234567890"
-                android:inputType="phone" />
+                android:inputType="phone"/>
 
-            <TextView
-                android:id="@+id/armorAltText"
+        <TextView
+                android:id="@+id/armorText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:text="@string/armor"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </RelativeLayout>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+    </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/bonusAltGroup"
+    <RelativeLayout
+            android:id="@+id/bonusGroup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/armorAltGroup"
-            android:layout_marginTop="5dp" >
+            android:layout_below="@id/armorGroup"
+            android:layout_marginTop="5dp">
 
-            <EditText
-                android:id="@+id/bonusAltValue"
+        <EditText
+                android:id="@+id/bonusValue"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:digits="-+1234567890"
-                android:inputType="phone" />
+                android:inputType="phone"/>
 
-            <TextView
-                android:id="@+id/bonusAltText"
+        <TextView
+                android:id="@+id/bonusText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:text="@string/robotBonus"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </RelativeLayout>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+    </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/speedAltGroup"
+    <RelativeLayout
+            android:id="@+id/speedGroup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/bonusAltGroup"
-            android:layout_marginTop="5dp" >
+            android:layout_below="@id/bonusGroup"
+            android:layout_marginTop="5dp">
 
-            <Spinner
-                android:id="@+id/speedAltValue"
+        <Spinner
+                android:id="@+id/speedValue"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"/>
 
-            <TextView
-                android:id="@+id/speedAltText"
+        <TextView
+                android:id="@+id/speedText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:text="@string/robotSpeed"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/specialAbilityGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/speedGroup"
+            android:layout_marginTop="5dp">
+
+        <EditText
+                android:id="@+id/specialAbilityValue"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:digits="1234567890"
+                android:inputType="phone"/>
+
+        <TextView
+                android:id="@+id/specialAbilityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/robotSpecialAbility"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/alternateGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/specialAbilityGroup"
+            android:layout_marginTop="5dp">
+
+        <CheckBox
+                android:id="@+id/alternateFormValue"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"/>
+
+        <TextView
+                android:id="@+id/alternateFormText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/robotAlternateForm"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/alternateStatsGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/alternateGroup"
+            android:padding="0dp"
+            android:visibility="gone">
+
+        <RelativeLayout
+                android:id="@+id/nameAltGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+            <EditText
+                    android:id="@+id/nameAltValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:inputType="text"/>
+
+            <TextView
+                    android:id="@+id/nameAltText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/name"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/armorAltGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameAltGroup"
+                android:layout_marginTop="5dp">
+
+            <EditText
+                    android:id="@+id/armorAltValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:digits="1234567890"
+                    android:inputType="phone"/>
+
+            <TextView
+                    android:id="@+id/armorAltText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/armor"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/bonusAltGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/armorAltGroup"
+                android:layout_marginTop="5dp">
+
+            <EditText
+                    android:id="@+id/bonusAltValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:digits="-+1234567890"
+                    android:inputType="phone"/>
+
+            <TextView
+                    android:id="@+id/bonusAltText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/robotBonus"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/speedAltGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bonusAltGroup"
+                android:layout_marginTop="5dp">
+
+            <Spinner
+                    android:id="@+id/speedAltValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"/>
+
+            <TextView
+                    android:id="@+id/speedAltText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/robotSpeed"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
         </RelativeLayout>
     </RelativeLayout>
 

@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.HOUSE_OF_HELL
 class TestHOH : TestST() {
 
     override val gamebook = HOUSE_OF_HELL
-
-
 }

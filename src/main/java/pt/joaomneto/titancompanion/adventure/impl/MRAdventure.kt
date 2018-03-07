@@ -3,9 +3,6 @@ package pt.joaomneto.titancompanion.adventure.impl
 import android.os.Bundle
 import android.view.Menu
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.SpellAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
@@ -13,22 +10,36 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragme
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRAdventureSpellsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import java.io.BufferedWriter
 import java.io.IOException
-import java.util.*
+import java.util.ArrayList
+import java.util.Arrays
 
 class MRAdventure : SpellAdventure<MRSkill>(
-        arrayOf(
-                AdventureFragmentRunner(R.string.vitalStats,
-                        AdventureVitalStatsFragment::class),
-                AdventureFragmentRunner(R.string.chosenSkills,
-                        MRAdventureSpellsFragment::class),
-                AdventureFragmentRunner(R.string.fights,
-                        AdventureCombatFragment::class),
-                AdventureFragmentRunner(R.string.goldEquipment,
-                        AdventureEquipmentFragment::class),
-                AdventureFragmentRunner(R.string.notes,
-                        AdventureNotesFragment::class))) {
+    arrayOf(
+        AdventureFragmentRunner(
+            R.string.vitalStats,
+            AdventureVitalStatsFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.chosenSkills,
+            MRAdventureSpellsFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.fights,
+            AdventureCombatFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.goldEquipment,
+            AdventureEquipmentFragment::class
+        ),
+        AdventureFragmentRunner(
+            R.string.notes,
+            AdventureNotesFragment::class
+        )
+    )
+) {
 
     internal var skills: MutableList<MRSkill> = ArrayList()
 
@@ -38,15 +49,12 @@ class MRAdventure : SpellAdventure<MRSkill>(
     val FRAGMENT_EQUIPMENT = 3
     val FRAGMENT_NOTES = 4
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
             super.onCreate(savedInstanceState)
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -61,7 +69,6 @@ class MRAdventure : SpellAdventure<MRSkill>(
         bw.write("gold=" + gold + "\n")
     }
 
-
     var spells: MutableList<MRSkill>
         get() = skills
         set(skills) {
@@ -71,7 +78,6 @@ class MRAdventure : SpellAdventure<MRSkill>(
     override fun loadAdventureSpecificValuesFromFile() {
         gold = Integer.valueOf(savedGame.getProperty("gold"))
         chosenSpells = stringToArraySpells(savedGame.getProperty("skills"), MRSkill::class.java)
-
     }
 
     override val spellList: MutableList<MRSkill>
@@ -81,5 +87,4 @@ class MRAdventure : SpellAdventure<MRSkill>(
         get() = false
 
     companion object
-
 }

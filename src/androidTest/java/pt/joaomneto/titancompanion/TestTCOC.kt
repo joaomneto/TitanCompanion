@@ -22,34 +22,54 @@ class TestTCOC : TCBaseTest() {
 
     fun performChooseSpells() {
         val textView2 = onData(anything())
-            .inAdapterView(allOf<View>(withId(R.id.spellListView),
-                TCBaseTest.Companion.childAtPosition(
-                    withClassName(`is`("android.widget.LinearLayout")),
-                    1)))
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.spellListView),
+                    TCBaseTest.Companion.childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        1
+                    )
+                )
+            )
             .atPosition(0)
         textView2.perform(click())
 
         val textView3 = onData(anything())
-            .inAdapterView(allOf<View>(withId(R.id.spellListView),
-                TCBaseTest.Companion.childAtPosition(
-                    withClassName(`is`("android.widget.LinearLayout")),
-                    1)))
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.spellListView),
+                    TCBaseTest.Companion.childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        1
+                    )
+                )
+            )
             .atPosition(0)
         textView3.perform(click())
 
         val textView4 = onData(anything())
-            .inAdapterView(allOf<View>(withId(R.id.spellListView),
-                TCBaseTest.Companion.childAtPosition(
-                    withClassName(`is`("android.widget.LinearLayout")),
-                    1)))
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.spellListView),
+                    TCBaseTest.Companion.childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        1
+                    )
+                )
+            )
             .atPosition(1)
         textView4.perform(click())
 
         val textView5 = onData(anything())
-            .inAdapterView(allOf<View>(withId(R.id.spellListView),
-                TCBaseTest.Companion.childAtPosition(
-                    withClassName(`is`("android.widget.LinearLayout")),
-                    1)))
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.spellListView),
+                    TCBaseTest.Companion.childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        1
+                    )
+                )
+            )
             .atPosition(1)
         textView5.perform(click())
     }
@@ -64,7 +84,6 @@ class TestTCOC : TCBaseTest() {
         performChooseSpells()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
-
     }
 
     @Test
@@ -77,7 +96,6 @@ class TestTCOC : TCBaseTest() {
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
 
     @Test
@@ -89,7 +107,6 @@ class TestTCOC : TCBaseTest() {
         performChooseSpells()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
 
     @Test
@@ -100,7 +117,5 @@ class TestTCOC : TCBaseTest() {
         performVitalStatisticsRoll()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
-
     }
-
 }

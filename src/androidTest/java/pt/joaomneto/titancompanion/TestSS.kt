@@ -10,6 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.SCORPION_SWAMP
 class TestSS : TestST() {
 
     override val gamebook = SCORPION_SWAMP
-
-
 }

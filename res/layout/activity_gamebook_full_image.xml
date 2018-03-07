@@ -1,15 +1,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black_overlay"
-    tools:context=".GamebookFullImageActivity" >
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/black_overlay"
+             tools:context=".GamebookFullImageActivity">
 
     <ImageView
-        android:id="@+id/fullGamebookCoverImg"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:contentDescription="@string/selectedGamebookCover"
-        android:scaleType="fitCenter" />
+            android:id="@+id/fullGamebookCoverImg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/selectedGamebookCover"
+            android:scaleType="fitCenter"/>
 
 </FrameLayout>

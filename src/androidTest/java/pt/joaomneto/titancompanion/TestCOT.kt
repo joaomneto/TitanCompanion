@@ -10,5 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.CITY_OF_THIEVE
 class TestCOT : TestTFOD() {
 
     override val gamebook = CITY_OF_THIEVES
-
 }

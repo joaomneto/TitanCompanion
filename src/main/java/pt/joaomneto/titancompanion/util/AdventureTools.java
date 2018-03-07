@@ -1,6 +1,5 @@
 package pt.joaomneto.titancompanion.util;
 
-import android.text.Editable;
 import android.widget.EditText;
 
 import java.util.regex.Pattern;
@@ -18,6 +17,6 @@ public class AdventureTools {
     }
 
     public static boolean validateNotEmpty(EditText textField) {
-        return textField != null && textField.getText()!=null && !textField.getText().toString().isEmpty();
+        return textField != null && textField.getText() != null && !textField.getText().toString().isEmpty();
     }
 }

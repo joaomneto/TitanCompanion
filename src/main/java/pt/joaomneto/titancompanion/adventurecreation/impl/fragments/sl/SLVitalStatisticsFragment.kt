@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_33sl_adventurecreation_vital_statistics.*
 import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
 
 class SLVitalStatisticsFragment : VitalStatisticsFragment() {
@@ -19,8 +17,7 @@ class SLVitalStatisticsFragment : VitalStatisticsFragment() {
     }
 
     fun getRatingValue()
-            : TextView? {
+        : TextView? {
         return ratingValue
     }
-
 }

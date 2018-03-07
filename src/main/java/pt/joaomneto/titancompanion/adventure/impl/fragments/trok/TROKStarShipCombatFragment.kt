@@ -1,12 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.trok
 
-import pt.joaomneto.titancompanion.R
-import android.support.v4.app.Fragment
-import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import pt.joaomneto.titancompanion.adventure.Adventure
-import pt.joaomneto.titancompanion.adventure.AdventureFragment
-import pt.joaomneto.titancompanion.adventure.impl.TROKAdventure
-import pt.joaomneto.titancompanion.util.DiceRoller
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +7,11 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import pt.joaomneto.titancompanion.R
+import pt.joaomneto.titancompanion.adventure.Adventure
+import pt.joaomneto.titancompanion.adventure.AdventureFragment
+import pt.joaomneto.titancompanion.adventure.impl.TROKAdventure
+import pt.joaomneto.titancompanion.util.DiceRoller
 
 class TROKStarShipCombatFragment : AdventureFragment() {
 
@@ -54,8 +52,22 @@ class TROKStarShipCombatFragment : AdventureFragment() {
 
         combatResult = rootView.findViewById<View>(R.id.combatResult) as TextView
 
-        setupIncDecButton(rootView, R.id.plusWeaponsButton, R.id.minusWeaponsButton, adv, TROKAdventure::currentWeapons, 1)
-        setupIncDecButton(rootView, R.id.plusShieldsButton, R.id.minusShieldsButton, adv, TROKAdventure::currentShields, adv.initialShields)
+        setupIncDecButton(
+            rootView,
+            R.id.plusWeaponsButton,
+            R.id.minusWeaponsButton,
+            adv,
+            TROKAdventure::currentWeapons,
+            1
+        )
+        setupIncDecButton(
+            rootView,
+            R.id.plusShieldsButton,
+            R.id.minusShieldsButton,
+            adv,
+            TROKAdventure::currentShields,
+            adv.initialShields
+        )
         setupIncDecButton(rootView, R.id.plusMissilesButton, R.id.minusMissilesButton, adv, TROKAdventure::missiles, 99)
 
         setupIncDecButton(rootView, R.id.plusEnemyWeaponsButton, R.id.minusEnemyWeaponsButton, ::enemyWeapons, 99)
@@ -111,7 +123,10 @@ class TROKStarShipCombatFragment : AdventureFragment() {
                         adv.currentShields = 0
                         Adventure.showAlert(getString(R.string.trokPlayerStarshipDestroyed), adv)
                     } else {
-                        combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.trokEnemyHitPlayerStarship, damage)
+                        combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(
+                            R.string.trokEnemyHitPlayerStarship,
+                            damage
+                        )
                     }
                 } else {
                     combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.enemyMissed)
@@ -127,7 +142,10 @@ class TROKStarShipCombatFragment : AdventureFragment() {
                         adv.currentShields = 0
                         Adventure.showAlert(R.string.trokPlayerStarshipDestroyed, adv)
                     } else {
-                        combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.trokSecondEnemyHitPlayerStarship, damage)
+                        combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(
+                            R.string.trokSecondEnemyHitPlayerStarship,
+                            damage
+                        )
                     }
                 } else {
                     combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.secondEnemyMissed)
@@ -154,5 +172,4 @@ class TROKStarShipCombatFragment : AdventureFragment() {
         starshipWeaponsValue!!.text = "" + adv.currentWeapons
         starshipMissilesValue!!.text = "" + adv.missiles
     }
-
 }

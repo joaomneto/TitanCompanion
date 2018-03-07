@@ -10,5 +10,4 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.DEMONS_OF_THE_
 class TestDOTD : TestTFOD() {
 
     override val gamebook = DEMONS_OF_THE_DEEP
-
 }
