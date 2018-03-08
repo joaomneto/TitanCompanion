@@ -7,59 +7,59 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMar
 
 public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
 
-	protected boolean firstRound = true;
-	protected Integer enemyDiceRoll = null;
+    protected boolean firstRound = true;
+    protected Integer enemyDiceRoll = null;
 
-	protected void sequenceCombatTurn() {
+    protected void sequenceCombatTurn() {
 
-		Combatant position = getCurrentEnemy();
+        Combatant position = getCurrentEnemy();
 
-		SOTSAdventure adv = (SOTSAdventure) getActivity();
+        SOTSAdventure adv = (SOTSAdventure) getActivity();
 
-		if (adv.getSkill().equals(SOTSMartialArt.IAIJUTSU) && firstRound) {
-			int damage = 3;
-			position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
-			position.setStaminaLoss(position.getStaminaLoss() + damage);
-			hit = true;
-			firstRound = false;
-			combatResult.setText(R.string.iaijutsuFastDraw);
-		} else {
+        if (adv.getSkill().equals(SOTSMartialArt.IAIJUTSU) && firstRound) {
+            int damage = 3;
+            position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
+            position.setStaminaLoss(position.getStaminaLoss() + damage);
+            hit = true;
+            firstRound = false;
+            combatResult.setText(R.string.iaijutsuFastDraw);
+        } else {
 
-			super.sequenceCombatTurn();
-		}
+            super.sequenceCombatTurn();
+        }
 
-	}
+    }
 
-	protected void standardCombatTurn() {
-		Combatant position = getCurrentEnemy();
+    protected void standardCombatTurn() {
+        Combatant position = getCurrentEnemy();
 
-		SOTSAdventure adv = (SOTSAdventure) getActivity();
+        SOTSAdventure adv = (SOTSAdventure) getActivity();
 
-		if (adv.getSkill().equals(SOTSMartialArt.IAIJUTSU) && firstRound) {
-			int damage = 3;
-			position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
-			position.setStaminaLoss(position.getStaminaLoss() + damage);
-			hit = true;
-			firstRound = false;
-			combatResult.setText(R.string.iaijutsuFastDraw);
-		} else {
+        if (adv.getSkill().equals(SOTSMartialArt.IAIJUTSU) && firstRound) {
+            int damage = 3;
+            position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
+            position.setStaminaLoss(position.getStaminaLoss() + damage);
+            hit = true;
+            firstRound = false;
+            combatResult.setText(R.string.iaijutsuFastDraw);
+        } else {
 
-			super.standardCombatTurn();
-		}
+            super.standardCombatTurn();
+        }
 
-	}
+    }
 
-	@Override
-	protected void removeAndAdvanceCombat(Combatant combatant) {
-		super.removeAndAdvanceCombat(combatant);
-		firstRound = true;
-	}
+    @Override
+    protected void removeAndAdvanceCombat(Combatant combatant) {
+        super.removeAndAdvanceCombat(combatant);
+        firstRound = true;
+    }
 
-	@Override
-	protected void resetCombat() {
-		super.resetCombat();
-		firstRound = true;
-		enemyDiceRoll = null;
-	}
+    @Override
+    protected void resetCombat(boolean clearResults) {
+        super.resetCombat(clearResults);
+        firstRound = true;
+        enemyDiceRoll = null;
+    }
 
 }

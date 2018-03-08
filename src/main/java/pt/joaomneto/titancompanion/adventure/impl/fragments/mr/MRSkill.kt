@@ -1,7 +1,5 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.mr
 
-import java.util.function.Consumer
-
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell
@@ -19,11 +17,11 @@ enum class MRSkill constructor(val labelIdInner: Int) : Spell {
     SNEAK(R.string.skill_sneak),
     HIDDEN(R.string.skill_spot_hidden);
 
-    override fun getAction():(Adventure) -> Unit{
+    override fun getAction(): (Adventure) -> Unit {
         throw IllegalStateException("Midnight Rogue skills have no action.")
     }
 
-    override fun getLabelId(): Int{
+    override fun getLabelId(): Int {
         return labelIdInner
     }
 }

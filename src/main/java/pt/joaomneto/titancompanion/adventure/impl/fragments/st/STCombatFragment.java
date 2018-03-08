@@ -11,22 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.CompoundButton;
+import android.widget.*;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
@@ -36,6 +22,8 @@ import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
 import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.DropdownStringAdapter;
 import pt.joaomneto.titancompanion.util.AdventureTools;
 import pt.joaomneto.titancompanion.util.DiceRoller;
+
+import java.util.*;
 
 public class STCombatFragment extends AdventureFragment {
 
@@ -169,7 +157,7 @@ public class STCombatFragment extends AdventureFragment {
                     combatResult.setText(getString(R.string.stCrewmanDied, crewmanString));
                     adv.setCrewmanDead(position.getCrewman());
                     if (position.getCrewman().equals(STCrewman.CAPTAIN)) {
-                        Adventure.showAlert(R.string.youreDead, adv);
+                        Adventure.Companion.showAlert(R.string.youreDead, adv);
                     }
                 }
             }
@@ -344,7 +332,7 @@ public class STCombatFragment extends AdventureFragment {
                     addCombatant(rootView, currentRow, crewmanSpinner, skill, stamina, defenseOnly);
                     alert.cancel();
                 } else {
-                    Adventure.showAlert(R.string.youMustFillSkillAndStamina, getContext());
+                    Adventure.Companion.showAlert(R.string.youMustFillSkillAndStamina, getContext());
                 }
 
 
@@ -481,7 +469,7 @@ public class STCombatFragment extends AdventureFragment {
         public CharSequence toGridString() {
             return ((STAdventure) getActivity()).getStringForCrewman(crewman) + " vs. " +
                     getResources().getString(R.string.skillInitials) + ":" + currentSkill + " " +
-                    getResources().getString(R.string.staminaInitials)+":" + currentStamina;
+                    getResources().getString(R.string.staminaInitials) + ":" + currentStamina;
         }
 
         public STAdventure.STCrewman getCrewman() {

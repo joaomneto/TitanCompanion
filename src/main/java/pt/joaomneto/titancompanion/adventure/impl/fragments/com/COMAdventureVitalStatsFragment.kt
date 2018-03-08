@@ -15,23 +15,26 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 
 class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
 
-        return inflater!!.inflate(
-            R.layout.fragment_30com_adventure_vitalstats, container, false)
+        return inflater.inflate(
+            R.layout.fragment_30com_adventure_vitalstats, container, false
+        )
     }
 
-    override fun onViewCreated(rootView: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(rootView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(rootView, savedInstanceState)
 
         val adv = this.context as COMAdventure
 
-        buttonConsumeProvisions.setOnClickListener { v -> adv.consumeProvision(v) }
-        buttonTestLuck.setOnClickListener { v -> adv.testLuck(v) }
-        buttonTestSkill.setOnClickListener { v -> adv.testSkill(v) }
-        buttonSavePoint.setOnClickListener { v -> adv.savepoint(v) }
+        buttonConsumeProvisions.setOnClickListener { adv.consumeProvision() }
+        buttonTestLuck.setOnClickListener { adv.testLuck() }
+        buttonTestSkill.setOnClickListener { adv.testSkill() }
+        buttonSavePoint.setOnClickListener { adv.savepoint() }
         plusFuelButton.setOnClickListener({
             adv.fuel = adv.fuel + 1
             refreshScreensFromResume()
@@ -48,8 +51,6 @@ class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
             adv.tabasha = Math.max(0, adv.tabasha - 1)
             refreshScreensFromResume()
         }
-
-
     }
 
     override fun refreshScreensFromResume() {
@@ -65,7 +66,5 @@ class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         fuelValue.text = "${adv.fuel}"
         tabashaValue.text = "${adv.tabasha}"
         useTabashaButton.isEnabled = adv.tabasha > 0
-
     }
-
 }

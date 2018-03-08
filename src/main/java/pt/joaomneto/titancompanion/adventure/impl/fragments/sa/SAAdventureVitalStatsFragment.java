@@ -7,72 +7,71 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.SAAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment;
 
 public class SAAdventureVitalStatsFragment extends AdventureVitalStatsFragment {
 
-	TextView armorValue = null;
+    TextView armorValue = null;
 
-	Button increasearmorButton = null;
+    Button increasearmorButton = null;
 
-	Button decreasearmorButton = null;
+    Button decreasearmorButton = null;
 
-	public SAAdventureVitalStatsFragment() {
+    public SAAdventureVitalStatsFragment() {
 
-	}
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(
-				R.layout.fragment_12sa_adventure_vitalstats, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        View rootView = inflater.inflate(
+                R.layout.fragment_12sa_adventure_vitalstats, container, false);
 
-		//CHECKTHIS	initialize(rootView);
+        //CHECKTHIS	initialize(rootView);
 
-		decreasearmorButton = rootView
-				.findViewById(R.id.minusarmorButton);
-		increasearmorButton = rootView
-				.findViewById(R.id.plusarmorButton);
-		armorValue = rootView.findViewById(R.id.statsarmorValue);
-		final SAAdventure adv = (SAAdventure) getActivity();
+        decreasearmorButton = rootView
+                .findViewById(R.id.minusarmorButton);
+        increasearmorButton = rootView
+                .findViewById(R.id.plusarmorButton);
+        armorValue = rootView.findViewById(R.id.statsarmorValue);
+        final SAAdventure adv = (SAAdventure) getActivity();
 
-		decreasearmorButton.setOnClickListener(new OnClickListener() {
+        decreasearmorButton.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				if (adv.getCurrentArmor() > 0)
-					adv.setCurrentArmor(adv.getCurrentArmor() - 1);
-				refreshScreensFromResume();
+            @Override
+            public void onClick(View v) {
+                if (adv.getCurrentArmor() > 0)
+                    adv.setCurrentArmor(adv.getCurrentArmor() - 1);
+                refreshScreensFromResume();
 
-			}
-		});
+            }
+        });
 
-		increasearmorButton.setOnClickListener(new OnClickListener() {
+        increasearmorButton.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				adv.setCurrentArmor(adv.getCurrentArmor() + 1);
-				refreshScreensFromResume();
+            @Override
+            public void onClick(View v) {
+                adv.setCurrentArmor(adv.getCurrentArmor() + 1);
+                refreshScreensFromResume();
 
-			}
-		});
+            }
+        });
 
 
-		refreshScreensFromResume();
+        refreshScreensFromResume();
 
-		return rootView;
-	}
+        return rootView;
+    }
 
-	@Override
-	public void refreshScreensFromResume() {
-		super.refreshScreensFromResume();
-		SAAdventure adv = (SAAdventure) getActivity();
-		armorValue.setText("" + adv.getCurrentArmor());
+    @Override
+    public void refreshScreensFromResume() {
+        super.refreshScreensFromResume();
+        SAAdventure adv = (SAAdventure) getActivity();
+        armorValue.setText("" + adv.getCurrentArmor());
 
-	}
+    }
 
 }

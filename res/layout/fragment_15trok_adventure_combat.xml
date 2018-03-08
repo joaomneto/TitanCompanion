@@ -1,170 +1,170 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/adventureVitalStats"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:useDefaultMargins="true"
-    tools:context=".adventure.impl.fragments.AdventureCombatFragment" >
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/adventureVitalStats"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:useDefaultMargins="true"
+                tools:context=".adventure.impl.fragments.AdventureCombatFragment">
 
     <ListView
-        android:id="@+id/combatants"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/combatResults"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
-
-    <LinearLayout
-        android:id="@+id/combatResults"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/combatButtons"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:id="@+id/combatRolls"
+            android:id="@+id/combatants"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:visibility="invisible" >
+            android:layout_above="@+id/combatResults"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"/>
+
+    <LinearLayout
+            android:id="@+id/combatResults"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/combatButtons"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:id="@+id/combatRolls"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:visibility="invisible">
 
             <TextView
-                android:id="@+id/playerCombatRollText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/player" />
+                    android:id="@+id/playerCombatRollText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/player"/>
 
             <ImageView
-                android:id="@+id/playerCombatRoll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:contentDescription="@string/diceRoll" />
+                    android:id="@+id/playerCombatRoll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="@string/diceRoll"/>
 
             <TextView
-                android:id="@+id/enemyCombatRollText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="@string/enemy" />
+                    android:id="@+id/enemyCombatRollText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/enemy"/>
 
             <ImageView
-                android:id="@+id/enemyCombatRoll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:contentDescription="@string/diceRoll" />
+                    android:id="@+id/enemyCombatRoll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="@string/diceRoll"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/combatResult"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:lines="3"
-            android:maxLines="3"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:id="@+id/combatResult"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lines="3"
+                android:maxLines="3"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/combatButtons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:id="@+id/topRowButtons"
+            android:id="@+id/combatButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:id="@+id/topRowButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/damageText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/weaponDamage"
-                android:layout_weight="2"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:id="@+id/damageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weaponDamage"
+                    android:layout_weight="2"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
 
             <Spinner
-                android:id="@+id/damageSpinner"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    android:id="@+id/damageSpinner"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/middleRowButtons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+                android:id="@+id/middleRowButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
             <Button
-                android:id="@+id/addCombatButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/addCombatant" />
+                    android:id="@+id/addCombatButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/addCombatant"/>
 
             <Button
-                android:id="@+id/testLuckButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/testLuck"
-                android:visibility="gone" />
+                    android:id="@+id/testLuckButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/testLuck"
+                    android:visibility="gone"/>
 
             <Switch
-                android:id="@+id/combatType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                    android:id="@+id/combatType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/resetCombat2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/reset"
-                android:visibility="gone" />
+                    android:id="@+id/resetCombat2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/reset"
+                    android:visibility="gone"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/bottomRowButtons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+                android:id="@+id/bottomRowButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
             <Button
-                android:id="@+id/attackButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/combatTurn"
-                android:visibility="gone" />
+                    android:id="@+id/attackButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/combatTurn"
+                    android:visibility="gone"/>
 
             <Button
-                android:id="@+id/startCombat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/startCombat" />
+                    android:id="@+id/startCombat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/startCombat"/>
 
             <Button
-                android:id="@+id/resetCombat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/reset" />
+                    android:id="@+id/resetCombat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/reset"/>
         </LinearLayout>
     </LinearLayout>
 

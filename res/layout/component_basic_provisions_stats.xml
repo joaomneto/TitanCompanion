@@ -1,44 +1,44 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_above="@id/buttonsBar"
-    android:id="@+id/basicProvisionsStats"
-    tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/buttonsBar"
+                android:id="@+id/basicProvisionsStats"
+                tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment">
 
     <Button
-        android:id="@+id/minusProvisionsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/provisionsText"
-        android:layout_alignTop="@+id/provisionsText"
-        android:layout_toLeftOf="@+id/provisionsValue"
-        android:text="@string/minus" />
+            android:id="@+id/minusProvisionsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/provisionsText"
+            android:layout_alignTop="@+id/provisionsText"
+            android:layout_toLeftOf="@+id/provisionsValue"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/provisionsValue"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/provisionsText"
-        android:layout_alignTop="@+id/provisionsText"
-        android:layout_toLeftOf="@+id/plusProvisionsButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/provisionsValue"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/provisionsText"
+            android:layout_alignTop="@+id/provisionsText"
+            android:layout_toLeftOf="@+id/plusProvisionsButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusProvisionsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/provisionsText"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/provisionsText"
-        android:text="@string/plus" />
+            android:id="@+id/plusProvisionsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/provisionsText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/provisionsText"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/provisionsText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="@string/provisions"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/provisionsText"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="@string/provisions"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 </RelativeLayout>

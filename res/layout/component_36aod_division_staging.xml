@@ -1,84 +1,81 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/adventureVitalStats"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="10dp">
+                android:id="@+id/adventureVitalStats"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="10dp">
 
     <TextView
-        android:id="@+id/aod_division_name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="5dp"
-        android:gravity="center_vertical"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/aod_division_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/aod_division_totalValue"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/aod_division_name"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="center_vertical"
-        android:layout_toStartOf="@+id/textView"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/aod_division_totalValue"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/aod_division_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:layout_toStartOf="@+id/textView"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignTop="@+id/aod_division_totalValue"
-        android:layout_toStartOf="@+id/aod_division_totalValue"
-        android:gravity="center_vertical"
-        android:labelFor="@id/aod_division_totalValue"
-        android:text="@string/total2"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/aod_division_totalValue"
+            android:layout_toStartOf="@+id/aod_division_totalValue"
+            android:gravity="center_vertical"
+            android:labelFor="@id/aod_division_totalValue"
+            android:text="@string/total2"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <TextView
-        android:id="@+id/aod_division_battleValue"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/aod_division_addToBattle"
-        android:layout_alignTop="@+id/aod_division_addToBattle"
-        android:layout_toStartOf="@+id/aod_division_addToBattle"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/aod_division_battleValue"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/aod_division_addToBattle"
+            android:layout_alignTop="@+id/aod_division_addToBattle"
+            android:layout_toStartOf="@+id/aod_division_addToBattle"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/aod_division_removeFromBattle"
-        android:layout_alignTop="@+id/aod_division_removeFromBattle"
-        android:layout_toStartOf="@+id/aod_division_removeFromBattle"
-        android:gravity="center_vertical"
-        android:labelFor="@id/aod_division_battleValue"
-        android:text="@string/inBattle"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/aod_division_removeFromBattle"
+            android:layout_alignTop="@+id/aod_division_removeFromBattle"
+            android:layout_toStartOf="@+id/aod_division_removeFromBattle"
+            android:gravity="center_vertical"
+            android:labelFor="@id/aod_division_battleValue"
+            android:text="@string/inBattle"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/aod_division_removeFromBattle"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignTop="@+id/aod_division_totalValue"
-        android:layout_toStartOf="@+id/aod_division_battleValue"
-        android:padding="0dp"
-        android:text="@string/minusFive" />
-
-
+            android:id="@+id/aod_division_removeFromBattle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/aod_division_totalValue"
+            android:layout_toStartOf="@+id/aod_division_battleValue"
+            android:padding="0dp"
+            android:text="@string/minusFive"/>
 
 
     <Button
-        android:id="@+id/aod_division_addToBattle"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/aod_division_name"
-        android:padding="0dp"
-        android:text="@string/plusFive" />
+            android:id="@+id/aod_division_addToBattle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/aod_division_name"
+            android:padding="0dp"
+            android:text="@string/plusFive"/>
 
 </RelativeLayout>

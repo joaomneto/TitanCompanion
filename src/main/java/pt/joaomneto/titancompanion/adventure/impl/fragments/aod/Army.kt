@@ -1,6 +1,6 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.aod
 
-import java.util.*
+import java.util.ArrayList
 
 /**
  * Created by Joao Neto on 26/04/17.
@@ -37,15 +37,15 @@ class Army : ArrayList<SoldiersDivision>() {
 
             val armyList = savedArmy.split("#".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             armyList
-                    .map { division -> division.split("§".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray() }
-                    .mapTo(result) {
-                        val type = it[0]
-                        val default: Boolean = enumValues<DefaultDivision>().any { it.name == type }
-                        if (default)
-                            StandardSoldiersDivision(DefaultDivision.valueOf(type), Integer.parseInt(it[1]))
-                        else
-                            CustomSoldiersDivision(type, Integer.parseInt(it[1]))
-                    }
+                .map { division -> division.split("§".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray() }
+                .mapTo(result) {
+                    val type = it[0]
+                    val default: Boolean = enumValues<DefaultDivision>().any { it.name == type }
+                    if (default)
+                        StandardSoldiersDivision(DefaultDivision.valueOf(type), Integer.parseInt(it[1]))
+                    else
+                        CustomSoldiersDivision(type, Integer.parseInt(it[1]))
+                }
 
             return result
         }

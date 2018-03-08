@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_33sl_adventure_weaponcombat.*
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
@@ -17,16 +16,19 @@ class SLWeaponCombatFragment : AdventureFragment() {
     private var enemyShields = 0
     private var enemyRating = 0
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
 
         return inflater!!.inflate(
-                R.layout.fragment_33sl_adventure_weaponcombat, container,
-                false)
+            R.layout.fragment_33sl_adventure_weaponcombat, container,
+            false
+        )
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val adv = context as SLAdventure
@@ -85,7 +87,6 @@ class SLWeaponCombatFragment : AdventureFragment() {
             combatTurn()
             refreshScreensFromResume()
         })
-
     }
 
     fun combatTurn() {
@@ -111,8 +112,6 @@ class SLWeaponCombatFragment : AdventureFragment() {
         }
 
         combatResult?.text = combatText
-
-
     }
 
     private fun enemyTurn(): String {
@@ -152,5 +151,4 @@ class SLWeaponCombatFragment : AdventureFragment() {
 
         buttonAttack.isEnabled = adv.currentShields > 0
     }
-
 }

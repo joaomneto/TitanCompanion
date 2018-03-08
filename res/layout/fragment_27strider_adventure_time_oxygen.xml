@@ -1,921 +1,921 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".adventurecreation.fragments.VitalStatisticsFragment">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".adventurecreation.fragments.VitalStatisticsFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:layout_marginStart="30dp"
-            android:layout_weight="1">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/plusTimeButton"
-                android:layout_alignParentStart="true"
-                android:layout_alignTop="@+id/plusTimeButton"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/time" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/plusTimeButton"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/plusTimeButton"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/time"/>
 
             <Button
-                android:id="@+id/minusTimeButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignBottom="@+id/plusTimeButton"
-                android:layout_alignTop="@+id/plusTimeButton"
-                android:layout_toLeftOf="@+id/statsTimeValue"
-                android:text="@string/minus"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:id="@+id/minusTimeButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/plusTimeButton"
+                    android:layout_alignTop="@+id/plusTimeButton"
+                    android:layout_toLeftOf="@+id/statsTimeValue"
+                    android:text="@string/minus"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
             <TextView
-                android:id="@+id/statsTimeValue"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/plusTimeButton"
-                android:layout_alignTop="@+id/plusTimeButton"
-                android:layout_toLeftOf="@+id/plusTimeButton"
-                android:gravity="center"
-                android:text="48"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:id="@+id/statsTimeValue"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/plusTimeButton"
+                    android:layout_alignTop="@+id/plusTimeButton"
+                    android:layout_toLeftOf="@+id/plusTimeButton"
+                    android:gravity="center"
+                    android:text="48"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <Button
-                android:id="@+id/plusTimeButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:text="@string/plus"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:id="@+id/plusTimeButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/plus"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:layout_marginStart="15dp"
-            android:layout_weight="1">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/plusOxygenButton"
-                android:layout_alignParentStart="true"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="@string/oxygen"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_alignParentTop="true" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/plusOxygenButton"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="@string/oxygen"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_alignParentTop="true"/>
 
             <Button
-                android:id="@+id/minusOxygenButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignBottom="@+id/plusOxygenButton"
-                android:layout_toLeftOf="@+id/statsOxygenValue"
-                android:text="@string/minus"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_alignParentTop="true" />
+                    android:id="@+id/minusOxygenButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/plusOxygenButton"
+                    android:layout_toLeftOf="@+id/statsOxygenValue"
+                    android:text="@string/minus"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_alignParentTop="true"/>
 
             <TextView
-                android:id="@+id/statsOxygenValue"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/plusOxygenButton"
-                android:layout_alignTop="@+id/plusOxygenButton"
-                android:layout_toLeftOf="@+id/plusOxygenButton"
-                android:gravity="center"
-                android:text="22"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:id="@+id/statsOxygenValue"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/plusOxygenButton"
+                    android:layout_alignTop="@+id/plusOxygenButton"
+                    android:layout_toLeftOf="@+id/plusOxygenButton"
+                    android:gravity="center"
+                    android:text="22"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <Button
-                android:id="@+id/plusOxygenButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:text="@string/plus"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:id="@+id/plusOxygenButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/plus"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
         </RelativeLayout>
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
         <TableLayout
-            android:id="@+id/strider_timeBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="1">
+                android:id="@+id/strider_timeBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="30dp"
+                android:layout_weight="1">
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:layout_height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
         </TableLayout>
 
         <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="45dp"
-            android:id="@+id/strider_oxygenBar"
-            android:layout_weight="1">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="45dp"
+                android:id="@+id/strider_oxygenBar"
+                android:layout_weight="1">
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="9dp"
-                android:minHeight="9dp">
+                    android:background="@drawable/border_back"
+                    android:maxHeight="9dp"
+                    android:minHeight="9dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:height="9dp"
-                    android:text="@string/empty" />
+                        android:layout_width="match_parent"
+                        android:height="9dp"
+                        android:text="@string/empty"/>
             </TableRow>
         </TableLayout>
 

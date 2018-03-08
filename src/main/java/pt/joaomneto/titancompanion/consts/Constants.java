@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
-
-import java.util.Locale;
-
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation;
+
+import java.util.Locale;
 
 public abstract class Constants {
 

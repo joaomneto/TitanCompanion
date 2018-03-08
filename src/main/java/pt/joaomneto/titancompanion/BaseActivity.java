@@ -2,7 +2,6 @@ package pt.joaomneto.titancompanion;
 
 import android.app.Activity;
 import android.content.Context;
-
 import pt.joaomneto.titancompanion.util.LocaleHelper;
 
 /**

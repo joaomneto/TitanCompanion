@@ -1,24 +1,20 @@
 package pt.joaomneto.titancompanion;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
-
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.fragment.TCPreferenceFragment;
 
@@ -35,7 +31,7 @@ public class MainActivity extends BaseActivity {
                 Manifest.permission.READ_EXTERNAL_STORAGE) == PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED) {
 
-            TCPreferenceActivity.runSavegameImport(this);
+            TCPreferenceActivity.Companion.runSavegameImport(this);
         }
     }
 
@@ -123,7 +119,7 @@ public class MainActivity extends BaseActivity {
             Integer previouslyStarted = prefs.getInt(getString(R.string.currentVersion), 0);
             PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
             Integer version = pInfo.versionCode;
-            if (previouslyStarted!=version) {
+            if (previouslyStarted != version) {
                 SharedPreferences.Editor edit = prefs.edit();
                 edit.putInt(getString(R.string.currentVersion), version);
                 edit.commit();
@@ -136,6 +132,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void showHelp() {
-        Adventure.showInfoAlert(R.string.savegameImportInfo, this);
+        Adventure.Companion.showInfoAlert(R.string.savegameImportInfo, this);
     }
 }

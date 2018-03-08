@@ -5,12 +5,12 @@
               android:padding="16dp">
 
     <TextView
-        android:id="@+id/goldLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="@string/kuddams"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:id="@+id/goldLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="@string/kuddams"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,81 +21,81 @@
                   android:padding="20dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:id="@+id/com_kuddam_geshrak"
-            android:text="@string/geshrak"
-            android:gravity="center"
-            android:clickable="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:focusable="true"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/com_kuddam_geshrak"
+                android:text="@string/geshrak"
+                android:gravity="center"
+                android:clickable="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:focusable="true"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:id="@+id/com_kuddam_gurskut"
-            android:text="@string/gurskut"
-            android:gravity="center"
-            android:clickable="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:focusable="true"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/com_kuddam_gurskut"
+                android:text="@string/gurskut"
+                android:gravity="center"
+                android:clickable="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:focusable="true"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:id="@+id/com_kuddam_friankara"
-            android:text="@string/friankara"
-            android:gravity="center"
-            android:clickable="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:focusable="true"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/com_kuddam_friankara"
+                android:text="@string/friankara"
+                android:gravity="center"
+                android:clickable="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:focusable="true"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:id="@+id/com_kuddam_barkek"
-            android:text="@string/barkek"
-            android:gravity="center"
-            android:clickable="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:focusable="true"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/com_kuddam_barkek"
+                android:text="@string/barkek"
+                android:gravity="center"
+                android:clickable="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:focusable="true"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:id="@+id/com_kuddam_griffkek"
-            android:text="@string/griffkek"
-            android:clickable="true"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:focusable="true"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/com_kuddam_griffkek"
+                android:text="@string/griffkek"
+                android:clickable="true"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:focusable="true"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:id="@+id/com_kuddam_churka"
-            android:text="@string/churka"
-            android:gravity="center"
-            android:clickable="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:focusable="true"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/com_kuddam_churka"
+                android:text="@string/churka"
+                android:gravity="center"
+                android:clickable="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:focusable="true"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:id="@+id/com_kuddam_kahhrac"
-            android:text="@string/kahhrac"
-            android:gravity="center"
-            android:clickable="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:focusable="true"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/com_kuddam_kahhrac"
+                android:text="@string/kahhrac"
+                android:gravity="center"
+                android:clickable="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:focusable="true"/>
 
     </LinearLayout>
 

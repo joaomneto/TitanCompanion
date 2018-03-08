@@ -23,11 +23,9 @@ class StandardSoldiersDivision(val type: DefaultDivision, override var quantity:
         initialQuantity = quantity
     }
 
-
     override fun getLabel(ctx: Context): String {
         return ctx.getString(type.labelId)
     }
-
 
     override fun getCategory(): String {
         return type.name

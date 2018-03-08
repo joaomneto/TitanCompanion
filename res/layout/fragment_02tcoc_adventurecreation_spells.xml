@@ -1,71 +1,71 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:weightSum="2">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="10dp"
+              android:weightSum="2">
 
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:text="@string/spellList"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold" />
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="@string/spellList"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"/>
 
     <ListView
-        android:id="@+id/spellListView"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/border_back"></ListView>
+            android:id="@+id/spellListView"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_back"></ListView>
 
     <TextView
-        android:id="@+id/textField2"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:text="@string/selectedSpellList"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold" />
+            android:id="@+id/textField2"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="@string/selectedSpellList"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"/>
 
     <ListView
-        android:id="@+id/selectedSpellListView"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/border_back"></ListView>
+            android:id="@+id/selectedSpellListView"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_back"></ListView>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
 
         <TextView
-            android:id="@+id/spellScoreValue"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:gravity="center"
-            android:layout_marginLeft="5dp"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:id="@+id/spellScoreValue"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
         <TextView
-            android:id="@+id/spellPointsText"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_toStartOf="@id/spellScoreValue"
-            android:gravity="end|center_vertical"
-            android:text="@string/spellScore"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:id="@+id/spellPointsText"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_toStartOf="@id/spellScoreValue"
+                android:gravity="end|center_vertical"
+                android:text="@string/spellScore"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
     </RelativeLayout>
 
     <Button
-        android:id="@+id/buttonSaveAdventure"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:onClick="saveAdventure"
-        android:text="@string/saveAdventure" />
+            android:id="@+id/buttonSaveAdventure"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/saveAdventure"/>
 
 </LinearLayout>

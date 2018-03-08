@@ -9,7 +9,7 @@ import pt.joaomneto.titancompanion.adventure.impl.util.Spell
  * Created by Joao Neto on 23-05-2017.
  */
 
-enum class TOTSpell constructor(internal var labelIdInner: Int, internal var actionInner: (Adventure) -> Unit ): Spell {
+enum class TOTSpell constructor(internal var labelIdInner: Int, internal var actionInner: (Adventure) -> Unit) : Spell {
 
     OPEN_DOOR(R.string.totSpellOpenDoor, { adv -> adv.changeStamina(-2) }),
     CREATURE_SLEEP(R.string.totSpellCreatureSlepp, { adv -> adv.changeStamina(-1) }),
@@ -20,13 +20,15 @@ enum class TOTSpell constructor(internal var labelIdInner: Int, internal var act
     FIRE(R.string.totSpellFire, { adv ->
         val builder = AlertDialog.Builder(adv)
         builder.setTitle(R.string.totSpellStaminaCost)
-                .setCancelable(false)
-                .setNegativeButton(R.string.number_2
-                ) { dialog, _ ->
-                    adv.changeStamina(-2)
-                    dialog.cancel()
-                }
-        builder.setPositiveButton(R.string.number_1
+            .setCancelable(false)
+            .setNegativeButton(
+                R.string.number_2
+            ) { dialog, _ ->
+                adv.changeStamina(-2)
+                dialog.cancel()
+            }
+        builder.setPositiveButton(
+            R.string.number_1
         ) { dialog, _ ->
             adv.changeStamina(-1)
             dialog.cancel()
@@ -41,13 +43,11 @@ enum class TOTSpell constructor(internal var labelIdInner: Int, internal var act
 
     });
 
-
-    override fun getLabelId(): Int{
+    override fun getLabelId(): Int {
         return labelIdInner
     }
 
-    override fun getAction(): (Adventure) -> Unit{
+    override fun getAction(): (Adventure) -> Unit {
         return actionInner
     }
-
 }

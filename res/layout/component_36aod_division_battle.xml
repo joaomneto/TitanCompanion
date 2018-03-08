@@ -1,63 +1,62 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/adventureVitalStats"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingTop="10dp">
+                android:id="@+id/adventureVitalStats"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingTop="10dp">
 
 
     <TextView
-        android:id="@+id/aod_division_InBattleLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/aod_division_minusDivisionTotalTotalLayout"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_toStartOf="@+id/aod_division_totalValue"
-        android:gravity="center_vertical"
-        android:text="@string/inBattle"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/aod_division_InBattleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/aod_division_minusDivisionTotalTotalLayout"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_toStartOf="@+id/aod_division_totalValue"
+            android:gravity="center_vertical"
+            android:text="@string/inBattle"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <TextView
-        android:id="@+id/aod_division_name"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/aod_division_minusDivisionTotalTotalLayout"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_toStartOf="@id/aod_division_InBattleLabel"
-        android:gravity="center_vertical"
-        android:text="placeholder"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/aod_division_name"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/aod_division_minusDivisionTotalTotalLayout"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_toStartOf="@id/aod_division_InBattleLabel"
+            android:gravity="center_vertical"
+            android:text="placeholder"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
     <LinearLayout
-        android:id="@+id/aod_division_minusDivisionTotalTotalLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true">
+            android:id="@+id/aod_division_minusDivisionTotalTotalLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true">
 
         <Button
-            android:id="@+id/aod_division_minusDivisionTotalTotal"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="0dp"
-            android:text="@string/minusFive"
-            />
+                android:id="@+id/aod_division_minusDivisionTotalTotal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="0dp"
+                android:text="@string/minusFive"
+        />
 
     </LinearLayout>
 
 
     <TextView
-        android:id="@+id/aod_division_totalValue"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/aod_division_minusDivisionTotalTotalLayout"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/aod_division_totalValue"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/aod_division_minusDivisionTotalTotalLayout"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
 </RelativeLayout>

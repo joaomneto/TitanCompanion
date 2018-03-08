@@ -1,218 +1,218 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/adventureVitalStats"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:useDefaultMargins="true"
-    tools:context=".adventure.impl.fragments.sob.SOBShipCombatFragment" >
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/adventureVitalStats"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:useDefaultMargins="true"
+                tools:context=".adventure.impl.fragments.sob.SOBShipCombatFragment">
 
     <TextView
-        android:id="@+id/textField3"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:text="@string/shipC"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/textField3"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/shipC"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
-        android:id="@+id/textField1"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/textField3"
-        android:gravity="center"
-        android:text="@string/crewStrike"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/textField1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/textField3"
+            android:gravity="center"
+            android:text="@string/crewStrike"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/minusCrewStrikeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusCrewStrikeButton"
-        android:layout_alignTop="@+id/plusCrewStrikeButton"
-        android:layout_toLeftOf="@+id/starshipCrewStrikeValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/minusCrewStrikeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusCrewStrikeButton"
+            android:layout_alignTop="@+id/plusCrewStrikeButton"
+            android:layout_toLeftOf="@+id/starshipCrewStrikeValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/starshipCrewStrikeValue"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusCrewStrikeButton"
-        android:layout_alignTop="@+id/plusCrewStrikeButton"
-        android:layout_toLeftOf="@+id/plusCrewStrikeButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/starshipCrewStrikeValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusCrewStrikeButton"
+            android:layout_alignTop="@+id/plusCrewStrikeButton"
+            android:layout_toLeftOf="@+id/plusCrewStrikeButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/plusCrewStrikeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonAttack"
-        android:layout_alignTop="@+id/textField1"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/plusCrewStrikeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignRight="@+id/buttonAttack"
+            android:layout_alignTop="@+id/textField1"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/textField2"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/textField1"
-        android:layout_below="@+id/textField1"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:text="@string/crewStrength"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/textField2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/textField1"
+            android:layout_below="@+id/textField1"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/crewStrength"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/minusCrewStrengthButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusCrewStrengthButton"
-        android:layout_alignTop="@+id/plusCrewStrengthButton"
-        android:layout_toLeftOf="@+id/starshipCrewStrengthValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/minusCrewStrengthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusCrewStrengthButton"
+            android:layout_alignTop="@+id/plusCrewStrengthButton"
+            android:layout_toLeftOf="@+id/starshipCrewStrengthValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/starshipCrewStrengthValue"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusCrewStrengthButton"
-        android:layout_alignTop="@+id/plusCrewStrengthButton"
-        android:layout_toLeftOf="@+id/plusCrewStrengthButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/starshipCrewStrengthValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusCrewStrengthButton"
+            android:layout_alignTop="@+id/plusCrewStrengthButton"
+            android:layout_toLeftOf="@+id/plusCrewStrengthButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/plusCrewStrengthButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonAttack"
-        android:layout_alignTop="@+id/textField2"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/plusCrewStrengthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignRight="@+id/buttonAttack"
+            android:layout_alignTop="@+id/textField2"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/textField5"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/textField4"
-        android:gravity="center"
-        android:text="@string/crewStrike"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/textField5"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/textField4"
+            android:gravity="center"
+            android:text="@string/crewStrike"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/minusEnemyCrewStrikeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusEnemyCrewStrikeButton"
-        android:layout_alignTop="@+id/plusEnemyCrewStrikeButton"
-        android:layout_toLeftOf="@+id/enemyCrewStrikeValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/minusEnemyCrewStrikeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusEnemyCrewStrikeButton"
+            android:layout_alignTop="@+id/plusEnemyCrewStrikeButton"
+            android:layout_toLeftOf="@+id/enemyCrewStrikeValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/enemyCrewStrikeValue"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusEnemyCrewStrikeButton"
-        android:layout_alignTop="@+id/plusEnemyCrewStrikeButton"
-        android:layout_toLeftOf="@+id/plusEnemyCrewStrikeButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/enemyCrewStrikeValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusEnemyCrewStrikeButton"
+            android:layout_alignTop="@+id/plusEnemyCrewStrikeButton"
+            android:layout_toLeftOf="@+id/plusEnemyCrewStrikeButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/plusEnemyCrewStrikeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonAttack"
-        android:layout_alignTop="@+id/textField5"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/plusEnemyCrewStrikeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignRight="@+id/buttonAttack"
+            android:layout_alignTop="@+id/textField5"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/textField6"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/textField5"
-        android:layout_below="@+id/textField5"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:text="@string/crewStrength"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/textField6"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/textField5"
+            android:layout_below="@+id/textField5"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/crewStrength"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/minusEnemyCrewStrengthButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusEnemyCrewStrengthButton"
-        android:layout_alignTop="@+id/plusEnemyCrewStrengthButton"
-        android:layout_toLeftOf="@+id/enemyCrewStrengthValue"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/minus" />
+            android:id="@+id/minusEnemyCrewStrengthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusEnemyCrewStrengthButton"
+            android:layout_alignTop="@+id/plusEnemyCrewStrengthButton"
+            android:layout_toLeftOf="@+id/enemyCrewStrengthValue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/enemyCrewStrengthValue"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusEnemyCrewStrengthButton"
-        android:layout_alignTop="@+id/plusEnemyCrewStrengthButton"
-        android:layout_toLeftOf="@+id/plusEnemyCrewStrengthButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/enemyCrewStrengthValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusEnemyCrewStrengthButton"
+            android:layout_alignTop="@+id/plusEnemyCrewStrengthButton"
+            android:layout_toLeftOf="@+id/plusEnemyCrewStrengthButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/plusEnemyCrewStrengthButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignRight="@+id/buttonAttack"
-        android:layout_alignTop="@+id/textField6"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="@string/plus" />
+            android:id="@+id/plusEnemyCrewStrengthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignRight="@+id/buttonAttack"
+            android:layout_alignTop="@+id/textField6"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/combatResult"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonAttack"
-        android:layout_alignLeft="@+id/buttonAttack"
-        android:layout_below="@+id/textField6"
-        android:layout_marginTop="10dp"
-        android:lines="4"
-        android:maxLines="4"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/combatResult"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonAttack"
+            android:layout_alignLeft="@+id/buttonAttack"
+            android:layout_below="@+id/textField6"
+            android:layout_marginTop="10dp"
+            android:lines="4"
+            android:maxLines="4"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <Button
-        android:id="@+id/buttonAttack"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/attackOpponent" />
+            android:id="@+id/buttonAttack"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/attackOpponent"/>
 
     <TextView
-        android:id="@+id/textField4"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/textField5"
-        android:layout_below="@+id/textField2"
-        android:gravity="center"
-        android:text="@string/sobEnemyShip"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/textField4"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/textField5"
+            android:layout_below="@+id/textField2"
+            android:gravity="center"
+            android:text="@string/sobEnemyShip"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 </RelativeLayout>

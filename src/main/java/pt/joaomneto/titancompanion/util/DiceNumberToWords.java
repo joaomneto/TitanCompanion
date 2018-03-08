@@ -5,7 +5,6 @@ import pt.joaomneto.titancompanion.R;
 public class DiceNumberToWords {
 
 
-
     private static final int[] numNames = {
             R.string.number_0_word,
             R.string.number_1_word,

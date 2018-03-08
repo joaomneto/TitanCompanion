@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/adventureVitalStats"
               android:layout_gravity="center"
               android:gravity="center"
@@ -9,30 +8,28 @@
               android:padding="10dp">
 
     <Button
-        android:id="@+id/tabashaReplenishSkillButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/replenishSkill"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+            android:id="@+id/tabashaReplenishSkillButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/replenishSkill"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
 
     <Button
-        android:id="@+id/tabashaReplenishLuckButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/replenishLuck"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+            android:id="@+id/tabashaReplenishLuckButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/replenishLuck"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
 
     <Button
-        android:id="@+id/tabashaOtherButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/other"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
-
-
+            android:id="@+id/tabashaOtherButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/other"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
 
 
 </LinearLayout>

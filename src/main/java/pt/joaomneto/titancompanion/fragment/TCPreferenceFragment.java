@@ -1,15 +1,11 @@
 package pt.joaomneto.titancompanion.fragment;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.TCPreferenceActivity;
 

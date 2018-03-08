@@ -11,6 +11,15 @@ jobs:
      steps:
        - checkout
        - run:
+           name: Lint
+           command: ./gradlew lint
+       - run:
+           name: Generate Debug APK
+           command: ./gradlew assembleDebug -PdisablePreDex
+       - run:
+           name: Generate Debug Testing APK
+           command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
+       - run:
           name: Install tools
           command: |
              sudo apt-get install -y gcc python-dev python-setuptools
@@ -31,18 +40,6 @@ jobs:
            name: Configure Google Cloud Access
            command:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
-       - run:
-           name: Lint
-           command: ./gradlew lint
-       - run:
-           name: Generate Debug APK
-           command: ./gradlew assembleDebug -PdisablePreDex
-       - run:
-           name: Generate Debug Testing APK
-           command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
-       - run:
-           name: Lint
-           command: ./gradlew lint
        - run:
            name: Run Firebase Testing
            command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR}

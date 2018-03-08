@@ -14,8 +14,10 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureSpellsFragm
  */
 class MRAdventureSpellsFragment : AdventureSpellsFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         view?.findViewById<LinearLayout>(R.id.spellChooserLayout)?.visibility = View.GONE

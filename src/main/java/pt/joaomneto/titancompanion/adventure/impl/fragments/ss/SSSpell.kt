@@ -8,27 +8,26 @@ import pt.joaomneto.titancompanion.adventure.impl.util.Spell
  * Created by Joao Neto on 23-05-2017.
  */
 
-enum class SSSpell constructor(private val labelIdInner : Int, private val actionInner: (Adventure) -> Unit) : Spell{
-
+enum class SSSpell constructor(private val labelIdInner: Int, private val actionInner: (Adventure) -> Unit) : Spell {
 
     STAMINA(R.string.ssSpellStamina, { adv ->
         adv.currentStamina = adv
-                .currentStamina!! + adv.initialStamina!! / 2
+            .currentStamina + adv.initialStamina / 2
         if (adv.currentStamina > adv
                 .initialStamina)
             adv.currentStamina = adv
-                    .initialStamina
+                .initialStamina
 
     }),
     SKILL(R.string.ssSpellSkill, { adv ->
-        adv.currentSkill = adv.currentSkill!! + adv.initialSkill!! / 2
+        adv.currentSkill = adv.currentSkill + adv.initialSkill / 2
         if (adv.currentSkill > adv
                 .initialSkill)
             adv.currentSkill = adv
-                    .initialSkill
+                .initialSkill
     }),
     LUCK(R.string.ssSpellLuck, { adv ->
-        adv.currentLuck = adv.currentLuck!! + adv.initialLuck!! / 2
+        adv.currentLuck = adv.currentLuck + adv.initialLuck / 2
         if (adv.currentLuck > adv
                 .initialLuck)
             adv.currentLuck = adv.initialLuck
@@ -43,13 +42,11 @@ enum class SSSpell constructor(private val labelIdInner : Int, private val actio
     WITHERING(R.string.ssSpellWithering, { _ -> }),
     CURSE(R.string.ssSpellCurse, { _ -> });
 
-    override fun getLabelId(): Int{
+    override fun getLabelId(): Int {
         return labelIdInner
     }
 
-    override fun getAction(): (Adventure) -> Unit{
+    override fun getAction(): (Adventure) -> Unit {
         return actionInner
     }
-
-
 }

@@ -15,5 +15,4 @@ interface SoldiersDivision {
     fun decrementAllValues()
     fun getLabel(ctx: Context): String
     fun getCategory(): String
-
 }

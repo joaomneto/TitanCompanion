@@ -1,187 +1,187 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_13ff_adventure_vehicleequipment"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:columnCount="3"
-    android:columnOrderPreserved="false"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:rowCount="6"
-    android:rowOrderPreserved="false"
-    android:useDefaultMargins="true"
-    tools:context=".adventure.impl.fragments.ff.FFVehicleStatsFragment" >
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/fragment_13ff_adventure_vehicleequipment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:columnCount="3"
+                android:columnOrderPreserved="false"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:rowCount="6"
+                android:rowOrderPreserved="false"
+                android:useDefaultMargins="true"
+                tools:context=".adventure.impl.fragments.ff.FFVehicleStatsFragment">
 
     <TextView
-        android:id="@+id/textField1"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:text="@string/rockets"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/textField1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/rockets"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/minusRocketsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusRocketsButton"
-        android:layout_alignTop="@+id/plusRocketsButton"
-        android:layout_toLeftOf="@+id/statsRocketsValue"
-        android:text="@string/minus" />
+            android:id="@+id/minusRocketsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusRocketsButton"
+            android:layout_alignTop="@+id/plusRocketsButton"
+            android:layout_toLeftOf="@+id/statsRocketsValue"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/statsRocketsValue"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusRocketsButton"
-        android:layout_alignTop="@+id/plusRocketsButton"
-        android:layout_toLeftOf="@+id/plusRocketsButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/statsRocketsValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusRocketsButton"
+            android:layout_alignTop="@+id/plusRocketsButton"
+            android:layout_toLeftOf="@+id/plusRocketsButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusRocketsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/textField1"
-        android:text="@string/plus" />
+            android:id="@+id/plusRocketsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/textField1"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/textField2"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/textField1"
-        android:layout_below="@+id/textField1"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="@string/ironSpikes"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/textField2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/textField1"
+            android:layout_below="@+id/textField1"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/ironSpikes"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/minusIronSpikesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusIronSpikesButton"
-        android:layout_alignTop="@+id/plusIronSpikesButton"
-        android:layout_toLeftOf="@+id/statsIronSpikesValue"
-        android:text="@string/minus" />
+            android:id="@+id/minusIronSpikesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusIronSpikesButton"
+            android:layout_alignTop="@+id/plusIronSpikesButton"
+            android:layout_toLeftOf="@+id/statsIronSpikesValue"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/statsIronSpikesValue"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusIronSpikesButton"
-        android:layout_alignTop="@+id/plusIronSpikesButton"
-        android:layout_toLeftOf="@+id/plusIronSpikesButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/statsIronSpikesValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusIronSpikesButton"
+            android:layout_alignTop="@+id/plusIronSpikesButton"
+            android:layout_toLeftOf="@+id/plusIronSpikesButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusIronSpikesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/textField2"
-        android:text="@string/plus" />
+            android:id="@+id/plusIronSpikesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/textField2"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/textField2"
-        android:layout_below="@+id/textField2"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="@string/oil"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/textField2"
+            android:layout_below="@+id/textField2"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/oil"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/minusOilButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusOilButton"
-        android:layout_alignTop="@+id/plusOilButton"
-        android:layout_toLeftOf="@+id/statsOilValue"
-        android:text="@string/minus" />
+            android:id="@+id/minusOilButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusOilButton"
+            android:layout_alignTop="@+id/plusOilButton"
+            android:layout_toLeftOf="@+id/statsOilValue"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/statsOilValue"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusOilButton"
-        android:layout_alignTop="@+id/plusOilButton"
-        android:layout_toLeftOf="@+id/plusOilButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/statsOilValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusOilButton"
+            android:layout_alignTop="@+id/plusOilButton"
+            android:layout_toLeftOf="@+id/plusOilButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusOilButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/textView3"
-        android:text="@string/plus" />
+            android:id="@+id/plusOilButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/textView3"
+            android:text="@string/plus"/>
 
     <Button
-        android:id="@+id/minusSpareWheelsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusSpareWheelsButton"
-        android:layout_alignTop="@+id/plusSpareWheelsButton"
-        android:layout_toLeftOf="@+id/spareWheelsValue"
-        android:text="@string/minus" />
+            android:id="@+id/minusSpareWheelsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusSpareWheelsButton"
+            android:layout_alignTop="@+id/plusSpareWheelsButton"
+            android:layout_toLeftOf="@+id/spareWheelsValue"
+            android:text="@string/minus"/>
 
     <TextView
-        android:id="@+id/spareWheelsValue"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/plusSpareWheelsButton"
-        android:layout_alignTop="@+id/plusSpareWheelsButton"
-        android:layout_toLeftOf="@+id/plusSpareWheelsButton"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/spareWheelsValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/plusSpareWheelsButton"
+            android:layout_alignTop="@+id/plusSpareWheelsButton"
+            android:layout_toLeftOf="@+id/plusSpareWheelsButton"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
-        android:id="@+id/plusSpareWheelsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/provisionsText"
-        android:text="@string/plus" />
+            android:id="@+id/plusSpareWheelsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/provisionsText"
+            android:text="@string/plus"/>
 
     <TextView
-        android:id="@+id/provisionsText"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="@string/spareWheels"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+            android:id="@+id/provisionsText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_below="@+id/textView3"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/spareWheels"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
     <ListView
-        android:id="@+id/carEnhancementList"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonAddEnhancement"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border_back"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/minusSpareWheelsButton" >
+            android:id="@+id/carEnhancementList"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonAddEnhancement"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_back"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/minusSpareWheelsButton">
 
     </ListView>
 
     <Button
-        android:id="@+id/buttonAddEnhancement"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/addEnhancement" />
+            android:id="@+id/buttonAddEnhancement"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/addEnhancement"/>
 
 </RelativeLayout>

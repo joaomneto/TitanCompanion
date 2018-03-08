@@ -11,16 +11,19 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 
 class SLAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
 
 
         return inflater!!.inflate(
-                R.layout.fragment_33sl_adventure_vitalstats, container, false)
+            R.layout.fragment_33sl_adventure_vitalstats, container, false
+        )
     }
 
-    override fun onViewCreated(rootView: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(rootView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(rootView, savedInstanceState)
 
         val adv = activity as SLAdventure
@@ -34,14 +37,11 @@ class SLAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
             adv.oxygen = minOf(adv.oxygen + 1, 10)
             refreshScreensFromResume()
         }
-
     }
 
     override fun refreshScreensFromResume() {
         super.refreshScreensFromResume()
         val adv = activity as SLAdventure
         statsOxygenValue?.text = adv.oxygen.toString()
-
     }
-
 }

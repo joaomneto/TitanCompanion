@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
 import pt.joaomneto.titancompanion.adventure.impl.STRIDERAdventure;
@@ -28,32 +27,29 @@ public class STRIDERAdventureTimeOxygenFragment extends AdventureFragment {
     STRIDERAdventure adventure = null;
 
 
+    public STRIDERAdventureTimeOxygenFragment() {
 
+    }
 
-	public STRIDERAdventureTimeOxygenFragment() {
-
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		View rootView = inflater.inflate(R.layout.fragment_27strider_adventure_time_oxygen,
-				container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        View rootView = inflater.inflate(R.layout.fragment_27strider_adventure_time_oxygen,
+                container, false);
 
 
         adventure = (STRIDERAdventure) this.getContext();
 
 
-
-        oxygenValue = (TextView) rootView.findViewById(R.id.statsOxygenValue);
-        increaseOxygenButton = (Button) rootView.findViewById(R.id.plusOxygenButton);
-        decreaseOxygenButton = (Button) rootView.findViewById(R.id.minusOxygenButton);
-        timeValue = (TextView) rootView.findViewById(R.id.statsTimeValue);
-        increaseTimeButton = (Button) rootView.findViewById(R.id.plusTimeButton);
-        decreaseTimeButton = (Button) rootView.findViewById(R.id.minusTimeButton);
-        timeBar = (TableLayout) rootView.findViewById(R.id.strider_timeBar);
-        oxygenBar = (TableLayout) rootView.findViewById(R.id.strider_oxygenBar);
+        oxygenValue = rootView.findViewById(R.id.statsOxygenValue);
+        increaseOxygenButton = rootView.findViewById(R.id.plusOxygenButton);
+        decreaseOxygenButton = rootView.findViewById(R.id.minusOxygenButton);
+        timeValue = rootView.findViewById(R.id.statsTimeValue);
+        increaseTimeButton = rootView.findViewById(R.id.plusTimeButton);
+        decreaseTimeButton = rootView.findViewById(R.id.minusTimeButton);
+        timeBar = rootView.findViewById(R.id.strider_timeBar);
+        oxygenBar = rootView.findViewById(R.id.strider_oxygenBar);
 
         increaseOxygenButton.setOnClickListener((View v) -> {
             adventure.increaseOxygen();
@@ -77,19 +73,19 @@ public class STRIDERAdventureTimeOxygenFragment extends AdventureFragment {
 
         refreshScreensFromResume();
 
-		return rootView;
-	}
+        return rootView;
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void refreshScreensFromResume() {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void refreshScreensFromResume() {
 
 
         adventure = (STRIDERAdventure) this.getContext();
 
-        if (adventure!=null) {
-            oxygenValue.setText(""+adventure.getOxygen());
-            timeValue.setText(""+adventure.getTime());
+        if (adventure != null) {
+            oxygenValue.setText("" + adventure.getOxygen());
+            timeValue.setText("" + adventure.getTime());
 
             paintBar(timeBar, adventure.getTime());
             paintBar(oxygenBar, adventure.getOxygen());
@@ -98,7 +94,7 @@ public class STRIDERAdventureTimeOxygenFragment extends AdventureFragment {
     }
 
     private void paintBar(TableLayout table, Integer time) {
-        for(int i = 0 ; i < table.getChildCount(); i++) {
+        for (int i = 0; i < table.getChildCount(); i++) {
             View view = table.getChildAt(i);
             if (view instanceof TableRow) {
 
@@ -106,13 +102,13 @@ public class STRIDERAdventureTimeOxygenFragment extends AdventureFragment {
                 View cell = ((TableRow) view).getChildAt(0);
 
 
-                if(i<time){
-                    if(((double)time/(double)table.getChildCount())<0.85d){
+                if (i < time) {
+                    if (((double) time / (double) table.getChildCount()) < 0.85d) {
                         cell.setBackgroundColor(Color.parseColor("#4fa5d5"));
-                    }else{
+                    } else {
                         cell.setBackgroundColor(Color.parseColor("#ed1c00"));
                     }
-                }else{
+                } else {
                     cell.setBackgroundColor(0x00000000);
                 }
             }

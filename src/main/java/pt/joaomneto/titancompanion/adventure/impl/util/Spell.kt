@@ -7,5 +7,5 @@ import pt.joaomneto.titancompanion.adventure.Adventure
  */
 
 interface Spell : TranslatableEnum {
-    fun getAction(): (Adventure)->Unit
+    fun getAction(): (Adventure) -> Unit
 }

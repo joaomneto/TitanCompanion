@@ -14,16 +14,15 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.util.Arrays;
-import java.util.List;
-
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll;
 import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.DropdownStringAdapter;
 import pt.joaomneto.titancompanion.util.DiceRoller;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
@@ -108,8 +107,8 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
     }
 
     @Override
-    protected void resetCombat() {
-        super.resetCombat();
+    protected void resetCombat(boolean clearResults) {
+        super.resetCombat(clearResults);
     }
 
     protected void switchLayoutCombatStarted() {
@@ -120,11 +119,11 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
         super.switchLayoutCombatStarted();
     }
 
-    protected void switchLayoutReset() {
+    protected void switchLayoutReset(boolean clearResult) {
         damageSpinner.setVisibility(View.VISIBLE);
         damageText.setVisibility(View.VISIBLE);
 
-        super.switchLayoutReset();
+        super.switchLayoutReset(clearResult);
     }
 
     protected Integer getKnockoutStamina() {

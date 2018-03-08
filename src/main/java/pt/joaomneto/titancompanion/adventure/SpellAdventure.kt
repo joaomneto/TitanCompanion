@@ -1,17 +1,18 @@
 package pt.joaomneto.titancompanion.adventure
 
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell
-import java.util.*
+import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
+import java.util.Arrays
 
-abstract class SpellAdventure<S : Spell> : Adventure() {
+abstract class SpellAdventure<S : Spell>(override val fragmentConfiguration: Array<AdventureFragmentRunner>) : Adventure(
+    fragmentConfiguration
+) {
 
-
-    var chosenSpells: MutableList<S> = ArrayList()
-    abstract val spellList: MutableList<S>
+    var chosenSpells: List<S> = emptyList()
+    abstract val spellList: List<S>
     abstract val isSpellSingleUse: Boolean
 
-
-    protected fun arrayToStringSpells(spells: MutableList<S>): String {
+    protected fun arrayToStringSpells(spells: List<S>): String {
         var _string = ""
 
         if (!spells.isEmpty()) {
@@ -45,7 +46,5 @@ abstract class SpellAdventure<S : Spell> : Adventure() {
         } catch (e: Exception) {
             throw IllegalArgumentException("Unable to instantiate Spell enum for class" + this.javaClass, e)
         }
-
     }
-
 }

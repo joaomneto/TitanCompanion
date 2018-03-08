@@ -9,15 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
-
+import android.widget.*;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
@@ -28,9 +20,10 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEn
 import pt.joaomneto.titancompanion.consts.CombatTurnresult;
 import pt.joaomneto.titancompanion.util.DiceRoller;
 
-import static pt.joaomneto.titancompanion.adventure.impl.RCAdventure.FRAGMENT_ROBOTS;
-
 public class RCAdventureRobotCombatFragment extends AdventureFragment {
+
+    private final static int FRAGMENT_ROBOTS = 1;
+    private final static int FRAGMENT_ROBOTCOMBAT = 2;
 
     protected static Integer[] gridRows;
 
@@ -296,13 +289,12 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         });
 
 
-
         robotSpecialAbilityValue.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
                 if (adv.getCurrentRobot().getRobotSpecialAbility() != null)
-                    Adventure.showAlert(adv.getCurrentRobot().getRobotSpecialAbility().getName(), adv.getCurrentRobot().getRobotSpecialAbility()
+                    Adventure.Companion.showAlert(adv.getCurrentRobot().getRobotSpecialAbility().getName(), adv.getCurrentRobot().getRobotSpecialAbility()
                             .getDescription(), adv);
             }
         });
@@ -312,7 +304,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
             @Override
             public void onClick(View arg0) {
                 if (enemies[0].getRobotSpecialAbility() != null)
-                    Adventure.showAlert(enemies[0].getRobotSpecialAbility().getName(), enemies[0].getRobotSpecialAbility().getDescription(), adv);
+                    Adventure.Companion.showAlert(enemies[0].getRobotSpecialAbility().getName(), enemies[0].getRobotSpecialAbility().getDescription(), adv);
             }
         });
 
@@ -379,7 +371,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         combatResult.setText(R.string.rcRobotSwitchedConfig);
         changeRobotForm.setEnabled(false);
 
-        RCAdventureRobotFragment rcarf = (RCAdventureRobotFragment) adv.getFragments().get(FRAGMENT_ROBOTS);
+        RCAdventureRobotFragment rcarf = (RCAdventureRobotFragment) adv.getFragmentConfiguration()[FRAGMENT_ROBOTS].getFragment();
         rcarf.refreshScreensFromResume();
 
         refreshScreensFromResume();
@@ -500,7 +492,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
                     }
                     combatResult.setText("");
                 } else {
-                    Adventure.showAlert(getString(R.string.rcNameArmorSkillMandatory), adv);
+                    Adventure.Companion.showAlert(getString(R.string.rcNameArmorSkillMandatory), adv);
                 }
             }
 
@@ -835,7 +827,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         combatResult.setText(combatStatus.toString());
         changeRobotForm.setEnabled(true);
         RCAdventure activity = (RCAdventure) this.getActivity();
-        RCAdventureRobotFragment rcarf = (RCAdventureRobotFragment) activity.getFragments().get(RCAdventure.FRAGMENT_ROBOTS);
+        RCAdventureRobotFragment rcarf = (RCAdventureRobotFragment) activity.getFragmentConfiguration()[FRAGMENT_ROBOTS].getFragment();
         rcarf.refreshScreensFromResume();
         refreshScreensFromResume();
 

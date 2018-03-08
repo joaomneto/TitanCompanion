@@ -15,16 +15,19 @@ class COMAdventureKuddamFragment : AdventureFragment() {
 
     var rootView: View? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
-        rootView = inflater!!.inflate(
-            R.layout.fragment_30com_adventure_kuddam, container, false)
+        rootView = inflater.inflate(
+            R.layout.fragment_30com_adventure_kuddam, container, false
+        )
 
         return rootView
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         com_kuddam_geshrak.setOnClickListener { addOrRemoveToKuddamList(Kuddam.GESHRAK) }
@@ -58,12 +61,10 @@ class COMAdventureKuddamFragment : AdventureFragment() {
     private fun addOrRemoveToKuddamList(kuddam: Kuddam) {
         val adv: COMAdventure = this.context as COMAdventure
         if (!adv.kuddamKilled.contains(kuddam))
-            adv.kuddamKilled.add(kuddam)
+            adv.kuddamKilled = adv.kuddamKilled.plus(kuddam)
         else
-            adv.kuddamKilled.remove(kuddam)
+            adv.kuddamKilled = adv.kuddamKilled.minus(kuddam)
 
         refreshScreensFromResume()
     }
-
-
 }

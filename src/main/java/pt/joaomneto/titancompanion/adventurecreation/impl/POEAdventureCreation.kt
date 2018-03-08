@@ -4,6 +4,7 @@ import java.io.BufferedWriter
 import java.io.IOException
 
 class POEAdventureCreation : EOTDAdventureCreation() {
+
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
         bw.write("standardPotion=-1\n")

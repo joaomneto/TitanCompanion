@@ -12,19 +12,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.*;
+import pt.joaomneto.titancompanion.R;
+import pt.joaomneto.titancompanion.adventure.AdventureFragment;
+import pt.joaomneto.titancompanion.adventure.impl.SSAdventure;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-
-import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.AdventureFragment;
-import pt.joaomneto.titancompanion.adventure.impl.SSAdventure;
 
 public class SSAdventureMapFragment extends AdventureFragment {
 
@@ -154,7 +149,7 @@ public class SSAdventureMapFragment extends AdventureFragment {
 
     private void revealField(String field) throws NoSuchFieldException, IllegalAccessException {
 
-        SSClearing clearing = SSClearing.getIfExists("CLEARING_"+field);
+        SSClearing clearing = SSClearing.getIfExists("CLEARING_" + field);
         if (clearing != null) {
             TextView currcell = rootView.findViewById(clearing.getResource());
             currcell.setVisibility(View.VISIBLE);

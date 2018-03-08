@@ -17,19 +17,22 @@ import pt.joaomneto.titancompanion.util.DiceRoller
 
 class COMAdventureCombatFragment : AdventureCombatFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
 
-        rootView =  inflater!!.inflate(
-            R.layout.fragment_30com_adventure_combat, container, false);
+        rootView = inflater.inflate(
+            R.layout.fragment_30com_adventure_combat, container, false
+        )
 
         init()
 
         return rootView
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val adv = this.context as COMAdventure
@@ -39,8 +42,20 @@ class COMAdventureCombatFragment : AdventureCombatFragment() {
             val enemyRoll = DiceRoller.roll2D6()
 
             when {
-                playerRoll.sum > enemyRoll.sum -> Adventure.showAlert(getString(R.string.oneStrikeCombatVictory, playerRoll.sum, enemyRoll.sum), adv)
-                playerRoll.sum < enemyRoll.sum -> Adventure.showAlert(getString(R.string.oneStrikeCombatLoss, playerRoll.sum, enemyRoll.sum), adv)
+                playerRoll.sum > enemyRoll.sum -> Adventure.showAlert(
+                    getString(
+                        R.string.oneStrikeCombatVictory,
+                        playerRoll.sum,
+                        enemyRoll.sum
+                    ), adv
+                )
+                playerRoll.sum < enemyRoll.sum -> Adventure.showAlert(
+                    getString(
+                        R.string.oneStrikeCombatLoss,
+                        playerRoll.sum,
+                        enemyRoll.sum
+                    ), adv
+                )
                 else -> Adventure.showAlert(getString(R.string.oneStrikeCombatTie, playerRoll.sum, enemyRoll.sum), adv)
             }
         }
@@ -51,9 +66,8 @@ class COMAdventureCombatFragment : AdventureCombatFragment() {
         oneStrikeCombatButton.visibility = View.GONE
     }
 
-    override fun switchLayoutReset() {
-        super.switchLayoutReset()
+    override fun switchLayoutReset(clearResult: Boolean) {
+        super.switchLayoutReset(clearResult)
         oneStrikeCombatButton.visibility = View.VISIBLE
-
     }
 }

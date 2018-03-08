@@ -12,13 +12,12 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.List;
-
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.impl.AODAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.AODAdventureSoldiersFragment;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.SoldiersDivision;
+
+import java.util.List;
 
 import static android.view.View.GONE;
 
