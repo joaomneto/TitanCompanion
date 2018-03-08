@@ -66,7 +66,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     var savedGame: Properties = Properties()
 
     private val vitalStatsFragment: AdventureVitalStatsFragment
-        get() = fragmentConfiguration[FRAGMENT_VITAL_STATS].fragment as AdventureVitalStatsFragment
+        get() = getFragment(AdventureVitalStatsFragment::class)
 
     open val consumeProvisionText: Int = R.string.consumeProvisions
 
@@ -481,7 +481,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     fun refreshScreens() {
 
         fragmentConfiguration
-            .map { it.fragment as AdventureFragment }
+            .map { getFragment(it.fragment) as AdventureFragment  }
             .forEach { it.refreshScreensFromResume() }
     }
 

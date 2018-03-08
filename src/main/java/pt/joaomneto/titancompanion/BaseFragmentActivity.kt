@@ -95,7 +95,7 @@ abstract class BaseFragmentActivity(
     fun <F : Fragment> getFragment(kclass: KClass<F>): F {
         var fragment: F? = null
         mSectionsPagerAdapter?.registeredFragments?.forEach { _: Int, frag: Fragment ->
-            if (frag::class == kclass) fragment = frag as F
+            if (kclass.isInstance(frag)) fragment = frag as F
         }
         return fragment ?: throw IllegalArgumentException("There is no ${kclass.simpleName} instance in this activity.")
     }

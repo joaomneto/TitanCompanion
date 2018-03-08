@@ -9,6 +9,7 @@ import android.support.test.runner.AndroidJUnit4
 import org.hamcrest.Matchers.containsString
 import org.junit.Test
 import org.junit.runner.RunWith
+import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_WARLOCK_OF_FIRETOP_MOUNTAIN
 
 @LargeTest
@@ -19,7 +20,6 @@ open class TestTWOFM : TCBaseTest() {
 
     @Test
     fun testSuccessfulCreation() {
-
         performStartAdventure()
         performFillSavegameName()
         performVitalStatisticsRoll()
@@ -28,6 +28,36 @@ open class TestTWOFM : TCBaseTest() {
         assertCorrectPotionDosage()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
+        testVitalStatisticsFragment()
+    }
+
+    protected fun testVitalStatisticsFragment() {
+        testVitalStatistics(activityInstance as Adventure)
+        testProvisions(activityInstance as Adventure)
+        testPotion(activityInstance as Adventure)
+    }
+
+    private fun testProvisions(adventure: Adventure) {
+        testProvisionStat(adventure)
+        performClickOnButton(R.id.minusStaminaButton, 4)
+        performClickOnButton(R.id.buttonConsumeProvisions)
+        performClickOnButton(android.R.id.button1)
+        //TODO
+    }
+
+    private fun testPotion(adventure: Adventure) {
+        performClickOnButton(R.id.minusStaminaButton)
+        performClickOnButton(R.id.minusSkillButton)
+        performClickOnButton(R.id.minusLuckButton)
+        performClickOnButton(R.id.usePotionButton)
+        performClickOnButton(android.R.id.button1)
+        //TODO
+    }
+
+    private fun testVitalStatistics(adventure: Adventure) {
+        testStaminaStat(adventure)
+        testSkillStat(adventure)
+        testLuckStat(adventure)
     }
 
     protected open fun assertCorrectPotionDosage() {
