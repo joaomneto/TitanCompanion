@@ -59,6 +59,10 @@ abstract class TCBaseTest {
 
     protected abstract val gamebook: FightingFantasyGamebook
 
+    protected open fun testVitalStatisticsFragment() {
+        testVitalStatistics(activityInstance as Adventure)
+    }
+
     protected val activityInstance: Activity
         get() {
             var currentActivity: Activity? = null
@@ -292,23 +296,24 @@ abstract class TCBaseTest {
         performClickOnButton(minusButtonId)
         Assert.assertEquals(0, adventureField.get(adventure))
 
-        // Test upper boundary of the stat
-        currentStatValue = adventureField.get(adventure)
-        performClickOnButton(plusButtonId, maxStatValue - currentStatValue)
-        Assert.assertEquals(maxStatValue, adventureField.get(adventure))
-        performClickOnButton(plusButtonId)
-        Assert.assertEquals(maxStatValue, adventureField.get(adventure))
+       if(maxStatValue != Int.MAX_VALUE){
+           // Test upper boundary of the stat
+           currentStatValue = adventureField.get(adventure)
+           performClickOnButton(plusButtonId, maxStatValue - currentStatValue)
+           Assert.assertEquals(maxStatValue, adventureField.get(adventure))
+           performClickOnButton(plusButtonId)
+           Assert.assertEquals(maxStatValue, adventureField.get(adventure))
 
-
-        if (maxValueEditable) {
-            // Test upper boundary modification of the stat
-            currentStatValue = adventureField.get(adventure)
-            performClickOnButton(valueId)
-            performInsertTextInPopupAndClickOk(R.id.alert_editText_field, (maxStatValue + 2).toString())
-            Assert.assertEquals(maxStatValue + 2, adventureMaxField?.get(adventure))
-            performClickOnButton(plusButtonId, 2)
-            Assert.assertEquals(currentStatValue + 2, adventureField.get(adventure))
-        }
+           if (maxValueEditable) {
+               // Test upper boundary modification of the stat
+               currentStatValue = adventureField.get(adventure)
+               performClickOnButton(valueId)
+               performInsertTextInPopupAndClickOk(R.id.alert_editText_field, (maxStatValue + 2).toString())
+               Assert.assertEquals(maxStatValue + 2, adventureMaxField?.get(adventure))
+               performClickOnButton(plusButtonId, 2)
+               Assert.assertEquals(currentStatValue + 2, adventureField.get(adventure))
+           }
+       }
     }
 
     companion object {
@@ -360,13 +365,9 @@ abstract class TCBaseTest {
         }
     }
 
-    fun testProvisionStat(adventure: Adventure){
-        testIncrementalStat(
-            adventure,
-            R.id.minusProvisionsButton,
-            R.id.plusProvisionsButton,
-            R.id.provisionsValue,
-            Adventure::provisionsValue
-        )
+    private fun testVitalStatistics(adventure: Adventure) {
+        testStaminaStat(adventure)
+        testSkillStat(adventure)
+        testLuckStat(adventure)
     }
 }

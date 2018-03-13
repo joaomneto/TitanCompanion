@@ -66,8 +66,8 @@ class SLStarshipStatsFragment : AdventureFragment() {
     override fun refreshScreensFromResume() {
         val adv = this.context as SLAdventure
 
-        statsLasersValue.text = adv.currentLasers.toString()
-        statsShieldsValue.text = adv.currentShields.toString()
+        statsLasersValue?.text = adv.currentLasers.toString()
+        statsShieldsValue?.text = adv.currentShields.toString()
 
         if (adv.starspray) {
             starshipLayout.setImageBitmap(generateStarshipLayout(adv))

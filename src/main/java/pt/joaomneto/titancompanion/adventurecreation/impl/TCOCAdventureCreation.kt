@@ -39,7 +39,7 @@ class TCOCAdventureCreation : AdventureCreation(
 
     var spellValue = -1
 
-    private val tcocSpellsFragment: TCOCAdventureCreationSpellsFragment
+    private val tcocSpellsFragment: TCOCAdventureCreationSpellsFragment?
         get() = getFragment(TCOCAdventureCreationSpellsFragment::class)
 
     val spellListSize: Int
@@ -88,7 +88,7 @@ class TCOCAdventureCreation : AdventureCreation(
 
     override fun rollGamebookSpecificStats(view: View) {
         spellValue = DiceRoller.roll2D6().sum + 6
-        tcocSpellsFragment.spellScoreValue?.text = "" + spellValue
+        tcocSpellsFragment?.spellScoreValue?.text = "" + spellValue
     }
 
     fun addSpell(spell: String) {

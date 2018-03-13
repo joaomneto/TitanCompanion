@@ -142,12 +142,12 @@ class SLWeaponCombatFragment : AdventureFragment() {
 
         val adv = activity as SLAdventure
 
-        enemyshieldsValue.text = enemyShields.toString()
-        enemylasersValue.text = enemyLasers.toString()
-        enemyratingValue.text = enemyRating.toString()
-        playerratingValue.text = adv.rating.toString()
-        playershieldsValue.text = adv.currentShields.toString()
-        playerlasersValue.text = adv.currentLasers.toString()
+        enemyshieldsValue?.text = enemyShields.toString()
+        enemylasersValue?.text = enemyLasers.toString()
+        enemyratingValue?.text = enemyRating.toString()
+        playerratingValue?.text = adv.rating.toString()
+        playershieldsValue?.text = adv.currentShields.toString()
+        playerlasersValue?.text = adv.currentLasers.toString()
 
         buttonAttack.isEnabled = adv.currentShields > 0
     }

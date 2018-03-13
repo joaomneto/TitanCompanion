@@ -74,6 +74,6 @@ class BNCAdventure : Adventure(
         val message = if (result) R.string.success else R.string.failed
         Adventure.Companion.showAlert(message, this)
 
-        (getFragment(BNCAdventureVitalStatsFragment::class)).refreshScreensFromResume()
+        getFragment(BNCAdventureVitalStatsFragment::class)?.refreshScreensFromResume()
     }
 }

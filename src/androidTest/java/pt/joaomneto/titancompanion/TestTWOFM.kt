@@ -31,8 +31,8 @@ open class TestTWOFM : TCBaseTest() {
         testVitalStatisticsFragment()
     }
 
-    protected fun testVitalStatisticsFragment() {
-        testVitalStatistics(activityInstance as Adventure)
+    override fun testVitalStatisticsFragment() {
+        super.testVitalStatisticsFragment()
         testProvisions(activityInstance as Adventure)
         testPotion(activityInstance as Adventure)
     }
@@ -40,8 +40,9 @@ open class TestTWOFM : TCBaseTest() {
     private fun testProvisions(adventure: Adventure) {
         testProvisionStat(adventure)
         performClickOnButton(R.id.minusStaminaButton, 4)
+        performClickOnButton(R.id.plusProvisionsButton, 2)
         performClickOnButton(R.id.buttonConsumeProvisions)
-        performClickOnButton(android.R.id.button1)
+        performClickOnButton(android.R.id.button2)
         //TODO
     }
 
@@ -50,15 +51,11 @@ open class TestTWOFM : TCBaseTest() {
         performClickOnButton(R.id.minusSkillButton)
         performClickOnButton(R.id.minusLuckButton)
         performClickOnButton(R.id.usePotionButton)
-        performClickOnButton(android.R.id.button1)
+        performClickOnButton(android.R.id.button2)
         //TODO
     }
 
-    private fun testVitalStatistics(adventure: Adventure) {
-        testStaminaStat(adventure)
-        testSkillStat(adventure)
-        testLuckStat(adventure)
-    }
+
 
     protected open fun assertCorrectPotionDosage() {
         onView(withId(R.id.potionDosesSpinner)).check(matches(withSpinnerText(containsString(getString(R.string.potionTwoDoses)))))
@@ -98,5 +95,15 @@ open class TestTWOFM : TCBaseTest() {
         assertCorrectPotionDosage()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
+    }
+
+    fun testProvisionStat(adventure: Adventure){
+        testIncrementalStat(
+            adventure,
+            R.id.minusProvisionsButton,
+            R.id.plusProvisionsButton,
+            R.id.provisionsValue,
+            Adventure::provisions
+        )
     }
 }

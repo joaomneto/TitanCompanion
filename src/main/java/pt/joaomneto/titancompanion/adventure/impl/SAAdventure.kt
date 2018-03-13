@@ -44,7 +44,7 @@ class SAAdventure : Adventure(
     var currentArmor: Int? = null
     internal var weapons: MutableList<SAWeapon> = ArrayList()
 
-    val vitalStatsFragment: SAAdventureWeaponsFragment
+    val vitalStatsFragment: SAAdventureWeaponsFragment?
         get() = fragmentConfiguration[FRAGMENT_WEAPONS].fragment as SAAdventureWeaponsFragment
 
     override val consumeProvisionText = R.string.usePepPill

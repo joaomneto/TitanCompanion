@@ -20,7 +20,7 @@ class STRIDERAdventureCreation : AdventureCreation(
 
     var fearValue = -1
 
-    private val striderVitalStatisticsFragment: STRIDERVitalStatisticsFragment
+    private val striderVitalStatisticsFragment: STRIDERVitalStatisticsFragment?
         get() = getFragment(STRIDERVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
@@ -33,6 +33,6 @@ class STRIDERAdventureCreation : AdventureCreation(
 
     override fun rollGamebookSpecificStats(view: View) {
         fearValue = DiceRoller.rollD6() + 6
-        striderVitalStatisticsFragment.fearValue.text = "" + fearValue
+        striderVitalStatisticsFragment?.fearValue?.text = "" + fearValue
     }
 }

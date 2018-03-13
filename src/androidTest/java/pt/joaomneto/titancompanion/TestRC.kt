@@ -8,6 +8,5 @@ import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.ROBOT_COMMANDO
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class TestRC : TestST() {
-
     override val gamebook = ROBOT_COMMANDO
 }

@@ -68,7 +68,7 @@ class STRIDERAdventure : Adventure(
         val message = if (result) R.string.success else R.string.failed
         Adventure.Companion.showAlert(message, this)
 
-        (fragmentConfiguration[0].fragment as STRIDERAdventureVitalStatsFragment).refreshScreensFromResume()
+        (getFragment(STRIDERAdventureVitalStatsFragment::class))?.refreshScreensFromResume()
     }
 
     fun increaseTime() {

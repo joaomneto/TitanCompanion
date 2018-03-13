@@ -92,11 +92,11 @@ abstract class BaseFragmentActivity(
     }
 
     @Suppress("UNCHECKED_CAST")
-    fun <F : Fragment> getFragment(kclass: KClass<F>): F {
+    fun <F : Fragment> getFragment(kclass: KClass<F>): F? {
         var fragment: F? = null
         mSectionsPagerAdapter?.registeredFragments?.forEach { _: Int, frag: Fragment ->
             if (kclass.isInstance(frag)) fragment = frag as F
         }
-        return fragment ?: throw IllegalArgumentException("There is no ${kclass.simpleName} instance in this activity.")
+        return fragment
     }
 }

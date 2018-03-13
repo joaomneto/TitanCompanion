@@ -28,7 +28,7 @@ class AODAdventure : Adventure(
 
     override val currencyName = R.string.gold
 
-    val soldiersFragment: AODAdventureSoldiersFragment
+    val soldiersFragment: AODAdventureSoldiersFragment?
         get() = getFragment(AODAdventureSoldiersFragment::class)
 
     override fun onCreate(savedInstanceState: Bundle?) {

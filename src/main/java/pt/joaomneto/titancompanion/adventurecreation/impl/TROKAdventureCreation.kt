@@ -21,7 +21,7 @@ class TROKAdventureCreation : AdventureCreation(
     private var currentWeapons = -1
     private var currentShields = -1
 
-    private val trokVitalStatisticsFragment: TROKVitalStatisticsFragment
+    private val trokVitalStatisticsFragment: TROKVitalStatisticsFragment?
         get() = getFragment(TROKVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
@@ -48,7 +48,7 @@ class TROKAdventureCreation : AdventureCreation(
     override fun rollGamebookSpecificStats(view: View) {
         currentWeapons = DiceRoller.rollD6() + 6
         currentShields = DiceRoller.rollD6()
-        trokVitalStatisticsFragment.weaponsValue.text = "" + currentWeapons
-        trokVitalStatisticsFragment.shieldsValue.text = "" + currentShields
+        trokVitalStatisticsFragment?.weaponsValue?.text = "" + currentWeapons
+        trokVitalStatisticsFragment?.shieldsValue?.text = "" + currentShields
     }
 }

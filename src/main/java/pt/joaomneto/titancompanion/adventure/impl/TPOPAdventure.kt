@@ -34,16 +34,21 @@ class TPOPAdventure : TWOFMAdventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
-        bw.write("copper=" + copper + "\n")
-        bw.write("gold=" + gold + "\n")
+        bw.write("standardPotion=$standardPotion\n")
+        bw.write("standardPotionValue=$standardPotionValue\n")
+        bw.write("copper=$copper\n")
+        bw.write("gold=$gold\n")
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
         val copperS = savedGame.getProperty("copper")
         val goldS = savedGame.getProperty("gold")
+        val standardPotionS = savedGame.getProperty("standardPotion")
+        val standardPotionValueS = savedGame.getProperty("standardPotionValue")
 
         this.copper = if (copperS.isNullOrBlank()) 0 else Integer.parseInt(copperS)
         this.gold = if (copperS.isNullOrBlank()) 0 else Integer.parseInt(goldS)
+        this.standardPotion = if (standardPotionS.isNullOrBlank()) -1 else Integer.parseInt(standardPotionS)
+        this.standardPotionValue = if (standardPotionValueS.isNullOrBlank()) -1 else Integer.parseInt(standardPotionValueS)
     }
 }

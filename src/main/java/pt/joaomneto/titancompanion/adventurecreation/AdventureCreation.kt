@@ -67,9 +67,9 @@ abstract class AdventureCreation(
         val staminaValue = findViewById<TextView>(R.id.staminaValue)
         val luckValue = findViewById<TextView>(R.id.luckValue)
 
-        skillValue.text = skill.toString()
-        staminaValue.text = stamina.toString()
-        luckValue.text = luck.toString()
+        skillValue?.text = skill.toString()
+        staminaValue?.text = stamina.toString()
+        luckValue?.text = luck.toString()
     }
 
     fun saveAdventure() {

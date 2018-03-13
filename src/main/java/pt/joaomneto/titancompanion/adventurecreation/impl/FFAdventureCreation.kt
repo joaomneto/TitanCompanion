@@ -21,7 +21,7 @@ class FFAdventureCreation : AdventureCreation(
     private var currentFirepower = -1
     private var currentArmour = -1
 
-    private val ffVitalStatsFragment: FFVitalStatisticsFragment
+    private val ffVitalStatsFragment: FFVitalStatisticsFragment?
         get() = getFragment(FFVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
@@ -53,7 +53,7 @@ class FFAdventureCreation : AdventureCreation(
         currentFirepower = DiceRoller.rollD6() + 6
         currentArmour = DiceRoller.roll2D6().sum + 24
         stamina = DiceRoller.roll2D6().sum + 24
-        ffVitalStatsFragment.firepowerValue.text = currentFirepower.toString()
-        ffVitalStatsFragment.armorValue.text = currentArmour.toString()
+        ffVitalStatsFragment?.firepowerValue?.text = currentFirepower.toString()
+        ffVitalStatsFragment?.armorValue?.text = currentArmour.toString()
     }
 }

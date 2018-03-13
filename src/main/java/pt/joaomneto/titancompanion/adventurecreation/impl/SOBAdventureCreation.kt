@@ -21,7 +21,7 @@ class SOBAdventureCreation : AdventureCreation(
     private var currentCrewStrength = -1
     private var currentCrewStrike = -1
 
-    private val sobVitalStatisticsFragment: SOBVitalStatisticsFragment
+    private val sobVitalStatisticsFragment: SOBVitalStatisticsFragment?
         get() = getFragment(SOBVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
@@ -39,8 +39,8 @@ class SOBAdventureCreation : AdventureCreation(
     override fun rollGamebookSpecificStats(view: View) {
         currentCrewStrike = DiceRoller.rollD6() + 6
         currentCrewStrength = DiceRoller.roll2D6().sum + 6
-        sobVitalStatisticsFragment.crewStrikeValue.text = "" + currentCrewStrike
-        sobVitalStatisticsFragment.crewStrengthValue.text = "" + currentCrewStrength
+        sobVitalStatisticsFragment?.crewStrikeValue?.text = "" + currentCrewStrike
+        sobVitalStatisticsFragment?.crewStrengthValue?.text = "" + currentCrewStrength
     }
 
     override fun validateCreationSpecificParameters(): String? {

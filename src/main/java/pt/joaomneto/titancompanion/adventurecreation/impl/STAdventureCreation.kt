@@ -39,7 +39,7 @@ class STAdventureCreation : AdventureCreation(
     var securityGuard2Stamina = -1
     var shipShields = -1
 
-    private val stCrewAndShipVitalStatisticsFragment: STCrewAndShipVitalStatisticsFragment
+    private val stCrewAndShipVitalStatisticsFragment: STCrewAndShipVitalStatisticsFragment?
         get() = getFragment(STCrewAndShipVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
@@ -91,7 +91,7 @@ class STAdventureCreation : AdventureCreation(
         securityGuard2Stamina = DiceRoller.roll2D6().sum + 12
         shipWeapons = DiceRoller.rollD6() + 6
         shipShields = DiceRoller.roll2D6().sum + 12
-        stCrewAndShipVitalStatisticsFragment.updateFields()
+        stCrewAndShipVitalStatisticsFragment?.updateFields()
     }
 
     override fun validateCreationSpecificParameters(): String? {

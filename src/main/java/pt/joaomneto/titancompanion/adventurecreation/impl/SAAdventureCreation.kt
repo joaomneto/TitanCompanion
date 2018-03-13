@@ -29,10 +29,10 @@ class SAAdventureCreation : AdventureCreation(
     var currentWeapons = -1
     var weapons: MutableList<SAWeapon> = mutableListOf()
 
-    private val saVitalStatisticsFragmentt: SAVitalStatisticsFragment
+    private val saVitalStatisticsFragmentt: SAVitalStatisticsFragment?
         get() = getFragment(SAVitalStatisticsFragment::class)
 
-    private val saWeaponsFragment: SAWeaponsFragment
+    private val saWeaponsFragment: SAWeaponsFragment?
         get() = getFragment(SAWeaponsFragment::class)
 
     init {
@@ -51,9 +51,9 @@ class SAAdventureCreation : AdventureCreation(
 
     override fun rollGamebookSpecificStats(view: View) {
         currentArmor = DiceRoller.rollD6() + 6
-        saVitalStatisticsFragmentt.armorValue.text = currentArmor.toString()
+        saVitalStatisticsFragmentt?.armorValue?.text = currentArmor.toString()
         currentWeapons = DiceRoller.rollD6()
-        saWeaponsFragment.weaponsValue.text = currentWeapons.toString()
+        saWeaponsFragment?.weaponsValue?.text = currentWeapons.toString()
     }
 
     override fun validateCreationSpecificParameters(): String? {

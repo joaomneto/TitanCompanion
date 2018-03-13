@@ -20,7 +20,7 @@ class HOHAdventureCreation : AdventureCreation(
 
     var fearValue = -1
 
-    private val hohVitalStatisticsFragment: HOHVitalStatisticsFragment
+    private val hohVitalStatisticsFragment: HOHVitalStatisticsFragment?
         get() = getFragment(HOHVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
@@ -32,7 +32,7 @@ class HOHAdventureCreation : AdventureCreation(
 
     override fun rollGamebookSpecificStats(view: View) {
         fearValue = DiceRoller.rollD6() + 6
-        hohVitalStatisticsFragment.fearValue.text = fearValue.toString()
+        hohVitalStatisticsFragment?.fearValue?.text = fearValue.toString()
     }
 
     override fun validateCreationSpecificParameters(): String? {

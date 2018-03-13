@@ -20,6 +20,7 @@ open class TestST : TCBaseTest() {
         performVitalStatisticsRoll()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
+        testVitalStatisticsFragment()
     }
 
     @Test
