@@ -41,8 +41,12 @@ jobs:
            command:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
-           name: Run Firebase Testing
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR}
+           name: Run Firebase Testing Phase 1
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
+           no_output_timeout: 2400
+       - run:
+           name: Run Firebase Testing Phase 2
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
