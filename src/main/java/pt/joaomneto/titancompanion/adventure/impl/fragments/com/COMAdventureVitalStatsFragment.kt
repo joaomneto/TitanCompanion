@@ -63,8 +63,8 @@ class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         else
             useTabashaButton.setOnClickListener({ adv.useTabashaInitialAction() })
 
-        fuelValue.text = "${adv.fuel}"
-        tabashaValue.text = "${adv.tabasha}"
+        fuelValue?.text = "${adv.fuel}"
+        tabashaValue?.text = "${adv.tabasha}"
         useTabashaButton.isEnabled = adv.tabasha > 0
     }
 }

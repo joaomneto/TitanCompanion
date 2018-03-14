@@ -20,7 +20,7 @@ class SLAdventureCreation : AdventureCreation(
 
     var rating = 0
 
-    private val slVitalStatisticsFragment: SLVitalStatisticsFragment
+    private val slVitalStatisticsFragment: SLVitalStatisticsFragment?
         get() = getFragment(SLVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
@@ -38,7 +38,7 @@ class SLAdventureCreation : AdventureCreation(
 
     override fun rollGamebookSpecificStats(view: View) {
         rating = DiceRoller.rollD6()
-        slVitalStatisticsFragment.getRatingValue()?.text = rating.toString()
+        slVitalStatisticsFragment?.getRatingValue()?.text = rating.toString()
     }
 
     override fun validateCreationSpecificParameters(): String? {

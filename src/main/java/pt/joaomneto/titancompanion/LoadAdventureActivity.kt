@@ -103,7 +103,7 @@ class LoadAdventureActivity : BaseActivity() {
                         ADVENTURE_FILE,
                         savepointFiles[which].name
                     )
-                    intent.putExtra(ADVENTURE_DIR, dir)
+                    intent.putExtra(ADVENTURE_DIR, dir.name)
                     startActivity(intent)
                 } catch (e: Exception) {
                     e.printStackTrace()

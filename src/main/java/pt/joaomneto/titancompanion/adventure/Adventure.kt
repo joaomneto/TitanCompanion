@@ -65,8 +65,8 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     var name: String? = null
     var savedGame: Properties = Properties()
 
-    private val vitalStatsFragment: AdventureVitalStatsFragment
-        get() = fragmentConfiguration[FRAGMENT_VITAL_STATS].fragment as AdventureVitalStatsFragment
+    private val vitalStatsFragment: AdventureVitalStatsFragment?
+        get() = getFragment(AdventureVitalStatsFragment::class)
 
     open val consumeProvisionText: Int = R.string.consumeProvisions
 
@@ -375,8 +375,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             provisions == 0 -> showAlert(R.string.noProvisionsLeft, this)
             getCurrentStamina() == initialStamina -> showAlert(R.string.provisionsMaxStamina, this)
             else -> {
-                val vitalstats = vitalStatsFragment
-                vitalstats.setProvisionsValue(--provisions)
+                vitalStatsFragment?.setProvisionsValue(--provisions)
                 val staminaGain = Math.min(provisionsValue, initialStamina - currentStamina)
                 setCurrentStamina(Math.min(getCurrentStamina() + provisionsValue, initialStamina))
                 showAlert(resources.getString(R.string.provisionsStaminaGain, staminaGain), this)
@@ -391,7 +390,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     fun setCurrentSkill(currentSkill: Int) {
         val adventureVitalStatsFragment = vitalStatsFragment
         this.currentSkill = currentSkill
-        adventureVitalStatsFragment.refreshScreensFromResume()
+        adventureVitalStatsFragment?.refreshScreensFromResume()
     }
 
     fun getCurrentLuck(): Int {
@@ -401,7 +400,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     fun setCurrentLuck(currentLuck: Int) {
         val adventureVitalStatsFragment = vitalStatsFragment
         this.currentLuck = currentLuck
-        adventureVitalStatsFragment.refreshScreensFromResume()
+        adventureVitalStatsFragment?.refreshScreensFromResume()
     }
 
     fun getCurrentStamina(): Int {
@@ -411,7 +410,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     fun setCurrentStamina(currentStamina: Int) {
         val adventureVitalStatsFragment = vitalStatsFragment
         this.currentStamina = currentStamina
-        adventureVitalStatsFragment.refreshScreensFromResume()
+        adventureVitalStatsFragment?.refreshScreensFromResume()
     }
 
     override fun onPause() {
@@ -481,8 +480,8 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     fun refreshScreens() {
 
         fragmentConfiguration
-            .map { it.fragment as AdventureFragment }
-            .forEach { it.refreshScreensFromResume() }
+            .map { getFragment(it.fragment) as AdventureFragment?  }
+            .forEach { it?.refreshScreensFromResume() }
     }
 
     protected fun stringToArray(_string: String?): List<String> {

@@ -140,14 +140,12 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
 
     private fun setInitialLuck(adv: Adventure): (View) -> Unit {
         return { view ->
-
             val alert = createAlertForInitialStatModification(R.string.setInitialLuck, { dialog, _ ->
 
                 val value = getValueFromAlertTextField(view, dialog as AlertDialog)
 
                 adv.initialLuck = value
             })
-
 
             alert.show()
         }

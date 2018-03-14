@@ -24,7 +24,7 @@ class POFAdventureCreation : TFODAdventureCreation(
 
     private var powerValue = -1
 
-    private val pofVitalStatisticsFragment: POFVitalStatisticsFragment
+    private val pofVitalStatisticsFragment: POFVitalStatisticsFragment?
         get() = getFragment(POFVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
@@ -40,7 +40,7 @@ class POFAdventureCreation : TFODAdventureCreation(
 
     override fun rollGamebookSpecificStats(view: View) {
         powerValue = DiceRoller.rollD6() + 6
-        pofVitalStatisticsFragment.powerValue.text = "" + powerValue
+        pofVitalStatisticsFragment?.powerValue?.text = "" + powerValue
     }
 
     override fun validateCreationSpecificParameters(): String? {

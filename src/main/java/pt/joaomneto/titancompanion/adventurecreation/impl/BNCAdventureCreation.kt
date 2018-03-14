@@ -20,7 +20,7 @@ class BNCAdventureCreation : AdventureCreation(
 
     private var willpowerValue = -1
 
-    private val bncVitalStatisticsFragment: BNCVitalStatisticsFragment
+    private val bncVitalStatisticsFragment: BNCVitalStatisticsFragment?
         get() = getFragment(BNCVitalStatisticsFragment::class)
 
     @Throws(IOException::class)
@@ -35,7 +35,7 @@ class BNCAdventureCreation : AdventureCreation(
 
     override fun rollGamebookSpecificStats(view: View) {
         willpowerValue = DiceRoller.rollD6() + 6
-        bncVitalStatisticsFragment.willpowerValue.text = "" + willpowerValue
+        bncVitalStatisticsFragment?.willpowerValue?.text = "" + willpowerValue
     }
 
     override fun validateCreationSpecificParameters(): String? {

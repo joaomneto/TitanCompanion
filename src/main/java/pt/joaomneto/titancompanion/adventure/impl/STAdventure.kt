@@ -85,7 +85,7 @@ class STAdventure : Adventure(
     private var stringToCrewmanMap: MutableMap<String, STCrewman> = mutableMapOf()
     private var crewmanToStringMap: MutableMap<STCrewman, String> = mutableMapOf()
 
-    private val stCrewStatsFragment: STCrewStatsFragment
+    private val stCrewStatsFragment: STCrewStatsFragment?
         get() = fragmentConfiguration[FRAGMENT_CREW_STATS].fragment as STCrewStatsFragment
 
     val landingParty: Set<STCrewman>
@@ -290,7 +290,7 @@ class STAdventure : Adventure(
             STAdventure.STCrewman.SECURITY_GUARD2 -> currentSecurityGuard2Stamina = value
         }
 
-        stCrewStatsFragment.refreshScreensFromResume()
+        stCrewStatsFragment?.refreshScreensFromResume()
     }
 
     fun setCrewmanDead(crewman: STCrewman) {
@@ -301,48 +301,48 @@ class STAdventure : Adventure(
                 currentScienceOfficerSkill = initialScienceOfficerSkill - 2
                 currentScienceOfficerStamina = DiceRoller.roll2D6().sum!! + 12
                 isLandingPartyScienceOfficer = false
-                stCrewStatsFragment.disableCrewmanLandingPartyOption(STCrewman.SCIENCE_OFFICER)
+                stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SCIENCE_OFFICER)
             }
             STAdventure.STCrewman.MEDICAL_OFFICER -> {
                 isDeadMedicalOfficer = true
                 currentMedicalOfficerSkill = initialMedicalOfficerSkill - 2
                 currentMedicalOfficerStamina = DiceRoller.roll2D6().sum!! + 12
                 isLandingPartyMedicalOfficer = false
-                stCrewStatsFragment.disableCrewmanLandingPartyOption(STCrewman.MEDICAL_OFFICER)
+                stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.MEDICAL_OFFICER)
             }
             STAdventure.STCrewman.ENGINEERING_OFFICER -> {
                 isDeadEngineeringOfficer = true
                 currentEngineeringOfficerSkill = initialEngineeringOfficerSkill - 2
                 currentEngineeringOfficerStamina = DiceRoller.roll2D6().sum!! + 12
                 isLandingPartyEngineeringOfficer = false
-                stCrewStatsFragment.disableCrewmanLandingPartyOption(STCrewman.ENGINEERING_OFFICER)
+                stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.ENGINEERING_OFFICER)
             }
             STAdventure.STCrewman.SECURITY_OFFICER -> {
                 isDeadSecurityOfficer = true
                 currentSecurityOfficerSkill = initialSecurityOfficerSkill - 2
                 currentSecurityOfficerStamina = DiceRoller.roll2D6().sum!! + 12
                 isLandingPartySecurityOfficer = false
-                stCrewStatsFragment.disableCrewmanLandingPartyOption(STCrewman.SECURITY_OFFICER)
+                stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_OFFICER)
             }
             STAdventure.STCrewman.SECURITY_GUARD1 -> {
                 isDeadSecurityGuard1 = true
                 currentSecurityGuard1Skill = initialSecurityGuard1Skill - 2
                 currentSecurityGuard1Stamina = DiceRoller.roll2D6().sum!! + 12
                 isLandingPartySecurityGuard1 = false
-                stCrewStatsFragment.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD1)
+                stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD1)
             }
             STAdventure.STCrewman.SECURITY_GUARD2 -> {
                 isDeadSecurityGuard2 = true
                 currentSecurityGuard2Skill = initialSecurityGuard2Skill - 2
                 currentSecurityGuard2Stamina = DiceRoller.roll2D6().sum!! + 12
                 isLandingPartySecurityGuard2 = false
-                stCrewStatsFragment.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD2)
+                stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD2)
             }
             else -> {
             }
         }
 
-        stCrewStatsFragment.refreshScreensFromResume()
+        stCrewStatsFragment?.refreshScreensFromResume()
     }
 
     fun getCrewmanForString(value: String): STCrewman {
