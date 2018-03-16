@@ -96,7 +96,7 @@ android {
 
 if (project.hasProperty('SERVICE_ACCOUNT_EMAIL')) {
     play {
-        track = 'production'
+        track = 'beta'
         serviceAccountEmail = SERVICE_ACCOUNT_EMAIL
         pk12File = file(SERVICE_ACCOUNT_SECRET_FILE)
     }
