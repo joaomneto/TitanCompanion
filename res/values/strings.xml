@@ -285,6 +285,7 @@
     <string name="consumePotion">Consume Potion</string>
     <string name="addNote">Add Note</string>
     <string name="gold">Gold:</string>
+    <string name="gold2">Gold</string>
     <string name="copper">Copper:</string>
     <string name="editGold">Edit</string>
     <string name="equipment">Equipment:</string>
@@ -1226,4 +1227,7 @@
     <string name="confirmAbandonStarspray">Do you wish to abandon the Starspray?</string>
     <string name="confirmRecoverStarspray">Do you wish to recover the Starspray?</string>
     <string name="shipAndWeapons"><![CDATA[Ship & Weapons]]></string>
+    <!--Spellbreaker-->
+    <string name="faith">Faith</string>
+    <string name="faith2">Faith:</string>
 </resources>

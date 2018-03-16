@@ -39,7 +39,7 @@ class POFAdventureCreation : TFODAdventureCreation(
     }
 
     override fun rollGamebookSpecificStats(view: View) {
-        powerValue = DiceRoller.rollD6() + 6
+        powerValue = DiceRoller.roll2D6().sum + 6
         pofVitalStatisticsFragment?.powerValue?.text = "" + powerValue
     }
 

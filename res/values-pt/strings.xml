@@ -662,6 +662,10 @@
     <string name="slEnemyVictory">O inimigo destruiu-te...</string>
     <string name="slPlayerVictory">Venceste o teu inimigo!</string>
     <string name="shipAndWeapons"><![CDATA[Nave & Armas]]></string>
+    <!--Spellbreaker-->
+    <string name="gold2">Ouro</string>
+    <string name="faith">Fé</string>
+    <string name="faith2">Fé:</string>
 
 
 </resources>

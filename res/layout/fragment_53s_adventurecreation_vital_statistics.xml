@@ -1,0 +1,153 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+            android:id="@+id/section_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/skillCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/skill"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/skillValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/skillCount"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/skillCount"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/staminaCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/skillCount"
+            android:layout_marginTop="10dp"
+            android:text="@string/stamina"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/staminaValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/staminaCount"
+            android:layout_alignTop="@+id/staminaCount"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/staminaCount"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/luckCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/staminaCount"
+            android:layout_marginTop="10dp"
+            android:text="@string/luck"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/luckValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/luckCount"
+            android:layout_alignTop="@+id/luckCount"
+            android:layout_marginLeft="20dp"
+            android:layout_toLeftOf="@+id/staminaValue"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/faithCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/luckCount"
+            android:layout_marginTop="10dp"
+            android:text="@string/faith"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/goldCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/faithCount"
+            android:layout_marginTop="10dp"
+            android:text="@string/gold"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/adventureName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/goldCount"
+            android:layout_marginTop="10dp"
+            android:text="@string/name"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <Button
+            android:id="@+id/buttonRollStats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonSaveAdventure"
+            android:layout_alignLeft="@+id/faithCount"
+            android:layout_alignParentRight="true"
+            android:text="@string/rollStats"
+    />
+
+    <Button
+            android:id="@+id/buttonSaveAdventure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/buttonRollStats"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/saveAdventure"
+    />
+
+    <EditText
+            android:id="@+id/adventureNameInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/adventureName"
+            android:layout_toRightOf="@+id/skillValue"
+            android:ems="10"
+            android:inputType="text">
+        <requestFocus/>
+    </EditText>
+
+    <TextView
+            android:id="@+id/faithValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/adventureName"
+            android:layout_alignTop="@+id/faithCount"
+            android:layout_toRightOf="@+id/faithCount"
+            android:layout_marginLeft="20dp"
+            android:text="@string/number_1"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+    <TextView
+            android:id="@+id/goldValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/adventureName"
+            android:layout_alignTop="@+id/goldCount"
+            android:layout_toRightOf="@+id/goldCount"
+            android:layout_marginLeft="20dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+</RelativeLayout>

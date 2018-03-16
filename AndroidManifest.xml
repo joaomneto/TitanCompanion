@@ -435,6 +435,16 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SAdventureCreation"
+            android:label="@string/s"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.SAdventure"
+            android:label="@string/s"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.EOTDAdventureCreation"
             android:label="@string/eotd"
 

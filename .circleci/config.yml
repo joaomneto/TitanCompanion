@@ -1,7 +1,8 @@
 version: 2
 jobs:
-  test:
+  test-phase1:
      working_directory: ~/code
+     parallelism: 2
      docker:
        - image: circleci/android:api-26-alpha
      environment:
@@ -44,6 +45,54 @@ jobs:
            name: Run Firebase Testing Phase 1
            command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
            no_output_timeout: 2400
+       - store_artifacts:
+           path: build/reports
+           destination: reports
+       - run:
+           name: Recover Test Results
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/hammerhead-21-en-portrait/*.xml ${HOME}/testResults/
+       - store_test_results:
+           path: ~/testResults
+  test-phase2:
+     working_directory: ~/code
+     docker:
+       - image: circleci/android:api-26-alpha
+     environment:
+       JVM_OPTS: -Xmx2048m
+       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
+     steps:
+       - checkout
+       - run:
+           name: Lint
+           command: ./gradlew lint
+       - run:
+           name: Generate Debug APK
+           command: ./gradlew assembleDebug -PdisablePreDex
+       - run:
+           name: Generate Debug Testing APK
+           command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
+       - run:
+          name: Install tools
+          command: |
+             sudo apt-get install -y gcc python-dev python-setuptools
+             sudo easy_install -U pip
+             sudo pip uninstall -y crcmod
+             sudo pip install -U crcmod
+             pip install awscli --upgrade --user
+             cat /proc/sys/kernel/random/uuid > ${HOME}/uuid
+             mkdir ${HOME}/testResults
+       - run:
+           name: Install GCloud
+           command: |
+              echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+              curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+              sudo apt-get update && sudo apt-get install -y google-cloud-sdk
+              sudo apt-get update && sudo apt-get --only-upgrade install -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
+       - run:
+           name: Configure Google Cloud Access
+           command:
+              ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 2
            command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
@@ -80,10 +129,12 @@ workflows:
   version: 2
   continuous-integration-and-delivery:
     jobs:
-      - test
+      - test-phase1
+      - test-phase2
       - deploy:
           requires:
-            - test
+            - test-phase1
+            - test-phase2
           filters:
             branches:
               only: master_production

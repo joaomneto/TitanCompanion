@@ -697,4 +697,9 @@
     <string name="slEnemyHitPlayer">Votre adversaire vous a touché (-%1$d Écrans).</string>
     <string name="shipAndWeapons"><![CDATA[Vaisseau & Armes]]></string>
 
+    <!--SpellBreaker-->
+    <string name="gold2">Or</string>
+    <string name="faith">Foi</string>
+    <string name="faith2">Foi:</string>
+
 </resources>
