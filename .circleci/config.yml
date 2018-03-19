@@ -129,8 +129,14 @@ workflows:
   version: 2
   continuous-integration-and-delivery:
     jobs:
-      - test-phase1
-      - test-phase2
+      - test-phase1:
+          filters:
+            branches:
+              ignore: /master.*/
+      - test-phase2:
+          filters:
+            branches:
+              ignore: /master.*/
       - deploy:
           requires:
             - test-phase1
