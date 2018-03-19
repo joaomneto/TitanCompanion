@@ -138,9 +138,6 @@ workflows:
             branches:
               ignore: /master.*/
       - deploy:
-          requires:
-            - test-phase1
-            - test-phase2
           filters:
             branches:
               only: master_production
