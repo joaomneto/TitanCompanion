@@ -393,13 +393,13 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SOSAdventureCreation"
-            android:label="@string/sos"
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SOTAAdventureCreation"
+            android:label="@string/sota"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="pt.joaomneto.titancompanion.adventure.impl.SOSAdventure"
-            android:label="@string/sos"
+            android:name="pt.joaomneto.titancompanion.adventure.impl.SOTAAdventure"
+            android:label="@string/sota"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -412,6 +412,17 @@
             android:label="@string/sl"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.SOSAdventureCreation"
+            android:label="@string/sos"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.SOSAdventure"
+            android:label="@string/sos"
+            android:screenOrientation="portrait" >
+        </activity>
+
         <activity
             android:name="pt.joaomneto.titancompanion.adventurecreation.impl.AODAdventureCreation"
             android:label="@string/aod"
