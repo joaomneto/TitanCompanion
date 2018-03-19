@@ -1,22 +1,28 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:id="@+id/adventureVitalStats"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:columnCount="3"
+    android:columnOrderPreserved="false"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".adventurecreation.fragments.VitalStatisticsFragment">
+    android:rowCount="6"
+    android:rowOrderPreserved="false"
+    android:useDefaultMargins="true"
+    tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/timeControls"
         tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment">
 
         <TextView
-            android:id="@+id/timeText"
+            android:id="@+id/textField1"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
@@ -29,17 +35,17 @@
             android:id="@+id/minusTimeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/timeText"
-            android:layout_alignTop="@+id/timeText"
+            android:layout_alignBottom="@+id/textField1"
+            android:layout_alignTop="@+id/textField1"
             android:layout_toStartOf="@+id/statsTimeValue"
             android:text="@string/minus" />
 
-        <TextView
+        <Button
             android:id="@+id/statsTimeValue"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignBottom="@+id/timeText"
-            android:layout_alignTop="@+id/timeText"
+            android:layout_alignBottom="@+id/textField1"
+            android:layout_alignTop="@+id/textField1"
             android:layout_toStartOf="@+id/plusTimeButton"
             android:gravity="center"
             android:text="12"
@@ -49,253 +55,30 @@
             android:id="@+id/plusTimeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/timeText"
+            android:layout_alignBottom="@+id/textField1"
             android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/timeText"
+            android:layout_alignTop="@+id/textField1"
             android:text="@string/plus" />
     </RelativeLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:orientation="vertical"
+        android:gravity="center"
+        android:weightSum="1"
+        android:layout_below="@id/timeControls">
 
-        <TableLayout
-            android:id="@+id/strider_timeBar"
+        <ImageView
+            android:id="@+id/hourglassLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="1">
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-            <TableRow
-                android:background="@drawable/border_back"
-                android:maxHeight="17dp"
-                android:minHeight="17dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:height="17dp"
-                    android:text="@string/empty" />
-            </TableRow>
-
-
-        </TableLayout>
-
-       
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/img_32sota_hourglass"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
