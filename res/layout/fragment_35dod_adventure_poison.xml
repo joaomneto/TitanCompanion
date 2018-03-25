@@ -18,7 +18,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/timeControls"
+        android:id="@+id/poisonControls"
         tools:context=".adventure.impl.fragments.AdventureVitalStatsFragment">
 
         <TextView
@@ -28,31 +28,31 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:text="@string/time"
+            android:text="@string/poison"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
-            android:id="@+id/minusTimeButton"
+            android:id="@+id/minusPoisonButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textField1"
             android:layout_alignTop="@+id/textField1"
-            android:layout_toStartOf="@+id/statsTimeValue"
+            android:layout_toStartOf="@+id/statsPoisonValue"
             android:text="@string/minus" />
 
         <TextView
-            android:id="@+id/statsTimeValue"
+            android:id="@+id/statsPoisonValue"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignBottom="@+id/textField1"
             android:layout_alignTop="@+id/textField1"
-            android:layout_toStartOf="@+id/plusTimeButton"
+            android:layout_toStartOf="@+id/plusPoisonButton"
             android:gravity="center"
             android:text="12"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
-            android:id="@+id/plusTimeButton"
+            android:id="@+id/plusPoisonButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textField1"
@@ -68,14 +68,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_below="@id/timeControls">
+        android:layout_below="@id/poisonControls">
 
         <ImageView
-            android:id="@+id/hourglassLayout"
+            android:id="@+id/poisonLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:src="@drawable/img_32sota_hourglass"
+            android:padding="30dp"
+            android:src="@drawable/img_35dod_poison_0"
             android:layout_weight="1" />
 
     </LinearLayout>

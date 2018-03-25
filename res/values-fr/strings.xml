@@ -701,5 +701,11 @@
     <string name="gold2">Or</string>
     <string name="faith">Foi</string>
     <string name="faith2">Foi:</string>
+    <string name="goToParagraph">Avancez vers le paragraphe %1$d</string>
+    <string name="poison">"Poison: "</string>
+    <string name="medallions">Médaillons</string>
+    <string name="useMedallion">Utilizer Medaillon</string>
+    <string name="medallionFirstTime">Première utilization du medaillon de %1$s. (+4 Endurance, -1 Habilité, -1 Chance, +3 Poison) </string>
+    <string name="medallionUsage">Utilization du medaillon de %1$s. (+4 Endurance)</string>
 
 </resources>

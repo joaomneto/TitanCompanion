@@ -666,6 +666,11 @@
     <string name="gold2">Ouro</string>
     <string name="faith">Fé</string>
     <string name="faith2">Fé:</string>
-
+    <string name="goToParagraph">Vai para o parágrafo %1$d</string>
+    <string name="poison">"Veneno: "</string>
+    <string name="medallions">Medalhões</string>
+    <string name="useMedallion">Usar Medalhão</string>
+    <string name="medallionFirstTime">A usar o medalhão de %1$s pela primeira vez. (+4 Força, -1 Perícia, -1 Sorte, +3 Veneno)</string>
+    <string name="medallionUsage">A usar o medalhão de %1$s. (+4 Força)</string>
 
 </resources>

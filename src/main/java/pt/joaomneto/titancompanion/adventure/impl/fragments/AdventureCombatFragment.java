@@ -1,4 +1,4 @@
-package pt.joaomneto.titancompanion.adventure.impl.fragments;
+    package pt.joaomneto.titancompanion.adventure.impl.fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -220,7 +220,7 @@ public class AdventureCombatFragment extends AdventureFragment {
                     }
 
                     if (adv.getCurrentStamina() == 0) {
-                        Adventure.Companion.showAlert(getString(R.string.youreDead), adv);
+                        onPlayerDeath(adv);
                     }
                 }
                 refreshScreensFromResume();
@@ -228,6 +228,10 @@ public class AdventureCombatFragment extends AdventureFragment {
         });
 
         refreshScreensFromResume();
+    }
+
+    protected void onPlayerDeath(Adventure adv) {
+        Adventure.Companion.showAlert(getString(R.string.youreDead), adv);
     }
 
     protected Integer getKnockoutStamina() {
@@ -388,7 +392,7 @@ public class AdventureCombatFragment extends AdventureFragment {
 
         if (adv.getCurrentStamina() == 0) {
             removeAndAdvanceCombat(position);
-            Adventure.Companion.showAlert(R.string.youreDead, adv);
+            onPlayerDeath(adv);
         }
 
         combatResult.setText(combatResultText);
