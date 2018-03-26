@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp">
+
+    <TextView
+        android:id="@+id/goldLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/medallions"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/border_back"
+                  android:orientation="vertical"
+                  android:gravity="center_horizontal">
+
+        <ListView
+            android:id="@+id/medallionList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/potionDoses"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:choiceMode="singleChoice"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:padding="10dp">
+
+        </ListView>
+
+    </LinearLayout>
+
+</LinearLayout>

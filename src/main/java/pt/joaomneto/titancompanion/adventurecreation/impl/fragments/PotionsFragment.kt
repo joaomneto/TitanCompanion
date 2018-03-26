@@ -49,7 +49,7 @@ class PotionsFragment : Fragment() {
         lView.adapter = mAdapter
         lView.setSelector(R.drawable.row_selector)
 
-        lView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id -> (activity as TWOFMAdventureCreation).potion = position }
+        lView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ -> (activity as TWOFMAdventureCreation).potion = position }
 
         val spinner = rootView.findViewById<Spinner>(R.id.potionDosesSpinner)
 

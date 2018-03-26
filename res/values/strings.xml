@@ -927,11 +927,11 @@
     <string name="storagePermissionsRequired">Storage permission is required to used this app!</string>
     <string name="gamebookNotImplemented">Sorry, this gamebook is not implemented yet!</string>
     <string name="success">Success!</string>
-    <string name="failed">Failed...</string>
-    <string name="noProvisionsLeft">You have no provisions left...</string>
+    <string name="failed">Failed…</string>
+    <string name="noProvisionsLeft">You have no provisions left…</string>
     <string name="provisionsMaxStamina">You are already at maximum Stamina!</string>
     <string name="provisionsStaminaGain">You have gained %1$d stamina points!</string>
-    <string name="noPotionLeft">You have no potion left...</string>
+    <string name="noPotionLeft">You have no potion left…</string>
     <string name="potionSkillReplenish">You have replenished your Skill level!</string>
     <string name="potionStaminaReplenish">You have replenished your Stamina level!</string>
     <string name="potionLuckReplenish">You have replenished your Luck level (+1)!</string>
@@ -954,7 +954,7 @@
     <string name="robotSpecialAbilityAirDefense">Aircraft Defense</string>
     <string name="robotSpecialAbilityAirDefenseDesc">Has +3 bonus against flying enemies.</string>
     <string name="robotSpecialAbilityDoubleDamage">Double Damage</string>
-    <string name="robotSpecialAbilityDoubleDamageDesc">The Crusher deals double damage in each successfull attack.</string>
+    <string name="robotSpecialAbilityDoubleDamageDesc">The Crusher deals double damage in each successful attack.</string>
     <string name="robotSpecialAbilityCriticalHit">Critical Hit</string>
     <string name="robotSpecialAbilityCriticalHitDesc">When Battleman wins the round with a roll difference of 4 or more points it deals an additional damage point.</string>
     <string name="robotSpecialAbilitySmallWeapons">Small Weapons</string>
@@ -964,22 +964,22 @@
     <string name="robotSpecialAbilityAnkylosaurus">Ankylosaurus stun</string>
     <string name="robotSpecialAbilityAnkylosaurusDesc">Player can only parry in next round after losing a combat round.</string>
     <string name="currentReference">Current Reference?</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="normal">Normal</string>
     <string name="sequence">Simultaneous</string>
     <string name="youreLucky">You\'re lucky!</string>
     <string name="defeatedOpponent">You\'ve defeated your opponent!</string>
-    <string name="youreUnlucky">You\'re unlucky...</string>
-    <string name="knockedOut">You\'ve been knocked out...</string>
-    <string name="youreDead">You\'re dead...</string>
+    <string name="youreUnlucky">You\'re unlucky…</string>
+    <string name="knockedOut">You\'ve been knocked out…</string>
+    <string name="youreDead">You\'re dead…</string>
     <string name="hitEnemy">You have hit the enemy!</string>
     <string name="staminaInitials">St</string>
     <string name="defeatSuddenDeath">You\'ve defeated an enemy by sudden death!</string>
     <string name="blockedAttack">You have blocked the enemy attack!</string>
-    <string name="youWereHit">You\'ve been hit...</string>
+    <string name="youWereHit">You\'ve been hit…</string>
     <string name="bothMissed">Both you and the enemy have missed</string>
     <string name="defeatedEnemy">You have defeated an enemy!</string>
-    <string name="youveDied">You have died...</string>
+    <string name="youveDied">You have died…</string>
     <string name="youMustFillSkillAndStamina">You must fill the skill and stamina values!</string>
     <string name="someParametersMIssing">Some adventure parameters are missing (</string>
     <string name="adventureName">Adventure Name</string>
@@ -1007,7 +1007,7 @@
     <string name="aodKillEnemyTroops"> and you kill %1$d enemy troops.</string>
     <string name="aodDestroyEnemy">You have therefore destroyed the opposing army!</string>
     <string name="closeCombat">Close Combat</string>
-    <string name="aodArmyDestroyed">Your army has therefore been destroyed...</string>
+    <string name="aodArmyDestroyed">Your army has therefore been destroyed…</string>
     <string name="addSoldiers">Add Soldiers</string>
     <string name="aodMustFillTypeAndQuantity">You must fill the type and quantity values!</string>
     <string name="awfSuperStrength">Super Strength</string>
@@ -1019,7 +1019,7 @@
     <string name="ffDirectHit">Direct hit!. (-%1$d Armour)</string>
     <string name="ffEnemyHit">"The enemy has hit your vehicle. (-%1$d Armour)</string>
     <string name="ffSecondEnemyHit">"The second enemy has hit your vehicle. (-%1$d Armour)</string>
-    <string name="ffEnemyDestroyedYourVehicle">The enemy has destroyed your vehicle...</string>
+    <string name="ffEnemyDestroyedYourVehicle">The enemy has destroyed your vehicle…</string>
     <string name="ffAvoiedSecondAttack">You\'ve avoided the second enemy attack.</string>
     <string name="ffavoidedSecondAttack">You\'ve avoided the second enemy attack.</string>
     <string name="chooseSavePoint">Choose savepoint:</string>
@@ -1057,15 +1057,15 @@
     <string name="rcNameArmorBonusMandatory">At least the name, armor and bonus values must be filled.</string>
     <string name="rcRobot">Robot</string>
     <string name="rcLuckyCombatInflicted">You\'re lucky! (+1DP)</string>
-    <string name="rcUnluckyCombatInflicted">You\'re unlucky... (-1DP)</string>
+    <string name="rcUnluckyCombatInflicted">You\'re unlucky… (-1DP)</string>
     <string name="rcLuckyCombatSuffered">You\'re lucky! (-1DP)</string>
-    <string name="rcUnluckyCombatSuffered">You\'re unlucky... (+1DP)</string>
+    <string name="rcUnluckyCombatSuffered">You\'re unlucky… (+1DP)</string>
     <string name="saGrenade">Grenade</string>
     <string name="saCombatText1">The enemy (SK: %1$d ST: %2$d) has been hit. (-%3$d ST)</string>
     <string name="saCombatText2">An enemy (SK: %1$d ST: %2$d) has hit you. (-%3$d ST)</string>
     <string name="saCombatText3">An enemy (SK: %1$d ST: %2$d) has missed.</string>
     <string name="saAssaultBlaster">Assault Blaster</string>
-    <string name="missedTheEnemy">You have missed the enemy...</string>
+    <string name="missedTheEnemy">You have missed the enemy…</string>
     <string name="saHitEnemy">You\'ve hit the enemy! (%1$d ST)</string>
     <string name="saElectricLash">Electric Lash</string>
     <string name="saWeapons">Weapons</string>
@@ -1094,7 +1094,7 @@
 
     <string name="trokDirectHit">Direct hit!. (-%1$d Shields)</string>
     <string name="directHitDefeatSecondEnemy">Direct hit!. You\'ve defeated the second opponent!</string>
-    <string name="trokPlayerStarshipDestroyed">The enemy has destroyed your starship...</string>
+    <string name="trokPlayerStarshipDestroyed">The enemy has destroyed your starship…</string>
     <string name="enemyMissed">Your enemy has missed!</string>
     <string name="trokEnemyHitPlayerStarship">The enemy has hit your starship. (-%1$d Shields)</string>
     <string name="trokSecondEnemyHitPlayerStarship">The second enemy has hit your starship. (-%1$d Shields)</string>
@@ -1124,7 +1124,7 @@
     <string name="totSpellDetectTrap">Detect Trap</string>
     <string name="totSpellWater">Create Water</string>
     <string name="directHit">Direct hit!</string>
-    <string name="enemyDestroyedShip">The enemy has destroyed your ship...</string>
+    <string name="enemyDestroyedShip">The enemy has destroyed your ship…</string>
     <string name="enemyHitYourShip">The enemy has hit your ship.</string>
     <string name="enemyShipMissed">The enemy ship missed!</string>
     <string name="sobDirectHit">Direct hit! (-%1$d CrewStrength)</string>
@@ -1132,10 +1132,10 @@
     <string name="bothShipsMissed">Both ships missed!</string>
     <string name="stCrewmanHitEnemy">The %1$s has hit his enemy! (dice: %2$d + skill: %3$d) vs (dice: %4$d + skill: %5$d)</string>
     <string name="stCrewmanBlockedEnemy">The %1$s has blocked the enemy attack! (dice: %2$d + skill: %3$d) vs (dice: %4$d + skill: %5$d)</string>
-    <string name="stCrewmanHit">The %1$s has been hit... (dice: %2$d + skill: %3$d) vs (dice: %4$d + skill: %5$d)</string>
+    <string name="stCrewmanHit">The %1$s has been hit… (dice: %2$d + skill: %3$d) vs (dice: %4$d + skill: %5$d)</string>
     <string name="stCombatBothMissed">Both the %1$s and his enemy have missed</string>
     <string name="stCrewmanDefeatedEnemy">The %1$s has defeated his enemy!</string>
-    <string name="stCrewmanDied">The %1$s has died...</string>
+    <string name="stCrewmanDied">The %1$s has died…</string>
     <string name="stShields">Shields</string>
     <string name="exit">Exit</string>
     <string name="quit">Quit</string>
@@ -1220,7 +1220,7 @@
     <string name="rating2">Rating:</string>
     <string name="slEnemyHitPlayer">The enemy has hit you. (-%1$d Shields)</string>
     <string name="slDirectHit">Direct hit!. (-%1$d Shields)</string>
-    <string name="slEnemyVictory">The enemy has destroyed you...</string>
+    <string name="slEnemyVictory">The enemy has destroyed you…</string>
     <string name="slPlayerVictory">You have destroyed your enemy</string>
     <string name="abandonStarspray">Abandon Starspray</string>
     <string name="recoverStarspray">Recover Starspray</string>
@@ -1230,4 +1230,19 @@
     <!--Spellbreaker-->
     <string name="faith">Faith</string>
     <string name="faith2">Faith:</string>
+
+    <string name="goToParagraph">Go to paragraph %1$d</string>
+
+    <!--Daggers of Darkness-->
+    <string name="poison">Poison:</string>
+    <string name="yigenik" translatable="false">Yigenik</string>
+    <string name="uruz" translatable="false">Uruz</string>
+    <string name="bogomil" translatable="false">Bogomil</string>
+    <string name="hulugu" translatable="false">Hulugu</string>
+    <string name="korkut" translatable="false">Korkut</string>
+    <string name="kazilik" translatable="false">Kazilik</string>
+    <string name="medallions">Medallions</string>
+    <string name="useMedallion">Use Medallion</string>
+    <string name="medallionFirstTime">Using the Medallion of %1$s for the first time. (+4 Stamina, -1 Skill, -1 Luck, +3 Poison)</string>
+    <string name="medallionUsage">Using the %1$s Medallion. (+4 Stamina)</string>
 </resources>

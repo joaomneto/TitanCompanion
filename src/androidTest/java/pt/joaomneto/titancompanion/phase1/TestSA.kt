@@ -41,8 +41,8 @@ class TestSA : TCBaseTest() {
         button4.perform(click())
 
         val button5 = onView(
-            allOf<View>(
-                withId(android.R.id.button1), withText("Ok"),
+            allOf(
+                withId(android.R.id.button1), withText("OK"),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
