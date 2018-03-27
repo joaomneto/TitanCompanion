@@ -1,4 +1,4 @@
-package pt.joaomneto.titancompanion.phase1
+package pt.joaomneto.titancompanion.phase2
 
 import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.action.ViewActions.click
@@ -14,20 +14,20 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.TCBaseTest
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.APPOINTMENT_WITH_F_E_A_R
+import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.SWORD_OF_THE_SAMURAI
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class TestAWF : TCBaseTest() {
+class TestSOTS : TCBaseTest() {
 
-    override val gamebook = APPOINTMENT_WITH_F_E_A_R
+    override val gamebook = SWORD_OF_THE_SAMURAI
 
-    fun performChooseSuperpower() {
+    fun performChoosemartialArt() {
 
         val linearLayout = onData(anything())
             .inAdapterView(
                 allOf<View>(
-                    withId(R.id.superpowerList),
+                    withId(R.id.skillList),
                     childAtPosition(
                         withClassName(`is`("android.widget.RelativeLayout")),
                         1
@@ -45,7 +45,7 @@ class TestAWF : TCBaseTest() {
         performFillSavegameName()
         performVitalStatisticsRoll()
         performSwipeLeft()
-        performChooseSuperpower()
+        performChoosemartialArt()
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
@@ -57,7 +57,7 @@ class TestAWF : TCBaseTest() {
         performStartAdventure()
         performFillSavegameName()
         performSwipeLeft()
-        performChooseSuperpower()
+        performChoosemartialArt()
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
@@ -69,14 +69,14 @@ class TestAWF : TCBaseTest() {
         performStartAdventure()
         performVitalStatisticsRoll()
         performSwipeLeft()
-        performChooseSuperpower()
+        performChoosemartialArt()
         performSwipeRight()
         performSaveAdventureFromCreationScreen()
         assertInvalidAdventureCreation()
     }
 
     @Test
-    fun testCreationWithoutSuperpower() {
+    fun testCreationWithoutMartialArt() {
 
         performStartAdventure()
         performFillSavegameName()

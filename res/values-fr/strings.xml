@@ -707,5 +707,6 @@
     <string name="useMedallion">Utilizer Medaillon</string>
     <string name="medallionFirstTime">Première utilization du medaillon de %1$s. (+4 Endurance, -1 Habilité, -1 Chance, +3 Poison) </string>
     <string name="medallionUsage">Utilization du medaillon de %1$s. (+4 Endurance)</string>
+    <string name="infection">Infection:</string>
 
 </resources>

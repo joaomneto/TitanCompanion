@@ -1245,4 +1245,5 @@
     <string name="useMedallion">Use Medallion</string>
     <string name="medallionFirstTime">Using the Medallion of %1$s for the first time. (+4 Stamina, -1 Skill, -1 Luck, +3 Poison)</string>
     <string name="medallionUsage">Using the %1$s Medallion. (+4 Stamina)</string>
+    <string name="infection">Infection:</string>
 </resources>

@@ -37,6 +37,7 @@ class SAdventure : Adventure(
 ) {
 
     var currentFaith: Int = -1
+    var currentInfection: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
@@ -55,11 +56,13 @@ class SAdventure : Adventure(
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
 
         bw.write("currentFaith=" + currentFaith + "\n")
+        bw.write("currentInfection=" + currentInfection + "\n")
         bw.write("gold=" + gold + "\n")
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
         currentFaith = Integer.valueOf(savedGame.getProperty("currentFaith"))
+        currentInfection = Integer.valueOf(savedGame.getProperty("currentInfection"))
         gold = Integer.valueOf(savedGame.getProperty("gold"))
     }
 }
