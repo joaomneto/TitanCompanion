@@ -25,6 +25,7 @@ class SAdventureCreation : AdventureCreation(
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
 
         bw.write("currentFaith=1\n")
+        bw.write("currentInfection=0\n")
         bw.write("provisions=5\n")
         bw.write("provisionsValue=4\n")
         bw.write("gold=$gold\n")
