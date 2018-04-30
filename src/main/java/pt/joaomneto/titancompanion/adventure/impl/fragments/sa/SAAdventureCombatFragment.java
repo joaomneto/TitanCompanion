@@ -35,9 +35,9 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rootView = inflater.inflate(R.layout.fragment_12sa_adventure_combat, container, false);
+        setRootView(inflater.inflate(R.layout.fragment_12sa_adventure_combat, container, false));
 
-        grenadeButton = rootView.findViewById(R.id.grenadeButton);
+        grenadeButton = getRootView().findViewById(R.id.grenadeButton);
 
         grenadeButton.setOnClickListener(new OnClickListener() {
 
@@ -56,7 +56,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
                 String result = "";
 
-                for (Combatant enemy : combatPositions) {
+                for (Combatant enemy : getCombatPositions()) {
 
                     if (enemy != null && enemy.getCurrentStamina() > 0) {
                         int damage = DiceRoller.rollD6();
@@ -69,10 +69,10 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
                         }
 
                         if (enemy.getCurrentStamina() == 0) {
-                            combatPositions.remove(enemy);
+                            getCombatPositions().remove(enemy);
 
                         }
-                        combatResult.setText(result);
+                        getCombatResult().setText(result);
                         refreshScreensFromResume();
                     }
 
@@ -83,19 +83,19 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
         init();
 
-        return rootView;
+        return getRootView();
     }
 
     protected void combatTurn() {
-        if (combatPositions.size() == 0)
+        if (getCombatPositions().size() == 0)
             return;
 
-        if (combatStarted == false) {
-            combatStarted = true;
-            combatTypeSwitch.setClickable(false);
+        if (getCombatStarted() == false) {
+            setCombatStarted(true);
+            getCombatTypeSwitch().setClickable(false);
         }
 
-        if (combatMode.equals(SA12_GUNFIGHT)) {
+        if (getCombatMode().equals(SA12_GUNFIGHT)) {
             gunfightCombatTurn();
         } else {
             standardCombatTurn();
@@ -109,9 +109,9 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
         assaultBlaster = adv.getWeapons().contains(SAWeapon.ASSAULT_BLASTER);
 
-        draw = false;
-        luckTest = false;
-        hit = false;
+        setDraw(false);
+        setLuckTest(false);
+        setHit(false);
         DiceRoll diceRoll = DiceRoller.roll2D6();
         int skill = adv.getCurrentSkill();
         boolean hitEnemy = diceRoll.getSum() <= skill;
@@ -119,36 +119,36 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
         if (hitEnemy) {
             int damage = assaultBlaster ? DiceRoller.rollD6() : 2;
             position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
-            hit = true;
-            combatResult.setText(getString(R.string.saHitEnemy, damage));
+            setHit(true);
+            getCombatResult().setText(getString(R.string.saHitEnemy, damage));
         } else {
-            draw = true;
-            combatResult.setText(R.string.missedTheEnemy);
+            setDraw(true);
+            getCombatResult().setText(R.string.missedTheEnemy);
         }
 
         if (position.getCurrentStamina() == 0) {
-            combatPositions.remove(position);
-            combatResult.setText(combatResult.getText() + "\n" + getString(R.string.defeatedEnemy));
+            getCombatPositions().remove(position);
+            getCombatResult().setText(getCombatResult().getText() + "\n" + getString(R.string.defeatedEnemy));
 
         }
 
-        for (Combatant enemy : combatPositions) {
+        for (Combatant enemy : getCombatPositions()) {
             if (enemy != null && enemy.getCurrentStamina() > 0) {
                 if (DiceRoller.roll2D6().getSum() <= enemy.getCurrentSkill()) {
                     int damage = enemy.getDamage().equals("2") ? 2 : DiceRoller.rollD6();
-                    combatResult.setText(combatResult.getText() + "\n" + getString(R.string.saCombatText2, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage));
+                    getCombatResult().setText(getCombatResult().getText() + "\n" + getString(R.string.saCombatText2, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage));
                     adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage));
                 } else {
-                    combatResult.setText(combatResult.getText() + getString(R.string.saCombatText3, enemy.getCurrentSkill(), enemy.getCurrentStamina()));
+                    getCombatResult().setText(getCombatResult().getText() + getString(R.string.saCombatText3, enemy.getCurrentSkill(), enemy.getCurrentStamina()));
                 }
             }
         }
 
         if (adv.getCurrentStamina() <= 0) {
-            combatResult.setText(R.string.youveDied);
+            getCombatResult().setText(R.string.youveDied);
         }
 
-        if (combatPositions.size() == 0) {
+        if (getCombatPositions().size() == 0) {
             resetCombat(false);
         }
 
@@ -161,13 +161,13 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
         final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        if (combatStarted)
+        if (getCombatStarted())
             return;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
         final View addCombatantView = adv.getLayoutInflater().inflate(
-                combatMode == null || combatMode.equals(NORMAL) ? R.layout.component_add_combatant : R.layout.component_12sa_add_combatant, null);
+                getCombatMode() == null || getCombatMode().equals(Companion.getNORMAL()) ? R.layout.component_add_combatant : R.layout.component_12sa_add_combatant, null);
 
         SAWeapon[] allWeapons = {SAWeapon.ELECTRIC_LASH, SAWeapon.ASSAULT_BLASTER};
 
@@ -197,7 +197,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
                 Integer stamina = Integer.valueOf(enemyStaminaValue.getText().toString());
                 Integer handicap = Integer.valueOf(handicapValue.getText().toString());
 
-                addCombatant(rootView, skill, stamina, handicap,
+                addCombatant(skill, stamina, handicap,
                         weaponSpinner == null ? "2" : weaponSpinner.getSelectedItem().equals(SAWeapon.ASSAULT_BLASTER) ? "1d6" : "2");
 
             }
@@ -217,13 +217,14 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
     }
 
     protected String combatTypeSwitchBehaviour(boolean isChecked) {
-        combatPositions.clear();
+        getCombatPositions().clear();
         refreshScreensFromResume();
-        return combatMode = isChecked ? SA12_GUNFIGHT : NORMAL;
+        setCombatMode(isChecked ? SA12_GUNFIGHT : Companion.getNORMAL());
+        return getCombatMode();
     }
 
     protected void switchLayoutCombatStarted() {
-        grenadeButton.setVisibility(combatMode.equals(SA12_GUNFIGHT) ? VISIBLE : GONE);
+        grenadeButton.setVisibility(getCombatMode().equals(SA12_GUNFIGHT) ? VISIBLE : GONE);
         super.switchLayoutCombatStarted();
 
     }

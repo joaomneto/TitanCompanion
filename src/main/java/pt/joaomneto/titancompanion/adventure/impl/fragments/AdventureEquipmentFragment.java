@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,14 +34,15 @@ public class AdventureEquipmentFragment extends AdventureFragment {
         super.onCreate(savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_adventure_equipment, container, false);
 
-        final Adventure adv = (Adventure) getActivity();
-
-        initialize(rootView, adv);
-
         return rootView;
     }
 
-    protected void initialize(View rootView, final Adventure adv) {
+    @Override
+    public void onViewCreated(@NonNull View rootView, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(rootView, savedInstanceState);
+
+        final Adventure adv = (Adventure) getActivity();
+
         equipmentList = rootView.findViewById(R.id.equipmentList);
         minusGoldButton = rootView.findViewById(R.id.minusGoldButton);
         plusGoldButton = rootView.findViewById(R.id.plusGoldButton);

@@ -9,7 +9,6 @@
 local.properties
 gradle.properties
 *.iml
-FFGBUtil.iml
 lint.xml
 proguard-project.txt
 project.properties

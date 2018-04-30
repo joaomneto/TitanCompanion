@@ -91,137 +91,72 @@
     <string name="bb">Bloodbones</string>
     <string name="hotw">Howl of the Werewolf</string>
     <string name="tpop">The Port of Peril</string>
+    <string name="god">The Gates of Death</string>
 
-    <string-array name="gamebook_list_names" translatable="false">
-        <item>@string/twofm</item>
-        <item>@string/tcoc</item>
-        <item>@string/tfod</item>
-        <item>@string/st</item>
-        <item>@string/cot</item>
-        <item>@string/dd</item>
-        <item>@string/iotlk</item>
-        <item>@string/ss</item>
-        <item>@string/cotsw</item>
-        <item>@string/hoh</item>
-        <item>@string/tod</item>
-        <item>@string/sa</item>
-        <item>@string/ff</item>
-        <item>@string/tot</item>
-        <item>@string/trok</item>
-        <item>@string/sob</item>
-        <item>@string/awf</item>
-        <item>@string/rp</item>
-        <item>@string/dotd</item>
-        <item>@string/sots</item>
-        <item>@string/toc</item>
-        <item>@string/rc</item>
-        <item>@string/mom</item>
-        <item>@string/coh</item>
-        <item>@string/bnc</item>
-        <item>@string/cots</item>
-        <item>@string/strider</item>
-        <item>@string/pof</item>
-        <item>@string/mr</item>
-        <item>@string/com</item>
-        <item>@string/bw</item>
-        <item>@string/sota</item>
-        <item>@string/sl</item>
-        <item>@string/sos</item>
-        <item>@string/dod</item>
-        <item>@string/aod</item>
-        <item>@string/poe</item>
-        <item>@string/votv</item>
-        <item>@string/fof</item>
-        <item>@string/don</item>
-        <item>@string/moc</item>
-        <item>@string/bvp</item>
-        <item>@string/tkotll</item>
-        <item>@string/lotsw</item>
-        <item>@string/spectral</item>
-        <item>@string/tower</item>
-        <item>@string/tct</item>
-        <item>@string/moon</item>
-        <item>@string/siege</item>
-        <item>@string/rtfm</item>
-        <item>@string/iotu</item>
-        <item>@string/nd</item>
-        <item>@string/s</item>
-        <item>@string/loz</item>
-        <item>@string/d</item>
-        <item>@string/kod</item>
-        <item>@string/m</item>
-        <item>@string/rotv</item>
-        <item>@string/cotm</item>
-        <item>@string/eotd</item>
-        <item>@string/bb</item>
-        <item>@string/hotw</item>
-        <item>@string/tpop</item>
-    </string-array>
-    <string-array name="gamebook_list_urls" translatable="false">
-        <item>http://fightingfantasy.wikia.com/wiki/The_Warlock_of_Firetop_Mountain_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Citadel_of_Chaos_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Forest_of_Doom_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Starship_Traveller</item>
-        <item>http://fightingfantasy.wikia.com/wiki/City_of_Thieves_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Deathtrap_Dungeon_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Island_of_the_Lizard_King_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Scorpion_Swamp_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Caverns_of_the_Snow_Witch_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/House_of_Hell_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Talisman_of_Death_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Space_Assassin</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Freeway_Fighter</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Temple_of_Terror_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Rings_of_Kether</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Seas_of_Blood_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Appointment_with_F.E.A.R._(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Rebel_Planet_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Demons_of_the_Deep_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Sword_of_the_Samurai_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Trial_of_Champions_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Robot_Commando</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Masks_of_Mayhem</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Creature_of_Havoc_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Beneath_Nightmare_Castle</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Crypt_of_the_Sorcerer</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Star_Strider</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Phantoms_of_Fear</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Midnight_Rogue</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Chasms_of_Malice</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Battleblade_Warrior</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Slaves_of_the_Abyss</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Sky_Lord</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Stealer_of_Souls</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Daggers_of_Darkness</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Armies_of_Death</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Portal_of_Evil_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Vault_of_the_Vampire</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Fangs_of_Fury_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Dead_of_Night</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Master_of_Chaos</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Black_Vein_Prophecy</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Keep_of_the_Lich-Lord</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Legend_of_the_Shadow_Warriors</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Spectral_Stalkers_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Tower_of_Destruction_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Crimson_Tide</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Moonrunner</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Siege_of_Sardath</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Return_to_Firetop_Mountain</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Island_of_the_Undead</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Night_Dragon_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Spellbreaker</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Legend_of_Zagor_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Deathmoor_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Knights_of_Doom</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Magehunter</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Revenge_of_the_Vampire</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Curse_of_the_Mummy</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Eye_of_the_Dragon_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Bloodbones_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/Howl_of_the_Werewolf_(book)</item>
-        <item>http://fightingfantasy.wikia.com/wiki/The_Port_of_Peril_(book)</item>
-    </string-array>
+    <string name="twofm_url" translatable="false">http://fightingfantasy.wikia.com/wiki/The_Warlock_of_Firetop_Mountain_(book)</string>
+    <string name="tcoc_url" translatable="false">http://fightingfantasy.wikia.com/wiki/The_Citadel_of_Chaos_(book)</string>
+    <string name="tfod_url" translatable="false">http://fightingfantasy.wikia.com/wiki/The_Forest_of_Doom_(book)</string>
+    <string name="st_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Starship_Traveller</string>
+    <string name="cot_url" translatable="false">http://fightingfantasy.wikia.com/wiki/City_of_Thieves_(book)</string>
+    <string name="dd_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Deathtrap_Dungeon_(book)</string>
+    <string name="iotlk_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Island_of_the_Lizard_King_(book)</string>
+    <string name="ss_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Scorpion_Swamp_(book)</string>
+    <string name="cotsw_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Caverns_of_the_Snow_Witch_(book)</string>
+    <string name="hoh_url" translatable="false">http://fightingfantasy.wikia.com/wiki/House_of_Hell_(book)</string>
+    <string name="tod_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Talisman_of_Death_(book)</string>
+    <string name="sa_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Space_Assassin</string>
+    <string name="ff_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Freeway_Fighter</string>
+    <string name="tot_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Temple_of_Terror_(book)</string>
+    <string name="trok_url" translatable="false">http://fightingfantasy.wikia.com/wiki/The_Rings_of_Kether</string>
+    <string name="sob_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Seas_of_Blood_(book)</string>
+    <string name="awf_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Appointment_with_F.E.A.R._(book)</string>
+    <string name="rp_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Rebel_Planet_(book)</string>
+    <string name="dotd_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Demons_of_the_Deep_(book)</string>
+    <string name="sots_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Sword_of_the_Samurai_(book)</string>
+    <string name="toc_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Trial_of_Champions_(book)</string>
+    <string name="rc_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Robot_Commando</string>
+    <string name="mom_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Masks_of_Mayhem</string>
+    <string name="coh_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Creature_of_Havoc_(book)</string>
+    <string name="bnc_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Beneath_Nightmare_Castle</string>
+    <string name="cots_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Crypt_of_the_Sorcerer</string>
+    <string name="strider_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Star_Strider</string>
+    <string name="pof_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Phantoms_of_Fear</string>
+    <string name="mr_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Midnight_Rogue</string>
+    <string name="com_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Chasms_of_Malice</string>
+    <string name="bw_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Battleblade_Warrior</string>
+    <string name="sota_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Slaves_of_the_Abyss</string>
+    <string name="sl_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Sky_Lord</string>
+    <string name="sos_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Stealer_of_Souls</string>
+    <string name="dod_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Daggers_of_Darkness</string>
+    <string name="aod_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Armies_of_Death</string>
+    <string name="poe_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Portal_of_Evil_(book)</string>
+    <string name="votv_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Vault_of_the_Vampire</string>
+    <string name="fof_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Fangs_of_Fury_(book)</string>
+    <string name="don_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Dead_of_Night</string>
+    <string name="moc_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Master_of_Chaos</string>
+    <string name="bvp_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Black_Vein_Prophecy</string>
+    <string name="tkotll_url" translatable="false">http://fightingfantasy.wikia.com/wiki/The_Keep_of_the_Lich-Lord</string>
+    <string name="lotsw_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Legend_of_the_Shadow_Warriors</string>
+    <string name="spectral_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Spectral_Stalkers_(book)</string>
+    <string name="tower_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Tower_of_Destruction_(book)</string>
+    <string name="tct_url" translatable="false">http://fightingfantasy.wikia.com/wiki/The_Crimson_Tide</string>
+    <string name="moon_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Moonrunner</string>
+    <string name="siege_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Siege_of_Sardath</string>
+    <string name="rtfm_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Return_to_Firetop_Mountain</string>
+    <string name="iotu_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Island_of_the_Undead</string>
+    <string name="nd_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Night_Dragon_(book)</string>
+    <string name="s_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Spellbreaker</string>
+    <string name="loz_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Legend_of_Zagor_(book)</string>
+    <string name="d_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Deathmoor_(book)</string>
+    <string name="kod_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Knights_of_Doom</string>
+    <string name="m_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Magehunter</string>
+    <string name="rotv_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Revenge_of_the_Vampire</string>
+    <string name="cotm_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Curse_of_the_Mummy</string>
+    <string name="eotd_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Eye_of_the_Dragon_(book)</string>
+    <string name="bb_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Bloodbones_(book)</string>
+    <string name="hotw_url" translatable="false">http://fightingfantasy.wikia.com/wiki/Howl_of_the_Werewolf_(book)</string>
+    <string name="tpop_url" translatable="false">http://fightingfantasy.wikia.com/wiki/The_Port_of_Peril_(book)</string>
+    <string name="god_url" translatable="false">http://fightingfantasy.wikia.com/wiki/The_Gates_of_Death_(book)</string>
 
     <string name="title_activity_gamebook_selection">Select Gamebook</string>
     <string name="dummy_button">Dummy Button</string>
@@ -1246,4 +1181,21 @@
     <string name="medallionFirstTime">Using the Medallion of %1$s for the first time. (+4 Stamina, -1 Skill, -1 Luck, +3 Poison)</string>
     <string name="medallionUsage">Using the %1$s Medallion. (+4 Stamina)</string>
     <string name="infection">Infection:</string>
+    <string name="poisonBlade">Your enemy loses 1 ST due to poison.</string>
+
+    <string name="godUnarmed">Unarmed</string>
+    <string name="rustyBreadknife">Rusty Breadknife</string>
+    <string name="fireIron">Fire Iron</string>
+    <string name="pitchfork">Pitchfork</string>
+    <string name="cudgel">Cudgel</string>
+    <string name="cleaver">Cleaver</string>
+    <string name="harpoon">Harpoon</string>
+    <string name="sneakySword">Sneaky Sword</string>
+    <string name="assassinsStiletto">Assassin\'s Stiletto</string>
+    <string name="woodmansAxe">Woodman\'s Axe</string>
+    <string name="templeGuardAxe">Temple\'s Guard Axe</string>
+    <string name="jewelledWarhammer">Jewelled Warhammer</string>
+    <string name="khopesh">Khopesh</string>
+    <string name="demon">Demon:</string>
+    <string name="stoneCrystal">Stone or Crystal:</string>
 </resources>

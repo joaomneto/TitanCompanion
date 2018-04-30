@@ -20,9 +20,9 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
             int damage = 3;
             position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
             position.setStaminaLoss(position.getStaminaLoss() + damage);
-            hit = true;
+            setHit(true);
             firstRound = false;
-            combatResult.setText(R.string.iaijutsuFastDraw);
+            getCombatResult().setText(R.string.iaijutsuFastDraw);
         } else {
 
             super.sequenceCombatTurn();
@@ -39,9 +39,9 @@ public class SOTSAdventureCombatFragment extends AdventureCombatFragment {
             int damage = 3;
             position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
             position.setStaminaLoss(position.getStaminaLoss() + damage);
-            hit = true;
+            setHit(true);
             firstRound = false;
-            combatResult.setText(R.string.iaijutsuFastDraw);
+            getCombatResult().setText(R.string.iaijutsuFastDraw);
         } else {
 
             super.standardCombatTurn();

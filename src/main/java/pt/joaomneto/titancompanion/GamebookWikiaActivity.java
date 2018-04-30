@@ -14,7 +14,7 @@ public class GamebookWikiaActivity extends BaseActivity {
         WebView myWebView = findViewById(R.id.webview);
 
         Intent intent = getIntent();
-        String url = intent.getStringExtra(GamebookListActivity.GAMEBOOK_URL);
+        String url = intent.getStringExtra(GamebookListActivity.Companion.getGAMEBOOK_URL());
 
         myWebView.loadUrl(url);
     }

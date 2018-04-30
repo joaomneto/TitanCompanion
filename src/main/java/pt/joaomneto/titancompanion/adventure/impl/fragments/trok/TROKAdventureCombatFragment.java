@@ -14,6 +14,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import kotlin.jvm.functions.Function0;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
@@ -35,10 +36,10 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rootView = inflater.inflate(R.layout.fragment_15trok_adventure_combat, container, false);
+        setRootView(inflater.inflate(R.layout.fragment_15trok_adventure_combat, container, false));
 
-        damageSpinner = rootView.findViewById(R.id.damageSpinner);
-        damageText = rootView.findViewById(R.id.damageText);
+        damageSpinner = getRootView().findViewById(R.id.damageSpinner);
+        damageText = getRootView().findViewById(R.id.damageText);
 
         if (damageSpinner != null) {
             DropdownStringAdapter adapter = new DropdownStringAdapter(getActivity(), android.R.layout.simple_list_item_1, damageList);
@@ -68,18 +69,18 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
         init();
 
-        return rootView;
+        return getRootView();
     }
 
     protected void combatTurn() {
-        if (combatPositions.size() == 0)
+        if (getCombatPositions().size() == 0)
             return;
 
-        if (combatStarted == false) {
-            combatStarted = true;
-            combatTypeSwitch.setClickable(false);
+        if (getCombatStarted() == false) {
+            setCombatStarted(true);
+            getCombatTypeSwitch().setClickable(false);
         }
-        if (combatMode.equals(TROK15_GUNFIGHT)) {
+        if (getCombatMode().equals(TROK15_GUNFIGHT)) {
             gunfightCombatTurn();
         } else {
             standardCombatTurn();
@@ -88,18 +89,19 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
     }
 
     @Override
-    protected int getDamage() {
-        if (combatMode.equals(NORMAL)) {
-            return 2;
-        } else if (combatMode.equals(TROK15_GUNFIGHT)) {
-            return convertDamageStringToInteger(overrideDamage);
+    protected Function0<Integer> getDamage() {
+        if (getCombatMode().equals(Companion.getNORMAL())) {
+            return () -> 2;
+        } else if (getCombatMode().equals(TROK15_GUNFIGHT)) {
+            return () -> Companion.convertDamageStringToInteger(overrideDamage);
         }
 
-        return 2;
+        return () -> 2;
     }
 
     protected String combatTypeSwitchBehaviour(boolean isChecked) {
-        return combatMode = isChecked ? TROK15_GUNFIGHT : NORMAL;
+        setCombatMode(isChecked ? TROK15_GUNFIGHT : Companion.getNORMAL());
+        return getCombatMode();
     }
 
     public String getOntext() {
@@ -126,8 +128,8 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
         super.switchLayoutReset(clearResult);
     }
 
-    protected Integer getKnockoutStamina() {
-        return null;
+    protected int getKnockoutStamina() {
+        return -1;
     }
 
     protected void addCombatButtonOnClick() {
@@ -136,14 +138,14 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
         final InputMethodManager mgr = (InputMethodManager) adv.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        if (combatStarted)
+        if (getCombatStarted())
             return;
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(adv);
 
         final View addCombatantView = adv.getLayoutInflater().inflate(
-                combatMode == null || combatMode.equals(NORMAL) ? R.layout.component_add_combatant : R.layout.component_add_combatant_damage, null);
+                getCombatMode() == null || getCombatMode().equals(Companion.getNORMAL()) ? R.layout.component_add_combatant : R.layout.component_add_combatant_damage, null);
 
         final EditText damageValue = addCombatantView.findViewById(R.id.enemyDamage);
         if (damageValue != null) {
@@ -172,7 +174,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
                 Integer stamina = Integer.valueOf(enemyStaminaValue.getText().toString());
                 Integer handicap = Integer.valueOf(handicapValue.getText().toString());
 
-                addCombatant(rootView, skill, stamina, handicap, damageValue == null ? getDefaultEnemyDamage() : damageValue.getText().toString());
+                addCombatant(skill, stamina, handicap, damageValue == null ? getDefaultEnemyDamage() : damageValue.getText().toString());
 
             }
 
@@ -192,9 +194,9 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
     @Override
     protected void startCombat() {
-        if (combatMode.equals(TROK15_GUNFIGHT)) {
-            for (int i = 0; i < combatPositions.size(); i++) {
-                Combatant c = combatPositions.get(i);
+        if (getCombatMode().equals(TROK15_GUNFIGHT)) {
+            for (int i = 0; i < getCombatPositions().size(); i++) {
+                Combatant c = getCombatPositions().get(i);
                 if (c != null)
                     c.setDamage("4");
             }
@@ -212,43 +214,43 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
         Adventure adv = (Adventure) getActivity();
 
         // if (!finishedCombats.contains(currentCombat)) {
-        draw = false;
-        luckTest = false;
-        hit = false;
+        setDraw(false);
+        setLuckTest(false);
+        setHit(false);
         DiceRoll diceRoll = DiceRoller.roll2D6();
         int skill = adv.getCombatSkillValue();
         boolean hitEnemy = diceRoll.getSum() <= skill;
         if (hitEnemy) {
-            int damage = getDamage();
+            int damage = getDamage().invoke();
             position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
-            hit = true;
-            combatResult.setText(getString(R.string.hitEnemyDamage, damage));
+            setHit(true);
+            getCombatResult().setText(getString(R.string.hitEnemyDamage, damage));
         } else {
-            draw = true;
-            combatResult.setText(R.string.missedTheEnemy);
+            setDraw(true);
+            getCombatResult().setText(R.string.missedTheEnemy);
         }
 
         if (position.getCurrentStamina() == 0) {
             removeAndAdvanceCombat(position);
-            combatResult.setText(combatResult.getText() + "\n" + getString(R.string.defeatedEnemy));
+            getCombatResult().setText(getCombatResult().getText() + "\n" + getString(R.string.defeatedEnemy));
 
         }
 
-        for (int i = 0; i < combatPositions.size(); i++) {
-            Combatant enemy = combatPositions.get(i);
+        for (int i = 0; i < getCombatPositions().size(); i++) {
+            Combatant enemy = getCombatPositions().get(i);
             if (enemy != null && enemy.getCurrentStamina() > 0) {
                 if (DiceRoller.roll2D6().getSum() <= enemy.getCurrentSkill()) {
-                    int damage = convertDamageStringToInteger(enemy.getDamage());
-                    combatResult.setText(combatResult.getText() + "\n" + getString(R.string.saCombatText2, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage));
+                    int damage = Companion.convertDamageStringToInteger(enemy.getDamage());
+                    getCombatResult().setText(getCombatResult().getText() + "\n" + getString(R.string.saCombatText2, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage));
                     adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage));
                 } else {
-                    combatResult.setText(combatResult.getText() + "\n" + getString(R.string.saCombatText3, enemy.getCurrentSkill(), enemy.getCurrentStamina()));
+                    getCombatResult().setText(getCombatResult().getText() + "\n" + getString(R.string.saCombatText3, enemy.getCurrentSkill(), enemy.getCurrentStamina()));
                 }
             }
         }
 
         if (adv.getCurrentStamina() <= 0) {
-            combatResult.setText(R.string.youveDied);
+            getCombatResult().setText(R.string.youveDied);
         }
 
         refreshScreensFromResume();
@@ -256,8 +258,8 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
 
     @Override
     public void refreshScreensFromResume() {
-        combatantListAdapter.notifyDataSetChanged();
-        combatTypeSwitch.setEnabled(combatPositions.isEmpty());
+        getCombatantListAdapter().notifyDataSetChanged();
+        getCombatTypeSwitch().setEnabled(getCombatPositions().isEmpty());
     }
 
 }
