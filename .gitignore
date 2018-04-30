@@ -8,7 +8,7 @@
 /bin/
 local.properties
 gradle.properties
-FFCompanion.iml
+*.iml
 FFGBUtil.iml
 lint.xml
 proguard-project.txt
