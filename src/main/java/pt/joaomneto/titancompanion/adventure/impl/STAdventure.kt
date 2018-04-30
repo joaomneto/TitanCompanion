@@ -85,8 +85,8 @@ class STAdventure : Adventure(
     private var stringToCrewmanMap: MutableMap<String, STCrewman> = mutableMapOf()
     private var crewmanToStringMap: MutableMap<STCrewman, String> = mutableMapOf()
 
-    private val stCrewStatsFragment: STCrewStatsFragment?
-        get() = fragmentConfiguration[FRAGMENT_CREW_STATS].fragment as STCrewStatsFragment
+    val stCrewStatsFragment: STCrewStatsFragment?
+        get() = getFragment(STCrewStatsFragment::class)
 
     val landingParty: Set<STCrewman>
         get() {
@@ -297,6 +297,7 @@ class STAdventure : Adventure(
 
         when (crewman) {
             STAdventure.STCrewman.SCIENCE_OFFICER -> {
+                if(isDeadScienceOfficer) return
                 isDeadScienceOfficer = true
                 currentScienceOfficerSkill = initialScienceOfficerSkill - 2
                 currentScienceOfficerStamina = DiceRoller.roll2D6().sum!! + 12
@@ -304,6 +305,7 @@ class STAdventure : Adventure(
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SCIENCE_OFFICER)
             }
             STAdventure.STCrewman.MEDICAL_OFFICER -> {
+                if(isDeadMedicalOfficer) return
                 isDeadMedicalOfficer = true
                 currentMedicalOfficerSkill = initialMedicalOfficerSkill - 2
                 currentMedicalOfficerStamina = DiceRoller.roll2D6().sum!! + 12
@@ -311,6 +313,7 @@ class STAdventure : Adventure(
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.MEDICAL_OFFICER)
             }
             STAdventure.STCrewman.ENGINEERING_OFFICER -> {
+                if(isDeadEngineeringOfficer) return
                 isDeadEngineeringOfficer = true
                 currentEngineeringOfficerSkill = initialEngineeringOfficerSkill - 2
                 currentEngineeringOfficerStamina = DiceRoller.roll2D6().sum!! + 12
@@ -318,6 +321,7 @@ class STAdventure : Adventure(
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.ENGINEERING_OFFICER)
             }
             STAdventure.STCrewman.SECURITY_OFFICER -> {
+                if(isDeadScienceOfficer) return
                 isDeadSecurityOfficer = true
                 currentSecurityOfficerSkill = initialSecurityOfficerSkill - 2
                 currentSecurityOfficerStamina = DiceRoller.roll2D6().sum!! + 12
@@ -325,6 +329,7 @@ class STAdventure : Adventure(
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_OFFICER)
             }
             STAdventure.STCrewman.SECURITY_GUARD1 -> {
+                if(isDeadSecurityGuard1) return
                 isDeadSecurityGuard1 = true
                 currentSecurityGuard1Skill = initialSecurityGuard1Skill - 2
                 currentSecurityGuard1Stamina = DiceRoller.roll2D6().sum!! + 12
@@ -332,6 +337,7 @@ class STAdventure : Adventure(
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD1)
             }
             STAdventure.STCrewman.SECURITY_GUARD2 -> {
+                if(isDeadSecurityGuard2) return
                 isDeadSecurityGuard2 = true
                 currentSecurityGuard2Skill = initialSecurityGuard2Skill - 2
                 currentSecurityGuard2Stamina = DiceRoller.roll2D6().sum!! + 12
