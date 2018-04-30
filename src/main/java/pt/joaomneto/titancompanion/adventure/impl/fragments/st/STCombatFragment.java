@@ -159,6 +159,7 @@ public class STCombatFragment extends AdventureFragment {
                     if (position.getCrewman().equals(STCrewman.CAPTAIN)) {
                         Adventure.Companion.showAlert(R.string.youreDead, adv);
                     }
+                    adv.getStCrewStatsFragment().refreshScreensFromResume();
                 }
             }
         }
@@ -233,7 +234,7 @@ public class STCombatFragment extends AdventureFragment {
                     if (!position.isDefenseOnly()) {
                         adv.setCrewmanDead(position.getCrewman());
                         combatResult.setText(combatResult.getText() + "\nThe " + crewmanString + " has died... (dice: "
-                                + enemyDiceRoll.getSum() + ") > (skill: " + position.getCurrentSkill() + ")");
+                                + enemyDiceRoll.getSum() + ") < (skill: " + position.getCurrentSkill() + ")");
                         removeCombatant(row);
                     } else {
                         int killedCrewman = new Random(System.currentTimeMillis()).nextInt(combatPositions.size() - 1);
@@ -247,7 +248,7 @@ public class STCombatFragment extends AdventureFragment {
                         combatResult.setText(combatResult.getText() + "\nThe "
                                 + adv.getStringForCrewman(killedCrewmanObj) + " was killed by (Sk:"
                                 + position.getCurrentSkill() + " St:" + position.getCurrentStamina() + ")... (dice: "
-                                + enemyDiceRoll.getSum() + ") > (skill: " + position.getCurrentSkill() + ")");
+                                + enemyDiceRoll.getSum() + ") < (skill: " + position.getCurrentSkill() + ")");
                         for (int i = 0; i < maxRows; i++) {
                             CombatPosition combat = combatPositions.get(i);
                             if (combat != null && combat.getCrewman().equals(killedCrewmanObj)) {
