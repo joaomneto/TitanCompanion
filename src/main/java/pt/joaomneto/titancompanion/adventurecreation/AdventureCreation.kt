@@ -118,7 +118,7 @@ abstract class AdventureCreation(
 
             val intent = Intent(
                 this, Constants
-                .getRunActivity(this, gamebook)
+                .getRunActivity(this, gamebook!!)
             )
 
             intent.putExtra(

@@ -12,7 +12,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import pt.joaomneto.titancompanion.R
-import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.TPOPAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
 
@@ -24,19 +23,14 @@ class TPOPAdventureEquipmentFragment : AdventureEquipmentFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater.inflate(R.layout.fragment_63tpop_adventure_equipment, container, false)
 
-        val adv = activity as Adventure
-
-        initialize(rootView, adv)
-
-        return rootView
+        return inflater.inflate(R.layout.fragment_63tpop_adventure_equipment, container, false)
     }
 
-    override fun initialize(rootView: View, advParam: Adventure) {
-        super.initialize(rootView, advParam)
+    override fun onViewCreated(rootView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(rootView, savedInstanceState)
 
-        val adv = advParam as TPOPAdventure
+        val adv = activity as TPOPAdventure
 
         minusCopperButton = rootView.findViewById(R.id.minusCopperButton)
         plusCopperButton = rootView.findViewById(R.id.plusCopperButton)

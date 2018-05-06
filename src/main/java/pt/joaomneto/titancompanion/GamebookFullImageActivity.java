@@ -21,7 +21,7 @@ public class GamebookFullImageActivity extends BaseActivity {
 
         img.setScaleType(ScaleType.FIT_XY);
         Intent intent = getIntent();
-        int imageLink = intent.getIntExtra(GamebookSelectionActivity.GAMEBOOK_COVER, 0);
+        int imageLink = intent.getIntExtra(GamebookSelectionActivity.Companion.getGAMEBOOK_COVER(), 0);
         img.setImageResource(imageLink);
 
 

@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/adventureVitalStats"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+            android:id="@+id/enemySkillText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/crewmanSpinner"
+            android:layout_marginTop="10dp"
+            android:text="@string/enemySkill"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <EditText
+            android:id="@+id/enemySkillValue"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/enemySkillText"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:digits="1234567890"
+            android:inputType="phone"/>
+
+    <TextView
+            android:id="@+id/enemyStaminaText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/enemySkillValue"
+            android:layout_marginTop="10dp"
+            android:text="@string/enemyStamina"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <EditText
+            android:id="@+id/enemyStaminaValue"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/enemySkillValue"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/enemySkillValue"
+            android:layout_alignTop="@+id/enemyStaminaText"
+            android:ems="10"
+            android:digits="1234567890"
+            android:inputType="phone"/>
+
+    <TextView
+            android:id="@+id/handicapText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/enemyStaminaValue"
+            android:layout_marginTop="10dp"
+            android:text="@string/handicap"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <EditText
+            android:id="@+id/handicapValue"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/enemyStaminaValue"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/enemyStaminaValue"
+            android:layout_alignTop="@+id/handicapText"
+            android:ems="10"
+            android:digits="1234567890"
+            android:inputType="phone"
+            android:text="0"/>
+
+    <TextView
+            android:id="@+id/demonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/handicapValue"
+            android:layout_marginTop="10dp"
+            android:text="@string/demon"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <CheckBox
+            android:id="@+id/demonValue"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/enemyStaminaValue"
+            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@+id/enemyStaminaValue"
+            android:layout_alignTop="@+id/demonText"
+        android:layout_width="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/stoneCrystalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/demonValue"
+        android:layout_marginTop="30dp"
+        android:text="@string/stoneCrystal"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <CheckBox
+        android:id="@+id/stoneCrystal"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/enemyStaminaValue"
+        android:layout_alignParentEnd="true"
+        android:layout_alignEnd="@+id/enemyStaminaValue"
+        android:layout_alignTop="@+id/stoneCrystalText"
+        android:layout_width="wrap_content" />
+
+</RelativeLayout>

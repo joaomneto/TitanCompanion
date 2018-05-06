@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
-    android:versionCode="49"
-    android:versionName="0.49-beta">
+    android:versionCode="52"
+    android:versionName="0.52-beta">
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -498,6 +498,18 @@
         <activity
             android:name="pt.joaomneto.titancompanion.adventure.impl.TPOPAdventure"
             android:label="@string/tpop"
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventurecreation.impl.GODAdventureCreation"
+            android:label="@string/god"
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name="pt.joaomneto.titancompanion.adventure.impl.GODAdventure"
+            android:label="@string/god"
 
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>

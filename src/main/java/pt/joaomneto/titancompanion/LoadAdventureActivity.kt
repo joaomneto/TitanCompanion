@@ -96,7 +96,7 @@ class LoadAdventureActivity : BaseActivity() {
 
                     val intent = Intent(
                         this, Constants
-                        .getRunActivity(this, gamebook)
+                        .getRunActivity(this, gamebook!!)
                     )
 
                     intent.putExtra(

@@ -1,10 +1,9 @@
-package pt.joaomneto.titancompanion.phase1
+package pt.joaomneto.titancompanion
 
 import android.support.test.filters.LargeTest
 import android.support.test.runner.AndroidJUnit4
 import org.junit.Test
 import org.junit.runner.RunWith
-import pt.joaomneto.titancompanion.TCBaseTest
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.STARSHIP_TRAVELLER
 
 @LargeTest
@@ -24,21 +23,5 @@ open class TestST : TCBaseTest() {
         testVitalStatisticsFragment()
     }
 
-    @Test
-    fun testCreationWithoutRoll() {
 
-        performStartAdventure()
-        performFillSavegameName()
-        performSaveAdventureFromCreationScreen()
-        assertInvalidAdventureCreation()
-    }
-
-    @Test
-    fun testCreationWithoutSavegame() {
-
-        performStartAdventure()
-        performVitalStatisticsRoll()
-        performSaveAdventureFromCreationScreen()
-        assertInvalidAdventureCreation()
-    }
 }

@@ -88,6 +88,7 @@
     <string name="botz">Le Sang des Zombies</string>
 -->
     <string name="tpop">The Port of Peril</string>
+    <string name="god">Gates of Death</string>
 
     <string name="title_activity_gamebook_selection">Choisir un livre</string>
     <string name="dummy_button">Dummy Button</string>
@@ -709,4 +710,21 @@
     <string name="medallionUsage">Utilization du medaillon de %1$s. (+4 Endurance)</string>
     <string name="infection">Infection:</string>
 
+    <string name="poisonBlade">Votre ennemi perds 1 EN à cause du poison.</string>
+
+    <string name="godUnarmed">Unarmed</string>
+    <string name="rustyBreadknife">Rusty Breadknife</string>
+    <string name="fireIron">Fire Iron</string>
+    <string name="pitchfork">Pitchfork</string>
+    <string name="cudgel">Cudgel</string>
+    <string name="cleaver">Cleaver</string>
+    <string name="harpoon">Harpoon</string>
+    <string name="sneakySword">Sneaky Sword</string>
+    <string name="woodmansAxe">Woodman\'s Axe</string>
+    <string name="templeGuardAxe">Temple\'s Guard Axe</string>
+    <string name="jewelledWarhammer">Jewelled Warhammer</string>
+    <string name="khopesh">Khopesh</string>
+    <string name="assassinsStiletto">Assassin\'s Stiletto</string>
+    <string name="demon">Démon:</string>
+    <string name="stoneCrystal">Pierre ou Cristal:</string>
 </resources>

@@ -1,14 +1,14 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.sots;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import pt.joaomneto.titancompanion.R;
-import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.SOTSAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment;
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt;
@@ -42,18 +42,13 @@ public class SOTSAdventureEquipmentFragment extends AdventureEquipmentFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_20sots_adventure_equipment, container, false);
 
-        final Adventure adv = (Adventure) getActivity();
-
-        initialize(rootView, adv);
-
-        return rootView;
+        return inflater.inflate(R.layout.fragment_20sots_adventure_equipment, container, false);
     }
 
     @Override
-    protected void initialize(View rootView, Adventure adv_) {
-        super.initialize(rootView, adv_);
+    public void onViewCreated(@NonNull View rootView, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(rootView, savedInstanceState);
 
         hummingValue = rootView.findViewById(R.id.hummingValue);
         armourPValue = rootView.findViewById(R.id.armourPValue);
@@ -77,78 +72,46 @@ public class SOTSAdventureEquipmentFragment extends AdventureEquipmentFragment {
         minusBowelButton = rootView.findViewById(R.id.minusBowelButton);
         plusBowelButton = rootView.findViewById(R.id.plusBowelButton);
 
-        final SOTSAdventure adv = (SOTSAdventure) adv_;
+        final SOTSAdventure adv = (SOTSAdventure) getActivity();
 
-        minusHummingButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                adv.setHummingBulbArrows(Math.max(adv.getHummingBulbArrows() - 1, 0));
-                refreshScreensFromResume();
-            }
+        minusHummingButton.setOnClickListener(v -> {
+            adv.setHummingBulbArrows(Math.max(adv.getHummingBulbArrows() - 1, 0));
+            refreshScreensFromResume();
         });
 
-        plusHummingButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                adv.setHummingBulbArrows(adv.getHummingBulbArrows() + 1);
-                refreshScreensFromResume();
-            }
+        plusHummingButton.setOnClickListener(v -> {
+            adv.setHummingBulbArrows(adv.getHummingBulbArrows() + 1);
+            refreshScreensFromResume();
         });
 
-        minusArmourPButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                adv.setArmourPiercerArrows(Math.max(adv.getArmourPiercerArrows() - 1, 0));
-                refreshScreensFromResume();
-            }
+        minusArmourPButton.setOnClickListener(v -> {
+            adv.setArmourPiercerArrows(Math.max(adv.getArmourPiercerArrows() - 1, 0));
+            refreshScreensFromResume();
         });
 
-        plusArmourPButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                adv.setArmourPiercerArrows(adv.getArmourPiercerArrows() + 1);
-                refreshScreensFromResume();
-            }
+        plusArmourPButton.setOnClickListener(v -> {
+            adv.setArmourPiercerArrows(adv.getArmourPiercerArrows() + 1);
+            refreshScreensFromResume();
         });
 
-        minusWillowButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                adv.setWillowLeafArrows(Math.max(adv.getWillowLeafArrows() - 1, 0));
-                refreshScreensFromResume();
-            }
+        minusWillowButton.setOnClickListener(v -> {
+            adv.setWillowLeafArrows(Math.max(adv.getWillowLeafArrows() - 1, 0));
+            refreshScreensFromResume();
         });
 
-        plusWillowButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                adv.setWillowLeafArrows(adv.getWillowLeafArrows() + 1);
-                refreshScreensFromResume();
-            }
+        plusWillowButton.setOnClickListener(v -> {
+            adv.setWillowLeafArrows(adv.getWillowLeafArrows() + 1);
+            refreshScreensFromResume();
         });
 
-        minusBowelButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                adv.setBowelRakerArrows(Math.max(adv.getBowelRakerArrows() - 1, 0));
-                refreshScreensFromResume();
-            }
+        minusBowelButton.setOnClickListener(v -> {
+            adv.setBowelRakerArrows(Math.max(adv.getBowelRakerArrows() - 1, 0));
+            refreshScreensFromResume();
         });
 
-        plusBowelButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                adv.setBowelRakerArrows(adv.getBowelRakerArrows() + 1);
-                refreshScreensFromResume();
-            }
+        plusBowelButton.setOnClickListener(v -> {
+            adv.setBowelRakerArrows(adv.getBowelRakerArrows() + 1);
+            refreshScreensFromResume();
         });
 
         if (!adv.getSkill().equals(SOTSMartialArt.KYUJUTSU)) {

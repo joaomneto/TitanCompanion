@@ -14,6 +14,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import kotlin.jvm.functions.Function0;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment;
@@ -36,11 +37,11 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rootView = inflater.inflate(R.layout.fragment_13ff_adventure_combat,
-                container, false);
+        setRootView(inflater.inflate(R.layout.fragment_13ff_adventure_combat,
+                container, false));
 
-        damageSpinner = rootView.findViewById(R.id.damageSpinner);
-        damageText = rootView.findViewById(R.id.damageText);
+        damageSpinner = getRootView().findViewById(R.id.damageSpinner);
+        damageText = getRootView().findViewById(R.id.damageText);
 
         if (damageSpinner != null) {
             DropdownStringAdapter adapter = new DropdownStringAdapter(
@@ -72,45 +73,46 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment {
 
         init();
 
-        return rootView;
+        return getRootView();
     }
 
     protected void combatTurn() {
-        if (combatPositions.size() == 0)
+        if (getCombatPositions().size() == 0)
             return;
 
-        if (combatStarted == false) {
-            combatStarted = true;
-            combatTypeSwitch.setClickable(false);
+        if (getCombatStarted() == false) {
+            setCombatStarted(true);
+            getCombatTypeSwitch().setClickable(false);
         }
-        if (combatMode.equals(NORMAL)) {
+        if (getCombatMode().equals(Companion.getNORMAL())) {
             standardCombatTurn();
         } else {
             sequenceCombatTurn();
         }
 
 
-        if (combatPositions.isEmpty()) {
+        if (getCombatPositions().isEmpty()) {
             resetCombat(false);
         }
     }
 
     @Override
-    protected int getDamage() {
-        if (combatMode.equals(NORMAL)) {
+    protected Function0<Integer> getDamage() {
+        if (getCombatMode().equals(Companion.getNORMAL())) {
             if (overrideDamage == null) {
-                return 1;
+                return () -> 1;
             } else
-                return convertDamageStringToInteger(overrideDamage);
-        } else if (combatMode.equals(FF13_GUNFIGHT)) {
-            return DiceRoller.rollD6();
+                return () -> Companion.convertDamageStringToInteger(overrideDamage);
+        } else if (getCombatMode().equals(FF13_GUNFIGHT)) {
+            return () -> DiceRoller.rollD6();
         }
 
-        return 2;
+        return () -> 2;
     }
 
     protected String combatTypeSwitchBehaviour(boolean isChecked) {
-        return combatMode = isChecked ? FF13_GUNFIGHT : NORMAL;
+        setCombatMode(isChecked ? FF13_GUNFIGHT : Companion.getNORMAL());
+        return getCombatMode();
     }
 
     public String getOntext() {
@@ -137,7 +139,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment {
         super.switchLayoutReset(clearResult);
     }
 
-    protected Integer getKnockoutStamina() {
+    protected int getKnockoutStamina() {
         return 6;
     }
 
@@ -148,7 +150,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment {
         final InputMethodManager mgr = (InputMethodManager) adv
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        if (combatStarted)
+        if (getCombatStarted())
             return;
 
 
@@ -157,7 +159,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment {
         final View addCombatantView = adv
                 .getLayoutInflater()
                 .inflate(
-                        combatMode == null || combatMode.equals(FF13_GUNFIGHT) ? R.layout.component_add_combatant
+                        getCombatMode() == null || getCombatMode().equals(FF13_GUNFIGHT) ? R.layout.component_add_combatant
                                 : R.layout.component_add_combatant_damage, null);
 
         final EditText damageValue = addCombatantView
@@ -199,7 +201,7 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment {
                 Integer handicap = Integer.valueOf(handicapValue.getText()
                         .toString());
 
-                addCombatant(rootView, skill, stamina, handicap,
+                addCombatant(skill, stamina, handicap,
                         damageValue == null ? null : damageValue.getText()
                                 .toString());
 
@@ -223,9 +225,9 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment {
 
     @Override
     protected void startCombat() {
-        if (combatMode.equals(FF13_GUNFIGHT)) {
-            for (int i = 0; i < combatPositions.size(); i++) {
-                Combatant c = combatPositions.get(i);
+        if (getCombatMode().equals(FF13_GUNFIGHT)) {
+            for (int i = 0; i < getCombatPositions().size(); i++) {
+                Combatant c = getCombatPositions().get(i);
                 if (c != null)
                     c.setDamage("1D6");
             }
