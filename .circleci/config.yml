@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-     working_directory: ~/code
+     working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
      environment:
@@ -10,12 +10,12 @@ jobs:
        TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
        - checkout
-#       - run:
-#           name: Lint
-#           command: ./gradlew lint
-#       - run:
-#           name: Generate Debug APK
-#           command: ./gradlew assembleDebug -PdisablePreDex
+       - run:
+           name: Lint
+           command: ./gradlew lint
+       - run:
+           name: Generate Debug APK
+           command: ./gradlew assembleDebug -PdisablePreDex
        - run:
            name: Generate Debug Testing APK
            command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
@@ -23,7 +23,7 @@ jobs:
            root: /home/circleci/code
            paths: build
   test-phase1:
-     working_directory: ~/code
+     working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
      environment:
@@ -32,7 +32,7 @@ jobs:
        TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
        - attach_workspace:
-          at: ${HOME}/code/build
+          at: /home/circleci/code
        - run:
           name: Install tools
           command: |
@@ -41,8 +41,8 @@ jobs:
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
-             cat /proc/sys/kernel/random/uuid > ${HOME}/uuid
-             mkdir ${HOME}/testResults
+             cat /proc/sys/kernel/random/uuid > /home/circleci/uuid
+             mkdir /home/circleci/testResults
        - run:
            name: Install GCloud
            command: |
@@ -56,18 +56,18 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 1
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && echo gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
            destination: reports
        - run:
            name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml ${HOME}/testResults/  || true
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml /home/circleci/testResults/  || true
        - store_test_results:
            path: ~/testResults
   test-phase2:
-     working_directory: ~/code
+     working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
      environment:
@@ -76,7 +76,7 @@ jobs:
        TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
        - attach_workspace:
-          at: ${HOME}/code/build
+          at: /home/circleci/code
        - run:
           name: Install tools
           command: |
@@ -85,8 +85,8 @@ jobs:
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
-             cat /proc/sys/kernel/random/uuid > ${HOME}/uuid
-             mkdir ${HOME}/testResults
+             cat /proc/sys/kernel/random/uuid > /home/circleci/uuid
+             mkdir /home/circleci/testResults
        - run:
            name: Install GCloud
            command: |
@@ -100,18 +100,18 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 2
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && echo gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
            destination: reports
        - run:
            name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml ${HOME}/testResults/ || true
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml /home/circleci/testResults/ || true
        - store_test_results:
            path: ~/testResults
   test-phase3:
-     working_directory: ~/code
+     working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
      environment:
@@ -120,7 +120,7 @@ jobs:
        TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
        - attach_workspace:
-          at: ${HOME}/code/build
+          at: /home/circleci/code
        - run:
           name: Install tools
           command: |
@@ -129,8 +129,8 @@ jobs:
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
-             cat /proc/sys/kernel/random/uuid > ${HOME}/uuid
-             mkdir ${HOME}/testResults
+             cat /proc/sys/kernel/random/uuid > /home/circleci/uuid
+             mkdir /home/circleci/testResults
        - run:
            name: Install GCloud
            command: |
@@ -143,19 +143,19 @@ jobs:
            command:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
-           name: Run Firebase Testing Phase 2
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && echo gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
+           name: Run Firebase Testing Phase 3
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
            destination: reports
        - run:
            name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml ${HOME}/testResults/ || true
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml /home/circleci/testResults/ || true
        - store_test_results:
            path: ~/testResults
   deploy:
-     working_directory: ~/code
+     working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
      environment:
@@ -178,21 +178,36 @@ workflows:
   version: 2
   continuous-integration-and-delivery:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore:
+                - production
       - test-phase1:
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - production
+                - master
       - test-phase2:
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - production
+                - master
       - test-phase3:
           requires:
             - build
-      - deploy:
-          requires:
-            - test-phase1
-            - test-phase2
-            - test-phase3
           filters:
             branches:
-              only: master
+              ignore:
+                - production
+                - master
+      - deploy:
+          filters:
+            branches:
+              only: production
