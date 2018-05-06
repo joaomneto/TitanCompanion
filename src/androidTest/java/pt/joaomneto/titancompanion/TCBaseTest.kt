@@ -5,27 +5,12 @@ import android.content.res.Resources
 import android.support.annotation.CheckResult
 import android.support.test.InstrumentationRegistry
 import android.support.test.InstrumentationRegistry.getInstrumentation
-import android.support.test.espresso.AmbiguousViewMatcherException
-import android.support.test.espresso.Espresso
+import android.support.test.espresso.*
 import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.NoMatchingRootException
-import android.support.test.espresso.NoMatchingViewException
-import android.support.test.espresso.UiController
-import android.support.test.espresso.ViewAction
-import android.support.test.espresso.ViewInteraction
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.action.ViewActions.closeSoftKeyboard
-import android.support.test.espresso.action.ViewActions.replaceText
-import android.support.test.espresso.action.ViewActions.swipeDown
-import android.support.test.espresso.action.ViewActions.swipeLeft
-import android.support.test.espresso.action.ViewActions.swipeRight
-import android.support.test.espresso.action.ViewActions.swipeUp
+import android.support.test.espresso.action.ViewActions.*
 import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
-import android.support.test.espresso.matcher.ViewMatchers.withClassName
-import android.support.test.espresso.matcher.ViewMatchers.withId
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
 import android.support.test.runner.lifecycle.Stage
@@ -34,11 +19,7 @@ import android.view.ViewGroup
 import junit.framework.Assert
 import org.hamcrest.Description
 import org.hamcrest.Matcher
-import org.hamcrest.Matchers.`is`
-import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.any
-import org.hamcrest.Matchers.anything
-import org.hamcrest.Matchers.startsWith
+import org.hamcrest.Matchers.*
 import org.hamcrest.TypeSafeMatcher
 import org.junit.Before
 import org.junit.Rule
@@ -108,8 +89,8 @@ abstract class TCBaseTest {
         val button5 = onView(allOf(withId(R.id.buttonSavePoint), isDisplayed()))
         button5.check(matches(isDisplayed()))
 
-        repeat(10, {performSwipeLeft()})
-        repeat(10, {performSwipeRight()})
+        repeat(10, { performSwipeLeft() })
+        repeat(10, { performSwipeRight() })
     }
 
     protected fun assertInvalidAdventureCreation() {
@@ -124,16 +105,16 @@ abstract class TCBaseTest {
 
     protected fun performChoosePotion() {
         val linearLayout = onData(anything())
-            .inAdapterView(
-                allOf(
-                    withId(R.id.potionList),
-                    childAtPosition(
-                        withClassName(`is`("android.widget.LinearLayout")),
-                        0
-                    )
+                .inAdapterView(
+                        allOf(
+                                withId(R.id.potionList),
+                                childAtPosition(
+                                        withClassName(`is`("android.widget.LinearLayout")),
+                                        0
+                                )
+                        )
                 )
-            )
-            .atPosition(0)
+                .atPosition(0)
         linearLayout.perform(click())
     }
 
@@ -144,7 +125,7 @@ abstract class TCBaseTest {
 
     protected fun performFillSavegameName() {
         val editText = onView(
-            allOf(withId(R.id.adventureNameInput), isDisplayed())
+                allOf(withId(R.id.adventureNameInput), isDisplayed())
         )
         editText.perform(replaceText("espresso"), closeSoftKeyboard())
     }
@@ -155,16 +136,16 @@ abstract class TCBaseTest {
 
         //Clicks over the proper book using the property order of the GamebookEnum
         val textView = onData(anything())
-            .inAdapterView(
-                allOf(
-                    withId(R.id.gamebookListView),
-                    childAtPosition(
-                        withClassName(`is`("android.widget.RelativeLayout")),
-                        0
-                    )
+                .inAdapterView(
+                        allOf(
+                                withId(R.id.gamebookListView),
+                                childAtPosition(
+                                        withClassName(`is`("android.widget.RelativeLayout")),
+                                        0
+                                )
+                        )
                 )
-            )
-            .atPosition(gamebook.order - 1)
+                .atPosition(gamebook.order - 1)
         textView.perform(click())
 
         button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()))
@@ -180,17 +161,17 @@ abstract class TCBaseTest {
     @Before
     fun dismissStartupDialog() {
         val button = onView(
-            allOf(
-                withId(android.R.id.button2), withText("Close"),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.LinearLayout")),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
+                allOf(
+                        withId(android.R.id.button2), withText("Close"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(`is`("android.widget.LinearLayout")),
+                                        0
+                                ),
+                                0
+                        ),
+                        isDisplayed()
+                )
         )
 
         if (exists(button))
@@ -206,20 +187,20 @@ abstract class TCBaseTest {
 
     fun performClickOnButton(buttonId: Int, nrTimes: Int = 1) {
         val button = onView(
-            allOf<View>(
-                withId(buttonId),
-                isDisplayed()
-            )
+                allOf<View>(
+                        withId(buttonId),
+                        isDisplayed()
+                )
         )
         repeat(nrTimes, { button.perform(click()) })
     }
 
     fun performInsertTextInPopupAndClickOk(elementId: Int, text: String) {
         val editText = onView(
-            allOf<View>(
-                withId(elementId),
-                isDisplayed()
-            )
+                allOf<View>(
+                        withId(elementId),
+                        isDisplayed()
+                )
         )
         editText.perform(replaceText(text), closeSoftKeyboard())
         performClickOnButton(android.R.id.button1)
@@ -227,48 +208,48 @@ abstract class TCBaseTest {
 
     fun testStaminaStat(adventure: Adventure) {
         testIncrementalStat(
-            adventure,
-            R.id.minusStaminaButton,
-            R.id.plusStaminaButton,
-            R.id.statsStaminaValue,
-            Adventure::currentStamina,
-            Adventure::initialStamina,
-            true
+                adventure,
+                R.id.minusStaminaButton,
+                R.id.plusStaminaButton,
+                R.id.statsStaminaValue,
+                Adventure::currentStamina,
+                Adventure::initialStamina,
+                true
         )
     }
 
     fun testLuckStat(adventure: Adventure) {
         testIncrementalStat(
-            adventure,
-            R.id.minusLuckButton,
-            R.id.plusLuckButton,
-            R.id.statsLuckValue,
-            Adventure::currentLuck,
-            Adventure::initialLuck,
-            true
+                adventure,
+                R.id.minusLuckButton,
+                R.id.plusLuckButton,
+                R.id.statsLuckValue,
+                Adventure::currentLuck,
+                Adventure::initialLuck,
+                true
         )
     }
 
     fun testSkillStat(adventure: Adventure) {
         testIncrementalStat(
-            adventure,
-            R.id.minusSkillButton,
-            R.id.plusSkillButton,
-            R.id.statsSkillValue,
-            Adventure::currentSkill,
-            Adventure::initialSkill,
-            true
+                adventure,
+                R.id.minusSkillButton,
+                R.id.plusSkillButton,
+                R.id.statsSkillValue,
+                Adventure::currentSkill,
+                Adventure::initialSkill,
+                true
         )
     }
 
     fun <A : Adventure> testIncrementalStat(
-        adventure: A,
-        minusButtonId: Int,
-        plusButtonId: Int,
-        valueId: Int,
-        adventureField: KMutableProperty1<A, Int>,
-        adventureMaxField: KMutableProperty1<A, Int>? = null,
-        maxValueEditable: Boolean = false
+            adventure: A,
+            minusButtonId: Int,
+            plusButtonId: Int,
+            valueId: Int,
+            adventureField: KMutableProperty1<A, Int>,
+            adventureMaxField: KMutableProperty1<A, Int>? = null,
+            maxValueEditable: Boolean = false
     ) {
         var currentStatValue = adventureField.get(adventure)
         val maxStatValue = adventureMaxField?.get(adventure) ?: Int.MAX_VALUE
@@ -296,30 +277,30 @@ abstract class TCBaseTest {
         performClickOnButton(minusButtonId)
         Assert.assertEquals(0, adventureField.get(adventure))
 
-       if(maxStatValue != Int.MAX_VALUE){
-           // Test upper boundary of the stat
-           currentStatValue = adventureField.get(adventure)
-           performClickOnButton(plusButtonId, maxStatValue - currentStatValue)
-           Assert.assertEquals(maxStatValue, adventureField.get(adventure))
-           performClickOnButton(plusButtonId)
-           Assert.assertEquals(maxStatValue, adventureField.get(adventure))
+        if (maxStatValue != Int.MAX_VALUE) {
+            // Test upper boundary of the stat
+            currentStatValue = adventureField.get(adventure)
+            performClickOnButton(plusButtonId, maxStatValue - currentStatValue)
+            Assert.assertEquals(maxStatValue, adventureField.get(adventure))
+            performClickOnButton(plusButtonId)
+            Assert.assertEquals(maxStatValue, adventureField.get(adventure))
 
-           if (maxValueEditable) {
-               // Test upper boundary modification of the stat
-               currentStatValue = adventureField.get(adventure)
-               performClickOnButton(valueId)
-               performInsertTextInPopupAndClickOk(R.id.alert_editText_field, (maxStatValue + 2).toString())
-               Assert.assertEquals(maxStatValue + 2, adventureMaxField?.get(adventure))
-               performClickOnButton(plusButtonId, 2)
-               Assert.assertEquals(currentStatValue + 2, adventureField.get(adventure))
-           }
-       }
+            if (maxValueEditable) {
+                // Test upper boundary modification of the stat
+                currentStatValue = adventureField.get(adventure)
+                performClickOnButton(valueId)
+                performInsertTextInPopupAndClickOk(R.id.alert_editText_field, (maxStatValue + 2).toString())
+                Assert.assertEquals(maxStatValue + 2, adventureMaxField?.get(adventure))
+                performClickOnButton(plusButtonId, 2)
+                Assert.assertEquals(currentStatValue + 2, adventureField.get(adventure))
+            }
+        }
     }
 
     companion object {
 
         fun childAtPosition(
-            parentMatcher: Matcher<View>, position: Int
+                parentMatcher: Matcher<View>, position: Int
         ): Matcher<View> {
 
             return object : TypeSafeMatcher<View>() {
@@ -331,7 +312,7 @@ abstract class TCBaseTest {
                 public override fun matchesSafely(view: View): Boolean {
                     val parent = view.parent
                     return (parent is ViewGroup && parentMatcher.matches(parent)
-                        && view == parent.getChildAt(position))
+                            && view == parent.getChildAt(position))
                 }
             }
         }

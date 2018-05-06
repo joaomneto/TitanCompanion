@@ -1,8 +1,7 @@
 version: 2
 jobs:
-  test-phase1:
+  build:
      working_directory: ~/code
-     parallelism: 2
      docker:
        - image: circleci/android:api-26-alpha
      environment:
@@ -11,15 +10,29 @@ jobs:
        TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
        - checkout
-       - run:
-           name: Lint
-           command: ./gradlew lint
-       - run:
-           name: Generate Debug APK
-           command: ./gradlew assembleDebug -PdisablePreDex
+#       - run:
+#           name: Lint
+#           command: ./gradlew lint
+#       - run:
+#           name: Generate Debug APK
+#           command: ./gradlew assembleDebug -PdisablePreDex
        - run:
            name: Generate Debug Testing APK
            command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
+       - persist_to_workspace:
+           root: /home/circleci/code
+           paths: build
+  test-phase1:
+     working_directory: ~/code
+     docker:
+       - image: circleci/android:api-26-alpha
+     environment:
+       JVM_OPTS: -Xmx2048m
+       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
+     steps:
+       - attach_workspace:
+          at: ${HOME}/code/build
        - run:
           name: Install tools
           command: |
@@ -43,14 +56,14 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 1
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && echo gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
            destination: reports
        - run:
            name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/hammerhead-21-en-portrait/*.xml ${HOME}/testResults/
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml ${HOME}/testResults/  || true
        - store_test_results:
            path: ~/testResults
   test-phase2:
@@ -62,16 +75,8 @@ jobs:
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
        TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
-       - checkout
-       - run:
-           name: Lint
-           command: ./gradlew lint
-       - run:
-           name: Generate Debug APK
-           command: ./gradlew assembleDebug -PdisablePreDex
-       - run:
-           name: Generate Debug Testing APK
-           command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
+       - attach_workspace:
+          at: ${HOME}/code/build
        - run:
           name: Install tools
           command: |
@@ -95,14 +100,14 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 2
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && echo gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
            destination: reports
        - run:
            name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/hammerhead-21-en-portrait/*.xml ${HOME}/testResults/
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml ${HOME}/testResults/ || true
        - store_test_results:
            path: ~/testResults
   test-phase3:
@@ -114,16 +119,8 @@ jobs:
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
        TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
-       - checkout
-       - run:
-           name: Lint
-           command: ./gradlew lint
-       - run:
-           name: Generate Debug APK
-           command: ./gradlew assembleDebug -PdisablePreDex
-       - run:
-           name: Generate Debug Testing APK
-           command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
+       - attach_workspace:
+          at: ${HOME}/code/build
        - run:
           name: Install tools
           command: |
@@ -146,15 +143,15 @@ jobs:
            command:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
-           name: Run Firebase Testing Phase 3
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
+           name: Run Firebase Testing Phase 2
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && echo gcloud firebase test android run --verbosity=info --app ${HOME}/code/build/outputs/apk/debug/code-debug.apk --test ${HOME}/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
            destination: reports
        - run:
            name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/hammerhead-21-en-portrait/*.xml ${HOME}/testResults/
+           command: TEST_RESULTS_DIR=$(cat ${HOME}/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml ${HOME}/testResults/ || true
        - store_test_results:
            path: ~/testResults
   deploy:
@@ -181,19 +178,21 @@ workflows:
   version: 2
   continuous-integration-and-delivery:
     jobs:
+      - build
       - test-phase1:
-          filters:
-            branches:
-              ignore: /master.*/
+          requires:
+            - build
       - test-phase2:
-          filters:
-            branches:
-              ignore: /master.*/
+          requires:
+            - build
       - test-phase3:
-          filters:
-            branches:
-              ignore: /master.*/
+          requires:
+            - build
       - deploy:
+          requires:
+            - test-phase1
+            - test-phase2
+            - test-phase3
           filters:
             branches:
-              only: master_production
+              only: master
