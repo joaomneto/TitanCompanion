@@ -1,4 +1,4 @@
-package pt.joaomneto.titancompanion
+package pt.joaomneto.titancompanion.phase1
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
@@ -8,6 +8,7 @@ import android.support.test.filters.LargeTest
 import android.support.test.runner.AndroidJUnit4
 import org.hamcrest.Matchers.containsString
 import org.junit.runner.RunWith
+import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.THE_FOREST_OF_DOOM
 import pt.joaomneto.titancompanion.util.LocaleHelper
 
