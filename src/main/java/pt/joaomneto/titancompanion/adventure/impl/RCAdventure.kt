@@ -47,7 +47,7 @@ class RCAdventure : TFODAdventure(
 ) {
 
     var currentRobot: Robot? = null
-    var robots: List<Robot> = emptyList()
+    var robots: List<Robot> = mutableListOf()
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {

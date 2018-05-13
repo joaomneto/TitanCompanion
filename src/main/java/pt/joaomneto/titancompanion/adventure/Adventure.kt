@@ -518,8 +518,8 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
     fun fullRefresh() {
         fragmentConfiguration
-                .map { it.fragment as AdventureFragment }
-                .forEach { it.refreshScreensFromResume() }
+                .map { it.fragment }
+                .forEach { (getFragment(it) as AdventureFragment?)?.refreshScreensFromResume() }
     }
 
     fun closeKeyboard(view: View) {
