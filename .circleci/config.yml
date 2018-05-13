@@ -178,18 +178,13 @@ workflows:
   version: 2
   continuous-integration-and-delivery:
     jobs:
-      - build:
-          filters:
-            branches:
-              ignore:
-                - production
+      - build
       - test-phase1:
           requires:
             - build
           filters:
             branches:
               ignore:
-                - production
                 - master
       - test-phase2:
           requires:
@@ -197,7 +192,6 @@ workflows:
           filters:
             branches:
               ignore:
-                - production
                 - master
       - test-phase3:
           requires:
@@ -205,9 +199,15 @@ workflows:
           filters:
             branches:
               ignore:
-                - production
                 - master
       - deploy:
+          requires:
+            - build
+            - test-phase1
+            - test-phase2
+            - test-phase3
           filters:
             branches:
-              only: production
+              ignore: /.*/
+            branches:
+              only: /^v.*/
