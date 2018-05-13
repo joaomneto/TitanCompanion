@@ -208,6 +208,4 @@ workflows:
             - test-phase3
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: production
