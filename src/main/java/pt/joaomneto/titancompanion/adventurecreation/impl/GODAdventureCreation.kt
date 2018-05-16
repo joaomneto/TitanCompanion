@@ -10,5 +10,6 @@ class GODAdventureCreation : AdventureCreation() {
         bw.write("provisionsValue=4\n")
         bw.write("weapon=UNARMED\n")
         bw.write("poison=0\n")
+        bw.write("smokeOil=10\n")
     }
 }
