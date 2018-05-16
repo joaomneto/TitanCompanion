@@ -99,4 +99,13 @@ abstract class BaseFragmentActivity(
         }
         return fragment
     }
+
+    @Suppress("UNCHECKED_CAST")
+    fun <F : Fragment> getFragment(javaclass: Class<F>): F? {
+        var fragment: F? = null
+        mSectionsPagerAdapter?.registeredFragments?.forEach { _: Int, frag: Fragment ->
+            if (javaclass.kotlin.isInstance(frag)) fragment = frag as F
+        }
+        return fragment
+    }
 }
