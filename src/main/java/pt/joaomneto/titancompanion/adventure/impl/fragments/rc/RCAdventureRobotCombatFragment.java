@@ -371,7 +371,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         combatResult.setText(R.string.rcRobotSwitchedConfig);
         changeRobotForm.setEnabled(false);
 
-        RCAdventureRobotFragment rcarf = (RCAdventureRobotFragment) adv.getFragmentConfiguration()[FRAGMENT_ROBOTS].getFragment();
+        RCAdventureRobotFragment rcarf = ((RCAdventure) getActivity()).getFragment(RCAdventureRobotFragment.class);
         rcarf.refreshScreensFromResume();
 
         refreshScreensFromResume();
@@ -827,7 +827,7 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
         combatResult.setText(combatStatus.toString());
         changeRobotForm.setEnabled(true);
         RCAdventure activity = (RCAdventure) this.getActivity();
-        RCAdventureRobotFragment rcarf = (RCAdventureRobotFragment) activity.getFragmentConfiguration()[FRAGMENT_ROBOTS].getFragment();
+        RCAdventureRobotFragment rcarf = activity.getFragment(RCAdventureRobotFragment.class);
         rcarf.refreshScreensFromResume();
         refreshScreensFromResume();
 

@@ -51,7 +51,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
                     return;
                 else {
                     adv.getWeapons().remove(idx);
-                    adv.getVitalStatsFragment().refreshScreensFromResume();
+                    adv.getFragment(SAAdventureWeaponsFragment.class).refreshScreensFromResume();
                 }
 
                 String result = "";
