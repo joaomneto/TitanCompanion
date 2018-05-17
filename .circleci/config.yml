@@ -180,10 +180,16 @@ jobs:
           name: Install tools
           command: |
              sudo apt-get install -y gcc python-dev python-setuptools
+             sudo apt-get install git
              sudo easy_install -U pip
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
+             git remote add github git@github.com:joaomneto/TitanCompanion.git
+       - run:
+          name: Create Version
+          command: |
+            ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && echo Tagging version ${VERSION} && git tag ${VERSION} && git push github ${VERSION}
        - run:
           name: Deploy To Play Store
           command: ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND1} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND2} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND3}

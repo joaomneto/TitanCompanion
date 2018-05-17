@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pt.joaomneto.titancompanion"
-    android:versionCode="55"
-    android:versionName="0.55-beta">
+    android:versionCode="57"
+    android:versionName="v0.57-beta">
 
     <uses-sdk
         android:minSdkVersion="19"
