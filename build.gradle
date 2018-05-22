@@ -162,13 +162,11 @@ task(prepareRelease) {
                 commandLine "hub", "pull-request", "-F", "pr_temp_file"
                 standardOutput stdout
             }
-            print stdout
 
             exec {
                 commandLine "rm", "-rf", "pr_temp_file"
                 standardOutput stdout
             }
-            print stdout
 
         }else{
             throw new IllegalStateException("Missing modifications to release notes ${missingModifications}")
