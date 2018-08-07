@@ -11,6 +11,7 @@ import android.util.SparseArray
 import android.view.ViewGroup
 import androidx.util.forEach
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
+import pt.joaomneto.titancompanion.util.DiceRoller
 import pt.joaomneto.titancompanion.util.LocaleHelper
 import java.util.Locale
 import kotlin.reflect.KClass
@@ -21,7 +22,8 @@ import kotlin.reflect.KClass
 
 abstract class BaseFragmentActivity(
     open val fragmentConfiguration: Array<AdventureFragmentRunner>,
-    open val contentView: Int
+    open val contentView: Int,
+    open val diceRoller: DiceRoller = DiceRoller
 ) : FragmentActivity() {
 
     /**
@@ -96,15 +98,6 @@ abstract class BaseFragmentActivity(
         var fragment: F? = null
         mSectionsPagerAdapter?.registeredFragments?.forEach { _: Int, frag: Fragment ->
             if (kclass.isInstance(frag)) fragment = frag as F
-        }
-        return fragment
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    fun <F : Fragment> getFragment(javaclass: Class<F>): F? {
-        var fragment: F? = null
-        mSectionsPagerAdapter?.registeredFragments?.forEach { _: Int, frag: Fragment ->
-            if (javaclass.kotlin.isInstance(frag)) fragment = frag as F
         }
         return fragment
     }

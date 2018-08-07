@@ -1,6 +1,6 @@
 package pt.joaomneto.titancompanion.adventure.impl.util
 
-class DiceRoll(val d1: Int, val d2: Int) {
+data class DiceRoll(val d1: Int, val d2: Int) {
 
     val sum: Int
         get() = d1 + d2

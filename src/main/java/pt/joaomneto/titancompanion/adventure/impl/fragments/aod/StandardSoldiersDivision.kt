@@ -2,32 +2,25 @@ package pt.joaomneto.titancompanion.adventure.impl.fragments.aod
 
 import android.content.Context
 
-class StandardSoldiersDivision(val type: DefaultDivision, override var quantity: Int) : SoldiersDivision {
-    override var initialQuantity: Int = 0
+data class StandardSoldiersDivision(
+    val type: DefaultDivision,
+    override val quantity: Int,
+    override val initialQuantity: Int = quantity
+) : SoldiersDivision {
 
-    init {
-        this.initialQuantity = quantity
-    }
+    override val category
+        get() = type.name
 
-    override fun resetToInitialValues() {
-        quantity = initialQuantity
-    }
+    override fun resetToInitialValues() = copy(quantity = initialQuantity)
 
-    override fun incrementAllValues() {
-        quantity += 5
-        initialQuantity = quantity
-    }
+    override fun incrementAllValues() = copy(quantity = quantity + 5, initialQuantity = quantity + 5)
 
-    override fun decrementAllValues() {
-        quantity = Math.max(0, quantity - 5)
-        initialQuantity = quantity
-    }
+    override fun decrementAllValues() = copy(
+        quantity = Math.max(0, quantity - 5),
+        initialQuantity = Math.max(0, quantity - 5)
+    )
 
     override fun getLabel(ctx: Context): String {
         return ctx.getString(type.labelId)
-    }
-
-    override fun getCategory(): String {
-        return type.name
     }
 }

@@ -123,7 +123,7 @@ public class SoldierListAdapter<T extends SoldiersDivision> extends ArrayAdapter
                         fragment.incrementTurnArmyLosses();
                         if (fragment.getTargetLosses() == fragment.getTurnArmyLosses()) {
                             fragment.setBattleState(AODAdventureSoldiersFragment.AODAdventureBattleState.STARTED);
-                            fragment.refreshScreensFromResume();
+                            fragment.refreshScreen();
                         }
                         int newQuantity = Math.max(0, currentQuantity - 5);
                         fragment.setSkirmishValueForDivision(division.getCategory(), newQuantity);
@@ -193,9 +193,10 @@ public class SoldierListAdapter<T extends SoldiersDivision> extends ArrayAdapter
             @Override
             public void onClick(View arg0) {
                 if (division.getQuantity() > 0) {
-                    division.setQuantity(Math.max(0, division.getQuantity() - 5));
+//                    FIXME
+                    //division.setQuantity(Math.max(0, division.getQuantity() - 5));
                     fragment.setSkirmishValueForDivision(division.getCategory(), fragment.getSkirmishValueForDivision(division.getCategory()) + 5);
-                    fragment.refreshScreensFromResume();
+                    fragment.refreshScreen();
                 }
             }
         });
@@ -206,9 +207,10 @@ public class SoldierListAdapter<T extends SoldiersDivision> extends ArrayAdapter
             public void onClick(View arg0) {
                 Integer skirmishValueForDivision = fragment.getSkirmishValueForDivision(division.getCategory());
                 if (skirmishValueForDivision > 0) {
-                    division.setQuantity(division.getQuantity() + 5);
+//                    FIXME
+//                    division.setQuantity(division.getQuantity() + 5);
                     fragment.setSkirmishValueForDivision(division.getCategory(), Math.max(0, skirmishValueForDivision - 5));
-                    fragment.refreshScreensFromResume();
+                    fragment.refreshScreen();
                 }
             }
         });
@@ -227,7 +229,8 @@ public class SoldierListAdapter<T extends SoldiersDivision> extends ArrayAdapter
 
 
         alertbox.setNegativeButton(R.string.no, (dialog, id) -> {
-            division.setQuantity(5);
+//                    FIXME
+//            division.setQuantity(5);
             dialog.cancel();
         });
 

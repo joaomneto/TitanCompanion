@@ -1,12 +1,6 @@
 package pt.joaomneto.titancompanion.adventure.impl.fragments.aod
 
-import java.util.ArrayList
-
-/**
- * Created by Joao Neto on 26/04/17.
- */
-
-class Army : ArrayList<SoldiersDivision>() {
+data class Army(val divisions: List<SoldiersDivision> = emptyList()) {
 
     val stringToSaveGame: String
         get() {
@@ -14,31 +8,39 @@ class Army : ArrayList<SoldiersDivision>() {
 
             var first = true
 
-            for (division in this) {
+            for (division in divisions) {
                 sb.append(if (!first) '#' else "")
-                sb.append(division.getCategory() + "§" + division.quantity)
+                sb.append(division.category + "§" + division.quantity)
                 first = false
             }
 
             return sb.toString()
         }
 
-    fun recalculate(skirmishArmy: Map<String, Int>) {
-        for (division in this) {
-            val qt = skirmishArmy[division.getCategory()]
-            division.quantity = (division.quantity + (qt ?: 0))
-            division.initialQuantity = division.quantity
-        }
-    }
+    fun recalculate(skirmishArmy: Map<String, Int>): Army =
+        copy(divisions = divisions
+            .map {
+                val qt = skirmishArmy[it.category]
+                when (it) {
+                    is CustomSoldiersDivision -> {
+                        it.copy(
+                            quantity = it.quantity + (qt ?: 0)
+                        )
+                    }
+                    is StandardSoldiersDivision ->
+                        it.copy(
+                            quantity = it.quantity + (qt ?: 0)
+                        )
+                    else -> throw IllegalStateException("Not Possible")
+                }
+            })
 
     companion object {
         fun getInstanceFromSavedString(savedArmy: String): Army {
-            val result = Army()
-
             val armyList = savedArmy.split("#".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-            armyList
+            val divisions = armyList
                 .map { division -> division.split("§".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray() }
-                .mapTo(result) {
+                .map {
                     val type = it[0]
                     val default: Boolean = enumValues<DefaultDivision>().any { it.name == type }
                     if (default)
@@ -47,7 +49,7 @@ class Army : ArrayList<SoldiersDivision>() {
                         CustomSoldiersDivision(type, Integer.parseInt(it[1]))
                 }
 
-            return result
+            return Army(divisions)
         }
     }
 }

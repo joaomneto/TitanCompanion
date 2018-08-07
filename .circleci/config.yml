@@ -22,20 +22,7 @@ jobs:
        - persist_to_workspace:
            root: /home/circleci/code
            paths: build
-  tests:
-     working_directory: /home/circleci/code
-     docker:
-       - image: circleci/android:api-26-alpha
-     environment:
-       JVM_OPTS: -Xmx2048m
-       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
-       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
-     steps:
-       - checkout
-       - run:
-          name: Run Junit Tests
-          command: ./gradlew test -PdisablePreDex
-  instrumentation-test-1:
+  test-phase1:
      working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
@@ -69,7 +56,7 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 1
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && echo gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
@@ -79,7 +66,7 @@ jobs:
            command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml /home/circleci/testResults/  || true
        - store_test_results:
            path: ~/testResults
-  instrumentation-test-2:
+  test-phase2:
      working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
@@ -113,7 +100,7 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 2
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && echo gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
@@ -123,7 +110,7 @@ jobs:
            command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml /home/circleci/testResults/ || true
        - store_test_results:
            path: ~/testResults
-  instrumentation-test-3:
+  test-phase3:
      working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
@@ -157,7 +144,7 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 3
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && echo gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
@@ -180,16 +167,10 @@ jobs:
           name: Install tools
           command: |
              sudo apt-get install -y gcc python-dev python-setuptools
-             sudo apt-get install git
              sudo easy_install -U pip
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
-             git remote add github git@github.com:joaomneto/TitanCompanion.git
-       - run:
-          name: Create Version
-          command: |
-            ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && echo Tagging version ${VERSION} && git tag ${VERSION} && git push github ${VERSION}
        - run:
           name: Deploy To Play Store
           command: ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND1} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND2} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND3}
@@ -197,38 +178,36 @@ workflows:
   version: 2
   continuous-integration-and-delivery:
     jobs:
-      - build
-      - tests:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - production
+      - test-phase1:
           requires:
             - build
-      - instrumentation-test-1:
-          requires:
-            - tests
           filters:
             branches:
               ignore:
-                - master
                 - production
-      - instrumentation-test-2:
+                - master
+      - test-phase2:
           requires:
-            - tests
+            - build
           filters:
             branches:
               ignore:
-                - master
                 - production
-      - instrumentation-test-3:
+                - master
+      - test-phase3:
           requires:
-            - tests
+            - build
           filters:
             branches:
               ignore:
-                - master
                 - production
+                - master
       - deploy:
-          requires:
-            - build
-            - tests
           filters:
             branches:
               only: production

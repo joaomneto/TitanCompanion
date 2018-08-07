@@ -5,48 +5,24 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
 import android.widget.CompoundButton
 import android.widget.CompoundButton.OnCheckedChangeListener
 import android.widget.EditText
-import android.widget.ListView
-import android.widget.Switch
-import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_adventure_combat.*
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.adapter.CombatantListAdapter
-import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll
+import pt.joaomneto.titancompanion.adventure.state.AdventureState
+import pt.joaomneto.titancompanion.adventure.state.CombatMode.SEQUENCE
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.util.ArrayList
+import java.util.*
 
 open class AdventureCombatFragment : AdventureFragment() {
-    protected var combatResult: TextView? = null
-    protected var startCombatButton: Button? = null
-    protected var combatTurnButton: Button? = null
-    protected var addCombatButton: Button? = null
-    protected var testLuckButton: Button? = null
-    protected var resetButton: Button? = null
-    protected var resetButton2: Button? = null
-    protected var combatTypeSwitch: Switch? = null
-    protected var rootView: View? = null
-    protected var combatPositions: MutableList<Combatant> = ArrayList()
     protected var combatantListAdapter: CombatantListAdapter? = null
-    protected var combatantsListView: ListView? = null
-    protected var combatMode = NORMAL
     protected var handicap = 0
-
-    protected var draw = false
-    protected var luckTest = false
-    protected var hit = false
-
-    protected var combatStarted = false
-
-    protected var staminaLoss = 0
-    protected var attackDiceRoll = DiceRoll(0,0)
 
     val offtext: String
         get() = getString(R.string.normal)
@@ -54,314 +30,61 @@ open class AdventureCombatFragment : AdventureFragment() {
     open val ontext: String
         get() = getString(R.string.sequence)
 
-    protected open val knockoutStamina: Int
-        get() = Int.MAX_VALUE
+    protected open val state: AdventureState
+        get() = (context as Adventure<*>).state
 
-    protected open val damage: () -> Int
-        get() = { 2 }
+    protected open val combatState: AdventureState.CombatState
+        get() = state.combat
 
-    protected open val defaultEnemyDamage: String
-        get() = "2"
+    private val adventure: Adventure<*>
+        get() = activity as Adventure<*>
 
-    protected val currentEnemy: Combatant
-        get() {
-            for (combatant in combatPositions) {
-                if (combatant.isActive) {
-                    return combatant
-                }
-            }
-            throw IllegalStateException("No active enemy combatant found.")
-        }
+    private var keepCombatText = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
-        rootView = inflater.inflate(R.layout.fragment_adventure_combat, container, false)
 
-        init()
-
-        return rootView
+        return inflater.inflate(R.layout.fragment_adventure_combat, container, false)
     }
 
-    @Synchronized
-    protected open fun combatTurn() {
-        if (combatPositions.size == 0)
-            return
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        if (combatStarted == false) {
-            combatStarted = true
-            combatTypeSwitch!!.isClickable = false
+        combatType.textOff = offtext
+        combatType.textOn = ontext
+        combatType.setOnCheckedChangeListener(combatTypeChangeListener())
+
+        combatantListAdapter = CombatantListAdapter(this.activity!!, { combatState.combatPositions })
+        combatants.adapter = combatantListAdapter
+
+        addCombatButton.setOnClickListener {
+            addCombatButtonOnClick()
         }
 
-        if (combatMode == SEQUENCE) {
-            sequenceCombatTurn()
-        } else {
-            standardCombatTurn()
+        resetCombat.setOnClickListener {
+            keepCombatText = true
+            adventure.performResetCombat(this)
         }
 
-
-        if (combatPositions.isEmpty()) {
-            resetCombat(false)
+        resetCombat2.setOnClickListener {
+            keepCombatText = true
+            adventure.performResetCombat(this)
         }
+
+        attackButton.setOnClickListener {
+            adventure.performCombatTurn(this)
+        }
+
+        startCombat.setOnClickListener {
+            adventure.performStartCombat(combatResult, this)
+        }
+
+        testLuckButton.setOnClickListener {
+            adventure.performTestLuckCombat(this)
+        }
+
+        refreshScreen()
     }
-
-    protected open fun switchLayoutCombatStarted() {
-        addCombatButton!!.visibility = View.GONE
-        combatTypeSwitch!!.visibility = View.GONE
-        startCombatButton!!.visibility = View.GONE
-        resetButton!!.visibility = View.GONE
-        resetButton2!!.visibility = View.VISIBLE
-        testLuckButton!!.visibility = View.VISIBLE
-        combatTurnButton!!.visibility = View.VISIBLE
-    }
-
-    protected fun init() {
-
-        combatResult = rootView!!.findViewById(R.id.combatResult)
-        combatTurnButton = rootView!!.findViewById(R.id.attackButton)
-        startCombatButton = rootView!!.findViewById(R.id.startCombat)
-        addCombatButton = rootView!!.findViewById(R.id.addCombatButton)
-        combatTypeSwitch = rootView!!.findViewById(R.id.combatType)
-        resetButton = rootView!!.findViewById(R.id.resetCombat)
-        resetButton2 = rootView!!.findViewById(R.id.resetCombat2)
-        testLuckButton = rootView!!.findViewById(R.id.testLuckButton)
-
-        combatTypeSwitch!!.textOff = offtext
-        combatTypeSwitch!!.textOn = ontext
-        combatTypeSwitch!!.setOnCheckedChangeListener(CombatTypeSwitchChangeListener())
-
-        combatantsListView = rootView!!.findViewById(R.id.combatants)
-        combatantListAdapter = CombatantListAdapter(this.activity, combatPositions)
-        combatantsListView!!.adapter = combatantListAdapter
-
-        addCombatButton!!.setOnClickListener { addCombatButtonOnClick() }
-
-        resetButton!!.setOnClickListener {
-            resetCombat(true)
-            refreshScreensFromResume()
-        }
-
-        resetButton2!!.setOnClickListener {
-            resetCombat(true)
-            refreshScreensFromResume()
-        }
-
-        combatTurnButton!!.setOnClickListener { combatTurn() }
-
-        startCombatButton!!.setOnClickListener { startCombat() }
-
-        testLuckButton!!.setOnClickListener(OnClickListener {
-            val adv = activity as Adventure?
-
-            if (draw || luckTest)
-                return@OnClickListener
-            luckTest = true
-            val result = adv!!.testLuckInternal()
-            if (result) {
-                combatResult!!.setText(R.string.youreLucky)
-                if (hit) {
-                    val combatant = currentEnemy
-                    combatant.currentStamina = combatant.currentStamina - 1
-                    combatant.staminaLoss = combatant.staminaLoss + 1
-                    val enemyStamina = combatant.currentStamina
-                    if (enemyStamina <= 0 || staminaLoss >= knockoutStamina) {
-                        Adventure.showAlert(getString(R.string.defeatedOpponent), adv)
-                        removeAndAdvanceCombat(combatant)
-                    }
-                } else {
-                    adv.setCurrentStamina(adv.getCurrentStamina() + 1)
-                    staminaLoss--
-                }
-            } else {
-                combatResult!!.setText(R.string.youreUnlucky)
-                if (hit) {
-                    val combatant = currentEnemy
-                    combatant.currentStamina = combatant.currentStamina + 1
-                    combatant.staminaLoss = combatant.staminaLoss + 1
-                } else {
-                    adv.setCurrentStamina(adv.getCurrentStamina() - 1)
-                    staminaLoss++
-                }
-
-                if (adv.getCurrentStamina() <= knockoutStamina) {
-                    Adventure.showAlert(getString(R.string.knockedOut), adv)
-                }
-
-                if (adv.getCurrentStamina() == 0) {
-                    onPlayerDeath(adv)
-                }
-            }
-            refreshScreensFromResume()
-        })
-
-        refreshScreensFromResume()
-    }
-
-    protected open fun onPlayerDeath(adv: Adventure) {
-        Adventure.showAlert(getString(R.string.youreDead), adv)
-    }
-
-    protected open fun sequenceCombatTurn() {
-
-        val position = currentEnemy
-
-        draw = false
-        luckTest = false
-        hit = false
-        val adv = activity as Adventure?
-        val skill = adv!!.combatSkillValue
-        attackDiceRoll = DiceRoller.roll2D6()
-        val attackStrength = attackDiceRoll?.sum + skill + position.handicap
-        val enemyDiceRoll = DiceRoller.roll2D6()
-        val enemyAttackStrength = enemyDiceRoll.sum + position.currentSkill
-        var combatResultText = ""
-        if (attackStrength > enemyAttackStrength) {
-            if (!position.isDefenseOnly) {
-                val suddenDeath = suddenDeath(attackDiceRoll, enemyDiceRoll)
-                if (suddenDeath == null || !suddenDeath) {
-                    val damage = damage()
-                    position.currentStamina = Math.max(0, position.currentStamina - damage)
-                    hit = true
-                    combatResultText += (getString(R.string.hitEnemy) + " (" + attackDiceRoll?.sum + " + " + skill
-                        + (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + "
-                        + position.currentSkill + "). (-" + damage + getString(R.string.staminaInitials) + ")")
-                } else {
-                    position.currentStamina = 0
-                    Adventure.showAlert(getString(R.string.defeatSuddenDeath), adv)
-                }
-            } else {
-                draw = true
-                combatResultText += (getString(R.string.blockedAttack) + " (" + attackDiceRoll?.sum + " + " + skill
-                    + (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill
-                    + ")")
-            }
-        } else if (attackStrength < enemyAttackStrength) {
-            val damage = convertDamageStringToInteger(position.damage)
-            adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage))
-            combatResultText += (getString(R.string.youWereHit) + " (" + attackDiceRoll?.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "")
-                + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + "). (-" + damage + R.string.staminaInitials + ")")
-        } else {
-
-            combatResultText += R.string.bothMissed
-            draw = true
-        }
-
-        if (position.currentStamina == 0) {
-            removeAndAdvanceCombat(position)
-            combatResultText += "\n"
-            combatResultText += getString(R.string.defeatedEnemy)
-        } else {
-            advanceCombat(position)
-        }
-
-        if (adv.getCurrentStamina() == 0) {
-            removeAndAdvanceCombat(position)
-            combatResultText += "\n"
-            combatResultText += getString(R.string.youveDied)
-        }
-
-        combatResult!!.text = combatResultText
-
-        refreshScreensFromResume()
-    }
-
-    protected fun advanceCombat(combatant: Combatant): Combatant? {
-        val index = combatPositions.indexOf(combatant)
-        var currentEnemy: Combatant? = null
-
-        if (!combatPositions.isEmpty()) {
-            if (index <= combatPositions.size - 2) {
-                currentEnemy = combatPositions[index + 1]
-            } else {
-                currentEnemy = combatPositions[0]
-            }
-            changeActiveCombatant(currentEnemy)
-        } else {
-            resetCombat(false)
-        }
-
-        return currentEnemy
-    }
-
-    private fun changeActiveCombatant(currentEnemy: Combatant?) {
-        for (combatant in combatPositions) {
-            combatant.isActive = false
-        }
-        currentEnemy!!.isActive = true
-    }
-
-    protected open fun removeAndAdvanceCombat(combatant: Combatant) {
-        combatPositions.remove(combatant)
-        if (!combatPositions.isEmpty()) {
-            val currentEnemy = advanceCombat(combatant)
-            currentEnemy!!.isDefenseOnly = false
-        }
-    }
-
-    protected open fun standardCombatTurn() {
-        val position = currentEnemy
-
-        // if (!finishedCombats.contains(currentCombat)) {
-        draw = false
-        luckTest = false
-        hit = false
-        val adv = activity as Adventure?
-        attackDiceRoll = DiceRoller.roll2D6()
-        val skill = adv!!.combatSkillValue
-        val attackStrength = attackDiceRoll.sum + skill + position.handicap
-        val enemyDiceRoll = DiceRoller.roll2D6()
-        val enemyAttackStrength = enemyDiceRoll.sum + position.currentSkill
-        var combatResultText = ""
-        if (attackStrength > enemyAttackStrength) {
-            val suddenDeath = suddenDeath(attackDiceRoll, enemyDiceRoll)
-            if (suddenDeath == null || !suddenDeath) {
-                val damage = damage()
-
-                position.currentStamina = Math.max(0, position.currentStamina - damage)
-                position.staminaLoss = position.staminaLoss + damage
-                hit = true
-                combatResultText += (getString(R.string.hitEnemy) + " (" + attackDiceRoll.sum + " + " + skill
-                    + (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill
-                    + ").")
-            } else {
-                position.currentStamina = 0
-                Adventure.showAlert(R.string.defeatSuddenDeath, adv)
-            }
-        } else if (attackStrength < enemyAttackStrength) {
-            val damage = convertDamageStringToInteger(position.damage)
-            staminaLoss += damage
-            adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage))
-            combatResultText += (getString(R.string.youWereHit) + " (" + attackDiceRoll.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "")
-                + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + ").")
-        } else {
-
-            combatResult!!.setText(R.string.bothMissed)
-            draw = true
-        }
-
-        combatResultText += endOfTurnAction()
-
-        if (position.currentStamina == 0 || position.staminaLoss >= knockoutStamina) {
-            removeAndAdvanceCombat(position)
-            combatResultText += "\n"
-            combatResultText += getString(R.string.defeatedEnemy)
-        }
-
-        if (staminaLoss >= knockoutStamina) {
-            removeAndAdvanceCombat(position)
-            Adventure.showAlert(R.string.knockedOut, adv)
-        }
-
-        if (adv.getCurrentStamina() == 0) {
-            removeAndAdvanceCombat(position)
-            onPlayerDeath(adv)
-        }
-
-        combatResult!!.text = combatResultText
-
-        refreshScreensFromResume()
-    }
-
-    open fun endOfTurnAction(): String = ""
 
     protected open fun addCombatButtonOnClick() {
         addCombatButtonOnClick(R.layout.component_add_combatant)
@@ -369,13 +92,13 @@ open class AdventureCombatFragment : AdventureFragment() {
 
     protected fun addCombatButtonOnClick(layoutId: Int) {
 
-        val adv = activity as Adventure?
+        val adv = activity as Adventure<*>
 
-        val addCombatantView = adv!!.layoutInflater.inflate(layoutId, null)
+        val addCombatantView = adv.layoutInflater.inflate(layoutId, null)
 
         val mgr = adv.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
-        if (combatStarted)
+        if (combatState.combatStarted)
             return
 
         val builder = AlertDialog.Builder(adv)
@@ -421,7 +144,7 @@ open class AdventureCombatFragment : AdventureFragment() {
         }
 
 
-        addCombatant(skill, stamina, handicap, defaultEnemyDamage)
+        addCombatant(skill, stamina, handicap, adventure.defaultEnemyDamage)
     }
 
     protected fun addCombatant(skill: Int, stamina: Int, handicap: Int, damage: String) {
@@ -430,93 +153,65 @@ open class AdventureCombatFragment : AdventureFragment() {
             stamina,
             skill,
             handicap,
-            combatPositions.size > 0,
+            combatState.combatPositions.isNotEmpty(),
             damage,
-            combatPositions.size == 0
+            combatState.combatPositions.isEmpty()
         )
-        if (!combatPositions.isEmpty())
-            combatPosition.isDefenseOnly = true
-        combatPositions.add(combatPosition)
-        refreshScreensFromResume()
+
+        adventure.performAddCombatant(combatPosition)
+        refreshScreen()
     }
 
-    override fun refreshScreensFromResume() {
-        if (combatantListAdapter != null)
-            combatantListAdapter!!.notifyDataSetChanged()
-    }
+    override fun refreshScreen() {
+        combatantListAdapter?.notifyDataSetChanged()
 
-    protected open fun resetCombat(clearResult: Boolean) {
+        if (combatState.combatStarted) {
+            addCombatButton.visibility = View.GONE
+            combatType.visibility = View.GONE
+            startCombat.visibility = View.GONE
+            resetCombat.visibility = View.GONE
+            resetCombat2.visibility = View.VISIBLE
+            testLuckButton.visibility = View.VISIBLE
+            attackButton.visibility = View.VISIBLE
+        } else {
+            addCombatButton.visibility = View.VISIBLE
+            combatType.visibility = View.VISIBLE
+            startCombat.visibility = View.VISIBLE
+            resetCombat.visibility = if (keepCombatText) View.VISIBLE else View.GONE
 
-        staminaLoss = 0
-
-        combatPositions.clear()
-        combatantListAdapter!!.notifyDataSetChanged()
-        combatMode = NORMAL
-        combatStarted = false
-        if (clearResult) {
-            combatResult!!.text = ""
+            testLuckButton.visibility = View.GONE
+            attackButton.visibility = View.GONE
+            resetCombat2.visibility = View.GONE
         }
 
-        combatTypeSwitch!!.isClickable = true
-        combatTypeSwitch!!.isChecked = false
+        combatResult.text = combatState.combatResult
 
-        switchLayoutReset(clearResult)
+        combatType.isClickable = true
+        combatType.isChecked = combatState.combatMode == SEQUENCE
+        combatType.isClickable = !combatState.combatStarted
 
-        refreshScreensFromResume()
+        keepCombatText = false
     }
 
-    protected open fun switchLayoutReset(clearResult: Boolean) {
-        addCombatButton!!.visibility = View.VISIBLE
-        combatTypeSwitch!!.visibility = View.VISIBLE
-        startCombatButton!!.visibility = View.VISIBLE
-        resetButton!!.visibility = if (clearResult) View.GONE else View.VISIBLE
+    data class Combatant(
+        val currentStamina: Int,
+        val currentSkill: Int,
+        val handicap: Int = 0,
+        val isDefenseOnly: Boolean,
+        val damage: String,
+        val isActive: Boolean,
+        val staminaLoss: Int = 0,
+        val id: String = UUID.randomUUID().toString()
+    )
 
-        testLuckButton!!.visibility = View.GONE
-        combatTurnButton!!.visibility = View.GONE
-        resetButton2!!.visibility = View.GONE
-    }
-
-    protected open fun combatTypeSwitchBehaviour(isChecked: Boolean): String {
-        combatMode = if (isChecked) SEQUENCE else NORMAL
-        return combatMode
-    }
-
-    protected open fun startCombat() {
-        if (!combatPositions.isEmpty()) {
-            combatTurn()
-
-            switchLayoutCombatStarted()
-        }
-    }
-
-    protected open fun suddenDeath(diceRoll: DiceRoll, enemyDiceRoll: DiceRoll): Boolean? {
-        return false
-    }
-
-    inner class Combatant(
-        var currentStamina: Int,
-        var currentSkill: Int,
-        var handicap: Int = 0,
-        var isDefenseOnly: Boolean,
-        var damage: String,
-        var isActive: Boolean
-    ) {
-        var staminaLoss: Int = 0
-    }
-
-    private inner class CombatTypeSwitchChangeListener : OnCheckedChangeListener {
-
+    private inner class combatTypeChangeListener : OnCheckedChangeListener {
         override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
-            combatTypeSwitchBehaviour(isChecked)
+            adventure.performSwitchCombatMode(this@AdventureCombatFragment, isChecked)
         }
     }
 
     companion object {
-
-        val NORMAL = "NORMAL"
-        val SEQUENCE = "SEQUENCE"
-
-        public fun convertDamageStringToInteger(damage: String): Int {
+        fun convertDamageStringToInteger(damage: String): Int {
             return if (damage == "1D6") {
                 DiceRoller.rollD6()
             } else {

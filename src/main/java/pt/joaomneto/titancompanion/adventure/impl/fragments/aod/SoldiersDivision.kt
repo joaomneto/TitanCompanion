@@ -7,12 +7,12 @@ import android.content.Context
  */
 interface SoldiersDivision {
 
-    var quantity: Int
-    var initialQuantity: Int
+    val quantity: Int
+    val initialQuantity: Int
+    val category: String
 
-    fun resetToInitialValues()
-    fun incrementAllValues()
-    fun decrementAllValues()
+    fun resetToInitialValues(): SoldiersDivision
+    fun incrementAllValues(): SoldiersDivision
+    fun decrementAllValues(): SoldiersDivision
     fun getLabel(ctx: Context): String
-    fun getCategory(): String
 }

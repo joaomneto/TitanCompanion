@@ -9,7 +9,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
@@ -17,11 +27,6 @@ import pt.joaomneto.titancompanion.adventure.impl.AODAdventure;
 import pt.joaomneto.titancompanion.adventure.impl.fragments.aod.adapter.SoldierListAdapter;
 import pt.joaomneto.titancompanion.util.DiceNumberToWords;
 import pt.joaomneto.titancompanion.util.DiceRoller;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class AODAdventureSoldiersFragment extends AdventureFragment {
 
@@ -126,7 +131,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
             @Override
             public void onClick(View v) {
                 enemyForces = enemyForces + 5;
-                refreshScreensFromResume();
+                refreshScreen();
             }
         });
 
@@ -134,7 +139,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
             @Override
             public void onClick(View v) {
                 enemyForces = Math.max(0, enemyForces - 5);
-                refreshScreensFromResume();
+                refreshScreen();
             }
         });
 
@@ -147,7 +152,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         });
 
         if (adv != null) {
-            soldiersList.setAdapter(new SoldierListAdapter(adv, adv.getSoldiers()));
+            soldiersList.setAdapter(new SoldierListAdapter(adv, adv.state.getSoldiers().getDivisions()));
         }
 
 
@@ -184,7 +189,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         buttonCombatReset.setOnClickListener(resetBattleOnClickListener);
         buttonCancelBattle.setOnClickListener(resetBattleOnClickListener);
 
-        refreshScreensFromResume();
+        refreshScreen();
     }
 
 
@@ -221,7 +226,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         }
 
 
-        refreshScreensFromResume();
+        refreshScreen();
     }
 
     private void combatTurn() {
@@ -254,7 +259,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
             battleBalance = AODAdventureBattleBalance.EVEN;
         }
 
-        int diceRoll = DiceRoller.rollD6();
+        int diceRoll = DiceRoller.INSTANCE.rollD6();
 
 
         AODAdventureBattleResults result = battleResults.get(battleBalance).get(diceRoll);
@@ -275,7 +280,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
 
         if (enemyForces == 0) {
-            adv.getSoldiers().recalculate(skirmishArmy);
+            adv.state.getSoldiers().recalculate(skirmishArmy);
             combatResult.append(getString(R.string.aodDestroyEnemy));
             buttonCombatTurn.setVisibility(View.GONE);
             buttonCombatReset.setText(R.string.closeCombat);
@@ -283,21 +288,21 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
 
         if (battleState.equals(AODAdventureBattleState.DAMAGE) && totalForces <= result.getQuantity()) {
             skirmishArmy.clear();
-            adv.getSoldiers().recalculate(skirmishArmy);
+            adv.state.getSoldiers().recalculate(skirmishArmy);
             combatResult.append(getString(R.string.aodArmyDestroyed));
             buttonCombatTurn.setVisibility(View.GONE);
             buttonCombatReset.setText(R.string.closeCombat);
         }
 
 
-        refreshScreensFromResume();
+        refreshScreen();
 
     }
 
     private void commitForces() {
 
         battleState = AODAdventureBattleState.STAGING;
-        refreshScreensFromResume();
+        refreshScreen();
     }
 
     private void resetCombat() {
@@ -307,10 +312,10 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         battleState = AODAdventureBattleState.NORMAL;
         enemyForces = 0;
 
-        for (SoldiersDivision sd : adv.getSoldiers()) {
+        for (SoldiersDivision sd : adv.state.getSoldiers().getDivisions()) {
             sd.resetToInitialValues();
         }
-        refreshScreensFromResume();
+        refreshScreen();
     }
 
     protected void addSoldiersButtonOnClick() {
@@ -348,11 +353,12 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
                     return;
                 }
 
-                CustomSoldiersDivision sd = new CustomSoldiersDivision(type, quantity);
+                CustomSoldiersDivision sd = new CustomSoldiersDivision(type, quantity, quantity);
 
-                adv.getSoldiers().add(sd);
+//                FIXME
+//                adv.state.getSoldiers().add(sd);
 
-                refreshScreensFromResume();
+                refreshScreen();
             }
 
         });
@@ -417,7 +423,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
     }
 
     @Override
-    public void refreshScreensFromResume() {
+    public void refreshScreen() {
 
 
         AODAdventure adv = (AODAdventure) this.getActivity();
@@ -430,7 +436,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         if (isBattleStarted()) {
             soldiersList.setAdapter(new SoldierListAdapter(adv, getBattleSoldiers()));
         } else {
-            soldiersList.setAdapter(new SoldierListAdapter(adv, adv.getSoldiers()));
+            soldiersList.setAdapter(new SoldierListAdapter(adv, adv.state.getSoldiers().getDivisions()));
         }
         if (adapter != null) {
             adapter.notifyDataSetChanged();
@@ -451,7 +457,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
         List<CustomSoldiersDivision> battleSoldiers = new ArrayList<>();
         for (String type : skirmishArmy.keySet()) {
             if (skirmishArmy.get(type) > 0) {
-                battleSoldiers.add(new CustomSoldiersDivision(type, 0));
+                battleSoldiers.add(new CustomSoldiersDivision(type, 0, 0));
             }
         }
         return battleSoldiers;

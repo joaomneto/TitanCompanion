@@ -149,6 +149,7 @@ class LoadAdventureActivity : BaseActivity() {
 
         val ADVENTURE_FILE = "ADVENTURE_FILE"
         val ADVENTURE_DIR = "ADVENTURE_DIR"
+        val ADVENTURE_SAVEGAME_CONTENT = "ADVENTURE_SAVEGAME_CONTENT"
 
         fun deleteDirectory(path: File): Boolean {
             if (path.exists()) {

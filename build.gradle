@@ -1,3 +1,6 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 buildscript {
     ext.kotlin_version = '1.2.30'
     repositories {
@@ -6,7 +9,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.2.0-alpha10'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.triplet.gradle:play-publisher:1.1.5'
         classpath 'com.amazonaws:aws-devicefarm-gradle-plugin:1.2'
@@ -16,7 +19,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.triplet.play'
-apply plugin: 'kotlin-kapt'
 
 dependencies {
     repositories {
@@ -30,14 +32,18 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation 'commons-io:commons-io:2.6'
     implementation 'androidx.core:core-ktx:0.2'
-    androidTestImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation "org.robolectric:shadows-support-v4:3.3.2"
+    testImplementation "io.mockk:mockk:1.8.1"
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.18.0'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
 
 }
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion '27.0.3'
     dataBinding {
         enabled = true
@@ -67,6 +73,8 @@ android {
     }
 
     defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 27
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     compileOptions {
@@ -76,6 +84,12 @@ android {
 
     testOptions {
         animationsDisabled = true
+        unitTests {
+            includeAndroidResources = true
+        }
+        unitTests.all {
+            jvmArgs '-noverify'
+        }
     }
 
     sourceSets {
@@ -88,7 +102,7 @@ android {
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
         }
-
+        test.java.srcDirs += 'src/test/kotlin'
         androidTest.java.srcDir 'src/androidTest/java'
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
@@ -107,69 +121,37 @@ repositories {
     mavenCentral()
 }
 
-task(versionFromManifest) {
-    doLast {
-        def manifest = new XmlSlurper().parseText(new File('AndroidManifest.xml').text)
-        def version = manifest['@android:versionName']
-        println version
-    }
-}
+tasks.withType(Test) {
+    testLogging {
+        // set options for log level LIFECYCLE
+        events TestLogEvent.FAILED,
+                TestLogEvent.PASSED,
+                TestLogEvent.SKIPPED
 
-task(prepareRelease) {
-    doLast {
-        def branch = ['sh', '-c', 'git rev-parse --abbrev-ref HEAD'].execute().text.trim()
-        
-        if(branch == 'master'){
-            throw new IllegalStateException("Cannot prepare release while on master.")
+        // set options for log level DEBUG and INFO
+        debug {
+            events TestLogEvent.STARTED,
+                    TestLogEvent.FAILED,
+                    TestLogEvent.PASSED,
+                    TestLogEvent.SKIPPED,
+                    TestLogEvent.STANDARD_ERROR,
+                    TestLogEvent.STANDARD_OUT
+            exceptionFormat TestExceptionFormat.FULL
         }
+        info.events = debug.events
+        exceptionFormat = info.exceptionFormat = debug.exceptionFormat
 
-        def diff = ['sh', '-c', 'git diff --numstat origin/master -- src/main/play'].execute().text.trim()
-        def filesChanged = diff.split( '\n' ).collect{it.split('\t')[2].trim()}
-        def missingModifications = [
-                'src/main/play/en-GB/whatsnew',
-                'src/main/play/fr-FR/whatsnew',
-                'src/main/play/pt-PT/whatsnew',
-                'src/main/play/pt-BR/whatsnew'
-        ] - filesChanged
-
-        if(missingModifications.empty){
-            def manifest = new XmlSlurper().parseText(new File('AndroidManifest.xml').text)
-            def version = manifest['@android:versionName']
-            def versionNumber = manifest['@android:versionCode']
-            def stdout = new ByteArrayOutputStream()
-
-            def newVersion = "v${versionNumber.toInteger()+1}-beta"
-            ant.replace(file: "AndroidManifest.xml", token: "android:versionCode=\"${versionNumber}\"", value: "android:versionCode=\"${versionNumber.toInteger()+1}\"")
-            ant.replace(file: "AndroidManifest.xml", token: "android:versionName=\"${version}\"", value: "android:versionName=\"${newVersion}\"")
-
-            println "Adding a commit with the new Manifest file for release..."
-            exec {
-                commandLine "git", "commit", "-a", "-m", "'Release ${newVersion}'"
-                standardOutput stdout
+        afterSuite { desc, result ->
+            if (!desc.parent) {
+                println('-----------')
+                println("${result.resultType}")
+                println("Total: ${result.testCount}")
+                println("Passed: ${result.successfulTestCount}")
+                println("Failed: ${result.failedTestCount}")
+                println("Skiped: ${result.skippedTestCount}")
+                println('-----------')
             }
-            print stdout
-
-            exec {
-                commandLine "git", "push", "origin"
-                standardOutput stdout
-            }
-            print stdout
-
-
-            new File("pr_temp_file").text = """Release ${newVersion}\n\n${new File('src/main/play/en-GB/whatsnew').text}"""
-            println "Opening pull request..."
-            exec {
-                commandLine "hub", "pull-request", "-F", "pr_temp_file"
-                standardOutput stdout
-            }
-
-            exec {
-                commandLine "rm", "-rf", "pr_temp_file"
-                standardOutput stdout
-            }
-
-        }else{
-            throw new IllegalStateException("Missing modifications to release notes ${missingModifications}")
         }
     }
 }
+
