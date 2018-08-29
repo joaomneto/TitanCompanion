@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  lint:
      working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
@@ -13,6 +13,22 @@ jobs:
        - run:
            name: Lint
            command: ./gradlew lint
+       - persist_to_workspace:
+           root: /home/circleci/
+           paths:
+             - code
+             - .gradle
+  build-apk:
+     working_directory: /home/circleci/code
+     docker:
+       - image: circleci/android:api-26-alpha
+     environment:
+       JVM_OPTS: -Xmx2048m
+       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
+     steps:
+       - attach_workspace:
+           at: /home/circleci
        - run:
            name: Generate Debug APK
            command: ./gradlew assembleDebug -PdisablePreDex
@@ -20,9 +36,11 @@ jobs:
            name: Generate Debug Testing APK
            command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
        - persist_to_workspace:
-           root: /home/circleci/code
-           paths: build
-  test-phase1:
+           root: /home/circleci/
+           paths:
+             - code
+             - .gradle
+  unit-tests:
      working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
@@ -32,41 +50,18 @@ jobs:
        TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
        - attach_workspace:
-          at: /home/circleci/code
+          at: /home/circleci
        - run:
-          name: Install tools
-          command: |
-             sudo apt-get install -y gcc python-dev python-setuptools
-             sudo easy_install -U pip
-             sudo pip uninstall -y crcmod
-             sudo pip install -U crcmod
-             pip install awscli --upgrade --user
-             cat /proc/sys/kernel/random/uuid > /home/circleci/uuid
-             mkdir /home/circleci/testResults
-       - run:
-           name: Install GCloud
-           command: |
-              echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-              curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-              sudo apt-get update && sudo apt-get install -y google-cloud-sdk
-              sudo apt-get update && sudo apt-get --only-upgrade install -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
-       - run:
-           name: Configure Google Cloud Access
-           command:
-              ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
-       - run:
-           name: Run Firebase Testing Phase 1
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
+           name: Run Unit Tests
+           command: ./gradlew testRelease --no-daemon --max-workers=2 -DGRADLE_OPTS=-Xmx3g --stacktrace
            no_output_timeout: 2400
-       - store_artifacts:
-           path: build/reports
-           destination: reports
        - run:
-           name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml /home/circleci/testResults/  || true
+           name: Dmesg
+           command: dmesg
+           no_output_timeout: 2400
        - store_test_results:
-           path: ~/testResults
-  test-phase2:
+           path: ~/code/build/test-results/testReleaseUnitTest
+  instrumentation-tests:
      working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-26-alpha
@@ -76,7 +71,7 @@ jobs:
        TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
      steps:
        - attach_workspace:
-          at: /home/circleci/code
+          at: /home/circleci
        - run:
           name: Install tools
           command: |
@@ -100,51 +95,7 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 2
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
-           no_output_timeout: 2400
-       - store_artifacts:
-           path: build/reports
-           destination: reports
-       - run:
-           name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml /home/circleci/testResults/ || true
-       - store_test_results:
-           path: ~/testResults
-  test-phase3:
-     working_directory: /home/circleci/code
-     docker:
-       - image: circleci/android:api-26-alpha
-     environment:
-       JVM_OPTS: -Xmx2048m
-       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
-       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
-     steps:
-       - attach_workspace:
-          at: /home/circleci/code
-       - run:
-          name: Install tools
-          command: |
-             sudo apt-get install -y gcc python-dev python-setuptools
-             sudo easy_install -U pip
-             sudo pip uninstall -y crcmod
-             sudo pip install -U crcmod
-             pip install awscli --upgrade --user
-             cat /proc/sys/kernel/random/uuid > /home/circleci/uuid
-             mkdir /home/circleci/testResults
-       - run:
-           name: Install GCloud
-           command: |
-              echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-              curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-              sudo apt-get update && sudo apt-get install -y google-cloud-sdk
-              sudo apt-get update && sudo apt-get --only-upgrade install -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
-       - run:
-           name: Configure Google Cloud Access
-           command:
-              ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
-       - run:
-           name: Run Firebase Testing Phase 3
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR}
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
@@ -178,36 +129,20 @@ workflows:
   version: 2
   continuous-integration-and-delivery:
     jobs:
-      - build:
-          filters:
-            branches:
-              ignore:
-                - production
-      - test-phase1:
+      - lint
+      - build-apk:
           requires:
-            - build
-          filters:
-            branches:
-              ignore:
-                - production
-                - master
-      - test-phase2:
+            - lint
+      - unit-tests:
           requires:
-            - build
-          filters:
-            branches:
-              ignore:
-                - production
-                - master
-      - test-phase3:
+            - lint
+      - instrumentation-tests:
           requires:
-            - build
-          filters:
-            branches:
-              ignore:
-                - production
-                - master
+            - build-apk
       - deploy:
+          requires:
+            - unit-tests
+            - instrumentation-tests
           filters:
             branches:
               only: production

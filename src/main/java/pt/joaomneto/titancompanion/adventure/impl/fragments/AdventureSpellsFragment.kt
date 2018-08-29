@@ -98,7 +98,7 @@
 //            val dataAdapter = TranslatableEnumAdapter(
 //                activity,
 //                android.R.layout.simple_list_item_1,
-//                (activity as SpellAdventure<*>).spellList
+//                (activity as SpellAdventure<*,*,*,*>).spellList
 //            )
 //
 //            return dataAdapter

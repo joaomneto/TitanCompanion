@@ -106,7 +106,7 @@ class GamebookSelectionActivity : FragmentActivity() {
 
 
             if (bookSupported) {
-                createButton.setOnClickListener { view ->
+                createButton.setOnClickListener {
 
                     val intent = Intent(activity!!.baseContext, creationActivity)
                     intent.putExtra(GAMEBOOK_ID, position)
@@ -149,11 +149,11 @@ class GamebookSelectionActivity : FragmentActivity() {
         }
 
         override fun getCount(): Int {
-            return values!!.size
+            return values.size
         }
 
         override fun getPageTitle(position: Int): CharSequence? {
-            return values!![position]
+            return values[position]
         }
     }
 

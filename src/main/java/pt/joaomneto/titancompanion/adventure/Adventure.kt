@@ -13,15 +13,20 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import kotlinx.android.synthetic.main.fragment_adventure_combat.*
+import net.attilaszabo.redux.Store
+import pt.joaomneto.titancompanion.BaseFragmentActivity
 import pt.joaomneto.titancompanion.LoadAdventureActivity
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
+import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll
-import pt.joaomneto.titancompanion.adventure.state.AdventureState
-import pt.joaomneto.titancompanion.adventure.state.CombatMode
-import pt.joaomneto.titancompanion.adventure.state.StateKey
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
+import pt.joaomneto.titancompanion.adventure.state.StateAware
+import pt.joaomneto.titancompanion.adventure.state.actions.AdventureActions
+import pt.joaomneto.titancompanion.adventure.state.actions.CombatActions
+import pt.joaomneto.titancompanion.adventure.state.bean.State
+import pt.joaomneto.titancompanion.adventure.values.CombatMode
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedReader
@@ -41,20 +46,13 @@ import java.util.Arrays
 import java.util.Date
 import java.util.HashSet
 import java.util.Properties
-import java.util.logging.Level
-import java.util.logging.Logger
-import kotlin.reflect.KClass
-import kotlin.reflect.full.primaryConstructor
 
-abstract class Adventure<T : AdventureState>(
-        override val fragmentConfiguration: Array<AdventureFragmentRunner>,
-        private val kClass: KClass<T>
-) : StatefulAdventure<T>(
-        fragmentConfiguration,
-        kClass
-) {
-
-
+abstract class Adventure<STORE, CUSTOM_STATE : State, CUSTOM_COMBAT_STATE>(
+    override val fragmentConfiguration: Array<AdventureFragmentRunner>
+) : BaseFragmentActivity(
+    fragmentConfiguration,
+    R.layout.activity_adventure
+), StateAware<STORE, CUSTOM_STATE, CUSTOM_COMBAT_STATE> {
 
     lateinit var name: String
 
@@ -69,9 +67,6 @@ abstract class Adventure<T : AdventureState>(
     open val combatSkillValue: Int
         get() = state.currentSkill
 
-    private val combatState: AdventureState.CombatState
-        get() = state.combat
-
     protected open val knockoutStamina: Int
         get() = Int.MAX_VALUE
 
@@ -81,15 +76,13 @@ abstract class Adventure<T : AdventureState>(
     open val defaultEnemyDamage: String
         get() = "2"
 
+    override lateinit var store: Store<STORE>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val savedGame = loadSavegameProperties()
 
         loadSavegame(savedGame)
-    }
-
-    fun copyState(key: StateKey, value: Any): T {
-        return state.copy(key, value)
     }
 
     private fun loadSavegameProperties(): Properties {
@@ -108,89 +101,15 @@ abstract class Adventure<T : AdventureState>(
         return savedGame
     }
 
-    private fun loadStateFromSavedGame(savedGame: Properties): T {
-
-        val gamebookS = savedGame.getProperty("gamebook")
-        val name = savedGame.getProperty("name")
-        val numbericGbs = gamebookS.toIntOrNull()
-        val gamebook = if (numbericGbs != null)
-            FightingFantasyGamebook.values()[numbericGbs]
-        else
-            FightingFantasyGamebook.valueOf(gamebookS)
-
-        val initialSkill = Integer.valueOf(savedGame.getProperty("initialSkill"))
-        val initialLuck = Integer.valueOf(savedGame.getProperty("initialLuck"))
-        val initialStamina = Integer.valueOf(savedGame.getProperty("initialStamina"))
-        val currentSkill = Integer.valueOf(savedGame.getProperty("currentSkill"))
-        val currentLuck = Integer.valueOf(savedGame.getProperty("currentLuck"))
-        val currentStamina = Integer.valueOf(savedGame.getProperty("currentStamina"))
-
-        val equipmentS = String(savedGame.getProperty("equipment").toByteArray(java.nio.charset.Charset.forName("UTF-8")))
-        val notesS = String(savedGame.getProperty("notes").toByteArray(java.nio.charset.Charset.forName("UTF-8")))
-        val currentReference = Integer.valueOf(savedGame.getProperty("currentReference"))
-
-        val equipment = AdventureState.stringToStringList(
-                equipmentS
-        )
-
-        val notes = AdventureState.stringToStringList(notesS)
-
-        val provisionsS = savedGame.getProperty("provisions")
-        val provisions = if (provisionsS != null && provisionsS != "null") Integer.valueOf(provisionsS) else -1
-        val provisionsValueS = savedGame.getProperty("provisionsValue")
-        val provisionsValue = if (provisionsValueS != null && provisionsValueS != "null") Integer.valueOf(
-                provisionsValueS
-        ) else -1
-
-        val standardPotionS = savedGame.getProperty("standardPotion")
-        val standardPotion = if (standardPotionS != null && standardPotionS != "null") Integer.valueOf(standardPotionS) else -1
-        val standardPotionValueS = savedGame.getProperty("standardPotionValue")
-        val standardPotionValue = if (standardPotionValueS != null && standardPotionValueS != "null") Integer.valueOf(
-                standardPotionValueS
-        ) else -1
-
-        val gold = Integer.valueOf(savedGame.getProperty("gold"))
-
-        return loadAdventureSpecificStateFromSavedGame(
-                AdventureState.toValueMap(
-                        initialSkill = initialSkill,
-                        name = name,
-                        gamebook = gamebook,
-                        initialLuck = initialLuck,
-                        initialStamina = initialStamina,
-                        currentSkill = currentSkill,
-                        currentLuck = currentLuck,
-                        currentStamina = currentStamina,
-                        equipment = equipment,
-                        notes = notes,
-                        provisions = provisions,
-                        provisionsValue = provisionsValue,
-                        currentReference = currentReference,
-                        gold = gold,
-                        standardPotion = standardPotion,
-                        standardPotionValue = standardPotionValue
-                ), savedGame
-        )
-    }
-
-    protected open fun loadAdventureSpecificStateFromSavedGame(
-            values: Map<out StateKey, Any>,
-            savedGame: Properties
-    ): T {
-        return kClass.primaryConstructor!!.call(values)
-    }
-
-    fun performTestSkill(fragment: AdventureFragment) {
+    fun performTestSkill() {
         val message = if (state.checkSkill()) R.string.success else R.string.failed
         showAlert(message, this)
-        fragment.refreshScreen()
     }
 
-    fun performTestLuck(fragment: AdventureFragment) {
+    fun performTestLuck() {
         val message = if (state.checkLuck()) R.string.success else R.string.failed
-        state = state.decreaseLuck()
+        store.dispatch(AdventureActions.DecreaseLuck(1))
         showAlert(message, this)
-        fragment.refreshScreen()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -274,7 +193,7 @@ abstract class Adventure<T : AdventureState>(
         return true
     }
 
-    fun performSavegame(fragment: AdventureFragment) {
+    fun performSavegame() {
         val alert = AlertDialog.Builder(this)
 
         alert.setTitle(R.string.currentReference)
@@ -295,7 +214,8 @@ abstract class Adventure<T : AdventureState>(
 
                 val bw = BufferedWriter(OutputStreamWriter(FileOutputStream(file), "UTF-8"))
 
-                bw.write(state.toSavegameString())
+                toSavegameProperties().store(bw, "$ref")
+
                 storeNotesForRestart(dir)
 
                 bw.close()
@@ -306,13 +226,12 @@ abstract class Adventure<T : AdventureState>(
 
         alert.setNegativeButton(R.string.cancel) { _, _ ->
             imm.hideSoftInputFromWindow(
-                    input.windowToken,
-                    0
+                input.windowToken,
+                0
             )
         }
 
         alert.show()
-        fragment.refreshScreen()
     }
 
     @Throws(IOException::class)
@@ -347,89 +266,76 @@ abstract class Adventure<T : AdventureState>(
         fileWriter.close()
     }
 
-    fun performUsePotion(fragment: AdventureFragment) {
+    fun performUsePotion() {
         var message = -1
         when (state.standardPotion) {
             0 -> {
                 message = R.string.potionSkillReplenish
-                state = state
-                        .resetSkill()
-                        .decreasePotion()
+                store.dispatch(AdventureActions.ResetSkill())
+                store.dispatch(AdventureActions.DecreasePotion())
             }
             1 -> {
                 message = R.string.potionStaminaReplenish
-                state = state
-                        .resetStamina()
-                        .decreasePotion()
+                store.dispatch(AdventureActions.ResetStamina())
+                store.dispatch(AdventureActions.DecreasePotion())
             }
             2 -> {
                 message = R.string.potionLuckReplenish
-                state = state
-                        .changeInitialLuck(state.initialLuck + 1)
-                        .resetLuck()
-                        .decreasePotion()
+                store.dispatch(AdventureActions.ChangeInitialLuck(state.initialLuck + 1))
+                store.dispatch(AdventureActions.ResetLuck())
+                store.dispatch(AdventureActions.DecreasePotion())
             }
         }
         showAlert(message, this)
-        fragment.refreshScreen()
     }
 
-    private fun performAddNote(fragment: AdventureFragment, note: String) {
-        state = state.addNote(note)
-        fragment.refreshScreen()
+    private fun performAddNote(note: String) {
+        store.dispatch(AdventureActions.AddNote(note))
     }
 
-    private fun performAddEquipment(fragment: AdventureFragment, equipment: String) {
-        state = state.addEquipment(equipment)
-        fragment.refreshScreen()
+    private fun performAddEquipment(equipment: String) {
+        store.dispatch(AdventureActions.AddEquipment(equipment))
     }
 
-    private fun performRemoveEquipment(fragment: AdventureFragment, equipment: String) {
-        state = state.removeEquipment(equipment)
-        fragment.refreshScreen()
+    private fun performRemoveEquipment(equipment: String) {
+        store.dispatch(AdventureActions.RemoveEquipment(equipment))
     }
 
-    private fun performRemoveNote(fragment: AdventureFragment, note: String) {
-        state = state.removeNote(note)
-        fragment.refreshScreen()
+    private fun performRemoveNote(note: String) {
+        store.dispatch(AdventureActions.RemoveNote(note))
     }
 
-    fun performIncreaseGold(fragment: AdventureFragment, value: Int = 1) {
-        state = state.increaseGold(value)
-        fragment.refreshScreen()
+    fun performIncreaseGold(value: Int = 1) {
+        store.dispatch(AdventureActions.IncreaseGold(value))
     }
 
-    fun performDecreaseGold(fragment: AdventureFragment, value: Int = 1) {
-        state = state.decreaseGold(value)
-        fragment.refreshScreen()
+    fun performDecreaseGold(value: Int = 1) {
+        store.dispatch(AdventureActions.DecreaseGold(value))
     }
 
-    private fun performChangeGold(fragment: AdventureFragment, value: Int) {
-        state = state.changeGold(value)
-        fragment.refreshScreen()
+    private fun performChangeGold(value: Int) {
+        store.dispatch(AdventureActions.ChangeGold(value))
     }
 
-    fun performConsumeProvisions(fragment: AdventureFragment) {
+    fun performConsumeProvisions() {
         when {
             state.provisions == 0 -> showAlert(R.string.noProvisionsLeft, this)
             state.isMaxStamina() -> showAlert(R.string.provisionsMaxStamina, this)
             else -> {
                 val staminaGain = Math.min(state.provisionsValue, state.initialStamina - state.currentStamina)
-                state = state
-                        .decreaseProvisions()
-                        .increaseStamina(staminaGain)
+                store.dispatch(AdventureActions.DecreaseProvisions())
+                store.dispatch(AdventureActions.IncreaseStamina(staminaGain))
                 showAlert(resources.getString(R.string.provisionsStaminaGain, staminaGain), this)
-                fragment.refreshScreen()
             }
         }
     }
 
-    fun performRemoveEquipmentWithAlert(fragment: AdventureFragment, index: Int): Boolean {
+    fun performRemoveEquipmentWithAlert(index: Int): Boolean {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.deleteEquipmentQuestion).setCancelable(false)
-                .setNegativeButton(R.string.close) { dialog, _ -> dialog.cancel() }
+            .setNegativeButton(R.string.close) { dialog, _ -> dialog.cancel() }
         builder.setPositiveButton(R.string.ok) { _, _ ->
-            performRemoveEquipment(fragment, state.equipment[index])
+            performRemoveEquipment(state.equipment[index])
         }
 
         val alert = builder.create()
@@ -437,7 +343,7 @@ abstract class Adventure<T : AdventureState>(
         return true
     }
 
-    fun performAddEquipmentWithAlert(fragment: AdventureFragment) {
+    fun performAddEquipmentWithAlert() {
         val alert = AlertDialog.Builder(this)
 
         alert.setTitle(R.string.equipment2)
@@ -451,16 +357,16 @@ abstract class Adventure<T : AdventureState>(
         alert.setView(input)
 
         alert.setPositiveButton(
-                R.string.ok
+            R.string.ok
         ) { _, _ ->
             val value = input.text.toString()
             if (value.isEmpty())
                 return@setPositiveButton
-            this.performAddEquipment(fragment, value.trim { it <= ' ' })
+            this.performAddEquipment(value.trim { it <= ' ' })
         }
 
         alert.setNegativeButton(
-                R.string.cancel
+            R.string.cancel
         ) { _, _ ->
             // Canceled.
         }
@@ -468,7 +374,7 @@ abstract class Adventure<T : AdventureState>(
         alert.show()
     }
 
-    fun performChangeGoldWithAlert(fragment: AdventureFragment) {
+    fun performChangeGoldWithAlert() {
         val alert = AlertDialog.Builder(this)
 
         alert.setTitle(R.string.setValue)
@@ -477,8 +383,8 @@ abstract class Adventure<T : AdventureState>(
         val input = EditText(this)
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.toggleSoftInput(
-                InputMethodManager.SHOW_FORCED,
-                InputMethodManager.HIDE_IMPLICIT_ONLY
+            InputMethodManager.SHOW_FORCED,
+            InputMethodManager.HIDE_IMPLICIT_ONLY
         )
         input.inputType = InputType.TYPE_CLASS_NUMBER
         input.requestFocus()
@@ -486,26 +392,26 @@ abstract class Adventure<T : AdventureState>(
 
         alert.setPositiveButton(R.string.ok) { _, _ ->
             val value = Integer.parseInt(input.text.toString())
-            performChangeGold(fragment, value)
+            performChangeGold(value)
         }
 
         alert.setNegativeButton(
-                R.string.cancel
+            R.string.cancel
         ) { _, _ -> imm.hideSoftInputFromWindow(input.windowToken, 0) }
 
         alert.show()
     }
 
-    fun performRemoveNoteWithAlert(fragment: AdventureFragment, position: Int): Boolean {
+    fun performRemoveNoteWithAlert(position: Int): Boolean {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.deleteNote)
-                .setCancelable(false)
-                .setNegativeButton(
-                        R.string.close
-                ) { dialog, _ -> dialog.cancel() }
+            .setCancelable(false)
+            .setNegativeButton(
+                R.string.close
+            ) { dialog, _ -> dialog.cancel() }
         builder.setPositiveButton(R.string.ok) { _, _ ->
             if (this.state.notes.size > position) {
-                this.performRemoveNote(fragment, this.state.notes[position])
+                this.performRemoveNote(this.state.notes[position])
             }
         }
 
@@ -514,7 +420,7 @@ abstract class Adventure<T : AdventureState>(
         return true
     }
 
-    fun performAddNoteWithAlert(fragment: AdventureFragment) {
+    fun performAddNoteWithAlert() {
         val alert = AlertDialog.Builder(this)
 
         alert.setTitle(R.string.note)
@@ -528,16 +434,16 @@ abstract class Adventure<T : AdventureState>(
         alert.setView(input)
 
         alert.setPositiveButton(
-                R.string.ok
+            R.string.ok
         ) { _, _ ->
             val value = input.text.toString()
             if (value.isEmpty())
                 return@setPositiveButton
-            this.performAddNote(fragment, value.trim { it <= ' ' })
+            this.performAddNote(value.trim { it <= ' ' })
         }
 
         alert.setNegativeButton(
-                R.string.cancel
+            R.string.cancel
         ) { _, _ ->
             // Canceled.
         }
@@ -551,13 +457,19 @@ abstract class Adventure<T : AdventureState>(
         pause()
     }
 
+    override fun toSavegameProperties(): Properties {
+        val properties = state.toSavegameProperties()
+        properties.putAll(customState.toSavegameProperties())
+        return properties
+    }
+
     private fun pause() {
         try {
             val file = File(dir, "temp" + ".xml")
 
             val bw = BufferedWriter(OutputStreamWriter(FileOutputStream(file), "UTF-8"))
 
-            bw.write(state.toSavegameString())
+            toSavegameProperties().store(bw, "temp")
 
             bw.close()
         } catch (e: IOException) {
@@ -589,7 +501,7 @@ abstract class Adventure<T : AdventureState>(
                 val savedGame = Properties()
                 savedGame.load(InputStreamReader(FileInputStream(File(dir, "temp.xml")), "UTF-8"))
 
-                loadSavegame(savedGame)
+                store = generateStoreFromSavegame(savedGame)
 
                 refreshScreens()
             } catch (e: Exception) {
@@ -606,8 +518,8 @@ abstract class Adventure<T : AdventureState>(
         }
     }
 
-    fun loadSavegame(savedGame: Properties) {
-        state = loadStateFromSavedGame(savedGame)
+    override fun loadSavegame(savedGame: Properties) {
+        store = generateStoreFromSavegame(savedGame)
     }
 
     fun testResume() {
@@ -620,8 +532,8 @@ abstract class Adventure<T : AdventureState>(
 
     fun refreshScreens() {
         fragmentConfiguration
-                .map { getFragment(it.fragment) as AdventureFragment? }
-                .forEach { it?.refreshScreen() }
+            .map { getFragment(it.fragment) as AdventureFragment<*>? }
+            .forEach { it?.refreshScreen() }
     }
 
     protected fun stringToArray(_string: String?): List<String> {
@@ -651,95 +563,84 @@ abstract class Adventure<T : AdventureState>(
 
     fun fullRefresh() {
         fragmentConfiguration
-                .map { it.fragment }
-                .forEach { (getFragment(it) as AdventureFragment?)?.refreshScreen() }
+            .map { it.fragment }
+            .forEach { (getFragment(it) as AdventureFragment<*>?)?.refreshScreen() }
     }
 
-    private fun closeKeyboard(view: View) {
+    private fun closeKeyboard(view: View?) {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
-        view.clearFocus()
+        imm.hideSoftInputFromWindow(view?.windowToken, 0)
+        view?.clearFocus()
     }
 
     fun notifyPagerAdapterChanged() {
         mViewPager?.adapter?.notifyDataSetChanged()
     }
 
-    fun performIncreaseStamina(fragment: AdventureFragment? = null) {
-        state = state.increaseStamina()
-        fragment?.refreshScreen()
+    fun performIncreaseStamina() {
+        store.dispatch(AdventureActions.IncreaseStamina())
     }
 
-    fun performIncreaseSkill(fragment: AdventureFragment? = null) {
-        state = state.increaseSkill()
-        fragment?.refreshScreen()
+    fun performIncreaseSkill() {
+        store.dispatch(AdventureActions.IncreaseSkill())
     }
 
-    fun performIncreaseLuck(fragment: AdventureFragment? = null) {
-        state = state.increaseLuck()
-        fragment?.refreshScreen()
+    fun performIncreaseLuck() {
+        store.dispatch(AdventureActions.IncreaseLuck())
     }
 
-    fun performIncreaseProvisions(fragment: AdventureFragment? = null) {
-        state = state.increaseProvisions()
-        fragment?.refreshScreen()
+    fun performIncreaseProvisions() {
+        store.dispatch(AdventureActions.IncreaseProvisions())
     }
 
-    fun performDecreaseStamina(fragment: AdventureFragment? = null, value: Int = 1) {
-        state = state.decreaseStamina(value)
-        fragment?.refreshScreen()
+    fun performDecreaseStamina(value: Int = 1) {
+        store.dispatch(AdventureActions.DecreaseStamina(value))
     }
 
-    fun performDecreaseSkill(fragment: AdventureFragment? = null, value:Int = 1) {
-        state = state.decreaseSkill(value)
-        fragment?.refreshScreen()
+    fun performDecreaseSkill(value: Int = 1) {
+        store.dispatch(AdventureActions.DecreaseSkill(value))
     }
 
-    fun performDecreaseLuck(fragment: AdventureFragment? = null) {
-        state = state.decreaseLuck()
-        fragment?.refreshScreen()
+    fun performDecreaseLuck() {
+        store.dispatch(AdventureActions.DecreaseLuck())
     }
 
-    fun performDecreaseProvisions(fragment: AdventureFragment? = null) {
-        state = state.decreaseProvisions()
-        fragment?.refreshScreen()
+    fun performDecreaseProvisions() {
+        store.dispatch(AdventureActions.DecreaseProvisions())
     }
 
-    fun performSetInitialStamina(fragment: AdventureFragment) {
+    fun performSetInitialStamina(fragment: AdventureVitalStatsFragment) {
         val alert = createAlertForInitialStatModification(R.string.setInitialStamina) { dialog, _ ->
 
-            val value = getValueFromAlertTextField(fragment.view!!, dialog as AlertDialog)
+            val value = getValueFromAlertTextField(fragment.view, dialog as AlertDialog)
 
-            state = state.changeInitialStamina(value)
+            store.dispatch(AdventureActions.ChangeInitialStamina(value))
         }
 
         alert.show()
-        fragment.refreshScreen()
     }
 
-    fun performSetInitialSkill(fragment: AdventureFragment) {
+    fun performSetInitialSkill(fragment: AdventureVitalStatsFragment) {
         val alert = createAlertForInitialStatModification(R.string.setInitialSkill) { dialog, _ ->
             val value = getValueFromAlertTextField(fragment.view!!, dialog as AlertDialog)
 
-            state = state.changeInitialSkill(value)
+            store.dispatch(AdventureActions.ChangeInitialSkill(value))
         }
 
         alert.show()
-        fragment.refreshScreen()
     }
 
-    fun performSetInitialLuck(fragment: AdventureFragment) {
+    fun performSetInitialLuck(fragment: AdventureVitalStatsFragment) {
         val alert = createAlertForInitialStatModification(R.string.setInitialLuck) { dialog, _ ->
             val value = getValueFromAlertTextField(fragment.view!!, dialog as AlertDialog)
 
-            state = state.changeInitialLuck(value)
+            store.dispatch(AdventureActions.ChangeInitialLuck(value))
         }
 
         alert.show()
-        fragment.refreshScreen()
     }
 
-    private fun getValueFromAlertTextField(view: View, dialog: AlertDialog): Int {
+    private fun getValueFromAlertTextField(view: View?, dialog: AlertDialog): Int {
         val input = dialog.findViewById<EditText>(R.id.alert_editText_field)
 
         val value = Integer.parseInt(input.text.toString())
@@ -750,8 +651,8 @@ abstract class Adventure<T : AdventureState>(
     }
 
     private fun createAlertForInitialStatModification(
-            dialogTitle: Int,
-            positiveButtonListener: (DialogInterface, Int) -> Unit
+        dialogTitle: Int,
+        positiveButtonListener: (DialogInterface, Int) -> Unit
     ): AlertDialog.Builder {
         val alert = AlertDialog.Builder(this)
 
@@ -763,8 +664,8 @@ abstract class Adventure<T : AdventureState>(
 
         val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.toggleSoftInput(
-                InputMethodManager.SHOW_FORCED,
-                InputMethodManager.HIDE_IMPLICIT_ONLY
+            InputMethodManager.SHOW_FORCED,
+            InputMethodManager.HIDE_IMPLICIT_ONLY
         )
         input.inputType = InputType.TYPE_CLASS_PHONE
         input.keyListener = DigitsKeyListener.getInstance("0123456789")
@@ -772,7 +673,7 @@ abstract class Adventure<T : AdventureState>(
         alert.setView(input)
 
         alert.setNegativeButton(
-                R.string.cancel
+            R.string.cancel
         ) { _, _ -> imm.hideSoftInputFromWindow(input.windowToken, 0) }
 
         alert.setPositiveButton(R.string.ok, positiveButtonListener)
@@ -788,98 +689,107 @@ abstract class Adventure<T : AdventureState>(
         return alert
     }
 
-    open fun performStartCombat(combatResult: TextView, fragment: AdventureFragment? = null) {
-        if (!state.combat.combatPositions.isEmpty()) {
-            performCombatTurn(fragment)
-        }
-        fragment?.refreshScreen()
+    open fun performStartCombat() {
+        performCombatTurn()
     }
 
-    open fun performAddCombatant(combatPosition: AdventureCombatFragment.Combatant, fragment: AdventureFragment? = null) {
-        state = state.addCombatant(combatPosition)
-        fragment?.refreshScreen()
+    open fun performAddCombatant(
+        combatPosition: AdventureCombatFragment.Combatant
+    ) {
+        store.dispatch(CombatActions.AddCombatant(combatPosition))
     }
 
-    open fun performDecreaseCombatantStamina(combatPosition: AdventureCombatFragment.Combatant, fragment: AdventureFragment? = null) {
-        state = state.decreaseCombatantStamina(combatPosition)
-        fragment?.refreshScreen()
+    open fun performDecreaseCombatantStamina(
+        combatPosition: AdventureCombatFragment.Combatant
+    ) {
+        store.dispatch(CombatActions.DecreaseCombatantStamina(combatPosition))
     }
 
-    open fun performIncreaseCombatantStamina(combatPosition: AdventureCombatFragment.Combatant, fragment: AdventureFragment? = null) {
-        state = state.increaseCombatantStamina(combatPosition)
-        fragment?.refreshScreen()
+    open fun performIncreaseCombatantStamina(
+        combatPosition: AdventureCombatFragment.Combatant
+    ) {
+        store.dispatch(CombatActions.IncreaseCombatantStamina(combatPosition))
     }
 
-    open fun performIncreaseCombatantSkill(combatPosition: AdventureCombatFragment.Combatant, fragment: AdventureFragment? = null) {
-        state = state.increaseCombatantSkill(combatPosition)
-        fragment?.refreshScreen()
+    open fun performIncreaseCombatantSkill(
+        combatPosition: AdventureCombatFragment.Combatant
+    ) {
+        store.dispatch(CombatActions.IncreaseCombatantSkill(combatPosition))
     }
 
-    open fun performDecreaseCombatantSkill(combatPosition: AdventureCombatFragment.Combatant, fragment: AdventureFragment? = null) {
-        state = state.decreaseCombatantSkill(combatPosition)
-        fragment?.refreshScreen()
+    open fun performDecreaseCombatantSkill(
+        combatPosition: AdventureCombatFragment.Combatant
+    ) {
+        store.dispatch(CombatActions.DecreaseCombatantSkill(combatPosition))
     }
 
-
-    open fun performCombatTurn(fragment: AdventureFragment? = null) {
-        if (state.combat.combatPositions.isEmpty())
+    open fun performCombatTurn() {
+        if (combatState.combatPositions.isEmpty())
             return
 
-        if (!state.combat.combatStarted) {
-            state = state.startCombat()
+        if (!combatState.combatStarted) {
+            store.dispatch(CombatActions.StartCombat())
         }
 
-        if (state.combat.combatMode == CombatMode.SEQUENCE) {
+        if (combatState.combatMode == CombatMode.SEQUENCE) {
             performSequenceCombatTurn()
         } else {
             performStandardCombatTurn()
         }
-
-        fragment?.refreshScreen()
     }
 
-
-    fun performResetCombat(fragment: AdventureFragment? = null) {
-        state = state.resetCombat()
-
-        fragment?.refreshScreen()
+    fun performResetCombat() {
+        store.dispatch(CombatActions.ResetCombat())
     }
 
-    fun performSwitchCombatMode(fragment: AdventureCombatFragment, checked: Boolean) {
-        state = state.combatMode(if (checked) CombatMode.SEQUENCE else CombatMode.NORMAL)
-        fragment?.refreshScreen()
+    fun performSwitchCombatMode(checked: Boolean) {
+        store.dispatch(CombatActions.CombatMode(if (checked) CombatMode.SEQUENCE else CombatMode.NORMAL))
     }
 
-    fun performTestLuckCombat(fragment: AdventureCombatFragment? = null) {
-        if (state.combat.draw || state.combat.luckTest)
+    fun performTestLuckCombat() {
+        if (combatState.draw || combatState.luckTest)
             return
 
-        state = state.changeCombatLuckTest(true)
+        store.dispatch(CombatActions.ChangeCombatLuckTest(true))
 
         val result = state.checkLuck()
 
         if (result) {
-            combatResult.setText(R.string.youreLucky)
-            if (state.combat.hit) {
-                val combatant = {state.combat.currentEnemy}
-                state = state.modifyCombatant(combatant().copy(currentStamina = combatant().currentStamina - 1, staminaLoss = combatant().staminaLoss + 1))
+            store.dispatch(CombatActions.CombatResult(getString(R.string.youreLucky)))
+            if (combatState.hit) {
+                val combatant = { combatState.currentEnemy }
+                store.dispatch(
+                    CombatActions.ModifyCombatant(
+                        combatant().copy(
+                            currentStamina = combatant().currentStamina - 1,
+                            staminaLoss = combatant().staminaLoss + 1
+                        )
+                    )
+                )
                 val enemyStamina = combatant().currentStamina
-                if (enemyStamina <= 0 || state.combat.staminaLoss >= knockoutStamina) {
+                if (enemyStamina <= 0 || combatState.staminaLoss >= knockoutStamina) {
                     Adventure.showAlert(getString(R.string.defeatedOpponent), this)
-                    state = state.removeCombatantAndAdvanceCombat()
+                    store.dispatch(CombatActions.RemoveCombatantAndAdvanceCombat())
                 }
             } else {
-                performIncreaseStamina(fragment)
-                state.decreaseCombatStaminaLoss()
+                performIncreaseStamina()
+                store.dispatch(CombatActions.DecreaseCombatStaminaLoss())
             }
         } else {
-            combatResult.setText(R.string.youreUnlucky)
-            if (state.combat.hit) {
-                val combatant = state.combat.currentEnemy
-                state = state.modifyCombatant(combatant.copy(currentStamina = combatant.currentStamina + 1, staminaLoss = combatant.staminaLoss - 1))
+            store.dispatch(CombatActions.CombatResult(getString(R.string.youreUnlucky)))
+            if (combatState.hit) {
+                val combatant = combatState.currentEnemy
+                store.dispatch(
+                    CombatActions.ModifyCombatant(
+                        combatant.copy(
+                            currentStamina = combatant.currentStamina + 1,
+                            staminaLoss = combatant.staminaLoss - 1
+                        )
+                    )
+                )
             } else {
-                performDecreaseStamina(fragment)
-                state.increaseCombatStaminaLoss()
+                performDecreaseStamina()
+                store.dispatch(CombatActions.IncreaseCombatStaminaLoss())
             }
 
             if (state.currentStamina <= knockoutStamina) {
@@ -890,10 +800,7 @@ abstract class Adventure<T : AdventureState>(
                 onPlayerDeath()
             }
         }
-
-        fragment?.refreshScreen()
     }
-
 
     protected open fun suddenDeath(diceRoll: DiceRoll, enemyDiceRoll: DiceRoll): Boolean? {
         return false
@@ -901,15 +808,17 @@ abstract class Adventure<T : AdventureState>(
 
     open fun endOfTurnAction(): String = ""
 
-    protected open fun performSequenceCombatTurn(): T {
+    protected open fun performSequenceCombatTurn() {
 
-        state = state.combatDraw(false).combatHit(false).combatLuckTest(false)
+        store.dispatch(CombatActions.CombatDraw(false))
+        store.dispatch(CombatActions.CombatHit(false))
+        store.dispatch(CombatActions.CombatLuckTest(false))
 
         val skill = combatSkillValue
 
-        val currentEnemy = {state.combat.currentEnemy}
+        val currentEnemy = { combatState.currentEnemy }
 
-        state = state.combatDiceRoll()
+        store.dispatch(CombatActions.CombatDiceRoll())
 
         val attackStrength = combatState.attackDiceRoll.sum + skill + currentEnemy().handicap
         val enemyDiceRoll = DiceRoller.roll2D6()
@@ -919,58 +828,72 @@ abstract class Adventure<T : AdventureState>(
             if (!currentEnemy().isDefenseOnly) {
                 val suddenDeath = suddenDeath(combatState.attackDiceRoll, enemyDiceRoll)
                 if (suddenDeath == null || !suddenDeath) {
-                    state = state.modifyCombatant(currentEnemy().copy(currentStamina = Math.max(0, currentEnemy().currentStamina - damage()), staminaLoss = damage()))
-                    state = state.combatHit()
+                    store.dispatch(
+                        CombatActions.ModifyCombatant(
+                            currentEnemy().copy(
+                                currentStamina = Math.max(
+                                    0,
+                                    currentEnemy().currentStamina - damage()
+                                ), staminaLoss = damage()
+                            )
+                        )
+                    )
+                    store.dispatch(CombatActions.CombatHit())
                     combatResultText += (getString(R.string.hitEnemy) + " (" + combatState.attackDiceRoll.sum + " + " + skill
-                            + (if (currentEnemy().handicap >= 0) " + " + currentEnemy().handicap else "") + ") vs (" + enemyDiceRoll.sum + " + "
-                            + currentEnemy().currentSkill + "). (-" + damage() + getString(R.string.staminaInitials) + ")")
+                        + (if (currentEnemy().handicap >= 0) " + " + currentEnemy().handicap else "") + ") vs (" + enemyDiceRoll.sum + " + "
+                        + currentEnemy().currentSkill + "). (-" + damage() + getString(R.string.staminaInitials) + ")")
                 } else {
-                    state = state.modifyCombatant(currentEnemy().copy(currentStamina = 0))
+                    store.dispatch(CombatActions.ModifyCombatant(currentEnemy().copy(currentStamina = 0)))
                     Adventure.showAlert(getString(R.string.defeatSuddenDeath), this)
                 }
             } else {
-                state = state.combatDraw()
+                store.dispatch(CombatActions.CombatDraw())
                 combatResultText += (getString(R.string.blockedAttack) + " (" + combatState.attackDiceRoll.sum + " + " + skill
-                        + (if (currentEnemy().handicap >= 0) " + " + currentEnemy().handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + currentEnemy().currentSkill
-                        + ")")
+                    + (if (currentEnemy().handicap >= 0) " + " + currentEnemy().handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + currentEnemy().currentSkill
+                    + ")")
             }
         } else if (attackStrength < enemyAttackStrength) {
             val enemyDamage = AdventureCombatFragment.convertDamageStringToInteger(currentEnemy().damage)
-            state = state.decreaseStamina(enemyDamage).increaseCombatStaminaLoss(enemyDamage)
+            store.dispatch(AdventureActions.DecreaseStamina(enemyDamage))
+            store.dispatch(CombatActions.IncreaseCombatStaminaLoss(enemyDamage))
             combatResultText += (getString(R.string.youWereHit) + " (" + combatState.attackDiceRoll.sum + " + " + skill + (if (currentEnemy().handicap >= 0) " + " + currentEnemy().handicap else "")
-                    + ") vs (" + enemyDiceRoll.sum + " + " + currentEnemy().currentSkill + "). (-" + enemyDamage + getString(R.string.staminaInitials) + ")")
+                + ") vs (" + enemyDiceRoll.sum + " + " + currentEnemy().currentSkill + "). (-" + enemyDamage + getString(
+                R.string.staminaInitials
+            ) + ")")
         } else {
             combatResultText += getString(R.string.bothMissed)
-            state = state.combatDraw()
+            store.dispatch(CombatActions.CombatDraw())
         }
 
         if (currentEnemy().currentStamina == 0) {
-            state = state.removeCombatantAndAdvanceCombat()
+            store.dispatch(CombatActions.RemoveCombatantAndAdvanceCombat())
             combatResultText += "\n"
             combatResultText += getString(R.string.defeatedEnemy)
         } else {
-            state = state.advanceCombat()
+            store.dispatch(CombatActions.AdvanceCombat())
         }
 
         if (state.currentStamina == 0) {
-            state = state.removeCombatantAndAdvanceCombat()
+            store.dispatch(CombatActions.RemoveCombatantAndAdvanceCombat())
             combatResultText += "\n"
             combatResultText += getString(R.string.youveDied)
         }
 
-        state = state.combatResult(combatResultText)
-        return state
+        store.dispatch(CombatActions.CombatResult(combatResultText))
     }
 
     open fun onPlayerDeath() {
         Adventure.showAlert(getString(R.string.youreDead), this)
     }
 
-    protected open fun performStandardCombatTurn(): T {
-        val currentEnemy = {state.combat.currentEnemy}
+    protected open fun performStandardCombatTurn() {
+        val currentEnemy = { combatState.currentEnemy }
 
-        state = state.combatDraw(false).combatHit(false).combatLuckTest(false)
-        state = state.combatDiceRoll()
+        store.dispatch(CombatActions.CombatDraw(false))
+        store.dispatch(CombatActions.CombatHit(false))
+        store.dispatch(CombatActions.CombatLuckTest(false))
+        store.dispatch(CombatActions.CombatDiceRoll())
+
         val attackStrength = combatState.attackDiceRoll.sum + combatSkillValue + currentEnemy().handicap
         val enemyDiceRoll = DiceRoller.roll2D6()
         val enemyAttackStrength = enemyDiceRoll.sum + currentEnemy().currentSkill
@@ -978,68 +901,96 @@ abstract class Adventure<T : AdventureState>(
         if (attackStrength > enemyAttackStrength) {
             val suddenDeath = suddenDeath(combatState.attackDiceRoll, enemyDiceRoll)
             if (suddenDeath == null || !suddenDeath) {
-                state = state.modifyCombatant(currentEnemy().copy(currentStamina = Math.max(0, currentEnemy().currentStamina - damage()), staminaLoss = damage()))
-                state = state.combatHit()
+                store.dispatch(
+                    CombatActions.ModifyCombatant(
+                        currentEnemy().copy(
+                            currentStamina = Math.max(
+                                0,
+                                currentEnemy().currentStamina - damage()
+                            ), staminaLoss = damage()
+                        )
+                    )
+                )
+                store.dispatch(CombatActions.CombatHit())
                 combatResultText += (getString(R.string.hitEnemy) + " (" + combatState.attackDiceRoll.sum + " + " + combatSkillValue
-                        + (if (currentEnemy().handicap >= 0) " + " + currentEnemy().handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + currentEnemy().currentSkill
-                        + "). (-" + damage() + getString(R.string.staminaInitials) + ")")
+                    + (if (currentEnemy().handicap >= 0) " + " + currentEnemy().handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + currentEnemy().currentSkill
+                    + "). (-" + damage() + getString(R.string.staminaInitials) + ")")
             } else {
-                state = state.modifyCombatant(currentEnemy().copy(currentStamina = 0))
-                state = state.combatHit()
+                store.dispatch(CombatActions.ModifyCombatant(currentEnemy().copy(currentStamina = 0)))
+                store.dispatch(CombatActions.CombatHit())
                 Adventure.showAlert(R.string.defeatSuddenDeath, this)
             }
         } else if (attackStrength < enemyAttackStrength) {
             val enemyDamage = AdventureCombatFragment.convertDamageStringToInteger(currentEnemy().damage)
-            state = state.increaseCombatStaminaLoss(enemyDamage).decreaseStamina(enemyDamage)
+            store.dispatch(CombatActions.IncreaseCombatStaminaLoss(enemyDamage))
+            store.dispatch(AdventureActions.DecreaseStamina(enemyDamage))
             combatResultText += (getString(R.string.youWereHit) + " (" + combatState.attackDiceRoll.sum + " + " + combatSkillValue + (if (currentEnemy().handicap >= 0) " + " + currentEnemy().handicap else "")
-                    + ") vs (" + enemyDiceRoll.sum + " + " + currentEnemy().currentSkill + "). (-" + enemyDamage + getString(R.string.staminaInitials) + ")")
+                + ") vs (" + enemyDiceRoll.sum + " + " + currentEnemy().currentSkill + "). (-" + enemyDamage + getString(
+                R.string.staminaInitials
+            ) + ")")
         } else {
             combatResultText += getString(R.string.bothMissed)
-            state = state.combatDraw()
+            store.dispatch(CombatActions.CombatDraw())
         }
 
         combatResultText += endOfTurnAction()
 
         if (currentEnemy().currentStamina == 0 || currentEnemy().staminaLoss >= knockoutStamina) {
-            state = state.removeCombatantAndAdvanceCombat()
+            store.dispatch(CombatActions.RemoveCombatantAndAdvanceCombat())
             combatResultText += "\n"
             combatResultText += getString(R.string.defeatedEnemy)
         }
 
         if (combatState.staminaLoss >= knockoutStamina) {
-            state = state.removeCombatantAndAdvanceCombat()
+            store.dispatch(CombatActions.RemoveCombatantAndAdvanceCombat())
             Adventure.showAlert(R.string.knockedOut, this)
         }
 
         if (state.currentStamina == 0) {
-            state = state.removeCombatantAndAdvanceCombat()
+            store.dispatch(CombatActions.RemoveCombatantAndAdvanceCombat())
             onPlayerDeath()
         }
 
-        state = state.combatResult(combatResultText)
-
-        return state
+        store.dispatch(CombatActions.CombatResult(combatResultText))
     }
 
-
     companion object {
+
+        val DEFAULT_FRAGMENTS = arrayOf(
+            AdventureFragmentRunner(
+                R.string.vitalStats,
+                AdventureVitalStatsFragment::class
+            ),
+            AdventureFragmentRunner(
+                R.string.fights,
+                AdventureCombatFragment::class
+            ),
+            AdventureFragmentRunner(
+                R.string.goldEquipment,
+                AdventureEquipmentFragment::class
+            ),
+            AdventureFragmentRunner(
+                R.string.notes,
+                AdventureNotesFragment::class
+            )
+        )
 
         fun showAlert(title: Int, message: Int, context: Context) {
             showAlert(title, context.getString(message), context)
         }
 
         fun showAlert(
-                title: Int? = null,
-                message: String,
-                context: Context,
-                extraActionTextId: Int? = null,
-                extraActionCallback: () -> Unit = {}
+            title: Int? = null,
+            message: String,
+            context: Context,
+            extraActionTextId: Int? = null,
+            extraActionCallback: () -> Unit = {}
         ) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(if (title != null && title > 0) title else R.string.result).setMessage(message).setCancelable(
-                    false
+                false
             ).setNegativeButton(
-                    R.string.close
+                R.string.close
             ) { dialog, _ -> dialog.cancel() }
 
             if (extraActionTextId != null && extraActionCallback != {}) {
@@ -1053,14 +1004,14 @@ abstract class Adventure<T : AdventureState>(
         }
 
         fun showConfirmation(
-                title: Int,
-                message: Int,
-                context: Context,
-                confirmOnClickListener: DialogInterface.OnClickListener
+            title: Int,
+            message: Int,
+            context: Context,
+            confirmOnClickListener: DialogInterface.OnClickListener
         ) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(if (title > 0) title else R.string.result).setMessage(message).setCancelable(false).setNegativeButton(
-                    R.string.close
+                R.string.close
             ) { dialog, _ -> dialog.cancel() }.setPositiveButton(R.string.ok, confirmOnClickListener)
             val alert = builder.create()
             alert.show()
@@ -1069,7 +1020,7 @@ abstract class Adventure<T : AdventureState>(
         fun showErrorAlert(message: Int, context: Context) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.error).setMessage(message).setCancelable(false).setIcon(R.drawable.error_icon).setNegativeButton(
-                    R.string.close
+                R.string.close
             ) { dialog, _ -> dialog.cancel() }
             val alert = builder.create()
             alert.show()
@@ -1078,7 +1029,7 @@ abstract class Adventure<T : AdventureState>(
         fun showInfoAlert(message: Int, context: Context) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.info).setMessage(message).setCancelable(false).setIcon(R.drawable.info_icon).setNegativeButton(
-                    R.string.close
+                R.string.close
             ) { dialog, _ -> dialog.cancel() }
             val alert = builder.create()
             alert.show()
@@ -1087,7 +1038,7 @@ abstract class Adventure<T : AdventureState>(
         fun showSuccessAlert(message: Int, context: Context) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.done).setMessage(message).setCancelable(false).setIcon(R.drawable.success_icon).setNegativeButton(
-                    R.string.close
+                R.string.close
             ) { dialog, _ -> dialog.cancel() }
             val alert = builder.create()
             alert.show()
@@ -1111,5 +1062,7 @@ abstract class Adventure<T : AdventureState>(
         fun getResId(context: Context, resName: String, type: String): Int {
             return context.resources.getIdentifier(resName, type, context.packageName)
         }
+
+        fun createSavegame(vararg values: Pair<String, String>) = Properties()
     }
 }

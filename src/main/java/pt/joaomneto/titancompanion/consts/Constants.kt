@@ -106,15 +106,13 @@ object Constants {
     fun getRunActivity(
         context: Context,
         gamebook: FightingFantasyGamebook
-    ): Class<out Adventure<*>>? {
-        var intentClass: Class<out Adventure<*>>? = null
+    ): Class<out Adventure<*,*,*>>? {
+        var intentClass: Class<out Adventure<*,*,*>>? = null
         try {
             intentClass = Class
                 .forName(
-                    "pt.joaomneto.titancompanion.adventure.impl."
-                        + gamebook.initials.toUpperCase()
-                        + "Adventure"
-                ) as Class<out Adventure<*>>
+                    "pt.joaomneto.titancompanion.adventure.${gamebook.initials}.${gamebook.initials.toUpperCase()}Adventure"
+                ) as Class<out Adventure<*,*,*>>
         } catch (e: ClassNotFoundException) {
             e.printStackTrace()
         }

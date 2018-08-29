@@ -31,7 +31,6 @@ import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
 import android.support.test.runner.lifecycle.Stage
 import android.view.View
 import android.view.ViewGroup
-import junit.framework.Assert
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
@@ -42,11 +41,9 @@ import org.hamcrest.Matchers.startsWith
 import org.hamcrest.TypeSafeMatcher
 import org.junit.Before
 import org.junit.Rule
-import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 import java.io.File
 import java.io.IOException
-import kotlin.reflect.KMutableProperty1
 
 /**
  * Created by Joao Neto on 03-08-2017.
@@ -59,9 +56,6 @@ abstract class TCBaseTest {
 
     protected abstract val gamebook: FightingFantasyGamebook
 
-    protected open fun testVitalStatisticsFragment() {
-        testVitalStatistics(activityInstance as Adventure)
-    }
 
     protected val activityInstance: Activity
         get() {
@@ -108,8 +102,8 @@ abstract class TCBaseTest {
         val button5 = onView(allOf(withId(R.id.buttonSavePoint), isDisplayed()))
         button5.check(matches(isDisplayed()))
 
-        repeat(10, { performSwipeLeft() })
-        repeat(10, { performSwipeRight() })
+        repeat(10) { performSwipeLeft() }
+        repeat(10) { performSwipeRight() }
     }
 
     protected fun assertInvalidAdventureCreation() {
@@ -225,97 +219,6 @@ abstract class TCBaseTest {
         performClickOnButton(android.R.id.button1)
     }
 
-    fun testStaminaStat(adventure: Adventure) {
-        testIncrementalStat(
-                adventure,
-                R.id.minusStaminaButton,
-                R.id.plusStaminaButton,
-                R.id.statsStaminaValue,
-                Adventure::currentStamina,
-                Adventure::initialStamina,
-                true
-        )
-    }
-
-    fun testLuckStat(adventure: Adventure) {
-        testIncrementalStat(
-                adventure,
-                R.id.minusLuckButton,
-                R.id.plusLuckButton,
-                R.id.statsLuckValue,
-                Adventure::currentLuck,
-                Adventure::initialLuck,
-                true
-        )
-    }
-
-    fun testSkillStat(adventure: Adventure) {
-        testIncrementalStat(
-                adventure,
-                R.id.minusSkillButton,
-                R.id.plusSkillButton,
-                R.id.statsSkillValue,
-                Adventure::currentSkill,
-                Adventure::initialSkill,
-                true
-        )
-    }
-
-    fun <A : Adventure> testIncrementalStat(
-            adventure: A,
-            minusButtonId: Int,
-            plusButtonId: Int,
-            valueId: Int,
-            adventureField: KMutableProperty1<A, Int>,
-            adventureMaxField: KMutableProperty1<A, Int>? = null,
-            maxValueEditable: Boolean = false
-    ) {
-        var currentStatValue = adventureField.get(adventure)
-        val maxStatValue = adventureMaxField?.get(adventure) ?: Int.MAX_VALUE
-
-        if (currentStatValue == maxStatValue) {
-            performClickOnButton(minusButtonId, 3)
-        } else if (currentStatValue == 0) {
-            performClickOnButton(plusButtonId, 3)
-        }
-
-        // Test plus button
-        currentStatValue = adventureField.get(adventure)
-        performClickOnButton(plusButtonId)
-        Assert.assertEquals(currentStatValue + 1, adventureField.get(adventure))
-
-        // Test minus button
-        currentStatValue = adventureField.get(adventure)
-        performClickOnButton(minusButtonId)
-        Assert.assertEquals(currentStatValue - 1, adventureField.get(adventure))
-
-        // Test lower boundary of the stat
-        currentStatValue = adventureField.get(adventure)
-        performClickOnButton(minusButtonId, currentStatValue)
-        Assert.assertEquals(0, adventureField.get(adventure))
-        performClickOnButton(minusButtonId)
-        Assert.assertEquals(0, adventureField.get(adventure))
-
-        if (maxStatValue != Int.MAX_VALUE) {
-            // Test upper boundary of the stat
-            currentStatValue = adventureField.get(adventure)
-            performClickOnButton(plusButtonId, maxStatValue - currentStatValue)
-            Assert.assertEquals(maxStatValue, adventureField.get(adventure))
-            performClickOnButton(plusButtonId)
-            Assert.assertEquals(maxStatValue, adventureField.get(adventure))
-
-            if (maxValueEditable) {
-                // Test upper boundary modification of the stat
-                currentStatValue = adventureField.get(adventure)
-                performClickOnButton(valueId)
-                performInsertTextInPopupAndClickOk(R.id.alert_editText_field, (maxStatValue + 2).toString())
-                Assert.assertEquals(maxStatValue + 2, adventureMaxField?.get(adventure))
-                performClickOnButton(plusButtonId, 2)
-                Assert.assertEquals(currentStatValue + 2, adventureField.get(adventure))
-            }
-        }
-    }
-
     companion object {
 
         fun childAtPosition(
@@ -363,11 +266,5 @@ abstract class TCBaseTest {
                 return false
             }
         }
-    }
-
-    private fun testVitalStatistics(adventure: Adventure) {
-        testStaminaStat(adventure)
-        testSkillStat(adventure)
-        testLuckStat(adventure)
     }
 }

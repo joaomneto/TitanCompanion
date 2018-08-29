@@ -11,8 +11,7 @@ import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 
-open class AdventureVitalStatsFragment : AdventureFragment() {
-
+open class AdventureVitalStatsFragment: AdventureFragment<Adventure<*, *, *>>() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
@@ -23,71 +22,71 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val adv = activity as Adventure<*>
+        super.onViewCreated(view, savedInstanceState)
 
         plusStaminaButton.setOnClickListener {
-            adv.performIncreaseStamina(this)
+            adventure.performIncreaseStamina()
         }
 
         plusSkillButton.setOnClickListener {
-            adv.performIncreaseSkill(this)
+            adventure.performIncreaseSkill()
         }
 
         plusLuckButton.setOnClickListener {
-            adv.performIncreaseLuck(this)
+            adventure.performIncreaseLuck()
         }
 
         minusStaminaButton.setOnClickListener {
-            adv.performDecreaseStamina(this)
+            adventure.performDecreaseStamina()
         }
 
         minusSkillButton.setOnClickListener {
-            adv.performDecreaseSkill(this)
+            adventure.performDecreaseSkill()
         }
 
         minusLuckButton.setOnClickListener {
-            adv.performDecreaseLuck(this)
+            adventure.performDecreaseLuck()
         }
 
         plusProvisionsButton.setOnClickListener {
-            adv.performIncreaseProvisions(this)
+            adventure.performIncreaseProvisions()
         }
 
         minusProvisionsButton.setOnClickListener {
-            adv.performDecreaseProvisions(this)
+            adventure.performDecreaseProvisions()
         }
 
 
         statsStaminaValue.setOnClickListener{
-            adv.performSetInitialStamina(this)
+            adventure.performSetInitialStamina(this)
         }
 
         statsSkillValue.setOnClickListener{
-            adv.performSetInitialSkill(this)
+            adventure.performSetInitialSkill(this)
         }
 
         statsLuckValue.setOnClickListener{
-            adv.performSetInitialLuck(this)
+            adventure.performSetInitialLuck(this)
         }
 
-        usePotionButton.setOnClickListener({
-            adv.performUsePotion(this)
-        })
+        usePotionButton.setOnClickListener {
+            adventure.performUsePotion()
+        }
 
         buttonSavePoint.setOnClickListener {
-            adv.performSavegame(this)
+            adventure.performSavegame()
         }
 
         buttonTestLuck.setOnClickListener {
-            adv.performTestLuck(this)
+            adventure.performTestLuck()
         }
 
         buttonTestSkill.setOnClickListener {
-           adv.performTestSkill(this)
+           adventure.performTestSkill()
         }
 
         buttonConsumeProvisions.setOnClickListener {
-            adv.performConsumeProvisions(this)
+            adventure.performConsumeProvisions()
         }
 
 
@@ -96,36 +95,34 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
     }
 
     override fun refreshScreen() {
-        val adv = activity as Adventure<*>
-
-        statsSkillValue.text = adv.state.currentSkill.toString()
-        statsStaminaValue.text = adv.state.currentStamina.toString()
-        statsLuckValue.text = adv.state.currentLuck.toString()
-        provisionsValue.text = adv.state.provisions.toString()
+        statsSkillValue.text = adventure.state.currentSkill.toString()
+        statsStaminaValue.text = adventure.state.currentStamina.toString()
+        statsLuckValue.text = adventure.state.currentLuck.toString()
+        provisionsValue.text = adventure.state.provisions.toString()
 
         if (usePotionButton != null) {
-            if (adv.state.standardPotion < 0) {
+            if (adventure.state.standardPotion < 0) {
                 usePotionButton.visibility = View.GONE
             } else {
                 usePotionButton.visibility = View.VISIBLE
-                usePotionButton.isEnabled = adv.state.standardPotionValue > 0
+                usePotionButton.isEnabled = adventure.state.standardPotionValue > 0
             }
         }
 
         val stringArray = resources.getStringArray(R.array.standard_potion_list)
 
-        if (adv.state.standardPotion == -1) {
+        if (adventure.state.standardPotion == -1) {
             usePotionButton.visibility = View.GONE
         } else {
-            usePotionButton.text = getString(R.string.usePotion, stringArray[adv.state.standardPotion])
+            usePotionButton.text = getString(R.string.usePotion, stringArray[adventure.state.standardPotion])
         }
 
-        buttonConsumeProvisions.setText(adv.consumeProvisionText)
-        provisionsText.setText(adv.provisionsText)
+        buttonConsumeProvisions.setText(adventure.consumeProvisionText)
+        provisionsText.setText(adventure.provisionsText)
 
-        buttonConsumeProvisions.isEnabled = adv.state.provisions > 0
+        buttonConsumeProvisions.isEnabled = adventure.state.provisions > 0
 
-        if (adv.state.provisionsValue < 0) {
+        if (adventure.state.provisionsValue < 0) {
             plusProvisionsButton.visibility = View.INVISIBLE
             minusProvisionsButton.visibility = View.INVISIBLE
             provisionsValue.visibility = View.INVISIBLE

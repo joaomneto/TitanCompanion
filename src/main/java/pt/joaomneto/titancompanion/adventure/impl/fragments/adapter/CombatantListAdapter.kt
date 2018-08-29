@@ -13,8 +13,7 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragm
 
 class CombatantListAdapter(context: Context, private val generator: () -> List<AdventureCombatFragment.Combatant>) : ArrayGeneratorAdapter<AdventureCombatFragment.Combatant>(context, -1, -1, generator) {
 
-    private val adventure: Adventure<*>
-        get() = context as Adventure<*>
+    private val adventure = context as Adventure<*,*,*>
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

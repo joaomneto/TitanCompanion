@@ -10,7 +10,7 @@ import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.adapter.ArrayGeneratorAdapter
 
-class AdventureNotesFragment : AdventureFragment() {
+class AdventureNotesFragment: AdventureFragment<Adventure<*, *, *>>() {
 
     init {
         baseLayout = R.layout.fragment_adventure_notes
@@ -31,20 +31,17 @@ class AdventureNotesFragment : AdventureFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adv = activity as Adventure<*>
-
-
         buttonAddNote.setOnClickListener {
-            adv.performAddNoteWithAlert(this)
+            adventure.performAddNoteWithAlert()
         }
 
         noteList.adapter = ArrayGeneratorAdapter(
-            adv,
-            android.R.layout.simple_list_item_1, android.R.id.text1, { adv.state.notes }
-        )
+            adventure,
+            android.R.layout.simple_list_item_1, android.R.id.text1
+        ) { adventure.state.notes }
 
         noteList.setOnItemLongClickListener { _, _, position, _ ->
-            adv.performRemoveNoteWithAlert(this, position)
+            adventure.performRemoveNoteWithAlert(position)
         }
     }
 

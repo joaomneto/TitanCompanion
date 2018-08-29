@@ -1,20 +1,34 @@
 package pt.joaomneto.titancompanion.adventure
 
+import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.view.View
 import android.widget.Button
+import net.attilaszabo.redux.Subscriber
 import kotlin.reflect.KMutableProperty0
-import kotlin.reflect.KMutableProperty1
 
-abstract class AdventureFragment : DialogFragment() {
+abstract class AdventureFragment<ADVENTURE: Adventure<*, *, *>> : DialogFragment() {
 
     var baseLayout = -1
+
+    val adventure
+        get() = context as ADVENTURE
 
     abstract fun refreshScreen()
 
     override fun onResume() {
         super.onResume()
         refreshScreen()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        adventure.store.subscribe(object : Subscriber<Any?> {
+            override fun onStateChanged(state: Any?) {
+                refreshScreen()
+            }
+        })
     }
 
     fun setupIncDecButton(

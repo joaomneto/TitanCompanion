@@ -11,7 +11,7 @@ import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.adapter.ArrayGeneratorAdapter
 
-class AdventureEquipmentFragment : AdventureFragment() {
+class AdventureEquipmentFragment: AdventureFragment<Adventure<*, *, *>>() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
@@ -22,31 +22,33 @@ class AdventureEquipmentFragment : AdventureFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adv = context as Adventure<*>
-        goldLabel.setText(adv.currencyName)
+
+        goldLabel.setText(adventure.currencyName)
 
         goldValue.setOnClickListener {
-            adv.performChangeGoldWithAlert(this)
+            adventure.performChangeGoldWithAlert()
         }
 
         buttonAddEquipment.setOnClickListener {
-            adv.performAddEquipmentWithAlert(this)
+            adventure.performAddEquipmentWithAlert()
         }
 
-        val adapter = ArrayGeneratorAdapter(adv, android.R.layout.simple_list_item_1,
-            android.R.id.text1, { adv.state.equipment })
+        val adapter = ArrayGeneratorAdapter(
+            adventure, android.R.layout.simple_list_item_1,
+            android.R.id.text1
+        ) { adventure.state.equipment }
         equipmentList.adapter = adapter
 
         equipmentList.onItemLongClickListener = OnItemLongClickListener { _, _, arg2, _ ->
-            adv.performRemoveEquipmentWithAlert(this, arg2)
+            adventure.performRemoveEquipmentWithAlert(arg2)
         }
 
         minusGoldButton.setOnClickListener {
-            adv.performDecreaseGold(this, 1)
+            adventure.performDecreaseGold( 1)
         }
 
         plusGoldButton.setOnClickListener {
-            adv.performIncreaseGold(this, 1)
+            adventure.performIncreaseGold( 1)
         }
     }
 
@@ -54,7 +56,6 @@ class AdventureEquipmentFragment : AdventureFragment() {
 
     override fun refreshScreen() {
         getAdapter().notifyDataSetChanged()
-        val adv = activity as Adventure<*>?
-        goldValue.text = adv?.state?.gold.toString()
+        goldValue.text = adventure.state.gold.toString()
     }
 }

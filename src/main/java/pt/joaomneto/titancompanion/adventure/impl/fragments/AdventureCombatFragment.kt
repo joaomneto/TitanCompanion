@@ -15,12 +15,13 @@ import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.adapter.CombatantListAdapter
-import pt.joaomneto.titancompanion.adventure.state.AdventureState
-import pt.joaomneto.titancompanion.adventure.state.CombatMode.SEQUENCE
+import pt.joaomneto.titancompanion.adventure.values.CombatMode.SEQUENCE
+import pt.joaomneto.titancompanion.adventure.state.bean.CombatState
+import pt.joaomneto.titancompanion.adventure.state.bean.MainState
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.util.*
+import java.util.UUID
 
-open class AdventureCombatFragment : AdventureFragment() {
+open class AdventureCombatFragment: AdventureFragment<Adventure<*, *, *>>() {
     protected var combatantListAdapter: CombatantListAdapter? = null
     protected var handicap = 0
 
@@ -30,14 +31,11 @@ open class AdventureCombatFragment : AdventureFragment() {
     open val ontext: String
         get() = getString(R.string.sequence)
 
-    protected open val state: AdventureState
-        get() = (context as Adventure<*>).state
+    protected open val MainState: MainState
+        get() = adventure.state
 
-    protected open val combatState: AdventureState.CombatState
-        get() = state.combat
-
-    private val adventure: Adventure<*>
-        get() = activity as Adventure<*>
+    protected open val combatState: CombatState
+        get() = adventure.combatState
 
     private var keepCombatText = false
 
@@ -63,24 +61,24 @@ open class AdventureCombatFragment : AdventureFragment() {
 
         resetCombat.setOnClickListener {
             keepCombatText = true
-            adventure.performResetCombat(this)
+            adventure.performResetCombat()
         }
 
         resetCombat2.setOnClickListener {
             keepCombatText = true
-            adventure.performResetCombat(this)
+            adventure.performResetCombat()
         }
 
         attackButton.setOnClickListener {
-            adventure.performCombatTurn(this)
+            adventure.performCombatTurn()
         }
 
         startCombat.setOnClickListener {
-            adventure.performStartCombat(combatResult, this)
+            adventure.performStartCombat()
         }
 
         testLuckButton.setOnClickListener {
-            adventure.performTestLuckCombat(this)
+            adventure.performTestLuckCombat()
         }
 
         refreshScreen()
@@ -92,16 +90,14 @@ open class AdventureCombatFragment : AdventureFragment() {
 
     protected fun addCombatButtonOnClick(layoutId: Int) {
 
-        val adv = activity as Adventure<*>
+        val addCombatantView = adventure.layoutInflater.inflate(layoutId, null)
 
-        val addCombatantView = adv.layoutInflater.inflate(layoutId, null)
-
-        val mgr = adv.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val mgr = adventure.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         if (combatState.combatStarted)
             return
 
-        val builder = AlertDialog.Builder(adv)
+        val builder = AlertDialog.Builder(adventure)
 
         builder.setTitle(R.string.addEnemy).setCancelable(false).setNegativeButton(R.string.close) { dialog, id ->
             mgr.hideSoftInputFromWindow(addCombatantView.windowToken, 0)
@@ -206,7 +202,7 @@ open class AdventureCombatFragment : AdventureFragment() {
 
     private inner class combatTypeChangeListener : OnCheckedChangeListener {
         override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
-            adventure.performSwitchCombatMode(this@AdventureCombatFragment, isChecked)
+            adventure.performSwitchCombatMode(isChecked)
         }
     }
 
