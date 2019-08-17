@@ -2,14 +2,13 @@ package pt.joaomneto.titancompanion
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
 import android.util.SparseArray
 import android.view.ViewGroup
-import androidx.util.forEach
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.LocaleHelper
 import java.util.Locale
@@ -94,7 +93,9 @@ abstract class BaseFragmentActivity(
     @Suppress("UNCHECKED_CAST")
     fun <F : Fragment> getFragment(kclass: KClass<F>): F? {
         var fragment: F? = null
-        mSectionsPagerAdapter?.registeredFragments?.forEach { _: Int, frag: Fragment ->
+        val fragmentCount = mSectionsPagerAdapter?.registeredFragments?.size() ?: 0
+        for(index in 0..fragmentCount) {
+            val frag = mSectionsPagerAdapter!!.registeredFragments.get(index)
             if (kclass.isInstance(frag)) fragment = frag as F
         }
         return fragment
@@ -103,7 +104,9 @@ abstract class BaseFragmentActivity(
     @Suppress("UNCHECKED_CAST")
     fun <F : Fragment> getFragment(javaclass: Class<F>): F? {
         var fragment: F? = null
-        mSectionsPagerAdapter?.registeredFragments?.forEach { _: Int, frag: Fragment ->
+        val fragmentCount = mSectionsPagerAdapter?.registeredFragments?.size() ?: 0
+        for(index in 0..fragmentCount) {
+            val frag = mSectionsPagerAdapter!!.registeredFragments.get(index)
             if (javaclass.kotlin.isInstance(frag)) fragment = frag as F
         }
         return fragment

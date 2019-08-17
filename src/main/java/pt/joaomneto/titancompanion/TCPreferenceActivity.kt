@@ -6,8 +6,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Environment
 import android.preference.PreferenceActivity
-import android.support.v4.content.ContextCompat
-import android.support.v4.content.PermissionChecker.PERMISSION_GRANTED
+import androidx.core.content.ContextCompat
+import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.fragment.TCPreferenceFragment
 import pt.joaomneto.titancompanion.util.LocaleHelper

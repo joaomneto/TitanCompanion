@@ -2,7 +2,7 @@ package pt.joaomneto.titancompanion.adventure.impl.fragments.aod.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
