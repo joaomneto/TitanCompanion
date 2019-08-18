@@ -3,7 +3,7 @@ jobs:
   build:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/android:api-26-alpha
+       - image: circleci/android:api-29
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
@@ -25,7 +25,7 @@ jobs:
   tests:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/android:api-26-alpha
+       - image: circleci/android:api-29
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
@@ -38,7 +38,7 @@ jobs:
   instrumentation-test-1:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/android:api-26-alpha
+       - image: circleci/android:api-29
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
@@ -49,8 +49,6 @@ jobs:
        - run:
           name: Install tools
           command: |
-             sudo apt-get install -y gcc python-dev python-setuptools
-             sudo easy_install -U pip
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
@@ -69,7 +67,7 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 1
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && echo gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
@@ -82,7 +80,7 @@ jobs:
   instrumentation-test-2:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/android:api-26-alpha
+       - image: circleci/android:api-29
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
@@ -93,8 +91,6 @@ jobs:
        - run:
           name: Install tools
           command: |
-             sudo apt-get install -y gcc python-dev python-setuptools
-             sudo easy_install -U pip
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
@@ -113,7 +109,7 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 2
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && echo gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
@@ -126,7 +122,7 @@ jobs:
   instrumentation-test-3:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/android:api-26-alpha
+       - image: circleci/android:api-29
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
@@ -137,8 +133,6 @@ jobs:
        - run:
           name: Install tools
           command: |
-             sudo apt-get install -y gcc python-dev python-setuptools
-             sudo easy_install -U pip
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
@@ -157,7 +151,7 @@ jobs:
               ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
        - run:
            name: Run Firebase Testing Phase 3
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && echo gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
+           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
            no_output_timeout: 2400
        - store_artifacts:
            path: build/reports
@@ -170,7 +164,7 @@ jobs:
   deploy:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/android:api-26-alpha
+       - image: circleci/android:api-29
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
@@ -227,8 +221,11 @@ workflows:
                 - production
       - deploy:
           requires:
-            - build
-            - tests
+            - instrumentation-test-1
+            - instrumentation-test-2
+            - instrumentation-test-3
           filters:
+            tags:
+              only: /v.*/
             branches:
-              only: production
+              ignore: /.*/

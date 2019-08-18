@@ -252,7 +252,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             try {
                 imm.hideSoftInputFromWindow(input.windowToken, 0)
                 val ref = input.text.toString()
-                val file = File(dir, ref + ".xml")
+                val file = File(dir, "$ref.xml")
 
                 val bw = BufferedWriter(OutputStreamWriter(FileOutputStream(file), "UTF-8"))
 

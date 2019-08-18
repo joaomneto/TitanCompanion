@@ -4,12 +4,12 @@ import android.Manifest;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.TCPreferenceActivity;
 
-import static android.support.v4.content.PermissionChecker.PERMISSION_GRANTED;
+import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
 
 /**
  * Created by Joao Neto on 27/05/17.

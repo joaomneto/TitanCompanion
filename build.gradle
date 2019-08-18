@@ -1,17 +1,18 @@
 buildscript {
-    ext.kotlin_version = '1.2.30'
+    ext.kotlin_version = '1.3.41'
     repositories {
         google()
         mavenCentral()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.6.0-alpha06'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.triplet.gradle:play-publisher:1.1.5'
         classpath 'com.amazonaws:aws-devicefarm-gradle-plugin:1.2'
     }
 }
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -25,20 +26,19 @@ dependencies {
         jcenter()
     }
     implementation fileTree(include: '*.jar', dir: 'libs')
-    implementation 'com.android.support:support-v4:27.1.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation 'commons-io:commons-io:2.6'
-    implementation 'androidx.core:core-ktx:0.2'
+    implementation 'androidx.core:core-ktx:1.0.2'
     androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
 
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 29
     dataBinding {
         enabled = true
     }
@@ -67,7 +67,9 @@ android {
     }
 
     defaultConfig {
-        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        minSdkVersion 19
+        targetSdkVersion 29
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -105,6 +107,7 @@ if (project.hasProperty('SERVICE_ACCOUNT_EMAIL')) {
 
 repositories {
     mavenCentral()
+    google()
 }
 
 task(versionFromManifest) {
