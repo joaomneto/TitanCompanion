@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-and-tests:
      working_directory: /home/circleci/code
      docker:
        - image: circleci/android:api-29
@@ -14,6 +14,9 @@ jobs:
            name: Lint
            command: ./gradlew lint
        - run:
+           name: Run Junit Tests
+           command: ./gradlew test -PdisablePreDex
+       - run:
            name: Generate Debug APK
            command: ./gradlew assembleDebug -PdisablePreDex
        - run:
@@ -22,23 +25,10 @@ jobs:
        - persist_to_workspace:
            root: /home/circleci/code
            paths: build
-  tests:
-     working_directory: /home/circleci/code
-     docker:
-       - image: circleci/android:api-29
-     environment:
-       JVM_OPTS: -Xmx2048m
-       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
-       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
-     steps:
-       - checkout
-       - run:
-          name: Run Junit Tests
-          command: ./gradlew test -PdisablePreDex
   instrumentation-test-1:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/android:api-29
+       - image: circleci/python:3.7.3
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
@@ -52,6 +42,7 @@ jobs:
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
+             sudo apt-get install lsb-release
              cat /proc/sys/kernel/random/uuid > /home/circleci/uuid
              mkdir /home/circleci/testResults
        - run:
@@ -59,8 +50,9 @@ jobs:
            command: |
               echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
               curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-              sudo apt-get update && sudo apt-get install -y google-cloud-sdk
-              sudo apt-get update && sudo apt-get --only-upgrade install -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
+              sudo apt-get update
+              sudo apt-get install -y google-cloud-sdk
+              sudo apt-get install --only-upgrade -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
        - run:
            name: Configure Google Cloud Access
            command:
@@ -80,7 +72,7 @@ jobs:
   instrumentation-test-2:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/android:api-29
+       - image: circleci/python:3.7.3
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
@@ -94,6 +86,7 @@ jobs:
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
+             sudo apt-get install lsb-release
              cat /proc/sys/kernel/random/uuid > /home/circleci/uuid
              mkdir /home/circleci/testResults
        - run:
@@ -101,8 +94,9 @@ jobs:
            command: |
               echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
               curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-              sudo apt-get update && sudo apt-get install -y google-cloud-sdk
-              sudo apt-get update && sudo apt-get --only-upgrade install -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
+              sudo apt-get update
+              sudo apt-get install -y google-cloud-sdk
+              sudo apt-get install --only-upgrade -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
        - run:
            name: Configure Google Cloud Access
            command:
@@ -119,52 +113,10 @@ jobs:
            command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml /home/circleci/testResults/ || true
        - store_test_results:
            path: ~/testResults
-  instrumentation-test-3:
-     working_directory: /home/circleci/code
-     docker:
-       - image: circleci/android:api-29
-     environment:
-       JVM_OPTS: -Xmx2048m
-       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
-       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
-     steps:
-       - attach_workspace:
-          at: /home/circleci/code
-       - run:
-          name: Install tools
-          command: |
-             sudo pip uninstall -y crcmod
-             sudo pip install -U crcmod
-             pip install awscli --upgrade --user
-             cat /proc/sys/kernel/random/uuid > /home/circleci/uuid
-             mkdir /home/circleci/testResults
-       - run:
-           name: Install GCloud
-           command: |
-              echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-              curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-              sudo apt-get update && sudo apt-get install -y google-cloud-sdk
-              sudo apt-get update && sudo apt-get --only-upgrade install -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
-       - run:
-           name: Configure Google Cloud Access
-           command:
-              ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
-       - run:
-           name: Run Firebase Testing Phase 3
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase3"
-           no_output_timeout: 2400
-       - store_artifacts:
-           path: build/reports
-           destination: reports
-       - run:
-           name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/walleye-26-en-portrait/*.xml /home/circleci/testResults/ || true
-       - store_test_results:
-           path: ~/testResults
   deploy:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/android:api-29
+       - image: circleci/python:3.7.3
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
@@ -191,41 +143,24 @@ workflows:
   version: 2
   continuous-integration-and-delivery:
     jobs:
-      - build
-      - tests:
-          requires:
-            - build
+      - build-and-tests
       - instrumentation-test-1:
           requires:
-            - tests
-          filters:
-            branches:
-              ignore:
-                - master
-                - production
+            - build-and-tests
       - instrumentation-test-2:
           requires:
-            - tests
-          filters:
-            branches:
-              ignore:
-                - master
-                - production
-      - instrumentation-test-3:
-          requires:
-            - tests
-          filters:
-            branches:
-              ignore:
-                - master
-                - production
-      - deploy:
+            - build-and-tests
+      - hold: # <<< A job that will require manual approval in the CircleCI web application.
+          type: approval # <<< This key-value pair will set your workflow to a status of "On Hold"
           requires:
             - instrumentation-test-1
             - instrumentation-test-2
-            - instrumentation-test-3
           filters:
-            tags:
-              only: /v.*/
             branches:
-              ignore: /.*/
+              only: master
+      - deploy:
+          requires:
+            - hold
+          filters:
+            branches:
+              only: master
