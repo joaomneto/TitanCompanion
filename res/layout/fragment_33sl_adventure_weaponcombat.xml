@@ -265,7 +265,6 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/buttonAttack"
             android:layout_alignLeft="@+id/buttonAttack"
-            android:layout_below="@+id/textField8"
             android:lines="4"
             android:maxLines="4"
             android:textAppearance="?android:attr/textAppearanceSmall"/>

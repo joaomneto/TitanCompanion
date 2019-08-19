@@ -12,7 +12,7 @@ jobs:
        - checkout
        - run:
            name: Lint
-           command: ./gradlew lint
+           command: ./gradlew lint lintVitalRelease
        - run:
            name: Run Junit Tests
            command: ./gradlew test -PdisablePreDex
@@ -116,29 +116,49 @@ jobs:
   deploy:
      working_directory: /home/circleci/code
      docker:
-       - image: circleci/python:3.7.3
+       - image: circleci/android:api-29
      environment:
        JVM_OPTS: -Xmx2048m
        GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
      steps:
        - checkout
+       - attach_workspace:
+          at: /home/circleci/code
        - run:
           name: Install tools
           command: |
-             sudo apt-get install -y gcc python-dev python-setuptools
-             sudo apt-get install git
-             sudo easy_install -U pip
+             sudo apt-get update 
+             sudo apt-get install -y gcc python-dev python-setuptools git golang
              sudo pip uninstall -y crcmod
              sudo pip install -U crcmod
              pip install awscli --upgrade --user
-             git remote add github git@github.com:joaomneto/TitanCompanion.git
+             go get -u github.com/tcnksm/ghr
+             ./gradlew help 
+       - run:
+          name: Check for release
+          command: |
+            git fetch --tags > /dev/null 2>&1 
+            VERSION_MANIFEST=$(./gradlew versionFromManifest --console=plain --quiet)
+            LAST_VERSION=$(git describe --abbrev=0 --tags)
+            echo "Version from manifest: $VERSION_MANIFEST"
+            echo "Last release version: $LAST_VERSION"
+            echo $VERSION_MANIFEST > $HOME/version_manifest.lock
+            echo $LAST_VERSION > $HOME/last_version.lock
+       - run:
+          name: Build release
+          command: |
+            if [ $(cat $HOME/version_manifest.lock) == $(cat $HOME/last_version.lock) ]; then ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND1} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND2} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND3}; else echo "Nothing to do"; fi
+       - run:
+          name: Rename release
+          command: |
+            if [ $(cat $HOME/version_manifest.lock) == $(cat $HOME/last_version.lock) ]; then ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && mkdir -p ./release && cp ./build/outputs/apk/release/code-release.apk ./release/pt.joaomneto.titancompanion.TitanCompanion-${VERSION}.apk; else echo "Nothing to do"; fi
        - run:
           name: Create Version
           command: |
-            ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && echo Tagging version ${VERSION} && git tag ${VERSION} && git push github ${VERSION}
+            if [ $(cat $HOME/version_manifest.lock) == $(cat $HOME/last_version.lock) ]; then ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && echo Tagging version ${VERSION} && $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -n ${VERSION} -body="$(cat src/main/play/release-notes/en-GB/beta.txt)" -delete ${VERSION} ./release/; else echo "Nothing to do"; fi
        - run:
           name: Deploy To Play Store
-          command: ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND1} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND2} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND3}
+          command: if [ $(cat $HOME/version_manifest.lock) == $(cat $HOME/last_version.lock) ]; then ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND4}; else echo "Nothing to do"; fi
 workflows:
   version: 2
   continuous-integration-and-delivery:
@@ -150,17 +170,10 @@ workflows:
       - instrumentation-test-2:
           requires:
             - build-and-tests
-      - hold: # <<< A job that will require manual approval in the CircleCI web application.
-          type: approval # <<< This key-value pair will set your workflow to a status of "On Hold"
+      - deploy:
           requires:
             - instrumentation-test-1
             - instrumentation-test-2
-          filters:
-            branches:
-              only: master
-      - deploy:
-          requires:
-            - hold
           filters:
             branches:
               only: master
