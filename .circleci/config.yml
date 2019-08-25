@@ -147,18 +147,18 @@ jobs:
        - run:
           name: Build release
           command: |
-            if [ $(cat $HOME/version_manifest.lock) == $(cat $HOME/last_version.lock) ]; then ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND1} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND2} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND3}; else echo "Nothing to do"; fi
+            if [ $(cat $HOME/version_manifest.lock) != $(cat $HOME/last_version.lock) ]; then ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND1} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND2} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND3}; else echo "Nothing to do"; fi
        - run:
           name: Rename release
           command: |
-            if [ $(cat $HOME/version_manifest.lock) == $(cat $HOME/last_version.lock) ]; then ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && mkdir -p ./release && cp ./build/outputs/apk/release/code-release.apk ./release/pt.joaomneto.titancompanion.TitanCompanion-${VERSION}.apk; else echo "Nothing to do"; fi
+            if [ $(cat $HOME/version_manifest.lock) != $(cat $HOME/last_version.lock) ]; then ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && mkdir -p ./release && cp ./build/outputs/apk/release/code-release.apk ./release/pt.joaomneto.titancompanion.TitanCompanion-${VERSION}.apk; else echo "Nothing to do"; fi
        - run:
           name: Create Version
           command: |
-            if [ $(cat $HOME/version_manifest.lock) == $(cat $HOME/last_version.lock) ]; then ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && echo Tagging version ${VERSION} && $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -n ${VERSION} -body="$(cat src/main/play/release-notes/en-GB/beta.txt)" -delete ${VERSION} ./release/; else echo "Nothing to do"; fi
+            if [ $(cat $HOME/version_manifest.lock) != $(cat $HOME/last_version.lock) ]; then ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && echo Tagging version ${VERSION} && $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -n ${VERSION} -body="$(cat src/main/play/release-notes/en-GB/beta.txt)" -delete ${VERSION} ./release/; else echo "Nothing to do"; fi
        - run:
           name: Deploy To Play Store
-          command: if [ $(cat $HOME/version_manifest.lock) == $(cat $HOME/last_version.lock) ]; then ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND4}; else echo "Nothing to do"; fi
+          command: if [ $(cat $HOME/version_manifest.lock) != $(cat $HOME/last_version.lock) ]; then ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND4}; else echo "Nothing to do"; fi
 workflows:
   version: 2
   continuous-integration-and-delivery:
