@@ -1,1 +1,1 @@
-- Fixed bugs de compatibilité en Android 9
+- Corrigé bug mineur dans la fiche de Le Chasseur des Etoiles

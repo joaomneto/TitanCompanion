@@ -1,1 +1,1 @@
-- Fixed compatibility issues with Android 9
+- Fixed minor bug in Star Strider

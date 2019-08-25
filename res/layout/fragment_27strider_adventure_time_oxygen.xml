@@ -884,39 +884,6 @@
                         android:height="9dp"
                         android:text="@string/empty"/>
             </TableRow>
-
-            <TableRow
-                    android:background="@drawable/border_back"
-                    android:maxHeight="9dp"
-                    android:minHeight="9dp">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:height="9dp"
-                        android:text="@string/empty"/>
-            </TableRow>
-
-            <TableRow
-                    android:background="@drawable/border_back"
-                    android:maxHeight="9dp"
-                    android:minHeight="9dp">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:height="9dp"
-                        android:text="@string/empty"/>
-            </TableRow>
-
-            <TableRow
-                    android:background="@drawable/border_back"
-                    android:maxHeight="9dp"
-                    android:minHeight="9dp">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:height="9dp"
-                        android:text="@string/empty"/>
-            </TableRow>
         </TableLayout>
 
     </LinearLayout>
