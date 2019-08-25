@@ -1,1 +1,1 @@
-- Corrigidos erros de compatibilidade com Android 9
+- Corrigido bug na ficha de O Viajante das Estrelas
