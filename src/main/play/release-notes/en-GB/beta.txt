@@ -1,1 +1,1 @@
-- Fixed minor bug in Star Strider
+- Fixed minor bug in Battleblade Warrior
