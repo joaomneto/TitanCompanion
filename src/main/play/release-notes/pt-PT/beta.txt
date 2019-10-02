@@ -1,1 +1,1 @@
-- Corrigido bug na ficha de O Viajante das Estrelas
+- Corrigido bug na ficha de A Arma de Telak
