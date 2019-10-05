@@ -79,7 +79,7 @@ class TCOCAdventureCreationSpellsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<View>(R.id.buttonSaveAdventure).setOnClickListener { v: View -> (this.getActivity() as AdventureCreation).saveAdventure() }
+        view.findViewById<View>(R.id.buttonSaveAdventure).setOnClickListener { v: View -> (this.activity as AdventureCreation).saveAdventure() }
     }
 
     companion object {

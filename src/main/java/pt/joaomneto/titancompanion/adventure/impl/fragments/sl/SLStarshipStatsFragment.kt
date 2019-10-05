@@ -25,7 +25,7 @@ class SLStarshipStatsFragment : AdventureFragment() {
     ): View? {
         super.onCreate(savedInstanceState)
 
-        return inflater!!.inflate(
+        return inflater.inflate(
             R.layout.fragment_33sl_adventure_starshipstats,
             container, false
         )

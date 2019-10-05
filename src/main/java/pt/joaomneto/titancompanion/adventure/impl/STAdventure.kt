@@ -295,7 +295,7 @@ class STAdventure : Adventure(
                 if (isDeadScienceOfficer) return
                 isDeadScienceOfficer = true
                 currentScienceOfficerSkill = initialScienceOfficerSkill - 2
-                currentScienceOfficerStamina = DiceRoller.roll2D6().sum!! + 12
+                currentScienceOfficerStamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartyScienceOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SCIENCE_OFFICER)
             }
@@ -303,7 +303,7 @@ class STAdventure : Adventure(
                 if (isDeadMedicalOfficer) return
                 isDeadMedicalOfficer = true
                 currentMedicalOfficerSkill = initialMedicalOfficerSkill - 2
-                currentMedicalOfficerStamina = DiceRoller.roll2D6().sum!! + 12
+                currentMedicalOfficerStamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartyMedicalOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.MEDICAL_OFFICER)
             }
@@ -311,7 +311,7 @@ class STAdventure : Adventure(
                 if (isDeadEngineeringOfficer) return
                 isDeadEngineeringOfficer = true
                 currentEngineeringOfficerSkill = initialEngineeringOfficerSkill - 2
-                currentEngineeringOfficerStamina = DiceRoller.roll2D6().sum!! + 12
+                currentEngineeringOfficerStamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartyEngineeringOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.ENGINEERING_OFFICER)
             }
@@ -319,7 +319,7 @@ class STAdventure : Adventure(
                 if (isDeadScienceOfficer) return
                 isDeadSecurityOfficer = true
                 currentSecurityOfficerSkill = initialSecurityOfficerSkill - 2
-                currentSecurityOfficerStamina = DiceRoller.roll2D6().sum!! + 12
+                currentSecurityOfficerStamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartySecurityOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_OFFICER)
             }
@@ -327,7 +327,7 @@ class STAdventure : Adventure(
                 if (isDeadSecurityGuard1) return
                 isDeadSecurityGuard1 = true
                 currentSecurityGuard1Skill = initialSecurityGuard1Skill - 2
-                currentSecurityGuard1Stamina = DiceRoller.roll2D6().sum!! + 12
+                currentSecurityGuard1Stamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartySecurityGuard1 = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD1)
             }
@@ -335,7 +335,7 @@ class STAdventure : Adventure(
                 if (isDeadSecurityGuard2) return
                 isDeadSecurityGuard2 = true
                 currentSecurityGuard2Skill = initialSecurityGuard2Skill - 2
-                currentSecurityGuard2Stamina = DiceRoller.roll2D6().sum!! + 12
+                currentSecurityGuard2Stamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartySecurityGuard2 = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD2)
             }

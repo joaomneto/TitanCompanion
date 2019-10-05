@@ -148,11 +148,11 @@ class GamebookSelectionActivity : FragmentActivity() {
         }
 
         override fun getCount(): Int {
-            return values!!.size
+            return values.size
         }
 
         override fun getPageTitle(position: Int): CharSequence? {
-            return values!![position]
+            return values[position]
         }
     }
 

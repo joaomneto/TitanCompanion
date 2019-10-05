@@ -1,4 +1,4 @@
-package pt.joaomneto.titancompanion.phase3
+package pt.joaomneto.titancompanion.phase2
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest

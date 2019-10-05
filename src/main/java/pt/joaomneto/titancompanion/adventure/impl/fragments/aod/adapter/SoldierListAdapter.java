@@ -165,8 +165,8 @@ public class SoldierListAdapter<T extends SoldiersDivision> extends ArrayAdapter
                     if (!event.isShiftPressed()) {
 
                         String text = divisionBattleTotal.getText().toString();
-                        if (text != null && text.toString().length() > 0) {
-                            Integer value = new Integer(text.toString());
+                        if (text != null && text.length() > 0) {
+                            Integer value = new Integer(text);
 
                             if (value % 5 != 0) {
                                 value = 5 * (Math.round(value / 5));

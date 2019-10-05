@@ -23,7 +23,7 @@ class SLWeaponCombatFragment : AdventureFragment() {
     ): View? {
         super.onCreate(savedInstanceState)
 
-        return inflater!!.inflate(
+        return inflater.inflate(
             R.layout.fragment_33sl_adventure_weaponcombat, container,
             false
         )

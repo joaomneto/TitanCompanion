@@ -43,7 +43,7 @@ class SLAdventure : Adventure(
         rating = savedGame.getProperty("rating").toInt()
         currentLasers = savedGame.getProperty("currentLasers").toInt()
         currentShields = savedGame.getProperty("currentShields").toInt()
-        starspray = savedGame.getProperty("starspray").toBoolean()
+        starspray = savedGame.getProperty("starspray")!!.toBoolean()
         oxygen = savedGame.getProperty("oxygen").toInt()
     }
 

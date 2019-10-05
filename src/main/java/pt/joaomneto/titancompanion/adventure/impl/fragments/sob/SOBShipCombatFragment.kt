@@ -33,7 +33,7 @@ class SOBShipCombatFragment : AdventureFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(R.layout.fragment_16sob_adventure_shipcombat, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_16sob_adventure_shipcombat, container, false)
 
         val adv = activity as SOBAdventure
 
@@ -90,8 +90,8 @@ class SOBShipCombatFragment : AdventureFragment() {
                 combatResult!!.text = ""
 
                 if (enemyCrewStrength > 0) {
-                    val attackStrength = DiceRoller.roll2D6().sum!! + adv.currentCrewStrike
-                    val enemyStrength = DiceRoller.roll2D6().sum!! + enemyCrewStrike
+                    val attackStrength = DiceRoller.roll2D6().sum + adv.currentCrewStrike
+                    val enemyStrength = DiceRoller.roll2D6().sum + enemyCrewStrike
 
                     if (attackStrength > enemyStrength) {
                         val damage = 2

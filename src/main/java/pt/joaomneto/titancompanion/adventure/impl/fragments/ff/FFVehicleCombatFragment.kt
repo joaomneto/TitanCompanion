@@ -37,7 +37,7 @@ class FFVehicleCombatFragment : AdventureFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(
+        val rootView = inflater.inflate(
             R.layout.fragment_13ff_adventure_vehiclecombat, container,
             false
         )
@@ -100,8 +100,8 @@ class FFVehicleCombatFragment : AdventureFragment() {
 
                 combatResult!!.text = ""
 
-                var myAttack = DiceRoller.roll2D6().sum!! + adv.currentFirepower
-                var enemyAttack = DiceRoller.roll2D6().sum!! + enemyFirepower
+                var myAttack = DiceRoller.roll2D6().sum + adv.currentFirepower
+                var enemyAttack = DiceRoller.roll2D6().sum + enemyFirepower
 
                 if (myAttack > enemyAttack) {
                     val damage = DiceRoller.rollD6()
@@ -127,8 +127,8 @@ class FFVehicleCombatFragment : AdventureFragment() {
                 }
 
                 if (enemy2Armour > 0 && enemy2Firepower > 0) {
-                    myAttack = DiceRoller.roll2D6().sum!! + adv.currentFirepower
-                    enemyAttack = DiceRoller.roll2D6().sum!! + enemy2Firepower
+                    myAttack = DiceRoller.roll2D6().sum + adv.currentFirepower
+                    enemyAttack = DiceRoller.roll2D6().sum + enemy2Firepower
                     if (myAttack > enemyAttack) {
                         if (enemyArmour > 0) {
                             combatResult!!.text = (

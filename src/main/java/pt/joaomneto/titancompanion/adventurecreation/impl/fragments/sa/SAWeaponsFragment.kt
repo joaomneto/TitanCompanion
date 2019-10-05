@@ -62,7 +62,7 @@ class SAWeaponsFragment : Fragment() {
             true
         }
 
-        buttonAddWeapon!!.setOnClickListener(
+        buttonAddWeapon.setOnClickListener(
             OnClickListener {
                 val alert = AlertDialog.Builder(adv)
 
@@ -72,7 +72,7 @@ class SAWeaponsFragment : Fragment() {
                 val input = Spinner(adv)
                 val adapter = TranslatableEnumAdapter(
                     adv, android.R.layout.simple_list_item_1,
-                    if (adv!!.weapons.isEmpty()) SAWeapon.INITIALWEAPONS else SAWeapon.values()
+                    if (adv.weapons.isEmpty()) SAWeapon.INITIALWEAPONS else SAWeapon.values()
                 )
                 input.adapter = adapter
                 val imm = adv
@@ -115,10 +115,10 @@ class SAWeaponsFragment : Fragment() {
 
         val adapter = TranslatableEnumAdapter(
             adv, android.R.layout.simple_list_item_1,
-            adv!!.weapons
+            adv.weapons
         )
 
-        weaponList!!.adapter = adapter
+        weaponList.adapter = adapter
         adapter.notifyDataSetChanged()
 
         return rootView

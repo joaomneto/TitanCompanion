@@ -18,7 +18,7 @@ class SLAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
     ): View? {
         super.onCreate(savedInstanceState)
 
-        return inflater!!.inflate(
+        return inflater.inflate(
             R.layout.fragment_33sl_adventure_vitalstats, container, false
         )
     }

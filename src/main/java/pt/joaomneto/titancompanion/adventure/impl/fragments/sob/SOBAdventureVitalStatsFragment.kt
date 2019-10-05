@@ -22,7 +22,7 @@ class SOBAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(R.layout.fragment_16sob_adventure_vitalstats, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_16sob_adventure_vitalstats, container, false)
 
         // CHECKTHIS	initialize(rootView);
         val adv = activity as SOBAdventure

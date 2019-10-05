@@ -17,7 +17,7 @@ class SLVitalStatisticsFragment : VitalStatisticsFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        return inflater!!.inflate(R.layout.fragment_33sl_adventurecreation_vital_statistics, container, false)
+        return inflater.inflate(R.layout.fragment_33sl_adventurecreation_vital_statistics, container, false)
     }
 
     fun getRatingValue():

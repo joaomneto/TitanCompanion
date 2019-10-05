@@ -59,7 +59,7 @@ class COMAdventure : TWOFMAdventure(
         gold = savedGame.getProperty("gold").toInt()
         fuel = savedGame.getProperty("fuel").toInt()
         provisions = savedGame.getProperty("provisions").toInt()
-        tabashaSpecialSkill = savedGame.getProperty("tabashaSpecialSkill").toBoolean()
+        tabashaSpecialSkill = savedGame.getProperty("tabashaSpecialSkill")!!.toBoolean()
 
         val cyphersS = savedGame.getProperty("cyphers")
 

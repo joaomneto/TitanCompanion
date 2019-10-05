@@ -35,7 +35,7 @@ class DODAdventureCombatFragment : AdventureCombatFragment() {
         medallion?.let {
             dodadv.currentStamina = dodadv.currentStamina + 4
             it.power = it.power - 1
-            if (medallion?.power == 2) {
+            if (medallion.power == 2) {
                 dodadv.currentLuck = Math.max(0, dodadv.currentLuck)
                 dodadv.currentSkill = Math.max(0, dodadv.currentSkill)
                 dodadv.poison = Math.min(24, dodadv.poison + 3)

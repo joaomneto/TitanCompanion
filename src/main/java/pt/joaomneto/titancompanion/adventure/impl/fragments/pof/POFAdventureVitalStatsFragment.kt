@@ -27,7 +27,7 @@ class POFAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(
+        val rootView = inflater.inflate(
             R.layout.fragment_28pof_adventure_vitalstats, container, false
         )
 

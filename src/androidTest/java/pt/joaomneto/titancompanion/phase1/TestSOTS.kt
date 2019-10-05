@@ -1,4 +1,4 @@
-package pt.joaomneto.titancompanion
+package pt.joaomneto.titancompanion.phase1
 
 import android.view.View
 import androidx.test.espresso.Espresso.onData
@@ -12,6 +12,8 @@ import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anything
 import org.junit.Test
 import org.junit.runner.RunWith
+import pt.joaomneto.titancompanion.R
+import pt.joaomneto.titancompanion.TCBaseTest
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook.SWORD_OF_THE_SAMURAI
 
 @LargeTest

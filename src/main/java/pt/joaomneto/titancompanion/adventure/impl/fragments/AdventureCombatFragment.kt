@@ -213,7 +213,7 @@ open class AdventureCombatFragment : AdventureFragment() {
         val adv = activity as Adventure?
         val skill = adv!!.combatSkillValue
         attackDiceRoll = DiceRoller.roll2D6()
-        val attackStrength = attackDiceRoll?.sum + skill + position.handicap
+        val attackStrength = attackDiceRoll.sum + skill + position.handicap
         val enemyDiceRoll = DiceRoller.roll2D6()
         val enemyAttackStrength = enemyDiceRoll.sum + position.currentSkill
         var combatResultText = ""
@@ -225,7 +225,7 @@ open class AdventureCombatFragment : AdventureFragment() {
                     position.currentStamina = Math.max(0, position.currentStamina - damage)
                     hit = true
                     combatResultText += (
-                        getString(R.string.hitEnemy) + " (" + attackDiceRoll?.sum + " + " + skill +
+                        getString(R.string.hitEnemy) + " (" + attackDiceRoll.sum + " + " + skill +
                             (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " +
                             position.currentSkill + "). (-" + damage + getString(R.string.staminaInitials) + ")"
                         )
@@ -236,7 +236,7 @@ open class AdventureCombatFragment : AdventureFragment() {
             } else {
                 draw = true
                 combatResultText += (
-                    getString(R.string.blockedAttack) + " (" + attackDiceRoll?.sum + " + " + skill +
+                    getString(R.string.blockedAttack) + " (" + attackDiceRoll.sum + " + " + skill +
                         (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill +
                         ")"
                     )
@@ -245,7 +245,7 @@ open class AdventureCombatFragment : AdventureFragment() {
             val damage = convertDamageStringToInteger(position.damage)
             adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage))
             combatResultText += (
-                getString(R.string.youWereHit) + " (" + attackDiceRoll?.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "") +
+                getString(R.string.youWereHit) + " (" + attackDiceRoll.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "") +
                     ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + "). (-" + damage + R.string.staminaInitials + ")"
                 )
         } else {
@@ -523,7 +523,7 @@ open class AdventureCombatFragment : AdventureFragment() {
         val NORMAL = "NORMAL"
         val SEQUENCE = "SEQUENCE"
 
-        public fun convertDamageStringToInteger(damage: String): Int {
+        fun convertDamageStringToInteger(damage: String): Int {
             return if (damage == "1D6") {
                 DiceRoller.rollD6()
             } else {

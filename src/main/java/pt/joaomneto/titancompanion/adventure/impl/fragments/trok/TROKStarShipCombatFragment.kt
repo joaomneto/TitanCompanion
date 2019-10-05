@@ -38,7 +38,7 @@ class TROKStarShipCombatFragment : AdventureFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(R.layout.fragment_15trok_adventure_starshipcombat, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_15trok_adventure_starshipcombat, container, false)
 
         val adv = activity as TROKAdventure
 

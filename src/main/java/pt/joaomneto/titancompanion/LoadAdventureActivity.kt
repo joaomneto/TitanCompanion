@@ -52,7 +52,7 @@ class LoadAdventureActivity : BaseActivity() {
             val savepointFiles = dir.listFiles { _, filename -> !filename.startsWith("exception") }
 
             Arrays.sort(savepointFiles) { f1, f2 ->
-                java.lang.Long.valueOf(f1.lastModified())!!.compareTo(
+                java.lang.Long.valueOf(f1.lastModified()).compareTo(
                     f2.lastModified()
                 )
             }
