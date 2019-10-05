@@ -11,13 +11,17 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatist
 
 class SLVitalStatisticsFragment : VitalStatisticsFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         return inflater!!.inflate(R.layout.fragment_33sl_adventurecreation_vital_statistics, container, false)
     }
 
-    fun getRatingValue()
-        : TextView? {
+    fun getRatingValue():
+    TextView? {
         return ratingValue
     }
 }

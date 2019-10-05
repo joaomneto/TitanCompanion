@@ -19,7 +19,8 @@ import pt.joaomneto.titancompanion.adventure.impl.SLAdventure
 class SLStarshipStatsFragment : AdventureFragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
@@ -59,7 +60,8 @@ class SLStarshipStatsFragment : AdventureFragment() {
                 DialogInterface.OnClickListener { _, _ ->
                     adv.starspray = !adv.starspray
                     refreshScreensFromResume()
-                })
+                }
+            )
         })
     }
 

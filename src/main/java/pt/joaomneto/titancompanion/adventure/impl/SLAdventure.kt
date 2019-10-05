@@ -1,5 +1,7 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -9,8 +11,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLAdventureVitalS
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLStarshipStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sl.SLWeaponCombatFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 class SLAdventure : Adventure(
     arrayOf(

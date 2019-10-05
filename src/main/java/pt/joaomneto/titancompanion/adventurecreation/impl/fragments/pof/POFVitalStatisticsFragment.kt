@@ -12,7 +12,11 @@ class POFVitalStatisticsFragment : VitalStatisticsFragment() {
 
     lateinit var powerValue: TextView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         var rootView = inflater.inflate(R.layout.fragment_28pof_adventurecreation_vital_statistics, container, false)
         powerValue = rootView.findViewById(R.id.powerValue)

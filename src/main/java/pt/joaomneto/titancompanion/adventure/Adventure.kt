@@ -13,6 +13,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import java.io.*
+import java.util.*
 import pt.joaomneto.titancompanion.BaseFragmentActivity
 import pt.joaomneto.titancompanion.LoadAdventureActivity
 import pt.joaomneto.titancompanion.R
@@ -20,12 +22,10 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.*
-import java.util.*
 
 abstract class Adventure(override val fragmentConfiguration: Array<AdventureFragmentRunner>) : BaseFragmentActivity(
-        fragmentConfiguration,
-        R.layout.activity_adventure
+    fragmentConfiguration,
+    R.layout.activity_adventure
 ) {
 
     var initialSkill: Int = -1
@@ -134,7 +134,6 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     protected abstract fun loadAdventureSpecificValuesFromFile()
 
     fun testSkill() {
-
         val result = DiceRoller.roll2D6().sum < currentSkill
 
         val message = if (result) R.string.success else R.string.failed
@@ -142,7 +141,6 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     }
 
     fun testLuck() {
-
         val result = testLuckInternal()
 
         val message = if (result) R.string.success else R.string.failed
@@ -179,7 +177,6 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     }
 
     private fun displayRollXD6(diceNumber: Int): Boolean {
-
         val d1 = DiceRoller.rollD6()
         var d2: Int = 0
         var d3: Int = 0
@@ -269,8 +266,8 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
         alert.setNegativeButton(R.string.cancel) { _, _ ->
             imm.hideSoftInputFromWindow(
-                    input.windowToken,
-                    0
+                input.windowToken,
+                0
             )
         }
 
@@ -297,7 +294,6 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
     @Throws(IOException::class)
     private fun storeNotesForRestart(dir: File?) {
-
         val notesS = stringListToText(notes)
 
         var initialContent = readFile(File(dir, "initial.xml"))
@@ -315,7 +311,6 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     fun storeValuesInFile(ref: String, bw: BufferedWriter) {
         var equipmentS = ""
         val notesS = stringListToText(notes)
-
 
         if (!equipment.isEmpty()) {
             for (eq in equipment) {
@@ -442,7 +437,6 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
     private fun resume() {
         try {
-
             val f = File(dir, "temp.xml")
 
             if (!f.exists())
@@ -473,38 +467,36 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     }
 
     fun refreshScreens() {
-
         fragmentConfiguration
-                .map { getFragment(it.fragment) as AdventureFragment? }
-                .forEach { it?.refreshScreensFromResume() }
+            .map { getFragment(it.fragment) as AdventureFragment? }
+            .forEach { it?.refreshScreensFromResume() }
     }
 
     override fun onBackPressed() {
         showConfirmation(
-                R.string.savegameQuestionTitle,
-                R.string.savegameQuestion,
-                this,
-                DialogInterface.OnClickListener { dialog, _ ->
-                    dialog.dismiss()
-                    savepoint {
-                        showSuccessAlert(
-                                R.string.gamesaved,
-                                this,
-                                DialogInterface.OnClickListener { dialog, _ ->
-                                    dialog.dismiss()
-                                    super.onBackPressed()
-                                }
-                        )
-                    }
-                },
-                DialogInterface.OnClickListener { _, _ ->
-                    super.onBackPressed()
+            R.string.savegameQuestionTitle,
+            R.string.savegameQuestion,
+            this,
+            DialogInterface.OnClickListener { dialog, _ ->
+                dialog.dismiss()
+                savepoint {
+                    showSuccessAlert(
+                        R.string.gamesaved,
+                        this,
+                        DialogInterface.OnClickListener { dialog, _ ->
+                            dialog.dismiss()
+                            super.onBackPressed()
+                        }
+                    )
                 }
+            },
+            DialogInterface.OnClickListener { _, _ ->
+                super.onBackPressed()
+            }
         )
     }
 
     protected fun stringToArray(_string: String?): List<String> {
-
         val elements = ArrayList<String>()
 
         if (_string != null) {
@@ -519,7 +511,6 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     }
 
     protected fun stringToSet(_string: String?): Set<String> {
-
         val elements = HashSet<String>()
 
         if (_string != null) {
@@ -535,17 +526,17 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
     fun changeStamina(i: Int) {
         setCurrentStamina(
-                if (i > 0) Math.min(initialStamina, getCurrentStamina() + i) else Math.max(
-                        0,
-                        getCurrentStamina() + i
-                )
+            if (i > 0) Math.min(initialStamina, getCurrentStamina() + i) else Math.max(
+                0,
+                getCurrentStamina() + i
+            )
         )
     }
 
     fun fullRefresh() {
         fragmentConfiguration
-                .map { it.fragment }
-                .forEach { (getFragment(it) as AdventureFragment?)?.refreshScreensFromResume() }
+            .map { it.fragment }
+            .forEach { (getFragment(it) as AdventureFragment?)?.refreshScreensFromResume() }
     }
 
     fun closeKeyboard(view: View) {
@@ -571,10 +562,16 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             showAlert(title, context.getString(message), context)
         }
 
-        fun showAlert(title: Int? = null, message: String, context: Context, extraActionTextId: Int? = null, extraActionCallback: () -> Unit = {}) {
+        fun showAlert(
+            title: Int? = null,
+            message: String,
+            context: Context,
+            extraActionTextId: Int? = null,
+            extraActionCallback: () -> Unit = {}
+        ) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(if (title != null && title > 0) title else R.string.result).setMessage(message).setCancelable(false).setNegativeButton(
-                    R.string.close
+                R.string.close
             ) { dialog, _ -> dialog.cancel() }
 
             if (extraActionTextId != null && extraActionCallback != {}) {
@@ -585,24 +582,26 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             }
             val alert = builder.create()
             alert.show()
-
         }
 
         fun showConfirmation(
-                title: Int,
-                message: Int,
-                context: Context,
-                confirmOnClickListener: DialogInterface.OnClickListener,
-                dismissOnClickListener: DialogInterface.OnClickListener? = null
+            title: Int,
+            message: Int,
+            context: Context,
+            confirmOnClickListener: DialogInterface.OnClickListener,
+            dismissOnClickListener: DialogInterface.OnClickListener? = null
         ) {
             val builder = AlertDialog.Builder(context)
             builder
-                    .setTitle(if (title > 0) title else R.string.result)
-                    .setMessage(message)
-                    .setCancelable(false)
-                    .setNegativeButton(R.string.close, dismissOnClickListener
-                            ?: DialogInterface.OnClickListener { dialog, _ -> dialog.cancel() })
-                    .setPositiveButton(R.string.ok, confirmOnClickListener)
+                .setTitle(if (title > 0) title else R.string.result)
+                .setMessage(message)
+                .setCancelable(false)
+                .setNegativeButton(
+                    R.string.close,
+                    dismissOnClickListener
+                        ?: DialogInterface.OnClickListener { dialog, _ -> dialog.cancel() }
+                )
+                .setPositiveButton(R.string.ok, confirmOnClickListener)
             val alert = builder.create()
             alert.show()
         }
@@ -610,7 +609,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         fun showErrorAlert(message: Int, context: Context) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.error).setMessage(message).setCancelable(false).setIcon(R.drawable.error_icon).setNegativeButton(
-                    R.string.close
+                R.string.close
             ) { dialog, _ -> dialog.cancel() }
             val alert = builder.create()
             alert.show()
@@ -619,20 +618,27 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         fun showInfoAlert(message: Int, context: Context) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.info).setMessage(message).setCancelable(false).setIcon(R.drawable.info_icon).setNegativeButton(
-                    R.string.close
+                R.string.close
             ) { dialog, _ -> dialog.cancel() }
             val alert = builder.create()
             alert.show()
         }
 
-        fun showSuccessAlert(message: Int, context: Context, onClickListener: DialogInterface.OnClickListener? = null) {
+        fun showSuccessAlert(
+            message: Int,
+            context: Context,
+            onClickListener: DialogInterface.OnClickListener? = null
+        ) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.done)
-                    .setMessage(message)
-                    .setCancelable(false)
-                    .setIcon(R.drawable.success_icon)
-                    .setNegativeButton(R.string.close, onClickListener
-                            ?: DialogInterface.OnClickListener { dialog, _ -> dialog.cancel() })
+                .setMessage(message)
+                .setCancelable(false)
+                .setIcon(R.drawable.success_icon)
+                .setNegativeButton(
+                    R.string.close,
+                    onClickListener
+                        ?: DialogInterface.OnClickListener { dialog, _ -> dialog.cancel() }
+                )
             val alert = builder.create()
             alert.show()
         }
@@ -675,7 +681,6 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             }
             return text
         }
-
 
         fun <Y : Enum<Y>> enumMapToText(map: Map<Y, Int>): String {
             var text = ""

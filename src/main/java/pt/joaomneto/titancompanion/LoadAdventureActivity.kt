@@ -8,15 +8,9 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemLongClickListener
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import pt.joaomneto.titancompanion.adapter.Savegame
-import pt.joaomneto.titancompanion.adapter.SavegameListAdapter
-import pt.joaomneto.titancompanion.consts.Constants
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
-import java.nio.file.Files
-import java.nio.file.attribute.BasicFileAttributes
 import java.text.SimpleDateFormat
 import java.util.ArrayList
 import java.util.Arrays
@@ -48,7 +42,6 @@ class LoadAdventureActivity : BaseActivity() {
         val adapter = SavegameListAdapter(this, files)
         listview.adapter = adapter
 
-
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val dir = File(baseDir, files[position].filename)
 
@@ -60,7 +53,7 @@ class LoadAdventureActivity : BaseActivity() {
 
             Arrays.sort(savepointFiles) { f1, f2 ->
                 java.lang.Long.valueOf(f1.lastModified())!!.compareTo(
-                        f2.lastModified()
+                    f2.lastModified()
                 )
             }
 
@@ -77,7 +70,7 @@ class LoadAdventureActivity : BaseActivity() {
 
                 try {
                     val bufferedReader = BufferedReader(
-                            FileReader(savepointFiles[which])
+                        FileReader(savepointFiles[which])
                     )
 
                     while (bufferedReader.ready()) {
@@ -97,13 +90,14 @@ class LoadAdventureActivity : BaseActivity() {
                     bufferedReader.close()
 
                     val intent = Intent(
-                            this, Constants
+                        this,
+                        Constants
                             .getRunActivity(this, gamebook!!)
                     )
 
                     intent.putExtra(
-                            ADVENTURE_FILE,
-                            savepointFiles[which].name
+                        ADVENTURE_FILE,
+                        savepointFiles[which].name
                     )
                     intent.putExtra(ADVENTURE_DIR, dir.name)
                     startActivity(intent)
@@ -118,20 +112,22 @@ class LoadAdventureActivity : BaseActivity() {
         listview.onItemLongClickListener = OnItemLongClickListener { _, _, position, _ ->
             val builder = AlertDialog.Builder(this)
             builder.setTitle(R.string.deleteSavegame)
-                    .setCancelable(false)
-                    .setNegativeButton(
-                            R.string.close
-                    ) { dialog, _ -> dialog.cancel() }
+                .setCancelable(false)
+                .setNegativeButton(
+                    R.string.close
+                ) { dialog, _ -> dialog.cancel() }
             builder.setPositiveButton(
-                    R.string.ok
+                R.string.ok
             ) { _, _ ->
                 val file = files[position].filename
                 val f = File(baseDir, file)
                 if (deleteDirectory(f)) {
                     files.removeAt(position)
-                    (listview
-                            .adapter as ArrayAdapter<String>)
-                            .notifyDataSetChanged()
+                    (
+                        listview
+                            .adapter as ArrayAdapter<String>
+                        )
+                        .notifyDataSetChanged()
                 }
             }
 

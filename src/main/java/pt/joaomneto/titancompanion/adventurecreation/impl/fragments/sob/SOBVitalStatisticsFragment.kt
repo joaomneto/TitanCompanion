@@ -13,7 +13,11 @@ class SOBVitalStatisticsFragment : VitalStatisticsFragment() {
     lateinit var crewStrengthValue: TextView
     lateinit var crewStrikeValue: TextView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         var rootView = inflater.inflate(R.layout.fragment_16sob_adventurecreation_vital_statistics, container, false)
         crewStrengthValue = rootView.findViewById(R.id.crewStrengthValue)

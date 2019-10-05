@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -8,8 +10,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFr
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 open class TWOFMAdventure(
     override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS
@@ -46,8 +46,8 @@ open class TWOFMAdventure(
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
         bw.write("standardPotion=" + standardPotion + "\n")
         bw.write(
-            "standardPotionValue=" + standardPotionValue
-                + "\n"
+            "standardPotionValue=" + standardPotionValue +
+                "\n"
         )
         bw.write("gold=" + gold + "\n")
     }

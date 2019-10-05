@@ -2,6 +2,9 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.ArrayList
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
@@ -11,9 +14,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFAdventureCombat
 import pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFVehicleCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.ff.FFVehicleStatsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.ArrayList
 
 class FFAdventure : Adventure(
     arrayOf(
@@ -57,7 +57,6 @@ class FFAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("currentFirepower=" + currentFirepower + "\n")
         bw.write("currentArmour=" + currentArmour + "\n")
         bw.write("initialFirepower=" + initialFirepower + "\n")
@@ -74,7 +73,6 @@ class FFAdventure : Adventure(
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
-
         currentFirepower = Integer.valueOf(savedGame.getProperty("currentFirepower"))
         currentArmour = Integer.valueOf(savedGame.getProperty("currentArmour"))
         initialFirepower = Integer.valueOf(savedGame.getProperty("initialFirepower"))

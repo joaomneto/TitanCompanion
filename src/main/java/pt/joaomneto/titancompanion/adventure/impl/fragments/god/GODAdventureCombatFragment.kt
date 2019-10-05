@@ -14,19 +14,18 @@ class GODAdventureCombatFragment : AdventureCombatFragment() {
     var poisonActivated: Boolean = false
 
     override val damage: () -> Int
-        get() = {((activity as GODAdventure).weapon.damage(attackDiceRoll, demon, stoneCrystal))}
+        get() = { ((activity as GODAdventure).weapon.damage(attackDiceRoll, demon, stoneCrystal)) }
 
-
-    override fun endOfTurnAction(): String{
+    override fun endOfTurnAction(): String {
         val adv = activity as GODAdventure
-        if(adv.weapon == GODWeapon.ASSASSINS_STILETTO && adv.poison>0 && currentEnemy.staminaLoss>0){
+        if (adv.weapon == GODWeapon.ASSASSINS_STILETTO && adv.poison> 0 && currentEnemy.staminaLoss> 0) {
             poisonActivated = true
             adv.poison = adv.poison - 1
         }
 
-        if(poisonActivated){
-            currentEnemy.currentStamina = currentEnemy.currentStamina -1
-            return " "+getString(R.string.poisonBlade)
+        if (poisonActivated) {
+            currentEnemy.currentStamina = currentEnemy.currentStamina - 1
+            return " " + getString(R.string.poisonBlade)
         }
 
         return ""

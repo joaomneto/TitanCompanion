@@ -16,7 +16,8 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 class COMAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)

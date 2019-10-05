@@ -1,8 +1,8 @@
 package pt.joaomneto.titancompanion.adventure
 
-import androidx.fragment.app.DialogFragment
 import android.view.View
 import android.widget.Button
+import androidx.fragment.app.DialogFragment
 import kotlin.reflect.KMutableProperty0
 import kotlin.reflect.KMutableProperty1
 
@@ -39,10 +39,15 @@ abstract class AdventureFragment : DialogFragment() {
     }
 
     fun <A : Adventure> setupIncDecButton(
-        rootView: View, incButtonId: Int, decButtonId: Int, adv: A, property: KMutableProperty1<A, Int>,
-        maxValue: Int, incTrigger: Runnable? = null, decTrigger: Runnable? = null
+        rootView: View,
+        incButtonId: Int,
+        decButtonId: Int,
+        adv: A,
+        property: KMutableProperty1<A, Int>,
+        maxValue: Int,
+        incTrigger: Runnable? = null,
+        decTrigger: Runnable? = null
     ) {
-
         val incButton = rootView.findViewById<Button>(incButtonId)
         val decButton = rootView.findViewById<Button>(decButtonId)
 
@@ -59,7 +64,12 @@ abstract class AdventureFragment : DialogFragment() {
         }
     }
 
-    private fun <A : Adventure> incDec(adv: A, property: KMutableProperty1<A, Int>, maxValue: Int, increase: Boolean) {
+    private fun <A : Adventure> incDec(
+        adv: A,
+        property: KMutableProperty1<A, Int>,
+        maxValue: Int,
+        increase: Boolean
+    ) {
         if (increase)
             property.set(adv, Math.min(property.get(adv) + 1, maxValue))
         else

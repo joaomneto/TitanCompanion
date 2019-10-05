@@ -4,17 +4,17 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.consts.Constants
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
@@ -37,11 +37,9 @@ class GamebookSelectionActivity : FragmentActivity() {
      */
     private lateinit var mViewPager: ViewPager
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gamebook_selection)
-
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the app.
@@ -70,7 +68,11 @@ class GamebookSelectionActivity : FragmentActivity() {
         private var imageLink = 0
         private var position = 0
 
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
             super.onCreate(savedInstanceState)
             val rootView = inflater.inflate(R.layout.fragment_gamebook_selection_gamebook_selection, container, false)
 
@@ -82,7 +84,6 @@ class GamebookSelectionActivity : FragmentActivity() {
 
             imageLink = Constants.getGameBookCoverAddress(position)
             img.setImageResource(imageLink)
-
 
             img.setOnClickListener {
                 val intent = Intent(activity!!.baseContext, GamebookFullImageActivity::class.java)
@@ -104,7 +105,6 @@ class GamebookSelectionActivity : FragmentActivity() {
 
             createButton.isEnabled = bookSupported
 
-
             if (bookSupported) {
                 createButton.setOnClickListener { view ->
 
@@ -116,7 +116,6 @@ class GamebookSelectionActivity : FragmentActivity() {
                         Adventure.showAlert(R.string.gamebookNotImplemented, this@GamebookSelectionFragment.activity!!)
                         e.printStackTrace()
                     }
-
                 }
             } else {
                 createButton.setText(R.string.comingSoon)

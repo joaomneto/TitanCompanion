@@ -1,13 +1,13 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.pof.POFVitalStatisticsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.IOException
 
 class POFAdventureCreation : TFODAdventureCreation(
     arrayOf(

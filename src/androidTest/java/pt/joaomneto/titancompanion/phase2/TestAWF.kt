@@ -1,12 +1,12 @@
 package pt.joaomneto.titancompanion.phase2
 
+import android.view.View
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withClassName
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.filters.LargeTest
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import android.view.View
+import androidx.test.filters.LargeTest
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anything
@@ -23,24 +23,22 @@ class TestAWF : TCBaseTest() {
     override val gamebook = APPOINTMENT_WITH_F_E_A_R
 
     fun performChooseSuperpower() {
-
         val linearLayout = onData(anything())
-                .inAdapterView(
-                        allOf<View>(
-                                withId(R.id.superpowerList),
-                                childAtPosition(
-                                        withClassName(`is`("android.widget.RelativeLayout")),
-                                        1
-                                )
-                        )
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.superpowerList),
+                    childAtPosition(
+                        withClassName(`is`("android.widget.RelativeLayout")),
+                        1
+                    )
                 )
-                .atPosition(0)
+            )
+            .atPosition(0)
         linearLayout.perform(click())
     }
 
     @Test
     fun testSuccessfulCreation() {
-
         performStartAdventure()
         performFillSavegameName()
         performVitalStatisticsRoll()
@@ -50,6 +48,4 @@ class TestAWF : TCBaseTest() {
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
     }
-
-
 }

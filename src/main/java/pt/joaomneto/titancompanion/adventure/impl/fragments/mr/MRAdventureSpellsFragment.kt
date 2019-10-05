@@ -15,7 +15,8 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureSpellsFragm
 class MRAdventureSpellsFragment : AdventureSpellsFragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)

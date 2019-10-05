@@ -1,7 +1,7 @@
 package pt.joaomneto.titancompanion.phase1
 
-import androidx.test.filters.LargeTest
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.LargeTest
 import org.junit.Test
 import org.junit.runner.RunWith
 import pt.joaomneto.titancompanion.TCBaseTest
@@ -15,7 +15,6 @@ open class TestST : TCBaseTest() {
 
     @Test
     fun testSuccessfulCreation() {
-
         performStartAdventure()
         performFillSavegameName()
         performVitalStatisticsRoll()
@@ -23,6 +22,4 @@ open class TestST : TCBaseTest() {
         assertAdventureLoaded()
         testVitalStatisticsFragment()
     }
-
-
 }

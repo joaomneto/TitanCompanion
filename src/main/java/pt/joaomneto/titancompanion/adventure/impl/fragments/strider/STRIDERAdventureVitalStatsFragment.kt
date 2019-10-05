@@ -19,7 +19,8 @@ class STRIDERAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
     internal var decreaseFearButton: Button? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,7 @@ class STRIDERAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
             R.layout.fragment_27strider_adventure_vitalstats, container, false
         )
 
-        //CHECKTHIS	initialize(rootView);
+        // CHECKTHIS	initialize(rootView);
 
         fearValue = rootView.findViewById(R.id.statsFearValue)
 
@@ -39,7 +40,7 @@ class STRIDERAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buttonTestFear.setOnClickListener({
-                (this.activity as STRIDERAdventure).testFear()
+            (this.activity as STRIDERAdventure).testFear()
         })
     }
 

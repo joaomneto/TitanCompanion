@@ -2,6 +2,9 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.ArrayList
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
@@ -11,9 +14,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.sa.SAAdventureVitalS
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sa.SAAdventureWeaponsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.ArrayList
 
 class SAAdventure : Adventure(
     arrayOf(
@@ -63,7 +63,6 @@ class SAAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("currentArmor=" + currentArmor + "\n")
         bw.write("weaponsStat=" + Adventure.Companion.arrayToString(weapons) + "\n")
         bw.write("provisions=4\n")

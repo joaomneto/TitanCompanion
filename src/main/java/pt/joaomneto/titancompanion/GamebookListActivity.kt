@@ -7,7 +7,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
-import java.util.ArrayList
 
 class GamebookListActivity : BaseActivity() {
 

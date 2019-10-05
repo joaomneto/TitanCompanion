@@ -1,16 +1,16 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.ArrayList
+import java.util.HashMap
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.tcoc.TCOCAdventureCreationSpellsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.ArrayList
-import java.util.HashMap
 
 class TCOCAdventureCreation : AdventureCreation(
     arrayOf(
@@ -56,7 +56,6 @@ class TCOCAdventureCreation : AdventureCreation(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         var spellsS = ""
 
         if (!spells.isEmpty()) {

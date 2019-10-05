@@ -13,13 +13,13 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import java.lang.Math.max
+import java.lang.Math.min
 import kotlinx.android.synthetic.main.fragment_35dod_adventure_medallions.*
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.DODAdventure
 import pt.joaomneto.titancompanion.adventure.impl.MedallionStatus
-import java.lang.Math.max
-import java.lang.Math.min
 
 class DODAdventureMedallionFragment : AdventureFragment() {
 
@@ -27,7 +27,8 @@ class DODAdventureMedallionFragment : AdventureFragment() {
     private lateinit var mAdapter: MedallionListAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
@@ -57,11 +58,13 @@ class DODAdventureMedallionFragment : AdventureFragment() {
     }
 }
 
-class MedallionListAdapter(private val adv: DODAdventure) : ArrayAdapter<MedallionStatus>(
-    adv,
-    -1,
-    adv.medallions
-), View.OnCreateContextMenuListener {
+class MedallionListAdapter(private val adv: DODAdventure) :
+    ArrayAdapter<MedallionStatus>(
+        adv,
+        -1,
+        adv.medallions
+    ),
+    View.OnCreateContextMenuListener {
 
     override fun onCreateContextMenu(p0: ContextMenu?, p1: View?, p2: ContextMenu.ContextMenuInfo?) {
         TODO("not implemented")
@@ -82,12 +85,12 @@ class MedallionListAdapter(private val adv: DODAdventure) : ArrayAdapter<Medalli
         medallionName.setText(medallion.medallion.textId)
 
         plusMedallionButton.setOnClickListener {
-            medallion.power = min(medallion.power+1, 3)
+            medallion.power = min(medallion.power + 1, 3)
             this.notifyDataSetInvalidated()
         }
 
         minusMedallionButton.setOnClickListener {
-            medallion.power = max(medallion.power-1, 0)
+            medallion.power = max(medallion.power - 1, 0)
             this.notifyDataSetInvalidated()
         }
 
@@ -110,17 +113,16 @@ class MedallionListAdapter(private val adv: DODAdventure) : ArrayAdapter<Medalli
         if (medallion.achieved) {
             val spannableString = Spannable.Factory.getInstance().newSpannable(medallionName.text)
             spannableString.setSpan(
-                    BackgroundColorSpan(0xFF33B5E5.toInt()),
-                    0,
-                    medallionName.text.length,
-                    SPAN_EXCLUSIVE_EXCLUSIVE
+                BackgroundColorSpan(0xFF33B5E5.toInt()),
+                0,
+                medallionName.text.length,
+                SPAN_EXCLUSIVE_EXCLUSIVE
             )
             medallionName.text = spannableString
-        }else{
+        } else {
             medallionName.setText(medallion.medallion.textId)
         }
 
         return medallionView
     }
 }
-

@@ -23,8 +23,11 @@ open class AdventureSpellsFragment : AdventureFragment() {
     private var chooseSpellSpinner: Spinner? = null
     private var addSpellButton: Button? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val adv = activity as SpellAdventure<Spell>
         super.onCreate(savedInstanceState)
         val rootView = inflater.inflate(
@@ -57,8 +60,10 @@ open class AdventureSpellsFragment : AdventureFragment() {
                 specificSpellActivation(adv, spell)
                 if (adv.isSpellSingleUse) {
                     adv.chosenSpells = adv.chosenSpells.minus(adv.chosenSpells[position])
-                    (spellList!!
-                        .adapter as ArrayAdapter<*>)
+                    (
+                        spellList!!
+                            .adapter as ArrayAdapter<*>
+                        )
                         .notifyDataSetChanged()
                 }
             }

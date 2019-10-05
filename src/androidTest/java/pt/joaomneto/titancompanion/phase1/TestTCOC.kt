@@ -1,12 +1,12 @@
 package pt.joaomneto.titancompanion.phase1
 
+import android.view.View
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withClassName
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.filters.LargeTest
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import android.view.View
+import androidx.test.filters.LargeTest
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anything
@@ -24,61 +24,60 @@ class TestTCOC : TCBaseTest() {
 
     fun performChooseSpells() {
         val textView2 = onData(anything())
-                .inAdapterView(
-                        allOf<View>(
-                                withId(R.id.spellListView),
-                                childAtPosition(
-                                        withClassName(`is`("android.widget.LinearLayout")),
-                                        1
-                                )
-                        )
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.spellListView),
+                    childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        1
+                    )
                 )
-                .atPosition(0)
+            )
+            .atPosition(0)
         textView2.perform(click())
 
         val textView3 = onData(anything())
-                .inAdapterView(
-                        allOf<View>(
-                                withId(R.id.spellListView),
-                                childAtPosition(
-                                        withClassName(`is`("android.widget.LinearLayout")),
-                                        1
-                                )
-                        )
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.spellListView),
+                    childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        1
+                    )
                 )
-                .atPosition(0)
+            )
+            .atPosition(0)
         textView3.perform(click())
 
         val textView4 = onData(anything())
-                .inAdapterView(
-                        allOf<View>(
-                                withId(R.id.spellListView),
-                                childAtPosition(
-                                        withClassName(`is`("android.widget.LinearLayout")),
-                                        1
-                                )
-                        )
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.spellListView),
+                    childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        1
+                    )
                 )
-                .atPosition(1)
+            )
+            .atPosition(1)
         textView4.perform(click())
 
         val textView5 = onData(anything())
-                .inAdapterView(
-                        allOf<View>(
-                                withId(R.id.spellListView),
-                                childAtPosition(
-                                        withClassName(`is`("android.widget.LinearLayout")),
-                                        1
-                                )
-                        )
+            .inAdapterView(
+                allOf<View>(
+                    withId(R.id.spellListView),
+                    childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        1
+                    )
                 )
-                .atPosition(1)
+            )
+            .atPosition(1)
         textView5.perform(click())
     }
 
     @Test
     fun testSuccessfulCreation() {
-
         performStartAdventure()
         performFillSavegameName()
         performVitalStatisticsRoll()
@@ -87,6 +86,4 @@ class TestTCOC : TCBaseTest() {
         performSaveAdventureFromCreationScreen()
         assertAdventureLoaded()
     }
-
-
 }

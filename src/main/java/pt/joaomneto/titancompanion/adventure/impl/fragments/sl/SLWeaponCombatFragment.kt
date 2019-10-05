@@ -17,7 +17,8 @@ class SLWeaponCombatFragment : AdventureFragment() {
     private var enemyRating = 0
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
@@ -90,7 +91,6 @@ class SLWeaponCombatFragment : AdventureFragment() {
     }
 
     fun combatTurn() {
-
         val adv = activity as SLAdventure
 
         var combatText: String
@@ -117,12 +117,10 @@ class SLWeaponCombatFragment : AdventureFragment() {
     private fun enemyTurn(): String {
         val adv = activity as SLAdventure
 
-
         if (DiceRoller.rollD6() <= enemyLasers) {
             adv.currentShields = maxOf(0, adv.currentShields - 2)
             return getString(R.string.slEnemyHitPlayer, 2)
         }
-
 
         return getString(R.string.enemyMissed)
     }
@@ -139,7 +137,6 @@ class SLWeaponCombatFragment : AdventureFragment() {
     }
 
     override fun refreshScreensFromResume() {
-
         val adv = activity as SLAdventure
 
         enemyshieldsValue?.text = enemyShields.toString()

@@ -12,7 +12,11 @@ class STRIDERVitalStatisticsFragment : VitalStatisticsFragment() {
 
     lateinit var fearValue: TextView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         var rootView = inflater.inflate(
             R.layout.fragment_27strider_adventurecreation_vital_statistics,

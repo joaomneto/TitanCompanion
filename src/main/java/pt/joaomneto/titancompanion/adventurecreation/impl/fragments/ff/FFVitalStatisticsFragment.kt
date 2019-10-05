@@ -15,7 +15,11 @@ class FFVitalStatisticsFragment : VitalStatisticsFragment() {
     lateinit var firepowerValue: TextView
         internal set
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         var rootView = inflater.inflate(R.layout.fragment_13ff_adventurecreation_vital_statistics, container, false)
         armorValue = rootView.findViewById(R.id.armorValue)

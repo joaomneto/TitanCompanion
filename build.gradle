@@ -13,6 +13,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.triplet.gradle:play-publisher:2.3.0'
         classpath 'com.amazonaws:aws-devicefarm-gradle-plugin:1.2'
+        classpath 'org.jlleitschuh.gradle:ktlint-gradle:9.0.0'
     }
 }
 
@@ -21,6 +22,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'org.jlleitschuh.gradle.ktlint'
 if (project.hasProperty('SERVICE_ACCOUNT_EMAIL')) {
     apply plugin: 'com.github.triplet.play'
 }
@@ -183,4 +185,13 @@ task(prepareRelease) {
             throw new IllegalStateException("Missing modifications to release notes ${missingModifications}")
         }
     }
+}
+
+ktlint {
+    version = "0.34.2"
+    verbose = true
+    android = false
+    outputToConsole = true
+    ignoreFailures = true
+    enableExperimentalRules = true
 }

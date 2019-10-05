@@ -32,7 +32,11 @@ class TROKStarShipCombatFragment : AdventureFragment() {
 
     internal var combatResult: TextView? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         val rootView = inflater!!.inflate(R.layout.fragment_15trok_adventure_starshipcombat, container, false)
 
@@ -80,80 +84,81 @@ class TROKStarShipCombatFragment : AdventureFragment() {
 
         attackButton = rootView.findViewById<View>(R.id.buttonAttack) as Button
 
-        attackButton!!.setOnClickListener(OnClickListener {
-            if (enemyShields == 0 || adv.currentShields == 0)
-                return@OnClickListener
+        attackButton!!.setOnClickListener(
+            OnClickListener {
+                if (enemyShields == 0 || adv.currentShields == 0)
+                    return@OnClickListener
 
-            combatResult!!.text = ""
+                combatResult!!.text = ""
 
-            if (enemyShields > 0) {
-                if (DiceRoller.roll2D6().sum <= adv.currentWeapons) {
-                    val damage = 1
-                    enemyShields -= damage
-                    if (enemyShields <= 0) {
-                        enemyShields = 0
-                        Adventure.showAlert(R.string.ffDirectHitDefeat, adv)
+                if (enemyShields > 0) {
+                    if (DiceRoller.roll2D6().sum <= adv.currentWeapons) {
+                        val damage = 1
+                        enemyShields -= damage
+                        if (enemyShields <= 0) {
+                            enemyShields = 0
+                            Adventure.showAlert(R.string.ffDirectHitDefeat, adv)
+                        } else {
+                            combatResult!!.text = getString(R.string.trokDirectHit, damage)
+                        }
                     } else {
-                        combatResult!!.text = getString(R.string.trokDirectHit, damage)
+                        combatResult!!.setText(R.string.missedTheEnemy)
+                    }
+                } else if (enemy2Shields > 0) {
+                    if (DiceRoller.roll2D6().sum <= adv.currentWeapons) {
+                        val damage = 1
+                        enemy2Shields -= damage
+                        if (enemy2Shields <= 0) {
+                            enemy2Shields = 0
+                            Adventure.showAlert(getString(R.string.directHitDefeatSecondEnemy), adv)
+                        } else {
+                            combatResult!!.text = getString(R.string.trokDirectHit, damage)
+                        }
+                    } else {
+                        combatResult!!.setText(R.string.missedTheEnemy)
                     }
                 } else {
-                    combatResult!!.setText(R.string.missedTheEnemy)
+                    return@OnClickListener
                 }
-            } else if (enemy2Shields > 0) {
-                if (DiceRoller.roll2D6().sum <= adv.currentWeapons) {
-                    val damage = 1
-                    enemy2Shields -= damage
-                    if (enemy2Shields <= 0) {
-                        enemy2Shields = 0
-                        Adventure.showAlert(getString(R.string.directHitDefeatSecondEnemy), adv)
+                if (enemyShields > 0) {
+                    if (DiceRoller.roll2D6().sum <= enemyWeapons) {
+                        val damage = 1
+                        adv.currentShields = adv.currentShields - damage
+                        if (adv.currentShields <= 0) {
+                            adv.currentShields = 0
+                            Adventure.showAlert(getString(R.string.trokPlayerStarshipDestroyed), adv)
+                        } else {
+                            combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(
+                                R.string.trokEnemyHitPlayerStarship,
+                                damage
+                            )
+                        }
                     } else {
-                        combatResult!!.text = getString(R.string.trokDirectHit, damage)
+                        combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.enemyMissed)
                     }
-                } else {
-                    combatResult!!.setText(R.string.missedTheEnemy)
                 }
-            } else {
-                return@OnClickListener
+
+                if (enemy2Shields > 0) {
+                    if (DiceRoller.roll2D6().sum <= enemy2Weapons) {
+                        val damage = 1
+                        adv.currentShields = adv.currentShields - damage
+                        if (adv.currentShields <= 0) {
+                            adv.currentShields = 0
+                            Adventure.showAlert(R.string.trokPlayerStarshipDestroyed, adv)
+                        } else {
+                            combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(
+                                R.string.trokSecondEnemyHitPlayerStarship,
+                                damage
+                            )
+                        }
+                    } else {
+                        combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.secondEnemyMissed)
+                    }
+                }
+
+                refreshScreensFromResume()
             }
-            if (enemyShields > 0) {
-                if (DiceRoller.roll2D6().sum <= enemyWeapons) {
-                    val damage = 1
-                    adv.currentShields = adv.currentShields - damage
-                    if (adv.currentShields <= 0) {
-                        adv.currentShields = 0
-                        Adventure.showAlert(getString(R.string.trokPlayerStarshipDestroyed), adv)
-                    } else {
-                        combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(
-                            R.string.trokEnemyHitPlayerStarship,
-                            damage
-                        )
-                    }
-                } else {
-                    combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.enemyMissed)
-                }
-            }
-
-
-            if (enemy2Shields > 0) {
-                if (DiceRoller.roll2D6().sum <= enemy2Weapons) {
-                    val damage = 1
-                    adv.currentShields = adv.currentShields - damage
-                    if (adv.currentShields <= 0) {
-                        adv.currentShields = 0
-                        Adventure.showAlert(R.string.trokPlayerStarshipDestroyed, adv)
-                    } else {
-                        combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(
-                            R.string.trokSecondEnemyHitPlayerStarship,
-                            damage
-                        )
-                    }
-                } else {
-                    combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.secondEnemyMissed)
-                }
-            }
-
-            refreshScreensFromResume()
-        })
+        )
 
         refreshScreensFromResume()
 
@@ -161,7 +166,6 @@ class TROKStarShipCombatFragment : AdventureFragment() {
     }
 
     override fun refreshScreensFromResume() {
-
         val adv = activity as TROKAdventure
 
         enemyShieldsValue!!.text = "" + enemyShields

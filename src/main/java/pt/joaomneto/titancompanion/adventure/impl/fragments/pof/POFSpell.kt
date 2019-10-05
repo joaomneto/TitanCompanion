@@ -9,7 +9,10 @@ import pt.joaomneto.titancompanion.adventure.impl.util.Spell
  * Created by Joao Neto on 23-05-2017.
  */
 
-enum class POFSpell constructor(private val labelIdInner: Int, private val actionInner: (Adventure) -> Unit) : Spell {
+enum class POFSpell constructor(
+    private val labelIdInner: Int,
+    private val actionInner: (Adventure) -> Unit
+) : Spell {
 
     PROTECT(R.string.pofSpellProtect, POFSpellConstants.DEFAULT_ACTION),
     ILLUSION(R.string.pofSpellIllusion, POFSpellConstants.DEFAULT_ACTION),
@@ -32,7 +35,8 @@ enum class POFSpell constructor(private val labelIdInner: Int, private val actio
 
             pofAdv.currentPower = Math.max(
                 pofAdv
-                    .currentPower - 1, 0
+                    .currentPower - 1,
+                0
             )
         }
     }

@@ -2,6 +2,8 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.app.AlertDialog
 import android.widget.Button
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureCombatFragment
@@ -10,8 +12,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureNote
 import pt.joaomneto.titancompanion.adventure.impl.fragments.com.COMAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.com.Kuddam
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 class COMAdventure : TWOFMAdventure(
     arrayOf(
@@ -86,7 +86,6 @@ class COMAdventure : TWOFMAdventure(
     }
 
     fun useTabashaInitialAction() {
-
         val alert = AlertDialog.Builder(this).create()
 
         val useTabashaPanel = layoutInflater.inflate(R.layout.component_30com_use_tabasha, null)
@@ -97,8 +96,6 @@ class COMAdventure : TWOFMAdventure(
 
         tabashaReplenishLuckButton.isEnabled = !tabashaSpecialSkill && tabasha > 0
         tabashaReplenishSkillButton.isEnabled = !tabashaSpecialSkill && tabasha > 0
-
-
 
         tabashaReplenishSkillButton.setOnClickListener({
             currentSkill = initialSkill

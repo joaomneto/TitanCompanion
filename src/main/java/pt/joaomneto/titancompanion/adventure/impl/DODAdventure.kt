@@ -1,5 +1,7 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
@@ -9,18 +11,16 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.dod.DODAdventureMeda
 import pt.joaomneto.titancompanion.adventure.impl.fragments.dod.DODAdventurePoisonFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.dod.Medallion
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 class DODAdventure : TFODAdventure(
-        arrayOf(
-                AdventureFragmentRunner(R.string.vitalStats, AdventureVitalStatsFragment::class),
-                AdventureFragmentRunner(R.string.poison, DODAdventurePoisonFragment::class),
-                AdventureFragmentRunner(R.string.fights, DODAdventureCombatFragment::class),
-                AdventureFragmentRunner(R.string.medallions, DODAdventureMedallionFragment::class),
-                AdventureFragmentRunner(R.string.goldEquipment, AdventureEquipmentFragment::class),
-                AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class)
-        )
+    arrayOf(
+        AdventureFragmentRunner(R.string.vitalStats, AdventureVitalStatsFragment::class),
+        AdventureFragmentRunner(R.string.poison, DODAdventurePoisonFragment::class),
+        AdventureFragmentRunner(R.string.fights, DODAdventureCombatFragment::class),
+        AdventureFragmentRunner(R.string.medallions, DODAdventureMedallionFragment::class),
+        AdventureFragmentRunner(R.string.goldEquipment, AdventureEquipmentFragment::class),
+        AdventureFragmentRunner(R.string.notes, AdventureNotesFragment::class)
+    )
 ) {
 
     var poison = 0
@@ -40,9 +40,9 @@ class DODAdventure : TFODAdventure(
 
         medallions = Medallion.values().map {
             MedallionStatus(
-                    it,
-                    medallionsMap.containsKey(it),
-                    medallionsMap[it] ?: 0
+                it,
+                medallionsMap.containsKey(it),
+                medallionsMap[it] ?: 0
             )
         }.sortedBy { it.medallion.name }.toMutableList()
     }
@@ -55,12 +55,15 @@ class DODAdventure : TFODAdventure(
     }
 
     private fun convertMedallionsToText(medallions: List<MedallionStatus>) =
-            medallions.joinToString(separator = "#", transform = {
+        medallions.joinToString(
+            separator = "#",
+            transform = {
                 if (it.achieved)
                     "${it.medallion.name}§${it.power}"
                 else
                     ""
-            })
+            }
+        )
 
     fun hasMedallionPower(): Boolean {
         return medallions.any { it.achieved && it.power > 0 }

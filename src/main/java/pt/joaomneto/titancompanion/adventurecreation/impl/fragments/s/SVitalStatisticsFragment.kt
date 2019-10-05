@@ -9,7 +9,11 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatist
 
 class SVitalStatisticsFragment : VitalStatisticsFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
 
         return inflater.inflate(R.layout.fragment_53s_adventurecreation_vital_statistics, container, false)

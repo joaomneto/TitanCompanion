@@ -14,14 +14,15 @@ import pt.joaomneto.titancompanion.adventure.impl.SOTAAdventure
 class SOTAAdventureTimeFragment : AdventureFragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
 
         return inflater.inflate(
-                R.layout.fragment_32sota_adventure_time,
-                container, false
+            R.layout.fragment_32sota_adventure_time,
+            container, false
         )
     }
 

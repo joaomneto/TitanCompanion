@@ -1,5 +1,8 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.ArrayList
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell
@@ -7,9 +10,6 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragm
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.mr.MRAdventureCreationSkillsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.ArrayList
 
 class MRAdventureCreation : TWOFMAdventureCreation(
     arrayOf(
@@ -34,7 +34,6 @@ class MRAdventureCreation : TWOFMAdventureCreation(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         var chosenSkillsS = ""
 
         if (!skills.isEmpty()) {

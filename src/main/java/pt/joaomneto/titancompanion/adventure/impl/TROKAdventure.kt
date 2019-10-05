@@ -2,6 +2,8 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
@@ -10,8 +12,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 import pt.joaomneto.titancompanion.adventure.impl.fragments.trok.TROKAdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.trok.TROKStarShipCombatFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 class TROKAdventure : Adventure(
     arrayOf(
@@ -49,7 +49,6 @@ class TROKAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("currentWeapons=" + currentWeapons + "\n")
         bw.write("currentShields=" + currentShields + "\n")
         bw.write("initialWeapons=" + initialWeapons + "\n")
@@ -61,7 +60,6 @@ class TROKAdventure : Adventure(
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
-
         currentWeapons = Integer.valueOf(savedGame.getProperty("currentWeapons"))
         currentShields = Integer.valueOf(savedGame.getProperty("currentShields"))
         initialWeapons = Integer.valueOf(savedGame.getProperty("initialWeapons"))

@@ -21,7 +21,11 @@ class TPOPAdventureEquipmentFragment : AdventureEquipmentFragment() {
     internal var plusCopperButton: Button? = null
     internal var copperValue: TextView? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
 
         return inflater.inflate(R.layout.fragment_63tpop_adventure_equipment, container, false)
@@ -34,7 +38,6 @@ class TPOPAdventureEquipmentFragment : AdventureEquipmentFragment() {
 
         minusCopperButton = rootView.findViewById(R.id.minusCopperButton)
         plusCopperButton = rootView.findViewById(R.id.plusCopperButton)
-
 
         copperValue = rootView.findViewById(R.id.copperValue)
         copperValue!!.text = adv.copper.toString()
@@ -68,7 +71,6 @@ class TPOPAdventureEquipmentFragment : AdventureEquipmentFragment() {
 
             alert.show()
         }
-
 
         minusCopperButton!!.setOnClickListener {
             adv.copper = Math.max(adv.copper - 1, 0)

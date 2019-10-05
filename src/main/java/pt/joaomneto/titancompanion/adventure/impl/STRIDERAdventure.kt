@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -10,8 +12,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdven
 import pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.IOException
 
 class STRIDERAdventure : Adventure(
     arrayOf(
@@ -49,7 +49,6 @@ class STRIDERAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("fear=" + currentFear + "\n")
         bw.write("time=" + time + "\n")
         bw.write("oxygen=" + oxygen + "\n")
@@ -62,7 +61,6 @@ class STRIDERAdventure : Adventure(
     }
 
     fun testFear() {
-
         val result = DiceRoller.roll2D6().sum <= currentFear
 
         val message = if (result) R.string.success else R.string.failed

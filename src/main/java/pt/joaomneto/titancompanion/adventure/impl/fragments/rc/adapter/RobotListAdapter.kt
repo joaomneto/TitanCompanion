@@ -13,11 +13,13 @@ import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.RCAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.Robot
 
-class RobotListAdapter(private val adv: RCAdventure, private val values: List<Robot>) : ArrayAdapter<Robot>(
-    adv,
-    -1,
-    values
-), View.OnCreateContextMenuListener {
+class RobotListAdapter(private val adv: RCAdventure, private val values: List<Robot>) :
+    ArrayAdapter<Robot>(
+        adv,
+        -1,
+        values
+    ),
+    View.OnCreateContextMenuListener {
 
     override fun onCreateContextMenu(p0: ContextMenu?, p1: View?, p2: ContextMenu.ContextMenuInfo?) {
         TODO("not implemented")
@@ -66,7 +68,6 @@ class RobotListAdapter(private val adv: RCAdventure, private val values: List<Ro
 
         val adapter = this
 
-
         radio.setOnCheckedChangeListener { buttonView, isChecked ->
             for (r in values) {
                 r.isActive = false
@@ -92,5 +93,4 @@ class RobotListAdapter(private val adv: RCAdventure, private val values: List<Ro
 
         return robotView
     }
-
 }

@@ -12,7 +12,11 @@ class HOHVitalStatisticsFragment : VitalStatisticsFragment() {
 
     lateinit var fearValue: TextView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val rootView = inflater.inflate(R.layout.fragment_10hoh_adventurecreation_vital_statistics, container, false)
         fearValue = rootView.findViewById(R.id.fearValue)

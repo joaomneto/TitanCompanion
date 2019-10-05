@@ -2,6 +2,8 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -9,8 +11,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFr
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.pof.POFAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 class POFAdventure : Adventure(
     arrayOf(
@@ -38,7 +38,6 @@ class POFAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("currentPower=" + currentPower + "\n")
         bw.write("initialPower=" + initialPower + "\n")
         bw.write("standardPotion=" + standardPotion + "\n")

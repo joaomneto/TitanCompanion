@@ -2,6 +2,9 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.ArrayList
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.SpellAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -12,9 +15,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 import pt.joaomneto.titancompanion.adventure.impl.fragments.tot.TOTSpell
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.ArrayList
 
 class TOTAdventure : SpellAdventure<TOTSpell>(
     arrayOf(
@@ -63,7 +63,6 @@ class TOTAdventure : SpellAdventure<TOTSpell>(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("spells=" + arrayToStringSpells(chosenSpells) + "\n")
         bw.write("gold=" + gold + "\n")
     }
@@ -78,7 +77,8 @@ class TOTAdventure : SpellAdventure<TOTSpell>(
                         "ISO-8859-1"
                     )
                 )
-            ), TOTSpell::class.java
+            ),
+            TOTSpell::class.java
         )
     }
 

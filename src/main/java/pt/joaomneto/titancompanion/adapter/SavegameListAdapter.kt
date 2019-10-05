@@ -8,16 +8,18 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import java.text.SimpleDateFormat
 import pt.joaomneto.titancompanion.LoadAdventureActivity
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
-import java.text.SimpleDateFormat
 
-class SavegameListAdapter(private val ctx: Context, private val values: List<Savegame>) : ArrayAdapter<Savegame>(
-    ctx,
-    -1,
-    values
-), View.OnCreateContextMenuListener {
+class SavegameListAdapter(private val ctx: Context, private val values: List<Savegame>) :
+    ArrayAdapter<Savegame>(
+        ctx,
+        -1,
+        values
+    ),
+    View.OnCreateContextMenuListener {
     private val adv: LoadAdventureActivity = ctx as LoadAdventureActivity
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

@@ -2,6 +2,9 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.HashSet
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.SpellAdventure
@@ -13,9 +16,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 import pt.joaomneto.titancompanion.adventure.impl.fragments.ss.SSAdventureMapFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.ss.SSSpell
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.HashSet
 
 class SSAdventure : SpellAdventure<SSSpell>(
     arrayOf(
@@ -49,7 +49,6 @@ class SSAdventure : SpellAdventure<SSSpell>(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("spells=" + arrayToStringSpells(chosenSpells) + "\n")
         bw.write("clearings=" + Adventure.Companion.arrayToString(visitedClearings) + "\n")
         bw.write("gold=" + gold + "\n")
@@ -65,7 +64,8 @@ class SSAdventure : SpellAdventure<SSSpell>(
                         "ISO-8859-1"
                     )
                 )
-            ), SSSpell::class.java
+            ),
+            SSSpell::class.java
         )
 
         visitedClearings = stringToSet(

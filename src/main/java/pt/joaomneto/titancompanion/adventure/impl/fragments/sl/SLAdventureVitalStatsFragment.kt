@@ -12,11 +12,11 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 class SLAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-
 
         return inflater!!.inflate(
             R.layout.fragment_33sl_adventure_vitalstats, container, false

@@ -2,6 +2,8 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sots.SOTSAdventureCombatFragment
@@ -9,8 +11,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.sots.SOTSAdventureEq
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sots.SOTSAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 class SOTSAdventure : TFODAdventure(
     arrayOf(

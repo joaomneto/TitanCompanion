@@ -14,7 +14,8 @@ class AWFAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
     internal var heroPoints: TextView? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
@@ -22,7 +23,7 @@ class AWFAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
             R.layout.fragment_17awf_adventure_vitalstats, container, false
         )
 
-        //CHECKTHIS	initialize(rootView);
+        // CHECKTHIS	initialize(rootView);
 
         heroPoints = rootView.findViewById<View>(R.id.statsHeroPointsValue) as TextView
         val adv = activity as AWFAdventure

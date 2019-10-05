@@ -22,7 +22,8 @@ class BNCAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
     private var decreaseWillpowerButton: Button? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
@@ -30,7 +31,7 @@ class BNCAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
             R.layout.fragment_25bnc_adventure_vitalstats, container, false
         )
 
-        //CHECKTHIS	initialize(rootView);
+        // CHECKTHIS	initialize(rootView);
 
         decreaseWillpowerButton = rootView
             .findViewById(R.id.minusWillpowerButton)
@@ -41,7 +42,6 @@ class BNCAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
         willpowerValue = rootView.findViewById(R.id.statsWillpowerValue)
         willpowerValue!!.setOnClickListener {
-
             val alert = createAlertForInitialStatModification(R.string.setInitialWillpower) { dialog, _ ->
 
                 val input = (dialog as AlertDialog).findViewById<EditText>(R.id.alert_editText_field)
@@ -49,7 +49,6 @@ class BNCAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
                 val value = Integer.parseInt(input.text.toString())
                 adv.initialWillpower = value
             }
-
 
             alert.show()
         }
@@ -70,7 +69,6 @@ class BNCAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
         return rootView
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
