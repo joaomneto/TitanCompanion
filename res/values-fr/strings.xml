@@ -728,4 +728,7 @@
     <string name="demon">Démon:</string>
     <string name="stoneCrystal">Pierre ou Cristal:</string>
     <string name="smokeOil">Smoke Oil</string>
+    <string name="savegameQuestion">Voulez-vous sauvegarde votre aventure?</string>
+    <string name="savegameQuestionTitle">Sauvegarder</string>
+    <string name="gamesaved">Sauvegardé!</string>
 </resources>

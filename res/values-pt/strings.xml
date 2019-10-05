@@ -693,4 +693,7 @@
     <string name="demon">Demónio:</string>
     <string name="stoneCrystal">Pedra ou Cristal:</string>
     <string name="smokeOil">Smoke Oil</string>
+    <string name="savegameQuestion">Desejas gravar a tua aventura?</string>
+    <string name="savegameQuestionTitle">Gravar</string>
+    <string name="gamesaved">Gravado!</string>
 </resources>

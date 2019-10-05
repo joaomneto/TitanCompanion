@@ -235,7 +235,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         return true
     }
 
-    fun savepoint() {
+    fun savepoint(onSaveCallback: (() -> Unit)? = null) {
         val alert = AlertDialog.Builder(this)
 
         alert.setTitle(R.string.currentReference)
@@ -258,6 +258,8 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
                 storeValuesInFile(ref, bw)
                 storeNotesForRestart(dir)
+
+                onSaveCallback?.invoke()
 
                 bw.close()
             } catch (e: IOException) {
@@ -477,6 +479,30 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
                 .forEach { it?.refreshScreensFromResume() }
     }
 
+    override fun onBackPressed() {
+        showConfirmation(
+                R.string.savegameQuestionTitle,
+                R.string.savegameQuestion,
+                this,
+                DialogInterface.OnClickListener { dialog, _ ->
+                    dialog.dismiss()
+                    savepoint {
+                        showSuccessAlert(
+                                R.string.gamesaved,
+                                this,
+                                DialogInterface.OnClickListener { dialog, _ ->
+                                    dialog.dismiss()
+                                    super.onBackPressed()
+                                }
+                        )
+                    }
+                },
+                DialogInterface.OnClickListener { _, _ ->
+                    super.onBackPressed()
+                }
+        )
+    }
+
     protected fun stringToArray(_string: String?): List<String> {
 
         val elements = ArrayList<String>()
@@ -547,7 +573,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
         fun showAlert(title: Int? = null, message: String, context: Context, extraActionTextId: Int? = null, extraActionCallback: () -> Unit = {}) {
             val builder = AlertDialog.Builder(context)
-            builder.setTitle(if (title !=null && title > 0) title else R.string.result).setMessage(message).setCancelable(false).setNegativeButton(
+            builder.setTitle(if (title != null && title > 0) title else R.string.result).setMessage(message).setCancelable(false).setNegativeButton(
                     R.string.close
             ) { dialog, _ -> dialog.cancel() }
 
@@ -566,12 +592,17 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
                 title: Int,
                 message: Int,
                 context: Context,
-                confirmOnClickListener: DialogInterface.OnClickListener
+                confirmOnClickListener: DialogInterface.OnClickListener,
+                dismissOnClickListener: DialogInterface.OnClickListener? = null
         ) {
             val builder = AlertDialog.Builder(context)
-            builder.setTitle(if (title > 0) title else R.string.result).setMessage(message).setCancelable(false).setNegativeButton(
-                    R.string.close
-            ) { dialog, _ -> dialog.cancel() }.setPositiveButton(R.string.ok, confirmOnClickListener)
+            builder
+                    .setTitle(if (title > 0) title else R.string.result)
+                    .setMessage(message)
+                    .setCancelable(false)
+                    .setNegativeButton(R.string.close, dismissOnClickListener
+                            ?: DialogInterface.OnClickListener { dialog, _ -> dialog.cancel() })
+                    .setPositiveButton(R.string.ok, confirmOnClickListener)
             val alert = builder.create()
             alert.show()
         }
@@ -594,11 +625,14 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             alert.show()
         }
 
-        fun showSuccessAlert(message: Int, context: Context) {
+        fun showSuccessAlert(message: Int, context: Context, onClickListener: DialogInterface.OnClickListener? = null) {
             val builder = AlertDialog.Builder(context)
-            builder.setTitle(R.string.done).setMessage(message).setCancelable(false).setIcon(R.drawable.success_icon).setNegativeButton(
-                    R.string.close
-            ) { dialog, _ -> dialog.cancel() }
+            builder.setTitle(R.string.done)
+                    .setMessage(message)
+                    .setCancelable(false)
+                    .setIcon(R.drawable.success_icon)
+                    .setNegativeButton(R.string.close, onClickListener
+                            ?: DialogInterface.OnClickListener { dialog, _ -> dialog.cancel() })
             val alert = builder.create()
             alert.show()
         }

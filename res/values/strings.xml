@@ -1199,4 +1199,8 @@
     <string name="demon">Demon:</string>
     <string name="stoneCrystal">Stone or Crystal:</string>
     <string name="smokeOil">Smoke Oil</string>
+
+    <string name="savegameQuestion">Do you wish to save your adventure?</string>
+    <string name="savegameQuestionTitle">Save</string>
+    <string name="gamesaved">Saved!</string>
 </resources>
