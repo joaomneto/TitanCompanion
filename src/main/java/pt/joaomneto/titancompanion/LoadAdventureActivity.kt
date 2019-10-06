@@ -8,6 +8,10 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemLongClickListener
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import pt.joaomneto.titancompanion.adapter.Savegame
+import pt.joaomneto.titancompanion.adapter.SavegameListAdapter
+import pt.joaomneto.titancompanion.consts.Constants
+import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
