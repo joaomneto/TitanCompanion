@@ -2,9 +2,9 @@ package pt.joaomneto.titancompanion
 
 import android.app.Activity
 import android.content.res.Resources
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.CheckResult
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.espresso.AmbiguousViewMatcherException
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onData
@@ -26,12 +26,15 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withClassName
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
 import androidx.test.runner.lifecycle.Stage
-import android.view.View
-import android.view.ViewGroup
+import java.io.File
+import java.io.IOException
 import junit.framework.Assert
+import kotlin.reflect.KMutableProperty1
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
@@ -44,9 +47,6 @@ import org.junit.Before
 import org.junit.Rule
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
-import java.io.File
-import java.io.IOException
-import kotlin.reflect.KMutableProperty1
 
 /**
  * Created by Joao Neto on 03-08-2017.
@@ -124,16 +124,16 @@ abstract class TCBaseTest {
 
     protected fun performChoosePotion() {
         val linearLayout = onData(anything())
-                .inAdapterView(
-                        allOf(
-                                withId(R.id.potionList),
-                                childAtPosition(
-                                        withClassName(`is`("android.widget.LinearLayout")),
-                                        0
-                                )
-                        )
+            .inAdapterView(
+                allOf(
+                    withId(R.id.potionList),
+                    childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        0
+                    )
                 )
-                .atPosition(0)
+            )
+            .atPosition(0)
         linearLayout.perform(click())
     }
 
@@ -144,7 +144,7 @@ abstract class TCBaseTest {
 
     protected fun performFillSavegameName() {
         val editText = onView(
-                allOf(withId(R.id.adventureNameInput), isDisplayed())
+            allOf(withId(R.id.adventureNameInput), isDisplayed())
         )
         editText.perform(replaceText("espresso"), closeSoftKeyboard())
     }
@@ -153,18 +153,18 @@ abstract class TCBaseTest {
         var button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()))
         button.perform(click())
 
-        //Clicks over the proper book using the property order of the GamebookEnum
+        // Clicks over the proper book using the property order of the GamebookEnum
         val textView = onData(anything())
-                .inAdapterView(
-                        allOf(
-                                withId(R.id.gamebookListView),
-                                childAtPosition(
-                                        withClassName(`is`("android.widget.RelativeLayout")),
-                                        0
-                                )
-                        )
+            .inAdapterView(
+                allOf(
+                    withId(R.id.gamebookListView),
+                    childAtPosition(
+                        withClassName(`is`("android.widget.RelativeLayout")),
+                        0
+                    )
                 )
-                .atPosition(gamebook.order - 1)
+            )
+            .atPosition(gamebook.order - 1)
         textView.perform(click())
 
         button = onView(allOf(withText(getString(R.string.create_new_adventure)), isDisplayed()))
@@ -180,17 +180,17 @@ abstract class TCBaseTest {
     @Before
     fun dismissStartupDialog() {
         val button = onView(
-                allOf(
-                        withId(android.R.id.button2), withText("Close"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(`is`("android.widget.LinearLayout")),
-                                        0
-                                ),
-                                0
-                        ),
-                        isDisplayed()
-                )
+            allOf(
+                withId(android.R.id.button2), withText("Close"),
+                childAtPosition(
+                    childAtPosition(
+                        withClassName(`is`("android.widget.LinearLayout")),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
         )
 
         if (exists(button))
@@ -206,20 +206,20 @@ abstract class TCBaseTest {
 
     fun performClickOnButton(buttonId: Int, nrTimes: Int = 1) {
         val button = onView(
-                allOf<View>(
-                        withId(buttonId),
-                        isDisplayed()
-                )
+            allOf<View>(
+                withId(buttonId),
+                isDisplayed()
+            )
         )
         repeat(nrTimes, { button.perform(click()) })
     }
 
     fun performInsertTextInPopupAndClickOk(elementId: Int, text: String) {
         val editText = onView(
-                allOf<View>(
-                        withId(elementId),
-                        isDisplayed()
-                )
+            allOf<View>(
+                withId(elementId),
+                isDisplayed()
+            )
         )
         editText.perform(replaceText(text), closeSoftKeyboard())
         performClickOnButton(android.R.id.button1)
@@ -227,48 +227,48 @@ abstract class TCBaseTest {
 
     fun testStaminaStat(adventure: Adventure) {
         testIncrementalStat(
-                adventure,
-                R.id.minusStaminaButton,
-                R.id.plusStaminaButton,
-                R.id.statsStaminaValue,
-                Adventure::currentStamina,
-                Adventure::initialStamina,
-                true
+            adventure,
+            R.id.minusStaminaButton,
+            R.id.plusStaminaButton,
+            R.id.statsStaminaValue,
+            Adventure::currentStamina,
+            Adventure::initialStamina,
+            true
         )
     }
 
     fun testLuckStat(adventure: Adventure) {
         testIncrementalStat(
-                adventure,
-                R.id.minusLuckButton,
-                R.id.plusLuckButton,
-                R.id.statsLuckValue,
-                Adventure::currentLuck,
-                Adventure::initialLuck,
-                true
+            adventure,
+            R.id.minusLuckButton,
+            R.id.plusLuckButton,
+            R.id.statsLuckValue,
+            Adventure::currentLuck,
+            Adventure::initialLuck,
+            true
         )
     }
 
     fun testSkillStat(adventure: Adventure) {
         testIncrementalStat(
-                adventure,
-                R.id.minusSkillButton,
-                R.id.plusSkillButton,
-                R.id.statsSkillValue,
-                Adventure::currentSkill,
-                Adventure::initialSkill,
-                true
+            adventure,
+            R.id.minusSkillButton,
+            R.id.plusSkillButton,
+            R.id.statsSkillValue,
+            Adventure::currentSkill,
+            Adventure::initialSkill,
+            true
         )
     }
 
     fun <A : Adventure> testIncrementalStat(
-            adventure: A,
-            minusButtonId: Int,
-            plusButtonId: Int,
-            valueId: Int,
-            adventureField: KMutableProperty1<A, Int>,
-            adventureMaxField: KMutableProperty1<A, Int>? = null,
-            maxValueEditable: Boolean = false
+        adventure: A,
+        minusButtonId: Int,
+        plusButtonId: Int,
+        valueId: Int,
+        adventureField: KMutableProperty1<A, Int>,
+        adventureMaxField: KMutableProperty1<A, Int>? = null,
+        maxValueEditable: Boolean = false
     ) {
         var currentStatValue = adventureField.get(adventure)
         val maxStatValue = adventureMaxField?.get(adventure) ?: Int.MAX_VALUE
@@ -319,9 +319,9 @@ abstract class TCBaseTest {
     companion object {
 
         fun childAtPosition(
-                parentMatcher: Matcher<View>, position: Int
+            parentMatcher: Matcher<View>,
+            position: Int
         ): Matcher<View> {
-
             return object : TypeSafeMatcher<View>() {
                 override fun describeTo(description: Description) {
                     description.appendText("Child at position $position in parent ")
@@ -330,8 +330,10 @@ abstract class TCBaseTest {
 
                 public override fun matchesSafely(view: View): Boolean {
                     val parent = view.parent
-                    return (parent is ViewGroup && parentMatcher.matches(parent)
-                            && view == parent.getChildAt(position))
+                    return (
+                        parent is ViewGroup && parentMatcher.matches(parent) &&
+                            view == parent.getChildAt(position)
+                        )
                 }
             }
         }

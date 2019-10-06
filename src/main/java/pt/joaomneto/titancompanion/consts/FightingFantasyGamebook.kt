@@ -6,7 +6,12 @@ import pt.joaomneto.titancompanion.R
  * Created by 962633 on 01-09-2017.
  */
 
-enum class FightingFantasyGamebook(val nameResourceId: Int, val url: Int, val initials: String, val order: Int) {
+enum class FightingFantasyGamebook(
+    val nameResourceId: Int,
+    val url: Int,
+    val initials: String,
+    val order: Int
+) {
 
     THE_WARLOCK_OF_FIRETOP_MOUNTAIN(R.string.twofm, R.string.twofm_url, "twofm", 1),
     THE_CITADEL_OF_CHAOS(R.string.tcoc, R.string.tcoc_url, "tcoc", 2),
@@ -82,5 +87,3 @@ enum class FightingFantasyGamebook(val nameResourceId: Int, val url: Int, val in
         fun gamebookFromNumber(number: Int) = numberMatrix[number]
     }
 }
-
-

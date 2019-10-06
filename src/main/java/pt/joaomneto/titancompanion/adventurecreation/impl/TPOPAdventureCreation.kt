@@ -7,7 +7,6 @@ class TPOPAdventureCreation : TFODAdventureCreation() {
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         super.storeAdventureSpecificValuesInFile(bw)
 
         bw.write("copper=0\n")

@@ -1,8 +1,8 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
-import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import java.io.BufferedWriter
 import java.io.IOException
+import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 
 /**
  * Created by Cristina on 28-07-2015.

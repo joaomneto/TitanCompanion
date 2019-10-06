@@ -2,6 +2,8 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
@@ -10,8 +12,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.god.GODAdventureEqui
 import pt.joaomneto.titancompanion.adventure.impl.fragments.god.GODAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.god.GODWeapon
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 class GODAdventure : Adventure(
     arrayOf(
@@ -43,7 +43,6 @@ class GODAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("gold=$gold\n")
         bw.write("weapon=${weapon.name}\n")
         bw.write("poison=$poison\n")

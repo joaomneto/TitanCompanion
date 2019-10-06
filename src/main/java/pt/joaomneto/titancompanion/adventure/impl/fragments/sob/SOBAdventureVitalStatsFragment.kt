@@ -16,11 +16,15 @@ class SOBAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
     internal var logValue: TextView? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(R.layout.fragment_16sob_adventure_vitalstats, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_16sob_adventure_vitalstats, container, false)
 
-        //CHECKTHIS	initialize(rootView);
+        // CHECKTHIS	initialize(rootView);
         val adv = activity as SOBAdventure
 
         val incTrigger = Runnable { adv.setCurrentStamina(Math.min(adv.initialStamina, adv.getCurrentStamina() + 1)) }

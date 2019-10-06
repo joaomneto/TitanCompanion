@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
 import android.widget.TextView
+import java.util.Arrays
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.MRAdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.adapter.TranslatableEnumAdapter
-import java.util.Arrays
 
 class MRAdventureCreationSkillsFragment : AdventureFragment() {
 
@@ -28,7 +28,11 @@ class MRAdventureCreationSkillsFragment : AdventureFragment() {
     val skills: Array<MRSkill>
         get() = MRSkill.values()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         val rootView = inflater.inflate(R.layout.fragment_29mr_adventurecreation_skills, container, false)
 
@@ -49,7 +53,6 @@ class MRAdventureCreationSkillsFragment : AdventureFragment() {
         listview.adapter = adapter
 
         val selectedSpellsListView = rootView.findViewById<ListView>(R.id.selectedSpellListView)
-
 
         selectedSkillsAdapter = TranslatableEnumAdapter(
             activity,
@@ -92,7 +95,6 @@ class MRAdventureCreationSkillsFragment : AdventureFragment() {
     }
 
     override fun refreshScreensFromResume() {
-
         selectedSkillsAdapter!!.notifyDataSetChanged()
     }
 }

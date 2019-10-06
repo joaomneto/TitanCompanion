@@ -32,11 +32,12 @@ class FFVehicleCombatFragment : AdventureFragment() {
     internal var combatResult: TextView? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(
+        val rootView = inflater.inflate(
             R.layout.fragment_13ff_adventure_vehiclecombat, container,
             false
         )
@@ -92,77 +93,87 @@ class FFVehicleCombatFragment : AdventureFragment() {
 
         attackButton = rootView.findViewById<View>(R.id.buttonAttack) as Button
 
-        attackButton!!.setOnClickListener(OnClickListener {
-            if (enemyArmour == 0 && enemy2Armour == 0 || adv.currentArmour == 0)
-                return@OnClickListener
+        attackButton!!.setOnClickListener(
+            OnClickListener {
+                if (enemyArmour == 0 && enemy2Armour == 0 || adv.currentArmour == 0)
+                    return@OnClickListener
 
-            combatResult!!.text = ""
+                combatResult!!.text = ""
 
-            var myAttack = DiceRoller.roll2D6().sum!! + adv.currentFirepower
-            var enemyAttack = DiceRoller.roll2D6().sum!! + enemyFirepower
+                var myAttack = DiceRoller.roll2D6().sum + adv.currentFirepower
+                var enemyAttack = DiceRoller.roll2D6().sum + enemyFirepower
 
-            if (myAttack > enemyAttack) {
-                val damage = DiceRoller.rollD6()
-                enemyArmour -= damage
-                if (enemyArmour <= 0) {
-                    enemyArmour = 0
-                    Adventure.showAlert(getString(R.string.ffDirectHitDefeat), adv)
-                } else {
-                    combatResult!!.text = getString(R.string.ffDirectHit, damage)
-                }
-            } else if (enemyAttack > enemyFirepower) {
-                val damage = DiceRoller.rollD6()
-                adv.currentArmour = adv.currentArmour - damage
-                if (adv.currentArmour <= 0) {
-                    adv.currentArmour = 0
-                    Adventure.showAlert(getString(R.string.ffEnemyDestroyedYourVehicle), adv)
-                } else {
-                    combatResult!!.text = getString(R.string.ffEnemyHit, damage)
-                }
-            } else {
-                combatResult!!
-                    .setText(R.string.bothMissed)
-            }
-
-            if (enemy2Armour > 0 && enemy2Firepower > 0) {
-                myAttack = DiceRoller.roll2D6().sum!! + adv.currentFirepower
-                enemyAttack = DiceRoller.roll2D6().sum!! + enemy2Firepower
                 if (myAttack > enemyAttack) {
-                    if (enemyArmour > 0) {
-                        combatResult!!.text = (combatResult!!.text.toString()
-                            + "\n" + getString(R.string.ffAvoiedSecondAttack))
+                    val damage = DiceRoller.rollD6()
+                    enemyArmour -= damage
+                    if (enemyArmour <= 0) {
+                        enemyArmour = 0
+                        Adventure.showAlert(getString(R.string.ffDirectHitDefeat), adv)
                     } else {
-                        val damage = DiceRoller.rollD6()
-                        enemy2Armour -= damage
-                        if (enemy2Armour <= 0) {
-                            enemy2Armour = 0
-                            Adventure.showAlert(R.string.ffDirectHitDefeat, adv)
-                        } else {
-                            combatResult!!.text = getString(R.string.ffDirectHit, damage)
-                        }
+                        combatResult!!.text = getString(R.string.ffDirectHit, damage)
                     }
                 } else if (enemyAttack > enemyFirepower) {
                     val damage = DiceRoller.rollD6()
                     adv.currentArmour = adv.currentArmour - damage
                     if (adv.currentArmour <= 0) {
                         adv.currentArmour = 0
-                        Adventure.showAlert(R.string.ffEnemyDestroyedYourVehicle, adv)
+                        Adventure.showAlert(getString(R.string.ffEnemyDestroyedYourVehicle), adv)
                     } else {
-                        combatResult!!.text = (combatResult!!.text.toString()
-                            + "\n" + getString(R.string.ffSecondEnemyHit, damage))
+                        combatResult!!.text = getString(R.string.ffEnemyHit, damage)
                     }
                 } else {
-                    if (enemyArmour > 0) {
-                        combatResult!!.text = (combatResult!!.text.toString()
-                            + "\n" + getString(R.string.ffavoidedSecondAttack))
+                    combatResult!!
+                        .setText(R.string.bothMissed)
+                }
+
+                if (enemy2Armour > 0 && enemy2Firepower > 0) {
+                    myAttack = DiceRoller.roll2D6().sum + adv.currentFirepower
+                    enemyAttack = DiceRoller.roll2D6().sum + enemy2Firepower
+                    if (myAttack > enemyAttack) {
+                        if (enemyArmour > 0) {
+                            combatResult!!.text = (
+                                combatResult!!.text.toString() +
+                                    "\n" + getString(R.string.ffAvoiedSecondAttack)
+                                )
+                        } else {
+                            val damage = DiceRoller.rollD6()
+                            enemy2Armour -= damage
+                            if (enemy2Armour <= 0) {
+                                enemy2Armour = 0
+                                Adventure.showAlert(R.string.ffDirectHitDefeat, adv)
+                            } else {
+                                combatResult!!.text = getString(R.string.ffDirectHit, damage)
+                            }
+                        }
+                    } else if (enemyAttack > enemyFirepower) {
+                        val damage = DiceRoller.rollD6()
+                        adv.currentArmour = adv.currentArmour - damage
+                        if (adv.currentArmour <= 0) {
+                            adv.currentArmour = 0
+                            Adventure.showAlert(R.string.ffEnemyDestroyedYourVehicle, adv)
+                        } else {
+                            combatResult!!.text = (
+                                combatResult!!.text.toString() +
+                                    "\n" + getString(R.string.ffSecondEnemyHit, damage)
+                                )
+                        }
                     } else {
-                        combatResult!!.text = (combatResult!!.text.toString()
-                            + "\n" + getString(R.string.bothMissed))
+                        if (enemyArmour > 0) {
+                            combatResult!!.text = (
+                                combatResult!!.text.toString() +
+                                    "\n" + getString(R.string.ffavoidedSecondAttack)
+                                )
+                        } else {
+                            combatResult!!.text = (
+                                combatResult!!.text.toString() +
+                                    "\n" + getString(R.string.bothMissed)
+                                )
+                        }
                     }
                 }
+                refreshScreensFromResume()
             }
-            refreshScreensFromResume()
-        })
+        )
 
         refreshScreensFromResume()
 
@@ -170,7 +181,6 @@ class FFVehicleCombatFragment : AdventureFragment() {
     }
 
     override fun refreshScreensFromResume() {
-
         val adv = activity as FFAdventure
 
         enemyArmourValue!!.text = "" + enemyArmour

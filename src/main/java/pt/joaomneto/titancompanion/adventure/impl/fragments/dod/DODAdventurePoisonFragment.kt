@@ -13,14 +13,15 @@ import pt.joaomneto.titancompanion.adventure.impl.DODAdventure
 class DODAdventurePoisonFragment : AdventureFragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
 
         return inflater.inflate(
-                R.layout.fragment_35dod_adventure_poison,
-                container, false
+            R.layout.fragment_35dod_adventure_poison,
+            container, false
         )
     }
 
@@ -45,13 +46,11 @@ class DODAdventurePoisonFragment : AdventureFragment() {
         statsPoisonValue.text = adv.poison.toString()
 
         poisonLayout.setImageResource(
-                getResId(
-                        adv,
-                        "img_35dod_poison_${(this.activity as DODAdventure).poison}",
-                        "drawable"
-                )
+            getResId(
+                adv,
+                "img_35dod_poison_${(this.activity as DODAdventure).poison}",
+                "drawable"
+            )
         )
     }
-
-
 }

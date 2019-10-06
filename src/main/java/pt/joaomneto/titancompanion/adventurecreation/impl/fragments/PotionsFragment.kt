@@ -1,7 +1,6 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,20 +9,25 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.Spinner
+import androidx.fragment.app.Fragment
+import java.util.ArrayList
+import java.util.HashMap
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.TWOFMAdventureCreation
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 import pt.joaomneto.titancompanion.util.LocaleHelper
-import java.util.ArrayList
-import java.util.HashMap
 
 class PotionsFragment : Fragment() {
 
     private val defaultPotionDosage: Int
         get() = if ("fr" == LocaleHelper.getLanguage(this.activity) || (this.activity as AdventureCreation).gamebook == FightingFantasyGamebook.THE_WARLOCK_OF_FIRETOP_MOUNTAIN) 2 else 1
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         val rootView = inflater.inflate(R.layout.fragment_adventurecreation_potions, container, false)
 
@@ -72,7 +76,6 @@ class PotionsFragment : Fragment() {
 
         //        1 dose == position 0 of the spinner
         spinner.setSelection(defaultPotionDosage - 1)
-
 
         return rootView
     }

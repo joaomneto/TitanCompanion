@@ -1,13 +1,13 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sl.SLVitalStatisticsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.IOException
 
 class SLAdventureCreation : AdventureCreation(
     arrayOf(
@@ -25,7 +25,6 @@ class SLAdventureCreation : AdventureCreation(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("oxygen=10\n")
         bw.write("currentLasers=4\n")
         bw.write("currentShields=12\n")

@@ -7,6 +7,10 @@ import android.view.Menu
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.BaseFragmentActivity
 import pt.joaomneto.titancompanion.GamebookSelectionActivity
 import pt.joaomneto.titancompanion.LoadAdventureActivity
@@ -16,10 +20,6 @@ import pt.joaomneto.titancompanion.consts.Constants
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.File
-import java.io.FileWriter
-import java.io.IOException
 
 abstract class AdventureCreation(
     override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS
@@ -41,9 +41,11 @@ abstract class AdventureCreation(
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        gamebook = FightingFantasyGamebook.values()[intent.getIntExtra(
-            GamebookSelectionActivity.GAMEBOOK_ID, -1
-        )]
+        gamebook = FightingFantasyGamebook.values()[
+            intent.getIntExtra(
+                GamebookSelectionActivity.GAMEBOOK_ID, -1
+            )
+        ]
 
         super.onCreate(savedInstanceState)
     }
@@ -59,8 +61,6 @@ abstract class AdventureCreation(
         luck = DiceRoller.rollD6() + 6
         stamina = DiceRoller.roll2D6().sum + 12
 
-
-
         rollGamebookSpecificStats(view)
 
         val skillValue = findViewById<TextView>(R.id.skillValue)
@@ -74,7 +74,6 @@ abstract class AdventureCreation(
 
     fun saveAdventure() {
         try {
-
             val et = findViewById<EditText>(R.id.adventureNameInput)
 
             adventureName = et.text.toString()
@@ -86,8 +85,10 @@ abstract class AdventureCreation(
                 return
             }
 
-            val relDir = ("save_" + gamebook!!.initials + "_"
-                + adventureName!!.replace(' ', '-'))
+            val relDir = (
+                "save_" + gamebook!!.initials + "_" +
+                    adventureName!!.replace(' ', '-')
+                )
             var dir = File(filesDir, "ffgbutil")
             dir = File(dir, relDir)
             if (!dir.exists()) {
@@ -117,8 +118,9 @@ abstract class AdventureCreation(
             bw.close()
 
             val intent = Intent(
-                this, Constants
-                .getRunActivity(this, gamebook!!)
+                this,
+                Constants
+                    .getRunActivity(this, gamebook!!)
             )
 
             intent.putExtra(

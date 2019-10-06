@@ -8,11 +8,11 @@ import android.os.Environment
 import android.preference.PreferenceActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
+import java.io.File
+import java.io.IOException
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.fragment.TCPreferenceFragment
 import pt.joaomneto.titancompanion.util.LocaleHelper
-import java.io.File
-import java.io.IOException
 
 /**
  * Created by Joao Neto on 27/05/17.
@@ -43,17 +43,21 @@ class TCPreferenceActivity : PreferenceActivity(), SharedPreferences.OnSharedPre
         super.attachBaseContext(LocaleHelper.onAttach(base))
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        ) == PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) == PERMISSION_GRANTED) {
-
+            ) == PERMISSION_GRANTED
+        ) {
             if (runSavegameImport(this))
                 Adventure.showSuccessAlert(R.string.savegameConfirmMessage, this)
             else
@@ -69,7 +73,8 @@ class TCPreferenceActivity : PreferenceActivity(), SharedPreferences.OnSharedPre
             try {
                 val oldDir = File(
                     Environment.getExternalStorageDirectory()
-                        .path, "ffgbutil"
+                        .path,
+                    "ffgbutil"
                 )
                 return if (oldDir.exists()) {
                     oldDir.copyRecursively(File(context.filesDir, "ffgbutil"), overwrite = true)

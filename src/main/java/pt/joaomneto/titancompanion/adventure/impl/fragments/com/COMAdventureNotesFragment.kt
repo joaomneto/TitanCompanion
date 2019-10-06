@@ -19,10 +19,10 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragme
 class COMAdventureNotesFragment : AdventureNotesFragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         baseLayout = R.layout.fragment_30com_adventure_notes
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -33,35 +33,39 @@ class COMAdventureNotesFragment : AdventureNotesFragment() {
 
         val adv = this.activity as COMAdventure
 
-        buttonAddCypher.setOnClickListener(OnClickListener {
-            val alert = AlertDialog.Builder(adv)
+        buttonAddCypher.setOnClickListener(
+            OnClickListener {
+                val alert = AlertDialog.Builder(adv)
 
-            alert.setTitle(R.string.note)
+                alert.setTitle(R.string.note)
 
-            // Set an EditText view to get user input
-            val input = EditText(adv)
-            val imm = adv.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT)
-            input.requestFocus()
-            alert.setView(input)
+                // Set an EditText view to get user input
+                val input = EditText(adv)
+                val imm = adv.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT)
+                input.requestFocus()
+                alert.setView(input)
 
-            alert.setPositiveButton(R.string.ok,
-                { _, _ ->
-                    val value = input.text.toString()
-                    if (value.isNotBlank()) {
-                        adv.cyphers = adv.cyphers.plus(value.trim { it <= ' ' })
-                        (cypherList!!.adapter as ArrayAdapter<String>).notifyDataSetChanged()
+                alert.setPositiveButton(
+                    R.string.ok,
+                    { _, _ ->
+                        val value = input.text.toString()
+                        if (value.isNotBlank()) {
+                            adv.cyphers = adv.cyphers.plus(value.trim { it <= ' ' })
+                            (cypherList!!.adapter as ArrayAdapter<String>).notifyDataSetChanged()
+                        }
                     }
-                })
+                )
 
-            alert.setNegativeButton(
-                R.string.cancel
-            ) { _, _ ->
-                // Canceled.
+                alert.setNegativeButton(
+                    R.string.cancel
+                ) { _, _ ->
+                    // Canceled.
+                }
+
+                alert.show()
             }
-
-            alert.show()
-        })
+        )
 
         val adapter = ArrayAdapter(
             adv,

@@ -22,15 +22,16 @@ class POFAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
     private var decreasePowerButton: Button? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(
+        val rootView = inflater.inflate(
             R.layout.fragment_28pof_adventure_vitalstats, container, false
         )
 
-        //CHECKTHIS	initialize(rootView);
+        // CHECKTHIS	initialize(rootView);
 
         decreasePowerButton = rootView
             .findViewById(R.id.minusPowerButton)
@@ -40,7 +41,6 @@ class POFAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
         val adv = activity as POFAdventure
 
         powerValue!!.setOnClickListener {
-
             val alert = createAlertForInitialStatModification(R.string.setInitialPower) { dialog, _ ->
 
                 val input = (dialog as AlertDialog).findViewById<EditText>(R.id.alert_editText_field)
@@ -48,7 +48,6 @@ class POFAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
                 val value = Integer.parseInt(input.text.toString())
                 adv.initialPower = value
             }
-
 
             alert.show()
         }

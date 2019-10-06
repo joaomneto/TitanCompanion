@@ -2,6 +2,10 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.HashMap
+import java.util.HashSet
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
@@ -11,10 +15,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.st.STCrewStatsFragme
 import pt.joaomneto.titancompanion.adventure.impl.fragments.st.STStarshipCombatFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.HashMap
-import java.util.HashSet
 
 class STAdventure : Adventure(
     arrayOf(
@@ -140,7 +140,6 @@ class STAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("scienceOfficerSkill=" + currentScienceOfficerSkill + "\n")
         bw.write("scienceOfficerStamina=" + currentScienceOfficerStamina + "\n")
         bw.write("medicalOfficerSkill=" + currentMedicalOfficerSkill + "\n")
@@ -237,7 +236,6 @@ class STAdventure : Adventure(
     }
 
     fun getCrewmanStamina(crewman: STCrewman): Int {
-
         when (crewman) {
             STAdventure.STCrewman.CAPTAIN -> return getCurrentStamina()
 
@@ -258,7 +256,6 @@ class STAdventure : Adventure(
     }
 
     fun getCrewmanSkill(crewman: STCrewman): Int {
-
         when (crewman) {
             STAdventure.STCrewman.CAPTAIN -> return getCurrentSkill()
 
@@ -279,7 +276,6 @@ class STAdventure : Adventure(
     }
 
     fun setCrewmanStamina(crewman: STCrewman, value: Int) {
-
         when (crewman) {
             STAdventure.STCrewman.CAPTAIN -> setCurrentStamina(value)
             STAdventure.STCrewman.SCIENCE_OFFICER -> currentScienceOfficerStamina = value
@@ -294,53 +290,52 @@ class STAdventure : Adventure(
     }
 
     fun setCrewmanDead(crewman: STCrewman) {
-
         when (crewman) {
             STAdventure.STCrewman.SCIENCE_OFFICER -> {
-                if(isDeadScienceOfficer) return
+                if (isDeadScienceOfficer) return
                 isDeadScienceOfficer = true
                 currentScienceOfficerSkill = initialScienceOfficerSkill - 2
-                currentScienceOfficerStamina = DiceRoller.roll2D6().sum!! + 12
+                currentScienceOfficerStamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartyScienceOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SCIENCE_OFFICER)
             }
             STAdventure.STCrewman.MEDICAL_OFFICER -> {
-                if(isDeadMedicalOfficer) return
+                if (isDeadMedicalOfficer) return
                 isDeadMedicalOfficer = true
                 currentMedicalOfficerSkill = initialMedicalOfficerSkill - 2
-                currentMedicalOfficerStamina = DiceRoller.roll2D6().sum!! + 12
+                currentMedicalOfficerStamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartyMedicalOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.MEDICAL_OFFICER)
             }
             STAdventure.STCrewman.ENGINEERING_OFFICER -> {
-                if(isDeadEngineeringOfficer) return
+                if (isDeadEngineeringOfficer) return
                 isDeadEngineeringOfficer = true
                 currentEngineeringOfficerSkill = initialEngineeringOfficerSkill - 2
-                currentEngineeringOfficerStamina = DiceRoller.roll2D6().sum!! + 12
+                currentEngineeringOfficerStamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartyEngineeringOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.ENGINEERING_OFFICER)
             }
             STAdventure.STCrewman.SECURITY_OFFICER -> {
-                if(isDeadScienceOfficer) return
+                if (isDeadScienceOfficer) return
                 isDeadSecurityOfficer = true
                 currentSecurityOfficerSkill = initialSecurityOfficerSkill - 2
-                currentSecurityOfficerStamina = DiceRoller.roll2D6().sum!! + 12
+                currentSecurityOfficerStamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartySecurityOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_OFFICER)
             }
             STAdventure.STCrewman.SECURITY_GUARD1 -> {
-                if(isDeadSecurityGuard1) return
+                if (isDeadSecurityGuard1) return
                 isDeadSecurityGuard1 = true
                 currentSecurityGuard1Skill = initialSecurityGuard1Skill - 2
-                currentSecurityGuard1Stamina = DiceRoller.roll2D6().sum!! + 12
+                currentSecurityGuard1Stamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartySecurityGuard1 = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD1)
             }
             STAdventure.STCrewman.SECURITY_GUARD2 -> {
-                if(isDeadSecurityGuard2) return
+                if (isDeadSecurityGuard2) return
                 isDeadSecurityGuard2 = true
                 currentSecurityGuard2Skill = initialSecurityGuard2Skill - 2
-                currentSecurityGuard2Stamina = DiceRoller.roll2D6().sum!! + 12
+                currentSecurityGuard2Stamina = DiceRoller.roll2D6().sum + 12
                 isLandingPartySecurityGuard2 = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD2)
             }

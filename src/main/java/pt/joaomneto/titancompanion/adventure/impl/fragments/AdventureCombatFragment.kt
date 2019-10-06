@@ -15,13 +15,13 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.Switch
 import android.widget.TextView
+import java.util.ArrayList
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.adapter.CombatantListAdapter
 import pt.joaomneto.titancompanion.adventure.impl.util.DiceRoll
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.util.ArrayList
 
 open class AdventureCombatFragment : AdventureFragment() {
     protected var combatResult: TextView? = null
@@ -46,7 +46,7 @@ open class AdventureCombatFragment : AdventureFragment() {
     protected var combatStarted = false
 
     protected var staminaLoss = 0
-    protected var attackDiceRoll = DiceRoll(0,0)
+    protected var attackDiceRoll = DiceRoll(0, 0)
 
     val offtext: String
         get() = getString(R.string.normal)
@@ -73,7 +73,11 @@ open class AdventureCombatFragment : AdventureFragment() {
             throw IllegalStateException("No active enemy combatant found.")
         }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         rootView = inflater.inflate(R.layout.fragment_adventure_combat, container, false)
 
@@ -98,7 +102,6 @@ open class AdventureCombatFragment : AdventureFragment() {
             standardCombatTurn()
         }
 
-
         if (combatPositions.isEmpty()) {
             resetCombat(false)
         }
@@ -115,7 +118,6 @@ open class AdventureCombatFragment : AdventureFragment() {
     }
 
     protected fun init() {
-
         combatResult = rootView!!.findViewById(R.id.combatResult)
         combatTurnButton = rootView!!.findViewById(R.id.attackButton)
         startCombatButton = rootView!!.findViewById(R.id.startCombat)
@@ -149,49 +151,51 @@ open class AdventureCombatFragment : AdventureFragment() {
 
         startCombatButton!!.setOnClickListener { startCombat() }
 
-        testLuckButton!!.setOnClickListener(OnClickListener {
-            val adv = activity as Adventure?
+        testLuckButton!!.setOnClickListener(
+            OnClickListener {
+                val adv = activity as Adventure?
 
-            if (draw || luckTest)
-                return@OnClickListener
-            luckTest = true
-            val result = adv!!.testLuckInternal()
-            if (result) {
-                combatResult!!.setText(R.string.youreLucky)
-                if (hit) {
-                    val combatant = currentEnemy
-                    combatant.currentStamina = combatant.currentStamina - 1
-                    combatant.staminaLoss = combatant.staminaLoss + 1
-                    val enemyStamina = combatant.currentStamina
-                    if (enemyStamina <= 0 || staminaLoss >= knockoutStamina) {
-                        Adventure.showAlert(getString(R.string.defeatedOpponent), adv)
-                        removeAndAdvanceCombat(combatant)
+                if (draw || luckTest)
+                    return@OnClickListener
+                luckTest = true
+                val result = adv!!.testLuckInternal()
+                if (result) {
+                    combatResult!!.setText(R.string.youreLucky)
+                    if (hit) {
+                        val combatant = currentEnemy
+                        combatant.currentStamina = combatant.currentStamina - 1
+                        combatant.staminaLoss = combatant.staminaLoss + 1
+                        val enemyStamina = combatant.currentStamina
+                        if (enemyStamina <= 0 || staminaLoss >= knockoutStamina) {
+                            Adventure.showAlert(getString(R.string.defeatedOpponent), adv)
+                            removeAndAdvanceCombat(combatant)
+                        }
+                    } else {
+                        adv.setCurrentStamina(adv.getCurrentStamina() + 1)
+                        staminaLoss--
                     }
                 } else {
-                    adv.setCurrentStamina(adv.getCurrentStamina() + 1)
-                    staminaLoss--
-                }
-            } else {
-                combatResult!!.setText(R.string.youreUnlucky)
-                if (hit) {
-                    val combatant = currentEnemy
-                    combatant.currentStamina = combatant.currentStamina + 1
-                    combatant.staminaLoss = combatant.staminaLoss + 1
-                } else {
-                    adv.setCurrentStamina(adv.getCurrentStamina() - 1)
-                    staminaLoss++
-                }
+                    combatResult!!.setText(R.string.youreUnlucky)
+                    if (hit) {
+                        val combatant = currentEnemy
+                        combatant.currentStamina = combatant.currentStamina + 1
+                        combatant.staminaLoss = combatant.staminaLoss + 1
+                    } else {
+                        adv.setCurrentStamina(adv.getCurrentStamina() - 1)
+                        staminaLoss++
+                    }
 
-                if (adv.getCurrentStamina() <= knockoutStamina) {
-                    Adventure.showAlert(getString(R.string.knockedOut), adv)
-                }
+                    if (adv.getCurrentStamina() <= knockoutStamina) {
+                        Adventure.showAlert(getString(R.string.knockedOut), adv)
+                    }
 
-                if (adv.getCurrentStamina() == 0) {
-                    onPlayerDeath(adv)
+                    if (adv.getCurrentStamina() == 0) {
+                        onPlayerDeath(adv)
+                    }
                 }
+                refreshScreensFromResume()
             }
-            refreshScreensFromResume()
-        })
+        )
 
         refreshScreensFromResume()
     }
@@ -201,7 +205,6 @@ open class AdventureCombatFragment : AdventureFragment() {
     }
 
     protected open fun sequenceCombatTurn() {
-
         val position = currentEnemy
 
         draw = false
@@ -210,7 +213,7 @@ open class AdventureCombatFragment : AdventureFragment() {
         val adv = activity as Adventure?
         val skill = adv!!.combatSkillValue
         attackDiceRoll = DiceRoller.roll2D6()
-        val attackStrength = attackDiceRoll?.sum + skill + position.handicap
+        val attackStrength = attackDiceRoll.sum + skill + position.handicap
         val enemyDiceRoll = DiceRoller.roll2D6()
         val enemyAttackStrength = enemyDiceRoll.sum + position.currentSkill
         var combatResultText = ""
@@ -221,26 +224,31 @@ open class AdventureCombatFragment : AdventureFragment() {
                     val damage = damage()
                     position.currentStamina = Math.max(0, position.currentStamina - damage)
                     hit = true
-                    combatResultText += (getString(R.string.hitEnemy) + " (" + attackDiceRoll?.sum + " + " + skill
-                        + (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + "
-                        + position.currentSkill + "). (-" + damage + getString(R.string.staminaInitials) + ")")
+                    combatResultText += (
+                        getString(R.string.hitEnemy) + " (" + attackDiceRoll.sum + " + " + skill +
+                            (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " +
+                            position.currentSkill + "). (-" + damage + getString(R.string.staminaInitials) + ")"
+                        )
                 } else {
                     position.currentStamina = 0
                     Adventure.showAlert(getString(R.string.defeatSuddenDeath), adv)
                 }
             } else {
                 draw = true
-                combatResultText += (getString(R.string.blockedAttack) + " (" + attackDiceRoll?.sum + " + " + skill
-                    + (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill
-                    + ")")
+                combatResultText += (
+                    getString(R.string.blockedAttack) + " (" + attackDiceRoll.sum + " + " + skill +
+                        (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill +
+                        ")"
+                    )
             }
         } else if (attackStrength < enemyAttackStrength) {
             val damage = convertDamageStringToInteger(position.damage)
             adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage))
-            combatResultText += (getString(R.string.youWereHit) + " (" + attackDiceRoll?.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "")
-                + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + "). (-" + damage + R.string.staminaInitials + ")")
+            combatResultText += (
+                getString(R.string.youWereHit) + " (" + attackDiceRoll.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "") +
+                    ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + "). (-" + damage + R.string.staminaInitials + ")"
+                )
         } else {
-
             combatResultText += R.string.bothMissed
             draw = true
         }
@@ -319,9 +327,11 @@ open class AdventureCombatFragment : AdventureFragment() {
                 position.currentStamina = Math.max(0, position.currentStamina - damage)
                 position.staminaLoss = position.staminaLoss + damage
                 hit = true
-                combatResultText += (getString(R.string.hitEnemy) + " (" + attackDiceRoll.sum + " + " + skill
-                    + (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill
-                    + ").")
+                combatResultText += (
+                    getString(R.string.hitEnemy) + " (" + attackDiceRoll.sum + " + " + skill +
+                        (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill +
+                        ")."
+                    )
             } else {
                 position.currentStamina = 0
                 Adventure.showAlert(R.string.defeatSuddenDeath, adv)
@@ -330,10 +340,11 @@ open class AdventureCombatFragment : AdventureFragment() {
             val damage = convertDamageStringToInteger(position.damage)
             staminaLoss += damage
             adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage))
-            combatResultText += (getString(R.string.youWereHit) + " (" + attackDiceRoll.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "")
-                + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + ").")
+            combatResultText += (
+                getString(R.string.youWereHit) + " (" + attackDiceRoll.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "") +
+                    ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + ")."
+                )
         } else {
-
             combatResult!!.setText(R.string.bothMissed)
             draw = true
         }
@@ -368,7 +379,6 @@ open class AdventureCombatFragment : AdventureFragment() {
     }
 
     protected fun addCombatButtonOnClick(layoutId: Int) {
-
         val adv = activity as Adventure?
 
         val addCombatantView = adv!!.layoutInflater.inflate(layoutId, null)
@@ -420,12 +430,10 @@ open class AdventureCombatFragment : AdventureFragment() {
             return
         }
 
-
         addCombatant(skill, stamina, handicap, defaultEnemyDamage)
     }
 
     protected fun addCombatant(skill: Int, stamina: Int, handicap: Int, damage: String) {
-
         val combatPosition = Combatant(
             stamina,
             skill,
@@ -446,7 +454,6 @@ open class AdventureCombatFragment : AdventureFragment() {
     }
 
     protected open fun resetCombat(clearResult: Boolean) {
-
         staminaLoss = 0
 
         combatPositions.clear()
@@ -516,7 +523,7 @@ open class AdventureCombatFragment : AdventureFragment() {
         val NORMAL = "NORMAL"
         val SEQUENCE = "SEQUENCE"
 
-        public fun convertDamageStringToInteger(damage: String): Int {
+        fun convertDamageStringToInteger(damage: String): Int {
             return if (damage == "1D6") {
                 DiceRoller.rollD6()
             } else {

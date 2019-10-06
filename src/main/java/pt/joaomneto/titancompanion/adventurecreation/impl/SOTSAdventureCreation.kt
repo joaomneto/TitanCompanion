@@ -1,14 +1,14 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSAdventureCreationSkillFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sots.SOTSMartialArt
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 class SOTSAdventureCreation : AdventureCreation(
     arrayOf(

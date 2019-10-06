@@ -1,10 +1,12 @@
 package pt.joaomneto.titancompanion.adventure
 
+import java.util.Arrays
 import pt.joaomneto.titancompanion.adventure.impl.util.Spell
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.util.Arrays
 
-abstract class SpellAdventure<S : Spell>(override val fragmentConfiguration: Array<AdventureFragmentRunner>) : Adventure(
+abstract class SpellAdventure<S : Spell>(
+    override val fragmentConfiguration: Array<AdventureFragmentRunner>
+) : Adventure(
     fragmentConfiguration
 ) {
 

@@ -13,13 +13,14 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 class SAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
 
         return inflater.inflate(
-                R.layout.fragment_53s_adventure_vitalstats, container, false
+            R.layout.fragment_53s_adventure_vitalstats, container, false
         )
     }
 
@@ -39,7 +40,6 @@ class SAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
             refreshScreensFromResume()
         }
 
-
         minusInfectionButton.setOnClickListener {
             if (adv.currentInfection > 0)
                 adv.currentInfection = adv.currentInfection - 1
@@ -48,7 +48,7 @@ class SAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
         plusInfectionButton.setOnClickListener {
             adv.currentInfection = Math.min(adv.currentInfection + 1, 15)
-            if(adv.currentInfection == 15){
+            if (adv.currentInfection == 15) {
                 Adventure.showAlert(getString(R.string.goToParagraph, 13), adv)
             }
             refreshScreensFromResume()
@@ -56,7 +56,6 @@ class SAdventureVitalStatsFragment : AdventureVitalStatsFragment() {
 
         refreshScreensFromResume()
     }
-
 
     override fun refreshScreensFromResume() {
         super.refreshScreensFromResume()

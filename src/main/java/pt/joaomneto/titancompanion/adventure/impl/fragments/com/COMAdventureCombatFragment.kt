@@ -18,7 +18,8 @@ import pt.joaomneto.titancompanion.util.DiceRoller
 class COMAdventureCombatFragment : AdventureCombatFragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
@@ -47,14 +48,16 @@ class COMAdventureCombatFragment : AdventureCombatFragment() {
                         R.string.oneStrikeCombatVictory,
                         playerRoll.sum,
                         enemyRoll.sum
-                    ), adv
+                    ),
+                    adv
                 )
                 playerRoll.sum < enemyRoll.sum -> Adventure.showAlert(
                     getString(
                         R.string.oneStrikeCombatLoss,
                         playerRoll.sum,
                         enemyRoll.sum
-                    ), adv
+                    ),
+                    adv
                 )
                 else -> Adventure.showAlert(getString(R.string.oneStrikeCombatTie, playerRoll.sum, enemyRoll.sum), adv)
             }

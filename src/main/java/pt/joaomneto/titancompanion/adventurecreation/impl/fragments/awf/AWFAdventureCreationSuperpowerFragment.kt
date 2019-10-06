@@ -1,22 +1,26 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.awf
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.SimpleAdapter
+import androidx.fragment.app.Fragment
+import java.util.ArrayList
+import java.util.HashMap
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.AWFAdventureCreation
-import java.util.ArrayList
-import java.util.HashMap
 
 class AWFAdventureCreationSuperpowerFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         val rootView = inflater.inflate(R.layout.fragment_17awf_adventure_creation_superpowers, container, false)
 

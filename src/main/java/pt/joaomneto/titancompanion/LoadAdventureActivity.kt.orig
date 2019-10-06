@@ -8,17 +8,23 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemLongClickListener
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import pt.joaomneto.titancompanion.adapter.Savegame
-import pt.joaomneto.titancompanion.adapter.SavegameListAdapter
-import pt.joaomneto.titancompanion.consts.Constants
-import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
+<<<<<<< HEAD
+import java.nio.file.Files
+import java.nio.file.attribute.BasicFileAttributes
 import java.text.SimpleDateFormat
 import java.util.ArrayList
 import java.util.Arrays
 import java.util.Date
+=======
+import java.util.*
+import pt.joaomneto.titancompanion.adapter.Savegame
+import pt.joaomneto.titancompanion.adapter.SavegameListAdapter
+import pt.joaomneto.titancompanion.consts.Constants
+import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
+>>>>>>> 5fa8244... Add ktlint formatting
 
 class LoadAdventureActivity : BaseActivity() {
 
@@ -56,15 +62,23 @@ class LoadAdventureActivity : BaseActivity() {
             val savepointFiles = dir.listFiles { _, filename -> !filename.startsWith("exception") }
 
             Arrays.sort(savepointFiles) { f1, f2 ->
-                java.lang.Long.valueOf(f1.lastModified()).compareTo(
+                java.lang.Long.valueOf(f1.lastModified())!!.compareTo(
                     f2.lastModified()
                 )
             }
 
             val names = savepointFiles
+<<<<<<< HEAD
                 .map { it.name.dropLast(4) }
                 .reversed()
                 .sortedBy { it.startsWith("initial") }
+=======
+                .map {
+                    val date = Date(it.lastModified())
+
+                    "${it.name.dropLast(4)} - ${DATE_FORMAT.format(date)}"
+                }
+>>>>>>> 5fa8244... Add ktlint formatting
                 .toTypedArray()
 
             val builder = AlertDialog.Builder(this)

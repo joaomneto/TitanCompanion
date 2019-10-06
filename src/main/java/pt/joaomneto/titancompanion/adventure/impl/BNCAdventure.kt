@@ -2,6 +2,8 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -10,8 +12,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragme
 import pt.joaomneto.titancompanion.adventure.impl.fragments.bnc.BNCAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.IOException
 
 class BNCAdventure : Adventure(
     arrayOf(
@@ -53,7 +53,6 @@ class BNCAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("currentWillpower=" + currentWillpower + "\n")
         bw.write("initialWillpower=" + initialWillpower + "\n")
         bw.write("gold=" + gold + "\n")
@@ -66,7 +65,6 @@ class BNCAdventure : Adventure(
     }
 
     fun testWillpower() {
-
         val result = DiceRoller.roll2D6().sum <= currentWillpower
 
         currentWillpower = Math.max(0, currentWillpower - 1)

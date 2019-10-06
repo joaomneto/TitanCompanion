@@ -1,5 +1,10 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.ArrayList
+import java.util.Arrays
+import java.util.HashMap
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
@@ -11,11 +16,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.Robot
 import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.RobotSpecialAbility
 import pt.joaomneto.titancompanion.adventure.impl.fragments.rc.RobotSpeed
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.ArrayList
-import java.util.Arrays
-import java.util.HashMap
 
 class RCAdventure : TFODAdventure(
     arrayOf(
@@ -62,8 +62,10 @@ class RCAdventure : TFODAdventure(
             val armor = r.armor
             val ability = if (r.robotSpecialAbility != null) r.robotSpecialAbility.reference!!.toString() + "" else ""
             val alternateName = if (r.alternateForm != null) r.alternateForm.name else ""
-            robotsS += (name + "§" + location + "§" + speed.name + "§" + armor + "§" + ability + "§" + r.bonus + "§" + alternateName + "§" + r.isActive
-                + "#")
+            robotsS += (
+                name + "§" + location + "§" + speed.name + "§" + armor + "§" + ability + "§" + r.bonus + "§" + alternateName + "§" + r.isActive +
+                    "#"
+                )
         }
         if (robots.isNotEmpty()) {
             robotsS = robotsS.substring(0, robotsS.length - 1)

@@ -2,6 +2,10 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.ArrayList
+import java.util.Arrays
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.SpellAdventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -11,10 +15,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRAdventureSpellsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.mr.MRSkill
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.ArrayList
-import java.util.Arrays
 
 class MRAdventure : SpellAdventure<MRSkill>(
     arrayOf(
@@ -64,7 +64,6 @@ class MRAdventure : SpellAdventure<MRSkill>(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("skills=" + arrayToStringSpells(skills) + "\n")
         bw.write("gold=" + gold + "\n")
     }

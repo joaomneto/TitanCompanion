@@ -1,14 +1,16 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.PotionsFragment
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.VitalStatisticsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
-open class TWOFMAdventureCreation(override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS) : AdventureCreation(
+open class TWOFMAdventureCreation(
+    override val fragmentConfiguration: Array<AdventureFragmentRunner> = DEFAULT_FRAGMENTS
+) : AdventureCreation(
     fragmentConfiguration
 ) {
 

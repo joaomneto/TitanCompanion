@@ -2,17 +2,15 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
-import pt.joaomneto.titancompanion.adventure.impl.fragments.bnc.BNCAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.s.SAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.IOException
 
 class SAdventure : Adventure(
     arrayOf(
@@ -54,7 +52,6 @@ class SAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("currentFaith=" + currentFaith + "\n")
         bw.write("currentInfection=" + currentInfection + "\n")
         bw.write("gold=" + gold + "\n")

@@ -1,6 +1,8 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
@@ -9,8 +11,6 @@ import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeapon
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.sa.SAWeaponsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.IOException
 
 class SAAdventureCreation : AdventureCreation(
     arrayOf(
@@ -36,12 +36,10 @@ class SAAdventureCreation : AdventureCreation(
         get() = getFragment(SAWeaponsFragment::class)
 
     init {
-
     }
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("currentArmor=" + currentArmor + "\n")
         bw.write("currentWeapons=" + currentWeapons + "\n")
         bw.write("weaponsStat=" + Adventure.arrayToString(weapons) + "\n")

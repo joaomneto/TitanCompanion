@@ -1,5 +1,7 @@
 package pt.joaomneto.titancompanion.adventure.impl
 
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureEquipmentFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragment
@@ -7,8 +9,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sota.SOTAAdventureCombatFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sota.SOTAAdventureTimeFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
 
 class SOTAAdventure : TFODAdventure(
     arrayOf(
@@ -36,5 +36,4 @@ class SOTAAdventure : TFODAdventure(
         bw.write("provisions=$provisions\n")
         bw.write("provisionsValue=4\n")
     }
-
 }

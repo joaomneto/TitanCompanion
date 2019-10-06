@@ -1,11 +1,11 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl.fragments.st
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.impl.STAdventureCreation
 
@@ -28,10 +28,10 @@ class STCrewAndShipVitalStatisticsFragment : Fragment() {
     internal var shipShields: TextView? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         super.onCreate(savedInstanceState)
         val rootView = inflater.inflate(
             R.layout.fragment_04st_adventurecreation_crewshipvitalstats,

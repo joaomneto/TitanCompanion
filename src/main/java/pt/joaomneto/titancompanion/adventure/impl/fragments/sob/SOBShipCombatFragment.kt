@@ -27,9 +27,13 @@ class SOBShipCombatFragment : AdventureFragment() {
 
     internal var combatResult: TextView? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
-        val rootView = inflater!!.inflate(R.layout.fragment_16sob_adventure_shipcombat, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_16sob_adventure_shipcombat, container, false)
 
         val adv = activity as SOBAdventure
 
@@ -76,46 +80,47 @@ class SOBShipCombatFragment : AdventureFragment() {
             99
         )
 
-
         attackButton = rootView.findViewById<View>(R.id.buttonAttack) as Button
 
-        attackButton!!.setOnClickListener(OnClickListener {
-            if (enemyCrewStrength == 0 || adv.currentCrewStrength == 0)
-                return@OnClickListener
+        attackButton!!.setOnClickListener(
+            OnClickListener {
+                if (enemyCrewStrength == 0 || adv.currentCrewStrength == 0)
+                    return@OnClickListener
 
-            combatResult!!.text = ""
+                combatResult!!.text = ""
 
-            if (enemyCrewStrength > 0) {
-                val attackStrength = DiceRoller.roll2D6().sum!! + adv.currentCrewStrike
-                val enemyStrength = DiceRoller.roll2D6().sum!! + enemyCrewStrike
+                if (enemyCrewStrength > 0) {
+                    val attackStrength = DiceRoller.roll2D6().sum + adv.currentCrewStrike
+                    val enemyStrength = DiceRoller.roll2D6().sum + enemyCrewStrike
 
-                if (attackStrength > enemyStrength) {
-                    val damage = 2
-                    enemyCrewStrength -= damage
-                    if (enemyCrewStrength <= 0) {
-                        enemyCrewStrength = 0
-                        Adventure.showAlert(R.string.ffDirectHitDefeat, adv)
+                    if (attackStrength > enemyStrength) {
+                        val damage = 2
+                        enemyCrewStrength -= damage
+                        if (enemyCrewStrength <= 0) {
+                            enemyCrewStrength = 0
+                            Adventure.showAlert(R.string.ffDirectHitDefeat, adv)
+                        } else {
+                            combatResult!!.setText(R.string.sobDirectHit)
+                        }
+                    } else if (attackStrength < enemyStrength) {
+                        val damage = 2
+                        adv.currentCrewStrength = adv.currentCrewStrength - damage
+                        if (adv.currentCrewStrength <= 0) {
+                            adv.currentCrewStrength = 0
+                            Adventure.showAlert(R.string.enemyDestroyedShip, adv)
+                        } else {
+                            combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.sobEnemyHitYourShip)
+                        }
                     } else {
-                        combatResult!!.setText(R.string.sobDirectHit)
-                    }
-                } else if (attackStrength < enemyStrength) {
-                    val damage = 2
-                    adv.currentCrewStrength = adv.currentCrewStrength - damage
-                    if (adv.currentCrewStrength <= 0) {
-                        adv.currentCrewStrength = 0
-                        Adventure.showAlert(R.string.enemyDestroyedShip, adv)
-                    } else {
-                        combatResult!!.text = combatResult!!.text.toString() + "\n" + getString(R.string.sobEnemyHitYourShip)
+                        combatResult!!.setText(R.string.bothShipsMissed)
                     }
                 } else {
-                    combatResult!!.setText(R.string.bothShipsMissed)
+                    return@OnClickListener
                 }
-            } else {
-                return@OnClickListener
-            }
 
-            refreshScreensFromResume()
-        })
+                refreshScreensFromResume()
+            }
+        )
 
         refreshScreensFromResume()
 
@@ -123,7 +128,6 @@ class SOBShipCombatFragment : AdventureFragment() {
     }
 
     override fun refreshScreensFromResume() {
-
         val adv = activity as SOBAdventure
 
         enemyCrewStrengthValue!!.text = "" + enemyCrewStrength

@@ -1,7 +1,7 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
-import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import java.io.BufferedWriter
+import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 
 class GODAdventureCreation : AdventureCreation() {
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {

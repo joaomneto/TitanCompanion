@@ -1,13 +1,13 @@
 package pt.joaomneto.titancompanion.adventurecreation.impl
 
 import android.view.View
+import java.io.BufferedWriter
+import java.io.IOException
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
 import pt.joaomneto.titancompanion.adventurecreation.impl.fragments.ff.FFVitalStatisticsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
-import java.io.BufferedWriter
-import java.io.IOException
 
 class FFAdventureCreation : AdventureCreation(
     arrayOf(
@@ -26,7 +26,6 @@ class FFAdventureCreation : AdventureCreation(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("currentFirepower=" + currentFirepower + "\n")
         bw.write("currentArmour=" + currentArmour + "\n")
         bw.write("initialFirepower=" + currentFirepower + "\n")

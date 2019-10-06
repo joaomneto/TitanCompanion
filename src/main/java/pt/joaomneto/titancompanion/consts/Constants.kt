@@ -1,13 +1,9 @@
 package pt.joaomneto.titancompanion.consts
 
 import android.content.Context
-import android.content.res.Configuration
-import android.content.res.Resources
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventurecreation.AdventureCreation
-
-import java.util.Locale
 
 object Constants {
 
@@ -83,7 +79,8 @@ object Constants {
     }
 
     fun getCreationActivity(
-        context: Context, position: Int
+        context: Context,
+        position: Int
     ): Class<out AdventureCreation>? {
         var intentClass: Class<out AdventureCreation>? = null
         try {
@@ -91,9 +88,9 @@ object Constants {
                 ?: throw IllegalStateException("No gamebook with number ${position + 1}")
             intentClass = Class
                 .forName(
-                    "pt.joaomneto.titancompanion.adventurecreation.impl."
-                        + gamebook.initials.toUpperCase()
-                        + "AdventureCreation"
+                    "pt.joaomneto.titancompanion.adventurecreation.impl." +
+                        gamebook.initials.toUpperCase() +
+                        "AdventureCreation"
                 ) as Class<out AdventureCreation>
         } catch (e: ClassNotFoundException) {
             e.printStackTrace()
@@ -111,9 +108,9 @@ object Constants {
         try {
             intentClass = Class
                 .forName(
-                    "pt.joaomneto.titancompanion.adventure.impl."
-                        + gamebook.initials.toUpperCase()
-                        + "Adventure"
+                    "pt.joaomneto.titancompanion.adventure.impl." +
+                        gamebook.initials.toUpperCase() +
+                        "Adventure"
                 ) as Class<out Adventure>
         } catch (e: ClassNotFoundException) {
             e.printStackTrace()

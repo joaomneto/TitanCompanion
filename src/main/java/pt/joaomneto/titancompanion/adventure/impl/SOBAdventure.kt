@@ -2,6 +2,9 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.ArrayList
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -11,9 +14,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.sob.SOBAdventureBoot
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sob.SOBAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.sob.SOBShipCombatFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.ArrayList
 
 class SOBAdventure : Adventure(
     arrayOf(
@@ -48,7 +48,6 @@ class SOBAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         bw.write("currentCrewStrength=" + currentCrewStrength + "\n")
         bw.write("currentCrewStrike=" + currentCrewStrike + "\n")
         bw.write("initialCrewStrength=" + initialCrewStrength + "\n")
@@ -59,7 +58,6 @@ class SOBAdventure : Adventure(
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
-
         currentCrewStrength = Integer.valueOf(savedGame.getProperty("currentCrewStrength"))
         currentCrewStrike = Integer.valueOf(savedGame.getProperty("currentCrewStrike"))
         initialCrewStrength = Integer.valueOf(savedGame.getProperty("initialCrewStrength"))

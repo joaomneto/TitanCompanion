@@ -25,7 +25,11 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
     private var statsSkillValue: TextView? = null
     private var statsLuckValue: TextView? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         val rootView = inflater.inflate(
             R.layout.fragment_adventure_vitalstats, container, false
@@ -106,7 +110,6 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
         buttonConsumeProvisions.setText(adv.consumeProvisionText)
         provisionsText.setText(adv.provisionsText)
 
-
         if (adv.provisionsValue < 0) {
             plusProvisionsButton?.visibility = View.INVISIBLE
             minusProvisionsButton?.visibility = View.INVISIBLE
@@ -140,12 +143,15 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
 
     private fun setInitialLuck(adv: Adventure): (View) -> Unit {
         return { view ->
-            val alert = createAlertForInitialStatModification(R.string.setInitialLuck, { dialog, _ ->
+            val alert = createAlertForInitialStatModification(
+                R.string.setInitialLuck,
+                { dialog, _ ->
 
-                val value = getValueFromAlertTextField(view, dialog as AlertDialog)
+                    val value = getValueFromAlertTextField(view, dialog as AlertDialog)
 
-                adv.initialLuck = value
-            })
+                    adv.initialLuck = value
+                }
+            )
 
             alert.show()
         }
@@ -154,12 +160,14 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
     private fun setIntialSkill(adv: Adventure): (View) -> Unit {
         return { view ->
 
-            val alert = createAlertForInitialStatModification(R.string.setInitialSkill, { dialog, _ ->
+            val alert = createAlertForInitialStatModification(
+                R.string.setInitialSkill,
+                { dialog, _ ->
 
-                val value = getValueFromAlertTextField(view, dialog as AlertDialog)
-                adv.initialSkill = value
-            })
-
+                    val value = getValueFromAlertTextField(view, dialog as AlertDialog)
+                    adv.initialSkill = value
+                }
+            )
 
             alert.show()
         }
@@ -168,13 +176,15 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
     private fun setInitialStamina(adv: Adventure): (View) -> Unit {
         return { view ->
 
-            val alert = createAlertForInitialStatModification(R.string.setInitialStamina, { dialog, _ ->
+            val alert = createAlertForInitialStatModification(
+                R.string.setInitialStamina,
+                { dialog, _ ->
 
-                val value = getValueFromAlertTextField(view, dialog as AlertDialog)
+                    val value = getValueFromAlertTextField(view, dialog as AlertDialog)
 
-                adv.initialStamina = value
-            })
-
+                    adv.initialStamina = value
+                }
+            )
 
             alert.show()
             view.clearFocus()
@@ -238,7 +248,6 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
         val adv = activity as Adventure
 
         statsSkillValue?.let {
-
             statsSkillValue?.text = adv.currentSkill.toString()
             statsStaminaValue?.text = adv.currentStamina.toString()
             statsLuckValue?.text = adv.currentLuck.toString()

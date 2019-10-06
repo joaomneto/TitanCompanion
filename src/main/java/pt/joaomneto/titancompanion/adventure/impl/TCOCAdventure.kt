@@ -2,6 +2,12 @@ package pt.joaomneto.titancompanion.adventure.impl
 
 import android.os.Bundle
 import android.view.Menu
+import java.io.BufferedWriter
+import java.io.IOException
+import java.util.ArrayList
+import java.util.Arrays
+import java.util.Collections
+import java.util.HashMap
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureCombatFragment
@@ -10,12 +16,6 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragme
 import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.adventure.impl.fragments.tcoc.TCOCAdventureSpellsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
-import java.io.BufferedWriter
-import java.io.IOException
-import java.util.ArrayList
-import java.util.Arrays
-import java.util.Collections
-import java.util.HashMap
 
 class TCOCAdventure : Adventure(
     arrayOf(
@@ -75,7 +75,6 @@ class TCOCAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-
         var spellsS = ""
 
         if (!spells.isEmpty()) {
