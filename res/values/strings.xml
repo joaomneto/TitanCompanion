@@ -1203,4 +1203,5 @@
     <string name="savegameQuestion">Do you wish to save your adventure?</string>
     <string name="savegameQuestionTitle">Save</string>
     <string name="gamesaved">Saved!</string>
+    <string name="votvFaith">Faith</string>
 </resources>

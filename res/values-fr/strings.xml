@@ -731,4 +731,5 @@
     <string name="savegameQuestion">Voulez-vous sauvegarde votre aventure?</string>
     <string name="savegameQuestionTitle">Sauvegarder</string>
     <string name="gamesaved">Sauvegardé!</string>
+    <string name="votvFaith">Foi</string>
 </resources>

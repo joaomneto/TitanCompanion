@@ -696,4 +696,5 @@
     <string name="savegameQuestion">Desejas gravar a tua aventura?</string>
     <string name="savegameQuestionTitle">Gravar</string>
     <string name="gamesaved">Gravado!</string>
+    <string name="votvFaith">Fé</string>
 </resources>
