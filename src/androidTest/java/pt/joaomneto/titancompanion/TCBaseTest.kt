@@ -367,7 +367,7 @@ abstract class TCBaseTest {
         }
     }
 
-    private fun testVitalStatistics(adventure: Adventure) {
+    protected open fun testVitalStatistics(adventure: Adventure) {
         testStaminaStat(adventure)
         testSkillStat(adventure)
         testLuckStat(adventure)

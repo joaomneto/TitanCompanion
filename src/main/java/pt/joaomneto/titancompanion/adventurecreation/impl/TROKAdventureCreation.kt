@@ -22,14 +22,14 @@ class TROKAdventureCreation : AdventureCreation(
     private var currentShields = -1
 
     private val trokVitalStatisticsFragment: TROKVitalStatisticsFragment?
-        get() = getFragment(TROKVitalStatisticsFragment::class)
+        get() = getFragment()
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("currentWeapons=" + currentWeapons + "\n")
-        bw.write("currentShields=" + currentShields + "\n")
-        bw.write("initialWeapons=" + currentWeapons + "\n")
-        bw.write("initialShields=" + currentShields + "\n")
+        bw.write("currentWeapons=$currentWeapons\n")
+        bw.write("currentShields=$currentShields\n")
+        bw.write("initialWeapons=$currentWeapons\n")
+        bw.write("initialShields=$currentShields\n")
         bw.write("missiles=2\n")
         bw.write("provisions=4\n")
         bw.write("provisionsValue=6\n")

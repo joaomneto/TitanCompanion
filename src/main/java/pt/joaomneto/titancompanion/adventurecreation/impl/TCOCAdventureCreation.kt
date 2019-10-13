@@ -40,7 +40,7 @@ class TCOCAdventureCreation : AdventureCreation(
     var spellValue = -1
 
     private val tcocSpellsFragment: TCOCAdventureCreationSpellsFragment?
-        get() = getFragment(TCOCAdventureCreationSpellsFragment::class)
+        get() = getFragment()
 
     val spellListSize: Int
         get() {
@@ -58,7 +58,7 @@ class TCOCAdventureCreation : AdventureCreation(
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
         var spellsS = ""
 
-        if (!spells.isEmpty()) {
+        if (spells.isNotEmpty()) {
             for (spell in spellList) {
                 spellsS += spell + "§" + spells[spell] + "#"
             }

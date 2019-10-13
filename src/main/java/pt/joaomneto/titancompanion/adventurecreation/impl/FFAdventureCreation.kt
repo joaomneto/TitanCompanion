@@ -22,14 +22,14 @@ class FFAdventureCreation : AdventureCreation(
     private var currentArmour = -1
 
     private val ffVitalStatsFragment: FFVitalStatisticsFragment?
-        get() = getFragment(FFVitalStatisticsFragment::class)
+        get() = getFragment()
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("currentFirepower=" + currentFirepower + "\n")
-        bw.write("currentArmour=" + currentArmour + "\n")
-        bw.write("initialFirepower=" + currentFirepower + "\n")
-        bw.write("initialArmour=" + currentArmour + "\n")
+        bw.write("currentFirepower=$currentFirepower\n")
+        bw.write("currentArmour=$currentArmour\n")
+        bw.write("initialFirepower=$currentFirepower\n")
+        bw.write("initialArmour=$currentArmour\n")
         bw.write("rockets=4\n")
         bw.write("ironSpikes=3\n")
         bw.write("oilCannisters=2\n")

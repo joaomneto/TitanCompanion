@@ -18,14 +18,14 @@ class STRIDERAdventureCreation : AdventureCreation(
     )
 ) {
 
-    var fearValue = -1
+    private var fearValue = -1
 
     private val striderVitalStatisticsFragment: STRIDERVitalStatisticsFragment?
-        get() = getFragment(STRIDERVitalStatisticsFragment::class)
+        get() = getFragment()
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("fear=" + fearValue + "\n")
+        bw.write("fear=$fearValue\n")
         bw.write("time=" + 0 + "\n")
         bw.write("oxygen=" + 0 + "\n")
     }

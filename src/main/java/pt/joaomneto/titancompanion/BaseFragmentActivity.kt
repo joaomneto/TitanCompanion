@@ -9,10 +9,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import java.util.Locale
-import kotlin.reflect.KClass
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.LocaleHelper
+import java.util.Locale
+import kotlin.reflect.KClass
 
 /**
  * Created by Joao Neto on 31-05-2017.
@@ -23,19 +23,7 @@ abstract class BaseFragmentActivity(
     open val contentView: Int
 ) : FragmentActivity() {
 
-    /**
-     * The [android.support.v4.view.PagerAdapter] that will provide
-     * fragmentConfiguration for each of the sections. We use a
-     * [android.support.v4.app.FragmentPagerAdapter] derivative, which
-     * will keep every loaded fragment in memory. If this becomes too memory
-     * intensive, it may be best to switch to a
-     * [android.support.v4.app.FragmentStatePagerAdapter].
-     */
-    private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
-
-    /**
-     * The [ViewPager] that will host the section contents.
-     */
+    var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     protected var mViewPager: ViewPager? = null
 
     override fun attachBaseContext(base: Context) {
@@ -90,24 +78,17 @@ abstract class BaseFragmentActivity(
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
-    fun <F : Fragment> getFragment(kclass: KClass<F>): F? {
-        var fragment: F? = null
-        val fragmentCount = mSectionsPagerAdapter?.registeredFragments?.size() ?: 0
-        for (index in 0..fragmentCount) {
-            val frag = mSectionsPagerAdapter!!.registeredFragments.get(index)
-            if (kclass.isInstance(frag)) fragment = frag as F
-        }
-        return fragment
-    }
+    inline fun <reified F : Fragment> getFragment() = getFragment(F::class)
+
+    fun <F : Fragment> getFragment(klass: KClass<F>) = getFragment(klass.java)
 
     @Suppress("UNCHECKED_CAST")
-    fun <F : Fragment> getFragment(javaclass: Class<F>): F? {
+    fun <F : Fragment> getFragment(klass: Class<F>): F? {
         var fragment: F? = null
         val fragmentCount = mSectionsPagerAdapter?.registeredFragments?.size() ?: 0
         for (index in 0..fragmentCount) {
             val frag = mSectionsPagerAdapter!!.registeredFragments.get(index)
-            if (javaclass.kotlin.isInstance(frag)) fragment = frag as F
+            if (klass.isInstance(frag)) fragment = frag as F
         }
         return fragment
     }

@@ -22,14 +22,14 @@ class SOBAdventureCreation : AdventureCreation(
     private var currentCrewStrike = -1
 
     private val sobVitalStatisticsFragment: SOBVitalStatisticsFragment?
-        get() = getFragment(SOBVitalStatisticsFragment::class)
+        get() = getFragment()
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("currentCrewStrength=" + currentCrewStrength + "\n")
-        bw.write("currentCrewStrike=" + currentCrewStrike + "\n")
-        bw.write("initialCrewStrength=" + currentCrewStrength + "\n")
-        bw.write("initialCrewStrike=" + currentCrewStrike + "\n")
+        bw.write("currentCrewStrength=$currentCrewStrength\n")
+        bw.write("currentCrewStrike=$currentCrewStrike\n")
+        bw.write("initialCrewStrength=$currentCrewStrength\n")
+        bw.write("initialCrewStrike=$currentCrewStrike\n")
         bw.write("log=0\n")
         bw.write("gold=20\n")
         bw.write("booty=\n")
