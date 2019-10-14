@@ -65,8 +65,8 @@ class VOTVAdventure : Adventure(
     }
 
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("spells=${stringListToText(spells)}")
-        bw.write("afflictions=${stringListToText(afflictions)}")
+        bw.write("spells=${stringListToText(spells)}\n")
+        bw.write("afflictions=${stringListToText(afflictions)}\n")
         bw.write("currentFaith=$currentFaith\n")
         bw.write("gold=$gold\n")
     }
