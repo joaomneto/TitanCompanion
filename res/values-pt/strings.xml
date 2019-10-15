@@ -697,4 +697,8 @@
     <string name="savegameQuestionTitle">Gravar</string>
     <string name="gamesaved">Gravado!</string>
     <string name="votvFaith">Fé</string>
+    <string name="addAffliction">Adicionar Tormento</string>
+    <string name="addSpell">Adicionar Feitiço</string>
+    <string name="spellsAndEquipment">Equipamento e Feitiços</string>
+    <string name="notesAndAfflictions">Notas e Tormentos</string>
 </resources>
