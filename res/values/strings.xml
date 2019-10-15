@@ -1203,4 +1203,11 @@
     <string name="savegameQuestion">Do you wish to save your adventure?</string>
     <string name="savegameQuestionTitle">Save</string>
     <string name="gamesaved">Saved!</string>
+
+    <!--    Vault of the Vampire-->
+    <string name="votvFaith">Faith</string>
+    <string name="addAffliction">Add Affliction</string>
+    <string name="addSpell">Add Spell</string>
+    <string name="spellsAndEquipment">Spells And Equipment</string>
+    <string name="notesAndAfflictions">Notes and Afflictions</string>
 </resources>

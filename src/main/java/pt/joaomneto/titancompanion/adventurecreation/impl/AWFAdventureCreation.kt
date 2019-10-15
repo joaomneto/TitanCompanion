@@ -29,7 +29,7 @@ class AWFAdventureCreation : AdventureCreation(
 
     override fun validateCreationSpecificParameters(): String? {
         val sb = StringBuilder()
-        if (this.superPower == null || this.superPower!!.length == 0) {
+        if (this.superPower == null || this.superPower!!.isEmpty()) {
             sb.append(getString(R.string.aodSuperpower))
         }
         return sb.toString()

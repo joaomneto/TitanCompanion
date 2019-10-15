@@ -25,17 +25,17 @@ class POFAdventureCreation : TFODAdventureCreation(
     private var powerValue = -1
 
     private val pofVitalStatisticsFragment: POFVitalStatisticsFragment?
-        get() = getFragment(POFVitalStatisticsFragment::class)
+        get() = getFragment()
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("standardPotion=" + potion + "\n")
+        bw.write("standardPotion=$potion\n")
         bw.write("standardPotionValue=1\n")
         bw.write("provisions=0\n")
         bw.write("provisionsValue=0\n")
         bw.write("gold=0\n")
-        bw.write("currentPower=" + powerValue + "\n")
-        bw.write("initialPower=" + powerValue + "\n")
+        bw.write("currentPower=$powerValue\n")
+        bw.write("initialPower=$powerValue\n")
     }
 
     override fun rollGamebookSpecificStats(view: View) {

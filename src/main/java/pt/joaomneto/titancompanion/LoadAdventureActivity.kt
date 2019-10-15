@@ -17,7 +17,6 @@ import java.io.File
 import java.io.FileReader
 import java.text.SimpleDateFormat
 import java.util.ArrayList
-import java.util.Arrays
 import java.util.Date
 
 class LoadAdventureActivity : BaseActivity() {
@@ -53,18 +52,25 @@ class LoadAdventureActivity : BaseActivity() {
             if (f.exists())
                 f.delete()
 
-            val savepointFiles = dir.listFiles { _, filename -> !filename.startsWith("exception") }
+            val initialSavePoints = dir
+                .listFiles { _, filename -> filename.startsWith("initial") }
+                ?: emptyArray()
 
-            Arrays.sort(savepointFiles) { f1, f2 ->
-                java.lang.Long.valueOf(f1.lastModified()).compareTo(
-                    f2.lastModified()
+            val numericSavePoints = dir
+                .listFiles { _, filename ->
+                    !filename.startsWith("initial") && !filename.startsWith("exception")
+                }
+                ?: emptyArray()
+
+            val savepointFiles = numericSavePoints
+                .sortedBy { it.lastModified() }
+                .reversed()
+                .plus(
+                    initialSavePoints.sortedBy { it.lastModified() }
                 )
-            }
 
             val names = savepointFiles
                 .map { it.name.dropLast(4) }
-                .reversed()
-                .sortedBy { it.startsWith("initial") }
                 .toTypedArray()
 
             val builder = AlertDialog.Builder(this)

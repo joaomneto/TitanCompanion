@@ -18,10 +18,10 @@ class SLAdventureCreation : AdventureCreation(
     )
 ) {
 
-    var rating = 0
+    private var rating = 0
 
     private val slVitalStatisticsFragment: SLVitalStatisticsFragment?
-        get() = getFragment(SLVitalStatisticsFragment::class)
+        get() = getFragment()
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {

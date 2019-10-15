@@ -12,6 +12,7 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureNotesFragme
 import pt.joaomneto.titancompanion.adventure.impl.fragments.bnc.BNCAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
+import kotlin.math.max
 
 class BNCAdventure : Adventure(
     arrayOf(
@@ -53,9 +54,9 @@ class BNCAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("currentWillpower=" + currentWillpower + "\n")
-        bw.write("initialWillpower=" + initialWillpower + "\n")
-        bw.write("gold=" + gold + "\n")
+        bw.write("currentWillpower=$currentWillpower\n")
+        bw.write("initialWillpower=$initialWillpower\n")
+        bw.write("gold=$gold\n")
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
@@ -67,11 +68,11 @@ class BNCAdventure : Adventure(
     fun testWillpower() {
         val result = DiceRoller.roll2D6().sum <= currentWillpower
 
-        currentWillpower = Math.max(0, currentWillpower - 1)
+        currentWillpower = max(0, currentWillpower - 1)
 
         val message = if (result) R.string.success else R.string.failed
-        Adventure.Companion.showAlert(message, this)
+        Adventure.showAlert(message, this)
 
-        getFragment(BNCAdventureVitalStatsFragment::class)?.refreshScreensFromResume()
+        getFragment<BNCAdventureVitalStatsFragment>()?.refreshScreensFromResume()
     }
 }

@@ -29,7 +29,7 @@ class AODAdventure : Adventure(
     override val currencyName = R.string.gold
 
     val soldiersFragment: AODAdventureSoldiersFragment?
-        get() = getFragment(AODAdventureSoldiersFragment::class)
+        get() = getFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
@@ -46,7 +46,7 @@ class AODAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("gold=" + gold + "\n")
+        bw.write("gold=$gold\n")
         bw.write("soldiers=" + soldiers.stringToSaveGame)
     }
 
@@ -57,9 +57,7 @@ class AODAdventure : Adventure(
 
     companion object {
 
-        val FRAGMENT_SOLDIERS = 1
-        val FRAGMENT_COMBAT = 2
-        val FRAGMENT_EQUIPMENT = 3
-        val FRAGMENT_NOTES = 4
+        const val FRAGMENT_EQUIPMENT = 3
+        const val FRAGMENT_NOTES = 4
     }
 }

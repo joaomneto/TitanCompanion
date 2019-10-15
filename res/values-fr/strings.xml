@@ -731,4 +731,9 @@
     <string name="savegameQuestion">Voulez-vous sauvegarde votre aventure?</string>
     <string name="savegameQuestionTitle">Sauvegarder</string>
     <string name="gamesaved">Sauvegardé!</string>
+    <string name="votvFaith">Foi</string>
+    <string name="addAffliction">Ajouter Maladie</string>
+    <string name="addSpell">Ajouter Sortilège</string>
+    <string name="spellsAndEquipment">Equipement et Sortilèges</string>
+    <string name="notesAndAfflictions">Notes et Maladies</string>
 </resources>

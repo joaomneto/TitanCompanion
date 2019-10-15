@@ -12,6 +12,8 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdven
 import pt.joaomneto.titancompanion.adventure.impl.fragments.strider.STRIDERAdventureVitalStatsFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
+import kotlin.math.max
+import kotlin.math.min
 
 class STRIDERAdventure : Adventure(
     arrayOf(
@@ -49,9 +51,9 @@ class STRIDERAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("fear=" + currentFear + "\n")
-        bw.write("time=" + time + "\n")
-        bw.write("oxygen=" + oxygen + "\n")
+        bw.write("fear=$currentFear\n")
+        bw.write("time=$time\n")
+        bw.write("oxygen=$oxygen\n")
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
@@ -64,32 +66,28 @@ class STRIDERAdventure : Adventure(
         val result = DiceRoller.roll2D6().sum <= currentFear
 
         val message = if (result) R.string.success else R.string.failed
-        Adventure.Companion.showAlert(message, this)
+        Adventure.showAlert(message, this)
 
-        (getFragment(STRIDERAdventureVitalStatsFragment::class))?.refreshScreensFromResume()
+        (getFragment<STRIDERAdventureVitalStatsFragment>())?.refreshScreensFromResume()
     }
 
     fun increaseTime() {
-        this.time = Math.min(time + 1, 48)
+        this.time = min(time + 1, 48)
     }
 
     fun decreaseTime() {
-        this.time = Math.max(time - 1, 0)
+        this.time = max(time - 1, 0)
     }
 
     fun increaseOxygen() {
-        this.oxygen = Math.min(oxygen + 1, 20)
+        this.oxygen = min(oxygen + 1, 20)
     }
 
     fun decreaseOxygen() {
-        this.oxygen = Math.max(oxygen - 1, 0)
+        this.oxygen = max(oxygen - 1, 0)
     }
 
     companion object {
 
-        private val FRAGMENT_VITAL_TIME_OXYGEN = 1
-        private val FRAGMENT_COMBAT = 2
-        private val FRAGMENT_EQUIPMENT = 3
-        private val FRAGMENT_NOTES = 4
     }
 }

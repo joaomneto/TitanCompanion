@@ -5,16 +5,16 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.text.InputType
-import android.util.SparseArray
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.TextView
-import java.io.*
-import java.util.*
 import pt.joaomneto.titancompanion.BaseFragmentActivity
 import pt.joaomneto.titancompanion.LoadAdventureActivity
 import pt.joaomneto.titancompanion.R
@@ -22,11 +22,29 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.AdventureVitalStatsF
 import pt.joaomneto.titancompanion.consts.FightingFantasyGamebook
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
+import java.io.BufferedReader
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.FileReader
+import java.io.FileWriter
+import java.io.IOException
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
+import java.io.PrintWriter
+import java.util.ArrayList
+import java.util.Date
+import java.util.HashSet
+import java.util.Properties
+import kotlin.math.max
+import kotlin.math.min
 
-abstract class Adventure(override val fragmentConfiguration: Array<AdventureFragmentRunner>) : BaseFragmentActivity(
-    fragmentConfiguration,
-    R.layout.activity_adventure
-) {
+abstract class Adventure(override val fragmentConfiguration: Array<AdventureFragmentRunner>) :
+    BaseFragmentActivity(
+        fragmentConfiguration,
+        R.layout.activity_adventure
+    ) {
 
     var initialSkill: Int = -1
     var initialLuck: Int = -1
@@ -36,7 +54,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     internal var currentStamina: Int = -1
     var equipment: List<String> = ArrayList()
     var notes: List<String> = ArrayList()
-    var currentReference: Int = -1
+    private var currentReference: Int = -1
     // Common values
     var standardPotion: Int = -1
     open var gold: Int = 0
@@ -45,14 +63,14 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     @set:Synchronized
     var provisionsValue: Int = -1
     var standardPotionValue: Int = -1
-    var dir: File? = null
+    private var dir: File? = null
     var gamebook: FightingFantasyGamebook? = null
         internal set
     var name: String? = null
     var savedGame: Properties = Properties()
 
     private val vitalStatsFragment: AdventureVitalStatsFragment?
-        get() = getFragment(AdventureVitalStatsFragment::class)
+        get() = getFragment()
 
     open val consumeProvisionText: Int = R.string.consumeProvisions
 
@@ -98,8 +116,10 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         currentLuck = Integer.valueOf(savedGame.getProperty("currentLuck"))
         currentStamina = Integer.valueOf(savedGame.getProperty("currentStamina"))
 
-        val equipmentS = String(savedGame.getProperty("equipment").toByteArray(java.nio.charset.Charset.forName("UTF-8")))
-        val notesS = String(savedGame.getProperty("notes").toByteArray(java.nio.charset.Charset.forName("UTF-8")))
+        val equipmentS =
+            String(savedGame.getProperty("equipment").toByteArray(java.nio.charset.Charset.forName("UTF-8")))
+        val notesS =
+            String(savedGame.getProperty("notes").toByteArray(java.nio.charset.Charset.forName("UTF-8")))
         currentReference = Integer.valueOf(savedGame.getProperty("currentReference"))
 
         equipment = stringToStringList(equipmentS)
@@ -107,27 +127,35 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         notes = stringToStringList(notesS)
 
         val provisionsS = savedGame.getProperty("provisions")
-        provisions = if (provisionsS != null && provisionsS != "null") Integer.valueOf(provisionsS) else -1
+        provisions =
+            if (provisionsS != null && provisionsS != "null") Integer.valueOf(provisionsS) else -1
         val provisionsValueS = savedGame.getProperty("provisionsValue")
-        provisionsValue = if (provisionsValueS != null && provisionsValueS != "null") Integer.valueOf(provisionsValueS) else -1
+        provisionsValue =
+            if (provisionsValueS != null && provisionsValueS != "null") Integer.valueOf(
+                provisionsValueS
+            ) else -1
 
         loadAdventureSpecificValuesFromFile()
     }
 
-    protected fun stringToStringList(equipmentS: String) = equipmentS.split("#".toRegex()).filter { it.isNotEmpty() }
+    protected fun stringToStringList(equipmentS: String) =
+        equipmentS
+            .split("#".toRegex())
+            .filter { it.isNotEmpty() }
+            .toMutableList()
 
-    inline fun <reified Y : kotlin.Enum<Y>> stringToEnumList(equipmentS: String): List<Y> {
+    inline fun <reified Y : Enum<Y>> stringToEnumList(equipmentS: String): List<Y> {
         return stringToStringList(equipmentS).map { safeValueOf<Y>(it)!! }
     }
 
-    inline fun <reified Y : kotlin.Enum<Y>> stringToEnumMap(equipmentS: String): Map<Y, Int> {
+    inline fun <reified Y : Enum<Y>> stringToEnumMap(equipmentS: String): Map<Y, Int> {
         return stringToStringList(equipmentS).map {
             val tokens = it.split("§")
             safeValueOf<Y>(tokens[0])!! to tokens[1].toInt()
         }.toMap()
     }
 
-    inline fun <reified T : kotlin.Enum<T>> safeValueOf(type: String?): T? {
+    inline fun <reified T : Enum<T>> safeValueOf(type: String?): T? {
         return java.lang.Enum.valueOf(T::class.java, type)
     }
 
@@ -162,17 +190,17 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.rolld6 -> {
-                return displayRollXD6(1)
+                displayRollXD6(1)
             }
             R.id.roll2d6 -> {
-                return displayRollXD6(2)
+                displayRollXD6(2)
             }
             R.id.roll3d6 -> {
-                return displayRollXD6(3)
+                displayRollXD6(3)
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -202,17 +230,17 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
         val resultView = toastView.findViewById<TextView>(R.id.diceResult)
 
-        val d1Id = resources.getIdentifier("d6" + d1, "drawable", this.packageName)
+        val d1Id = resources.getIdentifier("d6$d1", "drawable", this.packageName)
 
         var d2Id: Int? = null
         var d3Id: Int? = null
 
         if (diceNumber > 1) {
-            d2Id = resources.getIdentifier("d6" + d2, "drawable", this.packageName)
+            d2Id = resources.getIdentifier("d6$d2", "drawable", this.packageName)
         }
 
         if (diceNumber > 2) {
-            d3Id = resources.getIdentifier("d6" + d3, "drawable", this.packageName)
+            d3Id = resources.getIdentifier("d6$d3", "drawable", this.packageName)
         }
 
         imageViewD1.setImageResource(d1Id)
@@ -297,7 +325,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         val notesS = stringListToText(notes)
 
         var initialContent = readFile(File(dir, "initial.xml"))
-        initialContent = initialContent.replace("notes=", "notes=" + notesS)
+        initialContent = initialContent.replace("notes=", "notes=$notesS")
 
         val fileWriter = FileWriter(File(dir, "initial_full_notes.xml"))
         val bw = BufferedWriter(fileWriter)
@@ -312,25 +340,25 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         var equipmentS = ""
         val notesS = stringListToText(notes)
 
-        if (!equipment.isEmpty()) {
+        if (equipment.isNotEmpty()) {
             for (eq in equipment) {
-                equipmentS += eq + "#"
+                equipmentS += "$eq#"
             }
             equipmentS = equipmentS.substring(0, equipmentS.length - 1)
         }
-        bw.write("gamebook=" + gamebook + "\n")
-        bw.write("name=" + name + "\n")
-        bw.write("initialSkill=" + initialSkill + "\n")
-        bw.write("initialLuck=" + initialSkill + "\n")
-        bw.write("initialStamina=" + initialStamina + "\n")
-        bw.write("currentSkill=" + currentSkill + "\n")
-        bw.write("currentLuck=" + currentLuck + "\n")
-        bw.write("currentStamina=" + currentStamina + "\n")
-        bw.write("currentReference=" + ref + "\n")
-        bw.write("equipment=" + equipmentS + "\n")
-        bw.write("notes=" + notesS + "\n")
-        bw.write("provisions=" + provisions + "\n")
-        bw.write("provisionsValue=" + provisionsValue + "\n")
+        bw.write("gamebook=$gamebook\n")
+        bw.write("name=$name\n")
+        bw.write("initialSkill=$initialSkill\n")
+        bw.write("initialLuck=$initialSkill\n")
+        bw.write("initialStamina=$initialStamina\n")
+        bw.write("currentSkill=$currentSkill\n")
+        bw.write("currentLuck=$currentLuck\n")
+        bw.write("currentStamina=$currentStamina\n")
+        bw.write("currentReference=$ref\n")
+        bw.write("equipment=$equipmentS\n")
+        bw.write("notes=$notesS\n")
+        bw.write("provisions=$provisions\n")
+        bw.write("provisionsValue=$provisionsValue\n")
         storeAdventureSpecificValuesInFile(bw)
     }
 
@@ -355,7 +383,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
                 initialLuck = maxLuck
             }
         }
-        standardPotionValue = standardPotionValue - 1
+        standardPotionValue -= 1
         showAlert(message, this)
         refreshScreens()
     }
@@ -366,8 +394,8 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             getCurrentStamina() == initialStamina -> showAlert(R.string.provisionsMaxStamina, this)
             else -> {
                 vitalStatsFragment?.setProvisionsValue(--provisions)
-                val staminaGain = Math.min(provisionsValue, initialStamina - currentStamina)
-                setCurrentStamina(Math.min(getCurrentStamina() + provisionsValue, initialStamina))
+                val staminaGain = min(provisionsValue, initialStamina - currentStamina)
+                setCurrentStamina(min(getCurrentStamina() + provisionsValue, initialStamina))
                 showAlert(resources.getString(R.string.provisionsStaminaGain, staminaGain), this)
             }
         }
@@ -466,7 +494,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         pause()
     }
 
-    fun refreshScreens() {
+    open fun refreshScreens() {
         fragmentConfiguration
             .map { getFragment(it.fragment) as AdventureFragment? }
             .forEach { it?.refreshScreensFromResume() }
@@ -500,9 +528,10 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         val elements = ArrayList<String>()
 
         if (_string != null) {
-            val list = Arrays.asList(*_string.split("#".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
+            val list =
+                listOf(*_string.split("#".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
             for (string in list) {
-                if (!string.isEmpty())
+                if (string.isNotEmpty())
                     elements.add(string)
             }
         }
@@ -514,9 +543,10 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         val elements = HashSet<String>()
 
         if (_string != null) {
-            val list = Arrays.asList(*_string.split("#".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
+            val list =
+                listOf(*_string.split("#".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
             for (string in list) {
-                if (!string.isEmpty())
+                if (string.isNotEmpty())
                     elements.add(string)
             }
         }
@@ -526,7 +556,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
     fun changeStamina(i: Int) {
         setCurrentStamina(
-            if (i > 0) Math.min(initialStamina, getCurrentStamina() + i) else Math.max(
+            if (i > 0) min(initialStamina, getCurrentStamina() + i) else max(
                 0,
                 getCurrentStamina() + i
             )
@@ -551,12 +581,8 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
     companion object {
 
-        protected val FRAGMENT_VITAL_STATS = 0
-        protected val FRAGMENT_COMBAT = 1
-        protected val FRAGMENT_EQUIPMENT = 2
-        protected val FRAGMENT_NOTES = 3
-
-        protected var fragmentConfiguration = SparseArray<AdventureFragmentRunner>()
+        protected const val FRAGMENT_EQUIPMENT = 2
+        protected const val FRAGMENT_NOTES = 3
 
         fun showAlert(title: Int, message: Int, context: Context) {
             showAlert(title, context.getString(message), context)
@@ -570,9 +596,10 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             extraActionCallback: () -> Unit = {}
         ) {
             val builder = AlertDialog.Builder(context)
-            builder.setTitle(if (title != null && title > 0) title else R.string.result).setMessage(message).setCancelable(false).setNegativeButton(
-                R.string.close
-            ) { dialog, _ -> dialog.cancel() }
+            builder.setTitle(if (title != null && title > 0) title else R.string.result)
+                .setMessage(message).setCancelable(false).setNegativeButton(
+                    R.string.close
+                ) { dialog, _ -> dialog.cancel() }
 
             if (extraActionTextId != null && extraActionCallback != {}) {
                 builder.setPositiveButton(extraActionTextId) { dialog, _ ->
@@ -608,18 +635,20 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
         fun showErrorAlert(message: Int, context: Context) {
             val builder = AlertDialog.Builder(context)
-            builder.setTitle(R.string.error).setMessage(message).setCancelable(false).setIcon(R.drawable.error_icon).setNegativeButton(
-                R.string.close
-            ) { dialog, _ -> dialog.cancel() }
+            builder.setTitle(R.string.error).setMessage(message).setCancelable(false)
+                .setIcon(R.drawable.error_icon).setNegativeButton(
+                    R.string.close
+                ) { dialog, _ -> dialog.cancel() }
             val alert = builder.create()
             alert.show()
         }
 
         fun showInfoAlert(message: Int, context: Context) {
             val builder = AlertDialog.Builder(context)
-            builder.setTitle(R.string.info).setMessage(message).setCancelable(false).setIcon(R.drawable.info_icon).setNegativeButton(
-                R.string.close
-            ) { dialog, _ -> dialog.cancel() }
+            builder.setTitle(R.string.info).setMessage(message).setCancelable(false)
+                .setIcon(R.drawable.info_icon).setNegativeButton(
+                    R.string.close
+                ) { dialog, _ -> dialog.cancel() }
             val alert = builder.create()
             alert.show()
         }
@@ -645,7 +674,8 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
         fun showAlert(view: View, context: Context) {
             val builder = AlertDialog.Builder(context)
-            builder.setTitle(R.string.result).setView(view).setCancelable(false).setNegativeButton(R.string.close) { dialog, _ -> dialog.cancel() }
+            builder.setTitle(R.string.result).setView(view).setCancelable(false)
+                .setNegativeButton(R.string.close) { dialog, _ -> dialog.cancel() }
             val alert = builder.create()
             alert.show()
         }
@@ -655,7 +685,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
             if (!elements.isEmpty()) {
                 for (value in elements) {
-                    _string += value.toString() + "#"
+                    _string += "$value#"
                 }
                 _string = _string.substring(0, _string.length - 1)
             }
@@ -673,21 +703,9 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         fun <Y : Enum<Y>> enumListToText(list: List<Y>): String {
             var text = ""
 
-            if (!list.isEmpty()) {
+            if (list.isNotEmpty()) {
                 for (note in list) {
                     text += note.name + "#"
-                }
-                text = text.substring(0, text.length - 1)
-            }
-            return text
-        }
-
-        fun <Y : Enum<Y>> enumMapToText(map: Map<Y, Int>): String {
-            var text = ""
-
-            if (!map.isEmpty()) {
-                for (enum in map.keys) {
-                    text += enum.name + "$" + map[enum] + "#"
                 }
                 text = text.substring(0, text.length - 1)
             }
@@ -697,9 +715,9 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         fun stringListToText(list: List<String>): String {
             var text = ""
 
-            if (!list.isEmpty()) {
+            if (list.isNotEmpty()) {
                 for (note in list) {
-                    text += note + "#"
+                    text += "$note#"
                 }
                 text = text.substring(0, text.length - 1)
             }
@@ -709,5 +727,61 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         fun getResId(context: Context, resName: String, type: String): Int {
             return context.resources.getIdentifier(resName, type, context.packageName)
         }
+
+        fun addToListOnClickListener(
+            list: MutableList<String>,
+            listView: ListView,
+            context: Context
+        ): (View) -> Unit = { _: View ->
+            val alert = AlertDialog.Builder(context)
+
+            alert.setTitle(R.string.note)
+
+            // Set an EditText view to get user input
+            val input = EditText(context)
+            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT)
+            input.requestFocus()
+            alert.setView(input)
+
+            alert.setPositiveButton(
+                R.string.ok
+            ) { _, _ ->
+                synchronized(list) {
+                    val value = input.text.toString()
+                    if (value.isEmpty())
+                        return@setPositiveButton
+                    list.add(value.trim { it <= ' ' })
+                    (listView.adapter as ArrayAdapter<*>).notifyDataSetChanged()
+                }
+            }
+
+            alert.setNegativeButton(R.string.cancel) { _, _ -> }
+            alert.show()
+        }
+
+        fun listItemLongPressListener(
+            list: MutableList<String>,
+            listView: ListView,
+            context: Context
+        ): (parent: AdapterView<*>, view: View, position: Int, id: Long) -> Boolean =
+            { _: AdapterView<*>, _: View, position: Int, _: Long ->
+                val builder = AlertDialog.Builder(context)
+                builder.setTitle(R.string.deleteNote)
+                    .setCancelable(false)
+                    .setNegativeButton(R.string.close) { dialog, _ -> dialog.cancel() }
+                builder.setPositiveButton(R.string.ok) { _, _ ->
+                    synchronized(list) {
+                        if (list.size > position) {
+                            list.removeAt(position)
+                        }
+                    }
+                    (listView.adapter as ArrayAdapter<*>).notifyDataSetChanged()
+                }
+
+                val alert = builder.create()
+                alert.show()
+                true
+            }
     }
 }

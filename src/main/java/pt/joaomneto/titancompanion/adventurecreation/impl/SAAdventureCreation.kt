@@ -25,23 +25,23 @@ class SAAdventureCreation : AdventureCreation(
     )
 ) {
 
-    var currentArmor = -1
+    private var currentArmor = -1
     var currentWeapons = -1
     var weapons: MutableList<SAWeapon> = mutableListOf()
 
     private val saVitalStatisticsFragmentt: SAVitalStatisticsFragment?
-        get() = getFragment(SAVitalStatisticsFragment::class)
+        get() = getFragment()
 
     private val saWeaponsFragment: SAWeaponsFragment?
-        get() = getFragment(SAWeaponsFragment::class)
+        get() = getFragment()
 
     init {
     }
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("currentArmor=" + currentArmor + "\n")
-        bw.write("currentWeapons=" + currentWeapons + "\n")
+        bw.write("currentArmor=$currentArmor\n")
+        bw.write("currentWeapons=$currentWeapons\n")
         bw.write("weaponsStat=" + Adventure.arrayToString(weapons) + "\n")
         bw.write("provisions=4\n")
         bw.write("provisionsValue=5\n")

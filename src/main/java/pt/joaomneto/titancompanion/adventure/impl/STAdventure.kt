@@ -15,6 +15,7 @@ import pt.joaomneto.titancompanion.adventure.impl.fragments.st.STCrewStatsFragme
 import pt.joaomneto.titancompanion.adventure.impl.fragments.st.STStarshipCombatFragment
 import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
+import java.util.EnumMap
 
 class STAdventure : Adventure(
     arrayOf(
@@ -86,11 +87,11 @@ class STAdventure : Adventure(
     private var crewmanToStringMap: MutableMap<STCrewman, String> = mutableMapOf()
 
     val stCrewStatsFragment: STCrewStatsFragment?
-        get() = getFragment(STCrewStatsFragment::class)
+        get() = getFragment()
 
     val landingParty: Set<STCrewman>
         get() {
-            val landingParty = HashSet<STAdventure.STCrewman>()
+            val landingParty = HashSet<STCrewman>()
             if (isLandingPartyEngineeringOfficer)
                 landingParty.add(STCrewman.ENGINEERING_OFFICER)
             if (isLandingPartyScienceOfficer)
@@ -112,22 +113,22 @@ class STAdventure : Adventure(
             super.onCreate(savedInstanceState)
 
             stringToCrewmanMap = HashMap()
-            stringToCrewmanMap.put(resources.getString(R.string.captain), STCrewman.CAPTAIN)
-            stringToCrewmanMap.put(resources.getString(R.string.medicalOfficer), STCrewman.MEDICAL_OFFICER)
-            stringToCrewmanMap.put(resources.getString(R.string.scienceOfficer), STCrewman.SCIENCE_OFFICER)
-            stringToCrewmanMap.put(resources.getString(R.string.engineeringOfficer), STCrewman.ENGINEERING_OFFICER)
-            stringToCrewmanMap.put(resources.getString(R.string.securityOfficer), STCrewman.SECURITY_OFFICER)
-            stringToCrewmanMap.put(resources.getString(R.string.securityGuard1), STCrewman.SECURITY_GUARD1)
-            stringToCrewmanMap.put(resources.getString(R.string.securityGuard2), STCrewman.SECURITY_GUARD2)
+            stringToCrewmanMap[resources.getString(R.string.captain)] = STCrewman.CAPTAIN
+            stringToCrewmanMap[resources.getString(R.string.medicalOfficer)] = STCrewman.MEDICAL_OFFICER
+            stringToCrewmanMap[resources.getString(R.string.scienceOfficer)] = STCrewman.SCIENCE_OFFICER
+            stringToCrewmanMap[resources.getString(R.string.engineeringOfficer)] = STCrewman.ENGINEERING_OFFICER
+            stringToCrewmanMap[resources.getString(R.string.securityOfficer)] = STCrewman.SECURITY_OFFICER
+            stringToCrewmanMap[resources.getString(R.string.securityGuard1)] = STCrewman.SECURITY_GUARD1
+            stringToCrewmanMap[resources.getString(R.string.securityGuard2)] = STCrewman.SECURITY_GUARD2
 
-            crewmanToStringMap = HashMap()
-            crewmanToStringMap.put(STCrewman.CAPTAIN, resources.getString(R.string.captain))
-            crewmanToStringMap.put(STCrewman.MEDICAL_OFFICER, resources.getString(R.string.medicalOfficer))
-            crewmanToStringMap.put(STCrewman.SCIENCE_OFFICER, resources.getString(R.string.scienceOfficer))
-            crewmanToStringMap.put(STCrewman.ENGINEERING_OFFICER, resources.getString(R.string.engineeringOfficer))
-            crewmanToStringMap.put(STCrewman.SECURITY_OFFICER, resources.getString(R.string.securityOfficer))
-            crewmanToStringMap.put(STCrewman.SECURITY_GUARD1, resources.getString(R.string.securityGuard1))
-            crewmanToStringMap.put(STCrewman.SECURITY_GUARD2, resources.getString(R.string.securityGuard2))
+            crewmanToStringMap = EnumMap(pt.joaomneto.titancompanion.adventure.impl.STAdventure.STCrewman::class.java)
+            crewmanToStringMap[STCrewman.CAPTAIN] = resources.getString(R.string.captain)
+            crewmanToStringMap[STCrewman.MEDICAL_OFFICER] = resources.getString(R.string.medicalOfficer)
+            crewmanToStringMap[STCrewman.SCIENCE_OFFICER] = resources.getString(R.string.scienceOfficer)
+            crewmanToStringMap[STCrewman.ENGINEERING_OFFICER] = resources.getString(R.string.engineeringOfficer)
+            crewmanToStringMap[STCrewman.SECURITY_OFFICER] = resources.getString(R.string.securityOfficer)
+            crewmanToStringMap[STCrewman.SECURITY_GUARD1] = resources.getString(R.string.securityGuard1)
+            crewmanToStringMap[STCrewman.SECURITY_GUARD2] = resources.getString(R.string.securityGuard2)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -140,49 +141,49 @@ class STAdventure : Adventure(
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {
-        bw.write("scienceOfficerSkill=" + currentScienceOfficerSkill + "\n")
-        bw.write("scienceOfficerStamina=" + currentScienceOfficerStamina + "\n")
-        bw.write("medicalOfficerSkill=" + currentMedicalOfficerSkill + "\n")
-        bw.write("medicalOfficerStamina=" + currentMedicalOfficerStamina + "\n")
-        bw.write("engineeringOfficerSkill=" + currentEngineeringOfficerSkill + "\n")
-        bw.write("engineeringOfficerStamina=" + currentEngineeringOfficerStamina + "\n")
-        bw.write("securityOfficerSkill=" + currentSecurityOfficerSkill + "\n")
-        bw.write("securityOfficerStamina=" + currentSecurityOfficerStamina + "\n")
-        bw.write("securityGuard1Skill=" + currentSecurityGuard1Skill + "\n")
-        bw.write("securityGuard1Stamina=" + currentSecurityGuard1Stamina + "\n")
-        bw.write("securityGuard2Skill=" + currentSecurityGuard2Skill + "\n")
-        bw.write("securityGuard2Stamina=" + currentSecurityGuard2Stamina + "\n")
-        bw.write("shipWeapons=" + currentShipWeapons + "\n")
-        bw.write("shipShields=" + currentShipShields + "\n")
+        bw.write("scienceOfficerSkill=$currentScienceOfficerSkill\n")
+        bw.write("scienceOfficerStamina=$currentScienceOfficerStamina\n")
+        bw.write("medicalOfficerSkill=$currentMedicalOfficerSkill\n")
+        bw.write("medicalOfficerStamina=$currentMedicalOfficerStamina\n")
+        bw.write("engineeringOfficerSkill=$currentEngineeringOfficerSkill\n")
+        bw.write("engineeringOfficerStamina=$currentEngineeringOfficerStamina\n")
+        bw.write("securityOfficerSkill=$currentSecurityOfficerSkill\n")
+        bw.write("securityOfficerStamina=$currentSecurityOfficerStamina\n")
+        bw.write("securityGuard1Skill=$currentSecurityGuard1Skill\n")
+        bw.write("securityGuard1Stamina=$currentSecurityGuard1Stamina\n")
+        bw.write("securityGuard2Skill=$currentSecurityGuard2Skill\n")
+        bw.write("securityGuard2Stamina=$currentSecurityGuard2Stamina\n")
+        bw.write("shipWeapons=$currentShipWeapons\n")
+        bw.write("shipShields=$currentShipShields\n")
 
-        bw.write("scienceOfficerInitialSkill=" + initialScienceOfficerSkill + "\n")
-        bw.write("scienceOfficerInitialStamina=" + initialScienceOfficerStamina + "\n")
-        bw.write("medicalOfficerInitialSkill=" + initialMedicalOfficerSkill + "\n")
-        bw.write("medicalOfficerInitialStamina=" + initialMedicalOfficerStamina + "\n")
-        bw.write("engineeringOfficerInitialSkill=" + initialEngineeringOfficerSkill + "\n")
-        bw.write("engineeringOfficerInitialStamina=" + initialEngineeringOfficerStamina + "\n")
-        bw.write("securityOfficerInitialSkill=" + initialSecurityOfficerSkill + "\n")
-        bw.write("securityOfficerInitialStamina=" + initialSecurityOfficerStamina + "\n")
-        bw.write("securityGuard1InitialSkill=" + initialSecurityGuard1Skill + "\n")
-        bw.write("securityGuard1InitialStamina=" + initialSecurityGuard1Stamina + "\n")
-        bw.write("securityGuard2InitialSkill=" + initialSecurityGuard2Skill + "\n")
-        bw.write("securityGuard2InitialStamina=" + initialSecurityGuard2Stamina + "\n")
-        bw.write("shipInitialWeapons=" + initialShipWeapons + "\n")
-        bw.write("shipInitialShields=" + initialShipShields + "\n")
+        bw.write("scienceOfficerInitialSkill=$initialScienceOfficerSkill\n")
+        bw.write("scienceOfficerInitialStamina=$initialScienceOfficerStamina\n")
+        bw.write("medicalOfficerInitialSkill=$initialMedicalOfficerSkill\n")
+        bw.write("medicalOfficerInitialStamina=$initialMedicalOfficerStamina\n")
+        bw.write("engineeringOfficerInitialSkill=$initialEngineeringOfficerSkill\n")
+        bw.write("engineeringOfficerInitialStamina=$initialEngineeringOfficerStamina\n")
+        bw.write("securityOfficerInitialSkill=$initialSecurityOfficerSkill\n")
+        bw.write("securityOfficerInitialStamina=$initialSecurityOfficerStamina\n")
+        bw.write("securityGuard1InitialSkill=$initialSecurityGuard1Skill\n")
+        bw.write("securityGuard1InitialStamina=$initialSecurityGuard1Stamina\n")
+        bw.write("securityGuard2InitialSkill=$initialSecurityGuard2Skill\n")
+        bw.write("securityGuard2InitialStamina=$initialSecurityGuard2Stamina\n")
+        bw.write("shipInitialWeapons=$initialShipWeapons\n")
+        bw.write("shipInitialShields=$initialShipShields\n")
 
-        bw.write("landingPartyScienceOfficer=" + isLandingPartyScienceOfficer + "\n")
-        bw.write("landingPartyMedicalOfficer=" + isLandingPartyMedicalOfficer + "\n")
-        bw.write("landingPartyEngineeringOfficer=" + isLandingPartyEngineeringOfficer + "\n")
-        bw.write("landingPartySecurityOfficer=" + isLandingPartySecurityOfficer + "\n")
-        bw.write("landingPartySecurityGuard1=" + isLandingPartySecurityGuard1 + "\n")
-        bw.write("landingPartySecurityGuard2=" + isLandingPartySecurityGuard2 + "\n")
+        bw.write("landingPartyScienceOfficer=$isLandingPartyScienceOfficer\n")
+        bw.write("landingPartyMedicalOfficer=$isLandingPartyMedicalOfficer\n")
+        bw.write("landingPartyEngineeringOfficer=$isLandingPartyEngineeringOfficer\n")
+        bw.write("landingPartySecurityOfficer=$isLandingPartySecurityOfficer\n")
+        bw.write("landingPartySecurityGuard1=$isLandingPartySecurityGuard1\n")
+        bw.write("landingPartySecurityGuard2=$isLandingPartySecurityGuard2\n")
 
-        bw.write("deadScienceOfficer=" + isDeadScienceOfficer + "\n")
-        bw.write("deadMedicalOfficer=" + isDeadMedicalOfficer + "\n")
-        bw.write("deadEngineeringOfficer=" + isDeadEngineeringOfficer + "\n")
-        bw.write("deadSecurityOfficer=" + isDeadSecurityOfficer + "\n")
-        bw.write("deadSecurityGuard1=" + isDeadSecurityGuard1 + "\n")
-        bw.write("deadSecurityGuard2=" + isDeadSecurityGuard2 + "\n")
+        bw.write("deadScienceOfficer=$isDeadScienceOfficer\n")
+        bw.write("deadMedicalOfficer=$isDeadMedicalOfficer\n")
+        bw.write("deadEngineeringOfficer=$isDeadEngineeringOfficer\n")
+        bw.write("deadSecurityOfficer=$isDeadSecurityOfficer\n")
+        bw.write("deadSecurityGuard1=$isDeadSecurityGuard1\n")
+        bw.write("deadSecurityGuard2=$isDeadSecurityGuard2\n")
     }
 
     override fun loadAdventureSpecificValuesFromFile() {
@@ -237,19 +238,19 @@ class STAdventure : Adventure(
 
     fun getCrewmanStamina(crewman: STCrewman): Int {
         when (crewman) {
-            STAdventure.STCrewman.CAPTAIN -> return getCurrentStamina()
+            STCrewman.CAPTAIN -> return getCurrentStamina()
 
-            STAdventure.STCrewman.SCIENCE_OFFICER -> return currentScienceOfficerStamina
+            STCrewman.SCIENCE_OFFICER -> return currentScienceOfficerStamina
 
-            STAdventure.STCrewman.MEDICAL_OFFICER -> return currentMedicalOfficerStamina
+            STCrewman.MEDICAL_OFFICER -> return currentMedicalOfficerStamina
 
-            STAdventure.STCrewman.ENGINEERING_OFFICER -> return currentEngineeringOfficerStamina
+            STCrewman.ENGINEERING_OFFICER -> return currentEngineeringOfficerStamina
 
-            STAdventure.STCrewman.SECURITY_OFFICER -> return currentSecurityOfficerStamina
+            STCrewman.SECURITY_OFFICER -> return currentSecurityOfficerStamina
 
-            STAdventure.STCrewman.SECURITY_GUARD1 -> return currentSecurityGuard1Stamina
+            STCrewman.SECURITY_GUARD1 -> return currentSecurityGuard1Stamina
 
-            STAdventure.STCrewman.SECURITY_GUARD2 -> return currentSecurityGuard2Stamina
+            STCrewman.SECURITY_GUARD2 -> return currentSecurityGuard2Stamina
 
             else -> return 0
         }
@@ -257,19 +258,19 @@ class STAdventure : Adventure(
 
     fun getCrewmanSkill(crewman: STCrewman): Int {
         when (crewman) {
-            STAdventure.STCrewman.CAPTAIN -> return getCurrentSkill()
+            STCrewman.CAPTAIN -> return getCurrentSkill()
 
-            STAdventure.STCrewman.SCIENCE_OFFICER -> return currentScienceOfficerSkill
+            STCrewman.SCIENCE_OFFICER -> return currentScienceOfficerSkill
 
-            STAdventure.STCrewman.MEDICAL_OFFICER -> return currentMedicalOfficerSkill
+            STCrewman.MEDICAL_OFFICER -> return currentMedicalOfficerSkill
 
-            STAdventure.STCrewman.ENGINEERING_OFFICER -> return currentEngineeringOfficerSkill
+            STCrewman.ENGINEERING_OFFICER -> return currentEngineeringOfficerSkill
 
-            STAdventure.STCrewman.SECURITY_OFFICER -> return currentSecurityOfficerSkill
+            STCrewman.SECURITY_OFFICER -> return currentSecurityOfficerSkill
 
-            STAdventure.STCrewman.SECURITY_GUARD1 -> return currentSecurityGuard1Skill
+            STCrewman.SECURITY_GUARD1 -> return currentSecurityGuard1Skill
 
-            STAdventure.STCrewman.SECURITY_GUARD2 -> return currentSecurityGuard2Skill
+            STCrewman.SECURITY_GUARD2 -> return currentSecurityGuard2Skill
 
             else -> return 0
         }
@@ -277,13 +278,13 @@ class STAdventure : Adventure(
 
     fun setCrewmanStamina(crewman: STCrewman, value: Int) {
         when (crewman) {
-            STAdventure.STCrewman.CAPTAIN -> setCurrentStamina(value)
-            STAdventure.STCrewman.SCIENCE_OFFICER -> currentScienceOfficerStamina = value
-            STAdventure.STCrewman.MEDICAL_OFFICER -> currentMedicalOfficerStamina = value
-            STAdventure.STCrewman.ENGINEERING_OFFICER -> currentEngineeringOfficerStamina = value
-            STAdventure.STCrewman.SECURITY_OFFICER -> currentSecurityOfficerStamina = value
-            STAdventure.STCrewman.SECURITY_GUARD1 -> currentSecurityGuard1Stamina = value
-            STAdventure.STCrewman.SECURITY_GUARD2 -> currentSecurityGuard2Stamina = value
+            STCrewman.CAPTAIN -> setCurrentStamina(value)
+            STCrewman.SCIENCE_OFFICER -> currentScienceOfficerStamina = value
+            STCrewman.MEDICAL_OFFICER -> currentMedicalOfficerStamina = value
+            STCrewman.ENGINEERING_OFFICER -> currentEngineeringOfficerStamina = value
+            STCrewman.SECURITY_OFFICER -> currentSecurityOfficerStamina = value
+            STCrewman.SECURITY_GUARD1 -> currentSecurityGuard1Stamina = value
+            STCrewman.SECURITY_GUARD2 -> currentSecurityGuard2Stamina = value
         }
 
         stCrewStatsFragment?.refreshScreensFromResume()
@@ -291,7 +292,7 @@ class STAdventure : Adventure(
 
     fun setCrewmanDead(crewman: STCrewman) {
         when (crewman) {
-            STAdventure.STCrewman.SCIENCE_OFFICER -> {
+            STCrewman.SCIENCE_OFFICER -> {
                 if (isDeadScienceOfficer) return
                 isDeadScienceOfficer = true
                 currentScienceOfficerSkill = initialScienceOfficerSkill - 2
@@ -299,7 +300,7 @@ class STAdventure : Adventure(
                 isLandingPartyScienceOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SCIENCE_OFFICER)
             }
-            STAdventure.STCrewman.MEDICAL_OFFICER -> {
+            STCrewman.MEDICAL_OFFICER -> {
                 if (isDeadMedicalOfficer) return
                 isDeadMedicalOfficer = true
                 currentMedicalOfficerSkill = initialMedicalOfficerSkill - 2
@@ -307,7 +308,7 @@ class STAdventure : Adventure(
                 isLandingPartyMedicalOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.MEDICAL_OFFICER)
             }
-            STAdventure.STCrewman.ENGINEERING_OFFICER -> {
+            STCrewman.ENGINEERING_OFFICER -> {
                 if (isDeadEngineeringOfficer) return
                 isDeadEngineeringOfficer = true
                 currentEngineeringOfficerSkill = initialEngineeringOfficerSkill - 2
@@ -315,7 +316,7 @@ class STAdventure : Adventure(
                 isLandingPartyEngineeringOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.ENGINEERING_OFFICER)
             }
-            STAdventure.STCrewman.SECURITY_OFFICER -> {
+            STCrewman.SECURITY_OFFICER -> {
                 if (isDeadScienceOfficer) return
                 isDeadSecurityOfficer = true
                 currentSecurityOfficerSkill = initialSecurityOfficerSkill - 2
@@ -323,7 +324,7 @@ class STAdventure : Adventure(
                 isLandingPartySecurityOfficer = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_OFFICER)
             }
-            STAdventure.STCrewman.SECURITY_GUARD1 -> {
+            STCrewman.SECURITY_GUARD1 -> {
                 if (isDeadSecurityGuard1) return
                 isDeadSecurityGuard1 = true
                 currentSecurityGuard1Skill = initialSecurityGuard1Skill - 2
@@ -331,7 +332,7 @@ class STAdventure : Adventure(
                 isLandingPartySecurityGuard1 = false
                 stCrewStatsFragment?.disableCrewmanLandingPartyOption(STCrewman.SECURITY_GUARD1)
             }
-            STAdventure.STCrewman.SECURITY_GUARD2 -> {
+            STCrewman.SECURITY_GUARD2 -> {
                 if (isDeadSecurityGuard2) return
                 isDeadSecurityGuard2 = true
                 currentSecurityGuard2Skill = initialSecurityGuard2Skill - 2
@@ -360,9 +361,6 @@ class STAdventure : Adventure(
 
     companion object {
 
-        protected val FRAGMENT_CREW_STATS = 1
-        protected val FRAGMENT_PHASER_COMBAT = 2
-        protected val FRAGMENT_SHIP_COMBAT = 3
-        protected val FRAGMENT_NOTES = 4
+        private const val FRAGMENT_NOTES = 4
     }
 }

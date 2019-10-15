@@ -18,10 +18,10 @@ class HOHAdventureCreation : AdventureCreation(
     )
 ) {
 
-    var fearValue = -1
+    private var fearValue = -1
 
     private val hohVitalStatisticsFragment: HOHVitalStatisticsFragment?
-        get() = getFragment(HOHVitalStatisticsFragment::class)
+        get() = getFragment()
 
     @Throws(IOException::class)
     override fun storeAdventureSpecificValuesInFile(bw: BufferedWriter) {

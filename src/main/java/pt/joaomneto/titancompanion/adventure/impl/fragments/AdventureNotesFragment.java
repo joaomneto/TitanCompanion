@@ -12,6 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import pt.joaomneto.titancompanion.R;
 import pt.joaomneto.titancompanion.adventure.Adventure;
 import pt.joaomneto.titancompanion.adventure.AdventureFragment;
@@ -28,14 +32,18 @@ public class AdventureNotesFragment extends AdventureFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = inflater.inflate(getBaseLayout(),
+        return inflater.inflate(getBaseLayout(),
                 container, false);
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         final Adventure adv = (Adventure) getActivity();
 
-        noteList = rootView.findViewById(R.id.noteList);
-        Button buttonAddNote = rootView
+        noteList = view.findViewById(R.id.noteList);
+        Button buttonAddNote = view
                 .findViewById(R.id.buttonAddNote);
 
 
@@ -101,8 +109,6 @@ public class AdventureNotesFragment extends AdventureFragment {
             }
 
         });
-
-        return rootView;
     }
 
     @SuppressWarnings("unchecked")
