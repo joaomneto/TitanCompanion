@@ -1,1 +1,1 @@
-- Fixed minor bug in Battleblade Warrior
+- Added Vault of the Vampire
