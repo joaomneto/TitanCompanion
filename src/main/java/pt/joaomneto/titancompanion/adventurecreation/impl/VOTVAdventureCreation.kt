@@ -27,8 +27,8 @@ class VOTVAdventureCreation : AdventureCreation(
         bw.write("initialFaith=$faithValueCount\n")
         bw.write("spells=\n")
         bw.write("afflictions=\n")
-        bw.write("provisions=0\n")
-        bw.write("provisionsValue=10\n")
+        bw.write("provisions=10\n")
+        bw.write("provisionsValue=4\n")
         bw.write("gold=0\n")
     }
 
