@@ -69,7 +69,7 @@ class VOTVAdventure : Adventure(
         bw.write("afflictions=${stringListToText(afflictions)}\n")
         bw.write("currentFaith=$currentFaith\n")
         bw.write("gold=$gold\n")
-        bw.write
+        bw.write("provisions=$provisions\n")
     }
 
     override fun loadAdventureSpecificValuesFromFile() = with(savedGame) {
