@@ -53,7 +53,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     internal var currentLuck: Int = -1
     internal var currentStamina: Int = -1
     var equipment: MutableList<String> = ArrayList()
-    var notes: List<String> = ArrayList()
+    var notes: MutableList<String> = ArrayList()
     private var currentReference: Int = -1
     // Common values
     var standardPotion: Int = -1

@@ -5,14 +5,12 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
-
 import pt.joaomneto.titancompanion.R
 import pt.joaomneto.titancompanion.adventure.Adventure
 import pt.joaomneto.titancompanion.adventure.AdventureFragment
@@ -65,7 +63,7 @@ open class AdventureNotesFragment : AdventureFragment() {
                     synchronized(adv.notes) {
                         val value = input.text.toString()
                         if (value.isEmpty())
-                            return@alert.setPositiveButton
+                            return@setPositiveButton
                         adv.notes.add(value.trim { it <= ' ' })
                         (noteList!!.adapter as ArrayAdapter<String>).notifyDataSetChanged()
                     }
@@ -104,7 +102,7 @@ open class AdventureNotesFragment : AdventureFragment() {
 
                 val alert = builder.create()
                 alert.show()
-                return@noteList.setOnItemLongClickListener true
+                return@setOnItemLongClickListener true
             }
 
         }
