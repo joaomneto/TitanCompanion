@@ -14,8 +14,8 @@ class STRIDERAdventureEquipmentFragment : AdventureEquipmentFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         goldLabel.visibility = View.GONE
-        minusGoldButton.visibility = View.GONE
-        plusGoldButton.visibility = View.GONE
-        goldValue.visibility = View.GONE
+        minusGoldButton?.visibility = View.GONE
+        plusGoldButton?.visibility = View.GONE
+        goldValue?.visibility = View.GONE
     }
 }

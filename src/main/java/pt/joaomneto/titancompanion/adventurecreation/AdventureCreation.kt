@@ -124,10 +124,10 @@ abstract class AdventureCreation(
             )
 
             intent.putExtra(
-                LoadAdventureActivity.ADVENTURE_FILE,
-                "initial.xml"
+                LoadAdventureActivity.ADVENTURE_SAVEGAME_CONTENT,
+                File(File(File(filesDir, "ffgbutil"), dir.name), "initial.xml").readText()
             )
-            intent.putExtra(LoadAdventureActivity.ADVENTURE_DIR, relDir)
+            intent.putExtra(LoadAdventureActivity.ADVENTURE_NAME, relDir)
             startActivity(intent)
         } catch (e: Exception) {
             throw IllegalStateException(e)

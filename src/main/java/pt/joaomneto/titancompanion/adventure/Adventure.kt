@@ -24,13 +24,13 @@ import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedReader
 import java.io.BufferedWriter
+import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.FileReader
 import java.io.FileWriter
 import java.io.IOException
-import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.io.PrintWriter
 import java.util.ArrayList
@@ -52,7 +52,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     internal var currentSkill: Int = -1
     internal var currentLuck: Int = -1
     internal var currentStamina: Int = -1
-    var equipment: List<String> = ArrayList()
+    var equipment: MutableList<String> = ArrayList()
     var notes: List<String> = ArrayList()
     private var currentReference: Int = -1
     // Common values
@@ -85,22 +85,26 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         super.onCreate(savedInstanceState)
 
         try {
-            val fileName = intent.getStringExtra(LoadAdventureActivity.ADVENTURE_FILE)
-            val relDir = intent.getStringExtra(LoadAdventureActivity.ADVENTURE_DIR)
-            name = relDir
-            dir = File(filesDir, "ffgbutil")
-            dir = File(dir, relDir)
+            val propertiesString = intent.getStringExtra(LoadAdventureActivity.ADVENTURE_SAVEGAME_CONTENT)
+            name = intent.getStringExtra(LoadAdventureActivity.ADVENTURE_NAME)
+            dir = File(File(filesDir, "ffgbutil"), requireNotNull(name))
 
-            loadGameFromFile(dir, fileName)
+            savedGame.clear()
+            savedGame.load(ByteArrayInputStream(propertiesString?.toByteArray()))
+
+            loadGameFromProperties()
         } catch (e: Exception) {
             throw IllegalStateException("Unable to create adventure", e)
         }
     }
 
-    @Throws(IOException::class)
-    private fun loadGameFromFile(dir: File?, fileName: String) {
+    fun loadGameFromFile(dir: File, fileName: String){
         savedGame.clear()
-        savedGame.load(InputStreamReader(FileInputStream(File(dir, fileName)), "UTF-8"))
+        savedGame.load(FileInputStream(File(dir, fileName)))
+        loadGameFromProperties()
+    }
+
+    fun loadGameFromProperties() {
 
         val gamebook = savedGame.getProperty("gamebook")
         val numbericGbs = gamebook.toIntOrNull()
@@ -253,7 +257,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             imageViewD3!!.setImageResource(d3Id!!)
         }
 
-        resultView.text = " = " + (d1 + d2 + d3)
+        resultView.text = " = ${d1 + d2 + d3}"
 
         showAlert(toastView, this)
 
@@ -470,7 +474,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             if (!f.exists())
                 return
 
-            loadGameFromFile(dir, "temp.xml")
+            loadGameFromFile(requireNotNull(dir), "temp.xml")
 
             refreshScreens()
         } catch (e: Exception) {
