@@ -120,22 +120,27 @@ open class AdventureVitalStatsFragment : AdventureFragment() {
 
         usePotionButton?.setOnClickListener({
             (this.activity as Adventure).consumePotion()
+            refreshScreensFromResume()
         })
 
         buttonSavePoint?.setOnClickListener {
             (this.activity as Adventure).savepoint()
+            refreshScreensFromResume()
         }
 
         buttonTestLuck?.setOnClickListener {
             (this.activity as Adventure).testLuck()
+            refreshScreensFromResume()
         }
 
         buttonTestSkill?.setOnClickListener {
             (this.activity as Adventure).testSkill()
+            refreshScreensFromResume()
         }
 
         buttonConsumeProvisions?.setOnClickListener {
             (this.activity as Adventure).consumeProvision()
+            refreshScreensFromResume()
         }
 
         refreshScreensFromResume()

@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
+import androidx.core.view.children
 import junit.framework.Assert
 import org.junit.Test
 import org.robolectric.Shadows
@@ -16,11 +17,11 @@ import java.util.Properties
 import kotlin.reflect.KClass
 
 abstract class AdventureEquipmentTest<T : Adventure, U : AdventureEquipmentFragment>(
-    adventureClass: KClass<T>,
-    fragmentClass: KClass<U>,
-    private val savegame: Properties
+        adventureClass: KClass<T>,
+        fragmentClass: KClass<U>,
+        private val savegame: Properties
 ) : TCAdventureBaseTest<T, U>(
-    adventureClass, fragmentClass, savegame
+        adventureClass, fragmentClass, savegame
 ) {
 
     @Test
@@ -87,12 +88,9 @@ abstract class AdventureEquipmentTest<T : Adventure, U : AdventureEquipmentFragm
         val listView = fragment.findComponent<ListView>(R.id.equipmentList)
         val shadowListView = Shadows.shadowOf(listView)
 
-        listView.onItemLongClickListener.onItemLongClick(
-            null,
-            null,
-            shadowListView.findIndexOfItemContainingText("eq1"),
-            -1
-        )
+        val x = listView.children.map{(it as TextView).text}
+
+        listView.getPositionByText("eq1").performLongClick()
 
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).performClick()

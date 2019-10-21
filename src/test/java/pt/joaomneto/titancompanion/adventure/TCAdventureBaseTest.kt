@@ -1,11 +1,15 @@
 package pt.joaomneto.titancompanion.adventure
 
 import android.content.Intent
+import android.os.Build
 import android.view.View
 import android.widget.ListView
+import android.widget.TextView
+import androidx.core.view.children
 import androidx.test.core.app.ApplicationProvider
 import org.junit.Before
 import org.robolectric.Robolectric
+import org.robolectric.annotation.Config
 import pt.joaomneto.titancompanion.LoadAdventureActivity
 import pt.joaomneto.titancompanion.adventure.impl.TWOFMAdventure
 import java.io.PrintWriter
@@ -15,11 +19,12 @@ import kotlin.collections.set
 import kotlin.reflect.KClass
 import kotlin.reflect.full.primaryConstructor
 
+@Config(sdk = [Build.VERSION_CODES.O_MR1])
 abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
-    private val adventureClass: KClass<T>,
-    private val fragmentClass: KClass<U>,
-    private val properties: Properties
-): TCRoboElectricBaseTest() {
+        private val adventureClass: KClass<T>,
+        private val fragmentClass: KClass<U>,
+        private val properties: Properties
+) {
 
     companion object {
         var cachedAdventure: Adventure? = null
@@ -51,8 +56,8 @@ abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
 
         if (cachedAdventure == null || !adventureClass.isInstance(cachedAdventure)) {
             val intent = Intent(
-                ApplicationProvider.getApplicationContext(),
-                TWOFMAdventure::class.java
+                    ApplicationProvider.getApplicationContext(),
+                    TWOFMAdventure::class.java
             )
             intent.putExtra(LoadAdventureActivity.ADVENTURE_SAVEGAME_CONTENT, getPropertyAsString(properties))
             intent.putExtra(LoadAdventureActivity.ADVENTURE_NAME, "test")
@@ -73,12 +78,13 @@ abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
     }
 
     fun loadFragment() {
-        fragment = fragmentClass.primaryConstructor?.call() ?: throw IllegalArgumentException("No constructor for fragnment ${fragmentClass.simpleName}")
+        fragment = fragmentClass.primaryConstructor?.call()
+                ?: throw IllegalArgumentException("No constructor for fragnment ${fragmentClass.simpleName}")
         adventure.supportFragmentManager.beginTransaction().add(fragment, null).commit()
     }
 
     fun <T : View> AdventureFragment.findComponent(resId: Int) = this.view?.findViewById<T>(resId)
-        ?: throw IllegalStateException("View not found")
+            ?: throw IllegalStateException("View not found")
 
     fun getViewByPosition(pos: Int, listView: ListView): View {
         val firstListItemPosition = listView.firstVisiblePosition
@@ -91,4 +97,10 @@ abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
             listView.getChildAt(childIndex)
         }
     }
+
+    fun ListView.getPositionByText(text: String) = this
+            .children
+            .first {
+                (it as TextView).text == text
+            }
 }
