@@ -145,7 +145,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     protected fun stringToStringList(equipmentS: String) =
         equipmentS
             .split("#".toRegex())
-            .filter { it.isNotEmpty() }
+            .filter { it.isNotBlank() }
             .toMutableList()
 
     inline fun <reified Y : Enum<Y>> stringToEnumList(equipmentS: String): List<Y> {

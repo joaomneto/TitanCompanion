@@ -33,7 +33,7 @@ import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
 import androidx.test.runner.lifecycle.Stage
 import java.io.File
 import java.io.IOException
-import junit.framework.Assert
+import org.junit.Assert.*
 import kotlin.reflect.KMutableProperty1
 import org.hamcrest.Description
 import org.hamcrest.Matcher

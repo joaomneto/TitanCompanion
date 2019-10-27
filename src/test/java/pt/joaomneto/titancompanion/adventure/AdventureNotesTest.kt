@@ -5,7 +5,7 @@ import android.content.DialogInterface
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
-import org.junit.Assert
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.robolectric.Shadows
 import org.robolectric.shadows.ShadowDialog
@@ -17,7 +17,7 @@ import kotlin.reflect.KClass
 abstract class AdventureNotesTest<T : Adventure, U : AdventureNotesFragment>(
     adventureClass: KClass<T>,
     fragmentClass: KClass<U>,
-    private val savegame: Properties
+    savegame: Properties
 ) : TCAdventureBaseTest<T, U>(
     adventureClass, fragmentClass, savegame
 ) {
@@ -36,7 +36,7 @@ abstract class AdventureNotesTest<T : Adventure, U : AdventureNotesFragment>(
 
         val shadowListView = Shadows.shadowOf(listView)
 
-        Assert.assertTrue(shadowListView.findIndexOfItemContainingText("n1") >= 0)
+        assertTrue(shadowListView.findIndexOfItemContainingText("n1") >= 0)
     }
 
     @Test
@@ -56,6 +56,6 @@ abstract class AdventureNotesTest<T : Adventure, U : AdventureNotesFragment>(
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).performClick()
 
-        Assert.assertTrue(shadowListView.findIndexOfItemContainingText("n1") < 0)
+        assertTrue(shadowListView.findIndexOfItemContainingText("n1") < 0)
     }
 }

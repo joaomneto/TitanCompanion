@@ -42,7 +42,7 @@
 //
 //         val combatResult = fragment.findComponent<TextView>(R.id.combatResult)
 //
-//         Assert.assertTrue(combatResult.text.isBlank())
+//         assertTrue(combatResult.text.isBlank())
 //     }
 //
 //     @Test
@@ -299,7 +299,7 @@
 //
 //         val listView = fragment.findComponent<ListView>(R.id.combatants)
 //
-//         Assert.assertTrue(combatState.combatPositions.isEmpty())
+//         assertTrue(combatState.combatPositions.isEmpty())
 //
 //         Assert.assertEquals(0, listView.childCount)
 //     }
@@ -312,7 +312,7 @@
 //
 //         val listView = fragment.findComponent<ListView>(R.id.combatants)
 //
-//         Assert.assertTrue(combatState.combatPositions.isEmpty())
+//         assertTrue(combatState.combatPositions.isEmpty())
 //         Assert.assertEquals(0, listView.childCount)
 //
 //         Assert.assertEquals(VISIBLE, fragment.findComponent<View>(R.id.addCombatButton).visibility)
@@ -334,18 +334,18 @@
 //
 //         fragment.findComponent<Button>(R.id.startCombat).performClick()
 //
-//         Assert.assertTrue(combatState.combatPositions[0].isActive)
+//         assertTrue(combatState.combatPositions[0].isActive)
 //         Assert.assertFalse(combatState.combatPositions[1].isActive)
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //         Assert.assertFalse(secondCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
-//         Assert.assertTrue(combatState.combatPositions[0].isActive)
+//         assertTrue(combatState.combatPositions[0].isActive)
 //         Assert.assertFalse(combatState.combatPositions[1].isActive)
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //         Assert.assertFalse(secondCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //     }
 //
@@ -361,17 +361,17 @@
 //         fragment.findComponent<Button>(R.id.startCombat).performClick()
 //
 //         Assert.assertFalse(combatState.combatPositions[0].isActive)
-//         Assert.assertTrue(combatState.combatPositions[1].isActive)
+//         assertTrue(combatState.combatPositions[1].isActive)
 //
 //         Assert.assertFalse(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
-//         Assert.assertTrue(secondCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(secondCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
-//         Assert.assertTrue(combatState.combatPositions[0].isActive)
+//         assertTrue(combatState.combatPositions[0].isActive)
 //         Assert.assertFalse(combatState.combatPositions[1].isActive)
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //         Assert.assertFalse(secondCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //     }
 //
@@ -560,18 +560,18 @@
 //         every { DiceRoller.rollD6() } returns 6
 //
 //
-//         Assert.assertTrue(combatState.combatPositions.first().isActive)
-//         Assert.assertTrue(combatState.combatPositions.filter { it.isActive }.size == 1)
+//         assertTrue(combatState.combatPositions.first().isActive)
+//         assertTrue(combatState.combatPositions.filter { it.isActive }.size == 1)
 //
 //         fragment.findComponent<Button>(R.id.startCombat).performClick()
 //
-//         Assert.assertTrue(combatState.combatPositions.first().isActive)
-//         Assert.assertTrue(combatState.combatPositions.filter { it.isActive }.size == 1)
+//         assertTrue(combatState.combatPositions.first().isActive)
+//         assertTrue(combatState.combatPositions.filter { it.isActive }.size == 1)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
-//         Assert.assertTrue(combatState.combatPositions.first().isActive)
-//         Assert.assertTrue(combatState.combatPositions.filter { it.isActive }.size == 1)
+//         assertTrue(combatState.combatPositions.first().isActive)
+//         assertTrue(combatState.combatPositions.filter { it.isActive }.size == 1)
 //     }
 //
 //     @Test
@@ -583,15 +583,15 @@
 //         every { DiceRoller.rollD6() } returns 6
 //
 //
-//         Assert.assertTrue(combatState.combatPositions.first().isActive)
+//         assertTrue(combatState.combatPositions.first().isActive)
 //
 //         fragment.findComponent<Button>(R.id.startCombat).performClick()
 //
-//         Assert.assertTrue(combatState.combatPositions[1].isActive)
+//         assertTrue(combatState.combatPositions[1].isActive)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
-//         Assert.assertTrue(combatState.combatPositions.first().isActive)
+//         assertTrue(combatState.combatPositions.first().isActive)
 //     }
 //
 //     @Test
@@ -609,15 +609,15 @@
 //         mockkObject(DiceRoller)
 //         every { DiceRoller.rollD6() } returns 6
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
-//         Assert.assertTrue(secondCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(secondCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
-//         Assert.assertTrue(thirdCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(thirdCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //     }
 //
 //     @Test
@@ -633,11 +633,11 @@
 //         mockkObject(DiceRoller)
 //         every { DiceRoller.rollD6() } returns 6
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //         Assert.assertEquals(1, listView.count)
 //     }
 //
@@ -656,7 +656,7 @@
 //         mockkObject(DiceRoller)
 //         every { DiceRoller.rollD6() } returns 6
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
@@ -677,7 +677,7 @@
 //         mockkObject(DiceRoller)
 //         every { DiceRoller.rollD6() } returns 6
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
@@ -700,7 +700,7 @@
 //         mockkObject(DiceRoller)
 //         every { DiceRoller.rollD6() } returns 6
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
@@ -722,7 +722,7 @@
 //         mockkObject(DiceRoller)
 //         every { DiceRoller.rollD6() } returns 6
 //
-//         Assert.assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
+//         assertTrue(firstCombatantView().findViewById<RadioButton>(R.id.combatSelected).isChecked)
 //
 //         fragment.findComponent<Button>(R.id.attackButton).performClick()
 //
