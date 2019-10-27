@@ -33,7 +33,6 @@ import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
 import androidx.test.runner.lifecycle.Stage
 import java.io.File
 import java.io.IOException
-import org.junit.Assert.*
 import kotlin.reflect.KMutableProperty1
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -43,6 +42,7 @@ import org.hamcrest.Matchers.any
 import org.hamcrest.Matchers.anything
 import org.hamcrest.Matchers.startsWith
 import org.hamcrest.TypeSafeMatcher
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import pt.joaomneto.titancompanion.adventure.Adventure
@@ -282,36 +282,36 @@ abstract class TCBaseTest {
         // Test plus button
         currentStatValue = adventureField.get(adventure)
         performClickOnButton(plusButtonId)
-        Assert.assertEquals(currentStatValue + 1, adventureField.get(adventure))
+        assertEquals(currentStatValue + 1, adventureField.get(adventure))
 
         // Test minus button
         currentStatValue = adventureField.get(adventure)
         performClickOnButton(minusButtonId)
-        Assert.assertEquals(currentStatValue - 1, adventureField.get(adventure))
+        assertEquals(currentStatValue - 1, adventureField.get(adventure))
 
         // Test lower boundary of the stat
         currentStatValue = adventureField.get(adventure)
         performClickOnButton(minusButtonId, currentStatValue)
-        Assert.assertEquals(0, adventureField.get(adventure))
+        assertEquals(0, adventureField.get(adventure))
         performClickOnButton(minusButtonId)
-        Assert.assertEquals(0, adventureField.get(adventure))
+        assertEquals(0, adventureField.get(adventure))
 
         if (maxStatValue != Int.MAX_VALUE) {
             // Test upper boundary of the stat
             currentStatValue = adventureField.get(adventure)
             performClickOnButton(plusButtonId, maxStatValue - currentStatValue)
-            Assert.assertEquals(maxStatValue, adventureField.get(adventure))
+            assertEquals(maxStatValue, adventureField.get(adventure))
             performClickOnButton(plusButtonId)
-            Assert.assertEquals(maxStatValue, adventureField.get(adventure))
+            assertEquals(maxStatValue, adventureField.get(adventure))
 
             if (maxValueEditable) {
                 // Test upper boundary modification of the stat
                 currentStatValue = adventureField.get(adventure)
                 performClickOnButton(valueId)
                 performInsertTextInPopupAndClickOk(R.id.alert_editText_field, (maxStatValue + 2).toString())
-                Assert.assertEquals(maxStatValue + 2, adventureMaxField?.get(adventure))
+                assertEquals(maxStatValue + 2, adventureMaxField?.get(adventure))
                 performClickOnButton(plusButtonId, 2)
-                Assert.assertEquals(currentStatValue + 2, adventureField.get(adventure))
+                assertEquals(currentStatValue + 2, adventureField.get(adventure))
             }
         }
     }
