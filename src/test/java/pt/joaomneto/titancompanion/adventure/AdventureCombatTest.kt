@@ -25,7 +25,7 @@ import kotlin.reflect.KClass
 abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
     adventureClass: KClass<T>,
     fragmentClass: KClass<U>,
-    private val savegame: Properties
+    savegame: Properties
 ) : TCAdventureBaseTest<T, U>(
     adventureClass, fragmentClass, savegame
 ) {
@@ -45,57 +45,78 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
         assertTrue(combatResult.text.isBlank())
     }
 
-    // @Test
-    // fun `when clicking the add opponent button it adds an enemy to the list via a dialog`() {
-    //     fragment.findComponent<Button>(R.id.addCombatButton).performClick()
-    //
-    //     val enemySkillInput = dialog.findViewById<EditText>(R.id.enemySkillValue)
-    //     val enemyStaminaInput = dialog.findViewById<EditText>(R.id.enemyStaminaValue)
-    //     val handicapInput = dialog.findViewById<EditText>(R.id.handicapValue)
-    //
-    //     enemySkillInput.setText("8")
-    //     enemyStaminaInput.setText("12")
-    //     handicapInput.setText("1")
-    //
-    //     dialog.getButton(DialogInterface.BUTTON_POSITIVE).performClick()
-    //
-    //     assertEquals(
-    //         AdventureCombatFragment.Combatant(12, 8, 1, false, "2", true, 0, "FAKE_ID"),
-    //         fragment.combatPositions[0].copy(id = "FAKE_ID")
-    //     )
-    //
-    //     val listView = fragment.findComponent<ListView>(R.id.combatants)
-    //
-    //     val firstCombatantView = getViewByPosition(0, listView)
-    //
-    //     assertEquals("8", firstCombatantView.findViewById<TextView>(R.id.combatTextSkillValue).text)
-    //     assertEquals("12", firstCombatantView.findViewById<TextView>(R.id.combatTextStaminaValue).text)
-    // }
+    @Test
+    fun `when clicking the add opponent button it adds an enemy to the list via a dialog`() {
+        fragment.findComponent<Button>(R.id.addCombatButton).performClick()
 
-    // @Test
-    // fun `when adding two opponents it adds two enemies to the list via a dialog and keeps the first one as active`() {
-    //     initializeCombatWithTwoEnemies(enemyHandicap1 = 1, enemyHandicap2 = -1)
-    //
-    //     assertEquals(
-    //         AdventureCombatFragment.Combatant(12, 8, 1, false, "2", true, 0, "FAKE_ID"),
-    //         fragment.combatPositions[0].copy(id = "FAKE_ID")
-    //     )
-    //
-    //     assertEquals(
-    //         AdventureCombatFragment.Combatant(13, 9, -1, true, "2", false, 0, "FAKE_ID"),
-    //         fragment.combatPositions[1].copy(id = "FAKE_ID")
-    //     )
-    //
-    //     val listView = fragment.findComponent<ListView>(R.id.combatants)
-    //
-    //     val firstCombatantView = getViewByPosition(0, listView)
-    //     val secondCombatantView = getViewByPosition(1, listView)
-    //
-    //     assertEquals("8", firstCombatantView.findViewById<TextView>(R.id.combatTextSkillValue).text)
-    //     assertEquals("12", firstCombatantView.findViewById<TextView>(R.id.combatTextStaminaValue).text)
-    //     assertEquals("9", secondCombatantView.findViewById<TextView>(R.id.combatTextSkillValue).text)
-    //     assertEquals("13", secondCombatantView.findViewById<TextView>(R.id.combatTextStaminaValue).text)
-    // }
+        val enemySkillInput = dialog.findViewById<EditText>(R.id.enemySkillValue)
+        val enemyStaminaInput = dialog.findViewById<EditText>(R.id.enemyStaminaValue)
+        val handicapInput = dialog.findViewById<EditText>(R.id.handicapValue)
+
+        enemySkillInput.setText("8")
+        enemyStaminaInput.setText("12")
+        handicapInput.setText("1")
+
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).performClick()
+
+        assertEquals(
+            AdventureCombatFragment.Combatant(
+                currentStamina = 12,
+                currentSkill = 8,
+                handicap = 1,
+                isDefenseOnly = false,
+                damage = "2",
+                isActive = true
+            ),
+            fragment.combatPositions[0]
+        )
+
+        val listView = fragment.findComponent<ListView>(R.id.combatants)
+
+        val firstCombatantView = getViewByPosition(0, listView)
+
+        assertEquals("8", firstCombatantView.findViewById<TextView>(R.id.combatTextSkillValue).text)
+        assertEquals("12", firstCombatantView.findViewById<TextView>(R.id.combatTextStaminaValue).text)
+    }
+
+    @Test
+    fun `when adding two opponents it adds two enemies to the list via a dialog and keeps the first one as active`() {
+        initializeCombatWithTwoEnemies(enemyHandicap1 = 1, enemyHandicap2 = -1)
+
+        assertEquals(
+            AdventureCombatFragment.Combatant(
+                currentStamina = 12,
+                currentSkill = 8,
+                handicap = 1,
+                isDefenseOnly = false,
+                damage = "2",
+                isActive = true
+            ),
+            fragment.combatPositions[0]
+        )
+
+        assertEquals(
+            AdventureCombatFragment.Combatant(
+                currentStamina = 13,
+                currentSkill = 9,
+                handicap = -1,
+                isDefenseOnly = true,
+                damage = "2",
+                isActive = false
+            ),
+            fragment.combatPositions[1]
+        )
+
+        val listView = fragment.findComponent<ListView>(R.id.combatants)
+
+        val firstCombatantView = getViewByPosition(0, listView)
+        val secondCombatantView = getViewByPosition(1, listView)
+
+        assertEquals("8", firstCombatantView.findViewById<TextView>(R.id.combatTextSkillValue).text)
+        assertEquals("12", firstCombatantView.findViewById<TextView>(R.id.combatTextStaminaValue).text)
+        assertEquals("9", secondCombatantView.findViewById<TextView>(R.id.combatTextSkillValue).text)
+        assertEquals("13", secondCombatantView.findViewById<TextView>(R.id.combatTextStaminaValue).text)
+    }
 
     @Test
     fun `when clicking the plus stamina button for an opponent in increases it's stamina`() {
@@ -318,7 +339,7 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
         assertEquals(VISIBLE, fragment.findComponent<View>(R.id.addCombatButton).visibility)
         assertEquals(VISIBLE, fragment.findComponent<View>(R.id.combatType).visibility)
         assertEquals(VISIBLE, fragment.findComponent<View>(R.id.startCombat).visibility)
-        assertEquals(VISIBLE, fragment.findComponent<View>(R.id.resetCombat).visibility)
+        assertEquals(GONE, fragment.findComponent<View>(R.id.resetCombat).visibility)
         assertEquals(GONE, fragment.findComponent<View>(R.id.resetCombat2).visibility)
         assertEquals(GONE, fragment.findComponent<View>(R.id.testLuckButton).visibility)
         assertEquals(GONE, fragment.findComponent<View>(R.id.attackButton).visibility)
@@ -410,11 +431,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
         initializeCombatWithTwoEnemies()
         val listView = fragment.findComponent<ListView>(R.id.combatants)
 
-
         mockkObject(DiceRoller)
         every { DiceRoller.rollD6() } returns 6
-
-        val startingStamina = fragment.combatPositions[0].currentStamina
 
         val firstCombatantStamina = {
             getViewByPosition(
@@ -506,7 +524,7 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in normal combat mode, and you lose the rounds, the combat status displays the turn result`() {
-        loadSpecificvaluesToState("currentSkill" to "0")
+        loadSpecificvaluesToState("currentSkill" to "1")
 
         initializeCombatWithTwoEnemies()
         val combatResult = fragment.findComponent<TextView>(R.id.combatResult)
@@ -702,8 +720,7 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when the player's stamina reaches zero it displays a defeat message`() {
-        loadSpecificvaluesToState("currentSkill" to "11")
-        loadSpecificvaluesToState("currentStamina" to "23")
+        loadSpecificvaluesToState("currentSkill" to "11", "currentStamina" to "2")
 
         initializeCombatWithTwoEnemies(enemySkill1 = 12, enemyStamina1 = 12)
 

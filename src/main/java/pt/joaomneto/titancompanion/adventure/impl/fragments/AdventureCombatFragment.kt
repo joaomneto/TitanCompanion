@@ -342,10 +342,10 @@ open class AdventureCombatFragment : AdventureFragment() {
             adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage))
             combatResultText += (
                 getString(R.string.youWereHit) + " (" + attackDiceRoll.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "") +
-                    ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + ")."
+                    ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + "). (-" + damage + getString(R.string.staminaInitials) + ")"
                 )
         } else {
-            combatResult!!.setText(R.string.bothMissed)
+            combatResultText += getString(R.string.bothMissed)
             draw = true
         }
 
