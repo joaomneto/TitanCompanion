@@ -33,17 +33,17 @@ open class AdventureCombatFragment : AdventureFragment() {
     protected var resetButton2: Button? = null
     protected var combatTypeSwitch: Switch? = null
     protected var rootView: View? = null
-    protected var combatPositions: MutableList<Combatant> = ArrayList()
+    var combatPositions: MutableList<Combatant> = ArrayList()
     protected var combatantListAdapter: CombatantListAdapter? = null
     protected var combatantsListView: ListView? = null
-    protected var combatMode = NORMAL
+    var combatMode = NORMAL
     protected var handicap = 0
 
     protected var draw = false
     protected var luckTest = false
     protected var hit = false
 
-    protected var combatStarted = false
+    var combatStarted = false
 
     protected var staminaLoss = 0
     protected var attackDiceRoll = DiceRoll(0, 0)
@@ -57,7 +57,7 @@ open class AdventureCombatFragment : AdventureFragment() {
     protected open val knockoutStamina: Int
         get() = Int.MAX_VALUE
 
-    protected open val damage: () -> Int
+    open val damage: () -> Int
         get() = { 2 }
 
     protected open val defaultEnemyDamage: String
@@ -246,7 +246,7 @@ open class AdventureCombatFragment : AdventureFragment() {
             adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage))
             combatResultText += (
                 getString(R.string.youWereHit) + " (" + attackDiceRoll.sum + " + " + skill + (if (position.handicap >= 0) " + " + position.handicap else "") +
-                    ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + "). (-" + damage + R.string.staminaInitials + ")"
+                    ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill + "). (-" + damage + getString(R.string.staminaInitials) + ")"
                 )
         } else {
             combatResultText += R.string.bothMissed
@@ -330,7 +330,7 @@ open class AdventureCombatFragment : AdventureFragment() {
                 combatResultText += (
                     getString(R.string.hitEnemy) + " (" + attackDiceRoll.sum + " + " + skill +
                         (if (position.handicap >= 0) " + " + position.handicap else "") + ") vs (" + enemyDiceRoll.sum + " + " + position.currentSkill +
-                        ")."
+                        "). (-" + damage + getString(R.string.staminaInitials) + ")"
                     )
             } else {
                 position.currentStamina = 0
@@ -500,7 +500,7 @@ open class AdventureCombatFragment : AdventureFragment() {
         return false
     }
 
-    inner class Combatant(
+    data class Combatant(
         var currentStamina: Int,
         var currentSkill: Int,
         var handicap: Int = 0,

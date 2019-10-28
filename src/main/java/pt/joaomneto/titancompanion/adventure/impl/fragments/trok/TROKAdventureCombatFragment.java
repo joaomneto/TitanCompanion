@@ -89,7 +89,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
     }
 
     @Override
-    protected Function0<Integer> getDamage() {
+    public Function0<Integer> getDamage() {
         if (getCombatMode().equals(Companion.getNORMAL())) {
             return () -> 2;
         } else if (getCombatMode().equals(TROK15_GUNFIGHT)) {
@@ -217,7 +217,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
         setDraw(false);
         setLuckTest(false);
         setHit(false);
-        DiceRoll diceRoll = DiceRoller.roll2D6();
+        DiceRoll diceRoll = DiceRoller.INSTANCE.roll2D6();
         int skill = adv.getCombatSkillValue();
         boolean hitEnemy = diceRoll.getSum() <= skill;
         if (hitEnemy) {
@@ -239,7 +239,7 @@ public class TROKAdventureCombatFragment extends AdventureCombatFragment {
         for (int i = 0; i < getCombatPositions().size(); i++) {
             Combatant enemy = getCombatPositions().get(i);
             if (enemy != null && enemy.getCurrentStamina() > 0) {
-                if (DiceRoller.roll2D6().getSum() <= enemy.getCurrentSkill()) {
+                if (DiceRoller.INSTANCE.roll2D6().getSum() <= enemy.getCurrentSkill()) {
                     int damage = Companion.convertDamageStringToInteger(enemy.getDamage());
                     getCombatResult().setText(getCombatResult().getText() + "\n" + getString(R.string.saCombatText2, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage));
                     adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage));

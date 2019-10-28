@@ -51,7 +51,9 @@ open class AdventureNotesFragment : AdventureFragment() {
                 alert.setTitle(R.string.note)
 
                 // Set an EditText view to get user input
-                val input = EditText(adv)
+                val input = EditText(adv).apply {
+                    this.id = R.id.alert_editText_field
+                }
                 val imm = adv.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT)
                 input.requestFocus()

@@ -63,7 +63,7 @@ abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
     @Before
     fun createActivity() {
 
-        // if (cachedAdventure == null || !adventureClass.isInstance(cachedAdventure)) {
+        if (cachedAdventure == null || !adventureClass.isInstance(cachedAdventure)) {
             val intent = Intent(
                     ApplicationProvider.getApplicationContext(),
                     TWOFMAdventure::class.java
@@ -74,9 +74,9 @@ abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
             val activityController = Robolectric.buildActivity(adventureClass.java, intent)
             adventure = activityController.setup().get() as T
             cachedAdventure = adventure
-        // } else {
-        //     adventure = cachedAdventure as T
-        // }
+        } else {
+            adventure = cachedAdventure as T
+        }
 
         adventure.savedGame = properties
         adventure.loadGameFromProperties()

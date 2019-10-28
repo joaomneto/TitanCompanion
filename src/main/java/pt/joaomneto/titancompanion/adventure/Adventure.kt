@@ -180,7 +180,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
     }
 
     fun testLuckInternal(): Boolean {
-        val result = DiceRoller.roll2D6().sum < currentLuck
+        val result = DiceRoller.roll2D6().sum <= currentLuck
 
         setCurrentLuck(--currentLuck)
         return result

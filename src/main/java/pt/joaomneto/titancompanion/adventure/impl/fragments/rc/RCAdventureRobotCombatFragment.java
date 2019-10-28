@@ -633,8 +633,8 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         RCAdventure adv = (RCAdventure) getActivity();
 
-        DiceRoll playerRoll = DiceRoller.roll2D6();
-        DiceRoll enemyRoll = DiceRoller.roll2D6();
+        DiceRoll playerRoll = DiceRoller.INSTANCE.roll2D6();
+        DiceRoll enemyRoll = DiceRoller.INSTANCE.roll2D6();
 
         Robot currentRobot = adv.getCurrentRobot();
         int playerCombatScore = playerRoll.getSum() + adv.getCurrentSkill() + currentRobot.getBonus();
@@ -736,9 +736,9 @@ public class RCAdventureRobotCombatFragment extends AdventureFragment {
 
         if (sonicShotAttack) {
             if (getCurrentEnemy().isDinosaur()) {
-                enemyExtraDamage = DiceRoller.roll2D6().getSum();
+                enemyExtraDamage = DiceRoller.INSTANCE.roll2D6().getSum();
             } else {
-                enemyExtraDamage = DiceRoller.rollD6();
+                enemyExtraDamage = DiceRoller.INSTANCE.rollD6();
             }
             combatStatus.append(getString(R.string.rcSonicShot, enemyExtraDamage));
         }

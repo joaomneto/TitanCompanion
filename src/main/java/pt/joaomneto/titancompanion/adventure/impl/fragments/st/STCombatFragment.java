@@ -126,10 +126,10 @@ public class STCombatFragment extends AdventureFragment {
 
         if (!finishedCombats.contains(currentCombat)) {
             STAdventure adv = (STAdventure) getActivity();
-            DiceRoll crewmanDiceRoll = DiceRoller.roll2D6();
+            DiceRoll crewmanDiceRoll = DiceRoller.INSTANCE.roll2D6();
             int crewmanSkill = adv.getCrewmanSkill(position.getCrewman());
             int crewmanAttackStrength = crewmanDiceRoll.getSum() + crewmanSkill;
-            DiceRoll enemyDiceRoll = DiceRoller.roll2D6();
+            DiceRoll enemyDiceRoll = DiceRoller.INSTANCE.roll2D6();
             int enemyAttackStrength = enemyDiceRoll.getSum() + position.getCurrentSkill();
             LinearLayout row = rootView.findViewById(gridRows[currentCombat]);
             String crewmanString = adv.getStringForCrewman(position.getCrewman());
@@ -205,9 +205,9 @@ public class STCombatFragment extends AdventureFragment {
         if (!finishedCombats.contains(currentCombat)) {
             STAdventure adv = (STAdventure) getActivity();
             CombatPosition position = combatPositions.get(currentCombat);
-            DiceRoll crewmanDiceRoll = DiceRoller.roll2D6();
+            DiceRoll crewmanDiceRoll = DiceRoller.INSTANCE.roll2D6();
             int crewmanSkill = adv.getCrewmanSkill(position.getCrewman());
-            DiceRoll enemyDiceRoll = DiceRoller.roll2D6();
+            DiceRoll enemyDiceRoll = DiceRoller.INSTANCE.roll2D6();
 
             int crewmanHandicap = 0;
 
