@@ -31,7 +31,7 @@ public class RPAdventureCombatFragment extends AdventureCombatFragment {
     @Override
     protected Boolean suddenDeath(DiceRoll diceRoll, DiceRoll enemyDiceRoll) {
         if (unarmed) {
-            return DiceRoller.rollD6() == 6;
+            return DiceRoller.INSTANCE.rollD6() == 6;
         }
         return super.suddenDeath(diceRoll, enemyDiceRoll);
     }

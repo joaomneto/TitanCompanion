@@ -59,7 +59,7 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
                 for (Combatant enemy : getCombatPositions()) {
 
                     if (enemy != null && enemy.getCurrentStamina() > 0) {
-                        int damage = DiceRoller.rollD6();
+                        int damage = DiceRoller.INSTANCE.rollD6();
                         enemy.setCurrentStamina(Math.max(enemy.getCurrentStamina() - damage, 0));
                         String text = getString(R.string.saCombatText1, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage);
                         if (result.isEmpty()) {
@@ -112,12 +112,12 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
         setDraw(false);
         setLuckTest(false);
         setHit(false);
-        DiceRoll diceRoll = DiceRoller.roll2D6();
+        DiceRoll diceRoll = DiceRoller.INSTANCE.roll2D6();
         int skill = adv.getCurrentSkill();
         boolean hitEnemy = diceRoll.getSum() <= skill;
 
         if (hitEnemy) {
-            int damage = assaultBlaster ? DiceRoller.rollD6() : 2;
+            int damage = assaultBlaster ? DiceRoller.INSTANCE.rollD6() : 2;
             position.setCurrentStamina(Math.max(0, position.getCurrentStamina() - damage));
             setHit(true);
             getCombatResult().setText(getString(R.string.saHitEnemy, damage));
@@ -134,8 +134,8 @@ public class SAAdventureCombatFragment extends AdventureCombatFragment {
 
         for (Combatant enemy : getCombatPositions()) {
             if (enemy != null && enemy.getCurrentStamina() > 0) {
-                if (DiceRoller.roll2D6().getSum() <= enemy.getCurrentSkill()) {
-                    int damage = enemy.getDamage().equals("2") ? 2 : DiceRoller.rollD6();
+                if (DiceRoller.INSTANCE.roll2D6().getSum() <= enemy.getCurrentSkill()) {
+                    int damage = enemy.getDamage().equals("2") ? 2 : DiceRoller.INSTANCE.rollD6();
                     getCombatResult().setText(getCombatResult().getText() + "\n" + getString(R.string.saCombatText2, enemy.getCurrentSkill(), enemy.getCurrentStamina(), damage));
                     adv.setCurrentStamina(Math.max(0, adv.getCurrentStamina() - damage));
                 } else {

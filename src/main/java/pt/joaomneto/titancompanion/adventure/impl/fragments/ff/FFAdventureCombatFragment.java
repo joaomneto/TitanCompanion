@@ -97,14 +97,14 @@ public class FFAdventureCombatFragment extends AdventureCombatFragment {
     }
 
     @Override
-    protected Function0<Integer> getDamage() {
+    public Function0<Integer> getDamage() {
         if (getCombatMode().equals(Companion.getNORMAL())) {
             if (overrideDamage == null) {
                 return () -> 1;
             } else
                 return () -> Companion.convertDamageStringToInteger(overrideDamage);
         } else if (getCombatMode().equals(FF13_GUNFIGHT)) {
-            return () -> DiceRoller.rollD6();
+            return () -> DiceRoller.INSTANCE.rollD6();
         }
 
         return () -> 2;

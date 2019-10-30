@@ -156,8 +156,8 @@ public class STStarshipCombatFragment extends AdventureFragment {
 
                 combatResult.setText("");
 
-                DiceRoll me = DiceRoller.roll2D6();
-                DiceRoll enemy = DiceRoller.roll2D6();
+                DiceRoll me = DiceRoller.INSTANCE.roll2D6();
+                DiceRoll enemy = DiceRoller.INSTANCE.roll2D6();
 
                 if (me.getSum() < adv.getCurrentShipWeapons()) {
                     enemyShields -= 2;

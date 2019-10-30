@@ -254,7 +254,7 @@ public class AODAdventureSoldiersFragment extends AdventureFragment {
             battleBalance = AODAdventureBattleBalance.EVEN;
         }
 
-        int diceRoll = DiceRoller.rollD6();
+        int diceRoll = DiceRoller.INSTANCE.rollD6();
 
 
         AODAdventureBattleResults result = battleResults.get(battleBalance).get(diceRoll);

@@ -106,10 +106,13 @@ class LoadAdventureActivity : BaseActivity() {
                     )
 
                     intent.putExtra(
-                        ADVENTURE_FILE,
-                        savepointFiles[which].name
+                        ADVENTURE_SAVEGAME_CONTENT,
+                        File(File(File(filesDir, "ffgbutil"), dir.name), savepointFiles[which].name).readText()
                     )
-                    intent.putExtra(ADVENTURE_DIR, dir.name)
+                    intent.putExtra(
+                        ADVENTURE_NAME,
+                        dir.name
+                    )
                     startActivity(intent)
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -155,8 +158,8 @@ class LoadAdventureActivity : BaseActivity() {
 
     companion object {
 
-        val ADVENTURE_FILE = "ADVENTURE_FILE"
-        val ADVENTURE_DIR = "ADVENTURE_DIR"
+        val ADVENTURE_SAVEGAME_CONTENT = "ADVENTURE_SAVEGAME_CONTENT"
+        val ADVENTURE_NAME = "ADVENTURE_NAME"
 
         val DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd HH:mm")
 
