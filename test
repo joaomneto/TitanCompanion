@@ -1,0 +1,7 @@
+pt.joaomneto.titancompanion.adventure.AbstractTestAdventureCombatTest
+pt.joaomneto.titancompanion.adventure.AbstractTestTest
+pt.joaomneto.titancompanion.adventure.cot.COTAdventureNotesTest
+pt.joaomneto.titancompanion.adventure.dd.DDTestAdventureNotesTest
+pt.joaomneto.titancompanion.adventure.iotlk.IOTLKAbstractTestAdventureNotesTest
+pt.joaomneto.titancompanion.adventure.tfod.TFODAbstractTestAdventureNotesTest
+pt.joaomneto.titancompanion.adventure.twofm.TWOFMAbstractTestAdventureNotesTest
