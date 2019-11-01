@@ -46,7 +46,7 @@ jobs:
             for line in `circleci tests glob "src/test/java/**/Test*.kt" | circleci tests split --split-by=filesize`; do temp="${line/src\/test\/java\//}"; temp="${temp/.kt/}"; temp="${temp//\//.}"; echo "--tests $temp"; done | awk 'ORS=" "' > /tmp/tests-to-run
             ./gradlew testDebugUnitTest -x lint --build-cache $(cat /tmp/tests-to-run)
       - store_test_results:
-          path: build/test-results/testReleaseUnitTest
+          path: build/reports/tests/testDebugUnitTest
   instrumentation-tests:
     parallelism: 4
     working_directory: /home/circleci/code
