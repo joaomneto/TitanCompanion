@@ -3,9 +3,6 @@ Titan Companion
 
 [![CircleCI](https://circleci.com/gh/joaomneto/TitanCompanion.svg?style=svg)](https://circleci.com/gh/joaomneto/TitanCompanion)
 
-**Titan Companion** is an app that serves as a companion for the original paperback Fighting Fantasy gamebooks. In order to immerse the player fully in the story, this apps replaces 
-all need for paper, pen and dice. Every gamebook specific rules are implemented with save and load features.
-
 [<img src="https://f-droid.org/badge/get-it-on.png"
       alt="Get it on F-Droid"
       height="80">](https://f-droid.org/packages/pt.joaomneto.titancompanion/)
@@ -13,32 +10,44 @@ all need for paper, pen and dice. Every gamebook specific rules are implemented 
       alt="Get it on Google Play"
       height="80">](https://play.google.com/store/apps/details?id=pt.joaomneto.titancompanion)
 
-#### Screenshots
-![Combat screen](https://lh3.googleusercontent.com/K14a0FQemlg1lQnASvIneq0Nyqx2c6l1IDlZOZ6HZcxhBmhjnneKyvHey0vhW9wUcamhp4LMxsWjk0tZEY4XfB0qqcYOiw_492kg31ifhDz5ANdLFIhXwkPXLHt0e2nNJmfxK-_DYEXSe-V-2TfC7lcYDKUuHk_1Xwmm1g176oyDkIDnsdFqQEivW-IMQ8VOQO8VbsEYnfRaTT4MtBt3UuPA5lkU2J05F0C4t4xA3N1wtwSFHzE0ekjMdzc4d7vjUzNttIaQbhwCwqc30xNvt0MgrG7GiqpzX6JzVB5Yog2FCYd3HD8qtal9iTnA2TEkp3x5bZ_UT8Ia6eXbn-MtyYbUmWjbh7wpAVE2FR3G5zJNCax4-j0hiMNfPQ-GZUC6tOXnZGPACKKCSfJ81zh6RaObj0clZyY1NFCNG7epwrCLUz5_LHUH4jmtRiIvfoiB6LVpJ32TiK9WNB6fbkX63svWUPppzhEJLgCvRCwQ0llQeU0ogMg-OsSwDI6_QCfnSOwx2ATlJz1mDWEzQW9Ka6klVC4CXNY7tpF6bVqXpw-f5c5d5g9u_ocre8bZvQwcjcpBNU-QSfPJ6nFIMirlrATk4pSgAb-DO_oFvbDMYfEt_vZxiRxV8O0dywzvyxUFaZEQXOPFTfgr_DzfhNiok7j1WSA6cAyrLionkxkoASq21-U=w402-h714-no "Combat screen")
+The Titan Companion is an app that combines stat sheet and rules engine for all Fighting Fantasy gamebooks.
 
-#### App Stores
+Main Screen | Vital Stats | Combat
+:-:|:-:|:-:
+![Main Screen](https://lh3.googleusercontent.com/f87FehcLHasmXmvwoa3eXvCLh5oJssP3iAqqD4JLGS5uxEqTogSCbiE_g12gXDXUwQ=w720-h310-rw) | ![Vital Stats](https://lh3.googleusercontent.com/4d4RpeZtNvfUZEl-ORKUszJ93QEMPLhRABdqCwRfKI2Xo3PIsO_8ReB4wKlCTlM7ZT8=w720-h310-rw) | ![Battle Screen](https://lh3.googleusercontent.com/fMIfAR04VoPQLngxFSdp33HLN0Ti838lMmFKp3Io-tUNfcy3XEpY--2cP8FD1cHGJKFt=w720-h310-rw)
 
-TBA
+#### Features:
 
-#### QR Market Links
+- Stat sheets for all Fighting Fantasy gamebooks
+- Generic dice rolls
+- Skill, Luck and other gamebook specific tests
+- Combat engine for standard and gamebook specific rules
+- Equipment and Note list
+- Save and Load feature with current gamebook paragraph
 
-TBA
+The main objective of this app is to allow the reader to fully immerse himself into the story and even to give some portability to the gamebooks. You can read in the coffee shop, in the bus or at the beach, and save your progress at any moment to resume later on.
 
-## Tests
-#### Works on
+This app and it's developer are not affiliated with Puffin Books, Wizard Books or the Fighting Fantasy brand. This is a labor of love that began as a personal project for my use only and that I decided to share with the community.
+
+There is absolutely no content of the books themselves in the app. You need the books to use it properly. I intend no copyright infringement whatsoever.
+
+This is still in beta phase as I wasn't able to implement the rules/sheets for all the books.
+
+As of now, only the first 24 books are supported by the app. You can still use it for other gamebooks but with the obvious limits.
+
+You can report any bug issue here in the store comments or preferably in the project website https://gitlab.com/joao.m.neto/FFCompanion/.
+
+Thanks to Sebastien Haezebrouck for providing the french translation for this app.
+
+
+## Works on
 * Devices with Android OS v4.3+
-
-## Permissions
-* Write access to external storage
 
 ## License 
 * see [LICENSE](https://raw.githubusercontent.com/joaomneto/TitanCompanion/master/LICENSE) file
 
-## Version 
-* Version 0.1
-
 ## Contact
-#### Developer/Company
-* Homepage: https://gitlab.com/joao.m.neto/
+#### Developer
+* Homepage: https://joaomneto.github.io/TitanCompanion/
 * e-mail: joao.m.neto@gmail.com
 
