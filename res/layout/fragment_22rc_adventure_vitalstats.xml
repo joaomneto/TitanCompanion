@@ -35,7 +35,7 @@
 
     <TextView
             android:id="@+id/statsSkillValue"
-            android:layout_width="40dp"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/plusSkillButton"
             android:layout_alignTop="@+id/plusSkillButton"
@@ -73,7 +73,7 @@
 
     <TextView
             android:id="@+id/statsStaminaValue"
-            android:layout_width="40dp"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/plusStaminaButton"
             android:layout_alignTop="@+id/plusStaminaButton"
@@ -111,7 +111,7 @@
 
     <TextView
             android:id="@+id/statsLuckValue"
-            android:layout_width="40dp"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/plusLuckButton"
             android:layout_alignTop="@+id/plusLuckButton"
@@ -149,7 +149,7 @@
 
     <TextView
             android:id="@+id/provisionsValue"
-            android:layout_width="40dp"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/plusProvisionsButton"
             android:layout_alignTop="@+id/plusProvisionsButton"

@@ -41,10 +41,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation 'commons-io:commons-io:2.6'
     implementation 'androidx.core:core-ktx:1.1.0'
-    testImplementation('org.robolectric:robolectric:4.3'){
-        exclude group: 'org.bouncycastle'
-    }
-    testImplementation 'org.bouncycastle:bcprov-jdk15on:1.52'
+    testImplementation('org.robolectric:robolectric:4.3')
     testImplementation 'androidx.test:core:1.2.0'
     testImplementation 'junit:junit:4.12'
     testImplementation "io.mockk:mockk:1.9.3"
@@ -147,12 +144,15 @@ task(prepareRelease) {
         }
 
         def diff = ['sh', '-c', 'git diff --numstat origin/master -- src/main/play'].execute().text.trim()
+        if(diff.isBlank()){
+            throw new IllegalStateException("Missing modifications to release notes")
+        }
         def filesChanged = diff.split('\n').collect { it.split('\t')[2].trim() }
         def missingModifications = [
-                'src/main/play/en-GB/whatsnew',
-                'src/main/play/fr-FR/whatsnew',
-                'src/main/play/pt-PT/whatsnew',
-                'src/main/play/pt-BR/whatsnew'
+                'src/main/play/release-notes/en-GB/beta.txt',
+                'src/main/play/release-notes/fr-FR/beta.txt',
+                'src/main/play/release-notes/pt-PT/beta.txt',
+                'src/main/play/release-notes/pt-BR/beta.txt'
         ] - filesChanged
 
         if (missingModifications.empty) {
@@ -180,7 +180,7 @@ task(prepareRelease) {
 
 
             new File("pr_temp_file").text = """Release ${newVersion}\n\n${
-                new File('src/main/play/en-GB/whatsnew').text
+                new File('src/main/play/release-notes/en-GB/beta.txt').text
             }"""
             println "Opening pull request..."
             exec {

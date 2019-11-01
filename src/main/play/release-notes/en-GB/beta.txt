@@ -1,1 +1,1 @@
-- Added Vault of the Vampire
+- Adjusted layouts for bigger font sizes

@@ -31,7 +31,7 @@
 
         <Button
                 android:id="@+id/statsSkillValue"
-                android:layout_width="50dp"
+                android:layout_width="75dp"
                 android:layout_height="50dp"
                 android:layout_alignBottom="@+id/skillText"
                 android:layout_alignTop="@+id/skillText"
@@ -77,7 +77,7 @@
 
         <Button
                 android:id="@+id/statsStaminaValue"
-                android:layout_width="50dp"
+                android:layout_width="75dp"
                 android:layout_height="50dp"
                 android:layout_alignBottom="@+id/staminaText"
                 android:layout_alignTop="@+id/staminaText"
@@ -123,7 +123,7 @@
 
         <Button
                 android:id="@+id/statsLuckValue"
-                android:layout_width="50dp"
+                android:layout_width="75dp"
                 android:layout_height="50dp"
                 android:layout_alignBottom="@+id/luckText"
                 android:layout_alignTop="@+id/luckText"
