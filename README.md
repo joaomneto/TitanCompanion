@@ -1,5 +1,8 @@
-Titan Companion
+Titan Companion 
 ======
+
+[![CircleCI](https://circleci.com/gh/joaomneto/TitanCompanion.svg?style=svg)](https://circleci.com/gh/joaomneto/TitanCompanion)
+
 **Titan Companion** is an app that serves as a companion for the original paperback Fighting Fantasy gamebooks. In order to immerse the player fully in the story, this apps replaces 
 all need for paper, pen and dice. Every gamebook specific rules are implemented with save and load features.
 
