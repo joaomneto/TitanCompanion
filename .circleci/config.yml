@@ -1,44 +1,54 @@
 version: 2
 jobs:
   build-and-lint:
-     working_directory: /home/circleci/code
-     docker:
-       - image: circleci/android:api-29
-     environment:
-       JVM_OPTS: -Xmx2048m
-       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
-       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
-     steps:
-       - checkout
-       - run:
-           name: Lint
-           command: ./gradlew lint lintVitalRelease
-       - run:
-           name: Generate Debug APK
-           command: ./gradlew assembleDebug -PdisablePreDex
-       - run:
-           name: Generate Debug Testing APK
-           command: ./gradlew assembleDebugAndroidTest -PdisablePreDex
-       - persist_to_workspace:
-           root: /home/circleci/code
-           paths:
-             - build
-  test-1:
-     working_directory: /home/circleci/code
-     docker:
-         - image: circleci/android:api-29
-     environment:
-       JVM_OPTS: -Xmx2048m
-       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
-       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
-     steps:
-       - checkout
-       - attach_workspace:
+    working_directory: /home/circleci/code
+    docker:
+      - image: circleci/android:api-29
+    environment:
+      JVM_OPTS: -Xmx2048m
+      GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+      TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
+    steps:
+      - checkout
+      - run:
+          name: Lint
+          command: ./gradlew lint --build-cache
+      - run:
+          name: Generate Debug APK
+          command: ./gradlew assembleDebug --build-cache -PdisablePreDex
+      - run:
+          name: Generate Debug Testing APK
+          command: ./gradlew assembleDebugAndroidTest --build-cache -PdisablePreDex
+      - run:
+          name: Compile Roboelectric tests
+          command: ./gradlew compileDebugUnitTests --build-cache
+      - persist_to_workspace:
+          root: /home/circleci/code
+          paths:
+            - build
+            - build-cache
+  roboelectric-tests:
+    parallelism: 4
+    working_directory: /home/circleci/code
+    docker:
+      - image: circleci/android:api-29
+    environment:
+      JVM_OPTS: -Xmx2048m
+      GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+      TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
+    steps:
+      - checkout
+      - attach_workspace:
           at: /home/circleci/code
-       - run:
+      - run:
           name: Run Roboelectric Tests
-          command: ./gradlew test -x lint -x compileDebugKotlin -x compileDebugUnitTestKotlin -x compileReleaseKotlin
-  instrumentation-test-1:
+          command: |
+            for line in `circleci tests glob "src/test/java/**/Test*.kt" | circleci tests split --split-by=filesize`; do temp="${line/src\/test\/java\//}"; temp="${temp/.kt/}"; temp="${temp//\//.}"; echo "--tests $temp"; done | awk 'ORS=" "' > /tmp/tests-to-run
+            ./gradlew testDebugUnitTest -x lint --build-cache $(cat /tmp/tests-to-run)
+      - store_test_results:
+          path: build/test-results/testReleaseUnitTest
+  instrumentation-tests:
+    parallelism: 4
     working_directory: /home/circleci/code
     docker:
       - image: circleci/python:3.7.3
@@ -47,6 +57,7 @@ jobs:
       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
     steps:
+      - checkout
       - attach_workspace:
           at: /home/circleci/code
       - run:
@@ -68,11 +79,12 @@ jobs:
             sudo apt-get install --only-upgrade -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
       - run:
           name: Configure Google Cloud Access
-          command:
-            ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
+          command: ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
       - run:
-          name: Run Firebase Testing Phase 1
-          command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --device model=Pixel2,version=28,orientation=portrait,locale=en_US --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase1"
+          name: Run Firebase Testing
+          command: |
+            for line in `circleci tests glob "src/androidTest/java/**/Test*.kt" | circleci tests split`; do temp="${line/src\/androidTest\/java\//}"; temp="${temp/.kt/}"; temp="${temp//\//.}"; echo "class $temp"; done | awk 'ORS=","' > /tmp/tests-to-run
+            TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --device model=Pixel2,version=28,orientation=portrait,locale=en_US --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="$(cat /tmp/tests-to-run)"
           no_output_timeout: 2400
       - store_artifacts:
           path: build/reports
@@ -82,72 +94,28 @@ jobs:
           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/Pixel2-28-en-portrait/*.xml /home/circleci/testResults/  || true
       - store_test_results:
           path: ~/testResults
-  instrumentation-test-2:
-     working_directory: /home/circleci/code
-     docker:
-       - image: circleci/python:3.7.3
-     environment:
-       JVM_OPTS: -Xmx2048m
-       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
-       TEST_RESULTS_DIR: $(cat /proc/sys/kernel/random/uuid)
-     steps:
-       - attach_workspace:
-          at: /home/circleci/code
-       - run:
-          name: Install tools
-          command: |
-             sudo pip uninstall -y crcmod
-             sudo pip install -U crcmod
-             pip install awscli --upgrade --user
-             sudo apt-get install lsb-release
-             cat /proc/sys/kernel/random/uuid > /home/circleci/uuid
-             mkdir /home/circleci/testResults
-       - run:
-           name: Install GCloud
-           command: |
-              echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-              curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-              sudo apt-get update
-              sudo apt-get install -y google-cloud-sdk
-              sudo apt-get install --only-upgrade -y kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
-       - run:
-           name: Configure Google Cloud Access
-           command:
-              ${GCLOUD_CONFIGURATION_COMMAND_1} && ${GCLOUD_CONFIGURATION_COMMAND_2} && ${GCLOUD_CONFIGURATION_COMMAND_3}
-       - run:
-           name: Run Firebase Testing Phase 2
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gcloud firebase test android run --device model=Pixel2,version=28,orientation=portrait,locale=en_US --verbosity=info --app /home/circleci/code/build/outputs/apk/debug/code-debug.apk --test /home/circleci/code/build/outputs/apk/androidTest/debug/code-debug-androidTest.apk --results-dir ${TEST_RESULTS_DIR} --test-targets="package pt.joaomneto.titancompanion.phase2"
-           no_output_timeout: 2400
-       - store_artifacts:
-           path: build/reports
-           destination: reports
-       - run:
-           name: Recover Test Results
-           command: TEST_RESULTS_DIR=$(cat /home/circleci/uuid) && gsutil cp gs://test-lab-srpkn6d5up7cq-nvy3r8hki2rp8/${TEST_RESULTS_DIR}/Pixel2-28-en-portrait/*.xml /home/circleci/testResults/ || true
-       - store_test_results:
-           path: ~/testResults
   deploy:
-     working_directory: /home/circleci/code
-     docker:
-       - image: circleci/android:api-29
-     environment:
-       JVM_OPTS: -Xmx2048m
-       GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
-     steps:
-       - checkout
-       - attach_workspace:
+    working_directory: /home/circleci/code
+    docker:
+      - image: circleci/android:api-29
+    environment:
+      JVM_OPTS: -Xmx2048m
+      GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+    steps:
+      - checkout
+      - attach_workspace:
           at: /home/circleci/code
-       - run:
+      - run:
           name: Install tools
           command: |
-             sudo apt-get update
-             sudo apt-get install -y gcc python-dev python-setuptools git golang
-             sudo pip uninstall -y crcmod
-             sudo pip install -U crcmod
-             pip install awscli --upgrade --user
-             go get -u github.com/tcnksm/ghr
-             ./gradlew help
-       - run:
+            sudo apt-get update
+            sudo apt-get install -y gcc python-dev python-setuptools git golang
+            sudo pip uninstall -y crcmod
+            sudo pip install -U crcmod
+            pip install awscli --upgrade --user
+            go get -u github.com/tcnksm/ghr
+            ./gradlew help
+      - run:
           name: Check for release
           command: |
             git fetch --tags > /dev/null 2>&1
@@ -157,19 +125,19 @@ jobs:
             echo "Last release version: $LAST_VERSION"
             echo $VERSION_MANIFEST > $HOME/version_manifest.lock
             echo $LAST_VERSION > $HOME/last_version.lock
-       - run:
+      - run:
           name: Build release
           command: |
             if [ $(cat $HOME/version_manifest.lock) != $(cat $HOME/last_version.lock) ]; then ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND1} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND2} && ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND3}; else echo "Nothing to do"; fi
-       - run:
+      - run:
           name: Rename release
           command: |
             if [ $(cat $HOME/version_manifest.lock) != $(cat $HOME/last_version.lock) ]; then ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && mkdir -p ./release && cp ./build/outputs/apk/release/code-release.apk ./release/pt.joaomneto.titancompanion.TitanCompanion-${VERSION}.apk; else echo "Nothing to do"; fi
-       - run:
+      - run:
           name: Create Version
           command: |
             if [ $(cat $HOME/version_manifest.lock) != $(cat $HOME/last_version.lock) ]; then ./gradlew help > /dev/null && VERSION=`./gradlew versionFromManifest --console=plain --quiet` && echo Tagging version ${VERSION} && $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -n ${VERSION} -body="$(cat src/main/play/release-notes/en-GB/beta.txt)" -delete ${VERSION} ./release/; else echo "Nothing to do"; fi
-       - run:
+      - run:
           name: Deploy To Play Store
           command: if [ $(cat $HOME/version_manifest.lock) != $(cat $HOME/last_version.lock) ]; then ${GOOGLE_PLAY_STORE_DEPLOY_COMMAND4}; else echo "Nothing to do"; fi
 workflows:
@@ -177,19 +145,15 @@ workflows:
   continuous-integration-and-delivery:
     jobs:
       - build-and-lint
-      - test-1:
+      - roboelectric-tests:
           requires:
             - build-and-lint
-      - instrumentation-test-1:
+      - instrumentation-tests:
           requires:
-            - test-1
-      - instrumentation-test-2:
-          requires:
-            - test-1
+            - roboelectric-tests
       - deploy:
           requires:
-            - instrumentation-test-1
-            - instrumentation-test-2
+            - instrumentation-tests
           filters:
             branches:
               only: master

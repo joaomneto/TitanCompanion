@@ -5,6 +5,7 @@
 /.gradle/
 /gen/
 /build/
+/build-cache/
 /bin/
 local.properties
 gradle.properties
