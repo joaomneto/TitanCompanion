@@ -41,7 +41,7 @@
 
         <TextView
                 android:id="@+id/statsOxygenValue"
-                android:layout_width="50dp"
+                android:layout_width="75dp"
                 android:layout_height="50dp"
                 android:layout_alignBottom="@+id/oxygenText"
                 android:layout_alignTop="@+id/oxygenText"
