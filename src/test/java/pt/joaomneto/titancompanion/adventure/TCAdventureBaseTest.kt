@@ -7,7 +7,6 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.core.view.children
 import androidx.test.core.app.ApplicationProvider
-import org.junit.Before
 import org.robolectric.Robolectric
 import org.robolectric.annotation.Config
 import pt.joaomneto.titancompanion.LoadAdventureActivity
@@ -15,40 +14,24 @@ import pt.joaomneto.titancompanion.adventure.impl.TWOFMAdventure
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.Properties
+import java.util.concurrent.ConcurrentHashMap
 import kotlin.collections.set
 import kotlin.reflect.KClass
 import kotlin.reflect.full.primaryConstructor
 
 @Config(sdk = [Build.VERSION_CODES.O_MR1])
 abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
-        private val adventureClass: KClass<T>,
-        private val fragmentClass: KClass<U>,
-        private val properties: Properties
+    private val adventureClass: KClass<T>,
+    private val fragmentClass: KClass<U>,
+    private val properties: Properties
 ) {
 
     companion object {
-        var cachedAdventure: Adventure? = null
+        var adventureCache: ConcurrentHashMap<KClass<out Adventure>, Adventure> = ConcurrentHashMap()
     }
 
     lateinit var adventure: T
     lateinit var fragment: U
-
-    protected fun loadSpecificvaluesToState(vararg pairs: Pair<String, String>) {
-        val newSavegame = Properties()
-        newSavegame.putAll(properties.toMap())
-        pairs.forEach { newSavegame[it.first] = it.second }
-        adventure.savedGame = newSavegame
-        adventure.loadGameFromProperties()
-        adventure.supportFragmentManager
-            .beginTransaction()
-            .detach(fragment)
-            .commitNowAllowingStateLoss()
-
-        adventure.supportFragmentManager
-            .beginTransaction()
-            .attach(fragment)
-            .commitAllowingStateLoss()
-    }
 
     private fun getPropertyAsString(prop: Properties): String {
         val modifiedProps = Properties()
@@ -60,25 +43,31 @@ abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
         return writer.buffer.toString()
     }
 
-    @Before
-    fun createActivity() {
-
-        if (cachedAdventure == null || !adventureClass.isInstance(cachedAdventure)) {
+    fun loadActivity(vararg pairs: Pair<String, String> = emptyArray()) {
+        if (!adventureCache.containsKey(adventureClass) || !adventureClass.isInstance(adventureCache[adventureClass])) {
             val intent = Intent(
-                    ApplicationProvider.getApplicationContext(),
-                    TWOFMAdventure::class.java
+                ApplicationProvider.getApplicationContext(),
+                TWOFMAdventure::class.java
             )
-            intent.putExtra(LoadAdventureActivity.ADVENTURE_SAVEGAME_CONTENT, getPropertyAsString(properties))
+            intent.putExtra(
+                LoadAdventureActivity.ADVENTURE_SAVEGAME_CONTENT,
+                getPropertyAsString(properties)
+            )
             intent.putExtra(LoadAdventureActivity.ADVENTURE_NAME, "test")
 
             val activityController = Robolectric.buildActivity(adventureClass.java, intent)
             adventure = activityController.setup().get() as T
-            cachedAdventure = adventure
+            adventureCache[adventureClass] = adventure
         } else {
-            adventure = cachedAdventure as T
+            adventure = requireNotNull(adventureCache[adventureClass]) as T
         }
 
-        adventure.savedGame = properties
+        val savedGame = Properties().apply {
+            putAll(properties)
+            pairs.forEach { this[it.first] = it.second }
+        }
+
+        adventure.savedGame = savedGame
         adventure.loadGameFromProperties()
 
         loadFragment()
@@ -86,14 +75,14 @@ abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
         fragment.refreshScreensFromResume()
     }
 
-    fun loadFragment() {
-        fragment = fragmentClass.primaryConstructor?.call()
+    private fun loadFragment() {
+            fragment = fragmentClass.primaryConstructor?.call()
                 ?: throw IllegalArgumentException("No constructor for fragnment ${fragmentClass.simpleName}")
-        adventure.supportFragmentManager.beginTransaction().add(fragment, null).commit()
+            adventure.supportFragmentManager.beginTransaction().add(fragment, null).commit()
     }
 
     fun <T : View> AdventureFragment.findComponent(resId: Int) = this.view?.findViewById<T>(resId)
-            ?: throw IllegalStateException("View not found")
+        ?: throw IllegalStateException("View not found")
 
     fun getViewByPosition(pos: Int, listView: ListView): View {
         val firstListItemPosition = listView.firstVisiblePosition
@@ -108,8 +97,8 @@ abstract class TCAdventureBaseTest<T : Adventure, U : AdventureFragment>(
     }
 
     fun ListView.getPositionByText(text: String) = this
-            .children
-            .first {
-                (it as TextView).text == text
-            }
+        .children
+        .first {
+            (it as TextView).text == text
+        }
 }
