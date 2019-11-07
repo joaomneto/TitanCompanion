@@ -24,6 +24,8 @@ abstract class AdventureNotesTest<T : Adventure, U : AdventureNotesFragment>(
 
     @Test
     fun `when clicking the add note button it adds an note to the list via a dialog`() {
+        loadActivity()
+
         fragment.findComponent<Button>(R.id.buttonAddNote).performClick()
 
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
@@ -41,7 +43,7 @@ abstract class AdventureNotesTest<T : Adventure, U : AdventureNotesFragment>(
 
     @Test
     fun `when long pressing an note item it removes an item from the list via a confirmation dialog`() {
-        loadSpecificvaluesToState("notes" to "n1#n2")
+        loadActivity("notes" to "n1#n2")
 
         val listView = fragment.findComponent<ListView>(R.id.noteList)
         val shadowListView = Shadows.shadowOf(listView)

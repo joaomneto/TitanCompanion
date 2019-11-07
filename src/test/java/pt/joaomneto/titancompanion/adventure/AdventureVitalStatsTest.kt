@@ -23,6 +23,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the minus stamina button it decreases the stamina in the state`() {
+        loadActivity()
 
         fragment.findComponent<Button>(R.id.minusStaminaButton).performClick()
 
@@ -35,7 +36,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the minus stamina button and the stamina is zero it does nothing`() {
-        loadSpecificvaluesToState("currentStamina" to "0")
+        loadActivity("currentStamina" to "0")
 
         fragment.findComponent<Button>(R.id.minusStaminaButton).performClick()
 
@@ -48,7 +49,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the plus stamina button it increases the stamina in the state`() {
-        loadSpecificvaluesToState("currentStamina" to "23")
+        loadActivity("currentStamina" to "23")
 
         Assert.assertEquals(23, adventure.currentStamina)
 
@@ -63,6 +64,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the plus stamina button and the stamina is at max it does nothing`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.plusStaminaButton).performClick()
 
         Assert.assertEquals(24, adventure.currentStamina)
@@ -74,6 +76,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the minus skill button it decreases the skill in the state`() {
+        loadActivity()
 
         fragment.findComponent<Button>(R.id.minusSkillButton).performClick()
 
@@ -86,7 +89,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the minus skill button and the skill is zero it does nothing`() {
-        loadSpecificvaluesToState("currentSkill" to "0")
+        loadActivity("currentSkill" to "0")
 
         fragment.findComponent<Button>(R.id.minusSkillButton).performClick()
 
@@ -99,7 +102,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the plus skill button it increases the skill in the state`() {
-        loadSpecificvaluesToState("currentSkill" to "11")
+        loadActivity("currentSkill" to "11")
 
         Assert.assertEquals(11, adventure.currentSkill)
 
@@ -114,6 +117,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the plus skill button and the skill is at max it does nothing`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.plusSkillButton).performClick()
 
         Assert.assertEquals(12, adventure.currentSkill)
@@ -125,6 +129,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the minus luck button it decreases the luck in the state`() {
+        loadActivity()
 
         fragment.findComponent<Button>(R.id.minusSkillButton).performClick()
 
@@ -137,7 +142,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the minus luck button and the luck is zero it does nothing`() {
-        loadSpecificvaluesToState("currentLuck" to "0")
+        loadActivity("currentLuck" to "0")
 
         fragment.findComponent<Button>(R.id.minusLuckButton).performClick()
 
@@ -150,7 +155,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the plus luck button it increases the luck in the state`() {
-        loadSpecificvaluesToState("currentLuck" to "11")
+        loadActivity("currentLuck" to "11")
 
         Assert.assertEquals(11, adventure.currentLuck)
 
@@ -165,6 +170,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the plus luck button and the luck is at max it does nothing`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.plusLuckButton).performClick()
 
         Assert.assertEquals(12, adventure.currentLuck)
@@ -176,6 +182,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the stamina value it changes the stamina max value via dialog`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.statsStaminaValue).performClick()
 
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
@@ -189,6 +196,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the stamina value it does nothing when canceling the dialog`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.statsStaminaValue).performClick()
 
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
@@ -202,6 +210,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the skill value it changes the skill max value via dialog`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.statsSkillValue).performClick()
 
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
@@ -215,6 +224,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the skill value it does nothing when canceling the dialog`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.statsSkillValue).performClick()
 
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
@@ -228,6 +238,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the luck value it changes the luck max value via dialog`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.statsLuckValue).performClick()
 
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
@@ -241,6 +252,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the luck value it does nothing when canceling the dialog`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.statsLuckValue).performClick()
 
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
@@ -254,6 +266,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the minus provisions button it decreases the provisions in the state`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.minusProvisionsButton).performClick()
 
         Assert.assertEquals(9, adventure.provisions)
@@ -265,7 +278,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the minus provisions button and the provisions is zero it does nothing`() {
-        loadSpecificvaluesToState("provisions" to "0")
+        loadActivity("provisions" to "0")
 
         fragment.findComponent<Button>(R.id.minusProvisionsButton).performClick()
 
@@ -278,6 +291,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking the plus provisions button it increases the provisions in the state`() {
+        loadActivity()
         fragment.findComponent<Button>(R.id.plusProvisionsButton).performClick()
 
         Assert.assertEquals(11, adventure.provisions)
@@ -289,7 +303,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking consume provisions it increases the current stamina by the provisions value and decreases the provisions`() {
-        loadSpecificvaluesToState("currentStamina" to "10")
+        loadActivity("currentStamina" to "10")
 
         fragment.findComponent<Button>(R.id.buttonConsumeProvisions).performClick()
 
@@ -305,7 +319,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking use Strenght potion, the stamina is restored to max level`() {
-        loadSpecificvaluesToState(
+        loadActivity(
             "currentStamina" to "10",
             "standardPotion" to "1",
             "standardPotionValue" to "2"
@@ -323,7 +337,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking use Skill potion, the skill is restored to max level`() {
-        loadSpecificvaluesToState(
+        loadActivity(
             "currentSkill" to "10",
             "standardPotion" to "0",
             "standardPotionValue" to "2"
@@ -341,7 +355,7 @@ abstract class AdventureVitalStatsTest<T : Adventure, U : AdventureVitalStatsFra
 
     @Test
     fun `when clicking use Fortune potion, the initial luck is increased by 1 and the current luck is restored to max level`() {
-        loadSpecificvaluesToState(
+        loadActivity(
             "currentLuck" to "10",
             "standardPotion" to "2",
             "standardPotionValue" to "2"

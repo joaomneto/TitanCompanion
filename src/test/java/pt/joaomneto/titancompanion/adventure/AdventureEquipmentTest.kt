@@ -26,6 +26,7 @@ abstract class AdventureEquipmentTest<T : Adventure, U : AdventureEquipmentFragm
 
     @Test
     fun `when clicking the minus gold button it decreases the gold in the state`() {
+        loadActivity()
 
         fragment.findComponent<Button>(R.id.minusGoldButton).performClick()
 
@@ -38,7 +39,7 @@ abstract class AdventureEquipmentTest<T : Adventure, U : AdventureEquipmentFragm
 
     @Test
     fun `when clicking the minus gold button and the gold is zero it does nothing`() {
-        loadSpecificvaluesToState("gold" to "0")
+        loadActivity("gold" to "0")
 
         fragment.findComponent<Button>(R.id.minusGoldButton).performClick()
 
@@ -51,7 +52,7 @@ abstract class AdventureEquipmentTest<T : Adventure, U : AdventureEquipmentFragm
 
     @Test
     fun `when clicking the plus gold button it increases the gold in the state`() {
-        loadSpecificvaluesToState("gold" to "23")
+        loadActivity("gold" to "23")
 
         assertEquals(23, adventure.gold)
 
@@ -66,6 +67,8 @@ abstract class AdventureEquipmentTest<T : Adventure, U : AdventureEquipmentFragm
 
     @Test
     fun `when clicking the add equipment button it adds an equipment to the list via a dialog`() {
+        loadActivity()
+
         fragment.findComponent<Button>(R.id.buttonAddEquipment).performClick()
 
         val dialog = ShadowDialog.getLatestDialog() as AlertDialog
@@ -83,7 +86,7 @@ abstract class AdventureEquipmentTest<T : Adventure, U : AdventureEquipmentFragm
 
     @Test
     fun `when long pressing an equipment item it removes an item from the list via a confirmation dialog`() {
-        loadSpecificvaluesToState("equipment" to "eq1#eq2")
+        loadActivity("equipment" to "eq1#eq2")
         fragment.refreshScreensFromResume()
 
         val listView = fragment.findComponent<ListView>(R.id.equipmentList)

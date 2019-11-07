@@ -35,6 +35,7 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when clicking the start combat without combatants it does nothing`() {
+        loadActivity()
 
         fragment.findComponent<Button>(R.id.startCombat).performClick()
 
@@ -47,6 +48,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when clicking the add opponent button it adds an enemy to the list via a dialog`() {
+        loadActivity()
+
         fragment.findComponent<Button>(R.id.addCombatButton).performClick()
 
         val enemySkillInput = dialog.findViewById<EditText>(R.id.enemySkillValue)
@@ -81,6 +84,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when adding two opponents it adds two enemies to the list via a dialog and keeps the first one as active`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies(enemyHandicap1 = 1, enemyHandicap2 = -1)
 
         assertEquals(
@@ -120,6 +125,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when clicking the plus stamina button for an opponent in increases it's stamina`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
 
         val listView = fragment.findComponent<ListView>(R.id.combatants)
@@ -148,6 +155,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when clicking the minus stamina button for an opponent in increases it's stamina`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
 
         val listView = fragment.findComponent<ListView>(R.id.combatants)
@@ -176,6 +185,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when clicking the plus skill button for an opponent in increases it's skill`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
 
         val listView = fragment.findComponent<ListView>(R.id.combatants)
@@ -198,6 +209,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when clicking the minus skill button for an opponent in increases it's skill`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
 
         val listView = fragment.findComponent<ListView>(R.id.combatants)
@@ -288,6 +301,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when clicking the combat mode switch it changes the combat mode`() {
+        loadActivity()
+
         fragment.findComponent<Switch>(R.id.combatType).performClick()
 
         assertEquals(AdventureCombatFragment.SEQUENCE, fragment.combatMode)
@@ -299,6 +314,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when clicking start combat it starts the combat and changes the combat layout`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         fragment.findComponent<Button>(R.id.startCombat).performClick()
 
@@ -315,6 +332,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when resetting before starting combat the combat positions are emptied`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         fragment.findComponent<Button>(R.id.resetCombat).performClick()
 
@@ -327,6 +346,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when resetting after starting combat the combat positions are emptied and layout is switched back`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         fragment.findComponent<Button>(R.id.startCombat).performClick()
         fragment.findComponent<Button>(R.id.resetCombat).performClick()
@@ -347,6 +368,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in normal combat mode, the player only combats an enemy at a time`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         val listView = fragment.findComponent<ListView>(R.id.combatants)
 
@@ -372,6 +395,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in sequence combat mode, the player combats the enemies sequentially`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         val listView = fragment.findComponent<ListView>(R.id.combatants)
 
@@ -398,6 +423,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in normal combat mode, the player will apply damage to the enemy if he wins the round`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         val listView = fragment.findComponent<ListView>(R.id.combatants)
 
@@ -428,6 +455,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in normal combat mode, the player will apply bonus damage to the enemy if he wins the round and wins a luck roll`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         val listView = fragment.findComponent<ListView>(R.id.combatants)
 
@@ -454,7 +483,7 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in normal combat mode, the player will apply diminished damage to the enemy if he wins the round and loses a luck roll`() {
-        loadSpecificvaluesToState("currentLuck" to "0")
+        loadActivity("currentLuck" to "0")
 
         initializeCombatWithTwoEnemies()
         val listView = fragment.findComponent<ListView>(R.id.combatants)
@@ -486,6 +515,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in normal combat mode, and you win the rounds, the combat status displays the turn result`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         val combatResult = fragment.findComponent<TextView>(R.id.combatResult)
 
@@ -504,6 +535,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in sequence combat mode, and you win the rounds, the combat status displays the turn result`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         fragment.findComponent<TextView>(R.id.combatType).performClick()
 
@@ -524,7 +557,7 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in normal combat mode, and you lose the rounds, the combat status displays the turn result`() {
-        loadSpecificvaluesToState("currentSkill" to "1")
+        loadActivity("currentSkill" to "1")
 
         initializeCombatWithTwoEnemies()
         val combatResult = fragment.findComponent<TextView>(R.id.combatResult)
@@ -543,7 +576,7 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in sequence combat mode, and you lose the rounds, the combat status displays the turn result`() {
-        loadSpecificvaluesToState("currentSkill" to "1")
+        loadActivity("currentSkill" to "1")
 
         initializeCombatWithTwoEnemies()
         fragment.findComponent<TextView>(R.id.combatType).performClick()
@@ -564,6 +597,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in normal combat mode, the active enemy is the same until it's defeated`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
 
         mockkObject(DiceRoller)
@@ -586,6 +621,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when doing combat turns in sequence combat mode, the active enemy is the same until it's defeated`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies()
         fragment.findComponent<TextView>(R.id.combatType).performClick()
 
@@ -606,6 +643,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when advancing combat the following combatant is activated`() {
+        loadActivity()
+
         initializeCombatWithThreeEnemies()
 
         val listView = fragment.findComponent<ListView>(R.id.combatants)
@@ -632,6 +671,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when reducing enemy's stamina to zero, the active enemy is removed from the state and the following combatant is activated`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies(enemyStamina1 = 2)
 
         val listView = fragment.findComponent<ListView>(R.id.combatants)
@@ -653,6 +694,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when reducing enemy's stamina to zero, the victory message is displayed`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies(enemyStamina1 = 2)
 
         val combatResult = fragment.findComponent<TextView>(R.id.combatResult)
@@ -678,6 +721,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when the combat round ends as a draw, neither the combatant nor the player lose stamina`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies(enemySkill1 = 12, enemyStamina1 = 12)
 
         val listView = fragment.findComponent<ListView>(R.id.combatants)
@@ -700,6 +745,8 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when the combat round ends as a draw, it displays the draw status message`() {
+        loadActivity()
+
         initializeCombatWithTwoEnemies(enemySkill1 = 12, enemyStamina1 = 12)
         val combatResult = fragment.findComponent<TextView>(R.id.combatResult)
 
@@ -720,7 +767,7 @@ abstract class AdventureCombatTest<T : Adventure, U : AdventureCombatFragment>(
 
     @Test
     fun `when the player's stamina reaches zero it displays a defeat message`() {
-        loadSpecificvaluesToState("currentSkill" to "11", "currentStamina" to "2")
+        loadActivity("currentSkill" to "11", "currentStamina" to "2")
 
         initializeCombatWithTwoEnemies(enemySkill1 = 12, enemyStamina1 = 12)
 
