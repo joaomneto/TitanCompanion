@@ -642,7 +642,9 @@
     <string name="savegameImportNotExecuted">A importação de jogos gravados necessita de permissões de leitura sobre o armazenamento externo para funcionar</string>
     <string name="savegameImportInfo">O formato de jogos gravados nesta aplicação mudou na version 0.38-beta. Esta aplicação tenta importar os ficheiros existentes para o novo formato. Se porventura os jogos não estiverem disponívels no ecrã de carregamento por favor utilize a opção \"Importar Jogos Gravados\" no ecrã de \"Preferências\" para o fazer manualmente.</string>
     <string name="oneStrikeCombat">Combate Único</string>
+    <string name="cypher">Cifra</string>
     <string name="addCypher">Adicionar cifra</string>
+    <string name="deleteCypher">Apagar cifra?</string>
 
     <!--Sky Lord-->
 

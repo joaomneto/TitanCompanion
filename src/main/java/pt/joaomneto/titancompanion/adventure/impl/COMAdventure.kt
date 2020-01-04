@@ -51,7 +51,7 @@ class COMAdventure : TWOFMAdventure(
     var kuddamKilled: List<Kuddam> = emptyList()
     override var gold: Int = 0
     var fuel: Int = 0
-    var cyphers: List<String> = emptyList()
+    var cyphers: MutableList<String> = mutableListOf()
     var tabashaSpecialSkill = false
 
     override fun loadAdventureSpecificValuesFromFile() {
