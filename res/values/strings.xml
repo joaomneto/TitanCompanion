@@ -1142,7 +1142,9 @@
     <string name="currentVersion" translatable="false">currentVersion</string>
     <string name="savegameImportInfo">The savegame format of this app has changed in version 0.38-beta. This app attempts to auto import the exiting files to the new format. If by any chance you should have saved games in the Load Game list and they are not available, please use the option \"Import Savegames\" in the \"Settings\" screen to do it manually.</string>
     <string name="info">Information</string>
+    <string name="cypher">Cypher</string>
     <string name="addCypher">Add Cypher</string>
+    <string name="deleteCypher">Delete cypher?</string>
 
     <!--Sky Lord-->
     <string name="lasers">Lasers:</string>

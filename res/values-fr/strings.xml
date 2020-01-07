@@ -697,6 +697,8 @@
     <string name="slDirectHit">Coup au but ! (-%1$d Écrans)</string>
     <string name="slEnemyHitPlayer">Votre adversaire vous a touché (-%1$d Écrans).</string>
     <string name="shipAndWeapons"><![CDATA[Vaisseau & Armes]]></string>
+    <string name="cypher">Code</string>
+    <string name="deleteCypher">Supprimer ce code ?</string>
 
     <!--SpellBreaker-->
     <string name="gold2">Or</string>

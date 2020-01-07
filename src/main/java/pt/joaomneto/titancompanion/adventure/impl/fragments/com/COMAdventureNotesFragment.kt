@@ -37,7 +37,7 @@ class COMAdventureNotesFragment : AdventureNotesFragment() {
             OnClickListener {
                 val alert = AlertDialog.Builder(adv)
 
-                alert.setTitle(R.string.note)
+                alert.setTitle(R.string.cypher)
 
                 // Set an EditText view to get user input
                 val input = EditText(adv)
@@ -51,7 +51,7 @@ class COMAdventureNotesFragment : AdventureNotesFragment() {
                     { _, _ ->
                         val value = input.text.toString()
                         if (value.isNotBlank()) {
-                            adv.cyphers = adv.cyphers.plus(value.trim { it <= ' ' })
+                            adv.cyphers.add(value.trim { it <= ' ' })
                             (cypherList!!.adapter as ArrayAdapter<String>).notifyDataSetChanged()
                         }
                     }
@@ -73,16 +73,18 @@ class COMAdventureNotesFragment : AdventureNotesFragment() {
         )
         cypherList.adapter = adapter
 
-        cypherList.onItemLongClickListener = OnItemLongClickListener { _, _, arg2, _ ->
+        cypherList.onItemLongClickListener = OnItemLongClickListener { _, _, position, _ ->
             val builder = AlertDialog.Builder(adv)
-            builder.setTitle(R.string.deleteKeyword)
+            builder.setTitle(R.string.deleteCypher)
                 .setCancelable(false)
                 .setNegativeButton(
                     R.string.close
                 ) { dialog, _ -> dialog.cancel() }
             builder.setPositiveButton(R.string.ok) { _, _ ->
-                adv.cyphers = adv.cyphers.minus(adv.cyphers[arg2])
-                (cypherList!!.adapter as ArrayAdapter<String>).notifyDataSetChanged()
+                if (adv.cyphers.size > position) {
+                    adv.cyphers.removeAt(position)
+                    (cypherList!!.adapter as ArrayAdapter<String>).notifyDataSetChanged()
+                }
             }
 
             val alert = builder.create()
