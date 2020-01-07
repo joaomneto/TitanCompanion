@@ -24,15 +24,17 @@ import pt.joaomneto.titancompanion.util.AdventureFragmentRunner
 import pt.joaomneto.titancompanion.util.DiceRoller
 import java.io.BufferedReader
 import java.io.BufferedWriter
-import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.FileReader
 import java.io.FileWriter
 import java.io.IOException
+import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.io.PrintWriter
+import java.io.StringReader
+import java.nio.charset.Charset
 import java.util.ArrayList
 import java.util.Date
 import java.util.HashSet
@@ -90,7 +92,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
             dir = File(File(filesDir, "ffgbutil"), requireNotNull(name))
 
             savedGame.clear()
-            savedGame.load(ByteArrayInputStream(propertiesString?.toByteArray()))
+            savedGame.load(StringReader(propertiesString!!))
 
             loadGameFromProperties()
         } catch (e: Exception) {
@@ -100,7 +102,7 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
 
     fun loadGameFromFile(dir: File, fileName: String){
         savedGame.clear()
-        savedGame.load(FileInputStream(File(dir, fileName)))
+        savedGame.load(InputStreamReader(FileInputStream(File(dir, fileName)), Charset.forName("UTF-8")))
         loadGameFromProperties()
     }
 
@@ -119,15 +121,12 @@ abstract class Adventure(override val fragmentConfiguration: Array<AdventureFrag
         currentSkill = Integer.valueOf(savedGame.getProperty("currentSkill"))
         currentLuck = Integer.valueOf(savedGame.getProperty("currentLuck"))
         currentStamina = Integer.valueOf(savedGame.getProperty("currentStamina"))
-
-        val equipmentS =
-            String(savedGame.getProperty("equipment").toByteArray(java.nio.charset.Charset.forName("UTF-8")))
-        val notesS =
-            String(savedGame.getProperty("notes").toByteArray(java.nio.charset.Charset.forName("UTF-8")))
         currentReference = Integer.valueOf(savedGame.getProperty("currentReference"))
 
-        equipment = stringToStringList(equipmentS)
+        val equipmentS = savedGame.getProperty("equipment")
+        val notesS = savedGame.getProperty("notes")
 
+        equipment = stringToStringList(equipmentS)
         notes = stringToStringList(notesS)
 
         val provisionsS = savedGame.getProperty("provisions")
