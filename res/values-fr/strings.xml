@@ -38,22 +38,22 @@
     <string name="awf">Rendez-vous avec la M.O.R.T.</string>
     <string name="rp">La Planète Rebelle</string>
     <string name="dotd">Les Démons des Profondeurs</string>
-    <string name="sots">L\'Epée du Samouraï</string>
-    <string name="toc">L\'Epreuve des Champions</string>
+    <string name="sots">L\'Épée du Samouraï</string>
+    <string name="toc">L\'Épreuve des Champions</string>
     <string name="rc">La Grande Menace des Robots</string>
     <string name="mom">Les Sceaux de la Destruction</string>
     <string name="coh">La Créature venue du Chaos</string>
     <string name="bnc">La Forteresse du Cauchemar</string>
     <string name="cots">La Crypte du Sorcier</string>
-    <string name="strider">Le Chasseur des Etoiles</string>
+    <string name="strider">Le Chasseur des Étoiles</string>
     <string name="pof">Les Spectres de l\'Angoisse</string>
     <string name="mr">Les Rôdeurs de la Nuit</string>
     <string name="com">Les Gouffres de la Cruauté</string>
     <string name="bw">L\'Empire des Hommes-Lézards</string>
-    <string name="sota">Les Esclaves de l\'Eternité</string>
+    <string name="sota">Les Esclaves de l\'Éternité</string>
     <string name="sl">Le Justicier de l\'Univers</string>
     <string name="sos">Le Voleur d\'Âmes</string>
-    <string name="dod">L\'Elu des Six Clans</string>
+    <string name="dod">L\'Élu des Six Clans</string>
     <string name="aod">Les Sombres Cohortes</string>
     <string name="poe">La Nuit des Mutants</string>
     <string name="votv">Le Vampire du Château Noir</string>
@@ -62,7 +62,7 @@
     <string name="moc">Le Sceptre Noir</string>
     <string name="bvp">L\'Ancienne Prophétie</string>
     <string name="tkotll">Le Repaire des Morts-vivants</string>
-    <string name="lotsw">La Légendes des Guerriers Fantômes</string>
+    <string name="lotsw">La Légende des Guerriers Fantômes</string>
     <string name="spectral">Les Mondes de l\'Aleph</string>
     <string name="tower">La Tour de la Destruction</string>
     <string name="tct">Les Mercenaires du Levant</string>
@@ -78,7 +78,7 @@
     <string name="m">Le Chasseur de Mages</string>
     <string name="rotv">La Revanche du Vampire</string>
     <string name="cotm">La Malédiction de la Momie</string>
-    <string name="eotd">L\'Oeil d\'Emeraude</string>
+    <string name="eotd">L\'Œil d\'Emeraude</string>
     <string name="bb">Le Pirate de l\'Au-Delà</string>
     <string name="hotw">La Nuit du Loup-Garou</string>
 <!-- Books translated but not supported yet -->
@@ -153,8 +153,8 @@
     <string name="gold">Or:</string>
     <string name="copper">Cuivre:</string>
     <string name="editGold">Modifier</string>
-    <string name="equipment">Equipement:</string>
-    <string name="equipment2">Equipement</string>
+    <string name="equipment">Équipement:</string>
+    <string name="equipment2">Équipement</string>
     <string name="addEquipment">Ajouter un équipement</string>
     <string name="addWeapon">Ajouter une arme</string>
     <string name="escape">Fuir</string>
@@ -199,7 +199,7 @@
     <string name="ship2">Vaisseau:</string>
     <string name="weaponsStat">Force de Frappe: </string>
     <string name="shields">Boucliers </string>
-    <string name="landingParty">Equipe d\'exploration</string>
+    <string name="landingParty">Équipe d\'exploration</string>
     <string name="restoreStaminaLandingParty">Restaurer l\'Endurance de l\'équipe d\'exploration</string>
     <string name="traveller">Voyageur: </string>
     <string name="enemyShip">Vaisseau ennemi: </string>
@@ -276,8 +276,8 @@
 <!-- Temple of Terror -->
     <string name="totSpellOpenDoor">Ouverture des portes</string>
     <string name="totSpellCreatureSlepp">Sommeil de la Créature</string>
-    <string name="totSpellMagicArrow">La Flêche magique</string>
-    <string name="totSpellLanguage">Language</string>
+    <string name="totSpellMagicArrow">La Flèche magique</string>
+    <string name="totSpellLanguage">Langue</string>
     <string name="totSpellReadSymbols">Lecture des symboles</string>
     <string name="totSpellLight">Lumière</string>
     <string name="totSpellFire">Feu</string>
@@ -309,7 +309,7 @@
     <string name="vehicleSpecs">Caractéristiques de l\'Interceptor</string>
     <string name="enhancement">Modification</string>
     <string name="addEnhancement">Ajouter une modification</string>
-    <string name="deleteEnhancement">Supprimer modification?</string>
+    <string name="deleteEnhancement">Supprimer modification ?</string>
     <string name="useMedKit">Utiliser la trousse de secours</string>
     <string name="medKits">Trousse de secours: </string>
     <string name="credits">Crédits: </string>
@@ -339,14 +339,14 @@
     <string name="trokSecondEnemyHitPlayerStarship">Votre second adversaire a touché votre vaisseau. (-%1$d Défense).</string>
     <string name="secondEnemyMissed">Votre second adversaire vous a manqué !</string>
     <string name="hitEnemyDamage">Vous avez atteint votre adversaire ! (-%1$d En)</string>
-    <string name="directHit">Coup au but!</string>
+    <string name="directHit">Coup au but !</string>
     <string name="enemyDestroyedShip">Votre adversaire a détruit votre vaisseau...</string>
     <string name="enemyHitYourShip">Votre adversaire a touché votre vaisseau.</string>
     <string name="enemyShipMissed">Le vaisseau adverse a manqué son coup.</string>
 
 <!-- Space Assassin -->
     <string name="saArmor">Protection:</string>
-    <string name="saHitEnemy">Vous avez touché votre adversaire! (%1$d En)</string>
+    <string name="saHitEnemy">Vous avez touché votre adversaire ! (%1$d En)</string>
     <string name="saElectricLash">Pistolet-Laser</string>
     <string name="saAssaultBlaster">Désintégrateur</string>
     <string name="saGravityBomb">Charge d\'antimatière</string>
@@ -354,7 +354,7 @@
     <string name="sa2xArmor">2x Protection</string>
     <string name="saWeapons">Armes</string>
     <string name="saWeapon">Arme</string>
-    <string name="saDeleteWeapon">Effacer cette arme?</string>
+    <string name="saDeleteWeapon">Effacer cette arme ?</string>
     <string name="saNoWeaponPoints">Vous n\'avez pas assez de point pour ajouter le/la %1$s</string>
     <string name="saCombatText1">Votre adversaire (HA: %1$d EN: %2$d) a été touché. (-%3$d EN)</string>
     <string name="saCombatText2">Un adversaire (HA: %1$d EN: %2$d) vous a touché. (-%3$d EN)</string>
@@ -376,7 +376,7 @@
     <string name="testCrewStrength">Tester la combativité</string>
     <string name="deleteBooty">Effacer ce butin ?</string>
     <string name="crewParamsMandatory">Attaque et Combativité</string>
-    <string name="sobDirectHit">Coup au but! (-%1$d Force d\'équipage)</string>
+    <string name="sobDirectHit">Coup au but ! (-%1$d Force d\'équipage)</string>
     <string name="sobEnemyHitYourShip">Le navire adverse vous a atteint. (-%1$d Force d\'équipage)</string>
     <string name="bothShipsMissed">Les deux navires ont manqué leur coup.</string>
     <string name="sobEnemyShip">Navire ennemi: </string>
@@ -394,11 +394,11 @@
     <string name="awfSuperStrength">Super Force</string>
 
 <!-- Rebel Planet -->
-    <string name="unarmed">A mains nues: </string>
+    <string name="unarmed">"À mains nues: "</string>
 
 <!-- Sword of the Samurai -->
     <string name="title_adventure_creation_skill">Discipline spéciale</string>
-    <string name="arrows">Flêches</string>
+    <string name="arrows">Flèches</string>
     <string name="honour">Honneur:</string>
     <string name="willow">Feuilles de Saule:</string>
     <string name="bowel">Harpons:</string>
@@ -453,7 +453,7 @@
     <string name="changeRobotForm">Changer de forme</string>
     <string name="type">Type :</string>
     <string name="airborne">Volant:</string>
-    <string name="secondEnemy">Second ennemi? :</string>
+    <string name="secondEnemy">Second ennemi ? :</string>
     <string name="simulCombat">Combat Simultané? :</string>
     <string name="useShovel">Utiliser la pelle mécanique</string>
     <string name="sonicShot">Utiliser le canon sonique</string>
@@ -465,7 +465,7 @@
     <string name="robotSpecialAbilityFlyCircles">Vol circulaire</string>
     <string name="robotSpecialAbilityFlyCirclesDesc">Si l\'assaut est gagné par au moins 4 points, le Frelon inflige double dégat.</string>
     <string name="robotSpecialAbilityUltraFast">Ultra Rapide</string>
-    <string name="robotSpecialAbilityUltraFastDesc">Ce robot peut Fuir même face à des robots très rapides.</string>
+    <string name="robotSpecialAbilityUltraFastDesc">Ce robot peut fuir même face à des robots très rapides.</string>
     <string name="robotSpecialAbilityShield">Bouclier</string>
     <string name="robotSpecialAbilityShieldDEsc">Si la force d\'attaque du Voltigeur est de 18 ou plus, il ne subit aucun dommage.</string>
     <string name="robotSpecialAbilitySerpentCoil">Anneaux du serpent</string>
@@ -477,10 +477,10 @@
     <string name="robotSpecialAbilityDoubleDamage">Double Dégât</string>
     <string name="robotSpecialAbilityDoubleDamageDesc">Inflige double dommage en cas d\'attaque réussie.</string>
     <string name="robotSpecialAbilityCriticalHit">Dommage critique</string>
-    <string name="robotSpecialAbilityCriticalHitDesc">Si la Force d\'attaque du Robot guerrier est supérieure d\'au moins 4 points à la vôtre, il inflige 1 point de dommage suppléméntaire.</string>
+    <string name="robotSpecialAbilityCriticalHitDesc">Si la Force d\'attaque du Robot guerrier est supérieure d\'au moins 4 points à la vôtre, il inflige 1 point de dommage supplémentaire.</string>
     <string name="robotSpecialAbilitySmallWeapons">Armes mineures</string>
     <string name="robotSpecialAbilitySmallWeaponsDesc">Inflige un point de dégât à chaque tour.</string>
-     <string name="robotSpecialAbilityAnkylosaurus">Etourdissement</string>
+     <string name="robotSpecialAbilityAnkylosaurus">Étourdissement</string>
     <string name="robotSpecialAbilityAnkylosaurusDesc">Vous ne pouvez pas infliger de dégât à l\'assaut suivant un assaut perdu.</string>
     <string name="rcRobotSwitchedConfig">Votre robot a changé de configuration.</string>
     <string name="rcAddEnemyRobot">Ajouter un robot ennemi</string>
@@ -499,7 +499,7 @@
     <string name="rcSupertankSpecila">Le Supertank inflige 1 dommage supplémentaire.</string>
     <string name="rcSerpentVIISpecial2">Le Serpent inflige 1 dommage supplémentaire.</string>
     <string name="rcSonicShot">Utilisation du canon sonique (%1$d PD)</string>
-    <string name="rcShovel">Utilisation dde la pelle mécanique (6 PD)</string>
+    <string name="rcShovel">Utilisation de la pelle mécanique (6 PD)</string>
     <string name="rcLostRobot">Vous avez perdu votre robot !</string>
     <string name="rcDefeatedEnemy">Vous avez vaincu votre adversaire !</string>
     <string name="rcParryAttack">Vous avez paré l\'attaque ennemie.</string>
@@ -528,7 +528,7 @@
 
 <!-- Phantoms of Fear -->
     <string name="power">Pouvoir: </string>
-    <string name="pofSpellProtect">Ecran magique de Protection</string>
+    <string name="pofSpellProtect">Écran magique de Protection</string>
     <string name="pofSpellFinding">Détection</string>
     <string name="pofSpellFire">Feu</string>
     <string name="pofSpellIllusion">Illusion</string>
@@ -549,7 +549,7 @@
     <string name="soldiersType">Type de Soldats: </string>
     <string name="quantity">Quantité:</string>
     <string name="currentArmy">Armée actuelle:</string>
-    <string name="selectForces">Sélectionner vos Forces:</string>
+    <string name="selectForces">Sélectionnez vos Forces:</string>
     <string name="skirmishForces">Au Combat:</string>
     <string name="enemyForces2">Forces Ennemies:</string>
     <string name="closeCombat">Combat au corps à corps</string>
@@ -565,7 +565,7 @@
     <string name="addSoldiers">Ajouter des soldats</string>
     <string name="soldiersKilledQuestion">Soldat perdus ?</string>
 
-    <string name="crew">Equipage:</string>
+    <string name="crew">Équipage:</string>
     <string name="date">Date:</string>
     <string name="name2">Nom:</string>
     <string name="result">Résultat</string>
@@ -573,7 +573,7 @@
     <string name="storagePermissionsRequired">Pour utiliser cette application vous devez lui donner accès au stockage du téléphone.</string>
     <string name="gamebookNotImplemented">Désolé, ce livre n\'est pas encore supporté.</string>
     <string name="success">Succès !</string>
-    <string name="failed">Echec...</string>
+    <string name="failed">Échec...</string>
     <string name="noProvisionsLeft">Vous n\'avez plus de provisions...</string>
     <string name="provisionsMaxStamina">Votre Endurance est déjà à son maximum.</string>
     <string name="provisionsStaminaGain">Vous gagnez %1$d points d\'endurance.</string>
@@ -622,7 +622,7 @@
 
 	<string name="exit">Quitter</string>
     <string name="quit">Quitter</string>
-    <string name="rateApp">Evaluer cette application</string>
+    <string name="rateApp">Évaluer cette application</string>
     <string name="language">Langue</string>
     <string name="languageDesc">Langue de l\'interface</string>
     <string name="locale">Préférences régionales</string>
@@ -652,7 +652,7 @@
     <string name="skill_sneak">Pas de Loup</string>
     <string name="skill_hide">Passe-Murailles</string>
     <string name="skill_spot_hidden">Cache-Tampon</string>
-    <string name="deleteSkillQuestion">Supprimer ce Talent?</string>
+    <string name="deleteSkillQuestion">Supprimer ce Talent ?</string>
     <string name="skillInitials">Ha</string>
     <string name="knights">Chevaliers</string>
     <string name="dwarves">Nains</string>
@@ -662,7 +662,7 @@
     <!--Chasms of Malice-->
 
     <string name="fuel">Combustible</string>
-    <string name="useTabasha">Utilizer Tabasha</string>
+    <string name="useTabasha">Utiliser Tabasha</string>
     <string name="other">Autre</string>
     <string name="error">Erreur</string>
     <string name="done">Terminé</string>
@@ -676,9 +676,9 @@
     <string name="oneStrikeCombatTie">Le coup a été nul  (%1$d vs %2$d)</string>
     <string name="oneStrikeCombat">Combat à Un Coup</string>
     <string name="savegameConfirmMessage">Les parties sauvées doivent être maintenant disponibles dans l\'écran de chargement.</string>
-    <string name="savegameImportNotExecuted">L\'importation de parties sauvées ne peut pas continues sans les droits de lecture de stockage externe</string>
+    <string name="savegameImportNotExecuted">L\'importation de parties sauvées ne peut pas continuer sans les droits de lecture de stockage externe</string>
     <string name="noSavegamesToImport">Il n\'y a pas de parties sauvées à importer…</string>
-    <string name="savegameImportInfo">Le format des parties sauvées de cette application a changé a partir de la version 0.38-beta. Cette application essaye de importer automatiquement les fichiers existants vers le nouveau format. Si par hazard vou ne voyez pas les parties sauvées dans la list de chargement, veuillez utiliser l\'option \"Importer Parties Sauvées\" dans l\'écran de \"Préférences\" pour le faire manuellement.</string>
+    <string name="savegameImportInfo">Le format des parties sauvées de cette application a changé a partir de la version 0.38-beta. Cette application essaie d\'importer automatiquement les fichiers existants vers le nouveau format. Si par hasard vous ne voyez pas les parties sauvées dans la liste de chargement, veuillez utiliser l\'option \"Importer Parties Sauvées\" dans l\'écran de \"Préférences\" pour le faire manuellement.</string>
     <string name="addCypher">Ajouter code secret</string>
     <string name="jangmistral">Yang Mistral</string>
     <string name="rating">Niveau</string>
@@ -689,12 +689,12 @@
     <string name="starship2">Vaisseau</string>
     <string name="lasers">Lasers:</string>
     <string name="abandonStarspray">Abandoner Météore</string>
-    <string name="confirmAbandonStarspray">Voulez vous abandoner le Météore?</string>
-    <string name="recoverStarspray">Recupérér Météore</string>
-    <string name="confirmRecoverStarspray">Voulez vous récupérer Starspray?</string>
+    <string name="confirmAbandonStarspray">Voulez-vous abandoner le Météore ?</string>
+    <string name="recoverStarspray">Récupérer Météore</string>
+    <string name="confirmRecoverStarspray">Voulez-vous récupérer Starspray ?</string>
     <string name="slEnemyVictory">Votre adversaire vous a détruit ...</string>
     <string name="slPlayerVictory">Vous avez vaincu votre adversaire !</string>
-    <string name="slDirectHit">Coup au but! (-%1$d Écrans)</string>
+    <string name="slDirectHit">Coup au but ! (-%1$d Écrans)</string>
     <string name="slEnemyHitPlayer">Votre adversaire vous a touché (-%1$d Écrans).</string>
     <string name="shipAndWeapons"><![CDATA[Vaisseau & Armes]]></string>
 
@@ -705,20 +705,20 @@
     <string name="goToParagraph">Avancez vers le paragraphe %1$d</string>
     <string name="poison">"Poison: "</string>
     <string name="medallions">Médaillons</string>
-    <string name="useMedallion">Utilizer Medaillon</string>
-    <string name="medallionFirstTime">Première utilization du medaillon de %1$s. (+4 Endurance, -1 Habilité, -1 Chance, +3 Poison) </string>
-    <string name="medallionUsage">Utilization du medaillon de %1$s. (+4 Endurance)</string>
+    <string name="useMedallion">Utiliser Médaillon</string>
+    <string name="medallionFirstTime">"Première utilisation du médaillon de %1$s. (+4 Endurance, -1 Habilité, -1 Chance, +3 Poison) "</string>
+    <string name="medallionUsage">Utilisation du médaillon de %1$s. (+4 Endurance)</string>
     <string name="infection">Infection:</string>
 
     <string name="poisonBlade">Votre ennemi perds 1 EN à cause du poison.</string>
 
     <string name="godUnarmed">Unarmed</string>
-    <string name="rustyBreadknife">Rusty Breadknife</string>
+    <string name="rustyBreadknife">Couteau à pain rouillé</string>
     <string name="fireIron">Fire Iron</string>
-    <string name="pitchfork">Pitchfork</string>
-    <string name="cudgel">Cudgel</string>
-    <string name="cleaver">Cleaver</string>
-    <string name="harpoon">Harpoon</string>
+    <string name="pitchfork">Fourche</string>
+    <string name="cudgel">Gourdin</string>
+    <string name="cleaver">Fendoir</string>
+    <string name="harpoon">Harpon</string>
     <string name="sneakySword">Sneaky Sword</string>
     <string name="woodmansAxe">Woodman\'s Axe</string>
     <string name="templeGuardAxe">Temple\'s Guard Axe</string>
@@ -728,12 +728,12 @@
     <string name="demon">Démon:</string>
     <string name="stoneCrystal">Pierre ou Cristal:</string>
     <string name="smokeOil">Smoke Oil</string>
-    <string name="savegameQuestion">Voulez-vous sauvegarde votre aventure?</string>
+    <string name="savegameQuestion">Voulez-vous sauvegarder votre aventure ?</string>
     <string name="savegameQuestionTitle">Sauvegarder</string>
-    <string name="gamesaved">Sauvegardé!</string>
+    <string name="gamesaved">Sauvegardé !</string>
     <string name="votvFaith">Foi</string>
     <string name="addAffliction">Ajouter Maladie</string>
     <string name="addSpell">Ajouter Sortilège</string>
-    <string name="spellsAndEquipment">Equipement et Sortilèges</string>
+    <string name="spellsAndEquipment">Équipement et Sortilèges</string>
     <string name="notesAndAfflictions">Notes et Maladies</string>
 </resources>
